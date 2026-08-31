@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Reaper Kompakt – SKWD</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1A1C1F;
+    --bg-panel: #232629;
+    --bg-panel-2: #2A2D31;
+    --border: #3A3E43;
+    --border-soft: #303337;
+    --text: #EDE8DF;
+    --text-dim: #A39B8E;
+    --text-faint: #6E6860;
+    --gold: #C6922C;
+    --gold-bright: #E0B24E;
+    --gold-dim: #7A5F24;
+    --green: #5C9A5F;
+    --green-bg: rgba(92,154,95,0.14);
+    --yellow: #DDB13B;
+    --yellow-bg: rgba(221,177,59,0.14);
+    --red: #BC4F41;
+    --red-bg: rgba(188,79,65,0.16);
+  }
+
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Carlito", "DejaVu Sans", Arial, sans-serif;
+    font-size: 9.6pt;
+    line-height: 1.38;
+  }
+
+  .display {
+    font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif;
+    font-weight: 700;
+    font-stretch: condensed;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 9mm 12mm 6mm 12mm;
+    display: flex;
+    flex-direction: column;
+    gap: 3.2mm;
+  }
+
+  /* ---------- MASTHEAD ---------- */
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 3mm;
+  }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand {
+    font-size: 23pt;
+    letter-spacing: 0.06em;
+    color: var(--text);
+  }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub {
+    font-size: 7.6pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 0.5mm;
+  }
+  .edition-tag {
+    font-size: 7pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    border: 1px solid var(--gold-dim);
+    border-radius: 2px;
+    padding: 0.8mm 2mm;
+    margin-top: 1.6mm;
+    display: inline-block;
+    width: fit-content;
+  }
+  .meta-block { text-align: right; font-size: 8pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 9pt; }
+
+  /* ---------- POSITION HEADER ---------- */
+  .position-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-soft);
+    border-left: 3px solid var(--gold);
+    border-radius: 3px;
+    padding: 3.2mm 4mm;
+  }
+  .position-name .ticker {
+    font-size: 16pt;
+    letter-spacing: 0.04em;
+  }
+  .position-name .company {
+    font-size: 8.4pt;
+    color: var(--text-dim);
+    margin-top: 0.3mm;
+  }
+  .position-stats {
+    display: flex;
+    gap: 6mm;
+  }
+  .stat { text-align: right; }
+  .stat .label { font-size: 6.6pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); }
+  .stat .value { font-size: 10.5pt; color: var(--text); margin-top: 0.4mm; }
+  .cat-pill {
+    font-size: 7pt;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--yellow-bg);
+    color: var(--yellow);
+    border: 1px solid var(--yellow);
+    border-radius: 10px;
+    padding: 1.2mm 3mm;
+    white-space: nowrap;
+  }
+
+  /* ---------- 3-STIMMEN-LEISTE ---------- */
+  .section-label {
+    font-size: 7.4pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 2.5mm;
+  }
+  .section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border-soft);
+  }
+
+  .voices-row { display: flex; gap: 3mm; }
+  .voice-card {
+    flex: 1;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-soft);
+    border-radius: 3px;
+    padding: 2.6mm 3mm;
+    position: relative;
+    overflow: hidden;
+  }
+  .voice-card::before {
+    content: "";
+    position: absolute; left: 0; top: 0; bottom: 0; width: 2.2mm;
+  }
+  .voice-card.v-red::before { background: var(--red); }
+  .voice-card.v-yellow::before { background: var(--yellow); }
+  .voice-card.v-green::before { background: var(--green); }
+  .voice-name { font-size: 9.6pt; letter-spacing: 0.03em; padding-left: 2mm;}
+  .voice-role { font-size: 6.6pt; color: var(--text-faint); padding-left: 2mm; margin-bottom: 1mm;}
+  .voice-rating {
+    padding-left: 2mm;
+    font-size: 8.6pt;
+    color: var(--text);
+  }
+  .voice-rating b { color: inherit; }
+  .voice-sub { padding-left: 2mm; font-size: 7.4pt; color: var(--text-dim); margin-top: 0.6mm; }
+
+  .convergence-pill {
+    margin-top: 2mm;
+    display: flex;
+    align-items: center;
+    gap: 2.5mm;
+    background: var(--green-bg);
+    border: 1px solid var(--green);
+    border-radius: 3px;
+    padding: 2mm 3.5mm;
+  }
+  .convergence-pill .tag {
+    font-size: 8.4pt;
+    letter-spacing: 0.05em;
+    color: var(--green);
+    text-transform: uppercase;
+  }
+  .convergence-pill .note {
+    font-size: 7.2pt;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  /* ---------- GAUGES ---------- */
+  .gauge-row { display: flex; gap: 3mm; }
+  .gauge-card {
+    flex: 1;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-soft);
+    border-radius: 3px;
+    padding: 2mm 2mm 1.6mm 2mm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .gauge-card .who { font-size: 7.4pt; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3mm;}
+  .gauge-svg-wrap { position: relative; width: 30mm; height: 16mm; }
+  .gauge-score-num {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    text-align: center;
+    font-size: 12pt;
+    color: var(--text);
+  }
+  .gauge-score-num span { font-size: 7pt; color: var(--text-faint); }
+  .clip-row { display: flex; gap: 1mm; margin-top: 1mm; }
+  .clip { width: 3.4mm; height: 4.4mm; border-radius: 1px; border: 1px solid var(--gold-dim); }
+  .clip.filled { background: var(--gold); border-color: var(--gold); }
+  .clip.empty { background: transparent; }
+  .tier-label { font-size: 6.4pt; color: var(--text-faint); margin-top: 0.6mm; text-transform: uppercase; letter-spacing: 0.06em; }
+  .conf-tag { font-size: 6.6pt; margin-top: 0.8mm; padding: 0.5mm 2mm; border-radius: 8px; letter-spacing: 0.04em; }
+  .conf-tag.red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red); }
+  .conf-tag.yellow { background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow); }
+
+  /* ---------- DNA STRANG ---------- */
+  .dna-wrap {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-soft);
+    border-radius: 3px;
+    padding: 2.6mm 3.5mm;
+  }
+  .dna-strip { display: flex; gap: 1.4mm; margin-top: 1.6mm; }
+  .dna-seg {
+    flex: 1;
+    height: 6.5mm;
+    border-radius: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6.6pt;
+    letter-spacing: 0.03em;
+    color: var(--bg);
+    font-weight: bold;
+  }
+  .dna-seg.pass { background: var(--green); }
+  .dna-seg.fail { background: var(--red); }
+  .dna-caption { display: flex; gap: 1.4mm; margin-top: 1mm; }
+  .dna-caption div { flex: 1; font-size: 6.4pt; color: var(--text-faint); text-align: center; }
+  .dna-note { font-size: 7.2pt; color: var(--text-dim); margin-top: 1.8mm; }
+  .dna-note b { color: var(--text); }
+
+  /* ---------- TWO COL ---------- */
+  .two-col { display: flex; gap: 3mm; flex: 1; min-height: 0; overflow: hidden; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.5mm; min-height: 0; }
+  .box {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-soft);
+    border-radius: 3px;
+    padding: 2.6mm 3.5mm;
+    overflow: hidden;
+  }
+  .box h3 {
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    margin-bottom: 1.4mm;
+    font-family: "DejaVu Sans Condensed", sans-serif;
+    font-weight: 700;
+  }
+  ul.bullets { list-style: none; }
+  ul.bullets li {
+    font-size: 7.6pt;
+    padding-left: 3mm;
+    position: relative;
+    margin-bottom: 0.9mm;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  ul.bullets.plus li::before { content: "+"; position: absolute; left: 0; color: var(--green); font-weight: bold; }
+  ul.bullets.minus li::before { content: "–"; position: absolute; left: 0; color: var(--red); font-weight: bold; }
+
+  .dissent-box {
+    border: 1px dashed var(--gold-dim);
+    border-radius: 3px;
+    padding: 2.4mm 3.5mm;
+    background: repeating-linear-gradient(135deg, rgba(198,146,44,0.04), rgba(198,146,44,0.04) 6px, transparent 6px, transparent 12px);
+  }
+  .dissent-box h3 { color: var(--gold-bright); }
+  .dissent-box p { font-size: 6.9pt; color: var(--text-dim); line-height: 1.32; }
+  .dissent-box p b { color: var(--text); }
+
+  /* ---------- FAZIT ---------- */
+  .fazit {
+    background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel));
+    border: 1px solid var(--gold-dim);
+    border-radius: 3px;
+    padding: 3.2mm 4mm;
+    display: flex;
+    align-items: center;
+    gap: 5mm;
+  }
+  .fazit-verdict { flex: 0 0 auto; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 13pt; color: var(--yellow); letter-spacing: 0.03em; }
+  .fazit-verdict .sub { font-size: 6.6pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.6mm; }
+  .fazit-grid { flex: 1; display: flex; justify-content: space-between; }
+  .fazit-item { text-align: center; }
+  .fazit-item .label { font-size: 6.6pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+  .fazit-item .value { font-size: 10pt; color: var(--text); margin-top: 0.5mm; }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-soft);
+    padding-top: 1.8mm;
+    font-size: 6.4pt;
+    color: var(--text-faint);
+  }
+  .footer .gold-dot { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">REAPER <span class="accent">KOMPAKT</span></div>
+      <div class="brand-sub">3-KI Cross-Check · Jarvis · Conan · Jack</div>
+      <div class="edition-tag">Einzelanalyse · Ad-hoc-Trigger</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">27. August 2026</div>
+      <div>Regelwerk TMR v11.7 · Quick Filter</div>
+      <div>Finanzsektor-Override (Versicherer)</div>
+    </div>
+  </div>
+
+  <!-- POSITION HEADER -->
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">SKWD <span style="color:var(--text-dim); font-size:10pt;">· NASDAQ</span></div>
+      <div class="company">Skyward Specialty Insurance Group, Inc. — Specialty Insurance / Excess &amp; Surplus Lines</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs</div><div class="value">$58,23</div></div>
+      <div class="stat"><div class="label">KGV (TTM)</div><div class="value">~13,4x</div></div>
+      <div class="stat"><div class="label">Marktkap.</div><div class="value">$2,56 Mrd.</div></div>
+      <div class="cat-pill">Profi-Kandidat</div>
+    </div>
+  </div>
+
+  <!-- 3-STIMMEN-LEISTE -->
+  <div>
+    <div class="section-label">3-Stimmen-Leiste — Finale Verdicts (Runde 3)</div>
+    <div class="voices-row" style="margin-top:2mm;">
+      <div class="voice-card v-red">
+        <div class="voice-name display">JARVIS <span style="font-size:7pt; color:var(--text-faint);">— Claude</span></div>
+        <div class="voice-role">Regelwerk-Anker des Cross-Checks</div>
+        <div class="voice-rating"><b>BEOBACHTEN</b> · 6,0/10 · Tier 3</div>
+        <div class="voice-sub">K-BASIS 3/4 — ROIC zählt als K-Fail (bindender Wortlaut)</div>
+      </div>
+      <div class="voice-card v-red">
+        <div class="voice-name display">CONAN <span style="font-size:7pt; color:var(--text-faint);">— ChatGPT</span></div>
+        <div class="voice-role">Von KAUFEN-Neigung zu BEOBACHTEN revidiert</div>
+        <div class="voice-rating"><b>BEOBACHTEN</b> · 6,5/10 · Tier 3</div>
+        <div class="voice-sub">Schließt sich Jarvis' Regelwerk-Auslegung inhaltlich an</div>
+      </div>
+      <div class="voice-card v-yellow">
+        <div class="voice-name display">JACK <span style="font-size:7pt; color:var(--text-faint);">— Gemini</span></div>
+        <div class="voice-role">Von KAUFEN zu BEOBACHTEN revidiert</div>
+        <div class="voice-rating"><b>BEOBACHTEN</b> · 7,5/10 · Tier 3</div>
+        <div class="voice-sub">Fügt sich Panel-Mehrheit — hält ROIC-Kritik inhaltlich aufrecht</div>
+      </div>
+    </div>
+    <div class="convergence-pill">
+      <span class="tag display">✓ Stark konvergent</span>
+      <span class="note">Rating &amp; Sizing-Tier bei allen 3 KIs einstimmig — methodischer Dissens zur ROIC-Frage bleibt bewusst dokumentiert, siehe unten.</span>
+    </div>
+  </div>
+
+  <!-- GAUGES -->
+  <div>
+    <div class="section-label">Reaper-Score-Gauge &amp; Sizing-Clip</div>
+    <div class="gauge-row" style="margin-top:2mm;">
+
+      <div class="gauge-card">
+        <div class="who">Jarvis</div>
+        <div class="gauge-svg-wrap">
+          <svg width="34mm" height="19mm" viewBox="0 0 200 110">
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#3A3E43" stroke-width="14" stroke-linecap="round"/>
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#BC4F41" stroke-width="14" stroke-linecap="round"
+                  stroke-dasharray="251.3" stroke-dashoffset="100.5"/>
+          </svg>
+          <div class="gauge-score-num display">6,0<span>/10</span></div>
+        </div>
+        <div class="clip-row">
+          <div class="clip filled"></div><div class="clip filled"></div><div class="clip empty"></div><div class="clip empty"></div>
+        </div>
+        <div class="tier-label">Tier 3 · Trace-Position</div>
+        <div class="conf-tag red">KONFIDENZ ROT 40%</div>
+      </div>
+
+      <div class="gauge-card">
+        <div class="who">Conan</div>
+        <div class="gauge-svg-wrap">
+          <svg width="34mm" height="19mm" viewBox="0 0 200 110">
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#3A3E43" stroke-width="14" stroke-linecap="round"/>
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#BC4F41" stroke-width="14" stroke-linecap="round"
+                  stroke-dasharray="251.3" stroke-dashoffset="87.97"/>
+          </svg>
+          <div class="gauge-score-num display">6,5<span>/10</span></div>
+        </div>
+        <div class="clip-row">
+          <div class="clip filled"></div><div class="clip filled"></div><div class="clip empty"></div><div class="clip empty"></div>
+        </div>
+        <div class="tier-label">Tier 3 · Trace-Position</div>
+        <div class="conf-tag red">KONFIDENZ ROT</div>
+      </div>
+
+      <div class="gauge-card">
+        <div class="who">Jack</div>
+        <div class="gauge-svg-wrap">
+          <svg width="34mm" height="19mm" viewBox="0 0 200 110">
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#3A3E43" stroke-width="14" stroke-linecap="round"/>
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#DDB13B" stroke-width="14" stroke-linecap="round"
+                  stroke-dasharray="251.3" stroke-dashoffset="62.83"/>
+          </svg>
+          <div class="gauge-score-num display">7,5<span>/10</span></div>
+        </div>
+        <div class="clip-row">
+          <div class="clip filled"></div><div class="clip filled"></div><div class="clip empty"></div><div class="clip empty"></div>
+        </div>
+        <div class="tier-label">Tier 3 · Trace-Position</div>
+        <div class="conf-tag yellow">KONFIDENZ GELB (Spezialfall)</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DNA STRANG -->
+  <div class="dna-wrap">
+    <div class="section-label" style="margin-bottom:0;">DNA-Check-Strang — K-Basis Versicherer-Override (final, einstimmig)</div>
+    <div class="dna-strip">
+      <div class="dna-seg fail">ROIC · FAIL</div>
+      <div class="dna-seg pass">OP. LEVERAGE · PASS</div>
+      <div class="dna-seg pass">EPS-CAGR · PASS</div>
+      <div class="dna-seg pass">ROE · PASS</div>
+    </div>
+    <div class="dna-caption">
+      <div>3,84% vs. Ziel &gt;20%</div>
+      <div>Op-EPS +46% YoY &gt; GWP +13%</div>
+      <div>~36–41% CAGR seit IPO</div>
+      <div>17,3–20,4% vs. Ziel &gt;15%</div>
+    </div>
+    <div class="dna-note">K-Score: <b>3 von 4</b> — Grenzfall, Begründungspflicht erfüllt. Alle 3 KIs akzeptieren im Finale, dass ROIC laut v11.7-Wortlaut für Versicherer ohne Ausnahmeklausel als reguläres K-Kriterium zählt.</div>
+  </div>
+
+  <!-- TWO COL: Moat/Mgmt + Chancen/Risiken -->
+  <div class="two-col">
+    <div class="col">
+      <div class="box" style="flex:1;">
+        <h3>Moat &amp; Management</h3>
+        <p style="font-size:7.6pt; color:var(--text-dim); line-height:1.32;">Nischenfokus im Excess-&amp;-Surplus-Markt ("Rule Our Niche"), Underwriting-Know-how statt Netzwerkeffekt — Moat <b style="color:var(--text)">7,5/10</b>. CEO Robinson: diszipliniert, aktives $100-Mio.-Buyback, Insider-Kauf Feb. 2026 — Management <b style="color:var(--text)">8/10</b>. ICFR-Weakness FY2024 laut FY2025-10-K remediiert.</p>
+      </div>
+      <div class="box dissent-box" style="flex:0 0 auto;">
+        <h3>⚠ Methodischer Dissens (bewusst dokumentiert)</h3>
+        <p>Kernfrage: Ist ROIC bei Versicherern ein reguläres K-Kriterium (Jarvis' &amp; final auch Conans Position) oder ein <b>Kategorienfehler</b>, weil Float/reg. Kapital den Nenner verzerren (Jacks fortbestehende Position)? Jack fügt sich der Panel-Mehrheit, widerruft seine Kritik aber inhaltlich nicht — kein künstlicher Konsens.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="box">
+        <h3>Chancen</h3>
+        <ul class="bullets plus">
+          <li>Combined Ratio 89,5% (ex-CAT 87,6%) — klar unter 95%-Ziel</li>
+          <li>ROE 17,3–20,4%, AM Best Rating "A" / Very Strong</li>
+          <li>Operating EPS +46% YoY, aktives Buyback-Programm</li>
+          <li>Bewertung günstig: KGV ~13,4x, PEG &lt; 1</li>
+        </ul>
+      </div>
+      <div class="box" style="flex:1;">
+        <h3>Risiken</h3>
+        <ul class="bullets minus">
+          <li>Kurzer Public Track Record (IPO 2023, kein voller Zyklus)</li>
+          <li>Insurance-Cycle- &amp; Reserve-Risk, Cat-Losses (Q2: 1,9 Pkt.)</li>
+          <li>GWP-Wachstum verlangsamt: 24% → 13,3% YoY</li>
+          <li>Bewertung nicht mehr billig: ~2,0x Book Value</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAZIT -->
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">BEOBACHTEN</div>
+      <div class="sub">3/3 einstimmig</div>
+    </div>
+    <div class="fazit-grid">
+      <div class="fazit-item"><div class="label">Sizing-Tier</div><div class="value">3</div></div>
+      <div class="fazit-item"><div class="label">Abstauber-Zone</div><div class="value">$48–52</div></div>
+      <div class="fazit-item"><div class="label">Re-Check</div><div class="value">Q3-2026-Zahlen</div></div>
+      <div class="fazit-item"><div class="label">Konvergenz</div><div class="value" style="color:var(--green);">Stark</div></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>Reaper Wochenreport-Familie <span class="gold-dot">·</span> Vollständige Analysen: analysen/SKWD-TMR-quickfilter-*.md</div>
+    <div>Keine Anlageberatung · Quick Filter, kein Full Deep Dive · Seite 1/1</div>
+  </div>
+
+</div>
+</body>
+</html>

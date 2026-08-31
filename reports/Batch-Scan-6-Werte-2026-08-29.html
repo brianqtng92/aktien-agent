@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Reaper Batch-Scan — 6 Werte (29.08.2026)</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1A1C1F;
+    --bg-panel: #232629;
+    --bg-panel-2: #2A2D31;
+    --border-soft: #303337;
+    --text: #EDE8DF;
+    --text-dim: #A39B8E;
+    --text-faint: #6E6860;
+    --gold: #C6922C;
+    --gold-bright: #E0B24E;
+    --gold-dim: #7A5F24;
+    --green: #5C9A5F;
+    --green-bg: rgba(92,154,95,0.14);
+    --yellow: #DDB13B;
+    --yellow-bg: rgba(221,177,59,0.14);
+    --orange: #C9793A;
+    --orange-bg: rgba(201,121,58,0.16);
+    --red: #BC4F41;
+    --red-bg: rgba(188,79,65,0.16);
+  }
+
+  html, body {
+    width: 210mm; height: 297mm; background: var(--bg); color: var(--text);
+    font-family: "Carlito", "DejaVu Sans", Arial, sans-serif; font-size: 9.6pt; line-height: 1.4;
+  }
+  .display { font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif; font-weight: 700; font-stretch: condensed; }
+
+  .page { width: 210mm; height: 297mm; padding: 10mm 13mm 8mm 13mm; display: flex; flex-direction: column; gap: 3.6mm; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 3mm; }
+  .brand { font-size: 21pt; letter-spacing: 0.05em; }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 7.4pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .meta-block { text-align: right; font-size: 7.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 8.6pt; }
+
+  h1.title { font-size: 19pt; letter-spacing: 0.02em; margin-top: 1mm; }
+  h1.title .accent { color: var(--gold-bright); }
+  .subtitle { font-size: 9.6pt; color: var(--text-dim); margin-top: 1mm; }
+
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 3mm 4mm; }
+  .box h3 { font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; font-size: 8.2pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.6mm; }
+  .box p { font-size: 8pt; color: var(--text-dim); line-height: 1.4; }
+
+  table.grid { width: 100%; border-collapse: collapse; }
+  table.grid th { background: var(--bg-panel-2); color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.04em; font-size: 6.8pt; font-weight: normal; text-align: left; padding: 1.8mm 2.5mm; border-bottom: 1px solid var(--border-soft); }
+  table.grid td { font-size: 7.8pt; padding: 1.8mm 2.5mm; border-bottom: 1px solid var(--border-soft); color: var(--text); vertical-align: top; }
+  table.grid tr:last-child td { border-bottom: none; }
+
+  .ampel-legend { display: flex; gap: 3mm; }
+  .ampel-chip { flex: 1; display: flex; align-items: center; gap: 2.5mm; border-radius: 3px; padding: 2.4mm 3mm; border: 1px solid var(--border-soft); background: var(--bg-panel); }
+  .ampel-dot { width: 6mm; height: 6mm; border-radius: 50%; flex: 0 0 auto; }
+  .ampel-chip .lbl { font-size: 7.6pt; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; letter-spacing: 0.03em; }
+  .ampel-chip .desc { font-size: 6.8pt; color: var(--text-dim); }
+  .dot-green { background: var(--green); } .dot-yellow { background: var(--yellow); } .dot-orange { background: var(--orange); } .dot-red { background: var(--red); }
+
+  .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 1.8mm; font-size: 6.4pt; color: var(--text-faint); margin-top: auto; }
+  .footer .gold-dot { color: var(--gold); }
+
+  /* ---------- COMPANY PAGE ---------- */
+  .company-header { display: flex; justify-content: space-between; align-items: center; background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold); border-radius: 3px; padding: 3.4mm 4.5mm; }
+  .company-header .num { color: var(--gold-bright); font-size: 15pt; }
+  .company-header .name { font-size: 15pt; }
+  .company-header .sub { font-size: 7.8pt; color: var(--text-dim); margin-top: 0.6mm; }
+  .ampel-badge { font-size: 8pt; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 10px; padding: 1.4mm 4mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .ampel-badge.green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green); }
+  .ampel-badge.yellow { background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow); }
+  .ampel-badge.orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange); }
+  .ampel-badge.red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red); }
+
+  .thesis-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-left: 3px solid var(--gold); border-radius: 3px; padding: 2.8mm 4mm; font-size: 8.6pt; color: var(--text); }
+
+  .einordnung p { font-size: 8pt; color: var(--text-dim); line-height: 1.42; margin-bottom: 1.6mm; }
+  .section-label { font-size: 7.2pt; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; margin-bottom: 1mm; }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+
+  .ampel-row-badge { display: inline-block; font-size: 6.6pt; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; border-radius: 8px; padding: 0.6mm 2.4mm; font-family: "DejaVu Sans Condensed", sans-serif; }
+  .ampel-row-badge.green { background: var(--green); color: var(--bg); }
+  .ampel-row-badge.yellow { background: var(--yellow); color: var(--bg); }
+  .ampel-row-badge.orange { background: var(--orange); color: var(--bg); }
+  .ampel-row-badge.red { background: var(--red); color: var(--bg); }
+
+  .two-col { display: flex; gap: 3.5mm; }
+  .col-box { flex: 1; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.6mm 3.5mm; }
+  .col-box.chance { border-top: 2px solid var(--green); }
+  .col-box.risiko { border-top: 2px solid var(--red); }
+  .col-box h4 { font-size: 7.6pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.4mm; font-family: "DejaVu Sans Condensed", sans-serif; }
+  .col-box.chance h4 { color: var(--green); } .col-box.risiko h4 { color: var(--red); }
+  ul.bullets { list-style: none; } ul.bullets li { font-size: 7.6pt; padding-left: 3mm; position: relative; margin-bottom: 0.9mm; color: var(--text); line-height: 1.32; }
+  ul.bullets.plus li::before { content: "+"; position: absolute; left: 0; color: var(--green); font-weight: bold; }
+  ul.bullets.minus li::before { content: "–"; position: absolute; left: 0; color: var(--red); font-weight: bold; }
+
+  .kv-row { display: flex; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; overflow: hidden; }
+  .kv-row .kv-label { flex: 0 0 30mm; background: var(--bg-panel-2); color: var(--gold); font-size: 7.4pt; text-transform: uppercase; letter-spacing: 0.05em; padding: 2.2mm 3mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .kv-row .kv-value { flex: 1; font-size: 8.2pt; padding: 2.2mm 3mm; color: var(--text); }
+
+  /* ---------- OVERVIEW PAGE ---------- */
+  .rank-row { display: flex; gap: 3mm; align-items: stretch; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.6mm 3.5mm; }
+  .rank-letter { flex: 0 0 9mm; display: flex; align-items: center; justify-content: center; font-size: 13pt; color: var(--gold-bright); border-right: 1px solid var(--border-soft); }
+  .rank-body { flex: 1; }
+  .rank-body .rank-names { font-size: 9pt; font-weight: 700; }
+  .rank-body .rank-desc { font-size: 7.6pt; color: var(--text-dim); margin-top: 0.6mm; }
+  .rank-ampels { flex: 0 0 auto; display: flex; gap: 1.5mm; align-items: center; }
+</style>
+</head>
+<body>
+
+<!-- ============ SEITE 1: DECKBLATT ============ -->
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">REAPER <span class="accent">BATCH-SCAN</span></div>
+      <div class="brand-sub">Ampel-Batch-Scan · 6 Werte in einem Rutsch · Jarvis-Only, TMR-Quick-Filter-Tiefe</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">Datenstand 29. August 2026</div>
+      <div>Erster produktiver Lauf des neuen Batch-Formats</div>
+    </div>
+  </div>
+
+  <h1 class="title">6-Werte-Scan <span class="accent display">— Erster Praxislauf</span></h1>
+  <div class="subtitle">Indivior plc · Aurinia Pharmaceuticals · Virtu Financial · Ambiq Micro · Digi International · Consensus Cloud Solutions</div>
+
+  <div class="box">
+    <h3>Auftrag &amp; Rahmen</h3>
+    <p>Auf Brians Wunsch am 29.08.2026 gescannter Sammel-Check von sechs frei benannten Kandidaten, um das neue Ampel-Batch-Scan-Format erstmals in der Praxis zu testen. Jeder Wert erhält den TMR-Quick-Filter-DNA-Check (bzw. bei jungen/spekulativen Werten die Scout-Kurzform), eine kompakte Kennzahlentabelle und einen 6-teiligen Ampelcheck. <b style="color:var(--text);">Kein Ersatz</b> für den vollen 3-fach-Cross-Check oder eine Watchlist-/Depot-Entscheidung — dafür bleibt der etablierte Pfad (Strategie-Fit-Gate, Duplikations-Check, Full Deep Dive) Pflicht.</p>
+  </div>
+
+  <div>
+    <div class="section-label">Ampel-Skala (4-stufig)</div>
+    <div class="ampel-legend">
+      <div class="ampel-chip"><div class="ampel-dot dot-green"></div><div><div class="lbl display">GRÜN</div><div class="desc">stark / allgemein interessant</div></div></div>
+      <div class="ampel-chip"><div class="ampel-dot dot-yellow"></div><div><div class="lbl display">GELB</div><div class="desc">gut, aber Preis/Risiko beachten</div></div></div>
+      <div class="ampel-chip"><div class="ampel-dot dot-orange"></div><div><div class="lbl display">ORANGE</div><div class="desc">problematisch / spekulativ</div></div></div>
+      <div class="ampel-chip"><div class="ampel-dot dot-red"></div><div><div class="lbl display">ROT</div><div class="desc">fundamental schwach / hohes Risiko</div></div></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-label">Kandidaten nach Sektor</div>
+    <table class="grid">
+      <tr><th>#</th><th>Unternehmen</th><th>Ticker/Börse</th><th>ISIN</th><th>Sektor</th><th>Ampel</th></tr>
+      <tr><td>1</td><td>Aurinia Pharmaceuticals</td><td>AUPH / NASDAQ</td><td>CA05156V1022</td><td>Healthcare — Biotech (Nephrologie/Autoimmun)</td><td><span class="ampel-row-badge green">GRÜN</span></td></tr>
+      <tr><td>2</td><td>Indivior plc</td><td>INDV / NASDAQ</td><td>US45579E1055</td><td>Healthcare — Pharma (ZNS/Suchttherapie)</td><td><span class="ampel-row-badge orange">ORANGE</span></td></tr>
+      <tr><td>3</td><td>Digi International</td><td>DGII / NASDAQ</td><td>US2537981027</td><td>Technology — IoT-Hardware/Software</td><td><span class="ampel-row-badge yellow">GELB</span></td></tr>
+      <tr><td>4</td><td>Ambiq Micro</td><td>AMBQ / NYSE</td><td>US0231931058</td><td>Technology — Halbleiter (Edge-AI)</td><td><span class="ampel-row-badge orange">ORANGE</span></td></tr>
+      <tr><td>5</td><td>Virtu Financial</td><td>VIRT / NYSE*</td><td>US9282541013</td><td>Financials — Market Making/Trading</td><td><span class="ampel-row-badge orange">ORANGE</span></td></tr>
+      <tr><td>6</td><td>Consensus Cloud Solutions</td><td>CCSI / NASDAQ</td><td>US20848V1052</td><td>Technology — Healthcare-IT (Cloud-Fax)</td><td><span class="ampel-row-badge red">ROT</span></td></tr>
+    </table>
+    <p style="font-size:6.8pt; color:var(--text-faint); margin-top:1.2mm;">*Virtu wurde bis Juni 2025 an der NASDAQ gehandelt und ist seither an die NYSE umgezogen — im Wunschzettel als NASDAQ genannt, hier korrigiert.</p>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Batch-Scan <span class="gold-dot">·</span> Vorlage &amp; Methodik: architecture.md, Abschnitt 4</div>
+    <div>Keine Anlageberatung · Ein-KI-Schnellcheck (Jarvis) · Seite 1/10</div>
+  </div>
+</div>
+
+<!-- ============ SEITE 2: GESAMTÜBERBLICK ============ -->
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">REAPER <span class="accent">BATCH-SCAN</span></div>
+      <div class="brand-sub">Gesamtüberblick — Ranggruppen A bis E</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">Datenstand 29. August 2026</div>
+      <div>Wechselkurs 1 USD ≈ 0,8633 € (28.08.2026)</div>
+    </div>
+  </div>
+
+  <h1 class="title">Gesamtüberblick</h1>
+
+  <div style="display:flex; flex-direction:column; gap:2.2mm;">
+    <div class="rank-row">
+      <div class="rank-letter display">A</div>
+      <div class="rank-body">
+        <div class="rank-names">Aurinia Pharmaceuticals (AUPH)</div>
+        <div class="rank-desc">Klarer Favorit des Batches: profitabel, netto cash-reich, ~20% Umsatzwachstum, aktive Rückkäufe und ein frischer Patentvergleich (Teva), der die Kernumsatzbasis bis 2036 absichert.</div>
+      </div>
+      <div class="rank-ampels"><span class="ampel-row-badge green">GRÜN</span></div>
+    </div>
+
+    <div class="rank-row">
+      <div class="rank-letter display">B</div>
+      <div class="rank-body">
+        <div class="rank-names">Digi International (DGII)</div>
+        <div class="rank-desc">Fundamental die stärkste Wachstumsstory (ARR +52%, mehrfache Guidance-Anhebungen), aber KGV fwd ~25x und EV/EBITDA ~26x lassen kaum Sicherheitsabschlag.</div>
+      </div>
+      <div class="rank-ampels"><span class="ampel-row-badge yellow">GELB</span></div>
+    </div>
+
+    <div class="rank-row">
+      <div class="rank-letter display">C</div>
+      <div class="rank-body">
+        <div class="rank-names">Indivior plc (INDV)</div>
+        <div class="rank-desc">Günstig bewertet (KGV fwd 7,7x) mit starkem operativem Trend, aber die eigentliche These hängt am Ausgang der "Merger of Equals" mit Supernus (Closing erst Q4 2026) — Sondersituation statt klarem Fundamentalfall.</div>
+      </div>
+      <div class="rank-ampels"><span class="ampel-row-badge orange">ORANGE</span></div>
+    </div>
+
+    <div class="rank-row">
+      <div class="rank-letter display">D</div>
+      <div class="rank-body">
+        <div class="rank-names">Ambiq Micro (AMBQ) &amp; Virtu Financial (VIRT)</div>
+        <div class="rank-desc">Zwei unterschiedliche Risikoprofile mit gleicher Ampel: Ambiq ist ein spekulativer, aber wachstums- und cash-starker Halbleiter-Neuling (TMR-DNA-Check reißt die Abbruch-Schwelle → Scout-Perspektive nötig); Virtu ist ein hochprofitabler, aber strukturell zyklischer Market Maker auf einem Gewinn-Hoch ohne von Analysten gesehenes Kurspotenzial.</div>
+      </div>
+      <div class="rank-ampels"><span class="ampel-row-badge orange">ORANGE</span><span class="ampel-row-badge orange">ORANGE</span></div>
+    </div>
+
+    <div class="rank-row">
+      <div class="rank-letter display">E</div>
+      <div class="rank-body">
+        <div class="rank-names">Consensus Cloud Solutions (CCSI)</div>
+        <div class="rank-desc">Statistisch am billigsten (KGV 7,7x, FCF-Rendite ~15%), aber einziger Wert, der die Quick-Filter-Abbruch-Schwelle klar reißt: strukturell stagnierendes Fax-Geschäft, spürbare Verschuldung, langfristiges Disruptionsrisiko durch moderne Interoperabilitätsstandards. Klassisches Value-Trap-Profil.</div>
+      </div>
+      <div class="rank-ampels"><span class="ampel-row-badge red">ROT</span></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Kompaktes Ergebnis</h3>
+    <p>Von sechs frei gewählten Kandidaten besteht nur Aurinia den Quick-Filter klar mit GRÜN. Digi International liefert die beste operative Story des Batches, ist aber ambitioniert bewertet. Indivior und Ambiq Micro sind beides ORANGE, aus völlig unterschiedlichen Gründen — Sondersituation (Merger) versus echte Wachstumsspekulation (Pre-Profit-Halbleiter). Virtu Financial ist profitabel, aber zyklisch und ohne erkennbaren Bewertungsspielraum. Consensus Cloud Solutions ist der einzige klare Warnfall: billig, aber mit echtem strukturellem Fragezeichen.</p>
+  </div>
+
+  <div class="box">
+    <h3>Bewertungsdaten-Hinweise</h3>
+    <p>Alle Kurs-/Kennzahlenangaben sind Momentaufnahmen vom 27.-29.08.2026, primär via stockanalysis.com, Unternehmens-IR-Meldungen und Finanznachrichtenagenturen recherchiert; USD-Beträge zum Kurs 1 USD ≈ 0,8633 € umgerechnet. Bei Indivior weichen Quellen zur genauen Nettoverschuldung leicht voneinander ab (238 vs. 287 Mio. USD) — im Bericht als Bandbreite ausgewiesen. Bei Virtu Financial ist die ausgewiesene Verschuldungskennzahl (Debt/Equity ~5,8x) durch die "Matched-Book"-Bilanzstruktur eines Market Makers geprägt und nicht direkt mit klassischer Unternehmensverschuldung vergleichbar. Dies ist ein Ein-KI-Schnellcheck (Jarvis/Claude) ohne Gegenprüfung durch Jack (Gemini) oder Conan (ChatGPT) — vor jeder echten Kauf- oder Watchlist-Entscheidung bleibt der volle 3-fach-Cross-Check Pflicht.</p>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Batch-Scan <span class="gold-dot">·</span> Einzelseiten folgen in Ranggruppen-Reihenfolge A→E</div>
+    <div>Keine Anlageberatung · Ein-KI-Schnellcheck (Jarvis) · Seite 2/10</div>
+  </div>
+</div>
+
+<!-- ============ SEITE 3: AURINIA ============ -->
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">REAPER <span class="accent">BATCH-SCAN</span></div>
+      <div class="brand-sub">Ranggruppe A · TMR-Quick-Filter</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">Datenstand 28.-29. August 2026</div>
+      <div>Quellen: stockanalysis.com, Aurinia IR, StockTitan</div>
+    </div>
+  </div>
+
+  <div class="company-header">
+    <div>
+      <div><span class="num display">01</span> <span class="name display">Aurinia Pharmaceuticals</span></div>
+      <div class="sub">Healthcare / Biotech (Nephrologie, Autoimmunerkrankungen) | AUPH / NASDAQ | ISIN CA05156V1022</div>
+    </div>
+    <div class="ampel-badge green">GRÜN</div>
+  </div>
+
+  <div class="thesis-box">Profitables, netto cash-reiches Nischen-Biotech mit einem einzigen etablierten Präparat und frisch abgesichertem Patentschutz bis 2036.</div>
+
+  <div style="display:flex; flex-direction:column; gap:1.6mm;">
+    <div class="kv-row"><div class="kv-label">Kurs/Bewertung</div><div class="kv-value">16,29 USD ≈14,06 € · KGV TTM 7,1x (steuereffektverzerrt) · Forward-KGV ~20,9x</div></div>
+    <div class="kv-row"><div class="kv-label">Umsatz TTM</div><div class="kv-value">311,5 Mio. USD (+19,8%) · FY26-Guidance 315-325 Mio. USD</div></div>
+    <div class="kv-row"><div class="kv-label">Marge/Cash</div><div class="kv-value">Operative Marge 51,5% · Cash/Investments 443,1 Mio. USD · laufende Aktienrückkäufe</div></div>
+    <div class="kv-row"><div class="kv-label">Marktkap.</div><div class="kv-value">2,17 Mrd. USD ≈1,87 Mrd. €</div></div>
+  </div>
+
+  <div class="einordnung">
+    <div class="section-label">Einordnung</div>
+    <p>Aurinia ist ein kommerzielles Nischen-Biotech mit LUPKYNIS (Voclosporin) als einzigem zugelassenen Produkt gegen Lupus-Nephritis. Der zentrale Nachrichtentreiber vom 19.08.2026: ein Patentvergleich mit Teva, der Generika-Wettbewerb bis Dezember 2036 hinauszögert — ein erhebliches De-Risking für die Umsatzbasis. Verfahren gegen weitere Generika-Anbieter (Dr. Reddy's, Sandoz) laufen noch.</p>
+    <p>Bilanziell ist Aurinia bereits ungewöhnlich stark für ein Biotech dieser Größe: profitabel, netto cash-reich (~20% der Marktkapitalisierung), mit laufenden Rückkäufen. Der ausgewiesene TTM-Gewinn ist allerdings durch einen einmaligen Steuereffekt (173 Mio. USD Auflösung einer Wertberichtigung) deutlich überzeichnet — das bereinigte Bild (Q2 2026 EPS +75% YoY, operativ getrieben) ist sauberer und trotzdem stark. Die Kezar-Übernahme (zetomipzomib, Phase 2) diversifiziert die Pipeline über LUPKYNIS hinaus, ist aber noch unbewiesen.</p>
+  </div>
+
+  <div>
+    <div class="section-label">Ampelcheck</div>
+    <table class="grid">
+      <tr><th>Bereich</th><th>Ampel</th><th>Begründung</th></tr>
+      <tr><td>Geschäftsmodell</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>Patentgeschütztes Nischenprodukt, jetzt bis 2036 gegen Teva-Generika abgesichert</td></tr>
+      <tr><td>Wachstum</td><td><span class="ampel-row-badge yellow">GELB</span></td><td>Solide ~20% Umsatzwachstum, aber fast vollständig von einem Produkt abhängig</td></tr>
+      <tr><td>Profitabilität</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>Operative Marge 51,5%, cash-generativ, aktive Rückkäufe</td></tr>
+      <tr><td>Bilanz</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>Netto-Cash ~443 Mio. USD, keine nennenswerte Verschuldung</td></tr>
+      <tr><td>Bewertung</td><td><span class="ampel-row-badge yellow">GELB</span></td><td>Forward-KGV ~21x fair für Wachstums-Biotech mit Cash-Polster, nicht mehr "billig"</td></tr>
+      <tr><td>Risiko</td><td><span class="ampel-row-badge yellow">GELB</span></td><td>Produktkonzentration, frühere Aktivisten-Unruhe, Kezar-Pipeline noch Phase 2</td></tr>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div class="col-box chance">
+      <h4>Chancen</h4>
+      <ul class="bullets plus">
+        <li>Patentvergleich mit Teva sichert Umsatzbasis bis 2036</li>
+        <li>Kezar-Zukauf eröffnet zweites Pipeline-Standbein in Autoimmunerkrankungen</li>
+        <li>Laufende Rückkäufe erhöhen Gewinn je Aktie, Analysten mehrheitlich Buy</li>
+      </ul>
+    </div>
+    <div class="col-box risiko">
+      <h4>Risiken</h4>
+      <ul class="bullets minus">
+        <li>Über 90% des Umsatzes von einem einzigen Produkt abhängig</li>
+        <li>Ausgewiesene Gewinnqualität teils durch Steuereffekt verzerrt</li>
+        <li>Patentstreitigkeiten mit Dr. Reddy's/Sandoz noch offen</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="kv-row"><div class="kv-label">Beobachten</div><div class="kv-value">Ausgang der laufenden Generika-Patentstreitigkeiten, Kezar-Pipeline-Fortschritt, Kapitalallokation (Rückkäufe vs. weitere M&amp;A).</div></div>
+  <div class="kv-row"><div class="kv-label">Fazit</div><div class="kv-value" style="font-weight:bold;">Bester Wert dieses Batches nach Quick-Filter-Kriterien — profitabel, cash-reich, jetzt zusätzlich patentrechtlich abgesichert. Ernsthafter Kandidat für einen vollen TMR-Deep-Dive.</div></div>
+
+  <div class="footer">
+    <div>Reaper Batch-Scan <span class="gold-dot">·</span> Quick-Filter-Analyse: analysen/AUPH-TMR-quickfilter-jarvis-claude-2026-08-29.md</div>
+    <div>Keine Anlageberatung · Ein-KI-Schnellcheck · Seite 3/10</div>
+  </div>
+</div>
+
+<!-- ============ SEITE 4: DIGI INTERNATIONAL ============ -->
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">REAPER <span class="accent">BATCH-SCAN</span></div>
+      <div class="brand-sub">Ranggruppe B · TMR-Quick-Filter</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">Datenstand 27.-29. August 2026</div>
+      <div>Quellen: stockanalysis.com, Digi-Pressemeldungen, Investing.com</div>
+    </div>
+  </div>
+
+  <div class="company-header">
+    <div>
+      <div><span class="num display">02</span> <span class="name display">Digi International</span></div>
+      <div class="sub">Technology / IoT-Hardware &amp; Software | DGII / NASDAQ | ISIN US2537981027</div>
+    </div>
+    <div class="ampel-badge yellow">GELB</div>
+  </div>
+
+  <div class="thesis-box">Etablierter IoT-Hardware-Anbieter mitten in einer erfolgreichen Transformation zu wiederkehrenden SaaS-Umsätzen — die Zahlen stimmen, aber der Kurs preist die Story bereits großzügig ein.</div>
+
+  <div style="display:flex; flex-direction:column; gap:1.6mm;">
+    <div class="kv-row"><div class="kv-label">Kurs/Bewertung</div><div class="kv-value">76,88 USD ≈66,37 € · KGV TTM ~61,0x · Forward-KGV ~25,0x</div></div>
+    <div class="kv-row"><div class="kv-label">Umsatz TTM</div><div class="kv-value">506,2 Mio. USD (+20,3%) · ARR 191 Mio. USD (+52% YoY)</div></div>
+    <div class="kv-row"><div class="kv-label">Marge/ROIC</div><div class="kv-value">Adj.-EBITDA-Marge 29,1% (Rekord) · ROIC ~7,2% · Nettoverschuldung/EBITDA &lt;1,0x</div></div>
+    <div class="kv-row"><div class="kv-label">Marktkap.</div><div class="kv-value">2,92 Mrd. USD ≈2,52 Mrd. €</div></div>
+  </div>
+
+  <div class="einordnung">
+    <div class="section-label">Einordnung</div>
+    <p>Digi International liefert seit mehreren Quartalen in Folge Wachstums- und Margenrekorde: Die Q3-FY26-Zahlen (Anfang August 2026) lösten einen Kurssprung von +17,2% aus, nachdem das Unternehmen die Umsatz- und Gewinn-Guidance für das Gesamtjahr erneut angehoben hat (neu: 529-533 Mio. USD Umsatz, 2,67-2,70 USD bereinigter Gewinn je Aktie). Treiber ist die Verschiebung vom klassischen Hardware-Geschäft (Router/Gateways) hin zu wiederkehrenden IoT-Software-/Konnektivitäts-Umsätzen (ARR +52% YoY), gestützt durch die Zukäufe Particle Industries (Jan. 2026) und Jolt Software.</p>
+    <p>Bilanziell ist das Unternehmen solide (Nettoverschuldung unter 1x EBITDA), operativer Cashflow stark (110 Mio. USD in neun Monaten). Der große Haken ist die Bewertung: ein Forward-KGV von rund 25x und ein EV/EBITDA von rund 26x lassen praktisch keinen Spielraum für Enttäuschungen. Die niedrige ROIC (~7%) zeigt zudem, dass die Kapitalrendite noch nicht auf Höhe der Wachstumsstory ist.</p>
+  </div>
+
+  <div>
+    <div class="section-label">Ampelcheck</div>
+    <table class="grid">
+      <tr><th>Bereich</th><th>Ampel</th><th>Begründung</th></tr>
+      <tr><td>Geschäftsmodell</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>Erfolgreiche Transformation Hardware → wiederkehrende IoT-Software-Umsätze</td></tr>
+      <tr><td>Wachstum</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>ARR +52%, Umsatz +20%, mehrfache Guidance-Anhebungen in Folge</td></tr>
+      <tr><td>Profitabilität</td><td><span class="ampel-row-badge yellow">GELB</span></td><td>Margen auf Rekordniveau, aber ROIC mit ~7% noch schwach</td></tr>
+      <tr><td>Bilanz</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>Nettoverschuldung &lt;1x EBITDA, solider operativer Cashflow</td></tr>
+      <tr><td>Bewertung</td><td><span class="ampel-row-badge red">ROT</span></td><td>KGV ~25x forward, EV/EBITDA ~26x — kaum Sicherheitsabschlag</td></tr>
+      <tr><td>Risiko</td><td><span class="ampel-row-badge yellow">GELB</span></td><td>Integrationsrisiko der Zukäufe, hohe Erwartungshaltung des Marktes</td></tr>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div class="col-box chance">
+      <h4>Chancen</h4>
+      <ul class="bullets plus">
+        <li>Wiederkehrende-Umsatz-Transformation ist messbar und funktioniert (ARR +52%)</li>
+        <li>Zukäufe erweitern das Software-/Cloud-Angebot gezielt</li>
+        <li>Analysten-Konsens "Strong Buy" mit Kurszielaufschlag</li>
+      </ul>
+    </div>
+    <div class="col-box risiko">
+      <h4>Risiken</h4>
+      <ul class="bullets minus">
+        <li>Bewertung lässt kaum Spielraum für einen schwächeren Quartalsbericht</li>
+        <li>Wettbewerb durch Cradlepoint/Sierra Wireless/Semtech im IoT-Markt</li>
+        <li>Integrationsrisiko bei weiteren Zukäufen</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="kv-row"><div class="kv-label">Beobachten</div><div class="kv-value">Weitere ARR-Entwicklung und Attach-Rate Software/Hardware, Margenentwicklung, ob die nächste Guidance-Runde erneut übertrifft.</div></div>
+  <div class="kv-row"><div class="kv-label">Fazit</div><div class="kv-value" style="font-weight:bold;">Fundamental die stärkste Wachstumsstory dieses Batches, aber der Kurs hat die guten Nachrichten bereits eingepreist — auf einen Rücksetzer warten statt hinterherlaufen.</div></div>
+
+  <div class="footer">
+    <div>Reaper Batch-Scan <span class="gold-dot">·</span> Quick-Filter-Analyse: analysen/DGII-TMR-quickfilter-jarvis-claude-2026-08-29.md</div>
+    <div>Keine Anlageberatung · Ein-KI-Schnellcheck · Seite 4/10</div>
+  </div>
+</div>
+
+<!-- ============ SEITE 5: INDIVIOR ============ -->
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">REAPER <span class="accent">BATCH-SCAN</span></div>
+      <div class="brand-sub">Ranggruppe C · TMR-Quick-Filter</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">Datenstand 28.-29. August 2026</div>
+      <div>Quellen: stockanalysis.com, Indivior IR, GlobeNewswire</div>
+    </div>
+  </div>
+
+  <div class="company-header">
+    <div>
+      <div><span class="num display">03</span> <span class="name display">Indivior plc</span></div>
+      <div class="sub">Healthcare / Pharma (ZNS, Suchttherapie) | INDV / NASDAQ | ISIN US45579E1055</div>
+    </div>
+    <div class="ampel-badge orange">ORANGE</div>
+  </div>
+
+  <div class="thesis-box">Operativ deutlich verbessertes Pharma-Unternehmen mitten in einer transformativen "Merger of Equals" mit Supernus — der Fusionsausgang entscheidet über die eigentliche Investment-These.</div>
+
+  <div style="display:flex; flex-direction:column; gap:1.6mm;">
+    <div class="kv-row"><div class="kv-label">Kurs/Bewertung</div><div class="kv-value">35,83 USD ≈30,93 € · KGV TTM ~12,9x · Forward-KGV ~7,7x</div></div>
+    <div class="kv-row"><div class="kv-label">Umsatz TTM</div><div class="kv-value">1,33 Mrd. USD (+13,5%) · FY26-Guidance (angehoben) 1.295-1.365 Mio. USD</div></div>
+    <div class="kv-row"><div class="kv-label">Marge/FCF</div><div class="kv-value">Operative Marge 46,6% (Q2/26) · TTM-Free-Cashflow negativ (-111 Mio. USD)</div></div>
+    <div class="kv-row"><div class="kv-label">Marktkap.</div><div class="kv-value">4,23 Mrd. USD ≈3,65 Mrd. €</div></div>
+  </div>
+
+  <div class="einordnung">
+    <div class="section-label">Einordnung</div>
+    <p>Indivior hat die schwerste Phase der Opioid-Rechtsstreitigkeiten (~600 Mio. USD MDL-Vergleich, 385 Mio. USD Kartellvergleich, 86 Mio. USD Staaten-Vergleich) offenbar hinter sich und liefert seit 2025 wieder starke operative Zahlen, getragen von Sublocade (&gt;75% des Umsatzes). Am 03.08.2026 — zeitgleich mit starken Q2-Zahlen — wurde eine "Merger of Equals" mit Supernus Pharmaceuticals angekündigt: Supernus-Aktionäre erhalten 1,5401 INDV-Aktien je Anteil, Indivior-Aktionäre zusätzlich eine Sonderdividende von 1 Mrd. USD vor Closing. Das kombinierte Unternehmen ("Supernus, Inc.") soll ~2,2 Mrd. USD Pro-forma-Umsatz und 11 zugelassene ZNS-Medikamente bündeln.</p>
+    <p>Der Haken: der TTM-Free-Cashflow ist trotz GAAP-Profitabilität negativ (-111 Mio. USD), vermutlich Working-Capital-/Vergleichszahlungs-Effekte — ein Warnsignal, das der Quick-Filter nicht ignoriert. Closing erst Q4 2026, unter Aktionärs- und Kartellvorbehalt; bis dahin ist die Aktie im Kern eine Sondersituation, kein reiner Fundamental-Case.</p>
+  </div>
+
+  <div>
+    <div class="section-label">Ampelcheck</div>
+    <table class="grid">
+      <tr><th>Bereich</th><th>Ampel</th><th>Begründung</th></tr>
+      <tr><td>Geschäftsmodell</td><td><span class="ampel-row-badge yellow">GELB</span></td><td>Starke Sublocade-Franchise, aber extreme Produktkonzentration (&gt;75% Umsatz)</td></tr>
+      <tr><td>Wachstum</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>Umsatz +13,5% TTM, Guidance mehrfach angehoben, Rekord-Neuverordnungen</td></tr>
+      <tr><td>Profitabilität</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>Operative Marge 46,6%, GAAP-Gewinn deutlich gestiegen</td></tr>
+      <tr><td>Bilanz</td><td><span class="ampel-row-badge orange">ORANGE</span></td><td>TTM-Free-Cashflow negativ trotz Gewinn, Nettoverschuldung 240-290 Mio. USD (Quellen uneinheitlich)</td></tr>
+      <tr><td>Bewertung</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>Forward-KGV ~7,7x günstig, Analysten-Konsens "Strong Buy", Kursziel ~49 USD</td></tr>
+      <tr><td>Risiko</td><td><span class="ampel-row-badge orange">ORANGE</span></td><td>Fusionsabschluss (Q4 2026) noch nicht sicher, Integrationsrisiko</td></tr>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div class="col-box chance">
+      <h4>Chancen</h4>
+      <ul class="bullets plus">
+        <li>Fusion diversifiziert weg vom Sublocade-Klumpenrisiko in breiteres ZNS-Portfolio</li>
+        <li>Günstige Bewertung (KGV fwd 7,7x) bei starkem Analysten-Rückenwind</li>
+        <li>1 Mrd. USD Sonderdividende vor Closing für heutige Aktionäre</li>
+      </ul>
+    </div>
+    <div class="col-box risiko">
+      <h4>Risiken</h4>
+      <ul class="bullets minus">
+        <li>Fusion noch nicht vollzogen — Aktionärs-/Kartellfreigabe ausstehend, Closing erst Q4 2026</li>
+        <li>Negativer freier Cashflow trotz Gewinnausweis</li>
+        <li>Hohe Produktabhängigkeit bis zum Deal-Abschluss</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="kv-row"><div class="kv-label">Beobachten</div><div class="kv-value">Fortschritt der Fusionsabstimmung, Entwicklung des freien Cashflows, Sublocade-Patentlage gegenüber Generika.</div></div>
+  <div class="kv-row"><div class="kv-label">Fazit</div><div class="kv-value" style="font-weight:bold;">Günstig und mit Analysten-Rückenwind, aber der Ausgang hängt am Merger — eher Sondersituation zum Beobachten als klarer Depot-Kandidat vor Deal-Abschluss.</div></div>
+
+  <div class="footer">
+    <div>Reaper Batch-Scan <span class="gold-dot">·</span> Vollständiger 3-fach-Cross-Check bereits vorhanden: analysen/AIT... n.z. — Indivior-Quick-Filter: analysen/INDV-TMR-quickfilter-jarvis-claude-2026-08-29.md</div>
+    <div>Keine Anlageberatung · Ein-KI-Schnellcheck · Seite 5/10</div>
+  </div>
+</div>
+
+<!-- ============ SEITE 6: AMBIQ MICRO ============ -->
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">REAPER <span class="accent">BATCH-SCAN</span></div>
+      <div class="brand-sub">Ranggruppe D · Scout-Kurzform (TMR-DNA-Check reißt Abbruch-Schwelle)</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">Datenstand 28.-29. August 2026</div>
+      <div>Quellen: stockanalysis.com, StockTitan (10-Q), Investing.com</div>
+    </div>
+  </div>
+
+  <div class="company-header">
+    <div>
+      <div><span class="num display">04</span> <span class="name display">Ambiq Micro</span></div>
+      <div class="sub">Technology / Halbleiter (Edge-AI, Ultra-Low-Power) | AMBQ / NYSE | ISIN US0231931058</div>
+    </div>
+    <div class="ampel-badge orange">ORANGE</div>
+  </div>
+
+  <div class="thesis-box">Frisch börsennotierter Edge-AI-Chip-Spezialist mit beeindruckendem Umsatzwachstum und praller Kriegskasse — aber noch tief in der Verlustzone und mit hoher Kundenkonzentration.</div>
+
+  <div style="display:flex; flex-direction:column; gap:1.6mm;">
+    <div class="kv-row"><div class="kv-label">Kurs/Bewertung</div><div class="kv-value">57,34 USD ≈49,50 € · P/S ~13-14x (unprofitabel, kein KGV anwendbar)</div></div>
+    <div class="kv-row"><div class="kv-label">Umsatz TTM</div><div class="kv-value">97,9 Mio. USD (+31,9%) · Q2/26 +89,7% YoY · FY26-Guidance ~135 Mio. USD</div></div>
+    <div class="kv-row"><div class="kv-label">Marge/Cash</div><div class="kv-value">Bereinigte Bruttomarge 47,2% (steigend) · Cash 366,8 Mio. USD, keine Schulden</div></div>
+    <div class="kv-row"><div class="kv-label">Marktkap.</div><div class="kv-value">1,39 Mrd. USD ≈1,20 Mrd. €</div></div>
+  </div>
+
+  <div class="einordnung">
+    <div class="section-label">Einordnung</div>
+    <p>Ambiq (IPO Juli 2025, Arm-nah) baut ultra-stromsparende Edge-AI-Chips (SPOT-Plattform) für Wearables, Hearables und IoT-Sensorik. Das Wachstum ist real und beschleunigt sich: Q2 2026 +89,7% YoY, fünftes Wachstumsquartal in Folge, Umsatz außerhalb der Top-3-Kunden +143% YoY (Diversifizierung). Zwei Kapitalerhöhungen 2026 (Januar und Juni, zusammen ~243 Mio. USD netto) haben die Kriegskasse auf 367 Mio. USD aufgestockt — bei einem bereinigten Quartalsverlust von nur ~1,8 Mio. USD eine sehr lange Reichweite, aber auch spürbare Verwässerung (Aktienzahl +13% seit Jahresbeginn).</p>
+    <p>Nach TMR-Kriterien (ROIC, FCF-Marge, Piotroski, EPS-CAGR) reißt Ambiq als unprofitables Unternehmen die Quick-Filter-Abbruch-Schwelle — bei einem ein Jahr alten Börsengänger erwartbar und kein Ausschlusskriterium an sich, verlangt aber die Scout-Perspektive (Wachstum/Cash-Reichweite/Katalysatoren) statt der TMR-Qualitäts-DNA. Die Kundenkonzentration (Top 3 = 71% des Umsatzes) bleibt der zentrale strukturelle Risikofaktor.</p>
+  </div>
+
+  <div>
+    <div class="section-label">Ampelcheck</div>
+    <table class="grid">
+      <tr><th>Bereich</th><th>Ampel</th><th>Begründung</th></tr>
+      <tr><td>Geschäftsmodell</td><td><span class="ampel-row-badge yellow">GELB</span></td><td>Differenzierte Ultra-Low-Power-Technologie, aber noch junge Marktdurchdringung</td></tr>
+      <tr><td>Wachstum</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>+90% YoY, fünf Quartale in Folge beschleunigend</td></tr>
+      <tr><td>Profitabilität</td><td><span class="ampel-row-badge red">ROT</span></td><td>Weiterhin operativer Verlust — Quick-Filter-DNA-Check reißt die Abbruch-Schwelle</td></tr>
+      <tr><td>Bilanz</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>367 Mio. USD Cash, keine Schulden, mehrjährige Reichweite</td></tr>
+      <tr><td>Bewertung</td><td><span class="ampel-row-badge orange">ORANGE</span></td><td>P/S ~13-14x ambitioniert für ein verlustreiches Halbleiter-Startup</td></tr>
+      <tr><td>Risiko</td><td><span class="ampel-row-badge orange">ORANGE</span></td><td>Kundenkonzentration (71% Top 3), Verwässerung durch Kapitalerhöhungen</td></tr>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div class="col-box chance">
+      <h4>Chancen</h4>
+      <ul class="bullets plus">
+        <li>Beschleunigendes Wachstum mit Diversifizierung weg von Top-3-Kunden</li>
+        <li>Sehr große Cash-Reserve erlaubt geduldige Skalierung ohne Finanzierungsdruck</li>
+        <li>Analysten-Kursziele deutlich über aktuellem Kurs (Needham 85 USD, UBS 73 USD)</li>
+      </ul>
+    </div>
+    <div class="col-box risiko">
+      <h4>Risiken</h4>
+      <ul class="bullets minus">
+        <li>Weiterhin keine Profitabilität (GAAP und non-GAAP)</li>
+        <li>Hohe Kundenkonzentration (Top 3 = 71% Umsatz)</li>
+        <li>Zwei Kapitalerhöhungen 2026 verwässern bestehende Aktionäre</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="kv-row"><div class="kv-label">Beobachten</div><div class="kv-value">Weitere Entwicklung der Kundenkonzentration, Zeitpunkt des non-GAAP-Breakeven, weitere Verwässerung durch Kapitalmaßnahmen.</div></div>
+  <div class="kv-row"><div class="kv-label">Fazit</div><div class="kv-value" style="font-weight:bold;">Spannende, aber klassisch spekulative Wachstumsstory im Scout-Format — kein TMR-Qualitätswert, sondern ein Beobachtungskandidat für risikobereites Kapital.</div></div>
+
+  <div class="footer">
+    <div>Reaper Batch-Scan <span class="gold-dot">·</span> Scout-Kurzform: analysen/AMBQ-SCOUT-quickfilter-jarvis-claude-2026-08-29.md</div>
+    <div>Keine Anlageberatung · Ein-KI-Schnellcheck · Seite 6/10</div>
+  </div>
+</div>
+
+<!-- ============ SEITE 7: VIRTU FINANCIAL ============ -->
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">REAPER <span class="accent">BATCH-SCAN</span></div>
+      <div class="brand-sub">Ranggruppe D · TMR-Quick-Filter mit Finanzsektor-Override</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">Datenstand 28.-29. August 2026</div>
+      <div>Quellen: stockanalysis.com, Virtu IR, Gurufocus</div>
+    </div>
+  </div>
+
+  <div class="company-header">
+    <div>
+      <div><span class="num display">05</span> <span class="name display">Virtu Financial</span></div>
+      <div class="sub">Financials / Market Making &amp; Trading | VIRT / NYSE | ISIN US9282541013</div>
+    </div>
+    <div class="ampel-badge orange">ORANGE</div>
+  </div>
+
+  <div class="thesis-box">Hochprofitabler, aber stark zyklischer Market-Maker — 2026 profitiert von hoher Marktvolatilität, doch der Markt selbst sieht kaum weiteres Kurspotenzial.</div>
+
+  <div style="display:flex; flex-direction:column; gap:1.6mm;">
+    <div class="kv-row"><div class="kv-label">Kurs/Bewertung</div><div class="kv-value">67,93 USD ≈58,65 € · KGV TTM ~11,0x · Forward-KGV ~9,9x · Dividendenrendite ~1,5%</div></div>
+    <div class="kv-row"><div class="kv-label">Umsatztrend</div><div class="kv-value">Q2/26 1,19 Mrd. USD (+19% YoY) · Umsatz 2023 (Tief) 1,68 Mrd. → 2025 2,85 Mrd. USD</div></div>
+    <div class="kv-row"><div class="kv-label">Marge/ROE</div><div class="kv-value">Adj.-EBITDA-Marge 60,8% (Q2/26) · ROE zyklisch 11,8% (2023) bis 29,6% (2025)</div></div>
+    <div class="kv-row"><div class="kv-label">Marktkap.</div><div class="kv-value">10,30 Mrd. USD ≈8,89 Mrd. €</div></div>
+  </div>
+
+  <div class="einordnung">
+    <div class="section-label">Einordnung</div>
+    <p>Virtu ist einer der größten börsennotierten Market Maker/elektronischen Händler der USA. Das Geschäft ist strukturell volatilitätsabhängig: der Gewinn je Aktie schwankte von 3,91 USD (2021) über nur 1,42 USD im ruhigen Marktjahr 2023 auf 5,13 USD in 2025 — eine 3,6-fache Schwankungsbreite, ohne dass sich am Geschäftsmodell etwas ändert. 2026 ist bislang ein weiteres starkes Volatilitätsjahr, was sich in den Q2-Zahlen (+19% Umsatz, +26% Adjusted Net Trading Income) zeigt. Virtu expandiert zudem ins Krypto-Geschäft (MiCA-Lizenz für die EU seit Juni 2026, Zero-Hash-Integration).</p>
+    <p>Die Bewertung wirkt mit einem KGV von 11x historisch nicht teuer — aber genau das ist bei zyklischen Finanztiteln typisch, wenn die Gewinne gerade auf einem Hoch stehen. Die Verschuldung (Debt/Equity ~5,8x) ist für einen Market Maker mit "Matched-Book"-Bilanzstruktur normal, aber schwer von außen sauber einzuordnen. Der Analysten-Konsens ("Hold", Kursziel praktisch auf Kursniveau) signalisiert, dass der Markt kaum weiteres Kurspotenzial sieht — trotz wachsendem Wettbewerbsdruck durch Jane Street und Citadel Securities.</p>
+  </div>
+
+  <div>
+    <div class="section-label">Ampelcheck</div>
+    <table class="grid">
+      <tr><th>Bereich</th><th>Ampel</th><th>Begründung</th></tr>
+      <tr><td>Geschäftsmodell</td><td><span class="ampel-row-badge yellow">GELB</span></td><td>Bewährtes, hochmargiges Market-Making, aber volatilitätsabhängig statt planbar wachsend</td></tr>
+      <tr><td>Wachstum</td><td><span class="ampel-row-badge yellow">GELB</span></td><td>Starkes 2026, aber historisch zyklisch (2023-Tal als Gegenbeispiel)</td></tr>
+      <tr><td>Profitabilität</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>Adj.-EBITDA-Marge &gt;60%, ROE bis 30% im guten Jahr</td></tr>
+      <tr><td>Bilanz</td><td><span class="ampel-row-badge orange">ORANGE</span></td><td>Debt/Equity ~5,8x über 10-Jahres-Median (teils "Matched-Book"-bedingt)</td></tr>
+      <tr><td>Bewertung</td><td><span class="ampel-row-badge yellow">GELB</span></td><td>KGV moderat, aber typisch für zyklischen Gewinn-Peak; Analysten sehen kaum Potenzial</td></tr>
+      <tr><td>Risiko</td><td><span class="ampel-row-badge orange">ORANGE</span></td><td>Wettbewerbsdruck (Jane Street/Citadel), regulatorisches Risiko (PFOF)</td></tr>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div class="col-box chance">
+      <h4>Chancen</h4>
+      <ul class="bullets plus">
+        <li>Krypto-Expansion (EU-MiCA-Lizenz) eröffnet neues Wachstumsfeld</li>
+        <li>Stabile, seit Jahren unveränderte Dividende</li>
+        <li>Hohe Cash-Generierung in volatilen Marktphasen</li>
+      </ul>
+    </div>
+    <div class="col-box risiko">
+      <h4>Risiken</h4>
+      <ul class="bullets minus">
+        <li>Gewinne 2026 stehen auf zyklischem Hoch — Volatilitätsrückgang würde Ergebnis drücken</li>
+        <li>Zunehmender Wettbewerbsdruck durch Jane Street</li>
+        <li>Regulatorisches Risiko rund um Payment-for-Order-Flow/Marktstruktur</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="kv-row"><div class="kv-label">Beobachten</div><div class="kv-value">Marktvolatilität/Handelsvolumina als Gewinntreiber, regulatorische Entwicklungen zu PFOF, Fortschritt der Krypto-Expansion.</div></div>
+  <div class="kv-row"><div class="kv-label">Fazit</div><div class="kv-value" style="font-weight:bold;">Solide geführtes, hochprofitables Unternehmen — aber ein zyklischer Gewinn-Peak ohne erkennbaren Bewertungsspielraum ist kein überzeugender Einstiegszeitpunkt.</div></div>
+
+  <div class="footer">
+    <div>Reaper Batch-Scan <span class="gold-dot">·</span> Quick-Filter-Analyse: analysen/VIRT-TMR-quickfilter-jarvis-claude-2026-08-29.md</div>
+    <div>Keine Anlageberatung · Ein-KI-Schnellcheck · Seite 7/10</div>
+  </div>
+</div>
+
+<!-- ============ SEITE 8: CONSENSUS CLOUD SOLUTIONS ============ -->
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">REAPER <span class="accent">BATCH-SCAN</span></div>
+      <div class="brand-sub">Ranggruppe E · TMR-Quick-Filter (Abbruch-Schwelle gerissen)</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">Datenstand 28.-29. August 2026</div>
+      <div>Quellen: stockanalysis.com, BusinessWire, Investing.com</div>
+    </div>
+  </div>
+
+  <div class="company-header">
+    <div>
+      <div><span class="num display">06</span> <span class="name display">Consensus Cloud Solutions</span></div>
+      <div class="sub">Technology / Healthcare-IT (Cloud-Fax) | CCSI / NASDAQ | ISIN US20848V1052</div>
+    </div>
+    <div class="ampel-badge red">ROT</div>
+  </div>
+
+  <div class="thesis-box">Statistisch extrem billig und außergewöhnlich cash-generativ — aber ein strukturell stagnierendes Geschäftsmodell mit spürbarer Verschuldung und langfristigem Disruptionsrisiko.</div>
+
+  <div style="display:flex; flex-direction:column; gap:1.6mm;">
+    <div class="kv-row"><div class="kv-label">Kurs/Bewertung</div><div class="kv-value">38,00 USD ≈32,81 € · KGV TTM ~7,7x · Forward-KGV ~6,3x</div></div>
+    <div class="kv-row"><div class="kv-label">Umsatz</div><div class="kv-value">FY25 350 Mio. USD (-0,8%) · Q2/26 91,4 Mio. USD (+4,1%, erste Stabilisierung)</div></div>
+    <div class="kv-row"><div class="kv-label">Marge/FCF</div><div class="kv-value">Operative Marge 43,0% · FCF-Rendite auf Marktkap. ~15,2% (FY25 FCF 105,9 Mio. USD)</div></div>
+    <div class="kv-row"><div class="kv-label">Marktkap.</div><div class="kv-value">696,4 Mio. USD ≈601,3 Mio. €</div></div>
+  </div>
+
+  <div class="einordnung">
+    <div class="section-label">Einordnung</div>
+    <p>Consensus Cloud (Spin-off von Ziff Davis, 2021) betreibt das dominante Cloud-Fax-Geschäft im US-Gesundheitswesen — ein Nischenmonopol, das von der regulatorischen Verankerung von Fax als rechtssicherem Dokumentenaustausch lebt. Die Umsatzentwicklung war jahrelang die klassische "Melting Ice Cube": 2025 nahezu flach (-0,8%), getragen von einem schrumpfenden SoHo-Segment (-4,7% bis -11%) und wachsendem Corporate-Segment (+8-9%). Q2 2026 zeigt erstmals wieder leichtes Gesamtwachstum (+4,1%).</p>
+    <p>Die Kennzahlen wirken billig: KGV 7,7x, FCF-Rendite über 15%. Das Management nutzt den Cashflow für Schuldenabbau (243 Mio. USD seit Spin-off) und Rückkäufe (Programm auf 200 Mio. USD aufgestockt). Der Haken: Nettoverschuldung ~449 Mio. USD (~2,6-3,0x EBITDA) bei einem Kerngeschäft, dessen langfristige Relevanz durch FHIR/direkte EHR-Anbindung infrage steht — ein klassisches potenzielles "Value Trap"-Profil.</p>
+  </div>
+
+  <div>
+    <div class="section-label">Ampelcheck</div>
+    <table class="grid">
+      <tr><th>Bereich</th><th>Ampel</th><th>Begründung</th></tr>
+      <tr><td>Geschäftsmodell</td><td><span class="ampel-row-badge orange">ORANGE</span></td><td>Bewährtes Nischenmonopol, aber langfristig durch FHIR/Interoperabilität bedroht</td></tr>
+      <tr><td>Wachstum</td><td><span class="ampel-row-badge red">ROT</span></td><td>Jahrelang nahezu stagnierend/leicht schrumpfend, erst jüngst zaghafte Stabilisierung</td></tr>
+      <tr><td>Profitabilität</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>Sehr hohe operative Marge (43%) und FCF-Rendite (~15%)</td></tr>
+      <tr><td>Bilanz</td><td><span class="ampel-row-badge orange">ORANGE</span></td><td>Nettoverschuldung ~2,6-3,0x EBITDA trotz laufendem Schuldenabbau</td></tr>
+      <tr><td>Bewertung</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>KGV 7,7x / Forward 6,3x statistisch sehr günstig</td></tr>
+      <tr><td>Risiko</td><td><span class="ampel-row-badge red">ROT</span></td><td>Sekulares Disruptionsrisiko, Verschuldung, SoHo-Segment weiter rückläufig</td></tr>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div class="col-box chance">
+      <h4>Chancen</h4>
+      <ul class="bullets plus">
+        <li>Sehr hohe FCF-Rendite ermöglicht weiteren Schuldenabbau und Rückkäufe</li>
+        <li>Corporate-Segment wächst wieder, erste Gesamtwachstums-Stabilisierung</li>
+        <li>Statistisch günstige Bewertung bietet Sicherheitsabschlag, falls These hält</li>
+      </ul>
+    </div>
+    <div class="col-box risiko">
+      <h4>Risiken</h4>
+      <ul class="bullets minus">
+        <li>Strukturelles Disruptionsrisiko durch FHIR-Standards und direkte EHR-Integration</li>
+        <li>SoHo-Kundensegment weiter rückläufig</li>
+        <li>Verschuldung begrenzt strategische Flexibilität — klassisches Value-Trap-Muster</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="kv-row"><div class="kv-label">Beobachten</div><div class="kv-value">Hält die Wachstumsstabilisierung an, Tempo des Schuldenabbaus, regulatorische Entwicklung bei Interoperabilitäts-Standards.</div></div>
+  <div class="kv-row"><div class="kv-label">Fazit</div><div class="kv-value" style="font-weight:bold;">Einziger Wert im Batch, der die Abbruch-Schwelle klar reißt — billig, aber mit echtem strukturellem Fragezeichen. Kein Watchlist-Kandidat, allenfalls Cashflow-Spekulation.</div></div>
+
+  <div class="footer">
+    <div>Reaper Batch-Scan <span class="gold-dot">·</span> Quick-Filter-Analyse: analysen/CCSI-TMR-quickfilter-jarvis-claude-2026-08-29.md</div>
+    <div>Keine Anlageberatung · Ein-KI-Schnellcheck · Seite 8/10</div>
+  </div>
+</div>
+
+<!-- ============ SEITE 9: METHODIK & GRENZEN ============ -->
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">REAPER <span class="accent">BATCH-SCAN</span></div>
+      <div class="brand-sub">Methodik &amp; Grenzen dieses Batch-Scans</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">Datenstand 29. August 2026</div>
+    </div>
+  </div>
+
+  <h1 class="title">Methodik &amp; Grenzen</h1>
+
+  <div class="box">
+    <h3>Analyse-Tiefe</h3>
+    <p>Jeder Kandidat wurde in TMR-QUICK-FILTER-Tiefe geprüft (DNA-Check mit den fünf K-Kriterien ROIC&gt;20%, FCF-Marge≥20%, operativer Hebel Ja/Nein, Piotroski-Proxy≥7, EPS-CAGR≥12%, Standard-Basis K=5, Abbruch bei K≤2). Bei Ambiq Micro griff die Scout-Kurzform, weil das Unternehmen als noch unprofitables, ein Jahr altes IPO die TMR-Abbruch-Schwelle strukturell reißt und stattdessen nach Wachstums-/Cash-Reichweite-/Katalysator-Kriterien beurteilt werden muss. Bei Virtu Financial wurde ein Finanzsektor-Override angewendet (ROE statt ROIC, Einordnung der Verschuldung im Kontext der "Matched-Book"-Bilanzstruktur eines Market Makers). Dies ist eine vereinfachte Tiefe ohne vollständiges Python-DCF und ohne formalen Beneish-M-Score — kein Ersatz für einen Full Deep Dive.</p>
+  </div>
+
+  <div class="box">
+    <h3>Ein-KI-Format statt 3-fach-Cross-Check</h3>
+    <p>Dieser Batch lief ausschließlich mit Jarvis (Claude) — bewusst ohne Gegenprüfung durch Jack (Gemini) oder Conan (ChatGPT), um Tempo für einen ersten Sammelüberblick zu gewinnen. Das bedeutet: keine Konvergenz-Absicherung, keine Entscheidungshierarchie zwischen den drei Kis, kein Dissens-Abgleich. Für jede der sechs hier gescannten Aktien gilt: eine echte KAUFEN-Entscheidung oder Watchlist-/Depot-Aufnahme erfordert weiterhin den vollen 3-fach-Cross-Check (wie zuvor bei AIT durchgeführt) sowie das Strategie-Fit-Gate und den Duplikations-Check gegen bestehende Depot-/Watchlist-Positionen.</p>
+  </div>
+
+  <div class="box">
+    <h3>Datenqualität &amp; Unsicherheiten</h3>
+    <p>Alle Zahlen stammen aus öffentlich zugänglichen Finanzdatenportalen und Unternehmensmeldungen, Stand 27.-29.08.2026, primär recherchiert über gezielte Websuche und Direktabruf von stockanalysis.com, Unternehmens-IR-Seiten sowie Finanznachrichtenagenturen. Wo Quellen voneinander abwichen (z.B. Indivior-Nettoverschuldung, Virtu-Verschuldungskennzahl), wurde dies im Bericht transparent als Bandbreite bzw. Einordnungshinweis ausgewiesen statt einer einzelnen Zahl unkritisch übernommen. Einzelne Detailpunkte (z.B. exakte Patentablaufdaten, genaue EV/Sales-Werte bei Ambiq, Board-Zusammensetzung bei Aurinia) konnten nicht abschließend verifiziert werden und sind in den zugehörigen Analyse-Dateien unter analysen/ als "nicht verifiziert" gekennzeichnet.</p>
+  </div>
+
+  <div class="box">
+    <h3>Was dieser Scan nicht ist</h3>
+    <p>Keine Anlageberatung, keine automatische Watchlist- oder Depot-Aufnahme, kein Ersatz für den vollen K-Kriterien-DNA-Check oder Reaper Score eines Full Deep Dive. Die Ampel bewertet die Aktie allgemein anhand von Geschäftsmodell, Wachstum, Profitabilität, Bilanz, Bewertung und Risiko — sie ist eine Sortier- und Priorisierungshilfe für Brian, um zu entscheiden, welche(r) der sechs Werte einen vollen Deep Dive verdient.</p>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Batch-Scan <span class="gold-dot">·</span> Vollständige Methodik: prompts/jack-moat-reaper-v11.7.md, architecture.md Abschnitt 4</div>
+    <div>Keine Anlageberatung · Ein-KI-Schnellcheck · Seite 9/10</div>
+  </div>
+</div>
+
+<!-- ============ SEITE 10: QUELLEN ============ -->
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">REAPER <span class="accent">BATCH-SCAN</span></div>
+      <div class="brand-sub">Quellenverzeichnis</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">Datenstand 29. August 2026</div>
+    </div>
+  </div>
+
+  <h1 class="title">Quellen</h1>
+
+  <div class="box">
+    <h3>Kursdaten, Kennzahlen &amp; Finanzstatistiken</h3>
+    <p>stockanalysis.com (Kurs, Marktkap., Bewertungsmultiplikatoren, Historie) · wallstreetzen.com · Gurufocus · Macrotrends · ValueInvesting.io · TipRanks/MarketBeat (Analysten-Konsens &amp; Kursziele) · Simply Wall St</p>
+  </div>
+
+  <div class="box">
+    <h3>Unternehmensmeldungen &amp; Investor Relations</h3>
+    <p>Indivior IR/GlobeNewswire (Q2-2026-Bericht, Supernus-Fusionsmeldung) · Aurinia Pharmaceuticals IR (Q2-2026, Kezar-Übernahme, Teva-Patentvergleich) · Virtu Financial IR (Q2-2026-Ergebnis, MiCA-Lizenz) · Ambiq Micro SEC-Filings/10-Q (StockTitan) · Digi International Pressemeldungen (Q2/Q3-FY26, Guidance-Anhebung) · Consensus Cloud Solutions BusinessWire (Q2-2026, Rückkaufprogramm)</p>
+  </div>
+
+  <div class="box">
+    <h3>Nachrichten &amp; Einordnung</h3>
+    <p>Reuters, Bloomberg, StreetInsider, BioSpace, PharmExec, FiercePharma, Insider Monkey, Seeking Alpha, The Motley Fool (Earnings-Call-Transkripte), Investing.com, TradingView, Benzinga, MarketScreener, DBTA, Cooley (IPO-Dokumentation)</p>
+  </div>
+
+  <div class="box">
+    <h3>Wechselkurs</h3>
+    <p>Trading Economics: EUR/USD 1,1583 am 28.08.2026, entspricht 1 USD ≈ 0,8633 €. Alle USD-Beträge in diesem Bericht wurden zu diesem Kurs umgerechnet.</p>
+  </div>
+
+  <div class="box">
+    <h3>Interne Referenzen</h3>
+    <p>architecture.md (Rulebook, Ampel-Batch-Scan-Layout-Spezifikation) · prompts/jack-moat-reaper-v11.7.md (TMR-Kriterien) · prompts/conan-the-scout-v1.12.md (Scout-Kriterien für Ambiq Micro) · Einzelanalysen unter analysen/ (je Kandidat, Dateinamen siehe Fußzeilen der jeweiligen Kandidatenseite)</p>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Batch-Scan <span class="gold-dot">·</span> Ende des Berichts</div>
+    <div>Keine Anlageberatung · Ein-KI-Schnellcheck · Seite 10/10</div>
+  </div>
+</div>
+
+</body>
+</html>

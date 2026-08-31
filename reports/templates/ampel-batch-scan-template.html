@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Reaper Batch-Scan – Vorlage</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1A1C1F;
+    --bg-panel: #232629;
+    --bg-panel-2: #2A2D31;
+    --border-soft: #303337;
+    --text: #EDE8DF;
+    --text-dim: #A39B8E;
+    --text-faint: #6E6860;
+    --gold: #C6922C;
+    --gold-bright: #E0B24E;
+    --gold-dim: #7A5F24;
+    --green: #5C9A5F;
+    --green-bg: rgba(92,154,95,0.14);
+    --yellow: #DDB13B;
+    --yellow-bg: rgba(221,177,59,0.14);
+    --orange: #C9793A;
+    --orange-bg: rgba(201,121,58,0.16);
+    --red: #BC4F41;
+    --red-bg: rgba(188,79,65,0.16);
+  }
+
+  html, body {
+    width: 210mm; height: 297mm; background: var(--bg); color: var(--text);
+    font-family: "Carlito", "DejaVu Sans", Arial, sans-serif; font-size: 9.6pt; line-height: 1.4;
+  }
+  .display { font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif; font-weight: 700; font-stretch: condensed; }
+
+  .page { width: 210mm; height: 297mm; padding: 10mm 13mm 8mm 13mm; display: flex; flex-direction: column; gap: 3.6mm; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 3mm; }
+  .brand { font-size: 21pt; letter-spacing: 0.05em; }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 7.4pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .meta-block { text-align: right; font-size: 7.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 8.6pt; }
+
+  h1.title { font-size: 19pt; letter-spacing: 0.02em; margin-top: 1mm; }
+  h1.title .accent { color: var(--gold-bright); }
+  .subtitle { font-size: 9.6pt; color: var(--text-dim); margin-top: 1mm; }
+
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 3mm 4mm; }
+  .box h3 { font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; font-size: 8.2pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.6mm; }
+  .box p { font-size: 8pt; color: var(--text-dim); line-height: 1.4; }
+
+  table.grid { width: 100%; border-collapse: collapse; }
+  table.grid th { background: var(--bg-panel-2); color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.04em; font-size: 6.8pt; font-weight: normal; text-align: left; padding: 1.8mm 2.5mm; border-bottom: 1px solid var(--border-soft); }
+  table.grid td { font-size: 7.8pt; padding: 1.8mm 2.5mm; border-bottom: 1px solid var(--border-soft); color: var(--text); vertical-align: top; }
+  table.grid tr:last-child td { border-bottom: none; }
+
+  .ampel-legend { display: flex; gap: 3mm; }
+  .ampel-chip { flex: 1; display: flex; align-items: center; gap: 2.5mm; border-radius: 3px; padding: 2.4mm 3mm; border: 1px solid var(--border-soft); background: var(--bg-panel); }
+  .ampel-dot { width: 6mm; height: 6mm; border-radius: 50%; flex: 0 0 auto; }
+  .ampel-chip .lbl { font-size: 7.6pt; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; letter-spacing: 0.03em; }
+  .ampel-chip .desc { font-size: 6.8pt; color: var(--text-dim); }
+  .dot-green { background: var(--green); } .dot-yellow { background: var(--yellow); } .dot-orange { background: var(--orange); } .dot-red { background: var(--red); }
+
+  .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 1.8mm; font-size: 6.4pt; color: var(--text-faint); margin-top: auto; }
+  .footer .gold-dot { color: var(--gold); }
+
+  /* ---------- COMPANY PAGE ---------- */
+  .company-header { display: flex; justify-content: space-between; align-items: center; background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold); border-radius: 3px; padding: 3.4mm 4.5mm; }
+  .company-header .num { color: var(--gold-bright); font-size: 15pt; }
+  .company-header .name { font-size: 15pt; }
+  .company-header .sub { font-size: 7.8pt; color: var(--text-dim); margin-top: 0.6mm; }
+  .ampel-badge { font-size: 8pt; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 10px; padding: 1.4mm 4mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .ampel-badge.green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green); }
+  .ampel-badge.yellow { background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow); }
+  .ampel-badge.orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange); }
+  .ampel-badge.red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red); }
+
+  .thesis-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-left: 3px solid var(--gold); border-radius: 3px; padding: 2.8mm 4mm; font-size: 8.6pt; color: var(--text); }
+
+  .einordnung p { font-size: 8pt; color: var(--text-dim); line-height: 1.42; margin-bottom: 1.6mm; }
+  .section-label { font-size: 7.2pt; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; margin-bottom: 1mm; }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+
+  .ampel-row-badge { display: inline-block; font-size: 6.6pt; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; border-radius: 8px; padding: 0.6mm 2.4mm; font-family: "DejaVu Sans Condensed", sans-serif; }
+  .ampel-row-badge.green { background: var(--green); color: var(--bg); }
+  .ampel-row-badge.yellow { background: var(--yellow); color: var(--bg); }
+  .ampel-row-badge.orange { background: var(--orange); color: var(--bg); }
+  .ampel-row-badge.red { background: var(--red); color: var(--bg); }
+
+  .two-col { display: flex; gap: 3.5mm; }
+  .col-box { flex: 1; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.6mm 3.5mm; }
+  .col-box.chance { border-top: 2px solid var(--green); }
+  .col-box.risiko { border-top: 2px solid var(--red); }
+  .col-box h4 { font-size: 7.6pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.4mm; font-family: "DejaVu Sans Condensed", sans-serif; }
+  .col-box.chance h4 { color: var(--green); } .col-box.risiko h4 { color: var(--red); }
+  ul.bullets { list-style: none; } ul.bullets li { font-size: 7.6pt; padding-left: 3mm; position: relative; margin-bottom: 0.9mm; color: var(--text); line-height: 1.32; }
+  ul.bullets.plus li::before { content: "+"; position: absolute; left: 0; color: var(--green); font-weight: bold; }
+  ul.bullets.minus li::before { content: "–"; position: absolute; left: 0; color: var(--red); font-weight: bold; }
+
+  .kv-row { display: flex; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; overflow: hidden; }
+  .kv-row .kv-label { flex: 0 0 30mm; background: var(--bg-panel-2); color: var(--gold); font-size: 7.4pt; text-transform: uppercase; letter-spacing: 0.05em; padding: 2.2mm 3mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .kv-row .kv-value { flex: 1; font-size: 8.2pt; padding: 2.2mm 3mm; color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- ============ SEITE 1: DECKBLATT / LEGENDE (Vorlagen-Erklärung) ============ -->
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">REAPER <span class="accent">BATCH-SCAN</span></div>
+      <div class="brand-sub">Vorlage für Mehrfach-Analysen · Layout nach rakentoni-Vorbild, Reaper-Optik</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">Vorlage angelegt 29. August 2026, aktualisiert 29.08.2026</div>
+      <div>3-fach-Cross-Check (Jarvis/Jack/Conan) · kompakteres Layout statt Ein-KI-Format</div>
+    </div>
+  </div>
+
+  <h1 class="title">Ampel-Batch-Scan <span class="accent display">— Vorlage</span></h1>
+  <div class="subtitle">Für den Einsatz, wenn mehrere Kandidaten in einem Rutsch grob eingeordnet werden sollen (z.B. Watchlist-Sammelcheck oder erste Screening-Sichtung) — schneller als der volle 3-fach-Cross-Check, aber auch bewusst weniger abgesichert.</div>
+
+  <div class="box">
+    <h3>Auftrag &amp; Zweck</h3>
+    <p>Kompakte, unabhängige Einordnung mehrerer Kandidaten anhand von Geschäftsmodell, aktuellen Zahlen, Bilanz, Bewertung, Chancen und Risiken. Die Ampel bewertet die Aktie allgemein und ist ausdrücklich <b style="color:var(--text);">kein Ersatz</b> für die K-Kriterien-DNA oder den vollen Reaper Score — vor einer echten KAUFEN-Entscheidung oder Watchlist-Aufnahme bleibt der volle TMR-/Scout-Pfad Pflicht.</p>
+  </div>
+
+  <div>
+    <div class="section-label">Ampel-Skala (4-stufig)</div>
+    <div class="ampel-legend">
+      <div class="ampel-chip"><div class="ampel-dot dot-green"></div><div><div class="lbl display">GRÜN</div><div class="desc">stark / allgemein interessant</div></div></div>
+      <div class="ampel-chip"><div class="ampel-dot dot-yellow"></div><div><div class="lbl display">GELB</div><div class="desc">gut, aber Preis/Risiko beachten</div></div></div>
+      <div class="ampel-chip"><div class="ampel-dot dot-orange"></div><div><div class="lbl display">ORANGE</div><div class="desc">problematisch / spekulativ</div></div></div>
+      <div class="ampel-chip"><div class="ampel-dot dot-red"></div><div><div class="lbl display">ROT</div><div class="desc">fundamental schwach / hohes Risiko</div></div></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Seitenaufbau pro Kandidat (siehe Beispielseite)</h3>
+    <p>Kopf mit Nummer, Name, Sektor/Ticker/Börse/ISIN und Ampel-Badge → Ein-Satz-These → Kennzahlen-Kurztabelle → "Einordnung" (2 Absätze) → "Ampelcheck"-Tabelle (Geschäftsmodell/Wachstum/Profitabilität/Bilanz/Bewertung/Risiko, je mit eigener Ampel) → Chancen/Risiken zweispaltig → Beobachten-Hinweis → Fazit-Satz.</p>
+  </div>
+
+  <div class="box">
+    <h3>Rahmenbedingungen</h3>
+    <p>Läuft standardmäßig mit <b style="color:var(--text);">allen drei KIs (Jarvis/Jack/Conan)</b> — auch im Batch-Format, seit Brians Korrektur vom 29.08.2026 nach dem ersten Praxislauf ("so bekommt man das neutralste aber gleichzeitig bestmögliche Ergebnis heraus"). Pro Kandidat in <b style="color:var(--text);">TMR-QUICK-FILTER-Tiefe</b> (DNA-Check + Konfidenz + kompaktes Verdict, kein Python-DCF) bzw. der entsprechenden Scout-Kurzform — nicht als eigene, noch leichtere Prüfung; ein FULL DEEP DIVE für einen einzelnen Wert läuft nur, wenn Brian (oder jemand anderes) das gezielt für genau diesen Kandidaten anfordert — auch dann aber mit allen drei KIs. Am Ende eines Batches: Deckblatt mit sektor-gruppierter Übersicht + Gesamtüberblick-Seite mit Ranggruppen A-E, eine Seite pro Kandidat (inkl. kurzer Konvergenz-/Dissens-Einordnung der drei Meinungen), abschließend Quellen- und Methodik-Seite.</p>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Batch-Scan-Vorlage <span class="gold-dot">·</span> siehe architecture.md, Abschnitt 4 (PDF-Layouts)</div>
+    <div>Keine Anlageberatung · Vorlage, kein abgeschlossener Analyse-Batch · Seite 1/2</div>
+  </div>
+</div>
+
+<!-- ============ SEITE 2: BEISPIEL-EINZELSEITE (echte Daten: Exponent Inc.) ============ -->
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">REAPER <span class="accent">BATCH-SCAN</span></div>
+      <div class="brand-sub">Beispielseite mit echten Daten — Watchlist-Neuzugang vom 29.08.2026</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">Datenstand 29. August 2026</div>
+      <div>Quellen: stockanalysis.com, wallstreetzen.com</div>
+    </div>
+  </div>
+
+  <div class="company-header">
+    <div>
+      <div><span class="num display">01</span> <span class="name display">Exponent, Inc.</span></div>
+      <div class="sub">Industrials / Engineering &amp; Consulting | EXPO / NASDAQ | ISIN US30214U1025</div>
+    </div>
+    <div class="ampel-badge green">GRÜN</div>
+  </div>
+
+  <div class="thesis-box">Kapitalleichtes Reputations- und Expertise-Moat-Geschäft mit hoher Kapitalrendite — bewusster Gegenentwurf zur margenschwachen AIT-Analyse vom selben Tag.</div>
+
+  <div style="display:flex; flex-direction:column; gap:1.6mm;">
+    <div class="kv-row"><div class="kv-label">Kurs/Bewertung</div><div class="kv-value">71,74 USD ≈61,96 € · KGV ~32,2x · Forward-KGV ~28,6x</div></div>
+    <div class="kv-row"><div class="kv-label">Umsatz TTM</div><div class="kv-value">567,13 Mio. USD (+9,2%)</div></div>
+    <div class="kv-row"><div class="kv-label">Marge/ROIC</div><div class="kv-value">Nettomarge ~19,7% · ROIC ~27,3% · Dividende 1,73%</div></div>
+    <div class="kv-row"><div class="kv-label">Marktkap.</div><div class="kv-value">3,41 Mrd. USD ≈2,95 Mrd. €</div></div>
+  </div>
+
+  <div class="einordnung">
+    <div class="section-label">Einordnung</div>
+    <p>Exponent ist ein wissenschaftlich-technisches Beratungsunternehmen (Gerichtsgutachten, Produktsicherheit, Schadensanalyse, Biomechanik, Materialwissenschaft) — ein reines Reputations-/Expertise-Moat-Geschäft ohne nennenswerten Kapitaleinsatz. Genau der Gegenpol zur am selben Tag analysierten AIT (margenschwacher Distributor): hier treibt Wissen statt Lagerbestand die Marge.</p>
+    <p>Wachstum ist mit ~9% moderat, aber die Kapitaleffizienz (ROIC ~27%) ist deutlich stärker als bei den meisten bestehenden Depot-Positionen aus Software/Fintech/Space. Analysten-Konsens Buy mit ~17% Kursziel-Potenzial. Bewertung (KGV ~32x) ist nicht günstig, aber für ein margenstarkes, konjunkturunabhängiges Nischen-Consulting vertretbar.</p>
+  </div>
+
+  <div>
+    <div class="section-label">Ampelcheck</div>
+    <table class="grid">
+      <tr><th>Bereich</th><th>Ampel</th><th>Begründung</th></tr>
+      <tr><td>Geschäftsmodell</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>Reputations-/Expertise-Moat, kapitalleicht, wenig zyklisch</td></tr>
+      <tr><td>Wachstum</td><td><span class="ampel-row-badge yellow">GELB</span></td><td>solide, aber moderate ~9% Umsatzwachstum</td></tr>
+      <tr><td>Profitabilität</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>Nettomarge ~20%, ROIC ~27%</td></tr>
+      <tr><td>Bilanz</td><td><span class="ampel-row-badge green">GRÜN</span></td><td>kapitalleicht, Dividende + moderates Wachstum aus Cashflow finanzierbar</td></tr>
+      <tr><td>Bewertung</td><td><span class="ampel-row-badge yellow">GELB</span></td><td>KGV ~32x nicht günstig, aber für die Marge vertretbar</td></tr>
+      <tr><td>Risiko</td><td><span class="ampel-row-badge yellow">GELB</span></td><td>Personenabhängigkeit (Expertentalent), Auftragsvolumen kann schwanken</td></tr>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div class="col-box chance">
+      <h4>Chancen</h4>
+      <ul class="bullets plus">
+        <li>Zunehmende Produkthaftungs-/Sicherheitsregulierung treibt Gutachten-Nachfrage</li>
+        <li>Diversifikation ins Depot: unkorreliert zu Software/Fintech/Space</li>
+        <li>Stabile, wiederkehrende Kundenbeziehungen (Rechtsstreitigkeiten, Versicherer)</li>
+      </ul>
+    </div>
+    <div class="col-box risiko">
+      <h4>Risiken</h4>
+      <ul class="bullets minus">
+        <li>Abhängig von Spitzenexperten – Abwanderung wäre ein echtes Risiko</li>
+        <li>Auftragsvolumen an Rechtsstreitigkeiten/Produktrückrufe gekoppelt, schwankt</li>
+        <li>Bewertung bietet keinen großen Sicherheitsabschlag</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="kv-row"><div class="kv-label">Beobachten</div><div class="kv-value">Umsatzwachstum je Segment, Auslastung/Stundensätze der Berater, Personalfluktuation.</div></div>
+  <div class="kv-row"><div class="kv-label">Fazit</div><div class="kv-value" style="font-weight:bold;">Guter Profi-Watchlist-Kandidat als margenstarker Gegenpol zum Depot — kein Eilkauf, auf Rücksetzer/erste TMR-Bestätigung warten.</div></div>
+
+  <div class="footer">
+    <div>Reaper Batch-Scan-Vorlage <span class="gold-dot">·</span> Vollständige Watchlist: watchlist.md</div>
+    <div>Keine Anlageberatung · Ein-KI-Schnellcheck, kein 3-fach-Cross-Check · Seite 2/2</div>
+  </div>
+</div>
+
+</body>
+</html>
