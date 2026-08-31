@@ -97,6 +97,24 @@ echte Lateinamerika-Zuordnung erfüllt (Alicorp/Peru wäre der einzige echte
 Kandidat, käme als Talent-Position infrage, aber noch nicht offiziell
 aufgenommen – siehe Offene Punkte).
 
+**Update 2026-08-31 (täglicher Kandidaten-Scan, voller 3-fach-Quick-Filter,
+siehe `analysen/WEGE3-TMR-cross-check-fazit-2026-08-31.md`):** WEG S.A.
+(WEGE3, ISIN BRWEGEACNOR0, B3 São Paulo, Brasilien, Elektrotechnik/
+Industrieautomation) besteht Strategie-Fit-Gate, Duplikations-Check und
+Identity-Gate klar, und alle drei KIs (Jarvis/Jack/Conan) stufen die
+Unternehmensqualität einstimmig als Champion-Tier ein (ROIC 32-36%, Wide
+Moat, Net Cash, globale Diversifikation) – aber ebenso einstimmig
+**VERDICT: BEOBACHTEN/WATCH**, da die aktuelle Bewertung (~33-34x KGV) keine
+Sicherheitsmarge lässt (kein Sofort-Kauf-Signal). **Noch NICHT formal in die
+Champions-Tabelle aufgenommen**, da die Watchlist bei 30/30 (Obergrenze)
+steht und ein Ersatz eines bestehenden Champions-Werts (mehrere davon von
+Brian bewusst als Ex-Depot-Wiederaufnahme-Kandidaten markiert) eine
+Entscheidung ist, die über die tägliche Scan-Routine hinausgeht – Brian
+entscheidet, ob WEG einen Slot bekommt oder vorerst nur hier als
+LatAm-Beobachtungsposten außerhalb der 30er-Kapazität geführt wird. Nächster
+Prüfpunkt: Rücksetzer Richtung 23-25x KGV (Jack) würde die Einschätzung
+deutlich verbessern.
+
 ---
 
 ## Aufnahme-Kriterien (für künftige automatisierte Ergänzungen)

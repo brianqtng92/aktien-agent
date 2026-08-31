@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Reaper Kompakt – WEG S.A.</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1A1C1F;
+    --bg-panel: #232629;
+    --bg-panel-2: #2A2D31;
+    --border: #3A3E43;
+    --border-soft: #303337;
+    --text: #EDE8DF;
+    --text-dim: #A39B8E;
+    --text-faint: #6E6860;
+    --gold: #C6922C;
+    --gold-bright: #E0B24E;
+    --gold-dim: #7A5F24;
+    --green: #5C9A5F;
+    --green-bg: rgba(92,154,95,0.14);
+    --yellow: #DDB13B;
+    --yellow-bg: rgba(221,177,59,0.14);
+    --red: #BC4F41;
+    --red-bg: rgba(188,79,65,0.16);
+  }
+
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Carlito", "DejaVu Sans", Arial, sans-serif;
+    font-size: 9.6pt;
+    line-height: 1.38;
+  }
+
+  .display {
+    font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif;
+    font-weight: 700;
+    font-stretch: condensed;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 9mm 12mm 6mm 12mm;
+    display: flex;
+    flex-direction: column;
+    gap: 3.2mm;
+  }
+
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 3mm;
+  }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 23pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 7.6pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag {
+    font-size: 7pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim);
+    border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm;
+    display: inline-block; width: fit-content;
+  }
+  .meta-block { text-align: right; font-size: 8pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 9pt; }
+
+  .position-header {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold);
+    border-radius: 3px; padding: 3.2mm 4mm;
+  }
+  .position-name .ticker { font-size: 16pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 8.4pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 6mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 6.6pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); }
+  .stat .value { font-size: 10.5pt; color: var(--text); margin-top: 0.4mm; }
+  .stat .value .eur { font-size: 7.4pt; color: var(--text-dim); }
+  .cat-pill {
+    font-size: 7pt; letter-spacing: 0.06em; text-transform: uppercase; background: var(--yellow-bg); color: var(--yellow);
+    border: 1px solid var(--yellow); border-radius: 10px; padding: 1.2mm 3mm; white-space: nowrap;
+  }
+
+  .section-label {
+    font-size: 7.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 2.5mm;
+  }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+
+  .voices-row { display: flex; gap: 3mm; }
+  .voice-card {
+    flex: 1; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px;
+    padding: 2.6mm 3mm; position: relative; overflow: hidden;
+  }
+  .voice-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2.2mm; }
+  .voice-card.v-red::before { background: var(--red); }
+  .voice-card.v-yellow::before { background: var(--yellow); }
+  .voice-card.v-green::before { background: var(--green); }
+  .voice-name { font-size: 9.6pt; letter-spacing: 0.03em; padding-left: 2mm;}
+  .voice-role { font-size: 6.6pt; color: var(--text-faint); padding-left: 2mm; margin-bottom: 1mm;}
+  .voice-rating { padding-left: 2mm; font-size: 8.6pt; color: var(--text); }
+  .voice-rating b { color: inherit; }
+  .voice-sub { padding-left: 2mm; font-size: 7.4pt; color: var(--text-dim); margin-top: 0.6mm; }
+
+  .convergence-pill {
+    margin-top: 2mm; display: flex; align-items: center; gap: 2.5mm;
+    background: var(--green-bg); border: 1px solid var(--green); border-radius: 3px; padding: 2mm 3.5mm;
+  }
+  .convergence-pill .tag { font-size: 8.4pt; letter-spacing: 0.05em; color: var(--green); text-transform: uppercase; }
+  .convergence-pill .note { font-size: 7.2pt; color: var(--text-dim); font-style: italic; }
+
+  .dna-wrap { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.6mm 3.5mm; }
+  .dna-strip { display: flex; gap: 1.4mm; margin-top: 1.6mm; }
+  .dna-seg {
+    flex: 1; height: 6.5mm; border-radius: 1px; display: flex; align-items: center; justify-content: center;
+    font-size: 6.4pt; letter-spacing: 0.02em; color: var(--bg); font-weight: bold; text-align: center;
+  }
+  .dna-seg.pass { background: var(--green); }
+  .dna-seg.fail { background: var(--red); }
+  .dna-caption { display: flex; gap: 1.4mm; margin-top: 1mm; }
+  .dna-caption div { flex: 1; font-size: 6.2pt; color: var(--text-faint); text-align: center; }
+  .dna-note { font-size: 7.2pt; color: var(--text-dim); margin-top: 1.8mm; }
+  .dna-note b { color: var(--text); }
+
+  .two-col { display: flex; gap: 3mm; flex: 1; min-height: 0; overflow: hidden; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.5mm; min-height: 0; }
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.6mm 3.5mm; overflow: hidden; }
+  .box h3 {
+    font-size: 8pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 1.4mm;
+    font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700;
+  }
+  ul.bullets { list-style: none; }
+  ul.bullets li { font-size: 7.4pt; padding-left: 3mm; position: relative; margin-bottom: 0.9mm; color: var(--text); line-height: 1.3; }
+  ul.bullets.plus li::before { content: "+"; position: absolute; left: 0; color: var(--green); font-weight: bold; }
+  ul.bullets.minus li::before { content: "–"; position: absolute; left: 0; color: var(--red); font-weight: bold; }
+
+  .dissent-box {
+    border: 1px dashed var(--gold-dim); border-radius: 3px; padding: 2.4mm 3.5mm;
+    background: repeating-linear-gradient(135deg, rgba(198,146,44,0.04), rgba(198,146,44,0.04) 6px, transparent 6px, transparent 12px);
+  }
+  .dissent-box h3 { color: var(--gold-bright); }
+  .dissent-box p { font-size: 6.9pt; color: var(--text-dim); line-height: 1.32; }
+  .dissent-box p b { color: var(--text); }
+
+  .fv-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .fv-table th, .fv-table td { font-size: 6.8pt; padding: 1mm 1.5mm; text-align: right; border-bottom: 1px solid var(--border-soft); }
+  .fv-table th:first-child, .fv-table td:first-child { text-align: left; color: var(--text-dim); }
+  .fv-table th { color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.04em; font-weight: normal; }
+  .fv-table td { color: var(--text); }
+
+  .fazit {
+    background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim);
+    border-radius: 3px; padding: 3.2mm 4mm; display: flex; align-items: center; gap: 5mm;
+  }
+  .fazit-verdict { flex: 0 0 auto; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 13pt; color: var(--yellow); letter-spacing: 0.03em; }
+  .fazit-verdict .sub { font-size: 6.6pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.6mm; }
+  .fazit-grid { flex: 1; display: flex; justify-content: space-between; }
+  .fazit-item { text-align: center; }
+  .fazit-item .label { font-size: 6.6pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+  .fazit-item .value { font-size: 10pt; color: var(--text); margin-top: 0.5mm; }
+
+  .footer {
+    display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft);
+    padding-top: 1.8mm; font-size: 6.4pt; color: var(--text-faint);
+  }
+  .footer .gold-dot { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">REAPER <span class="accent">KOMPAKT</span></div>
+      <div class="brand-sub">3-KI Cross-Check · Jarvis · Jack · Conan</div>
+      <div class="edition-tag">Watchlist-Kandidat · Lateinamerika-Slot · Quick-Filter-Cross-Check</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">31. August 2026</div>
+      <div>Regelwerk TMR v11.7 (kondensierte Quick-Filter-Instruktion)</div>
+      <div>Täglicher Kandidaten-Scan · Chrome verbunden</div>
+    </div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">WEGE3 <span style="color:var(--text-dim); font-size:10pt;">· B3 SÃO PAULO</span></div>
+      <div class="company">WEG S.A. — Elektrotechnik / Industrieautomation (Motoren, Antriebstechnik, Trafos, erneuerbare Energien)</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs (31.08.)</div><div class="value">R$50,25 <span class="eur">≈8,35€</span></div></div>
+      <div class="stat"><div class="label">KGV (LTM/Fwd)</div><div class="value">33-34x / ~30x</div></div>
+      <div class="stat"><div class="label">Marktkap.</div><div class="value">R$209,7 Mrd. <span class="eur">≈34,8 Mrd.€</span></div></div>
+      <div class="cat-pill">Champions (Kandidat)</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-label">3-Stimmen-Leiste — Finale Verdicts</div>
+    <div class="voices-row" style="margin-top:2mm;">
+      <div class="voice-card v-yellow">
+        <div class="voice-name display">JARVIS <span style="font-size:7pt; color:var(--text-faint);">— Claude</span></div>
+        <div class="voice-role">Eigene Einschätzung auf Basis Web-Recherche (kein isolierter DCF)</div>
+        <div class="voice-rating"><b>BEOBACHTEN</b> · Champion-Qualität, Einstieg unattraktiv</div>
+        <div class="voice-sub">ROIC ~20-33%, Net Cash, breiter Moat — Bewertung bereits hoch eingepreist</div>
+      </div>
+      <div class="voice-card v-yellow">
+        <div class="voice-name display">JACK <span style="font-size:7pt; color:var(--text-faint);">— Gemini</span></div>
+        <div class="voice-role">DNA-Check PASS, Moat 4/4, Valuation "Expensive"</div>
+        <div class="voice-rating"><b>WATCH</b> · Moat 4/4 · Bilanz "fortress"</div>
+        <div class="voice-sub">Attraktiverer Einstieg laut Jack: ca. 23-25x KGV (aktuell 33-34x)</div>
+      </div>
+      <div class="voice-card v-yellow">
+        <div class="voice-name display">CONAN <span style="font-size:7pt; color:var(--text-faint);">— ChatGPT</span></div>
+        <div class="voice-role">Reaper Score 8,5/10 — "kein Zombie, aber Markt hat bereits die Rechnung in der Hand"</div>
+        <div class="voice-rating"><b>WATCH / ACCUMULATE ONLY ON BETTER PRICE</b> · 8,5/10</div>
+        <div class="voice-sub">Valuation-Score 4/10 trotz Quality 9,5/10 — kein Sicherheitsmarge-Puffer</div>
+      </div>
+    </div>
+    <div class="convergence-pill">
+      <span class="tag display">● Stark konvergent</span>
+      <span class="note">Alle drei KIs unabhängig: Champion-Qualität bestätigt (ROIC 32-36%, Wide Moat, Net Cash), aber einstimmig KEIN Kaufsignal wegen Bewertung (~33-34x KGV). Kein Widerspruch — reiner Preis-Vorbehalt, nicht Qualitätszweifel.</span>
+    </div>
+  </div>
+
+  <div class="dna-wrap">
+    <div class="section-label" style="margin-bottom:0;">DNA-Check-Strang (Konsens aller drei KIs)</div>
+    <div class="dna-strip">
+      <div class="dna-seg pass">BRUTTOMARGE · PASS</div>
+      <div class="dna-seg pass">NETTOMARGE · PASS</div>
+      <div class="dna-seg pass">ROIC · PASS</div>
+      <div class="dna-seg pass">BILANZ/NET CASH · PASS</div>
+      <div class="dna-seg fail">WACHSTUM · GRENZFALL</div>
+    </div>
+    <div class="dna-caption">
+      <div>33-34% (Elite-Pricing-Power)</div>
+      <div>15-16% (hohe Konversion)</div>
+      <div>32-36% (außergewöhnlich für Industrials)</div>
+      <div>Net Cash R$3,74 Mrd., keine Bilanzrisiken</div>
+      <div>1H26 Umsatz -3,3% (Brasilien-Solar-Gegenwind, extern in USD +14,7%)</div>
+    </div>
+    <div class="dna-note">K-Score: <b>4 von 5 PASS</b> — Wachstum ist der einzige Wackelkandidat (temporär, FX-/Brasilien-verzerrt, kein struktureller Bruch laut allen drei KIs). <b>Kein Abbruch, DNA-Check klar bestanden.</b></div>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="box" style="flex:0 0 auto;">
+        <h3>Moat &amp; Geschäftsmodell</h3>
+        <p style="font-size:7.4pt; color:var(--text-dim); line-height:1.32;">Vertikale Integration (eigene Fertigung von Stahlblechen, Draht, Lack — Kostenvorteil ggü. Wettbewerbern), breite Produktplattform (Motoren → Drives → Automation → Generatoren → Transformatoren → T&amp;D), hohe Switching-Costs bei Industriekunden (Mission-Critical-Equipment, lange Produktlebenszyklen), globale Skalierung (18 Produktionsländer, 135+ Länder, 1.500+ Produktlinien, 49.000+ Mitarbeiter). R&amp;D/Innovation 3,8% vom Umsatz (1H26: R$736 Mio.) — Reinvestitionsmaschine statt reiner Bestandsverwaltung.</p>
+      </div>
+      <div class="box dissent-box" style="flex:1;">
+        <h3>Warum jetzt (noch) kein Kauf</h3>
+        <p><b>Der eigentliche Reaper-Killer ist die Bewertung, nicht das Unternehmen.</b> Bei ~33-34x KGV impliziert der Markt laut Reverse-DCF (Conan) ca. 16,9% künftiges Wachstum p.a. — das historische EPS-Wachstum lag aber eher bei ~6,4% p.a. Der Case muss nicht kaputtgehen (keine Insolvenzgefahr), aber die Aktie muss über Jahre sehr gute Kapitalrenditen liefern, nur um die aktuelle Bewertung zu rechtfertigen. Kein Sofort-Kauf-Signal.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="box">
+        <h3>Bewertung (Quick-Check, kein DCF)</h3>
+        <table class="fv-table">
+          <tr><th></th><th style="text-align:left;">Kennzahl</th><th style="text-align:left;">Einordnung</th></tr>
+          <tr><td>KGV LTM</td><td colspan="1" style="text-align:left; color:var(--text);">33-34x</td><td style="text-align:left; color:var(--red);">Premium-Compounder-Niveau</td></tr>
+          <tr><td>KGV Forward</td><td colspan="1" style="text-align:left; color:var(--text);">~30x</td><td style="text-align:left; color:var(--red);">weiterhin teuer</td></tr>
+          <tr><td>EV/FCF</td><td colspan="1" style="text-align:left; color:var(--text);">32-35x</td><td style="text-align:left; color:var(--red);">keine Sicherheitsmarge</td></tr>
+          <tr><td>Re-Check-Zone</td><td colspan="1" style="text-align:left; color:var(--text);">~23-25x KGV</td><td style="text-align:left; color:var(--green);">deutlich attraktiver (Jack)</td></tr>
+        </table>
+      </div>
+      <div class="box" style="flex:1;">
+        <h3>Risiken (Konsens aller 3)</h3>
+        <ul class="bullets minus">
+          <li>Wachstumsverlangsamung bei gleichzeitig hoher Bewertungsprämie — Brasilien Solar/Wind-Rollout deutlich abgekühlt</li>
+          <li>Margendruck durch Kupferpreise, Zölle, Personalkosten (Bruttomarge 33,2% vs. 33,7% YoY)</li>
+          <li>Abhängigkeit von internationalem M&amp;A (z.B. Regal-Rexnord-Motion-Übernahme) zur Wachstumsstütze</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">BEOBACHTEN</div>
+      <div class="sub">3 von 3 · Einstimmig</div>
+    </div>
+    <div class="fazit-grid">
+      <div class="fazit-item"><div class="label">Gates</div><div class="value">Alle bestanden</div></div>
+      <div class="fazit-item"><div class="label">Watchlist-Status</div><div class="value">Kandidat, Kapazität voll (30/30)</div></div>
+      <div class="fazit-item"><div class="label">Re-Check-Zone</div><div class="value">~23-25x KGV</div></div>
+      <div class="fazit-item"><div class="label">Konvergenz</div><div class="value" style="color:var(--green);">Stark</div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Quick-Filter-Cross-Check <span class="gold-dot">·</span> Vollständige Analyse: analysen/WEGE3-TMR-cross-check-fazit-2026-08-31.md</div>
+    <div>Keine Anlageberatung · Quick Filter (kein DCF) · Seite 1/1</div>
+  </div>
+
+</div>
+</body>
+</html>
