@@ -636,6 +636,16 @@ Mechanismen umgestellt:
 - Inhaltlich unverändert: `architecture.md` und die drei Prompt-Dateien
   bleiben wortwörtlich die Regelquelle. Diese Migration betrifft nur die
   Infrastruktur, keine einzige Analyse-/Portfolio-Regel.
+- **Eskalations-Kanal geklärt (2026-09-01):** `architecture.md` verlangt an
+  mehreren Stellen "E-Mail/Push" bei echtem Anlass. Push funktioniert:
+  Brian hat Remote Control verbunden, alle vier Scheduled Tasks rufen bei
+  handlungsrelevantem Ergebnis zusätzlich zur Chat-Nachricht das
+  `PushNotification`-Tool auf. E-Mail ist NICHT verdrahtet – kein
+  Connector installiert, `mcp__mcp-registry__search_mcp_registry` findet
+  auch nichts Passendes für Gmail/Outlook/SMTP in dieser Umgebung. War
+  vermutlich auch zu Cowork-Zeiten nie ein echter Kanal, nur ein
+  Konzept im Regelwerk. Müsste außerhalb einer Chat-Session eingerichtet
+  werden (dort, wo auch Remote Control verbunden wurde) – noch offen.
 
 ---
 
