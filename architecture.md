@@ -1797,6 +1797,128 @@ Gewinnmitnahme-Regeln" unten) – sie schließt nur die Lücke, dass eine frei
 angestoßene Einzelanalyse (Quick Filter wie Disco) bisher nicht denselben
 TA+EUR-Standard erfüllen musste wie der laufende Monitoring-Kreislauf.
 
+### IPO-Lock-up-/Overhang-Check, Post-IPO-Datenlücken-Konfidenz & No-False-Precision-Regel (2026-08-31, ausgelöst durch Vincorion-Fallstudie)
+
+**Lücke, die diesen Eintrag ausgelöst hat:** Brian hat eine fremde
+Drittanalyse ("Szenarios_Vincorion.pdf", Fact-Check/Verfeinerung einer
+Forumsthese zum STAR-Capital-Lock-up bei Vincorion SE/V1NC) hochgeladen und
+gebeten, den Kandidaten zusätzlich über unser eigenes 3-KI-System (Jarvis/
+Jack/Conan) zu prüfen und gegen die fremde Analyse zu spiegeln, um daraus
+Systemverbesserungen abzuleiten (Einzelanalysen:
+`VNC-TMR-quickfilter-jarvis-claude-2026-08-31.md`,
+`-jack-gemini-2026-08-31.md`, `-conan-chatgpt-2026-08-31.md`; volle
+Cross-Check-Gegenüberstellung inkl. PDF-Vergleich:
+`VNC-cross-check-fazit-2026-08-31.md`). Wie schon bei der Alimentation-
+Couche-Tard-PDF gilt: die fremde PDF dient AUSSCHLIESSLICH als Anstoß/lose
+Inspiration, nicht als 1:1-Vorlage — Wortwahl, Tabellenformate und
+Score-Logik bleiben unser eigenes Reaper-Vokabular.
+
+Vincorion (IPO 20.03.2026, <6 Monate Handelshistorie zum Analysezeitpunkt,
+STAR Capital hält 48,63% mit auslaufendem 180-Tage-Lock-up) hat zwei
+strukturelle Lücken im bisherigen Regelwerk sichtbar gemacht, die weder das
+Standard-K-Basis-Raster noch die Scout-DNA (Conan-the-Scout, für
+vorbörsliche/Pre-Revenue-Kandidaten gedacht) sauber abdecken: (a) ein
+Sondersituations-Risiko (PE-Sponsor-Overhang nach Lock-up-Ende), für das es
+bisher kein eigenes Prüfmodul gab, und (b) eine Datenlücken-Ursache
+("Unternehmen erst seit wenigen Monaten börsennotiert"), die das Regelwerk
+bisher identisch wie gewöhnliche Intransparenz (Disco-Fall: Capex/Umsatz,
+CCC nicht auffindbar) behandelt hätte, obwohl beides analytisch
+grundverschieden ist. Zusätzlich fiel im 3-KI-Cross-Check UND in der
+fremden PDF ein wiederkehrendes Muster auf: alle Beteiligten (Jack ~90%+,
+Conan ~70-80%, die fremde PDF ~50/25/15/7/3% je Szenario) neigten dazu,
+für ein grundsätzlich nicht statistisch herleitbares Verkäuferverhalten
+(wird ein PE-Fonds nach Lock-up-Ende verkaufen, und wie?) konkrete
+Prozent-Wahrscheinlichkeiten zu erfinden — nur Jarvis verzichtete bewusst
+darauf und lieferte nur eine Rangfolge. Da drei von vier unabhängigen
+KI-Antworten zur Schein-Präzision neigten, ist das ein systematischer
+Bias, der eine feste Regel braucht, keine Einzelfall-Disziplin.
+
+**Ab sofort gilt:**
+
+1. **Neues Prüfmodul "IPO-Lock-up-/Overhang-Check"**, auszulösen immer wenn
+   ALLE folgenden Bedingungen zutreffen: (a) Börsengang/Spin-off vor
+   weniger als 24 Monaten, (b) ein einzelner Alt-Eigentümer (PE-Sponsor,
+   Gründerfamilie, Konzernmutter bei Spin-off) hält nach IPO weiterhin
+   >25%, (c) eine vertragliche oder marktübliche Lock-up-Frist mit
+   bekanntem/geschätztem Ablaufdatum besteht. Pflichtinhalte, im Quick-
+   Filter als eigene Sektion "🔓 IPO-Lockup-/Overhang-Analyse":
+   - **Overhang-Größe vs. Liquidität** ("Tage-zum-Liquidieren": Alt-
+     eigentümer-Bestand ÷ durchschnittliches Tagesvolumen der letzten
+     ~3 Monate) als objektive Kennzahl dafür, ob ein Börsenverkauf
+     überhaupt praktikabel ist oder zwingend eine Blockplatzierung
+     (Accelerated Bookbuild) nötig wird.
+   - **Szenario-Wahrscheinlichkeits-Leiter** (z.B. Teilblock-Platzierung /
+     Abwarten / gestaffelte Platzierungen / Nahezu-Komplettausstieg /
+     sukzessiver Börsenverkauf) — **als Rangfolge/Richtung, NICHT als
+     Prozentzahlen**, außer eine benannte, datierte Primärquelle
+     veröffentlicht selbst eine belastbare Zahl (siehe Regel 3 unten).
+   - **Block-Discount-Sensitivitätstabelle**: Ausgangskurs × plausible
+     Discount-Bandbreite (branchenüblich, mit Quellenverweis) → sich
+     ergebender Platzierungskurs, explizit als Rechenbeispiel getaggt,
+     keine Kursprognose.
+   - **Bereits-eingepreist-Einschätzung** (qualitativ: nicht / teilweise /
+     vollständig) unter Verweis auf bereits erfolgte Kursabschläge und
+     ggf. explizite Analysten-Kommentare zum Overhang als Bewertungsdeckel.
+   - **Cornerstone-/Anker-Investor-Qualitätssignal**: bereits vor dem
+     Lock-up-Ereignis engagierte, benannte institutionelle Investoren
+     (z.B. Fidelity, Invesco, T. Rowe Price bei Vincorion) reduzieren —
+     ersetzen aber nicht — das Platzierungsrisiko, weil ein
+     institutionelles Käuferbuch nachweislich bereits existiert. Dies ist
+     ein qualitativer Kontextpunkt, kein eigenes K/E-Scoring-Kriterium.
+2. **Neue Konfidenz-Kategorie "N/V wegen kurzer Handelshistorie" (Post-IPO-
+   Datenlücke), getrennt von normalem N/V:** Wenn eine Kennzahl fehlt, WEIL
+   das Unternehmen strukturell noch keine ausreichend lange Berichtshistorie
+   als eigenständiger Börsenwert hat (i.d.R. <2 Jahre bzw. <2 testierte
+   Jahresabschlüsse als Public Company — typisch betroffen: 3-5J-CAGR,
+   Piotroski F-Score, historischer ROIC/ROCE-Trend, Beta, Management-Score),
+   wird das explizit als **"N/V wegen kurzer Handelshistorie"** statt als
+   generisches N/V getaggt — zur Abgrenzung von "N/V" im Disco-Sinne (Daten
+   existieren, wurden aber nicht offengelegt/gefunden — ein
+   Beschaffungs-/Transparenzproblem). Beide Fälle führen weiterhin zum
+   GLEICHEN mechanischen Konfidenz-Deckel (🔴 NIEDRIG bei Überschreiten der
+   üblichen N/V-Schwelle → Tier ≤3, Reaper Score ≤6, EDGE-Deckel ≤🟡 —
+   unverändert ggü. bestehender Regel), aber der Tag macht in der Analyse
+   selbst transparent, DASS der Deckel eine Reifegrad-Frage ist, kein
+   Warnsignal über die Unternehmensqualität — wichtig für die spätere
+   Neubewertung, sobald die Historie lang genug ist (Re-Evaluation-Trigger:
+   sobald 2 volle Geschäftsjahre als Public Company vorliegen, automatisch
+   auf normale K-Basis-Prüfung zurückwechseln, nicht dauerhaft gedeckelt
+   lassen).
+3. **No-False-Precision-Regel für Verkäufer-/Akteursverhalten:** Wenn eine
+   Analyse das künftige Verhalten eines identifizierbaren Akteurs
+   einschätzen muss (PE-Sponsor-Exit, Insider-Verkauf, M&A-Wahrscheinlich-
+   keit u.ä.) OHNE eine belastbare statistische Grundlage (z.B. eine
+   veröffentlichte Verkaufsabsichtserklärung, ein SEC-Filing mit Termin),
+   ist die Einschätzung als **Rangfolge + Richtung** auszudrücken (z.B.
+   "am wahrscheinlichsten... deutlich möglich... unwahrscheinlich, aber
+   nicht ausgeschlossen"), NICHT als erfundene Prozentzahl (z.B. "70-80%
+   Wahrscheinlichkeit") — auch wenn eine befragte Fremd-KI (Jack, Conan)
+   oder eine vom Nutzer hochgeladene Drittquelle das tut. Ausnahme: die
+   Prozentzahl stammt selbst direkt und zitierfähig aus einer benannten,
+   datierten Primärquelle (z.B. ein Analysten-Report, der explizit "wir
+   schätzen X% Wahrscheinlichkeit" schreibt) — dann wird sie als Zitat mit
+   Quellenangabe übernommen, nicht als eigene Herleitung ausgegeben.
+   Hintergrund: im Vincorion-Cross-Check griffen 2 von 3 KIs (Jack, Conan)
+   UND die vom Nutzer hochgeladene Drittanalyse unabhängig voneinander zu
+   erfundenen Prozentzahlen — nur Jarvis hielt sich an Rangfolge ohne
+   Zahlen. Das zeigt, dass Schein-Präzision ein systematisches Muster ist,
+   das eine feste Regel statt Einzelfall-Disziplin braucht.
+4. **Katalysator-gebundene Einstiegszonen als zulässiges Alternativformat:**
+   Wenn ein bekanntes, terminierbares Ereignis (Lock-up-Ablauf,
+   Earnings-Termin, Zulassungsentscheid) das kurzfristige Kursbild
+   dominiert, dürfen Einstiegszonen explizit an dieses Ereignis gebunden
+   werden (z.B. "Zone X, falls Blockplatzierung mit Y% Discount erfolgt")
+   statt ausschließlich rein technische Niveaus (EMA/Pivot) zu nennen —
+   ergänzt, ersetzt aber nicht die bestehende TA-Pflicht-Sektion "Chart-
+   und Einstiegslage" (siehe oben) für den technischen Blickwinkel.
+
+Diese Ergänzung ändert nichts an der bestehenden Standard-K-Basis-Logik für
+reguläre (>2 Jahre börsennotierte) Kandidaten und nichts an der separaten
+Scout-DNA (Conan-the-Scout, für vorbörsliche Deep-Tech-Kandidaten) — sie
+schließt nur die Lücke für den spezifischen Zwischenfall "profitabel,
+schnell wachsend, aber erst seit kurzem börsennotiert mit PE-Overhang", der
+bisher weder ins Standard- noch ins Scout-Raster passte.
+
 ### Verkaufsdisziplin & Gewinnmitnahme-Regeln (2026-08-29, von Brian gefordert)
 
 Bisher lag der Fokus des Regelwerks stark auf der Kaufseite (TMR/Scout/TA
@@ -3480,3 +3602,69 @@ Expected-Return-Szenario, Drawdown-Psychologie-Protokoll), Abschnitt 9
 Gewinnmitnahme-Regeln" (Investment-These-Protokoll). Der Core-/
 Advisory-Rules-Split (Conan) bleibt als offener, nicht freigegebener
 Vorschlag vorgemerkt.**
+
+## 13. Cross-KI-Diskussion: Vincorion-Fallstudie — IPO-Overhang-Modul, Post-IPO-Datenlücken & No-False-Precision-Regel (2026-08-31)
+
+Brian hatte eine fremde Drittanalyse zu Vincorion SE (V1NC, IPO 20.03.2026,
+STAR Capital 48,63%, auslaufender Lock-up) hochgeladen und gebeten, den
+Kandidaten zusätzlich über Jarvis/Jack/Conan zu prüfen und beide
+Sichtweisen zu vergleichen, um daraus Systemverbesserungen abzuleiten. Der
+volle 3-KI-Cross-Check plus der explizite Methodik-Vergleich gegen die
+fremde PDF liegt in `analysen/VNC-cross-check-fazit-2026-08-31.md` (Einzel-
+analysen: `VNC-TMR-quickfilter-jarvis-claude-2026-08-31.md`,
+`-jack-gemini-2026-08-31.md`, `-conan-chatgpt-2026-08-31.md`).
+
+**Ergebnis-Konvergenz:** Alle drei KIs landeten unabhängig voneinander bei
+**BEOBACHTEN + Sizing-Tier 3** (Reaper Score 6/10 bei Jarvis,
+konfidenz-gedeckelt; 7,2/10 bei Jack; 7,0/10 bei Conan) — die bislang
+stärkste Rating-Konvergenz aller in diesem Projekt durchgeführten
+Cross-Checks. Uneinig waren sich die drei dagegen deutlich bei der
+Konfidenz-Einordnung selbst (Jarvis 🔴 NIEDRIG hart gedeckelt vs. Jack
+"Hoch" vs. Conan "GELB/~65%") — obwohl alle drei dieselben Datenlücken
+auflisteten, was zeigte, dass das Regelwerk bisher keine einheitliche
+Vorgabe hatte, WIE stark Post-IPO-Datenlücken die Konfidenz drücken sollen.
+
+**Drei konkrete, umgesetzte Regelwerk-Ergänzungen** (vollständig unter
+"IPO-Lock-up-/Overhang-Check, Post-IPO-Datenlücken-Konfidenz &
+No-False-Precision-Regel" oben, Abschnitt 4, direkt vor
+"Verkaufsdisziplin"):
+
+1. **Neues Prüfmodul "IPO-Lock-up-/Overhang-Check"** — formalisiert das in
+   der Jarvis-Vincorion-Analyse probeweise eingeführte Modul
+   (Overhang-vs.-Liquidität-Kennzahl, Szenario-Leiter, Block-Discount-
+   Sensitivität, Cornerstone-Investor-Qualitätssignal) als Pflichtsektion
+   für jeden Kandidaten mit IPO/Spin-off <24 Monate + Alt-Eigentümer >25%
+   + bekannter Lock-up-Frist.
+2. **Neue Konfidenz-Kategorie "N/V wegen kurzer Handelshistorie"**,
+   getrennt von normalem N/V (Disco-Fall: Daten verweigert/nicht
+   auffindbar) — gleicher mechanischer Konfidenz-Deckel, aber transparent
+   als Reifegrad- statt Transparenzproblem getaggt, mit Re-Evaluation-
+   Trigger nach 2 vollen Geschäftsjahren als Public Company.
+3. **No-False-Precision-Regel:** Verkäufer-/Akteursverhalten ohne
+   statistische Grundlage wird als Rangfolge/Richtung ausgedrückt, nicht
+   als erfundene Prozentzahl. Direkter Auslöser: Im Cross-Check griffen
+   Jack (~90%+) und Conan (~70-80%) UND die hochgeladene Drittanalyse
+   (~50/25/15/7/3% je Szenario) unabhängig voneinander zu konkreten
+   Prozentschätzungen für STARs Verkaufsverhalten — nur Jarvis blieb bei
+   reiner Rangfolge. Da 3 von 4 unabhängigen Quellen (2 Fremd-KIs + die
+   Nutzer-PDF) zur Schein-Präzision neigten, wurde daraus eine feste Regel
+   statt einer Einzelfall-Entscheidung.
+
+**Zusätzlich aus dem PDF-Methodik-Vergleich übernommen (nicht als eigene
+Regel, sondern als bestätigte Best Practice):** Die "Tage-zum-
+Liquidieren"-Kennzahl (Alteigentümer-Bestand ÷ Ø-Tagesvolumen) und die
+Block-Discount-Sensitivitätstabelle aus der fremden PDF wurden als
+methodisch sinnvoll bewertet und sind jetzt fester Bestandteil des neuen
+Overhang-Moduls (Punkt 1) — im Gegensatz zu den erfundenen
+Szenario-Prozentzahlen der PDF, die bewusst NICHT übernommen wurden (siehe
+Punkt 3). Die PDF-Sachfakten selbst (STAR-Anteil, H1-Zahlen, IPO-Details,
+Cornerstone-Investoren) wurden unabhängig gegenrecherchiert und
+bestätigt — nur das exakte Lock-up-Ablaufdatum blieb bei allen Quellen
+unverifizierbar ("Herbst 2026"/"Mitte-Ende September").
+
+**Status: von Brian angestoßen (2026-08-31, "vielleicht gibts Punkte die
+wir für unsere Analyse-System ergänzen, verbessern, modifizieren können")
+und direkt umgesetzt** (kein separater Freigabe-Schritt wie bei Abschnitt
+12, da es sich um eng auf den konkreten Vincorion-Fall bezogene,
+gut abgegrenzte Modul-Ergänzungen statt einer System-weiten Architektur-
+Änderung handelt).
