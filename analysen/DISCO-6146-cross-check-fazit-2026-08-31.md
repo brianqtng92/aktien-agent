@@ -36,5 +36,17 @@ Die Mehrheitsmeinung (Jarvis + Jack, beide mit nachvollziehbarem Konfidenz-Decke
 
 **Empfehlung:** Kein sofortiger Kauf trotz Conans abweichendem Votum. Eine echte Kaufentscheidung sollte erst nach einem FULL DEEP DIVE mit Zweitquellen-Verifikation der offenen Kennzahlen erfolgen — das würde auch die Divergenz zwischen den drei KIs auflösen, da sie fast ausschließlich aus der unterschiedlichen Behandlung der Datenlücken entsteht, nicht aus einer inhaltlich unterschiedlichen Einschätzung der Geschäftsqualität.
 
+## Nachtrag (2026-08-31, Nachmittag): Technische Bestätigung + Einstiegszonen
+
+Auf Brians Feedback hin (Regelwerk-Ergänzung "TA-Pflicht bei JEDER Einzelanalyse", siehe architecture.md) wurde die fundamentale Cross-Check-Analyse oben um eine eigene "Chart- und Einstiegslage"-Sektion ergänzt (volle Details in der Jarvis-Datei). Twelve Data führt 6146/JPX auf dem aktuellen Plan nicht (Live-Testabfrage bestätigt, "Pro/Venture"-Plan nötig) — die technische Einschätzung basiert daher auf Drittquellen (Yahoo Finance, TipRanks), transparent als [ESTIMATE] statt [LIVE] getaggt.
+
+Seit dem Freitagsschluss (¥62.260/≈336,11€, Basis der obigen Fundamentalanalyse) ist die Aktie im Zuge eines breiten Risk-off-Handelstages (Iran/Hormuz-Eskalation) weiter auf **¥56.520 (≈305,12€, Montagvormittag JST)** gefallen — bärische Struktur auf allen gleitenden Durchschnitten (MA20/50/100/200), RSI 42,5, MACD negativ. Das bestätigt technisch die fundamentale BEOBACHTEN-Einstufung: kein Einstiegssignal, solange keine Bodenbildung erkennbar ist.
+
+**Zweistufige Einstiegszonen (Technik + Fundamentaldaten kombiniert):**
+- **Zone 1 (moderat):** ¥57.000–58.500 (≈307–316€) — Pivot-Unterstützungscluster (S1/S2) trifft auf erste KGV-Kompression (~44-45x TTM statt 49x). Kein aktives Signal, nur Beobachtungsstart.
+- **Zone 2 (stark, nur bei intakter These):** ¥50.000 (≈269,93€) — identisch mit dem Abstauber-Limit, kombiniert mit erkennbarer technischer Bodenbildung wäre dies das stärkste Signal.
+
+Dieser Nachtrag ändert nichts an den Ratings/Scores der drei KIs oben (Jack und Conan wurden für diese technische Ergänzung nicht erneut befragt, da sie die fundamentale Einschätzung nicht berührt) — er ergänzt die bereits bestehende fundamentale Konvergenz um eine konkrete, EUR-umgerechnete Timing-Komponente, wie von Brian gefordert.
+
 ---
 *Einzelanalysen: DISCO-6146-TMR-quickfilter-jarvis-claude-2026-08-31.md · DISCO-6146-TMR-quickfilter-jack-gemini-2026-08-31.md · DISCO-6146-TMR-quickfilter-conan-chatgpt-2026-08-31.md*

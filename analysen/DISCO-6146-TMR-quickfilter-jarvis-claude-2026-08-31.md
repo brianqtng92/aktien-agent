@@ -111,6 +111,40 @@ Einordnung: **📈 AUFSCHWUNG mit früher ÜBERHITZUNGS-Tendenz.** Begründung: 
 
 ---
 
+## 📉 CHART- UND EINSTIEGSLAGE (NACHTRAG 2026-08-31, Nachmittag)
+
+**Datenhinweis (Transparenz-Pflicht):** Twelve Data führt 6146/JPX auf Brians aktuellem Plan NICHT ("available starting with the Pro or Venture plan" — per Live-Testabfrage `get_quote`/`get_technical_indicator`/`get_time_series` heute bestätigt, gilt wie schon bei anderen Nicht-US-Börsenplätzen zuvor). Diese Sektion nutzt daher den dokumentierten Fallback (WebSearch/Drittquellen: Yahoo Finance für den aktuellen Kurs, TipRanks für MA/RSI/MACD/Pivot-Punkte) und ist entsprechend als **[ESTIMATE/Drittquelle]** statt [LIVE] getaggt. Falls Brian regelmäßig japanische/nicht-US-Titel technisch analysiert haben möchte, wäre ein Plan-Upgrade bei Twelve Data (Pro/Venture, siehe twelvedata.com/pricing) die sauberere Lösung.
+
+**Wichtige Kursaktualisierung:** Seit dem Schlusskurs vom Freitag (¥62.260, Basis der obigen Fundamentalanalyse) ist die Aktie am Montag, 31.08.2026, im Zuge eines breiten Risk-off-Handelstages (Iran/Straße-von-Hormuz-Eskalation, siehe Depot-Update vom Wochenende) weiter gefallen: **¥56.520 (≈305,12 €) um 9:09 Uhr JST, −4,77% ggü. Vortagesschluss ¥59.350 (≈320,40 €)** [Yahoo Finance, Live-Handel — Kurs kann im Tagesverlauf weiter schwanken]. Wechselkurs JPY/EUR 0,0053985 (Twelve Data, 31.08.2026).
+
+**Trend-/Momentum-Ampel:**
+
+| Bereich | Ampel | Bewertung |
+|---|---|---|
+| Trendstruktur (MA) | 🔴 ROT | Kurs liegt unter MA20 (¥61.623/≈332,71€), MA50 (¥68.336/≈368,91€), MA100 (¥69.414/≈374,73€) UND MA200 (¥64.081/≈345,94€) — bärische Struktur auf allen Zeitebenen, kein "billig unter MA200"-Kaufsignal, da MA200-Unterschreitung selbst bärisch zu werten ist |
+| Momentum | 🟡 GELB/bärisch | RSI(14) 42,5 (neutral, aber unter 50) · MACD(12,26) −1.673 (bärisches Signal) |
+| Kurzfrist-Reaktion | 🔴 ROT | Kurs notiert bereits unter dem Tages-Pivot (¥60.180/≈324,88€) und unter der ersten beiden Pivot-Unterstützungen (S1/S2), Richtung S3 rutschend |
+| Volatilität | 🟡 GELB | Zwei aufeinanderfolgende zweistellige Tagesbewegungen (Fr. −5,54%, Mo. −4,77%) — deutlich erhöhte Schwankungsbreite seit dem Q1-Ergebnisrutsch |
+
+**Technische Zonen (Pivot-Punkte, Classic-Methode, TipRanks):**
+
+| Zone | Kurs (≈EUR) | Bedeutung | Mögliche Reaktion |
+|---|---|---|---|
+| R2/R3 | ¥63.180–64.480 (≈341–348€) | obere Pivot-Widerstände, oberhalb Freitagsschluss | erst darüber wäre die Abwärtsbewegung technisch gebrochen |
+| Pivot | ¥60.180 (≈324,88€) | Tagesmittelpunkt | Rückeroberung = erstes kurzfristiges Stabilisierungssignal |
+| S1 | ¥58.480 (≈315,70€) | erste kurzfristige Unterstützung | wird im laufenden Rutsch bereits getestet |
+| S2 | ¥57.180 (≈308,68€) | zweite Unterstützung | Kurs notiert aktuell knapp darunter |
+| S3 | ¥55.480 (≈299,51€) | dritte/tiefere kurzfristige Unterstützung | nächstes Ziel bei anhaltendem Momentum-Verkauf |
+
+**Kombinierte Einstiegszonen-Empfehlung (Technik + Fundamentaldaten):**
+
+- **Einstiegszone 1 (moderates Signal):** ¥57.000–58.500 (≈307–316€) — Überschneidung von S1/S2-Pivot-Cluster mit einer ersten spürbaren KGV-Kompression (TTM sinkt bei gleichem Gewinn auf ~44–45x statt 49x). Noch kein aktives Kaufsignal — Momentum bleibt bärisch (RSI <50, MACD negativ) —, aber der Bereich, in dem sich Charttechnik und "nicht mehr ganz so teuer" erstmals überschneiden. Relevant erst mit einem Stabilisierungssignal (z.B. Tagesschluss zurück über dem Pivot).
+- **Einstiegszone 2 (stärkeres Signal, sofern These intakt):** ¥50.000 (≈269,93€) — identisch mit dem bereits im Beobachten-Protokoll festgelegten Abstauber-Limit, klar unter S3. Ein Rutsch in diese Zone kombiniert mit erkennbarer Bodenbildung (z.B. RSI-Erholung aus <30, abflachendes MACD-Histogramm) wäre das stärkste kombinierte technisch-fundamentale Signal. Gilt ausdrücklich nur, wenn der [B] These-Check weiterhin bestätigt: keine belegten GL-Tech-Marktanteilsverluste, keine verletzte Netto-Cash-Position — sonst wäre das ein "falling knife", kein Kaufsignal (Sicherheitsregel Abschnitt 1 des Regelwerks).
+
+**Charturteil:** Kein "Strong Sell" im Sinne von Positionsaufgabe (hier: reiner Watchlist-Kandidat, keine bestehende Position), sondern eine technische Bestätigung der bereits fundamental begründeten BEOBACHTEN-Einstufung: kurzfristig klar angeschlagen auf allen Zeitebenen, aber noch keine Bodenbildung erkennbar — spricht gegen einen Einstieg genau jetzt und für Geduld mindestens bis Einstiegszone 1, mit spürbar besserem Chance-Risiko-Profil erst bei Einstiegszone 2 kombiniert mit einem Stabilisierungssignal.
+
+---
+
 ## 🎯 MEIN VERDICT
 
 😈 **Devil's Advocate (kurz):**
@@ -124,7 +158,7 @@ Begründung: Fundamental eines der stärksten Profile, die bisher in diesem Proj
 
 🔭 **BEOBACHTEN-PROTOKOLL: 6146 (Disco)**
 ─────────────────────────────────────────
-**ABSTAUBER-LIMIT (Watchlist-Einstiegszone bei Rücksetzer):** ¥50.000 (≈−19,7% vom aktuellen Kurs, deutlich über dem 52W-Tief, markiert eine Zone mit klar verbessertem Chance-Risiko-Profil ohne auf einen Vollcrash zu warten)
+**ABSTAUBER-LIMIT (Watchlist-Einstiegszone bei Rücksetzer):** ¥50.000 (≈269,93€, ursprünglich ≈−19,7% vom Freitagsschluss ¥62.260 gerechnet) — nach dem Kursrutsch vom 31.08. auf ¥56.520 (≈305,12€) nur noch ≈−11,5% entfernt, siehe zweistufige Einstiegszonen-Empfehlung in "Chart- und Einstiegslage" oben (Zone 1: ¥57.000–58.500/≈307–316€ moderat, Zone 2: ¥50.000/≈269,93€ stark, jeweils nur bei intakter These)
 **UPGRADE-TRIGGER → KAUFEN-WÜRDIG (mind. 2 von 3):**
 → Zweitquellen-Verifikation (Piotroski, Capex/Umsatz, CCC) hebt Konfidenz von 🔴 auf mind. 🟡
 → Kurs erreicht Abstauber-Limit (¥50.000) bei sonst intakter These
