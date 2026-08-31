@@ -1919,6 +1919,77 @@ schließt nur die Lücke für den spezifischen Zwischenfall "profitabel,
 schnell wachsend, aber erst seit kurzem börsennotiert mit PE-Overhang", der
 bisher weder ins Standard- noch ins Scout-Raster passte.
 
+### Formulierungsstil der Kurz-Fazits & PDF-Fazits: an Raketentonis Erzählstil angelehnt (2026-08-31, von Brian gefordert, ausgelöst durch "HawkEye360Szenarien.pdf")
+
+**Lücke, die diesen Eintrag ausgelöst hat:** Brian hat eine von Raketentonis
+Agent erstellte HawkEye-360-Analyse ("HawkEye360Szenarien.pdf") hochgeladen.
+Die Faktenbasis wurde gegengecheckt (Lock-up-Termin 2. September, Russell-
+2000-Aufnahme 21. September, Q2-Zahlen, Aktionärsstruktur — alles bestätigt).
+Danach hat Brian ausdrücklich gefordert: die ANALYSE-TIEFE UND DER PROZESS
+bleiben exakt wie bisher (Full Deep Dive, Quick Filter, Ampel-Batch-Scan,
+Blitz-Scan-Voreinschätzung — je nach Anlass unverändert), aber die
+ABSCHLIESSENDE ZUSAMMENFASSUNG (Chat-Kurz-Fazit UND das Fazit-/Verdict-
+Element im PDF) soll sich in Formulierung und Satzbau an Raketentonis
+erzählerischem Stil orientieren — NICHT 1:1 übernommen, sondern "auf unsere
+Art". Wie schon bei der Vincorion-Fallstudie und beim Ampel-Batch-Layout
+gilt: eine fremde Vorlage ist Anstoß, kein Klon-Auftrag.
+
+**Wichtige Abgrenzung (von Brian auf Nachfrage bestätigt, 2026-08-31): die
+No-False-Precision-Regel (siehe IPO-Lock-up-/Overhang-Check oben) bleibt
+vollständig in Kraft.** Raketentonis Stil arbeitet mit erfundenen Szenario-
+Prozentzahlen (z.B. "55% Wahrscheinlichkeit"). Das übernehmen wir explizit
+NICHT. Wahrscheinlichkeitsartige Einschätzungen bleiben Rangfolge/Richtung
+("am wahrscheinlichsten... deutlich möglich... unwahrscheinlich, aber nicht
+ausgeschlossen"), außer eine benannte Primärquelle liefert selbst eine
+zitierfähige Zahl. Übernommen wird ausschließlich der ERZÄHLERISCHE STIL und
+die STRUKTUR der Zusammenfassung, nicht der Inhalt oder die
+Zahlen-Schein-Präzision.
+
+**Ab sofort gilt für JEDE Abschluss-Zusammenfassung — unabhängig von der
+Analyse-Tiefe (Full Deep Dive, Quick Filter, Ampel-Batch-Scan,
+Blitz-Scan-Voreinschätzung):**
+
+1. **Kurzfazit zuerst.** Der allererste Satz bzw. die ersten zwei Sätze der
+   Zusammenfassung sind die Kernaussage/Handlungsempfehlung selbst, fett
+   hervorgehoben — nicht die Herleitung. Beispiel-Duktus: "Für Brian würde
+   ich aktuell sagen: [Kandidat] ist fundamental spannend, aber ich würde
+   jetzt nicht blind bei [Kurs] kaufen." Erst danach folgt die Begründung.
+2. **Direkte Ansprache statt unpersönlicher Tabellenlogik im Fließtext.** Wo
+   bisher ein isolierter Fakt stand (z.B. "Depot-Fit: Sektorüberschneidung
+   mit Position X"), wird das in einen an Brian gerichteten Satz übersetzt
+   ("Das würde bei dir mit [Position X] ins gleiche Sektor-Töpfchen fallen,
+   ..."). Betrifft NUR den verbindenden Fließtext, nicht die Pflicht-
+   Tabellen selbst (Ampelcheck, DNA-Strang, Reaper-Score-Gauge,
+   Einstiegszonen-Tabelle) — die bleiben tabellarisch wie bisher.
+3. **Kurze, in sich abgeschlossene Gedankenschritte statt Stakkato-
+   Stichpunkte**, vor allem im PDF-Fazit-Element bzw. der Reaper-Kompakt-
+   Einzelseite, wo Platz dafür ist ("Das ist wichtig, weil...", "Genau
+   daraus entsteht..."). Im knappen Chat-Kurz-Fazit (weiterhin 5-8 Sätze,
+   siehe Pipeline-Schritt 5) reicht ein durchgehender Fließtext-Absatz in
+   diesem Duktus statt einer Aufzählung.
+4. **Die Entscheidung als Antwort auf eine gestellte Frage formulieren**,
+   wenn ein konkretes Timing-/Kauf-Dilemma vorliegt: "Wenn Brian mich
+   fragt: 'Soll ich heute kaufen oder abwarten?' — dann lautet meine
+   Antwort: ..." mit kurzer Best-Case-/Worst-Case-Gegenüberstellung des
+   Wartens in Prosa, nicht als Tabelle.
+5. **Abschließende Status-Zeile mit Ampel + Ein-Satz-Begründung**, getrennt
+   nach kurz- und mittelfristiger Einschätzung, falls diese auseinander-
+   fallen (z.B. "kurzfristig 🟠, mittelfristig eher 🟢") — Ampel-Farben und
+   -Bedeutung bleiben unser etabliertes Reaper-Vokabular (siehe die
+   verschiedenen Ampel-Skalen oben), nicht Raketentonis eigene Ampel-Achse.
+6. **Keine Einschränkung der Pflichtinhalte.** Alle bisher vorgeschriebenen
+   Bestandteile des Kurz-Fazits (Pipeline-Schritt 5: Rating+Timing-Ampel,
+   Haupttreiber, Depot-Fit, Konvergenz-Status, klare Handlungsempfehlung)
+   bleiben Pflicht — diese Regel ändert nur, WIE sie in Sätze gefasst
+   werden, nicht WAS gesagt werden muss.
+
+Diese Regel gilt sowohl für den Chat-Kurz-Fazit (Pipeline-Schritt 5) als
+auch für das Fazit-/Verdict-Element im Reaper-Kompakt-PDF sowie im
+Wochenfazit/Monatsrecap — überall dort, wo der Agent Brian gegenüber eine
+eigene, wertende Schlussfolgerung formuliert. Reine Fakten-/Kennzahlen-
+Tabellen (Fact-Pack, Ampelcheck, DNA-Strang, Bilanz-Kennzahlen) sind von
+dieser Regel nicht betroffen und bleiben tabellarisch/kompakt wie bisher.
+
 ### Verkaufsdisziplin & Gewinnmitnahme-Regeln (2026-08-29, von Brian gefordert)
 
 Bisher lag der Fokus des Regelwerks stark auf der Kaufseite (TMR/Scout/TA
