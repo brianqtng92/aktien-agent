@@ -1723,6 +1723,68 @@ den seltenen Fall, dass ein einzelner Depot-/Watchlist-Wert dort nicht
 geführt wird, bleibt die WebSearch-Schätzung als Ausnahme bestehen und wird
 dann weiterhin explizit als ungenauer gekennzeichnet.
 
+### TA-Pflicht bei JEDER Einzelanalyse inkl. Ad-hoc-Quick-Filter + "Chart- und Einstiegslage"-Sektion (2026-08-31, von Brian gefordert)
+
+**Lücke, die diesen Eintrag ausgelöst hat:** Bei der Disco-Corp-Analyse
+(6146.T, 2026-08-31) hat der 3-fach-Cross-Check (Jarvis/Jack/Conan) rein
+fundamental gearbeitet – keine der drei KIs hat das TA-Modul/Twelve Data
+für Unterstützungs-/Widerstandszonen herangezogen, und der Kurs wurde nur in
+JPY genannt, nicht zusätzlich in EUR (Verstoß gegen die bereits bestehende
+Regel "Einheitliche EUR-Umrechnung", siehe Pipeline-Schritt [3] oben – dort
+bislang nur für Depot-/Watchlist-Monitoring gelebt, nicht für eine frei von
+Brian angestoßene Einzelanalyse). Brian hat daraufhin eine eigene
+Vorlage geteilt (Referenz-PDF "Alimentation Couche-Tard Aktienanalyse",
+2026-08-26, elftes Kapitel "7. Chart- und Einstiegslage") als Vorbild dafür,
+was er sich künftig bei JEDER Einzelanalyse wünscht.
+
+**Ab sofort gilt (gilt für Quick-Filter GENAUSO wie für Full Deep Dive –
+anders als DCF/Vollformat-Zusatzmodule ist dieser Schritt NICHT
+überspringbar):**
+
+1. **TA-Modul ist Pflichtbestandteil jeder Einzelanalyse**, unabhängig davon,
+   ob sie von Brian ad-hoc angestoßen ("analysiere mir XY") oder vom
+   täglichen/wöchentlichen Trigger automatisch ausgelöst wird, und
+   unabhängig von Quick-Filter- oder Full-Deep-Dive-Tiefe. Datenbasis:
+   Twelve Data (`get_technical_indicator` für EMA20/50/200, Bollinger-Bänder,
+   RSI, MACD, ATR; `get_time_series`/Pivot-Punkte für Unterstützung/
+   Widerstand), analog zum bestehenden TA-Prompt-Modul ("Jack, Pure
+   Technical Analyst" v1.10, siehe Abschnitt 2). Nur wenn Twelve Data den
+   Ticker nachweislich nicht führt (seltener Ausnahmefall, siehe oben),
+   entfällt dieser Schritt – dann aber explizit als Lücke vermerkt, nicht
+   stillschweigend ausgelassen.
+2. **Eigene Sektion "Chart- und Einstiegslage"** in jeder Einzelanalyse
+   (Markdown-Datei UND Reaper-Kompakt-PDF), inhaltlich angelehnt an Brians
+   Referenz-Kapitel, aber in eigener Reaper-Optik statt 1:1-Klon (gleiche
+   Vorgehensweise wie beim Wochenreport-Layout ggü. Raketentoni, siehe
+   "PDF-Report-Design" unten): Ampel-Zeilen für Langfrist-/Mittelfristtrend,
+   Momentum, Volatilität, GEFOLGT von einer Tabelle konkreter
+   Unterstützungs-/Widerstandszonen (Zone → Bedeutung/technischer Bezug
+   [z.B. EMA20/Bollinger-Mitte, letzter Pivot, EMA50/unteres Bollinger-Band]
+   → mögliche Marktreaktion).
+3. **Kombinierte Einstiegszonen-Empfehlung (technisch + fundamental):** Nicht
+   nur die reine Charttechnik nennen, sondern explizit verknüpfen mit der
+   TMR-/Scout-Fair-Value-Einschätzung (Bear/Base/Bull) bzw. der Margin-of-
+   Safety-/Unterbewertungs-Einschätzung aus dem DNA-/Bewertungs-Check –
+   analog zum bestehenden "INVESTOR-ENTRY-Handoff" und den
+   "Einstiegszonen bei NACHKAUF ERWÄGEN" weiter unten, aber jetzt explizit
+   auch für brandneue Watchlist-Kandidaten ohne Kaufhistorie, nicht nur für
+   bereits gehaltene/schon länger beobachtete Positionen. Format:
+   mindestens 2 gestaffelte Zonen (z.B. "erste Unterstützung/moderateres
+   Signal" und "tiefere Zone/stärkeres Signal, sofern These intakt
+   bleibt"), jede mit kurzer Begründung, warum sie technisch UND
+   fundamental attraktiv wäre – nicht nur eine Zahl ohne Kontext.
+4. **EUR-Durchgängigkeit ausdrücklich auch hier:** Jede in dieser Sektion
+   genannte Zahl (Unterstützungs-/Widerstandszonen, Einstiegszonen,
+   Stop-Loss-Niveaus) folgt der bereits bestehenden Regel "Einheitliche
+   EUR-Umrechnung" (Originalwährung zuerst, EUR-Gegenwert in Klammern,
+   Wechselkurs-Quelle+Datum) – keine Ausnahme mehr für ad-hoc angestoßene
+   Einzelanalysen wie bisher bei Disco.
+Diese Ergänzung ändert nichts an der bereits bestehenden Charttechnik-Logik
+für Depot-/Watchlist-Monitoring (siehe "Verkaufsdisziplin &
+Gewinnmitnahme-Regeln" unten) – sie schließt nur die Lücke, dass eine frei
+angestoßene Einzelanalyse (Quick Filter wie Disco) bisher nicht denselben
+TA+EUR-Standard erfüllen musste wie der laufende Monitoring-Kreislauf.
+
 ### Verkaufsdisziplin & Gewinnmitnahme-Regeln (2026-08-29, von Brian gefordert)
 
 Bisher lag der Fokus des Regelwerks stark auf der Kaufseite (TMR/Scout/TA
@@ -2308,6 +2370,14 @@ Raketentoni, nicht nur andere Farben):**
 - **DNA-Check-Strang**: die K-Kriterien als schmaler Streifen aus 4-5
   farbigen Segmenten (Pass/Fail), angelehnt an einen DNA-Strang/Barcode,
   statt einer generischen Ampel-Tabellenzeile.
+- **Chart- und Einstiegslage-Box (2026-08-31, von Brian gefordert, siehe
+  "TA-Pflicht bei JEDER Einzelanalyse" oben):** feste Pflicht-Box in jedem
+  Einzelpositions-PDF (Quick Filter wie Full Deep Dive) – Trend-/Momentum-
+  Ampelzeilen (Twelve-Data-basiert) plus eine kompakte Zonen-Tabelle
+  (Unterstützung/Widerstand → mögliche Reaktion) und die daraus mit der
+  fundamentalen Margin-of-Safety-Einschätzung kombinierte Einstiegszonen-
+  Empfehlung. Alle Kursangaben darin zusätzlich in EUR (Klammer-Format wie
+  überall im Regelwerk).
 - Danach folgen (in eigener Optik, aber vom Grundgedanken her bewährt):
   Kurzthese, Kennzahlen, Einordnung, Chancen/Risiken nebeneinander,
   Beobachten (Upgrade-/Downgrade-Trigger, Abstauber-Limit), und ein fett
