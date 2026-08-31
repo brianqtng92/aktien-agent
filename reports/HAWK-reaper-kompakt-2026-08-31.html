@@ -169,6 +169,30 @@
     padding-top: 1.6mm; font-size: 6.2pt; color: var(--text-faint);
   }
   .footer .gold-dot { color: var(--gold); }
+
+  .trend-row { display: flex; gap: 2.4mm; }
+  .trend-card {
+    flex: 1; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px;
+    padding: 2.4mm 3mm; text-align: center;
+  }
+  .trend-card .label { font-size: 6.6pt; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint); }
+  .trend-card .ampel {
+    width: 8mm; height: 8mm; border-radius: 50%; margin: 1.6mm auto 1.2mm auto;
+    display: flex; align-items: center; justify-content: center; font-size: 6.4pt; font-weight: bold;
+  }
+  .trend-card .ampel.red { background: var(--red-bg); border: 1.5px solid var(--red); color: var(--red); }
+  .trend-card .ampel.yellow { background: var(--yellow-bg); border: 1.5px solid var(--yellow); color: var(--yellow); }
+  .trend-card .ampel.green { background: var(--green-bg); border: 1.5px solid var(--green); color: var(--green); }
+  .trend-card .ampel.grey { background: rgba(163,155,142,0.1); border: 1.5px solid var(--text-faint); color: var(--text-faint); }
+  .trend-card .note { font-size: 6.6pt; color: var(--text-dim); line-height: 1.28; }
+
+  .zone-table { width: 100%; border-collapse: collapse; margin-top: 1.4mm; }
+  .zone-table th, .zone-table td { font-size: 6.9pt; padding: 1.3mm 1.8mm; text-align: left; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+  .zone-table th { color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.04em; font-weight: normal; font-size: 6.4pt; }
+  .zone-table td.z { color: var(--gold-bright); white-space: nowrap; font-weight: bold; }
+  .zone-table td.r-supply { color: var(--red); }
+  .zone-table td.r-neutral { color: var(--yellow); }
+  .zone-table td.r-demand { color: var(--green); }
 </style>
 </head>
 <body>
@@ -284,7 +308,83 @@
 
   <div class="footer">
     <div>Reaper Full-Scout-Cross-Check <span class="gold-dot">·</span> Vollständige Analysen: analysen/HAWK-SCOUT-*-2026-08-31.md</div>
-    <div>Keine Anlageberatung · Full Scout (kein DCF) · Seite 1/1</div>
+    <div>Keine Anlageberatung · Full Scout (kein DCF) · Seite 1/2</div>
+  </div>
+
+</div>
+
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">CHART <span class="accent">&amp; EINSTIEGSLAGE</span></div>
+      <div class="brand-sub">Twelve-Data-Live-Charttechnik · Reaper-TA-Modul</div>
+      <div class="edition-tag">Ergänzung zum Full-Scout-Cross-Check · nachgetragen 01.09.2026</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">Stand 01. September 2026</div>
+      <div>Kurs: 18,96 $ ≈ 16,32€ (Kurs USD/EUR 0,861, Twelve Data)</div>
+      <div>Regelwerk: Jack — Pure Technical Analyst, MODUS 1 Standard-TA</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-label">Trend- &amp; Momentum-Ampel</div>
+    <div class="trend-row" style="margin-top:1.8mm;">
+      <div class="trend-card">
+        <div class="label">Langfristtrend</div>
+        <div class="ampel grey">N/V</div>
+        <div class="note">HAWK ist erst seit Mai 2026 börsennotiert — keine 200-Tage-Linie berechenbar. Kein Werturteil möglich, ehrlich als Datenlücke ausgewiesen statt geschätzt.</div>
+      </div>
+      <div class="trend-card">
+        <div class="label">Mittelfristtrend</div>
+        <div class="ampel red">●</div>
+        <div class="note">Kurs (16,32€) klar unter EMA20 (18,45€) UND EMA50 (19,71€) — beide Linien fallend, kein Stabilisierungssignal bislang.</div>
+      </div>
+      <div class="trend-card">
+        <div class="label">Momentum</div>
+        <div class="ampel red">●</div>
+        <div class="note">MACD unter Signallinie, Histogramm negativ (-0,45) — Abwärtsdruck bestätigt. RSI 36 ist schwach, aber noch nicht klassisch überverkauft (&lt;30).</div>
+      </div>
+      <div class="trend-card">
+        <div class="label">Volatilität</div>
+        <div class="ampel yellow">●</div>
+        <div class="note">ATR 1,45$ auf 19$ Kurs = ca. 7,6% Tagesspanne-Basis — erhöht. Enge Stop-Marken werden hier leicht ausgelöst.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Unterstützungs- &amp; Widerstandszonen</h3>
+    <table class="zone-table">
+      <tr><th>Zone</th><th>Technischer Bezug</th><th>Mögliche Marktreaktion</th></tr>
+      <tr><td class="z">22,89$ / 19,71€</td><td>EMA50 — mittelfristiger Widerstand</td><td class="r-supply">Erst darüber wäre der Abwärtstrend technisch wirklich gebrochen</td></tr>
+      <tr><td class="z">21,43$ / 18,45€</td><td>EMA20 — kurzfristiger Widerstand</td><td class="r-supply">Rückeroberung wäre erstes, aber noch kein starkes Stabilisierungssignal</td></tr>
+      <tr><td class="z">18,72$ / 16,12€</td><td>Unteres Bollinger-Band (20) — praktisch am aktuellen Kurs</td><td class="r-neutral">Kurs steht direkt an der Bandkante — typisch für eine kurze Gegenbewegung, aber kein verlässliches Kaufsignal für sich allein</td></tr>
+      <tr><td class="z">17,00–17,50$ / 14,64–15,08€</td><td>Nähe 52-Wochen-Tief (17,02$)</td><td class="r-demand">Erste ernsthafte Unterstützungszone — hier hat der Markt bisher schon einmal Käufer gefunden</td></tr>
+      <tr><td class="z">14,50–15,50$ / 12,49–13,35€</td><td>Jacks (Gemini) technische Grobmarke für ein Unterschießen nach dem Lock-up-Abverkauf</td><td class="r-demand">Nur erreichbar, falls der Lock-up-Abverkauf (ab 02.09.) den bisherigen Tiefpunkt tatsächlich durchbricht — kein Basisszenario, aber die tiefere Beobachtungszone</td></tr>
+    </table>
+  </div>
+
+  <div class="fazit-text">
+    <div class="head">
+      <span class="rating display" style="font-size:9.5pt;">Technik bestätigt die fundamentale Vorsicht — kauft aber nichts von selbst</span>
+    </div>
+    <p>Charttechnisch steht HAWK gerade dort, wo man es nach einer -27%-Bewegung seit dem Börsengang erwarten würde: unter beiden kurzfristigen Durchschnittslinien, mit negativem Momentum, aber noch nicht in einer klassischen Panik-Überverkauft-Zone (RSI 36, nicht unter 30). <b>Wichtig zu verstehen:</b> Diese Sektion ersetzt nicht die fundamentale Regelwerks-Entscheidung von Seite 1 — der Hype-Kill-Switch und der bereits überschrittene Sizing-Deckel gelten unabhängig davon, wie der Chart aussieht. Sie beantwortet eine andere Frage: <b>falls</b> du (rein hypothetisch, denn ein Nachkauf ist aktuell ohnehin nicht regelkonform) über einen Nachkauf nachdenken würdest, wo wäre technisch UND fundamental die günstigere Zone? Die Antwort: nicht bei 18-19€, wo der Kurs gerade steht, sondern erst in der 17,00-17,50$-Zone (Nähe 52-Wochen-Tief) als erste, moderatere Marke — und, falls der Lock-up-Abverkauf ab dem 2. September wirklich hart durchschlägt, in der tieferen 14,50-15,50$-Zone, die Jack (Gemini) unabhängig als technische Grobmarke genannt hat. Beide Zonen setzen voraus, dass die fundamentale These (Wachstum, NRO-Vertrag, Bilanzstärke) dabei intakt bleibt — ein Kursrückgang wegen neuer schlechter Nachrichten wäre kein Kaufsignal, sondern das Gegenteil.</p>
+  </div>
+
+  <div class="box" style="flex:0 0 auto;">
+    <h3>Was in den nächsten Tagen zu beobachten ist</h3>
+    <ul class="bullets">
+      <li style="padding-left:0;">Ab 02.09.: reagiert der Kurs auf die Lock-up-Freigabe mit echtem Verkaufsdruck, oder wird das Angebot vom Markt sauber absorbiert (siehe Timeline auf Seite 1)?</li>
+      <li style="padding-left:0;">Bleibt der RSI über 30 (kein Panik-Verkauf) oder rutscht er darunter (klassische Überverkauft-Zone, potenziell technische Gegenbewegung)?</li>
+      <li style="padding-left:0;">Ein Schlusskurs über der EMA20 (21,43$) wäre das erste technische Lebenszeichen — bis dahin bleibt der Trend intakt abwärtsgerichtet.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div>Reaper TA-Modul <span class="gold-dot">·</span> Datenbasis Twelve Data, Stand 01.09.2026 · Kurszonen technisch + fundamental verknüpft</div>
+    <div>Keine Anlageberatung · Kein Kaufsignal · Seite 2/2</div>
   </div>
 
 </div>

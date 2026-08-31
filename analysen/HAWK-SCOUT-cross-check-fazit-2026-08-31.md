@@ -75,3 +75,30 @@ Jack nutzte für Planet Labs/BlackSky/Spire teils veraltete oder falsch erinnert
 **OUTCOME-EV: Bandbreite 1,53x–3,33x, Downside-Summe 50–65%** – je nach KI unterschiedlich optimistisch gerechnet, aber alle drei landen bei einem gedeckelten/knapp bestandenen Ampel-Status, keine KI sieht ein klares grünes Bild.
 
 **Praktische Konsequenz für Brians bestehende Position (unverändert ggü. Nachtrag 26.08.):** Kein Nachkauf. Die bestehende Position (~60 Aktien, aktuell ~2,7% des Depots zum Kurs von 18,92 USD) liegt bereits über dem eigenen Trace-Sizing-Deckel (<0,5%) – das ist keine neue Verfehlung, sondern ein bereits dokumentierter Zustand, der durch diese Vertiefung bestätigt statt widerlegt wird. Beobachtungspunkte bleiben: 02.09. (Lock-up-Handelsfreigabe), 21.09. (Russell-2000-Wirksamkeit), Q3-Zahlen (~Anfang November) als erster echter Beleg, ob sich die Bruttomarge nach der ISA-Integration wieder stabilisiert.
+
+---
+
+## 📈 CHART- UND EINSTIEGSLAGE (nachgetragen 01.09.2026, siehe architecture.md "TA-Pflicht bei JEDER Einzelanalyse")
+
+**Datenbasis:** Twelve Data, Stand 01.09.2026. Kurs 18,96 $ ≈ 16,32€ (Kurs USD/EUR 0,861).
+
+| Bereich | Ampel | Bewertung |
+|---|---|---|
+| Langfristtrend | N/V | HAWK ist erst seit Mai 2026 börsennotiert – keine 200-Tage-Linie berechenbar, ehrlich als Datenlücke ausgewiesen statt geschätzt. |
+| Mittelfristtrend | 🔴 | Kurs klar unter EMA20 (21,43$/18,45€) UND EMA50 (22,89$/19,71€), beide fallend. |
+| Momentum | 🔴 | MACD unter Signallinie, Histogramm negativ (-0,45). RSI 36 – schwach, aber noch nicht klassisch überverkauft (<30). |
+| Volatilität | 🟡 | ATR 1,45$ auf ~19$ Kurs ≈ 7,6% Tagesspanne-Basis, erhöht. |
+
+**Unterstützungs-/Widerstandszonen:**
+
+| Zone | Technischer Bezug | Mögliche Reaktion |
+|---|---|---|
+| 22,89$ / 19,71€ | EMA50, mittelfristiger Widerstand | Erst darüber wäre der Abwärtstrend technisch gebrochen |
+| 21,43$ / 18,45€ | EMA20, kurzfristiger Widerstand | Rückeroberung = erstes, noch kein starkes Stabilisierungssignal |
+| 18,72$ / 16,12€ | Unteres Bollinger-Band (20), praktisch am aktuellen Kurs | Typisch für kurze Gegenbewegung, kein verlässliches Kaufsignal allein |
+| 17,00–17,50$ / 14,64–15,08€ | Nähe 52-Wochen-Tief (17,02$) | Erste ernsthafte Unterstützungszone |
+| 14,50–15,50$ / 12,49–13,35€ | Jacks (Gemini) technische Grobmarke bei Unterschießen nach Lock-up | Nur bei hartem Lock-up-Abverkauf relevant, kein Basisszenario |
+
+**Kombinierte Einstiegslage (technisch + fundamental):** Diese Sektion ersetzt nicht die Regelwerks-Entscheidung oben (Hype-Kill-Switch + bereits überschrittener Sizing-Deckel gelten unabhängig vom Chart). Sie beantwortet nur: falls ein Nachkauf regelkonform wäre, wo läge die günstigere Zone? Antwort: nicht beim aktuellen Kurs, sondern frühestens in der 17,00-17,50$-Zone (Nähe 52-Wochen-Tief), mit einer tieferen Beobachtungszone bei 14,50-15,50$ falls der Lock-up-Abverkauf ab 02.09. den bisherigen Tiefpunkt durchbricht – beide nur gültig, solange die fundamentale These intakt bleibt.
+
+**Volle Fassung mit Design/Layout:** `reports/HAWK-reaper-kompakt-2026-08-31.pdf` (Seite 2/2).
