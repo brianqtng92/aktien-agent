@@ -609,6 +609,36 @@ Eintragung obliegt einer bewussten Entscheidung mit Brian):**
 
 ---
 
+## 13. Migrations-Update (2026-09-01): Umstieg von Cowork auf Claude Code
+
+Brian hat recherchiert, dass die in Abschnitt 9/10 dokumentierten
+Zuverlässigkeitsprobleme (Device-Binding, `untrusted_device`,
+Stale-Clone-Credential-Bruch) strukturell an der Cowork-Desktop-Architektur
+liegen. Die Automatisierungsschicht wird deshalb auf Claude-Code-native
+Mechanismen umgestellt:
+
+- **Kanonischer Repo-Pfad ist jetzt `~/Downloads/aktien-agent`** (nicht mehr
+  `$HOME/mnt/aktien-agent`). Git-Push-Auth über macOS-Keychain
+  (`credential.helper=osxkeychain`) eingerichtet und verifiziert
+  (2026-09-01, dieser Commit ist der Test-Beleg).
+- Scheduled Tasks werden auf `mcp__scheduled-tasks__create_scheduled_task`
+  umgestellt (lokale `SKILL.md`-Dateien unter `~/.claude/scheduled-tasks/`,
+  läuft direkt auf Brians Mac, kein Device-Binding). Voraussetzung: Claude
+  Code muss während der relevanten Zeitfenster (v.a. 21 Uhr täglich,
+  Freitag 22 Uhr, stündlich Mo-Fr 8-22 Uhr) geöffnet sein – sonst läuft der
+  Task erst beim nächsten App-Start nach.
+  PDF-Rendering läuft künftig lokal über Playwright mit `channel="chrome"`
+  gegen das bereits installierte `Google Chrome.app` – der
+  Cloud-Container-Umweg aus Abschnitt 10.2 entfällt.
+- Die vier alten, geräte-gebundenen Cowork-Tasks müssen von Brian separat
+  in der Cowork-Desktop-App deaktiviert werden, sobald die neuen
+  Claude-Code-Tasks laufen (sonst Doppel-Pushes).
+- Inhaltlich unverändert: `architecture.md` und die drei Prompt-Dateien
+  bleiben wortwörtlich die Regelquelle. Diese Migration betrifft nur die
+  Infrastruktur, keine einzige Analyse-/Portfolio-Regel.
+
+---
+
 *Dieses Dokument wurde von Jarvis (Claude) am 2026-08-31 als reine
 Dokumentations-/Konsolidierungsarbeit erstellt, auf Brians expliziten
 Wunsch ohne jede Änderung an bestehenden Regeln. Es fasst zusammen und
