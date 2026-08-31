@@ -646,6 +646,19 @@ Mechanismen umgestellt:
   vermutlich auch zu Cowork-Zeiten nie ein echter Kanal, nur ein
   Konzept im Regelwerk. Müsste außerhalb einer Chat-Session eingerichtet
   werden (dort, wo auch Remote Control verbunden wurde) – noch offen.
+- **Scalable-Watchlist gespiegelt + ISIN-Bug gefunden (2026-09-01):** Alle
+  30 `watchlist.md`-Werte wurden per `add_watchlist_item` in Scalables
+  eigene Watchlist eingetragen. Dabei aufgefallen: die für Watsco Inc.
+  (WSO) erfasste ISIN (US9427491025) gehörte tatsächlich zu Watts Water
+  Technologies, einer anderen Firma – klassischer Identity-Gate-Fehler,
+  der bisher nicht aufgefallen war, weil noch nie gegen eine zweite,
+  unabhängige Quelle (Scalables eigene ISIN-Auflösung) geprüft wurde.
+  Korrigiert auf US9426222009 (per WebSearch mehrfach verifiziert), in
+  `watchlist.md` und bei Scalable behoben. Der tägliche Trigger-Check
+  spiegelt ab sofort jede Watchlist-Änderung automatisch zu Scalable und
+  prüft dabei den von Scalable zurückgelieferten Firmennamen gegen den
+  erwarteten Kandidaten – eine zusätzliche, unabhängige Gegenprobe fürs
+  Identity-Gate, die vorher fehlte.
 
 ---
 
