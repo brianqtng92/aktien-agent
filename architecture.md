@@ -1732,10 +1732,19 @@ für Unterstützungs-/Widerstandszonen herangezogen, und der Kurs wurde nur in
 JPY genannt, nicht zusätzlich in EUR (Verstoß gegen die bereits bestehende
 Regel "Einheitliche EUR-Umrechnung", siehe Pipeline-Schritt [3] oben – dort
 bislang nur für Depot-/Watchlist-Monitoring gelebt, nicht für eine frei von
-Brian angestoßene Einzelanalyse). Brian hat daraufhin eine eigene
-Vorlage geteilt (Referenz-PDF "Alimentation Couche-Tard Aktienanalyse",
-2026-08-26, elftes Kapitel "7. Chart- und Einstiegslage") als Vorbild dafür,
-was er sich künftig bei JEDER Einzelanalyse wünscht.
+Brian angestoßene Einzelanalyse). Brian hat daraufhin eine fremde
+Beispiel-PDF geteilt (Research-Report eines Dritten zu "Alimentation
+Couche-Tard Aktienanalyse", 2026-08-26, dortiges Kapitel "7. Chart- und
+Einstiegslage") und dabei ausdrücklich klargestellt (2026-08-31, analog zur
+früheren Raketentoni-Klarstellung bei "PDF-Report-Design" unten): Diese
+fremde PDF dient AUSSCHLIESSLICH als lose inhaltliche Inspiration dafür,
+DASS eine solche Sektion existieren soll (Trend-/Zonen-Ampel + konkrete
+Unterstützungs-/Widerstandszonen + Verknüpfung mit der fundamentalen
+Bewertung) – KEIN 1:1-Layout- oder Struktur-Klon. Aufbau, Tabellen-
+Formulierungen, Bezeichnungen und Optik dieser Sektion bleiben unser
+eigenes, im Rest dieses Regelwerks etabliertes Reaper-Vokabular (Ampel-
+Farbwelt, Beobachten-Protokoll-Sprache, Reaper-Score-Logik usw.), nicht die
+Gliederung/Wortwahl der fremden Vorlage.
 
 **Ab sofort gilt (gilt für Quick-Filter GENAUSO wie für Full Deep Dive –
 anders als DCF/Vollformat-Zusatzmodule ist dieser Schritt NICHT
@@ -1753,10 +1762,13 @@ anders als DCF/Vollformat-Zusatzmodule ist dieser Schritt NICHT
    entfällt dieser Schritt – dann aber explizit als Lücke vermerkt, nicht
    stillschweigend ausgelassen.
 2. **Eigene Sektion "Chart- und Einstiegslage"** in jeder Einzelanalyse
-   (Markdown-Datei UND Reaper-Kompakt-PDF), inhaltlich angelehnt an Brians
-   Referenz-Kapitel, aber in eigener Reaper-Optik statt 1:1-Klon (gleiche
+   (Markdown-Datei UND Reaper-Kompakt-PDF) – der Name der Sektion und die
+   Grundidee (Trend-Ampeln + Zonen-Tabelle) sind von der fremden Vorlage
+   inspiriert, die konkrete Umsetzung ist aber komplett eigenständig in
+   unserer bereits etablierten Reaper-Optik/-Terminologie zu halten (gleiche
    Vorgehensweise wie beim Wochenreport-Layout ggü. Raketentoni, siehe
-   "PDF-Report-Design" unten): Ampel-Zeilen für Langfrist-/Mittelfristtrend,
+   "PDF-Report-Design" unten – dort ebenfalls "nur lose Inspiration, kein
+   1:1-Klon"): Ampel-Zeilen für Langfrist-/Mittelfristtrend,
    Momentum, Volatilität, GEFOLGT von einer Tabelle konkreter
    Unterstützungs-/Widerstandszonen (Zone → Bedeutung/technischer Bezug
    [z.B. EMA20/Bollinger-Mitte, letzter Pivot, EMA50/unteres Bollinger-Band]
