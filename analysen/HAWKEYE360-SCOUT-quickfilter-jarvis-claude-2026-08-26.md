@@ -212,5 +212,29 @@ Anzahl vom Nutzer nicht angegeben → keine abschließende Klumpen-Risiko-Einsch
 
 ---
 
+---
+
+## 🔄 NACHTRAG (2026-08-31): Lock-up-Vorziehung + Russell-2000-Aufnahme, Positions-Check
+
+**Auslöser:** Brian fragte nach Nachkauf-Empfehlung angesichts (a) starkem Kursrückgang seit den Q2-Zahlen und (b) einer HawkEye-Meldung (PRNewswire, 31.08.2026): Lock-up-Ende vorgezogen von ursprünglich 02.11.2026 auf 01.09.2026 (Handelsfreigabe 02.09.2026), zusätzlich vorläufige Aufnahme in den Russell 2000 (Wirksamkeitsdatum 21.09.2026, laut FTSE-Russell-"Preliminary List of IPO Additions").
+
+**Wichtige Einordnung zur Lock-up-Vorziehung:** Laut Pressemeldung ist das KEINE diskretionäre Entscheidung von HawkEye/Insidern, früher zu verkaufen, sondern eine mechanische Standard-Klausel im Underwriting-Agreement: Fällt das reguläre 180-Tage-Lock-up-Ende in eine bereits geplante Blackout-Periode (>100 Tage nach IPO), verfällt die Lock-up-Frist automatisch 10 Handelstage vor Beginn dieser Blackout-Periode. Das ist Boilerplate-Vertragstext, kein Signal über Insider-Verkaufsabsichten – sollte nicht als eigenständiges Red Flag gewertet werden. Der Effekt bleibt aber real: der volle Streubesitz wird 2 Monate früher handelbar als vom Markt ursprünglich eingepreist.
+
+**IPO-Lock-up-/Overhang-Check (neues Regelwerk-Modul, hier erstmals auf eine Bestandsposition angewendet):**
+- Betroffene Aktien: laut Ownership-Aufschlüsselung halten VC/PE-Firmen 23,8% (~23,3 Mio. Aktien, größte Positionen Insight Venture Management 14,5%, NightDragon 9,34%) + Einzel-Insider 0,36% – zusammen ≈23,7 Mio. Aktien, die ab 02.09.2026 handelbar werden. Wert bei aktuellem Kurs (~$18,82) ≈$446 Mio.
+- Ø-Tagesvolumen ≈721.500 Aktien → **"Tage-zum-Liquidieren" ≈33 Handelstage (~6,5 Wochen)** – deutlich liquider als der Vincorion-Fall (dort >500 Tage), d.h. ein Komplettverkauf über die Börse ist hier tatsächlich praktikabel, nicht zwingend nur über ein Accelerated Bookbuild.
+- **Timing-Lücke als Kernrisiko:** Lock-up-Freigabe (02.09.) liegt **19 Tage vor** der Russell-2000-Wirksamkeit (21.09.) – die passive Kaufnachfrage aus der Indexaufnahme kommt also NICHT zeitgleich mit der möglichen Verkaufswelle, sondern erst gut zweieinhalb Wochen später. In diesem Zwischenfenster besteht das größte Ungleichgewichts-Risiko.
+- **Bereits eingepreist?** Teilweise – der Kurs ist bereits seit den Q2-Zahlen (13.08., $24,37) auf aktuell $18,82 gefallen (**−23% in 2,5 Wochen**), nah am 52-Wochen-Tief ($17,02, Juli). Das ist aber vermutlich überwiegend fundamental getrieben (Margen-Verschlechterung Q2, siehe DNA-Check oben), nicht ausschließlich Overhang-Vorwegnahme – die beiden Ursachen lassen sich nicht sauber trennen.
+
+**Technische Lage (TA-Pflicht, Twelve Data LIVE 31.08.2026, Kurs $18,82):** RSI(14) 35,6 (schwach, aber noch nicht klassisch überverkauft <30) · Kurs unter EMA20 ($21,42) UND EMA50 ($22,88) · MACD negativ und Histogramm verschlechtert sich weiter (−0,456, Vortag −0,397) → **bärische Struktur ohne aktuelles Bodenbildungssignal.** Pivot-Punkte auf diesem Twelve-Data-Plan nicht verfügbar (gleiche Plan-Limitierung wie bei anderen Nicht-Standard-Abfragen).
+
+**⚠ Wichtiger Positions-Check:** Brians bestehende Position (60 Aktien) hat zum Kaufkurs 17,80€ ≈1.068€ gekostet. Zum aktuellen Kurs (~$18,82 × 0,861 USD/EUR ≈16,20€) ist die Position nur noch ≈972€ wert (≈−9% ggü. Einstand). Bei einem Gesamt-Depotwert von 35.034€ (Stand 30.08.) entspricht das **≈2,8% des Depots** – das liegt bereits **deutlich über** dem Trace-Positions-Deckel (<0,5%, ≈175€), den der bereits am 26.08. aktive ☢ Hype-Kill-Switch für diese Position bindend vorschreibt. Das ist keine neue Verfehlung (die Position wurde vor dem Quick-Scout gekauft), aber ein relevanter Fakt für die aktuelle Entscheidung.
+
+**Aktualisiertes Urteil:** Die Kernthese vom 26.08. (BEOBACHTEN-SPEKULATIV, Hype-Kill-Switch aktiv wegen Margen-Verschlechterung Q2, Bruchwahrscheinlichkeit HOCH) bleibt unverändert bzw. wird durch den fortgesetzten Kursverfall eher bestätigt als widerlegt. Die Russell-2000-Aufnahme ist ein echter positiver Katalysator, aber (a) zeitlich versetzt zur Lock-up-Freigabe und (b) ändert nichts an der zugrunde liegenden operativen Sorge. **Kein Nachkauf.** Die bestehende Position liegt bereits über dem eigenen Sizing-Deckel – eher ein Kandidat für eine spätere Trim-Diskussion als für Aufstockung, aktuell aber kein akuter Zwang dazu (Verkaufsdisziplin-Regeln separat prüfen, hier nicht neu bewertet).
+
+**Neuer Beobachtungspunkt:** 02.09. (Lock-up-Freigabe – Volumen/Kursreaktion beobachten), 21.09. (Russell-2000-Wirksamkeit – passive Kaufflüsse), Q3-Zahlen (~Anfang November) als nächster harter Beleg, ob sich die Kostenkurve (Q2: Opex +138% vs. Umsatz +87%) wieder normalisiert.
+
+---
+
 ## ⚙ ZUSAMMENFASSUNG DER DATENINTEGRITÄT
 Diese Analyse stützt sich überwiegend auf [VERIFIED]- und [TRAINING]-Daten aus öffentlich zugänglichen SEC-Filings, Pressemeldungen und Finanzaggregatoren (kein aktiver [N/V]-K-Abbruch). Zwei Datenkonflikte wurden bewusst offengelegt statt geglättet: (1) Bruttomarge-Werte zwischen Quellen (60% vs. 74–82%), (2) FY2025-Umsatz ($99M vs. $117,7M je nach Quelle). Konservativste plausible Lesart wurde jeweils verwendet (Prinzip der minimalen Annahme). Kein Anspruch auf Vollständigkeit einer Full-Scout-Tiefenprüfung – dies ist bewusst ein QUICK-SCOUT-Ergebnis.
