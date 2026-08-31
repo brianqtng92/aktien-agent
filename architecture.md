@@ -1919,7 +1919,7 @@ schließt nur die Lücke für den spezifischen Zwischenfall "profitabel,
 schnell wachsend, aber erst seit kurzem börsennotiert mit PE-Overhang", der
 bisher weder ins Standard- noch ins Scout-Raster passte.
 
-### Formulierungsstil der Kurz-Fazits & PDF-Fazits: an Raketentonis Erzählstil angelehnt (2026-08-31, von Brian gefordert, ausgelöst durch "HawkEye360Szenarien.pdf")
+### Verständlichkeit der Kurz-Fazits & PDF-Fazits: Analyse dahinter muss nachvollziehbar sein, Vorbild Raketentonis Erzählstil (2026-08-31, von Brian gefordert, ausgelöst durch "HawkEye360Szenarien.pdf")
 
 **Lücke, die diesen Eintrag ausgelöst hat:** Brian hat eine von Raketentonis
 Agent erstellte HawkEye-360-Analyse ("HawkEye360Szenarien.pdf") hochgeladen.
@@ -1944,6 +1944,23 @@ ausgeschlossen"), außer eine benannte Primärquelle liefert selbst eine
 zitierfähige Zahl. Übernommen wird ausschließlich der ERZÄHLERISCHE STIL und
 die STRUKTUR der Zusammenfassung, nicht der Inhalt oder die
 Zahlen-Schein-Präzision.
+
+**Eigentliches Ziel dieser Regel (von Brian am 2026-08-31 präzisiert, nachdem
+die erste Fassung dieses Eintrags zu sehr nach Stilfrage klang):** Es geht
+NICHT darum, dass die Zusammenfassung "netter klingt" oder wie Raketentonis
+Agent tönt. Es geht darum, dass Brian beim Lesen die eigentliche Analyse
+dahinter wirklich VERSTEHT — warum genau dieser Reaper Score, warum genau
+diese Ampel-Farbe, warum genau diese Einstiegszone — statt nur auf ein PDF
+oder eine Tabellenzeile zu starren und nachfragen zu müssen, was damit
+gemeint ist. Die Formulierungsregeln unten (direkte Ansprache, nummerierte
+Gedankenschritte, Entscheidung als Antwort auf eine Frage) sind Mittel zu
+diesem Zweck, kein Selbstzweck. Konkrete Konsequenz: JEDE Erwähnung eines
+Scores, einer Ampel-Farbe, einer Kennzahl oder eines Fachbegriffs im
+Fließtext der Zusammenfassung muss in einem kurzen Nebensatz mitliefern, was
+sie bedeutet und warum sie für die Entscheidung relevant ist — nie eine
+nackte Zahl/ein nacktes Label ohne Einordnung stehen lassen. Maßstab: Brian
+soll die Zusammenfassung lesen und sofort wissen, worauf sich die Empfehlung
+stützt, ohne beim Agenten nachfragen zu müssen.
 
 **Ab sofort gilt für JEDE Abschluss-Zusammenfassung — unabhängig von der
 Analyse-Tiefe (Full Deep Dive, Quick Filter, Ampel-Batch-Scan,
@@ -1982,6 +1999,17 @@ Blitz-Scan-Voreinschätzung):**
    Haupttreiber, Depot-Fit, Konvergenz-Status, klare Handlungsempfehlung)
    bleiben Pflicht — diese Regel ändert nur, WIE sie in Sätze gefasst
    werden, nicht WAS gesagt werden muss.
+7. **Keine unerklärte Zahl, keine unerklärte Fachvokabel.** Jede
+   Score-/Ampel-/Kennzahlen-Erwähnung im Fließtext bekommt eine kurze
+   Einordnung mitgeliefert (Beispiel: "Reaper Score 7/10 — das heißt: solide
+   Substanz, aber kein Ausnahmewert" statt nackt "Reaper Score: 7/10").
+   Gleiches gilt für Fachbegriffe (EBITDA-Marge, Free Float, Lock-up,
+   Overhang, EDGE-Deckel usw.) bei der ersten Erwähnung in einer
+   Zusammenfassung: ein Halbsatz Erklärung, was der Begriff hier konkret
+   bedeutet. Test vor Auslieferung: Könnte Brian nach dem Lesen der
+   Zusammenfassung (ohne die Detail-Tabellen daneben zu legen) einer
+   dritten Person erklären, warum die Empfehlung so lautet? Wenn nein,
+   fehlt eine Einordnung, und der Absatz muss nachgebessert werden.
 
 Diese Regel gilt sowohl für den Chat-Kurz-Fazit (Pipeline-Schritt 5) als
 auch für das Fazit-/Verdict-Element im Reaper-Kompakt-PDF sowie im
