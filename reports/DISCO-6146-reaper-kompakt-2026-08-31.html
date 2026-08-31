@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Reaper Kompakt – DISCO</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1A1C1F;
+    --bg-panel: #232629;
+    --bg-panel-2: #2A2D31;
+    --border: #3A3E43;
+    --border-soft: #303337;
+    --text: #EDE8DF;
+    --text-dim: #A39B8E;
+    --text-faint: #6E6860;
+    --gold: #C6922C;
+    --gold-bright: #E0B24E;
+    --gold-dim: #7A5F24;
+    --green: #5C9A5F;
+    --green-bg: rgba(92,154,95,0.14);
+    --yellow: #DDB13B;
+    --yellow-bg: rgba(221,177,59,0.14);
+    --red: #BC4F41;
+    --red-bg: rgba(188,79,65,0.16);
+  }
+
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Carlito", "DejaVu Sans", Arial, sans-serif;
+    font-size: 9.6pt;
+    line-height: 1.38;
+  }
+
+  .display {
+    font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif;
+    font-weight: 700;
+    font-stretch: condensed;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 9mm 12mm 6mm 12mm;
+    display: flex;
+    flex-direction: column;
+    gap: 3.2mm;
+  }
+
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 3mm;
+  }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 23pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 7.6pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag {
+    font-size: 7pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim);
+    border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm;
+    display: inline-block; width: fit-content;
+  }
+  .meta-block { text-align: right; font-size: 8pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 9pt; }
+
+  .position-header {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold);
+    border-radius: 3px; padding: 3.2mm 4mm;
+  }
+  .position-name .ticker { font-size: 16pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 8.4pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 6mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 6.6pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); }
+  .stat .value { font-size: 10.5pt; color: var(--text); margin-top: 0.4mm; }
+  .stat .value .eur { font-size: 7.4pt; color: var(--text-dim); }
+  .cat-pill {
+    font-size: 7pt; letter-spacing: 0.06em; text-transform: uppercase; background: var(--yellow-bg); color: var(--yellow);
+    border: 1px solid var(--yellow); border-radius: 10px; padding: 1.2mm 3mm; white-space: nowrap;
+  }
+
+  .section-label {
+    font-size: 7.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 2.5mm;
+  }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+
+  .voices-row { display: flex; gap: 3mm; }
+  .voice-card {
+    flex: 1; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px;
+    padding: 2.6mm 3mm; position: relative; overflow: hidden;
+  }
+  .voice-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2.2mm; }
+  .voice-card.v-red::before { background: var(--red); }
+  .voice-card.v-yellow::before { background: var(--yellow); }
+  .voice-card.v-green::before { background: var(--green); }
+  .voice-name { font-size: 9.6pt; letter-spacing: 0.03em; padding-left: 2mm;}
+  .voice-role { font-size: 6.6pt; color: var(--text-faint); padding-left: 2mm; margin-bottom: 1mm;}
+  .voice-rating { padding-left: 2mm; font-size: 8.6pt; color: var(--text); }
+  .voice-rating b { color: inherit; }
+  .voice-sub { padding-left: 2mm; font-size: 7.4pt; color: var(--text-dim); margin-top: 0.6mm; }
+
+  .convergence-pill {
+    margin-top: 2mm; display: flex; align-items: center; gap: 2.5mm;
+    background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 2mm 3.5mm;
+  }
+  .convergence-pill .tag { font-size: 8.4pt; letter-spacing: 0.05em; color: var(--yellow); text-transform: uppercase; }
+  .convergence-pill .note { font-size: 7.2pt; color: var(--text-dim); font-style: italic; }
+
+  .gauge-row { display: flex; gap: 3mm; }
+  .gauge-card {
+    flex: 1; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px;
+    padding: 2mm 2mm 1.6mm 2mm; display: flex; flex-direction: column; align-items: center;
+  }
+  .gauge-card .who { font-size: 7.4pt; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3mm;}
+  .gauge-svg-wrap { position: relative; width: 30mm; height: 16mm; }
+  .gauge-score-num { position: absolute; bottom: 0; left: 0; right: 0; text-align: center; font-size: 12pt; color: var(--text); }
+  .gauge-score-num span { font-size: 7pt; color: var(--text-faint); }
+  .clip-row { display: flex; gap: 1mm; margin-top: 1mm; }
+  .clip { width: 3.4mm; height: 4.4mm; border-radius: 1px; border: 1px solid var(--gold-dim); }
+  .clip.filled { background: var(--gold); border-color: var(--gold); }
+  .clip.empty { background: transparent; }
+  .tier-label { font-size: 6.4pt; color: var(--text-faint); margin-top: 0.6mm; text-transform: uppercase; letter-spacing: 0.06em; }
+  .conf-tag { font-size: 6.6pt; margin-top: 0.8mm; padding: 0.5mm 2mm; border-radius: 8px; letter-spacing: 0.04em; }
+  .conf-tag.red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red); }
+  .conf-tag.yellow { background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow); }
+  .conf-tag.green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green); }
+
+  .dna-wrap { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.6mm 3.5mm; }
+  .dna-strip { display: flex; gap: 1.4mm; margin-top: 1.6mm; }
+  .dna-seg {
+    flex: 1; height: 6.5mm; border-radius: 1px; display: flex; align-items: center; justify-content: center;
+    font-size: 6.4pt; letter-spacing: 0.02em; color: var(--bg); font-weight: bold; text-align: center;
+  }
+  .dna-seg.pass { background: var(--green); }
+  .dna-seg.fail { background: var(--red); }
+  .dna-caption { display: flex; gap: 1.4mm; margin-top: 1mm; }
+  .dna-caption div { flex: 1; font-size: 6.2pt; color: var(--text-faint); text-align: center; }
+  .dna-note { font-size: 7.2pt; color: var(--text-dim); margin-top: 1.8mm; }
+  .dna-note b { color: var(--text); }
+
+  .two-col { display: flex; gap: 3mm; flex: 1; min-height: 0; overflow: hidden; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.5mm; min-height: 0; }
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.6mm 3.5mm; overflow: hidden; }
+  .box h3 {
+    font-size: 8pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 1.4mm;
+    font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700;
+  }
+  ul.bullets { list-style: none; }
+  ul.bullets li { font-size: 7.4pt; padding-left: 3mm; position: relative; margin-bottom: 0.9mm; color: var(--text); line-height: 1.3; }
+  ul.bullets.plus li::before { content: "+"; position: absolute; left: 0; color: var(--green); font-weight: bold; }
+  ul.bullets.minus li::before { content: "–"; position: absolute; left: 0; color: var(--red); font-weight: bold; }
+
+  .dissent-box {
+    border: 1px dashed var(--gold-dim); border-radius: 3px; padding: 2.4mm 3.5mm;
+    background: repeating-linear-gradient(135deg, rgba(198,146,44,0.04), rgba(198,146,44,0.04) 6px, transparent 6px, transparent 12px);
+  }
+  .dissent-box h3 { color: var(--gold-bright); }
+  .dissent-box p { font-size: 6.9pt; color: var(--text-dim); line-height: 1.32; }
+  .dissent-box p b { color: var(--text); }
+
+  .fv-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .fv-table th, .fv-table td { font-size: 6.8pt; padding: 1mm 1.5mm; text-align: right; border-bottom: 1px solid var(--border-soft); }
+  .fv-table th:first-child, .fv-table td:first-child { text-align: left; color: var(--text-dim); }
+  .fv-table th { color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.04em; font-weight: normal; }
+  .fv-table td { color: var(--text); }
+
+  .fazit {
+    background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim);
+    border-radius: 3px; padding: 3.2mm 4mm; display: flex; align-items: center; gap: 5mm;
+  }
+  .fazit-verdict { flex: 0 0 auto; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 13pt; color: var(--yellow); letter-spacing: 0.03em; }
+  .fazit-verdict .sub { font-size: 6.6pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.6mm; }
+  .fazit-grid { flex: 1; display: flex; justify-content: space-between; }
+  .fazit-item { text-align: center; }
+  .fazit-item .label { font-size: 6.6pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+  .fazit-item .value { font-size: 10pt; color: var(--text); margin-top: 0.5mm; }
+
+  .footer {
+    display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft);
+    padding-top: 1.8mm; font-size: 6.4pt; color: var(--text-faint);
+  }
+  .footer .gold-dot { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">REAPER <span class="accent">KOMPAKT</span></div>
+      <div class="brand-sub">3-KI Cross-Check · Jarvis · Jack · Conan</div>
+      <div class="edition-tag">Watchlist · Kategorie Profi · Quick-Filter-Cross-Check</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">31. August 2026</div>
+      <div>Regelwerk TMR v11.7 · Modus A (Quick Filter)</div>
+      <div>Standard-K-Basis 5 (kein Sektor-Override)</div>
+    </div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">6146 <span style="color:var(--text-dim); font-size:10pt;">· TOKYO</span></div>
+      <div class="company">Disco Corporation — Halbleiterausrüstung (Wafer-Dicing/-Grinding/-Polishing)</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs (30.08.)</div><div class="value">¥62.260 <span class="eur">≈331,53€</span></div></div>
+      <div class="stat"><div class="label">KGV (TTM/Fwd)</div><div class="value">49,2x / 34,3x</div></div>
+      <div class="stat"><div class="label">Marktkap.</div><div class="value">¥7,15 Bio. <span class="eur">≈38,1 Mrd.€</span></div></div>
+      <div class="cat-pill">⚙ Profi · Watchlist</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-label">3-Stimmen-Leiste — Finale Verdicts</div>
+    <div class="voices-row" style="margin-top:2mm;">
+      <div class="voice-card v-yellow">
+        <div class="voice-name display">JARVIS <span style="font-size:7pt; color:var(--text-faint);">— Claude</span></div>
+        <div class="voice-role">Harter Konfidenz-Deckel bei jeder N/V-Kennzahl</div>
+        <div class="voice-rating"><b>BEOBACHTEN</b> · 6,0/10 · Tier 3</div>
+        <div class="voice-sub">K 4/5, E 4/6 — Piotroski/Capex/CCC nicht verifiziert → Deckel</div>
+      </div>
+      <div class="voice-card v-yellow">
+        <div class="voice-name display">JACK <span style="font-size:7pt; color:var(--text-faint);">— Gemini</span></div>
+        <div class="voice-role">Kernkennzahlen (ROIC/FCF/Bilanz) reichen für Quick Filter</div>
+        <div class="voice-rating"><b>BEOBACHTEN</b> · 7,0/10 · Tier 3</div>
+        <div class="voice-sub">Weniger strenger Deckel — zyklische Überhitzung bleibt Bremse</div>
+      </div>
+      <div class="voice-card v-green">
+        <div class="voice-name display">CONAN <span style="font-size:7pt; color:var(--text-faint);">— ChatGPT</span></div>
+        <div class="voice-role">Qualitative TMR-Logik, eigener Datenzugriff im Chatverlauf verloren</div>
+        <div class="voice-rating"><b>KAUFEN</b> · 8,0/10 · Tier 2</div>
+        <div class="voice-sub">Räumt selbst ein: Konfidenz "MID" wegen fehlendem Fact-Pack-Kontext</div>
+      </div>
+    </div>
+    <div class="convergence-pill">
+      <span class="tag display">◑ Moderat konvergent</span>
+      <span class="note">2 von 3 (Jarvis, Jack) landen bei BEOBACHTEN, Score-Korridor 6-8/10. Conan weicht mit KAUFEN/Tier 2 ab, räumt aber selbst eingeschränkten Datenzugriff ein. Alle drei nennen unabhängig Zyklus/Bewertung als Hauptrisiko, nicht die Geschäftsqualität.</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-label">Reaper-Score-Gauge &amp; Sizing</div>
+    <div class="gauge-row" style="margin-top:2mm;">
+
+      <div class="gauge-card">
+        <div class="who">Jarvis</div>
+        <div class="gauge-svg-wrap">
+          <svg width="34mm" height="19mm" viewBox="0 0 200 110">
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#3A3E43" stroke-width="14" stroke-linecap="round"/>
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#DDB13B" stroke-width="14" stroke-linecap="round"
+                  stroke-dasharray="251.3" stroke-dashoffset="100.52"/>
+          </svg>
+          <div class="gauge-score-num display">6,0<span>/10</span></div>
+        </div>
+        <div class="clip-row">
+          <div class="clip filled"></div><div class="clip filled"></div><div class="clip empty"></div><div class="clip empty"></div>
+        </div>
+        <div class="tier-label">Tier 3 · Abstauber-Limit ¥50.000</div>
+        <div class="conf-tag red">KONFIDENZ NIEDRIG</div>
+      </div>
+
+      <div class="gauge-card">
+        <div class="who">Jack</div>
+        <div class="gauge-svg-wrap">
+          <svg width="34mm" height="19mm" viewBox="0 0 200 110">
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#3A3E43" stroke-width="14" stroke-linecap="round"/>
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#DDB13B" stroke-width="14" stroke-linecap="round"
+                  stroke-dasharray="251.3" stroke-dashoffset="75.39"/>
+          </svg>
+          <div class="gauge-score-num display">7,0<span>/10</span></div>
+        </div>
+        <div class="clip-row">
+          <div class="clip filled"></div><div class="clip filled"></div><div class="clip empty"></div><div class="clip empty"></div>
+        </div>
+        <div class="tier-label">Tier 3 · Rücksetzer ¥48-52k abwarten</div>
+        <div class="conf-tag yellow">KONFIDENZ MID</div>
+      </div>
+
+      <div class="gauge-card">
+        <div class="who">Conan</div>
+        <div class="gauge-svg-wrap">
+          <svg width="34mm" height="19mm" viewBox="0 0 200 110">
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#3A3E43" stroke-width="14" stroke-linecap="round"/>
+            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#5C9A5F" stroke-width="14" stroke-linecap="round"
+                  stroke-dasharray="251.3" stroke-dashoffset="50.26"/>
+          </svg>
+          <div class="gauge-score-num display">8,0<span>/10</span></div>
+        </div>
+        <div class="clip-row">
+          <div class="clip filled"></div><div class="clip filled"></div><div class="clip filled"></div><div class="clip empty"></div>
+        </div>
+        <div class="tier-label">Tier 2 · Preis bleibt Hauptrisiko lt. Conan</div>
+        <div class="conf-tag yellow">KONFIDENZ MID</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="dna-wrap">
+    <div class="section-label" style="margin-bottom:0;">DNA-Check-Strang (Jarvis, wörtliche v11.7-Schwellen, Standard-K-Basis 5)</div>
+    <div class="dna-strip">
+      <div class="dna-seg pass">ROIC · PASS</div>
+      <div class="dna-seg pass">FCF-MARGE · PASS</div>
+      <div class="dna-seg pass">OP. LEVERAGE · PASS</div>
+      <div class="dna-seg fail">PIOTROSKI · N/V</div>
+      <div class="dna-seg pass">EPS-CAGR · PASS</div>
+    </div>
+    <div class="dna-caption">
+      <div>29-35% vs. Ziel &gt;20%</div>
+      <div>22,52% vs. Ziel ≥20%</div>
+      <div>Op.-Marge 41,8% bei +20% QoQ-Wachstum</div>
+      <div>Nicht abrufbar — konservativ als 0 Pkt. gewertet</div>
+      <div>TTM +17,7% vs. Ziel ≥12%</div>
+    </div>
+    <div class="dna-note">K-Score: <b>4 von 5</b> (Standard-K-Basis 5) → über Grenzfall-Schwelle (4) → <b>KEIN Abbruch</b>. E-Score 4/6 (Capex/Umsatz, CCC ebenfalls N/V). Konfidenz-Deckel greift wegen 3 offener N/V-Kennzahlen — Jack gewichtet dieselbe Lücke schwächer, Conan hatte im Antwortverlauf keinen Zugriff mehr auf die Rohdaten.</div>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="box" style="flex:0 0 auto;">
+        <h3>Moat &amp; Management</h3>
+        <p style="font-size:7.4pt; color:var(--text-dim); line-height:1.32;">Alle drei KIs bestätigen einen echten, starken Moat: ~50% Weltmarktanteil im Wafer-Dicing/-Grinding/-Polishing (ca. 4x Tokyo Seimitsu/Accretech), Switching-Costs über das integrierte Equipment-/Verbrauchsmaterial-/Service-Ökosystem, Preissetzungsmacht (Bruttomarge 68,7-69,7% vs. KLA ~60%). Bilanz kugelsicher: schuldenfrei, ¥283,9 Mrd. Netto-Cash. Einziger Kritikpunkt: leichte Aktienverwässerung (+0,41% YoY) statt Rückkauf trotz Netto-Cash.</p>
+      </div>
+      <div class="box dissent-box" style="flex:1;">
+        <h3>⚠ Methodischer Dissens (bewusst dokumentiert)</h3>
+        <p>Kernfrage: Wie stark wiegen 3 offene N/V-Kennzahlen (Piotroski, Capex/Umsatz, CCC) gegen ein sonst starkes DNA-Bild? Jarvis deckelt hart (NIEDRIG/6,0), Jack lässt Kernkennzahlen genügen (MID/7,0) — beide bleiben bei BEOBACHTEN. Conan urteilt am optimistischsten (KAUFEN/8,0), räumt aber ein, das Fact-Pack im Antwortverlauf verloren zu haben.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="box">
+        <h3>Beobachten-Protokoll (Jarvis, von Jack bestätigt)</h3>
+        <table class="fv-table">
+          <tr><td>Abstauber</td><td colspan="2" style="text-align:left; color:var(--text);">¥50.000 (≈-19,7% vom Kurs)</td></tr>
+          <tr><td>Upgrade</td><td colspan="2" style="text-align:left; color:var(--text);">Zweitquellen-Check N/V-Kennzahlen hebt Konfidenz</td></tr>
+          <tr><td>Downgrade</td><td colspan="2" style="text-align:left; color:var(--text);">Belegte GL-Tech-Marktanteilsverluste &gt;1 Quartal</td></tr>
+          <tr><td>Horizont</td><td colspan="2" style="text-align:left; color:var(--text);">Q2 FY2027-Zahlen, ca. Ende Okt. 2026</td></tr>
+        </table>
+      </div>
+      <div class="box" style="flex:1;">
+        <h3>Risiken (Konsens aller 3)</h3>
+        <ul class="bullets minus">
+          <li>KGV TTM ~49x nach +45,9% YTD; Markt quittierte Q1-Beat mit Kursrückgang</li>
+          <li>China-Wettbewerber GL Tech; 3 Kennzahlen (Piotroski/Capex/CCC) N/V</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">BEOBACHTEN</div>
+      <div class="sub">2 von 3 · Conan weicht mit KAUFEN ab</div>
+    </div>
+    <div class="fazit-grid">
+      <div class="fazit-item"><div class="label">Watchlist?</div><div class="value">Bereits gelistet (Profi)</div></div>
+      <div class="fazit-item"><div class="label">Abstauber-Zone</div><div class="value">¥50.000 (≈-19,7%)</div></div>
+      <div class="fazit-item"><div class="label">Re-Check</div><div class="value">Q2 FY2027 · Ende Okt. 2026</div></div>
+      <div class="fazit-item"><div class="label">Konvergenz</div><div class="value" style="color:var(--yellow);">Moderat</div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Quick-Filter-Cross-Check <span class="gold-dot">·</span> Vollständige Analysen: analysen/DISCO-6146-*-2026-08-31.md</div>
+    <div>Keine Anlageberatung · Quick Filter (kein DCF) · Seite 1/1</div>
+  </div>
+
+</div>
+</body>
+</html>
