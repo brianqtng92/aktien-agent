@@ -142,5 +142,5 @@ wird auf "VERKAUFT" gesetzt.
 
 | Kaufdatum | Position | Aktien | Kurs/Stück | Investiert | Kategorie |
 |---|---|---|---|---|---|
-| 24.08.2026 | Kraken Robotics Inc. | 300 | 3,50 € | 1.050,00 € | Talent (Scout-Pfad, noch zu analysieren) |
-| 28.08.2026 | Rocket Lab USA, Inc. | 10 | 55,40 € | 554,00 € | Talent (Scout-Pfad, noch zu analysieren) |
+| 24.08.2026 | Kraken Robotics Inc. | 300 | 3,50 € | 1.050,00 € | Talent (Scout: BEOBACHTEN-SPEKULATIV, <0,5% Trace, siehe `analysen/KRKN-RKLB-nachholanalyse-final-2026-09-01.md`) |
+| 28.08.2026 | Rocket Lab USA, Inc. | 10 | 55,40 € | 554,00 € | Talent (Scout: ZU FRÜH, 0% für Nachkauf, siehe `analysen/KRKN-RKLB-nachholanalyse-final-2026-09-01.md`) |
