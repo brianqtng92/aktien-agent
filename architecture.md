@@ -2458,6 +2458,23 @@ Woche galten, um Benachrichtigungs-Ermüdung zu vermeiden):
    würde, geht eine ECHTE Kauf-Empfehlung mit konkreter Eurosumme (Punkt 4)
    per E-Mail/Push raus – sonst eine kurze, ehrliche Information "Zone
    erreicht, aber [Grund] – weiterhin kein Nachkauf".
+6. **Explizite Handlungs-Kennzeichnung in JEDER Zonen-E-Mail (2026-09-01,
+   von Brian gefordert – "muss mir explizit mitteilen, ob Limit-Order oder
+   nur Preisalarm zur Beobachtung").** Jede E-Mail zu einer Zone beginnt
+   mit einer unmissverständlichen Kopfzeile, welche der beiden Kategorien
+   zutrifft – niemals nur implizit aus dem Fließtext erschließbar:
+   - **"🎯 LIMIT-ORDER EMPFOHLEN"** – nur wenn der These-Check aktuell grün
+     ist UND kein Sizing-Deckel überschritten würde (siehe Punkt 5). Direkt
+     darunter: Kurs, konkrete Eurosumme (Punkt 4), Tranchen-Hinweis, und
+     dass Brian selbst das Limit-Order bei seinem Broker setzen kann.
+   - **"👁 NUR BEOBACHTUNG – Preisalarm gesetzt, keine Kaufempfehlung"** –
+     der Normalfall bei neu festgelegten Einstiegszonen, oder wenn eine
+     Zone erreicht wurde, der These-Check aber nicht grün ist bzw. ein
+     Sizing-Deckel bereits überschritten ist (wie aktuell bei Kraken
+     Robotics, siehe oben). Kurz benennen, warum (noch) keine Kaufempfehlung
+     folgt, damit Brian nicht rätseln muss, ob eine Handlung erwartet wird.
+   Dieselbe Kennzeichnung gilt sinngemäß auch für Zielzonen/Gewinnmitnahme
+   ("🎯 TEILVERKAUF EMPFOHLEN" vs. "👁 NUR BEOBACHTUNG").
 
 **Chartmuster-Erkennung als aktiver Impuls, nicht nur reaktive Kennzahl
 (2026-08-29, von Brian gefordert):** Das TA-Modul soll gezielt auf zwei
