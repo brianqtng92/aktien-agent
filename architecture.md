@@ -2052,6 +2052,32 @@ momentum-primär statt thesenbasiert) – Einstieg UND Ausstieg folgen bei
 Für "Talent (langfristig)" bleibt dagegen das antizyklische Grundprinzip
 unverändert die Norm, wie bei Champions/Profi.
 
+**Anwendung auf die Charttechnik (TA-Modul, 2026-09-01 ergänzt):** Das
+TA-Modul (Jack, Pure Technical Analyst, siehe Abschnitt 2) kennt bereits
+zwei Modi – SWING (eigenständig, Momentum-/Setup-getrieben) und
+INVESTOR-ENTRY (Handoff mit TMR-/Scout-Fair-Values, Preiszonen/Margin-of-
+Safety/Entry-Ampel). Diese Modi werden ab sofort explizit an die
+Kategorie/den Zeithorizont-Tag der Position gekoppelt, statt nur implizit
+davon abzuhängen, ob gerade Fair-Value-Daten vorliegen:
+- **Champions / Profi / Talent (langfristig):** TA läuft bevorzugt im
+  INVESTOR-ENTRY-Modus (TMR-/Scout-Fair-Value wird dafür aktiv mitgeliefert,
+  nicht nur falls zufällig vorhanden). Kaufzonen werden konsistent zum
+  antizyklischen Grundprinzip aus Unterstützungs-/Überverkauft-Zonen
+  abgeleitet (siehe "Chart- und Einstiegslage"-Sektion, oben) – ein rein
+  technisches VETO-Signal (z.B. Überdehnung, bärische Divergenz) deckelt das
+  Rating NICHT automatisch, wenn der [B] THESE-CHECK die fundamentale Lage
+  weiterhin als intakt bestätigt; es wird im Fazit als Kontext benannt
+  ("charttechnisch angeschlagen, fundamental unverändert intakt"), nicht als
+  eigenständiger Ausschlussgrund behandelt.
+- **Talent/Zock mit Tag "Zock/Trade":** TA läuft im SWING-Modus. Kaufsignale
+  kommen hier bevorzugt aus Momentum-/Ausbruchsbestätigung (siehe
+  "Chartmuster-Erkennung als aktiver Impuls" oben – Bodenbildung/neuer
+  Aufwärtstrend), nicht primär aus Überverkauft-Zonen. Ein technisches
+  VETO-Signal wird hier ERNSTER genommen als bei den anderen Kategorien,
+  weil die Charttechnik in dieser Kategorie der primäre, nicht nur
+  unterstützende Faktor ist (konsistent zum bereits etablierten
+  charttechnik-primären Exit-Ansatz dieser Kategorie).
+
 **Fünf Ergebnis-Kategorien je Position (2026-08-29 um die Kaufseite
 erweitert, von Brian gefordert: "wenn es überbewertet gibt, muss es
 natürlich auch unterbewertete Titel geben")** – ersetzt/ergänzt die
