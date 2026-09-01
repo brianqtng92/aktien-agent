@@ -2418,17 +2418,46 @@ Woche galten, um Benachrichtigungs-Ermüdung zu vermeiden):
 2. **E-Mail an `brianqtng@outlook.de`:** Betreff nennt Ticker + Anlass
    (z.B. "HAWK: neue Einstiegszone festgelegt"). Inhalt: die genaue(n)
    Zone(n) in Originalwährung UND EUR, die Tranchen-Empfehlung (siehe
-   oben) mit kurzer Begründung, und ein expliziter Hinweis, dass Brian
-   selbst ein Limit-Order bzw. Stop-Loss auf diesem Niveau bei Scalable
-   setzen kann – **niemals eine Formulierung, die eine automatische
-   Order-Ausführung suggeriert** (Grenze aus Abschnitt 1 bleibt fix, die
-   Mail bereitet nur die manuelle Entscheidung vor).
+   oben) MIT konkreter Eurosumme (siehe Pflicht unten), kurzer Begründung,
+   und ein expliziter Hinweis, dass Brian selbst ein Limit-Order bzw.
+   Stop-Loss auf diesem Niveau bei Scalable setzen kann – **niemals eine
+   Formulierung, die eine automatische Order-Ausführung suggeriert**
+   (Grenze aus Abschnitt 1 bleibt fix, die Mail bereitet nur die manuelle
+   Entscheidung vor).
 3. **Kein Spam bei unveränderten Zonen:** Im wöchentlichen Wochenfazit
    werden alle aktuell gültigen Zonen weiterhin vollständig aufgeführt wie
    bisher – aber nur eine ECHTE Änderung (neue Zone, verschobene Zone,
    ausgelöste/erreichte Zone) löst zusätzlich die dedizierte E-Mail +
    Preisalarm-Aktualisierung aus, nicht jede wöchentliche Wiederholung
    derselben Zahl.
+4. **Konkrete-Eurosumme-Pflicht (2026-09-01, von Brian gefordert – "damit
+   ich ein Limit-Order setzen kann, auch unterwegs ohne selbst zu
+   rechnen").** Jede Einstiegszonen-/Nachkauf-Empfehlung nennt ZUSÄTZLICH
+   zur Prozent-/Tier-Angabe (Sizing-Tier bzw. Scout-Sizing-Stufe) eine
+   konkrete Eurosumme je Tranche: aktueller Gesamtdepotwert bzw. relevante
+   Berechnungsbasis (Aktienanteil bei Talent/Scout-Positionen, siehe
+   Abschnitt 1) × Ziel-Sizing-Prozentsatz × Tranchen-Anteil (siehe
+   Tranchen-Logik oben) = Eurobetrag DIESER Tranche, gerundet auf einen
+   praktikablen Order-Betrag. Beispielrechnung wird im Fazit kurz gezeigt
+   (Basis → Prozentsatz → Ergebnis), nicht nur die nackte Endzahl, damit
+   nachvollziehbar bleibt, wie sie zustande kam. Cash-Reserven-Check
+   (Portfolio-Kontext-Pflichtprüfung oben) bleibt davon unberührt – reicht
+   das Cash für die berechnete Summe nicht, wird das explizit benannt statt
+   die Zahl unkommentiert stehen zu lassen.
+5. **Preisalarm-Auslösung ist KEIN automatisches Kaufsignal.** Erreicht der
+   Kurs eine gesetzte Zone (Scalable benachrichtigt Brian direkt UND der
+   nächste Trigger-Check/Blitz-Scan erkennt es über den bestehenden
+   Abstauber-Limit-Abgleich, siehe "Täglicher Trigger-Check"), bedeutet das
+   NUR: die Vorbedingung für eine Nachkauf-Prüfung ist erreicht, keine
+   automatische Kaufempfehlung. Der [B] THESE-CHECK läuft dann frisch
+   (ist die fundamentale Lage noch intakt? wurde zwischenzeitlich ein
+   Downgrade-Trigger ausgelöst? ist die Position ggf. bereits über dem
+   eigenen Sizing-Deckel, wie z.B. aktuell bei Kraken Robotics – dann bleibt
+   es bei "kein Nachkauf", unabhängig vom erreichten Kurs). Nur wenn der
+   These-Check weiterhin grün ist UND kein Sizing-Deckel überschritten
+   würde, geht eine ECHTE Kauf-Empfehlung mit konkreter Eurosumme (Punkt 4)
+   per E-Mail/Push raus – sonst eine kurze, ehrliche Information "Zone
+   erreicht, aber [Grund] – weiterhin kein Nachkauf".
 
 **Chartmuster-Erkennung als aktiver Impuls, nicht nur reaktive Kennzahl
 (2026-08-29, von Brian gefordert):** Das TA-Modul soll gezielt auf zwei
