@@ -17,8 +17,8 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime
 
-CSV_PATH = "/root/aktien-agent/depot/performance_tracking.csv"
-OUT_PATH = "/root/aktien-agent/reports/benchmark_vs_depot.png"
+CSV_PATH = "depot/performance_tracking.csv"
+OUT_PATH = "reports/benchmark_vs_depot.png"
 
 rows = []
 with open(CSV_PATH, newline="", encoding="utf-8") as f:
