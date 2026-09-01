@@ -636,16 +636,20 @@ Mechanismen umgestellt:
 - Inhaltlich unverändert: `architecture.md` und die drei Prompt-Dateien
   bleiben wortwörtlich die Regelquelle. Diese Migration betrifft nur die
   Infrastruktur, keine einzige Analyse-/Portfolio-Regel.
-- **Eskalations-Kanal geklärt (2026-09-01):** `architecture.md` verlangt an
-  mehreren Stellen "E-Mail/Push" bei echtem Anlass. Push funktioniert:
-  Brian hat Remote Control verbunden, alle vier Scheduled Tasks rufen bei
-  handlungsrelevantem Ergebnis zusätzlich zur Chat-Nachricht das
-  `PushNotification`-Tool auf. E-Mail ist NICHT verdrahtet – kein
-  Connector installiert, `mcp__mcp-registry__search_mcp_registry` findet
-  auch nichts Passendes für Gmail/Outlook/SMTP in dieser Umgebung. War
-  vermutlich auch zu Cowork-Zeiten nie ein echter Kanal, nur ein
-  Konzept im Regelwerk. Müsste außerhalb einer Chat-Session eingerichtet
-  werden (dort, wo auch Remote Control verbunden wurde) – noch offen.
+- **Eskalations-Kanal vollständig (2026-09-01, Update im Laufe des Tages):**
+  `architecture.md` verlangt an mehreren Stellen "E-Mail/Push" bei echtem
+  Anlass. Push funktioniert seit dem Vormittag (Remote Control verbunden,
+  `PushNotification`-Tool). **E-Mail war zunächst NICHT verdrahtet** (kein
+  Connector in der Registry, mehrfach erfolglos gesucht – vermutlich auch
+  zu Cowork-Zeiten nie ein echter Kanal, nur ein Konzept im Regelwerk) –
+  **Brian hat den Gmail-Connector am Nachmittag selbst in den
+  App-Einstellungen verbunden** (außerhalb dieser Chat-Session, gleicher
+  Ort wie Remote Control). Danach mit einer echten Test-Mail an
+  `brianqtng@outlook.de` verifiziert (Message-ID erhalten). Alle vier
+  Scheduled Tasks rufen jetzt bei handlungsrelevantem Ergebnis zusätzlich
+  zu Chat-Nachricht und PushNotification eine E-Mail auf (Wochenfazit/
+  Monatsrecap mit PDF-Anhang, Trigger-Check/Blitz-Scan als Text-Mail).
+  Gmail-Tools: `mcp__39fc6043-f82a-4cc9-8559-c05af3108ec2__*`.
 - **Scalable-Watchlist gespiegelt + ISIN-Bug gefunden (2026-09-01):** Alle
   30 `watchlist.md`-Werte wurden per `add_watchlist_item` in Scalables
   eigene Watchlist eingetragen. Dabei aufgefallen: die für Watsco Inc.
