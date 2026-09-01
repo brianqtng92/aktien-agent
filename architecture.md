@@ -1815,6 +1815,15 @@ anders als DCF/Vollformat-Zusatzmodule ist dieser Schritt NICHT
    Unterstützungs-/Widerstandszonen (Zone → Bedeutung/technischer Bezug
    [z.B. EMA20/Bollinger-Mitte, letzter Pivot, EMA50/unteres Bollinger-Band]
    → mögliche Marktreaktion).
+   **Echtes Chart-Bild (seit 2026-09-01, Pflicht wo Zeitreihendaten
+   vorliegen):** zusätzlich zu den Tabellen wird ein echter Candlestick-Chart
+   gerendert und in die PDF-Sektion eingebettet – `get_time_series` (Twelve
+   Data, 120-180 Tage) abrufen, Rohausgabe in eine Datei schreiben, dann
+   `python3 reports/render_chart.py --json <Datei> --out reports/<TICKER>_chart.png
+   --ema 20,50 --zone "<Kurs>:<Label>" --title "<TICKER> -- <Börse>"`
+   ausführen (Details/Format im Skript-Docstring). Ersetzt die bisher reine
+   Tabellen-Optik durch ein echtes Bild, im Reaper-Design statt
+   Fremd-Screenshot.
 3. **Kombinierte Einstiegszonen-Empfehlung (technisch + fundamental):** Nicht
    nur die reine Charttechnik nennen, sondern explizit verknüpfen mit der
    TMR-/Scout-Fair-Value-Einschätzung (Bear/Base/Bull) bzw. der Margin-of-
@@ -2312,6 +2321,20 @@ Kennzahl in einer Tabelle ablegen:
   Region/Sektor/Kategorie-Kapitalgewicht, siehe Abschnitt 3), wird das
   AKTIV als Kauf-Vorschlag an Brian herangetragen (nicht erst auf Nachfrage
   warten), mit Begründung, warum Timing UND These gerade zusammenpassen.
+  **Automatisierte Erkennung im unbeaufsichtigten Betrieb (seit 2026-09-01,
+  echte Lücke geschlossen):** Das TA-Modul schätzt Chartformationen laut
+  eigenem Wortlaut nur aus Nutzer-Input, nicht selbst aus Zahlenreihen – in
+  einem Scheduled Task ohne Brian am Rechner konnte dieser Impuls deshalb
+  bisher gar nicht auslösen. Ersatz: `reports/detect_bodenbildung.py`
+  (Twelve-Data-`get_time_series`-Rohausgabe als Eingabe) liefert eine
+  **algorithmische Annäherung** (höhere Pivot-Tiefs + EMA20-Breakout +
+  Volumen-Trend, siehe Skript-Docstring für die genaue Methodik) – kein
+  echtes Muster-Erkennen, ausdrücklich als Proxy gekennzeichnet
+  (No-False-Precision-Regel). Ergebnis "JA" ersetzt nicht die
+  Fundamental-Prüfung, sondern löst sie erst aus: nur bei "JA" UND
+  bestätigtem Depot-Fit wird der Kauf-Vorschlag herangetragen, mit dem
+  Proxy-Ergebnis explizit als "algorithmische Annäherung" benannt, nicht als
+  bestätigtes Chartmuster.
 - **Doppeltop / bärische Topbildung:** Wird dieses Muster bei einer
   bestehenden Depot-Position erkannt, fließt es als zusätzliches
   technisches Warnsignal in den [E] EXIT-/GEWINNMITNAHME-CHECK ein – in
