@@ -2883,6 +2883,98 @@ voller 3-fach-Check mehrmals stündlich für ALLE Positionen wäre nicht robust
 finanzierbar/stabil – deshalb bleibt der Blitz-Scan bewusst auf einen schnellen,
 browserlosen Jarvis-Only-Scan beschränkt, der nur bei echtem Treffer eskaliert.
 
+### Earnings-Season-Automatisierung (2026-09-01, von Brian gefordert — setzt den bisher zurückgestellten "Earnings-/Corporate-Action-Kalender" aus Abschnitt 9, Phase 4, um)
+
+**Auslöser:** Brian möchte, dass für jeden Depot- ODER Watchlist-Wert, der
+Quartalszahlen veröffentlicht, automatisch und systematisch eine kompakte
+Zahlen-Zusammenfassung vorgelegt wird — nicht erst auf Nachfrage. Als
+Stil-Inspiration hat er eine fremde NVIDIA-Earnings-Zusammenfassung
+(Raketentonis Jack-Persona) geteilt. Wie bei jeder bisherigen fremden
+Vorlage (Couche-Tard-PDF, Wochenreport-Vorbild, HawkEye-Szenarien-PDF)
+gilt: **lose stilistische Inspiration, kein 1:1-Klon.** Übernommen wird die
+Grundidee (Kernzahlen vs. Erwartung, Segment-Treiber, Guidance, kurzer
+Risiko-Gegenpol, klare Schlusslinie) und der direkte, verständliche
+Erzählstil (siehe "Verständlichkeit der Kurz-Fazits", oben). NICHT
+übernommen: erfundene Konsens-Zahlen ohne Quelle, eine neue eigenständige
+Rating-Skala (Raketentonis "🟢🔥🔥🔥") — Ampel-Farben und Rating-Begriffe
+bleiben unser etabliertes Reaper-/TMR-/Scout-Vokabular.
+
+**Technische Einschränkung:** Twelve Data führt `get_earnings` (Termine UND
+historische EPS-Daten) nur ab "grow"-Plan aufwärts — auf dem aktuellen Plan
+gesperrt (gleiche Einschränkung wie `get_financials`, siehe HANDOVER.md
+Abschnitt 10.6). Earnings-Termine werden deshalb wie andere
+Fundamentaldaten per WebSearch/WebFetch recherchiert (IR-Seiten,
+Finanzportale), nicht über eine API abgefragt.
+
+**Ablauf:**
+
+1. **Wöchentliche Terminaktualisierung** (Teil des Wochenfazit-Laufs):
+   für jeden Depot- UND Watchlist-Wert den nächsten erwarteten
+   Earnings-Termin per WebSearch prüfen und in einer neuen Datei
+   `depot/earnings_calendar.md` festhalten (Ticker, Firma, erwarteter
+   Termin, Quelle/Datum der Recherche, Status "bestätigt"/"geschätzt").
+   Kein täglicher Vollabruf über alle ~45 Werte nötig — die Termine
+   ändern sich selten kurzfristig.
+2. **Tägliche Fälligkeitsprüfung** (Teil des Täglichen Trigger-Checks,
+   Schritt 2 oben): `earnings_calendar.md` gegen das heutige Datum prüfen.
+   Steht ein Termin heute an oder ist er in den letzten 24h fällig
+   geworden, gezielt per WebSearch/WebFetch prüfen, ob der Bericht bereits
+   veröffentlicht wurde.
+3. **Bei tatsächlicher Veröffentlichung: Earnings-Kompakt-Fazit erstellen**
+   (Jarvis-Only reicht hier, kein 3-fach-Cross-Check nötig — das ist reine
+   Zahlen-Berichterstattung, keine Bewertungsfrage):
+   ```
+   📊 Earnings-Kompakt: [TICKER] – [Quartal/Jahr]
+
+   [1-2 Sätze Kurzfazit im Verständlichkeits-Duktus: was heißt das
+   konkret für Brians Position/Watchlist-Beobachtung]
+
+   Kernzahlen (Ist vs. Erwartung, EUR-Gegenwert bei USD-Werten):
+   - Umsatz: X Mio./Mrd. [Währung] (Erwartung: Y) → +/-Z% YoY, +/-W% QoQ
+   - [wichtigstes Segment, falls fundamental relevant für die These]:
+     X → +/-Z% YoY
+   - EPS (GAAP/Non-GAAP): X (Erwartung: Y)
+   - Bruttomarge / Nettogewinn / Op. Income, falls aussagekräftig
+
+   Guidance nächstes Quartal: X (Konsens-Erwartung falls verfügbar: Y)
+
+   Kurzer Risiko-/Bewertungs-Gegenpol (Pflicht, kein reiner Jubel-Text):
+   [1-2 Sätze — was relativiert die Zahlen, z.B. Bewertung bereits hoch,
+   Guidance nur in Line statt Beat, Sondereffekt in der Marge]
+
+   Trigger-Check: [löst dieses Ergebnis eines der hinterlegten Upgrade-/
+   Downgrade-Trigger bzw. These-Bruch-Kriterien aus? Ja/Nein + welches]
+
+   Status: 🟢/🟡/🔴 [kurzfristig], ggf. getrennt mittelfristig, falls
+   auseinanderfallend (unser Ampel-Vokabular, siehe etablierte Skalen)
+   ```
+4. **Trigger-Eskalation:** Löst das Ergebnis einen hinterlegten Upgrade-/
+   Downgrade-Trigger oder ein These-Bruch-Kriterium aus (siehe
+   "Verkaufsdisziplin & Gewinnmitnahme-Regeln", Investment-These-Protokoll),
+   wird — wie bei jedem echten Anlass — der volle 3-fach-Cross-Check
+   angestoßen (Terminal-State-Mechanismus aus Abschnitt 14 gilt dabei
+   unverändert). Löst es keinen Trigger aus, bleibt es bei diesem
+   kompakten Fazit — kein PDF nötig, Chat-Nachricht reicht, plus
+   PushNotification bei Depot-Positionen (Watchlist-Werte ohne bestehende
+   Position lösen keine PushNotification aus, erscheinen aber im nächsten
+   Wochenfazit unter Watchlist-Update).
+5. **Bündelung bei mehreren Terminen am selben Tag:** meldet mehr als ein
+   Wert am selben Tag Zahlen, werden die Kompakt-Fazits gesammelt in EINER
+   Chat-Nachricht/PushNotification zusammengefasst statt mehrerer
+   Einzel-Unterbrechungen (Notification-Ermüdung vermeiden, siehe
+   PushNotification-Regeln oben).
+
+**Abgrenzung zu bestehenden Formaten:** Ersetzt NICHT die volle
+Fundamentalanalyse (TMR/Scout) — ein Earnings-Kompakt-Fazit ist reine,
+schnelle Zahlen-Einordnung, keine neue DNA-Check-/Reaper-Score-Bewertung.
+Länger etablierte Positionen mit bereits hinterlegten Triggern profitieren
+am meisten (die Zahlen werden direkt gegen die eigene Beobachtungsbasis
+gehalten, nicht isoliert kommentiert).
+
+**Status: von Brian am 2026-09-01 angefordert und damit die bisher
+zurückgestellte Phase 4 (Abschnitt 9, "Earnings-/Corporate-Action-
+Kalender") in diesem Teilaspekt freigegeben und umgesetzt.**
+
 ### Blitz-Scan (2026-08-30, von Brian gefordert)
 
 Brians konkreter Anlass: er ist zwischendurch 1-2 Stunden weg (Einkaufen,
