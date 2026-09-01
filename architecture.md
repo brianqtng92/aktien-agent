@@ -2309,6 +2309,67 @@ TMR noch nicht gelaufen, oder ein einzelner Wert bei Twelve Data nicht
 geführt) wird das transparent als "noch keine belastbare Zielzone"
 gekennzeichnet statt eine Zahl zu erfinden.
 
+**Tranchen-vs-Einmalkauf-Entscheidung (2026-09-01, von Brian gefordert –
+systematisch statt frei entschieden).** Für jede Einstiegszonen-/
+Zielzonen-Empfehlung wird zusätzlich festgelegt, ob der Kauf/Verkauf als
+Einmal-Order oder gestaffelt über mehrere Tranchen erfolgen sollte:
+- **Standard/Default: 2-3 Tranchen** (Richtgröße z.B. 40/30/30 oder 50/50
+  über Einstiegszone 1/2 verteilt) – Timing lässt sich selten präzise
+  treffen, Staffelung ist die risikoärmere Grundhaltung, konsistent mit dem
+  Kapitalerhalt-Grundziel (Abschnitt 1).
+- **Für WENIGER Tranchen/größere Einzeltranche sprechen** (mehrere
+  zusammen erhärten das Signal, keine Einzelregel reicht):
+  1. Konfidenz 🟢 über alle drei KIs hinweg.
+  2. Kurs bereits in Einstiegszone 2 (Bear-FV + technisch überverkauft),
+     UND Bodenbildung bestätigt (echtes Signal ODER algorithmischer Proxy,
+     siehe `reports/detect_bodenbildung.py` oben).
+  3. Niedrige Volatilität (ATR relativ zum Kurs moderat, kein akuter
+     Ausreißertag).
+  4. Champions/Profi mit vollständig erfüllter DNA (kein Grenzfall).
+  → bei allen vier Punkten erfüllt: Einmalkauf oder 2 große Tranchen
+  vertretbar.
+- **Für MEHR/kleinere Tranchen sprechen** (Default verstärkt sich):
+  1. Talent/Zock JEDER Ausprägung – hier gilt IMMER mindestens 3 Tranchen,
+     unabhängig von den übrigen Kriterien (passt zur ohnehin kleinteiligen
+     Scout-Sizing-Logik, Abschnitt 3).
+  2. Konfidenz 🟡 (der Normalfall) oder Dissens zwischen den drei KIs
+     (Diskussionsrunde [3b] ausgelöst).
+  3. Kurs erst in Einstiegszone 1 (frühes, noch unbestätigtes Signal).
+  4. Hohe Volatilität (ATR relativ zum Kurs erhöht).
+- Die konkrete Tranchen-Empfehlung (Anzahl + grobe Gewichtung) wird immer
+  explizit benannt und kurz begründet, nie stillschweigend vorausgesetzt –
+  "wie üblich gestaffelt" reicht nicht, die ausschlaggebenden Kriterien
+  werden genannt (analog zur Herkunftsvermerk-Pflicht beim
+  Zeithorizont-Tag oben).
+
+**Zonen-Benachrichtigung per E-Mail + Scalable-Preisalarm (2026-09-01, von
+Brian gefordert, seit E-Mail-Anbindung technisch möglich).** Wird für eine
+Depot- oder Watchlist-Position eine NEUE oder GEÄNDERTE Einstiegs- bzw.
+Zielzone festgelegt (aus einem frischen 3-fach-Cross-Check, Ad-hoc-Analyse
+oder Wochenfazit-Update – nicht bei unveränderten Zonen, die schon letzte
+Woche galten, um Benachrichtigungs-Ermüdung zu vermeiden):
+1. **Scalable-Preisalarm setzen:** `create_price_alert` für jede genannte
+   Zone (Einstiegszone 1/2 UND/ODER Zielzone 1/2, je nachdem was gerade
+   festgelegt wurde). Wurde eine ältere Zone durch eine neue ersetzt,
+   zuerst den alten Alarm per `remove_price_alert` entfernen, damit keine
+   veralteten Alarme stehen bleiben. Beide Tools sind laut
+   Scalable-Whitelist bereits ohne Rückfrage nutzbar (siehe
+   HANDOVER.md 10.7).
+2. **E-Mail an `brianqtng@outlook.de`:** Betreff nennt Ticker + Anlass
+   (z.B. "HAWK: neue Einstiegszone festgelegt"). Inhalt: die genaue(n)
+   Zone(n) in Originalwährung UND EUR, die Tranchen-Empfehlung (siehe
+   oben) mit kurzer Begründung, und ein expliziter Hinweis, dass Brian
+   selbst ein Limit-Order bzw. Stop-Loss auf diesem Niveau bei Scalable
+   setzen kann – **niemals eine Formulierung, die eine automatische
+   Order-Ausführung suggeriert** (Grenze aus Abschnitt 1 bleibt fix, die
+   Mail bereitet nur die manuelle Entscheidung vor).
+3. **Kein Spam bei unveränderten Zonen:** Im wöchentlichen Wochenfazit
+   werden alle aktuell gültigen Zonen weiterhin vollständig aufgeführt wie
+   bisher – aber nur eine ECHTE Änderung (neue Zone, verschobene Zone,
+   ausgelöste/erreichte Zone) löst zusätzlich die dedizierte E-Mail +
+   Preisalarm-Aktualisierung aus, nicht jede wöchentliche Wiederholung
+   derselben Zahl.
+
 **Chartmuster-Erkennung als aktiver Impuls, nicht nur reaktive Kennzahl
 (2026-08-29, von Brian gefordert):** Das TA-Modul soll gezielt auf zwei
 Musterarten achten und daraus PROAKTIV etwas machen, nicht nur eine
