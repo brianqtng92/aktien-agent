@@ -2309,6 +2309,49 @@ TMR noch nicht gelaufen, oder ein einzelner Wert bei Twelve Data nicht
 geführt) wird das transparent als "noch keine belastbare Zielzone"
 gekennzeichnet statt eine Zahl zu erfinden.
 
+**Portfolio-Kontext-Pflichtprüfung vor jeder Zonen-/Tranchen-Empfehlung
+(2026-09-01, von Brian gefordert).** Eine Einstiegs-/Zielzone und die
+zugehörige Tranchen-Empfehlung (siehe unten) werden nie isoliert aus
+Kurs-/Fair-Value-Daten einer einzelnen Position hergeleitet, sondern immer
+zuerst gegen fünf Portfolio-Ebenen gespiegelt – jede davon ist bereits an
+anderer Stelle im Regelwerk verankert, hier nur als verbindlicher
+Cross-Check-Schritt vor der Zonen-Empfehlung zusammengeführt:
+1. **Chance-Risiko-Verhältnis (CRV):** bei Scout-Kandidaten das bereits
+   berechnete EV_Multiple + Downside-Summe aus den
+   Outcome-Wahrscheinlichkeiten (siehe `prompts/conan-the-scout-v1.12.md`),
+   bei TMR-Werten die Bear/Base/Bull-Fair-Value-Bandbreite – wird in der
+   Zonen-Empfehlung explizit als Verhältnis benannt ("Aufwärtspotenzial zu
+   Zielzone X vs. Abwärtsrisiko zu Stop-Loss/Bear-FV Y"), nicht nur implizit
+   in den Einzelzahlen belassen.
+2. **Cashreserve:** aktueller Cash-Stand (`get_portfolio_cash_breakdown`
+   bei Scalable, bzw. `depot/*.md` für die anderen Broker, siehe "Budget &
+   Cashflow"). Reicht das verfügbare Cash für die vorgeschlagene erste
+   Tranche nicht, wird die Tranche verkleinert oder explizit auf die
+   nächste reguläre Sparrate verschoben – keine Empfehlung, die faktisch
+   mehr Kapital voraussetzt als verfügbar ist.
+3. **Depotstruktur:** aktuelle Kategorie-Gewichtung (Champions/Profi/
+   Talent, Zielkorridor siehe Abschnitt 3) UND Regionen-/Sektor-Verteilung
+   gegen die bestehenden Zielbänder. Würde die volle vorgeschlagene Tranche
+   ein Band sprengen (z.B. USA-Cap, Sektor-Band, Kategorie-Kapitalgewicht),
+   wird die Tranchengröße reduziert oder der Kauf explizit als "würde
+   Depotstruktur-Ziel X verletzen" gekennzeichnet statt stillschweigend
+   empfohlen.
+4. **Strategie-Konsistenz:** Abgleich gegen das antizyklische Grundprinzip
+   bzw. die Momentum-Ausnahme für Zock/Trade (oben) UND die Core-Rules aus
+   Abschnitt 14 – eine Zonen-Empfehlung, die einem bereits aktiven
+   Terminal-State/Core-Rule-Abbruch widerspricht, ist ausgeschlossen, keine
+   Ausnahme.
+5. **Zielfortschritt:** aktueller Stand gegen das 90.000-100.000€-Ziel
+   (Abschnitt 1, inkl. Portfolio-Level Expected-Return-Szenario) – bei
+   bereits dauerhaft erreichtem Ziel greift die dort beschriebene
+   Rückkehr zur konservativeren Grundeinstellung (kleinere Tranchen/engere
+   Bänder), nicht die während der Aufbauphase geltenden moderat
+   erweiterten Stellschrauben.
+Diese fünf Punkte werden knapp (1 Satz je Punkt reicht, wenn unauffällig)
+in jeder Zonen-/Tranchen-Empfehlung mitgeführt – kein separates,
+aufwendiges Extra-Modul, sondern eine Pflicht-Gegenprobe, bevor eine Zahl
+als Empfehlung rausgeht.
+
 **Tranchen-vs-Einmalkauf-Entscheidung (2026-09-01, von Brian gefordert –
 systematisch statt frei entschieden).** Für jede Einstiegszonen-/
 Zielzonen-Empfehlung wird zusätzlich festgelegt, ob der Kauf/Verkauf als
