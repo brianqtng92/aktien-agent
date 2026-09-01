@@ -2980,16 +2980,15 @@ via yfinance"-Vorgehen funktioniert hier also nicht. Stattdessen:
 
 ## 8. Offene Punkte (werden im Verlauf mit Brian geklärt)
 
-- **OFFEN (2026-08-30, aus der Cross-KI-Gesamt-Review, Abschnitt 12):
-  Core-Rules-vs-Advisory-Rules-Split (Conans Vorschlag).** Bei mittlerweile
-  ca. 70 Einzelregeln im Regelwerk warnt Conan vor "Rule Overfitting" und
-  schlägt vor, zwischen harten, nicht verhandelbaren Core-Rules (z.B.
-  60%-USA-Hartgrenze, Positions-Maximum, Order-Ausführungs-Grenze) und
-  kontextabhängigen Advisory-Rules (z.B. die meisten Screening-Feinheiten
-  aus Abschnitt 4/11) zu unterscheiden. Noch nicht von Brian freigegeben –
-  wird zurückgestellt, bis das Regelwerk-Volumen in der Praxis tatsächlich
-  zum Problem wird (Jack und Conan raten ohnehin, aktuell keine weiteren
-  Struktur-Änderungen mehr vorzunehmen, siehe Abschnitt 12).
+- **ERLEDIGT (2026-09-01, siehe Abschnitt 14): Core-Rules-vs-Advisory-Rules-
+  Split (Conans Vorschlag vom 2026-08-30).** Ausgelöst durch einen real
+  aufgetretenen Beleg für Conans "Rule Overfitting"-Warnung (RKLB-
+  Meta-Retro-Fall, siehe Abschnitt 14) hat Brian den Split am 2026-09-01
+  freigegeben und per Cross-KI-Diskussionsrunde mit Jack und Conan
+  umgesetzt: 16 Core-Rules, ein Terminal-State-Mechanismus (Abbruch wird
+  echter Systemzustand statt reiner Texterwähnung) und Advisory-Rules als
+  situativer Rest. Volle Herleitung, beide KI-Antworten und der
+  RKLB-Canonical-Failure-Case in Abschnitt 14.
 - **ERLEDIGT (2026-08-30): Broker-Anbindung Scalable Capital LIVE über
   offiziellen Scalable-MCP-Connector ("Agentic Investing", scalable.capital).**
   Brian hat den Connector über Scalable Capitals eigene MCP-Schnittstelle
@@ -3699,8 +3698,8 @@ könnte man noch ergänzen") und eingearbeitet in Abschnitt 1 (Portfolio-Level
 Expected-Return-Szenario, Drawdown-Psychologie-Protokoll), Abschnitt 9
 (Prediction Ledger als konkretisierte Phase 2) und "Verkaufsdisziplin &
 Gewinnmitnahme-Regeln" (Investment-These-Protokoll). Der Core-/
-Advisory-Rules-Split (Conan) bleibt als offener, nicht freigegebener
-Vorschlag vorgemerkt.**
+Advisory-Rules-Split (Conan) wurde am 2026-09-01 freigegeben und
+umgesetzt — siehe Abschnitt 14.**
 
 ## 13. Cross-KI-Diskussion: Vincorion-Fallstudie — IPO-Overhang-Modul, Post-IPO-Datenlücken & No-False-Precision-Regel (2026-08-31)
 
@@ -3767,3 +3766,202 @@ und direkt umgesetzt** (kein separater Freigabe-Schritt wie bei Abschnitt
 12, da es sich um eng auf den konkreten Vincorion-Fall bezogene,
 gut abgegrenzte Modul-Ergänzungen statt einer System-weiten Architektur-
 Änderung handelt).
+
+## 14. Cross-KI-Diskussion: Core-vs-Advisory-Rules-Trennung + Terminal-State-Mechanismus (2026-09-01)
+
+**Auslöser:** Conans Vorschlag vom 30.08. (siehe Abschnitt 12), das
+Regelwerk in harte Core-Rules und kontextabhängige Advisory-Rules zu
+trennen, wurde damals zurückgestellt ("bis das Regelwerk-Volumen in der
+Praxis tatsächlich zum Problem wird"). Am 01.09.2026 wurde beim Aufräumen
+des Rocket-Lab-Falls (siehe `analysen/KRKN-RKLB-nachholanalyse-final-2026-09-01.md`)
+ein konkreter, real aufgetretener Beleg dafür gefunden: Jack (Gemini) hatte
+beim Scout-Quick-Filter vom 28.08. selbst korrekt erkannt und benannt
+"ABBRUCH-LOGIK GREIFT" (K-Erfüllung unter K-BASIS-2), ist danach aber
+regulär durch Moat-in-Formation, Gründer-Score und Outcome-Wahrscheinlichkeiten
+weitergelaufen und hat am Ende ein reguläres BEOBACHTEN-STARK-Rating mit
+echter Sizing-Freigabe (0,5-1,5%) vergeben — ein direkter Selbst-
+Widerspruch, der die Rocket-Lab-Bewertung im System faktisch verfälscht
+hätte, wäre er nicht beim Aufräumen aufgefallen. Brian hat daraufhin
+angeordnet, den Core-/Advisory-Split jetzt ernsthaft umzusetzen, inklusive
+einer eigenen Cross-KI-Diskussionsrunde mit Jack und Conan (nicht nur
+Jarvis-Entscheidung).
+
+**Jarvis' Ausgangsvorschlag** (15 Punkte, an Jack/Conan zur unabhängigen
+Prüfung vorgelegt): Order-Ausführung ausschließlich manuell; USA-Cap 60%;
+ETF-Mindestanteil 50%; Positions-Cap 10%/12%; Max. 20 Positionen; TMR
+Going-Concern-Precheck → SCHROTT; TMR K [N/V] → Abbruch; TMR
+Entscheidungshierarchie; Scout K [N/V] → Abbruch; Scout K≤K-BASIS-2 →
+Abbruch; Scout Vorrang-Prinzip; Scout Fraud-Check-Abbruch; No-False-
+Precision; "immer alle drei KIs"; Datenintegritäts-Tag-Hierarchie.
+
+**Jacks unabhängige Antwort:** stimmt der Liste grundsätzlich zu, ergänzt
+zwei Punkte — (a) der harte 18%-Trailing-Weight-Cap (Rebalancing-
+Notfallgrenze) muss explizit als Core-Rule geführt werden, nicht nur als
+Kontrast zur 15%-Review-Schwelle erwähnt; (b) eine explizite Regel, dass
+niemals eine Sizing-Freigabe >0% erteilt werden darf, wenn ein
+vorgelagerter Core-Breaker bereits ausgelöst hat. Jacks zentraler
+Lösungsvorschlag: ein **"Circuit Breaker"**-Mechanismus — löst eine
+Core-Rule/Abbruch-Logik aus, muss die Ausgabe SOFORT mit einem
+standardisierten Abbruch-Block enden ("🛑 CIRCUIT BREAKER TRIGGERED",
+auslösende Regel + Status "ANALYSE BEENDET, nachgelagerte Module
+DEAKTIVIERT" + Endurteil + Sizing 0,0%), kein weiterer Text/Score/Sizing
+danach.
+
+**Conans unabhängige Antwort** (ohne Kenntnis von Jacks Antwort, eigener
+Chat): stimmt der 15er-Liste zu ~90-95% zu, schlägt strukturell dieselbe
+Grundidee wie Jack vor, aber formaler gefasst:
+- **CORE RULE 16 — TERMINAL-STATE-INTEGRITÄT** (Conans wichtigste
+  Ergänzung): Löst eine Core-Rule einen Abbruch/SCHROTT/PASS/sonstigen
+  finalen Zustand aus, wird dieser Zustand sofort **terminal**. Nach
+  Eintritt eines terminalen Zustands dürfen keine nachgelagerten Analyse-,
+  Bewertungs-, Scoring-, Sizing- oder Ratingmodule mehr
+  **entscheidungsrelevant** ausgeführt werden — höchstens noch
+  diagnostisch/loggend, niemals ratingwirksam.
+- **Präzisierung von Regel 11:** nicht "Rating schlägt Score" (zu vage,
+  semantisch angreifbar), sondern **"Guardrail > Entscheidung > Score"**
+  — ein höher priorisierter Guardrail schlägt jedes nachgelagerte
+  numerische Ergebnis, Scores dürfen eine durch eine Core-Rule ausgelöste
+  Entscheidung niemals überschreiben, relativieren oder kompensieren.
+- **Core-Precedence-Law:** bei Konflikten entscheidet ausschließlich die
+  höchste Core-Priorität; eine später erkannte oder positivere
+  Information (z.B. ein starker Moat) kann einen bereits ausgelösten
+  terminalen Core-Zustand NICHT rückgängig machen.
+- **Modul-Eintrittsbedingungen ("Gates"):** jedes ratingrelevante Modul
+  (Moat-in-Formation, Gründer-Score, Valuation, Outcome, Rating, Sizing)
+  bekommt eine Eintrittsbedingung "Status == ANALYSE_AKTIV" — bei Status
+  "ABBRUCH" ist der Eintritt in ein solches Modul gesperrt. Das ist der
+  eigentliche Schutz gegen ein "Vergessen" des Abbruchs im Textfluss.
+- **Kein Core-Override durch Advisory:** Advisory-Regeln dürfen den
+  Analyseprozess innerhalb des von Core-Rules gesetzten Zustandsraums
+  interpretieren, aber niemals einen Core-Zustand selbst verändern oder
+  aufheben.
+- Conans Kernsatz, wörtlich übernommen, weil er den Unterschied zum
+  bisherigen Regelwerk am besten trifft: **"Core Rules are execution
+  constraints, not recommendations"** — eine Core-Rule ist keine
+  Information, die dem Modell übergeben wird, sondern verändert den
+  zulässigen Analysezustand selbst.
+- Empfiehlt, den RKLB-Fall explizit als **Canonical Failure Case** in
+  diesem Abschnitt zu dokumentieren (siehe unten).
+
+**Synthese (Jarvis, aus beiden unabhängigen Antworten zusammengeführt —
+Jack und Conan kamen, ohne voneinander zu wissen, auf strukturell
+dieselbe Grundidee: ein erkannter Abbruch muss den Prozess wirklich
+stoppen, nicht nur im Text erwähnt werden. Das ist ein starkes Signal,
+dass dies der richtige Fix ist, nicht nur eine von mehreren
+gleichwertigen Optionen):**
+
+### Core-Rules (16, unverhandelbar, execution constraints statt Empfehlungen)
+
+1. Order-Ausführung ausschließlich manuell durch Brian — `submit_buy_order`/
+   `submit_sell_order`/`submit_savings_plan`/`cancel_order` werden NIE
+   vom Agenten aufgerufen.
+2. USA/Nordamerika-Region: harte Obergrenze 60%.
+3. ETF-Mindestanteil: mindestens 50% des Gesamtportfolios.
+4. Einzelposition: max. 10% (Ausnahme bis 12% nur bei Top-Conviction,
+   echte Ausnahme, kein neues Standard-Limit).
+5. **Trailing-Weight-Hard-Cap 18%** (ergänzt von Jack): über 18% zwingendes
+   Rebalancing, kein Ermessen — die 15%-Review-Schwelle bleibt Advisory.
+6. Max. 20 Einzelpositionen.
+7. TMR Going-Concern-Precheck bei Auditor-Zweifel → sofort SCHROTT, keine
+   Ausnahme.
+8. TMR K-Kriterium [N/V] → Sofort-Abbruch.
+9. TMR Entscheidungshierarchie (Datenintegrität > Going-Concern >
+   DNA-Abbruch > Risiko-Overrides > Valuation > Score > Sizing > Rating).
+10. Scout K-Kriterium [N/V] → Sofort-Abbruch.
+11. Scout K ≤ K-BASIS−2 → Abbruch → direkt Scout-Urteil, Moat-/Gründer-/
+    Bewertungs-Module werden NICHT ratingwirksam.
+12. Scout Fraud-Check ≥3 Flags ODER Going-Concern → automatischer Abbruch.
+13. No-False-Precision-Regel — keine erfundenen Wahrscheinlichkeiten/
+    Schein-Genauigkeit.
+14. "Immer alle drei KIs" — niemals wird ein Kandidat allein auf
+    Jarvis-Basis in Watchlist/Depot übernommen.
+15. Datenintegritäts-Tag-Hierarchie (LIVE > VERIFIED > TRAINING > ESTIMATE;
+    [N/V] bei K-Kriterien = Abbruchgrund).
+16. **GUARDRAIL > ENTSCHEIDUNG > SCORE** (präzisierte Fassung von "Rating
+    schlägt Score", Conans Formulierung übernommen) — ein höher
+    priorisierter Guardrail schlägt jedes nachgelagerte numerische
+    Ergebnis. Scores dürfen eine durch eine Core-Rule ausgelöste
+    Entscheidung niemals überschreiben, relativieren oder kompensieren.
+    Keine Sizing-Freigabe >0% ist möglich, wenn ein vorgelagerter
+    Core-Breaker bereits ausgelöst hat (Jacks Ergänzung).
+
+### Terminal-State-Mechanismus (Pflicht, ersetzt bisherige reine Textregel-Formulierung)
+
+Löst eine der 16 Core-Rules einen Abbruch/SCHROTT/PASS/sonstigen finalen
+Zustand aus, gilt ab sofort:
+
+1. **Der Zustand wird sofort terminal.** Kein nachgelagertes Modul (Moat-
+   in-Formation, Gründer-/Führungs-Score, Bewertung, Asymmetrie-Check,
+   Outcome-Wahrscheinlichkeiten, Rating, Sizing) darf danach noch
+   **entscheidungsrelevant** ausgeführt werden — höchstens diagnostisch/
+   loggend (z.B. "informell, da Abbruch — nur als Kontext", wie Jarvis es
+   beim RKLB-Fall bereits richtig gemacht hat), niemals ratingwirksam.
+2. **Ausgabeformat bei Terminal-State (Pflicht ab sofort für TMR/Scout-
+   Läufe, Jacks Vorschlag):** die Analyse endet mit einem klar markierten
+   Abbruch-Block statt normal weiterzulaufen:
+   ```
+   🛑 ABBRUCH-ZUSTAND ERREICHT
+   Auslösende Core-Rule: [z.B. Scout K ≤ K-BASIS−2]
+   Festgestellter Wert: [z.B. K-Erfüllung 2/5]
+   Status: ANALYSE BEENDET — nachgelagerte Module (Moat/Gründer/Outcome/
+   Bewertung) NICHT ratingwirksam
+   Urteil: [z.B. ZU FRÜH / SCHROTT]
+   Sizing: 0%
+   ```
+3. **Core-Precedence-Law (Conan):** bei Konflikten entscheidet
+   ausschließlich die höchste Core-Priorität. Eine später im selben Lauf
+   erkannte oder positivere Information (z.B. ein außergewöhnlich starker
+   Moat) kann einen bereits ausgelösten terminalen Core-Zustand NICHT
+   rückgängig machen.
+4. **Kein Core-Override durch Advisory-Rules.** Advisory-Regeln
+   interpretieren den Prozess innerhalb des von den Core-Rules gesetzten
+   Zustandsraums, verändern oder überschreiben aber niemals einen
+   Core-Zustand selbst.
+5. **Selbstprüfung vor Abgabe eines Ratings (Pflicht):** bevor ein
+   TMR-/Scout-Urteil final ausgegeben wird, prüft der Agent explizit:
+   "Wurde irgendwann in diesem Lauf ein Core-Rule-Abbruch-Zustand
+   festgestellt? Falls ja: entspricht das Endergebnis exakt dem
+   Abbruch-Ausgabeformat oben, ohne dass ein nachgelagertes Modul das
+   Rating/Sizing beeinflusst hat?" Diese Prüfung ist selbst eine
+   Core-Rule (Meta-Ebene) und gilt für Jarvis genauso wie für Jack/Conan.
+
+### Advisory-Rules (Beispiele, nicht abschließend — situativ gewichtet, dürfen Core nie überschreiben)
+
+Sektor-/Regionen-Zielbänder (bereits als "Ziel-Band, keine harte Grenze"
+markiert); Screening-Index-Rotation; Formulierungs-/Erzählstil-Regeln
+(Verständlichkeits-Regel); Trailing-Weight-Review-Schwelle bei 15%;
+Sizing-Tier-Feinabstufungen innerhalb der Caps (z.B. 0,5%/1%/1,5% —
+solange innerhalb der Core-Caps frei interpretierbar); regimebasierte
+dynamische Anpassungen (dürfen Gewichtungen INNERHALB der Core-Grenzen
+verändern, nie die Core-Grenzen selbst); Chartmuster-Erkennungs-
+Feinheiten; Watchlist-Kategorisierungslogik (Champions/Profi/Talent-
+Zuordnung).
+
+### Canonical Failure Case: Rocket Lab (RKLB), 28.08.-01.09.2026
+
+Zur Dokumentation, warum dieser Mechanismus eingeführt wurde (Conans
+Vorschlag): Beim Scout-Quick-Filter für Rocket Lab hat Jack (Gemini)
+korrekt erkannt und wörtlich notiert "ABBRUCH-LOGIK GREIFT" (K-Erfüllung
+3/5, unter K-BASIS−2), ist aber danach regulär weitergelaufen: Moat-in-
+Formation (4/4) → Gründer-Score → Outcome-Wahrscheinlichkeiten →
+BEOBACHTEN-STARK-Rating → Sizing-Freigabe 0,5-1,5%. Das ist kein
+Zahlenfehler und keine abweichende Einschätzung, sondern ein fehlender
+Terminal-State: die Erkenntnis "Abbruch greift" wurde nicht in einen
+unveränderlichen Systemzustand übersetzt, sondern blieb eine Textzeile,
+die von den folgenden Modulen faktisch ignoriert wurde. Aufgelöst am
+01.09.2026 zugunsten von Jarvis' ursprünglichem, regelkonformem Ergebnis
+(RATING: ZU FRÜH, 0% für Neu-/Nachkauf) — siehe
+`analysen/KRKN-RKLB-nachholanalyse-final-2026-09-01.md`. Bestehende
+10-Stück-Position bleibt unangetastet (reine Aufstockungssperre, keine
+Exit-These).
+
+**Status: von Brian am 01.09.2026 angeordnet, Cross-KI-Diskussion mit Jack
+und Conan durchgeführt (beide unabhängig befragt, ohne dass eine KI die
+Antwort der anderen kannte), Ergebnis oben synthetisiert und mit
+sofortiger Wirkung freigegeben.** Betrifft nur, WIE Core-Rules technisch
+durchgesetzt werden (Terminal-State statt reine Texterwähnung) — keine
+einzige inhaltliche Analyse-/Portfolio-Regel wurde dadurch verändert. Die
+drei Methodik-Prompt-Dateien (`prompts/*.md`) bleiben unverändert, wie in
+Abschnitt 2 festgelegt — der Terminal-State-Mechanismus ist eine
+Ausführungs-Vorgabe für den Agenten (dieses architecture.md-Dokument),
+keine Änderung an Brians eigenen Prompt-Texten.
