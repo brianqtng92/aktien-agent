@@ -165,3 +165,33 @@ KGV (fwd): **26,95** · PEG: **1,11** (klar <1,5 → nach PEG-Maßstab **fair**,
 ---
 
 *Hinweis: Quick-Filter-Kurzform gemäß explizitem Auftrags-Scope. Für eine belastbarere Konfidenz-Einstufung (Upgrade von 🔴 auf 🟡/🟢) wären insbesondere eine SEC-10-Q-Primärquellen-Verifikation der Piotroski-Komponenten und eine zweite unabhängige Quelle für die reale FCF-Marge nötig.*
+
+---
+
+## 🔄 UPDATE 2026-09-01 — Kompaktes Fazit auf Ad-hoc-Nachfrage ("interessant für einen Nachkauf?")
+
+**Kein voller 3-fach-Cross-Check** (kein Upgrade-/Downgrade-Trigger aus dem BEOBACHTEN-Protokoll unten ausgelöst → gemäß architecture.md Abschnitt "Trigger-Eskalation" bleibt es beim kompakten Jarvis-Fazit, kein PDF/Cross-Check nötig).
+
+**📍 Live-Kurs: ca. $86,69 (Schlusskurs 31.08.2026) / 73,17-73,36€ (live, Scalable, 01.09.2026, 13:01 UTC)** [LIVE, Scalable-Quote + WebSearch-Cross-Check; EUR/USD-Kurs Twelve-Data-seitig aktuell nicht abrufbar (Connector-Ausfall in dieser Sitzung), Umrechnung daher aus dem Verhältnis der beiden Quellen abgeleitet (~1,16), nicht per Live-Devisenkurs verifiziert — Kennzeichnung gemäß No-False-Precision-Regel]. Damit ca. **-5% seit der Analyse vom 23.08. ($91,24)**, aber **klar oberhalb** des gesetzten Abstauber-Limits ($75 ≈ €65).
+
+**News-Update (kein neuer Katalysator, gleiche These läuft weiter):** Bestätigt laut Presse (SimplyWallSt, Yahoo Finance, 247wallst) die bereits am 23.08. dokumentierte Margin-/Lagerbestand-Sorge — Produkt-Bruttomarge am unteren Ende der 60-65%-Zielspanne, Lagerbestand weiterhin hoch. Neu: **$100 Mio. Accelerated-Share-Repurchase** mit Mizuho gestartet (05.08.2026, ca. 796.000 Aktien initial geliefert, Abschluss bis Ende Q3'26) — moderat positiv (Kapitalallokation), ändert aber nichts an der Kernthese. **Insider-Verkauf bestätigt fortgesetzt:** Director Charles Kissner verkaufte 5.000 Aktien am 07.08.2026 @$100,92 (10b5-1-Plan) — kein Stopp der Insider-Nettoverkäufe, Upgrade-Trigger 3 damit weiterhin NICHT erfüllt.
+
+**Trigger-Check (BEOBACHTEN-PROTOKOLL von unten):**
+- Upgrade 1 (Q3'26-Zahlen bestätigen Ramp-These): Q3-Earnings noch nicht berichtet (Guidance: $210-216 Mio./±$0,75-0,82 EPS) → **noch nicht prüfbar**
+- Upgrade 2 (Piotroski verbessert sich): keine neue Datenbasis seit 23.08. → **offen**
+- Upgrade 3 (Insider-Verkäufe stoppen): **NICHT erfüllt** (Kissner-Verkauf 07.08.)
+- → **0 von 3 Upgrade-Triggern erfüllt.**
+- Downgrade-Trigger: keiner eindeutig ausgelöst (Q3-Daten fehlen für Kriterium 1, ROIC/Insider-Schwelle 3 nicht abschließend quantifizierbar) → **kein Abbruch, aber auch keine Bestätigung.**
+
+**Portfolio-Kontext-Pflichtprüfung:**
+- **Depotstruktur/Sizing:** Bestehende Position 6 Stk. @88,94€ = **533,64€ investiert ≈ 1,98% des Aktienanteils** (Baseline 30.08.: 26.943,67€) — das ist bereits **praktisch am Tier-3-Deckel (max. 1-2%)**, der bei 🔴-Konfidenz + Beta 🔴 gilt. Ein Nachkauf JETZT würde diesen Deckel sprengen, ohne dass sich die Konfidenz verbessert hat.
+- **CRV:** Unverändert schlecht für einen Nachkauf auf diesem Niveau — Aufwärtspotenzial (Analysten-Ziel $147,50) ist unverändert groß, aber die 🔴-Konfidenz und das offene Margin-/Lager-Fragezeichen sind ebenfalls unverändert, d.h. das Chance-Risiko-Verhältnis hat sich seit 23.08. nicht spürbar verbessert.
+- **Cashreserve:** Die 200€/Monat-„Trockenpulver"-Reserve (Scalable) ist explizit für eine **breite Markt-Korrektur** (S&P/MSCI World ≥7-10% vom Hoch), nicht für Einzeltitel-Dips reserviert — hier nicht einschlägig.
+- **Strategie-Konsistenz (Antizyklisches Prinzip):** Das Prinzip verlangt Nachkauf bei intakten Fundamentaldaten UND einem echten, vordefinierten Wertpunkt — genau dafür wurde das Abstauber-Limit ($75) gesetzt. Der Kurs hat dieses Limit noch nicht erreicht; ein Kauf jetzt wäre kein diszipliniertes Antizyklisch-Handeln, sondern ein Vorgriff auf die eigene Regel.
+- **Zielfortschritt:** Kein Zeitdruck erkennbar, der ein Abweichen vom definierten Plan rechtfertigen würde.
+
+### ➡ VERDICT: **KEIN Nachkauf jetzt — 👁 NUR BEOBACHTUNG, Status bleibt BEOBACHTEN**
+
+Rating unverändert **BEOBACHTEN**, Abstauber-Limit unverändert **$75 (≈ 65€)**. Erst bei Erreichen dieses Kurses UND weiterhin ≥2/3 Upgrade-Triggern erfüllt wird ein Nachkauf (Tier 3, max. 1-2%) systematisch geprüft — und selbst dann ist die Sizing-Kopfspielraum durch die bestehende Position bereits fast ausgeschöpft, ein möglicher Nachkauf wäre also eher klein.
+
+**Preisalarm bei Scalable gesetzt (01.09.2026): 65,00€ (DOWN)** — automatisiert die Re-Evaluierung, sobald der Abstauber-Limit-Bereich erreicht wird, ohne dass Brian aktiv nachfragen muss.
