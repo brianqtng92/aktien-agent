@@ -2402,6 +2402,62 @@ Einmal-Order oder gestaffelt über mehrere Tranchen erfolgen sollte:
   werden genannt (analog zur Herkunftsvermerk-Pflicht beim
   Zeithorizont-Tag oben).
 
+**Aktive Umschichtungs-Logik: Kapitalrotation zwischen Positionen (2026-09-01,
+von Brian gefordert).** Bisher behandelt das Regelwerk Kauf- und
+Verkaufs-Empfehlungen weitgehend isoliert je Einzelposition. Brian will, dass
+der Agent das Depot aktiv als Ganzes verwaltet: löst eine Position eine der
+beiden Verkaufs-Kategorien (4 oder 5, siehe "Fünf Ergebnis-Kategorien" oben)
+aus, prüft der Agent zusätzlich EIGENSTÄNDIG, ob das freiwerdende Kapital
+woanders (bestehende Depot-Position mit aktivem NACHKAUF-ERWÄGEN-Signal ODER
+Watchlist-Kandidat mit frischem KAUFEN-Rating) aktuell mehr Potenzial bietet,
+und präsentiert Verkauf + Wiederanlage als **gepaarten
+Umschichtungs-Vorschlag** statt zweier isolierter Meldungen. Der Agent
+"entscheidet frei" im Sinne von: er wählt eigenständig, WELCHE Umschichtung
+er vorschlägt (oder auch keine, wenn kein überzeugender Kandidat da ist) –
+die Order-Ausführung selbst bleibt exklusiv Brians Sache (Grenze aus
+Abschnitt 1 unverändert, `submit_buy_order`/`submit_sell_order` bleiben
+tabu, `preview_*` darf zur Vorbereitung genutzt werden).
+
+- **Zwei Auslöser, kein neuer unabhängiger Verkaufsgrund:** Die
+  Umschichtungs-Prüfung wird NIE selbst zum Verkaufsauslöser – sie startet
+  erst, NACHDEM Kategorie 4 oder 5 bereits unabhängig (aus eigenem Recht)
+  ausgelöst hat. Die Aussicht auf einen vermeintlich attraktiveren Kandidaten
+  woanders ist niemals allein ein Grund, eine fundamental intakte These zu
+  verkaufen – das widerspräche dem Kapitalerhalt-Grundziel (Abschnitt 1) und
+  dem antizyklischen Grundprinzip (oben).
+  1. **Gewinnmitnahme-Rotation:** Kategorie 4 (TEILVERKAUF/GEWINNMITNAHME
+     ERWÄGEN) ist für Position A aktiv (These intakt, aber überbewertet/
+     überhitzt) UND es existiert mindestens ein Kandidat B mit klar
+     besserem aktuellem CRV (bestehende Position mit NACHKAUF-ERWÄGEN-
+     Signal oder frischer Watchlist-KAUFEN-Kandidat) → Umschichtung
+     vorschlagen.
+  2. **Verlust-Rotation:** Kategorie 5 (VERKAUF ERWÄGEN) ist für Position A
+     aktiv (These gebrochen) → hier IMMER aktiv nach einem
+     Umschichtungsziel suchen, unabhängig vom CRV-Vergleich, weil das
+     Kapital ohnehin nicht in der gebrochenen These bleiben soll. Die Frage
+     ist dann nur noch "wohin", nicht "ob raus" – das "ob raus" ist über
+     das Investment-These-Protokoll (oben) bereits entschieden.
+- **Format des Vorschlags:** gepaart darstellen – Verkauf X€/Y Stück aus
+  Position A zum aktuellen Kurs, Wiederanlage Z€ in Position/Kandidat B zum
+  aktuellen Kurs, mit kurzer Gegenüberstellung der beiden CRVs/Thesen
+  ("A: These gebrochen wegen [Kriterium] / B: [Kernthese], aktuelles
+  Aufwärtspotenzial X vs. Abwärtsrisiko Y"). Auf die EMPFANGENDE Seite
+  (Kandidat B) wird die volle Portfolio-Kontext-Pflichtprüfung (5 Punkte,
+  oben) angewendet wie bei jeder anderen Zonen-Empfehlung, inklusive
+  Konkrete-Eurosumme-Pflicht und Tranchen-Entscheidung.
+- **Kein erzwungener Vorschlag:** Findet sich kein überzeugender
+  Umschichtungs-Kandidat (typischer Fall bei reiner Kategorie-4-
+  Gewinnmitnahme ohne aktuell attraktive Alternative), bleibt es bei der
+  reinen Teilverkauf-Empfehlung, das Kapital fließt zurück in Cash/die
+  nächste reguläre Sparrate – transparent als "aktuell kein besserer
+  Umschichtungs-Kandidat identifiziert" benennen statt eine schwache
+  Umschichtung zu erzwingen.
+- **Verankerung im Ablauf:** Wochenfazit (Schritt "Exit-/Gewinnmitnahme-/
+  Nachkauf-Ampel") und Täglicher Trigger-Check (bei ausgelöstem Trigger)
+  prüfen ab sofort bei jeder Kategorie-4/5-Meldung zusätzlich aktiv auf ein
+  Umschichtungsziel, bevor das Ergebnis an Brian geht – nicht erst auf
+  Nachfrage.
+
 **Zonen-Benachrichtigung per E-Mail + Scalable-Preisalarm (2026-09-01, von
 Brian gefordert, seit E-Mail-Anbindung technisch möglich).** Wird für eine
 Depot- oder Watchlist-Position eine NEUE oder GEÄNDERTE Einstiegs- bzw.
