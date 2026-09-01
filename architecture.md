@@ -590,8 +590,50 @@ seine Stimme im Vergleich trotzdem "Jack", nicht "Conan").
       mehrjährige These. Hier gilt der stop-loss-/charttechnik-primäre
       Exit-Ansatz wie ursprünglich beschrieben.
     Fehlt der Tag bei einer bestehenden Talent/Zock-Position, wird er beim
-    nächsten Wochenfazit nachgetragen (Jarvis' Einschätzung, von Brian
-    jederzeit korrigierbar) statt die Position ungetaggt zu lassen.
+    nächsten Wochenfazit nachgetragen (systematisch hergeleitet, siehe
+    unten – nicht mehr freie Einschätzung) statt die Position ungetaggt zu
+    lassen.
+
+    **Systematische Tag-Herleitung (2026-09-01, von Brian gefordert –
+    ersetzt "Jarvis' Einschätzung" durch nachvollziehbare Kriterien).** Der
+    Tag wird nicht mehr frei geschätzt, sondern automatisch aus den ohnehin
+    vorliegenden Scout-Modulergebnissen abgeleitet (Full Scout oder Quick
+    Scout, siehe `prompts/conan-the-scout-v1.12.md`) – kein zusätzlicher
+    Analyseaufwand, nur eine feste Auswertungsregel oben drauf:
+    - **Signale für "Talent (langfristig)"** (zutreffend = 1 Punkt je Signal):
+      1. Moat-in-Formation ≥3/4 (solide/starke Ansätze, nicht nur "Story,
+         kein struktureller Vorsprung").
+      2. Trichter-Einordnung mindestens "auf dem Weg zu Stufe 2" (nicht
+         reines Stufe-1-Rohtalent ohne erkennbare Weiterentwicklung).
+      3. Killer-Thesis-Bruchwahrscheinlichkeit "Niedrig" oder "Mittel"
+         (nicht "Hoch").
+      4. Kein aktiver ☢ Hype-Strike.
+      5. Die Kernthese (Scout Conviction) ist strukturell (Marktanteils-/
+         Moat-Aufbau über Jahre) statt an einem einzelnen kurzfristigen
+         Binärereignis hängend (z.B. "ein Produkt muss in den nächsten
+         Monaten funktionieren").
+    - **Auswertung:** ≥3 von 5 Signalen erfüllt → Tag **"Talent
+      (langfristig)"**. ≤2 von 5 erfüllt → Tag **"Zock/Trade"**. Bei genau
+      2/5 UND erkennbarem Aufwärtstrend der Signale gegenüber der letzten
+      Bewertung (z.B. Moat-in-Formation hat sich verbessert) ist eine
+      Ausnahme zugunsten "Talent (langfristig)" mit kurzer Begründung
+      zulässig – ohne klaren Aufwärtstrend gilt im Zweifel die
+      konservativere Einstufung "Zock/Trade" (gleiches Prinzip wie die
+      "Minimale-Annahme-Pflicht" im Scout-Regelwerk: Datenlücken/Grenzfälle
+      werden nie zugunsten der wohlwollenderen Einstufung ausgelegt).
+    - **Herkunftsvermerk:** jede Tag-Zuweisung wird mit den ausschlaggebenden
+      Signalen dokumentiert (z.B. "Zock/Trade – 2/5: Moat 2/4, Trichter
+      Stufe 1, Killer-These Hoch, kein Hype-Strike, Kernthese
+      Einzelereignis-getrieben"), damit die Einstufung nachvollziehbar
+      bleibt statt eine Blackbox zu sein.
+    - **Höherstufung möglich, nicht nur einmalige Festlegung:** verbessern
+      sich die Signale über mehrere Quartale (z.B. im Rahmen des Prediction-
+      Ledger-Post-Mortems, siehe Abschnitt 9), wird der Tag beim nächsten
+      regulären Scout-Durchlauf neu bewertet, nicht nur bei Erstaufnahme
+      einmal festgelegt.
+    - Brian kann jede automatisch hergeleitete Einstufung weiterhin jederzeit
+      manuell korrigieren – das System liefert einen begründeten Vorschlag,
+      keine unumstößliche Festlegung.
   - **Kapitalgewichts-Ziel (löst die reine Positionsanzahl-Spanne oben für
     die GEWICHTUNG ab, die Positionsanzahl-Range bleibt als grober
     Diversifikations-Rahmen bestehen):** **Champions ca. 35-45%**,
