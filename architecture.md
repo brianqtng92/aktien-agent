@@ -2030,6 +2030,28 @@ ist. Das ist keine neue vierte KI-Stimme, sondern eine explizite
 Auswertungs-Ebene, die TMR-Fundamentaldaten (Fair-Value, K-Kriterien, Exit-
 Trigger) mit dem technischen Bild aus Twelve Data (siehe oben) kombiniert.
 
+**Antizyklisches Grundprinzip (2026-09-01, von Brian explizit bestätigt und
+verallgemeinert):** Für Champions, Profi und Talent-Positionen mit Tag
+"Talent (langfristig)" gilt als Standardhaltung: wird ein Wert vom Markt
+abgestraft (Kursrückgang wegen hoher Bewertung, enttäuschendem Ausblick,
+Sektor-Rotation, allgemeiner Marktschwäche o.ä.), OBWOHL die fundamentale
+Lage laut aktuellem [B] THESE-CHECK weiterhin intakt ist (DNA-Kriterien,
+Moat, Kernthese unverändert bestätigt), wird das NICHT als Warnsignal
+gelesen, sondern als potenzielle Kaufgelegenheit – das ist inhaltlich
+bereits Kategorie 1 unten (NACHKAUF ERWÄGEN), hier nur als bewusstes,
+allgemeines Grundprinzip benannt statt nur als Einzelkategorie. **Ausdrückliche
+Ausnahme für Talent/Zock mit Tag "Zock/Trade"** (siehe Abschnitt 3,
+"Zeithorizont-Tag innerhalb Talent/Zock"): bei diesen bewusst kurzfristig-/
+momentum-getriebenen Positionen darf – je nach Situation – auch in Stärke
+statt nur in Schwäche gekauft werden (Momentum-Bestätigung als eigenständiges
+Kaufsignal, nicht nur Rücksetzer). Das ist kein Widerspruch zum
+antizyklischen Grundprinzip, sondern folgt derselben Logik wie beim bereits
+etablierten unterschiedlichen Exit-Ansatz dieser Kategorie (charttechnik-/
+momentum-primär statt thesenbasiert) – Einstieg UND Ausstieg folgen bei
+"Zock/Trade" konsistent der Charttechnik, nicht nur einer der beiden Seiten.
+Für "Talent (langfristig)" bleibt dagegen das antizyklische Grundprinzip
+unverändert die Norm, wie bei Champions/Profi.
+
 **Fünf Ergebnis-Kategorien je Position (2026-08-29 um die Kaufseite
 erweitert, von Brian gefordert: "wenn es überbewertet gibt, muss es
 natürlich auch unterbewertete Titel geben")** – ersetzt/ergänzt die
