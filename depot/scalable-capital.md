@@ -1,5 +1,20 @@
 # Depot Scalable Capital – Brian
 
+**Klarstellung zur Rolle dieses Kontos (2026-09-01, von Brian erklärt):**
+Das Scalable-Konto dient bei Brian **ausschließlich für den ETF-Sparplan**
+(Vanguard FTSE All-World) – **nicht** als aktives Aktiendepot. Das eigentliche
+Aktiendepot mit den Einzelwerten liegt bei **finanzen.net zero**
+(`depot/finanzen-net-zero.md`). **Bank Central Asia (BBCA)** ist eine
+bewusste Ausnahme: gekauft, weil zum Kaufzeitpunkt Cash auf dem Scalable-
+Verrechnungskonto lag und Brian nicht extra hin- und herschieben wollte –
+**keine strategische Entscheidung, Profi-Positionen bei Scalable zu
+halten.** BBCA wird früher oder später zum eigentlichen Aktiendepot
+(finanzen.net zero) übertragen. Bis zur Übertragung bleibt BBCA
+inhaltlich unverändert Teil der Profi-Kategorie-Berechnung (Region/Sektor/
+Kapitalgewicht) – der Broker, bei dem eine Position technisch liegt, ändert
+nichts an ihrer strategischen Einordnung. Das Gold-ETC bleibt wie bisher
+bewusst außerhalb der Champions/Profi/Talent-Struktur (siehe unten).
+
 **Update 2026-08-30: Live-Anbindung über Scalable MCP aktiv (siehe
 architecture.md, "Broker-Anbindung Scalable Capital").** Ab jetzt read-only
 Live-Daten statt manueller Screenshot-Erfassung – Zuletzt live abgeglichen:
@@ -48,4 +63,6 @@ Hinweis (2026-08-23): Depot-Erfassung insgesamt abgeschlossen – von Brian best
 Update 2026-08-28: nach der Depot-Restrukturierung (siehe `architecture.md`) sind
 es 18 Einzelwerte ohne ETF + Vanguard-FTSE-All-World-ETF-Sparplan (Update
 2026-08-30: plus die neu entdeckte Gold-ETC-Position, siehe oben – zählt
-vermutlich nicht zu den 18 aktiven Einzelwerten, siehe Einordnungsfrage oben).
+NICHT zu den aktiven Einzelwerten, siehe Klarstellung ganz oben). BBCA
+zählt weiterhin als aktiver Profi-Einzelwert (siehe Klarstellung ganz
+oben, 2026-09-01) – der Broker-Standort ändert nichts an der Einordnung.
