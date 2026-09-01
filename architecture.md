@@ -1073,6 +1073,23 @@ Allokations-Überlegungen (siehe Offene Punkte, Cash-Allokations-Logik):
   laufenden Sparpläne/Daueraufträge (nur Einzelkäufe wie bei Allianz SE/WM
   historisch, bzw. HawkEye 360 als Einzelposition) – bei Bedarf mit Brian
   gegenchecken, falls sich das ändert.
+- **Kostenstruktur Scalable Capital (2026-09-01, von Brian bestätigt):**
+  Sparpläne sind **grundsätzlich kostenlos**, unabhängig von der
+  Ordersumme – anders als bei finanzen.net zero gibt es hier keine
+  500€-Schwelle zu beachten. Betrifft den laufenden Vanguard-FTSE-All-World-
+  Sparplan direkt.
+- **Kostenstruktur Trade Republic (2026-09-01, von Brian bestätigt):**
+  **1€ pro Order**, unabhängig von der Ordersumme (kein Schwellenwert wie
+  bei finanzen.net zero). Bei künftigen Kauf-/Nachkauf-Empfehlungen für
+  Positionen auf Trade Republic (aktuell nur Allianz SE, Sparplan-artige
+  monatliche Bruchstück-Käufe) mitdenken – bei den bisher üblichen kleinen
+  Raten ist die 1€-Gebühr prozentual höher als bei größeren Einzelkäufen,
+  ähnliche Bündelungs-Überlegung wie bei finanzen.net zero möglich, falls
+  Brian das priorisiert.
+- **Smartbroker+ Kostenstruktur:** noch nicht von Brian mitgeteilt – bei
+  Bedarf nachfragen, sobald dort eine Kauf-/Nachkauf-Empfehlung ansteht
+  (aktuell nur HawkEye 360, kein Nachkauf-Kandidat laut laufender
+  Scout-Bewertung).
 
 Das ist das **vorgegebene Budget**, an dem sich künftige Kaufvorschläge/Sizing-
 Empfehlungen realistisch orientieren sollen – nicht nur am theoretischen
