@@ -24,10 +24,19 @@ Smartbroker+, finanzen.net zero) und lässt sein Portfolio von einem
 KI-System aus drei "Personas" analysieren, überwachen und dokumentieren:
 
 - **Jarvis** = du selbst (Claude, nativ in dieser Session) – führt die
-  eigentliche Recherche/Analyse aus, orchestriert die anderen beiden KIs per
-  Browser-Automation, schreibt alle Dateien, verwaltet Git, Reports, PDFs.
-- **Jack** = Gemini (Google), angesprochen über Chrome-Browser-Automation.
-- **Conan** = ChatGPT (OpenAI), ebenfalls über Chrome-Browser-Automation.
+  eigentliche Recherche/Analyse aus, orchestriert die anderen beiden KIs
+  (seit 2026-09-02 primär per direktem API-Call statt Browser-Automation,
+  siehe unten), schreibt alle Dateien, verwaltet Git, Reports, PDFs.
+- **Jack** = Gemini (Google). Seit 2026-09-02 über die `gemini-bridge`-
+  MCP-Tools (`ask_gemini`, Modell `gemini-2.5-flash`) angesprochen – direkter
+  API-Call statt Chrome-Browser-Automation. Details: Abschnitt 10.10.
+- **Conan** = ChatGPT (OpenAI). Seit 2026-09-02 über die `openai-bridge`-
+  MCP-Tools (`ask_chatgpt`, Modell `gpt-5.5`) angesprochen – direkter
+  API-Call statt Chrome-Browser-Automation. Details: Abschnitt 10.9.
+
+Browser-Automation (Chrome via `claude-in-chrome`) ist seit 2026-09-02 für
+beide KIs nur noch **Fallback**, falls eine der beiden Bridges mal ausfällt
+– nicht mehr der Standardweg. Siehe Abschnitt 10.4/10.9/10.10.
 
 **Wichtig:** Diese Namen sind reine Reporting-Nicknames für die drei KIs,
 unabhängig davon, welchen der drei Methodologie-Prompts sie gerade
@@ -502,16 +511,24 @@ mehrere parallele Subagenten gelesen werden kann.
 `computer.type` ist unzuverlässig bei großen/Unicode-Texten (Timeout bei
 >~60KB, Zeichenkorruption bei mittlerer Größe). Zuverlässiger Ersatz:
 `javascript_tool` mit `document.execCommand('insertText', false, msg)` auf
-dem contenteditable-Element direkt – ChatGPT: `#prompt-textarea`, Gemini:
-`.ql-editor[role="textbox"]`. Text dabei ASCII-sicher halten (Umlaute
-ausschreiben, keine Emoji).
+dem contenteditable-Element direkt – Gemini: `.ql-editor[role="textbox"]`.
+Text dabei ASCII-sicher halten (Umlaute ausschreiben, keine Emoji).
+**Betrifft seit 2026-09-02 keine der beiden KIs mehr im Standardbetrieb** –
+sowohl ChatGPT/Conan (Abschnitt 10.9) als auch Gemini/Jack (Abschnitt 10.10)
+laufen über direkte API-Calls, nicht mehr über den Browser. Diese ganze
+Sektion (inkl. `#prompt-textarea`/`.ql-editor`-Selektoren) ist damit
+Altlast-Wissen, nur relevant falls beide Bridges mal ausfallen und auf den
+Browser-Weg zurückgefallen werden muss.
 
 ### 10.5 Gemini-Trunkierungsbug (dokumentiert in architecture.md Abschnitt 7)
+**Betraf nur den alten Gemini-Browser-Betrieb, seit 2026-09-02 (Umstieg auf
+`gemini-bridge`, Abschnitt 10.10) nicht mehr relevant – als Fallback-Wissen
+aufbewahrt, falls wieder auf Browser-Automation zurückgefallen werden muss.**
 Enthält ein an Gemini gesendeter Prompt mehrere durch Leerzeilen getrennte
 Absätze, trunkiert Gemini den Text beim Senden nach dem ersten Absatz
-(Zeilenumbrüche lösen vorzeitig "Senden" aus). **Fix:** Gemini-Prompts immer
-als EINEN durchgehenden Textblock ohne interne Leerzeilen-Absätze senden.
-ChatGPT ist von diesem Bug nicht betroffen.
+(Zeilenumbrüche lösen vorzeitig "Senden" aus). **Fix (nur Browser-Fallback):**
+Gemini-Prompts immer als EINEN durchgehenden Textblock ohne interne
+Leerzeilen-Absätze senden. ChatGPT war von diesem Bug nicht betroffen.
 
 ### 10.6 Twelve Data MCP – Plan-Einschränkungen
 `get_financials` (und vermutlich `get_earnings`/`get_statistics` u.ä.) sind
@@ -544,6 +561,204 @@ Single-Page-HTML-Datei. Vollständiges CSS-Token-System steht in
 `architecture.md` im Abschnitt "PDF-Report-Design" – als Referenzbeispiel
 für den Aufbau dient `reports/WEGE3-reaper-kompakt-2026-08-31.html` bzw.
 die zuletzt gebaute `reports/HAWK-reaper-kompakt-2026-08-31.html`.
+
+### 10.9 `openai-bridge` MCP-Server – Conan läuft seit 2026-09-02 per API
+Neuer projekt-lokaler MCP-Server (`.mcp.json` im Repo-Root → Eintrag
+`openai-bridge`, Code unter `~/.claude/mcp-servers/openai-bridge/`,
+API-Key in dortiger `.env`). Stellt zwei Tools bereit:
+
+- `mcp__openai-bridge__ask_chatgpt(prompt, system_prompt="", model="gpt-5.5")`
+  – schickt den Prompt direkt an die OpenAI Chat-Completions-API, gibt den
+  Antworttext zurück. Ersetzt den bisherigen Weg über
+  `claude-in-chrome`/chatgpt.com für die Conan-Rolle vollständig (siehe
+  Docstring in `server.py`).
+- `mcp__openai-bridge__list_openai_models()` – listet verfügbare
+  Modell-IDs für den API-Key (zum Prüfen/Aktualisieren der Modellwahl,
+  da OpenAI-Modellnamen sich ändern).
+
+**Festgelegtes Modell für Conan (Brian, 2026-09-02, nach Testlauf final
+bestätigt): `gpt-5.5`** (= Tool-Default, kein `model`-Override nötig).
+
+**Vorgeschichte/Begründung (wichtig, falls das nochmal in Frage kommt):**
+Brian wollte ursprünglich `gpt-5.5-pro` ("mehr Tiefe"). Beim ersten echten
+End-to-End-Testlauf (volle TMR-Quick-Filter-Methodik für ASML, kompletter
+`jack-moat-reaper-v11.7.md`-Prompt + Fact-Pack ≈ 92.000 Tokens) kam:
+```
+HTTP 429: Request too large for gpt-5.5-pro ... tokens per min (TPM):
+Limit 50000, Requested 91663.
+```
+Das ist ein hartes Tier-Limit des OpenAI-Accounts für `-pro`-Modelle
+(50k TPM), unabhängig vom Prompt-Inhalt – die vollen Methodik-Prompts
+(TMR/Scout, jeweils 50-65KB Text) sprengen das strukturell bei JEDEM Lauf,
+nicht nur gelegentlich. Derselbe Prompt lief mit `gpt-5.5` (kein TPM-Limit
+in dieser Größenordnung) sauber durch und lieferte eine methodik-treue,
+diszipliniert getaggte Analyse (siehe Testlauf-Ergebnis unten). Brian hat
+danach explizit `gpt-5.5` als Standard bestätigt – **kein** `-pro`-Fallback
+mehr nötig für die reguläre Pipeline. Falls „mehr Tiefe" später nochmal
+gewünscht wird, müsste zuerst der OpenAI-Tarif/Usage-Tier für höhere
+Pro-TPM-Limits geprüft werden (siehe https://platform.openai.com/account/rate-limits),
+bevor `-pro` für volle Methodik-Läufe wieder infrage kommt.
+
+**Test-Artefakt (nicht im Repo, nur zur Referenz):**
+`/private/tmp/.../scratchpad/ASML-TMR-quickfilter-conan-testlauf-gpt55.md`
+– Conan/ChatGPT-Bein einer TMR-Quick-Filter-Analyse für ASML (Watchlist-
+Champion), sauber [TRAINING]-getaggt (kein Fact-Pack für Fundamentaldaten
+vorhanden), Ergebnis BEOBACHTEN, Reaper Score 6/10, Abstauber-Limit $1250.
+War ein reiner Conan-Solo-Testlauf (kein Jarvis/Jack-Bein, kein echter
+3-fach-Cross-Check) – nicht als vollwertige Watchlist-Analyse behandeln,
+nur als Beleg dass die Bridge inhaltlich sauber funktioniert.
+
+**Praktische Konsequenz für die Pipeline:** Überall wo bisher "Conan via
+Chrome-Browser-Automation" stand (3-fach Cross-Check [3], Scout-Methodik
+`conan-the-scout-v1.12.md`, Diskussionsrunde [3b]), wird stattdessen
+`ask_chatgpt` mit dem vollständigen Methodik-Prompt/Fact-Pack als
+`prompt`-Argument aufgerufen (1:1 der Text, der vorher ins ChatGPT-
+Textfeld eingefügt wurde) – kein Tab, kein `#prompt-textarea`-Workaround,
+keine Timeout-/Encoding-Probleme aus Abschnitt 10.4 mehr für diesen
+KI-Slot. Der in `architecture.md` an mehreren Stellen erwähnte Status
+"fragiles Browser-Automation-Bein" wurde dort **nachträglich, mit Brians
+Freigabe, angepasst** (Zeilen um 1433, 1633, 3211, 3392 – Stand nach dieser
+Übergabe; siehe Git-Historie für den genauen Diff). Update seit demselben
+Tag: das gilt jetzt **auch für Jack/Gemini**, siehe 10.10 unten – die
+ursprüngliche Aussage "Jack bleibt Browser-basiert" ist damit überholt.
+
+### 10.10 `gemini-bridge` MCP-Server – Jack läuft seit 2026-09-02 per API
+
+Analog zu 10.9, aber für Gemini/Jack. Neuer projekt-lokaler MCP-Server
+(`.mcp.json` → Eintrag `gemini-bridge`, Code unter
+`~/.claude/mcp-servers/gemini-bridge/`, API-Key in dortiger `.env` als
+`GEMINI_API_KEY`, von Brian selbst bei Google AI Studio erstellt und
+eingetragen – **nie** vom Agenten im Chat abgefragt/eingetippt). Stellt
+zwei Tools bereit:
+
+- `mcp__gemini-bridge__ask_gemini(prompt, system_prompt="", model="gemini-2.5-flash")`
+  – schickt den Prompt direkt an die Google-Gemini-API
+  (`generativelanguage.googleapis.com/v1beta/models/{model}:generateContent`),
+  gibt den Antworttext zurück. Ersetzt den bisherigen Weg über
+  `claude-in-chrome`/gemini.google.com für die Jack-Rolle vollständig.
+- `mcp__gemini-bridge__list_gemini_models()` – listet verfügbare
+  Modell-IDs für den API-Key.
+
+**Festgelegtes Modell für Jack (Brian, 2026-09-02): `gemini-2.5-flash`**
+(= Tool-Default, kein `model`-Override nötig).
+
+**Begründung/Vorgeschichte:** Der ursprünglich naheliegende Kandidat für
+"mehr Tiefe" wäre ein Pro-Modell gewesen (`gemini-3.1-pro-preview` – der
+alte Default `gemini-2.5-pro` ist für neue Nutzer inzwischen abgeschaltet,
+Google leitet auf `gemini-3.1-pro-preview` um). Brians kostenloser
+AI-Studio-Key hat für Pro-Modelle aber ein Kontingent von **0**
+(`generate_content_free_tier_requests limit: 0` – Pro-Zugriff erfordert ein
+Billing-Konto). Flash-Modelle laufen dagegen im Free Tier. Ein echter
+End-to-End-Testlauf (volle TMR-Quick-Filter-Methodik für ASML, gleiches
+Fact-Pack wie beim Conan-Testlauf) mit `gemini-2.5-flash` lief sauber durch
+und lieferte eine methodik-treue, korrekt `[TRAINING]`-getaggte Analyse
+(Rating BEOBACHTEN, Reaper Score 6/10, Konfidenz 🔴 0%, Abstauber-Limit
+$1450 – bemerkenswert abweichend von Conans $1250 bei identischem
+Fact-Pack, was den Cross-Check-Mehrwert der drei unabhängigen KI-Beine
+demonstriert). Brian hat danach `gemini-2.5-flash` als Standard bestätigt.
+Falls "mehr Tiefe" später gewünscht wird, müsste zuerst ein Billing-Konto
+bei Google AI Studio/Cloud eingerichtet werden (siehe
+https://ai.google.dev/gemini-api/docs/rate-limits), bevor ein Pro-Modell
+infrage kommt – das kann nur Brian selbst tun (Zahlungsdaten).
+
+**Praktische Konsequenz:** Mit `gemini-bridge` UND `openai-bridge` laufen
+jetzt **beide** externen KI-Beine (Jack + Conan) ohne Chrome-Abhängigkeit.
+Das hebt die alte Scheduled-Task-Einschränkung auf (siehe architecture.md,
+Abschnitt "Wichtige technische Einschränkung" bei den Earnings-/Trigger-
+Checks) – ein unbeaufsichtigter Scheduled Task kann jetzt den vollen
+3-fach-Check fahren, auch wenn Brians Desktop-App/Chrome nicht offen ist.
+Chrome-Browser-Automation (Abschnitt 10.4, 10.5) bleibt als Fallback
+dokumentiert, falls eine der beiden Bridges mal ausfällt.
+
+**Setup-Analogie zu openai-bridge (falls die Bridge mal neu aufgesetzt
+werden muss):** venv mit Python 3.11.15 (`~/.local/share/uv/python/
+cpython-3.11.15-macos-aarch64-none/`), Package `mcp==2.1.1`, `run.sh` +
+`server.py` + `.env` nach identischem Muster. Gleicher Fallstrick wie bei
+openai-bridge: der MCP-Hintergrundprozess übernimmt Code-Änderungen NICHT
+automatisch bei einem normalen Session-Neustart – bei Bedarf
+`ps aux | grep gemini-bridge` + `kill <pid>`, respawnt beim nächsten
+Tool-Aufruf automatisch neu (siehe 10.9 für die ausführliche Beschreibung
+dieses Verhaltens). **Neue Tool-NAMEN** (nicht nur geänderter Code in
+bestehenden Tools) tauchen zusätzlich erst nach einem echten
+Session-Neustart in der Tool-Liste auf – reines Prozess-Killen reicht dafür
+nicht (siehe 10.11 unten, dort erstmals aufgetreten).
+
+### 10.11 Depot-Zugriff für Jack/Conan – `ask_chatgpt_agentic` / `ask_gemini_agentic`
+
+Auf Brians Wunsch (2026-09-02): Jack und Conan sollen einen echten Blick
+aufs Depot haben, nicht nur auf den einzelnen Analyse-Kandidaten. Wichtige
+Einschränkung, die die gesamte Umsetzung bestimmt: **Die Bridge-Prozesse
+selbst haben keinerlei Depot-Zugriff** – sie sind isolierte Skripte mit nur
+einem OpenAI-/Gemini-API-Key, keine Verbindung zum Scalable-Capital-MCP.
+"Live-Zugriff" bedeutet daher technisch: Jack/Conan fordern per
+Function-Calling Depot-Daten an, **Jarvis führt die echten MCP-Tools aus
+und reicht das Ergebnis zurück** – kein direkter Durchgriff der externen
+KIs, sondern ein von Jarvis gesteuerter Relay-Loop.
+
+**Neue Tools (zusätzlich zu `ask_chatgpt`/`ask_gemini`, die unverändert
+bleiben und weiterhin die einfache Wahl sind, wenn kein Depot-Kontext
+gebraucht wird):**
+- `mcp__openai-bridge__ask_chatgpt_agentic(prompt, system_prompt, model, state_json, tool_results_json)`
+- `mcp__gemini-bridge__ask_gemini_agentic(prompt, system_prompt, model, state_json, tool_results_json)`
+
+**Exponierte Tools – bewusst NUR read-only (kein Order-/Watchlist-/
+Preview-Zugriff, siehe Whitelist Abschnitt 10.7):**
+`get_portfolio_holdings`, `get_portfolio_overview`, `get_portfolio_performance`,
+`get_portfolio_cash_breakdown` – 1:1 dieselben vier MCP-Tools, die auch
+Jarvis selbst nutzt, nur als Function-Calling-Schema an Jack/Conan gespiegelt.
+**Plus `get_manual_broker_positions`** (2026-09-02 ergänzt, nachdem Brian
+darauf hingewiesen hat, dass die vier `get_portfolio_*`-Tools NUR den
+Scalable-Capital-Teil des Depots zeigen): liefert die Positionen der DREI
+WEITEREN Broker (Trade Republic, Smartbroker+, finanzen.net zero), die
+keine API haben und nur manuell per Screenshot in `depot/trade-republic.md`,
+`depot/smartbroker-plus.md`, `depot/finanzen-net-zero.md` gepflegt werden.
+Kein MCP-Tool – Jarvis liest bei diesem Tool-Call einfach die drei Dateien
+und liefert eine kondensierte Zusammenfassung (nur aktive Positionen, keine
+verkauften; wo kein aktueller Kurs bekannt ist, klar als "data_gap"/
+Investsumme statt Live-Wert kennzeichnen – Data-Integrity-Prinzip auch hier).
+**Ohne dieses Tool sehen Jack/Conan nur ~11.100€ von insgesamt ~34.800€
+Depotwert** (Stand des Testlaufs 2026-09-02) – bei jeder Depot-Kontext-Analyse
+`get_manual_broker_positions` also mit anfordern (die Tool-Beschreibung
+weist die KI bereits explizit darauf hin, es "IMMER" zusätzlich zu nutzen).
+
+**Ablauf (von Jarvis manuell zu steuern, kein Automatismus):**
+1. Erster Aufruf nur mit `prompt` (+ optional `system_prompt`/`model`).
+2. Rückgabe ist immer ein JSON-String mit `"status"`:
+   - `"tool_calls"`: die KI will Depot-Daten. Enthält die angeforderten
+     Tool-Namen/Argumente + `state_json` für den nächsten Aufruf. Jarvis
+     führt JEDES angeforderte Tool über die echten
+     `mcp__50674d01-4841-4959-92e2-6fc6b4e8a1ca__get_portfolio_*`-Tools
+     dieser Session aus und ruft die Bridge-Funktion erneut auf, mit
+     demselben `state_json` plus `tool_results_json` (Ergebnisse als
+     JSON, ein Eintrag pro Tool-Call – bei OpenAI gematcht über
+     `tool_call_id`, bei Gemini über `tool_name`).
+   - `"final"`: fertige Antwort in `"text"`.
+3. Schritt 2 wiederholen bis `"status":"final"` (im Testlauf: 1 Runde,
+   beide KIs riefen `get_portfolio_holdings` + `get_portfolio_cash_breakdown`
+   parallel auf).
+
+**Wichtige Beobachtung aus dem Testlauf (2026-09-02):** Der Aufruf von
+`get_portfolio_cash_breakdown` wurde beim ersten Versuch vom
+Auto-Mode-Classifier der Session blockiert ("Blocked by classifier" –
+vermutlich weil Cash-/Kredit-/Kaufkraft-Daten sensibler eingestuft werden
+als reine Holdings), beim zweiten Versuch direkt danach ging derselbe aufruf
+anstandslos durch – das Verhalten ist **nicht deterministisch**, kein
+Code-Bug. Für diesen Fall: der `tool_results_json`-Eintrag für ein
+fehlgeschlagenes Tool sollte ein `{"error": "N/V - ..."}`-Objekt sein statt
+den Aufruf einfach wegzulassen – beide KIs haben das im Testlauf korrekt
+als "keine Daten verfügbar, ich schätze nichts" behandelt (Data-Integrity-
+Prinzip der Methodik-Prompts greift also auch hier automatisch). Falls ein
+Tool wiederholt blockiert wird, könnte das an Berechtigungs-/Classifier-
+Einstellungen liegen, die Brian ggf. anpassen müsste (siehe Fehlermeldung:
+"To allow this type of action in the future, the user can add a Bash
+permission rule to their settings").
+
+**Praktische Konsequenz für die Pipeline:** Für Analysen, bei denen der
+Depot-Kontext relevant ist (Konzentrationsrisiko, Kategorie-Caps, Cash-
+Situation vor Nachkauf-Entscheidungen), `_agentic`-Varianten verwenden.
+Für einzelne Kandidaten-Analysen ohne Depot-Bezug reichen weiterhin die
+einfachen `ask_chatgpt`/`ask_gemini`-Funktionen ohne den Mehraufwand des
+Relay-Loops (mehr Roundtrips = mehr Zeit/Tokens pro Analyse).
 
 ---
 

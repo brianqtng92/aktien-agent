@@ -1401,6 +1401,14 @@ unbegrenzt fortgeschrieben zu werden.
        SCHRITT-0-Datenpaket wird UNABHÄNGIG von Claude/Jarvis, ChatGPT/Conan und
        Gemini/Jack durchgerechnet
        (Runde 1 – unabhängige Einzelurteile, keiner sieht die Antwort der anderen)
+     → **Depot-Einblick (2026-09-02, von Brian gefordert):** ChatGPT/Conan und
+       Gemini/Jack können bei Bedarf über die `_agentic`-Varianten der jeweiligen
+       Bridge (`ask_chatgpt_agentic`/`ask_gemini_agentic`) selbst read-only
+       Depot-Tools anfordern (Holdings/Übersicht/Performance/Cash-Breakdown),
+       um z.B. Konzentrationsrisiko oder Kategorie-Caps gegen den Kandidaten zu
+       spiegeln, statt das nur nachträglich im optionalen Schritt [6] zu prüfen.
+       Technisch ein von Jarvis gesteuerter Relay-Loop, kein direkter
+       KI-Durchgriff aufs Depot (Details: HANDOVER.md Abschnitt 10.11).
      → strukturierte Kernwerte aus jeder Antwort extrahiert (Rating, Score,
        Fair Value Bear/Base/Bull, K-Kriterien-Status, aktive Flags)
      → Vergleich der drei Ergebnisse:
@@ -1430,8 +1438,13 @@ unbegrenzt fortgeschrieben zu werden.
      → HARTER CAP: maximal 2 Diskussionsrunden insgesamt (Runde 2 + Runde 3),
        kein unbegrenztes Hin und Her. Begründung (2026-08-27, von Jarvis
        vorgeschlagen, von Brian akzeptiert): (a) Kosten – jede Zusatzrunde sind
-       nochmal 3 KI-Aufrufe, davon zwei fragile Browser-Automation-Beine
-       (ChatGPT/Gemini), (b) Erfahrungswert – Positionsänderungen durch
+       nochmal 3 KI-Aufrufe; historisch waren zwei davon fragile Browser-
+       Automation-Beine, seit 2026-09-02 laufen ChatGPT/Conan (`openai-bridge`,
+       Modell `gpt-5.5`) UND Gemini/Jack (`gemini-bridge`, Modell
+       `gemini-2.5-flash`) beide über direkten API-Call (siehe HANDOVER.md
+       Abschnitt 10.9/10.10) und sind von Browser-Fragilität nicht mehr
+       betroffen – die Kosten-Begründung bleibt trotzdem gültig (reine
+       Zusatz-KI-Aufrufe kosten weiterhin Zeit/Tokens), (b) Erfahrungswert – Positionsänderungen durch
        Diskussion passieren fast immer in der ersten Runde, weitere Runden
        wiederholen meist nur die bestehenden Argumente, (c) Ping-Pong-Risiko –
        ohne Cap könnten sich zwei KIs theoretisch endlos gegenseitig
@@ -1626,8 +1639,10 @@ unbegrenzt fortgeschrieben zu werden.
          qualitative Gesamtschau) analog zur Vorlage.
      → **WICHTIG (2026-08-23, Feedback von Brian, Erweiterung der obigen Regel):**
        Das gilt jetzt nicht nur für die Ergebnistiefe, sondern auch für den
-       PROZESS selbst. Der komplette Analyse-Lauf (alle drei KI-Beine inkl.
-       Browser-Automation für ChatGPT/Gemini, Diskussionsrunde [3b], Datei-
+       PROZESS selbst. Der komplette Analyse-Lauf (alle drei KI-Beine – seit
+       2026-09-02 laufen ChatGPT/Conan UND Gemini/Jack beide per direktem
+       API-Call über ihre jeweiligen MCP-Bridges statt Browser-Automation,
+       Details HANDOVER.md 10.9/10.10 –, Diskussionsrunde [3b], Datei-
        Ablage) läuft ausschließlich im Hintergrund, ohne Zwischen-Status-
        Meldungen im Chat ("Tab X geöffnet", "Gemini antwortet noch", "Schritt Y
        läuft"). Brian bekommt währenddessen keine Prozess-Narration mehr –
@@ -3204,13 +3219,35 @@ sondern:
 5. an ruhigen Tagen ohne Anlass nur einen unauffälligen Ein-Zeiler abschließt,
    damit keine unnötigen Benachrichtigungen entstehen.
 
-Wichtige technische Einschränkung: Die Browser-Automation-Beine (ChatGPT/Conan,
-Gemini/Jack) benötigen Zugriff auf Brians verbundenen Chrome-Browser. In einem
-unbeaufsichtigt laufenden Scheduled Task ist das nicht garantiert verfügbar
-(z.B. wenn Brians Desktop-App gerade nicht offen ist). In diesem Fall liefert
-der Trigger-Check nur die Jarvis-Einzelmeinung (Claude-Subagent, kein Browser
-nötig) mit explizitem, ehrlichem Hinweis, dass ChatGPT/Gemini diesmal nicht
-verfügbar waren – Datenintegrität geht vor Vollständigkeits-Vortäuschung.
+Technische Einschränkung, Stand 2026-09-02 (historisch relevant, aktuell
+entschärft): Früher benötigten die Browser-Automation-Beine (ChatGPT/Conan,
+Gemini/Jack) Zugriff auf Brians verbundenen Chrome-Browser, der in einem
+unbeaufsichtigt laufenden Scheduled Task nicht garantiert verfügbar war
+(z.B. wenn Brians Desktop-App gerade nicht offen war) – der Trigger-Check
+lieferte dann nur die Jarvis-Einzelmeinung. Seit 2026-09-02 laufen sowohl
+ChatGPT/Conan (`openai-bridge`-MCP-Server, Modell `gpt-5.5`) als auch
+Gemini/Jack (`gemini-bridge`-MCP-Server, Modell `gemini-2.5-flash`) über
+direkten API-Call statt Browser-Automation (siehe HANDOVER.md Abschnitt
+10.9/10.10) – **beide sind damit von Chrome/Desktop-App-Verfügbarkeit
+unabhängig.** Ein unbeaufsichtigt laufender Scheduled Task kann dadurch
+jetzt regulär den vollen 3-fach-Check (Jarvis + Jack + Conan) fahren, auch
+wenn Brians Desktop-App gerade nicht offen ist. Chrome-Browser-Automation
+bleibt als Fallback dokumentiert (falls eine der beiden Bridges mal
+ausfällt, siehe HANDOVER.md 10.4), ist aber nicht mehr der Standardweg.
+**Depot-Transaktions-Erkennung (2026-09-02, von Brian gefordert):** Dritter,
+eigenständiger Auslöser-Typ neben Kurs-/News-Anlass und Earnings-Terminen –
+der Trigger-Check erkennt jetzt auch tatsächlich AUSGEFÜHRTE Transaktionen
+bei Scalable Capital (`list_portfolio_transactions`, gefiltert per `fromTime`
+gegen einen Checkpoint in `depot/last_transaction_check.md`) und stößt dafür
+automatisch den vollen 3-fach-Cross-Check an – unabhängig davon, ob ein
+Kurs-/News-Trigger vorliegt. Jeder von Brian ausgeführte Kauf/Verkauf wird so
+automatisch allen drei KIs zur Einordnung vorgelegt ("These nach Nachkauf
+noch intakt?" bzw. "war der Verkauf folgerichtig?"), nicht nur system-eigene
+Empfehlungen. Gilt NUR für Scalable Capital (einzige Live-Transaktionsquelle)
+– die drei manuellen Broker haben keine API, dort bleibt Brians eigene
+Meldung per `depot/*.md`-Update der einzige Weg. Details zum Ablauf:
+`~/.claude/scheduled-tasks/taeglicher-trigger-check/SKILL.md`.
+
 "Ständig im Hintergrund im Austausch" (Brians ursprüngliche Formulierung) ist
 im Kern als täglicher anlassbezogener Check umgesetzt – für echte Kurzfrist-
 Lücken (z.B. 1-2 Stunden Abwesenheit) siehe den separaten "Blitz-Scan" direkt
@@ -3380,16 +3417,25 @@ via yfinance"-Vorgehen funktioniert hier also nicht. Stattdessen:
 - **Prompt-Runner** (aktuell umgesetzt als Subagent pro Analyse-Lauf): nimmt Kandidat
   + Prompt-Typ (TMR/Scout/TA), lässt den kompletten Prompt inkl. Live-Web-Search
   laufen, schreibt das volle Ergebnis in eine Datei unter `analysen/` und liefert
-  ein Kurz-Fazit zurück (siehe Pipeline-Schritt 5). Läuft für Claude als Subagent,
-  für ChatGPT/Gemini per Browser-Automation (Prompt-Injektion über
-  `document.execCommand('insertText', ...)` in das jeweilige Eingabefeld).
-  **Wichtige Lehre (2026-08-23, ServiceNow-Testlauf):** Bei Gemini wurde der Text
-  beim Absenden mehrfach nach dem ersten Absatz abgeschnitten, sobald die Nachricht
-  mehrere durch Leerzeilen getrennte Absätze enthielt (Zeilenumbrüche scheinen den
-  Sende-Vorgang vorzeitig auszulösen) – ChatGPT hatte dieses Problem nicht. Fix:
-  bei Gemini den kompletten Prompt als EINEN durchgehenden Fließtext ohne interne
-  Absätze/Zeilenumbrüche einfügen, dann erst senden. Bei ChatGPT ist das
-  Absatz-Format weiterhin unproblematisch.
+  ein Kurz-Fazit zurück (siehe Pipeline-Schritt 5). Läuft für Claude als Subagent;
+  seit 2026-09-02 laufen ChatGPT/Conan (`openai-bridge`-MCP-Server, `ask_chatgpt`,
+  Modell `gpt-5.5`) UND Gemini/Jack (`gemini-bridge`-MCP-Server, `ask_gemini`,
+  Modell `gemini-2.5-flash`) beide per direktem API-Call statt Browser-
+  Automation (siehe HANDOVER.md Abschnitt 10.9/10.10); der komplette
+  Methodik-Prompt/das Fact-Pack wandert dabei 1:1 als `prompt`-Argument rein,
+  kein Browser-Tab mehr nötig. Alt (Fallback, falls eine Bridge mal ausfällt):
+  Browser-Automation per `document.execCommand('insertText', ...)` in das
+  jeweilige Eingabefeld.
+  **Wichtige Lehre (2026-08-23, ServiceNow-Testlauf, betraf den damaligen
+  Gemini-Browser-Betrieb, seit dem Umstieg auf `gemini-bridge` nicht mehr
+  relevant, aber als Fallback-Wissen aufbewahrt):**
+  Bei Gemini wurde der Text beim Absenden mehrfach nach dem ersten Absatz
+  abgeschnitten, sobald die Nachricht mehrere durch Leerzeilen getrennte Absätze
+  enthielt (Zeilenumbrüche scheinen den Sende-Vorgang vorzeitig auszulösen) –
+  ChatGPT hatte dieses Problem auch im damaligen Browser-Betrieb nicht, ist aber
+  ohnehin seit dem Umstieg auf die API nicht mehr relevant. Fix bei Gemini:
+  den kompletten Prompt als EINEN durchgehenden Fließtext ohne interne
+  Absätze/Zeilenumbrüche einfügen, dann erst senden.
 - **Vergleichs-/Diskrepanz-Modul**: extrahiert die Kernfelder aus allen drei
   Antworten, markiert Übereinstimmung/Abweichung, und fährt danach die
   Diskussionsrunde [3b] (jede KI bekommt die beiden anderen Urteile vorgelegt und
