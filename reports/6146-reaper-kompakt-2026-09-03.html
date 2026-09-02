@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Reaper Kompakt – DISCO Corporation</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1A1C1F;
+    --bg-panel: #232629;
+    --bg-panel-2: #2A2D31;
+    --border: #3A3E43;
+    --border-soft: #303337;
+    --text: #EDE8DF;
+    --text-dim: #A39B8E;
+    --text-faint: #6E6860;
+    --gold: #C6922C;
+    --gold-bright: #E0B24E;
+    --gold-dim: #7A5F24;
+    --green: #5C9A5F;
+    --green-bg: rgba(92,154,95,0.14);
+    --yellow: #DDB13B;
+    --yellow-bg: rgba(221,177,59,0.14);
+    --red: #BC4F41;
+    --red-bg: rgba(188,79,65,0.16);
+  }
+
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Carlito", "DejaVu Sans", Arial, sans-serif;
+    font-size: 9.2pt;
+    line-height: 1.34;
+  }
+
+  .display {
+    font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif;
+    font-weight: 700;
+    font-stretch: condensed;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 8mm 12mm 6mm 12mm;
+    display: flex;
+    flex-direction: column;
+    gap: 2.6mm;
+  }
+
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 2.6mm;
+  }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 21pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 7.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag {
+    font-size: 6.8pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--yellow);
+    border: 1px solid var(--yellow); border-radius: 2px; padding: 0.7mm 2mm; margin-top: 1.4mm;
+    display: inline-block; width: fit-content;
+  }
+  .meta-block { text-align: right; font-size: 7.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 8.6pt; }
+
+  .position-header {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold);
+    border-radius: 3px; padding: 2.8mm 4mm;
+  }
+  .position-name .ticker { font-size: 15pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 8pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 5mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 6.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); }
+  .stat .value { font-size: 9.8pt; color: var(--text); margin-top: 0.3mm; }
+  .cat-pill {
+    font-size: 6.8pt; letter-spacing: 0.06em; text-transform: uppercase; background: var(--yellow-bg); color: var(--yellow);
+    border: 1px solid var(--yellow); border-radius: 10px; padding: 1.1mm 2.8mm; white-space: nowrap;
+  }
+
+  .section-label {
+    font-size: 7.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 2.5mm;
+  }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+
+  .voices-row { display: flex; gap: 3mm; }
+  .voice-card {
+    flex: 1; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px;
+    padding: 2.4mm 2.8mm; position: relative; overflow: hidden;
+  }
+  .voice-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2.2mm; }
+  .voice-card.v-red::before { background: var(--red); }
+  .voice-card.v-yellow::before { background: var(--yellow); }
+  .voice-card.v-green::before { background: var(--green); }
+  .voice-name { font-size: 9.2pt; letter-spacing: 0.03em; padding-left: 2mm;}
+  .voice-role { font-size: 6.4pt; color: var(--text-faint); padding-left: 2mm; margin-bottom: 1mm;}
+  .voice-rating { padding-left: 2mm; font-size: 8.2pt; color: var(--text); }
+  .voice-rating b { color: inherit; }
+  .voice-sub { padding-left: 2mm; font-size: 7pt; color: var(--text-dim); margin-top: 0.6mm; }
+
+  .convergence-pill {
+    margin-top: 1.8mm; display: flex; align-items: center; gap: 2.5mm;
+    background: var(--green-bg); border: 1px solid var(--green); border-radius: 3px; padding: 1.8mm 3.5mm;
+  }
+  .convergence-pill .tag { font-size: 8pt; letter-spacing: 0.05em; color: var(--green); text-transform: uppercase; }
+  .convergence-pill .note { font-size: 6.9pt; color: var(--text-dim); font-style: italic; }
+
+  .dna-wrap { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.5mm; }
+  .dna-strip { display: flex; gap: 1.4mm; margin-top: 1.4mm; }
+  .dna-seg {
+    flex: 1; height: 6mm; border-radius: 1px; display: flex; align-items: center; justify-content: center;
+    font-size: 6.1pt; letter-spacing: 0.02em; color: var(--bg); font-weight: bold; text-align: center;
+  }
+  .dna-seg.pass { background: var(--green); }
+  .dna-seg.watch { background: var(--yellow); }
+  .dna-seg.fail { background: var(--red); }
+  .dna-note { font-size: 6.9pt; color: var(--text-dim); margin-top: 1.6mm; }
+  .dna-note b { color: var(--text); }
+
+  .two-col { display: flex; gap: 3mm; flex: 1; min-height: 0; overflow: hidden; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.2mm; min-height: 0; }
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; }
+  .box h3 {
+    font-size: 7.6pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 1.2mm;
+    font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700;
+  }
+  ul.bullets { list-style: none; }
+  ul.bullets li { font-size: 7pt; padding-left: 3mm; position: relative; margin-bottom: 0.8mm; color: var(--text); line-height: 1.28; }
+  ul.bullets.plus li::before { content: "+"; position: absolute; left: 0; color: var(--green); font-weight: bold; }
+  ul.bullets.minus li::before { content: "–"; position: absolute; left: 0; color: var(--red); font-weight: bold; }
+
+  .dissent-box {
+    border: 1px dashed var(--gold-dim); border-radius: 3px; padding: 2.2mm 3.2mm;
+    background: repeating-linear-gradient(135deg, rgba(198,146,44,0.04), rgba(198,146,44,0.04) 6px, transparent 6px, transparent 12px);
+  }
+  .dissent-box h3 { color: var(--gold-bright); }
+  .dissent-box p { font-size: 6.8pt; color: var(--text-dim); line-height: 1.3; }
+  .dissent-box p b { color: var(--text); }
+
+  .fazit-text {
+    background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim);
+    border-radius: 3px; padding: 2.8mm 3.8mm;
+  }
+  .fazit-text .head { display: flex; align-items: baseline; gap: 3mm; margin-bottom: 1.4mm; }
+  .fazit-text .rating { font-size: 12pt; color: var(--yellow); letter-spacing: 0.03em; }
+  .fazit-text .sub { font-size: 6.8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+  .fazit-text p { font-size: 7.3pt; color: var(--text); line-height: 1.42; }
+  .fazit-text p b { color: var(--gold-bright); }
+
+  .footer {
+    display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft);
+    padding-top: 1.6mm; font-size: 6.2pt; color: var(--text-faint);
+  }
+  .footer .gold-dot { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">REAPER <span class="accent">KOMPAKT</span></div>
+      <div class="brand-sub">3-KI Cross-Check · Jarvis · Jack · Conan</div>
+      <div class="edition-tag">Watchlist-Kandidat (Profi) · TMR Quick Filter · Labels uneinig, Handlung einig</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">3. September 2026</div>
+      <div>Regelwerk Jack – The Moat Reaper v11.7 · Standard K-BASIS 5S</div>
+      <div>Conan/Jack via API-Bridge live befragt · Jarvis mit eigener Recherche</div>
+    </div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">6146 <span style="color:var(--text-dim); font-size:9pt;">· Tokyo Stock Exchange</span></div>
+      <div class="company">DISCO Corporation — Präzisions-Wafer-Dicing/-Grinding/-Polishing für Halbleiterfertigung · ISIN JP3548600000</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs (Anf. Sept.)</div><div class="value">62.310–65.910 ¥</div></div>
+      <div class="stat"><div class="label">KGV TTM</div><div class="value" style="color:var(--yellow);">~50x</div></div>
+      <div class="stat"><div class="label">Marktkap.</div><div class="value">~6,8–7,9 Bio.¥</div></div>
+      <div class="cat-pill">Kein Kauf heute — alle 3 einig</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-label">3-Stimmen-Leiste — Quick Filter</div>
+    <div class="voices-row" style="margin-top:1.8mm;">
+      <div class="voice-card v-red">
+        <div class="voice-name display">JARVIS <span style="font-size:6.8pt; color:var(--text-faint);">— Claude</span></div>
+        <div class="voice-role">Identity-Gate geprüft: Ticker+ISIN doppelt bestätigt (cbonds, marketscreener)</div>
+        <div class="voice-rating"><b>ABBRUCH — Datenlücke + Warnsignal</b></div>
+        <div class="voice-sub">2× echt [N/V] (Piotroski, EPS-CAGR 5J) + 2× verifiziert durchgefallen (FCF-Marge, Op.-Hebel)</div>
+      </div>
+      <div class="voice-card v-red">
+        <div class="voice-name display">JACK <span style="font-size:6.8pt; color:var(--text-faint);">— Gemini</span></div>
+        <div class="voice-role">Läuft diesmal komplett durch (Fix vom 02.09. hält, 3. Fall in Folge)</div>
+        <div class="voice-rating"><b>SCHROTT</b> · Score 1/10</div>
+        <div class="voice-sub">Eigene Zählregel K ≤ K-BASIS−3 formal ausgelöst: nur 1/5 K-Kriterien bestanden</div>
+      </div>
+      <div class="voice-card v-yellow">
+        <div class="voice-name display">CONAN <span style="font-size:6.8pt; color:var(--text-faint);">— ChatGPT</span></div>
+        <div class="voice-role">Füllt dieselben zwei N/V-Lücken mit [TRAINING]-Schätzung statt Abbruch</div>
+        <div class="voice-rating"><b>BEOBACHTEN</b> · Score 5,5/10</div>
+        <div class="voice-sub">Abstauber-Zone ~45.000¥ (≈ -28 bis -32%) · Tier 4 aktuell, max. Tier 3 bei Rücksetzer</div>
+      </div>
+    </div>
+    <div class="convergence-pill">
+      <span class="tag display">✓ Einigkeit auf Handlungsebene</span>
+      <span class="note">Trotz drei verschiedener Labels (ABBRUCH/SCHROTT/BEOBACHTEN): alle drei sehen denselben Moat (60-70% Weltmarktanteil), dieselbe Cashflow-Schwäche (FCF-Marge 16,9% statt ≥20%) und denselben Befund — heute kein Kauf, egal welches Label man nimmt.</span>
+    </div>
+  </div>
+
+  <div class="dna-wrap">
+    <div class="section-label" style="margin-bottom:0;">DNA-Check-Strang (K-Kriterien, verifizierter Konsens)</div>
+    <div class="dna-strip">
+      <div class="dna-seg pass">ROIC 33,3% · PASS</div>
+      <div class="dna-seg fail">FCF-MARGE 16,9% · FAIL</div>
+      <div class="dna-seg fail">OP. LEVERAGE FLACH · FAIL</div>
+      <div class="dna-seg fail">PIOTROSKI · N/V</div>
+      <div class="dna-seg fail">EPS-CAGR 5J HIST. · N/V</div>
+    </div>
+    <div class="dna-note">K-Score: <b>1/5 bestanden</b> — und anders als bei den letzten beiden Kandidaten (Orion Oyj, Asahi Intecc) sind hier zwei weitere K-Kriterien nicht bloß unbekannt, sondern <b>verifiziert durchgefallen</b>: FCF-Marge real bei 16,9% (Schwelle 20%), operative Hebelwirkung diese Periode flach statt positiv (Umsatz +11,08% vs. Nettogewinn +9,39%). Plausibelster Grund: aggressive, selbstfinanzierte Kapazitätsausbauphase (Investitions-Cashflow verdoppelt, neues Werk Hiroshima/Kure).</div>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="box">
+        <h3>Was verifiziert vorliegt (Konsens, unstrittig)</h3>
+        <ul class="bullets plus">
+          <li>ROIC 33,3% TTM, operative Marge 42,3–44,0% — beides herausragend</li>
+          <li>60-70% Weltmarktanteil bei Präzisions-Dicing/-Grinding, technisch schwer kopierbare Nische</li>
+          <li>Netto-Cash-Position (246 Mrd. ¥), praktisch schuldenfrei</li>
+          <li>Rekord-Umsatz/-Auftragseingang 6. Jahr in Folge, struktureller AI-/Advanced-Packaging-Rückenwind</li>
+        </ul>
+      </div>
+      <div class="box" style="flex:1;">
+        <h3>Was offen bleibt / dagegen spricht</h3>
+        <ul class="bullets minus">
+          <li>Piotroski F-Score, historische 5J-EPS-CAGR — keine verlässliche Quelle gefunden</li>
+          <li>Capex/Umsatz grob ~31% (Investitions-CF) bzw. ~8% (reine Sachanlagen) — weit über 5%-Schwelle</li>
+          <li>Bewertung ambitioniert: KGV ~50x TTM, laut Conan EV/FCF ~88-103x</li>
+          <li>TA-Modul nicht möglich: Twelve Data deckt Tokyo-Börsenplätze im aktuellen Plan nicht ab</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <div class="box dissent-box" style="flex:1;">
+        <h3>Warum die Labels trotzdem auseinanderlaufen</h3>
+        <p><b>Reine Methodik-Frage, kein Zahlenkonflikt — alle drei hatten dasselbe Fact-Pack.</b> Jarvis und Jack folgen der ABBRUCH-LOGIK strikt: K-Kriterium [N/V] → sofortiger Abbruch, keine Schätzung erlaubt. Conan nutzt die vom Regelwerk selbst vorgesehene Kulanz für QUICK FILTER bei datenarmen Firmen ([TRAINING]-Schätzung statt Abbruch) und kommt dadurch zu einem vollständigen, aber ausdrücklich mit 🔴 niedriger Konfidenz gedeckelten Rating. <b>Wichtig:</b> Jacks frühere Reflex-Abbrüche (Orion Oyj, erster Asahi-Lauf) sind hier NICHT das Thema — der Fix vom 02.09. hält, Jack hat diesmal die komplette Analyse durchgerechnet und ist über die eigene, korrekt angewendete Zählregel zu SCHROTT gekommen, nicht über einen Bug.</p>
+      </div>
+      <div class="box">
+        <h3>Nächste Schritte</h3>
+        <ul class="bullets">
+          <li style="padding-left:0;">Auf Watchlist belassen (Profi), kein Depot-Zugang</li>
+          <li style="padding-left:0;">Beobachtungshorizont 2-4 Quartale: FCF-Marge, operative Hebelwirkung, Capex-Plan Hiroshima/Kure</li>
+          <li style="padding-left:0;">Preis-Trigger: Rücksetzer Richtung ~45.000¥ (Conans Abstauber-Zone) erneut prüfen</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="fazit-text">
+    <div class="head">
+      <span class="rating display" style="font-size:10pt;">Watchlist-würdig, aber kein Kauf-Rating heute</span>
+      <span class="sub">3 KIs, 3 unterschiedliche Labels, 1 identische Handlungsempfehlung</span>
+    </div>
+    <p>DISCO Corporation ist operativ ein Ausnahme-Unternehmen: fast Monopolstellung bei einer technisch anspruchsvollen Halbleiter-Nische, ROIC 33%, Netto-Cash-Bilanz, struktureller AI-Rückenwind. <b>Aber</b>: die freie Cashflow-Konversion (16,9% statt ≥20%) und die flache operative Hebelwirkung sind – anders als bei den letzten beiden Kandidaten – keine reinen Datenlücken, sondern verifizierte Schwächen, plausibel erklärbar durch eine aggressive Kapazitätsausbauphase. Kombiniert mit einer sportlichen Bewertung (KGV ~50x) ergibt sich über alle drei KIs hinweg dasselbe Bild, unabhängig vom formalen Label: <b>heute kein Kaufanlass.</b> Der freie Profi-Slot (10-6-4-Ziel) bleibt offen, DISCO bleibt Beobachtungskandidat mit klarem Preis-Trigger.</p>
+  </div>
+
+  <div class="footer">
+    <div>Vollständige Analysen: analysen/6146-TMR-quickfilter-*-2026-09-03.md, 6146-cross-check-fazit-2026-09-03.md</div>
+    <div>Keine Anlageberatung · TA-Modul ausstehend (Datenplan-Limit) · Seite 1/1</div>
+  </div>
+
+</div>
+</body>
+</html>

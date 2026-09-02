@@ -131,7 +131,13 @@ aufgenommen, wenn mindestens eines zutrifft:
 4. **Möglicher Ersatzkandidat** für eine bestehende, schwächere Depot-Position.
 5. **Ex-Depot-Position**, die Brian bewusst weiter im Blick behalten will.
 
-## Ausschluss-/Abstiegs-Kriterien (wöchentlich geprüft)
+## Ausschluss-/Abstiegs-Kriterien (täglich per Ampel + wöchentlich vertieft geprüft)
+
+**Seit 2026-09-03:** Zusätzlich zur wöchentlichen Tiefenprüfung (Freitag,
+Wochenfazit) läuft täglich (Teil des Täglichen Trigger-Checks) eine
+schnelle 🔴/🟡/🟢-Ampel über alle Werte unten – siehe architecture.md,
+"Watchlist-System", "Tägliche Watchlist-News-Ampel". Ein 🔴-Fund führt zur
+sofortigen Entfernung noch am selben Tag, nicht erst freitags.
 
 Ein Wert fliegt von der Watchlist, wenn mindestens eines zutrifft:
 1. **Katastrophale Quartalszahlen** (Umsatz-/Gewinneinbruch, Guidance-Cut) ohne

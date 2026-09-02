@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Strategiespiegel – Brians Depot (September)</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1A1C1F; --bg-panel: #232629; --bg-panel-2: #2A2D31;
+    --border: #3A3E43; --border-soft: #303337;
+    --text: #EDE8DF; --text-dim: #A39B8E; --text-faint: #6E6860;
+    --gold: #C6922C; --gold-bright: #E0B24E; --gold-dim: #7A5F24;
+    --green: #5C9A5F; --green-bg: rgba(92,154,95,0.14);
+    --yellow: #DDB13B; --yellow-bg: rgba(221,177,59,0.14);
+    --red: #BC4F41; --red-bg: rgba(188,79,65,0.16);
+    --blue: #6C93B8; --blue-bg: rgba(108,147,184,0.14);
+    --purple: #9E86C4; --purple-bg: rgba(158,134,196,0.14);
+  }
+  html, body { background: var(--bg); color: var(--text); font-family: "Carlito", "DejaVu Sans", Arial, sans-serif; font-size: 9.6pt; line-height: 1.42; }
+  .display { font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif; font-weight: 700; font-stretch: condensed; }
+  .page { width: 210mm; min-height: 297mm; padding: 12mm 14mm 10mm 14mm; display: flex; flex-direction: column; gap: 4mm; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 3mm; margin-bottom: 2mm; }
+  .brand { font-size: 20pt; letter-spacing: 0.04em; }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 7.6pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .meta-block { text-align: right; font-size: 8pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 9pt; }
+
+  h1.section-title { font-size: 14pt; color: var(--gold-bright); letter-spacing: 0.02em; margin-top: 1mm; }
+  h2.sub-title { font-size: 10.5pt; color: var(--text); margin-top: 3mm; margin-bottom: 1mm; }
+  p { color: var(--text); margin-bottom: 1.5mm; }
+  .dim { color: var(--text-dim); }
+
+  .reveal-box { background: var(--bg-panel); border: 1px solid var(--gold-dim); border-left: 3px solid var(--gold); border-radius: 3px; padding: 4mm 5mm; margin: 2mm 0; }
+  .reveal-box .label { font-size: 7pt; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dim); margin-bottom: 1.5mm; }
+
+  .voice-card { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 4mm 5mm; margin-top: 2mm; }
+  .voice-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-soft); padding-bottom: 2mm; margin-bottom: 2.5mm; }
+  .voice-name { font-size: 13pt; }
+  .voice-name .accent { color: var(--gold-bright); }
+  .voice-tag { font-size: 7pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); }
+  .rating-pill { font-size: 9pt; padding: 1mm 3mm; border-radius: 2px; font-weight: bold; }
+  .rating-green { background: var(--green-bg); color: var(--green); }
+  .rating-yellow { background: var(--yellow-bg); color: var(--yellow); }
+
+  ul { margin-left: 4mm; margin-bottom: 2mm; }
+  li { margin-bottom: 1mm; }
+  .quote { font-style: italic; color: var(--text-dim); border-left: 2px solid var(--gold-dim); padding-left: 3mm; margin: 2mm 0; }
+
+  table { width: 100%; border-collapse: collapse; margin: 2mm 0 3mm 0; font-size: 8.6pt; }
+  th { text-align: left; color: var(--gold-bright); border-bottom: 1px solid var(--border); padding: 1.5mm 2mm; font-size: 7.6pt; text-transform: uppercase; letter-spacing: 0.04em; }
+  td { padding: 1.5mm 2mm; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+
+  .cluster-pill { display: inline-block; padding: 0.5mm 2mm; border-radius: 2px; font-size: 7.6pt; margin-bottom: 0.5mm; }
+  .c-champions { background: var(--green-bg); color: var(--green); }
+  .c-profi { background: var(--blue-bg); color: var(--blue); }
+  .c-talent { background: var(--red-bg); color: var(--red); }
+  .c-etf { background: var(--purple-bg); color: var(--purple); }
+  .status-ok { color: var(--green); font-weight: bold; }
+  .status-under { color: var(--yellow); font-weight: bold; }
+  .status-over { color: var(--red); font-weight: bold; }
+
+  .footer { margin-top: auto; padding-top: 3mm; border-top: 1px solid var(--border-soft); font-size: 7pt; color: var(--text-faint); display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER + REVEAL -->
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">STRATEGIE<span class="accent">SPIEGEL</span></div>
+      <div class="brand-sub">Drei unabhängige KI-Lesarten von Brians Depot — Wiederholung</div>
+    </div>
+    <div class="meta-block">
+      <div class="date display">02.09.2026</div>
+      <div>Gesamtwert: 35.419 €</div>
+      <div>19 Einzelwerte + ETF (vs. 18 am 29.08.)</div>
+    </div>
+  </div>
+
+  <h1 class="section-title display">Der Test, zum zweiten Mal</h1>
+  <p>Am 29.08.2026 hatten Jack und Conan Brians Strategie bereits blind erkannt ("Strategiespiegel"-Test).
+  Seither: HawkEye-360-Nachkauf, Kraken Robotics/Rocket Lab neu dazugekommen, mehrere Kursbewegungen. Auf Brians
+  Wunsch ("was für eine Strategie fahre ich, was habe ich mir bei der Aktienauswahl gedacht?") wiederholt: Jack
+  und Conan bekamen erneut in frischen Sitzungen NUR die nackte Positionsliste (Firma, Land, Investsumme,
+  aktueller Wert, Rendite) — diesmal über die neuen, direkten API-Bridges statt Browser, ohne jeden Hinweis auf
+  Kategorien oder die vorherige Runde.</p>
+
+  <div class="reveal-box">
+    <div class="label display">Die tatsächliche, dokumentierte Strategie (architecture.md)</div>
+    <p style="margin-bottom:1mm"><b>Nordstern:</b> Markt langfristig schlagen UND Kapitalerhalt durch
+    diszipliniertes 3-fach-KI-Cross-Check statt Einzelmeinung. Konkretes Ziel: 90.000-100.000€ Aktienanteil in
+    5-7 Jahren (10-12% p.a.).</p>
+    <p style="margin-bottom:1mm"><b>Zielbänder (Anteil am aktiven Aktienanteil, ohne ETF/Gold/Cash):</b>
+      <span class="cluster-pill c-champions">Champions 35-45%</span> Weltklasse-Moats &nbsp;
+      <span class="cluster-pill c-profi">Profi 20-30%</span> solide zweite Reihe &nbsp;
+      <span class="cluster-pill c-talent">Talent/Zock 25-40%</span> spekulativ/Momentum
+    </p>
+    <p><span class="cluster-pill c-etf">ETF-Core ≥50% langfristig, aktuell 21,3%</span> Vanguard FTSE All-World,
+    im Aufbau (600€/Monat Sparplan).</p>
+  </div>
+
+  <h2 class="sub-title display">Kernbefund: wieder erkannt, wieder ähnlich strukturiert</h2>
+  <p>Beide KIs haben erneut, unabhängig voneinander und ohne Kenntnis der vorherigen Runde, ein Core-Satellite-Muster
+  mit 4 Bausteinen rekonstruiert — Jack nennt es "Kern &amp; Satelliten der Disruption", Conan "Welt-ETF als
+  Fundament, digitale Burggräben und Zukunftsoptionen als Satelliten". Beide identifizierten SoFi unabhängig als
+  größte Einzel-Überzeugungsposition und den spekulativen Block (Kraken/Rocket Lab/HawkEye/Cellebrite/Rambus) als
+  klaren, bewussten Risikoblock — nicht als Zufall.</p>
+
+  <table>
+    <tr><th>Kriterium</th><th>Jack (Gemini)</th><th>Conan (ChatGPT)</th><th>Jarvis (Claude)</th></tr>
+    <tr><td>Name für die Strategie</td><td>"Kern &amp; Satelliten der Disruption"</td><td>"Welt-ETF als Fundament, digitale Burggräben und Zukunftsoptionen als Satelliten" (Core-Satellite)</td><td>Champions/Profi/Talent (bekannte Struktur)</td></tr>
+    <tr><td>Cluster-Anzahl</td><td>4 (Fundament / Tech&amp;Innovatoren / Nischen-Champions / Value&amp;Defensiv)</td><td>4 (Marktanker / Quality-Growth / Finanzsystem&amp;Fintech / Security-Defense-Space)</td><td>3 + ETF (Champions/Profi/Talent)</td></tr>
+    <tr><td>ETF-Rolle erkannt?</td><td>Ja – "passives Rückgrat"</td><td>Ja – "Sicherheitsgurt, Basisrendite"</td><td>Ja – Fundament, aktuell unter 50%-Ziel</td></tr>
+    <tr><td>Größte Einzelwette erkannt</td><td>SoFi (implizit im Tech-Cluster)</td><td>SoFi explizit als größte Position benannt</td><td>SoFi 11,6% des Gesamtdepots</td></tr>
+    <tr><td>Größtes Risiko benannt</td><td>Illiquide Spekulationen (Kraken/RocketLab/HawkEye), Tech-Klumpenrisiko</td><td>Fehlende klare Kapitalallokations-/Rebalancing-Logik, spekulativer Block ~18-19%</td><td>Talent-Anteil über Zielband (s.u.)</td></tr>
+    <tr><td>Spontanes Rating</td><td><b>8/10</b></td><td><b>7/10</b></td><td>s. Ist-Abgleich Seite 4</td></tr>
+  </table>
+
+  <div class="footer">
+    <span>Strategiespiegel #2 – Brians Aktien-Agent</span>
+    <span>Seite 1/4</span>
+  </div>
+</div>
+
+<!-- PAGE 2: JACK -->
+<div class="page">
+  <div class="voice-card" style="margin-top:0">
+    <div class="voice-header">
+      <div>
+        <div class="voice-name display">Jack <span class="accent">· Gemini</span></div>
+        <div class="voice-tag">Unabhängige Ersteinschätzung, blind, per API-Bridge</div>
+      </div>
+      <div class="rating-pill rating-green">8 / 10</div>
+    </div>
+
+    <h2 class="sub-title display">1. Roter Faden</h2>
+    <p>„Kern &amp; Satelliten der Disruption" — eine Kombination aus robustem, global diversifiziertem
+    Kerninvestment und hochkonzentriertem, opportunistischem Ansatz in ausgewählten Wachstumsbereichen. Der
+    Investor sucht aktiv nach disruptiven Technologien und Nischenführern, abgesichert durch Qualitäts- und
+    defensivere Werte als Anker.</p>
+
+    <h2 class="sub-title display">2. Clustering (4 Bausteine)</h2>
+    <table>
+      <tr><th>Cluster</th><th>Gewicht</th><th>Vertreter</th></tr>
+      <tr><td>Globales Fundament</td><td>~22%</td><td>Vanguard FTSE All-World</td></tr>
+      <tr><td>High-Conviction Tech &amp; Innovatoren</td><td>~53%</td><td>SoFi, ServiceNow, Cellebrite, MercadoLibre, Constellation Software, Intuitive Surgical, A10 Networks, Rambus, Kraken Robotics, Rocket Lab, HawkEye 360</td></tr>
+      <tr><td>Qualität &amp; Nischen-Champions</td><td>~15%</td><td>Hermès, Tristel, Broadridge, CBOE</td></tr>
+      <tr><td>Value &amp; Defensive Anker</td><td>~10%</td><td>Münchener Rück, Allianz, Bank Central Asia</td></tr>
+    </table>
+
+    <h2 class="sub-title display">3. Vermutete Kaufthese</h2>
+    <p>„Wachstumsorientierter, langfristiger Überzeugungs-Investor mit Hang zu Deep Tech und Nischenführern" —
+    bereit, hohe Risiken für überdurchschnittliche Renditen einzugehen, abgesichert durch ein solides passives
+    Fundament. Eine Mischung aus "Jäger und Sammler".</p>
+
+    <h2 class="sub-title display">4. Was gefällt / was nicht</h2>
+    <p><b>Gefällt:</b> disziplinierter ETF-Sparplan als Basis, Mut zur Überzeugung, thematische Diversifikation
+    innerhalb Tech (Fintech/Cloud/MedTech/Space), geografische Streuung auch bei Einzelwerten, Mischung aus
+    etablierten Nischen-Champions und Early-Stage-Wetten.</p>
+    <p><b>Kritisch:</b> über 50% in Einzelaktien, teils risikoreiche Tech-Sektoren; spekulative Positionen mit
+    geringer Liquidität (Kraken/Rocket Lab/HawkEye ohne Live-Kurs); sektorales Tech-Klumpenrisiko trotz
+    thematischer Streuung; kein klassischer Value-Ansatz erkennbar außer bei den zwei Versicherern.</p>
+    <div class="quote">„Es ist eine mutige und disziplinierte Strategie für jemanden, der bereit ist, viel Zeit
+    in die Analyse von Einzelunternehmen zu investieren und gleichzeitig das große Ganze nicht aus den Augen
+    verliert."</div>
+  </div>
+
+  <div class="footer">
+    <span>Strategiespiegel #2 – Brians Aktien-Agent</span>
+    <span>Seite 2/4</span>
+  </div>
+</div>
+
+<!-- PAGE 3: CONAN -->
+<div class="page">
+  <div class="voice-card" style="margin-top:0">
+    <div class="voice-header">
+      <div>
+        <div class="voice-name display">Conan <span class="accent">· ChatGPT</span></div>
+        <div class="voice-tag">Unabhängige Ersteinschätzung, blind, per API-Bridge</div>
+      </div>
+      <div class="rating-pill rating-yellow">7 / 10</div>
+    </div>
+
+    <h2 class="sub-title display">1. Vermutete Strategie</h2>
+    <p>„Welt-ETF als Fundament, digitale Burggräben und Zukunftsoptionen als Satelliten" — ein Core-Satellite-Portfolio.
+    Kein klassisches Dividendenportfolio, kein reines Value-Depot, auch kein rein spekulatives Tech-Depot.</p>
+    <div class="quote">„Ich will die Weltmarktrendite als Basis, aber gezielt dort Überrendite suchen, wo starke
+    Burggräben, strukturelles Wachstum oder asymmetrische Zukunftschancen liegen."</div>
+
+    <h2 class="sub-title display">2. Clustering (4 Bausteine)</h2>
+    <table>
+      <tr><th>Cluster</th><th>Gewicht</th><th>Vertreter</th></tr>
+      <tr><td>Globaler Marktanker</td><td>~22%</td><td>Vanguard FTSE All-World</td></tr>
+      <tr><td>Quality-/Growth-Compounder</td><td>~29%</td><td>ServiceNow, Constellation Software, MercadoLibre, Hermès, Intuitive Surgical, Tristel</td></tr>
+      <tr><td>Finanzsystem, Infrastruktur &amp; Fintech</td><td>~30%</td><td>SoFi, Broadridge, CBOE, Münchener Rück, Allianz, Bank Central Asia</td></tr>
+      <tr><td>Security/Defense/Space/Robotics/Semis</td><td>~18%</td><td>Cellebrite, A10 Networks, Rambus, Kraken Robotics, Rocket Lab, HawkEye 360</td></tr>
+    </table>
+
+    <h2 class="sub-title display">3. Investorentyp</h2>
+    <p>Langfristig denkend, tech-affin, beobachtet globale Märkte, baut lieber eigene Überzeugungen auf statt
+    nur ETFs zu kaufen — aber demütig genug für einen ETF-Sparplan als Basis. Bereit zu kleineren spekulativen
+    Wetten, nicht primär auf Dividenden fokussiert. "Ambitioniertes privates Stock-Picking-Depot mit
+    ETF-Fundament."</p>
+
+    <h2 class="sub-title display">4. Was gefällt / was nicht</h2>
+    <p><b>Gefällt:</b> sinnvoller ETF-Sockel, echte Qualität/Burggräben in vielen Einzelaktien, Kombination aus
+    Stabilität und Optionalität, internationale Streuung über 9+ Länder, mehrere unabhängige Wachstumsquellen
+    (nicht nur Software/KI).</p>
+    <p><b>Kritisch:</b> Gewichtung wirkt nicht vollständig systematisch (SoFi größte Position, ohne erkennbare
+    explizite Begründung aus der Liste); spekulativer Block ~18-19% spürbar; viele Positionen brauchen aktives
+    Monitoring, kein "kaufen und vergessen"-Depot; keine saubere sichtbare Hierarchie (z.B. Core 50%/Quality
+    30%/Optionalität 15%); trotz geografischer Streuung dominanter Wachstums-/Tech-Faktor.</p>
+    <div class="quote">„Gute, interessante, überdurchschnittlich reflektierte Core-Satellite-Strategie — aber mit
+    spürbarem Stock-Picking- und Zukunftswetten-Risiko."</div>
+  </div>
+
+  <div class="footer">
+    <span>Strategiespiegel #2 – Brians Aktien-Agent</span>
+    <span>Seite 3/4</span>
+  </div>
+</div>
+
+<!-- PAGE 4: JARVIS + SYNTHESE -->
+<div class="page">
+  <div class="voice-card" style="margin-top:0">
+    <div class="voice-header">
+      <div>
+        <div class="voice-name display">Jarvis <span class="accent">· Claude</span></div>
+        <div class="voice-tag">Einordnung mit Kenntnis der dokumentierten Zielstruktur</div>
+      </div>
+    </div>
+
+    <p>Anders als Jack und Conan kenne ich Brians dokumentierte Champions/Profi/Talent-Zielbänder bereits — meine
+    Rolle ist daher kein blinder Test, sondern die Kontrolle: passt die reale Gewichtsverteilung zum eigenen
+    Zielbild, zwei Wochen nach der letzten Prüfung?</p>
+
+    <h2 class="sub-title display">Ist-Abgleich gegen die Zielbänder (Anteil am Aktienanteil, ohne ETF/Gold/Cash)</h2>
+    <p class="dim">Zuordnung nach den dokumentierten Kriterien (Marge/Marktstellung/Wachstumsverlässlichkeit,
+    architecture.md) — feste Referenz: <code>depot/kategorisierung.md</code>. Korrigiert am 03.09. gegenüber der
+    ersten Fassung dieses Reports: Allianz und Bank Central Asia gehören nach Marge/Marktstellung zu Champions
+    (nicht Talent, wie zunächst fälschlich anhand von Positionsgröße/EM-Status eingeordnet); Rambus und Tristel
+    sind Brians eigene dokumentierte Profi-Beispiele (ebenfalls vorher fälschlich bei Talent).</p>
+    <table>
+      <tr><th>Kategorie</th><th>Ziel</th><th>Ist (02.09.2026)</th><th>Bewertung</th></tr>
+      <tr><td><span class="cluster-pill c-champions">Champions</span></td><td>35-45%</td><td>47,5% (12.503€) — Intuitive Surgical, Münchener Rück, ServiceNow, Constellation Software, Hermès, MercadoLibre, Allianz, Bank Central Asia</td><td class="status-over">über Obergrenze</td></tr>
+      <tr><td><span class="cluster-pill c-profi">Profi</span></td><td>20-30%</td><td>16,4% (4.329€) — Broadridge, CBOE, A10 Networks, Rambus, Tristel</td><td class="status-under">unter Ziel</td></tr>
+      <tr><td><span class="cluster-pill c-talent">Talent/Zock</span></td><td>25-40%</td><td>36,1% (9.488€) — SoFi, Cellebrite, Kraken Robotics, Rocket Lab, HawkEye 360</td><td class="status-ok">im Zielband</td></tr>
+    </table>
+    <p class="dim">Mit der korrigierten Zuordnung ergibt sich ein anderes Bild als in der ersten Fassung: nicht
+    Talent ist das Problem, sondern <b>Champions ist überproportional groß</b> (v.a. durch Kursgewinne bei
+    Constellation Software/ServiceNow plus die Nachjustierung von Allianz/Bank Central Asia dorthin), während
+    <b>Profi</b> weiterhin strukturell zu klein bleibt. Talent liegt tatsächlich sauber im Zielband — die
+    ursprüngliche Sorge um Überkonzentration im spekulativen Block war ein Artefakt der Fehlzuordnung, keine reale
+    Übergewichtung.</p>
+
+    <h2 class="sub-title display">Meine Einschätzung</h2>
+    <p>Beide KIs haben zum zweiten Mal unabhängig fast exakt dieselbe Grundstruktur erkannt wie am 29.08. — das
+    ist ein starkes Signal, dass die Strategie stabil, kohärent und nicht zufällig ist, auch über Zeit und
+    Portfolio-Änderungen hinweg. Bei der Feinsortierung einzelner Positionen (z.B. wo genau Allianz oder Bank
+    Central Asia hingehören) wichen Jack, Conan und meine erste eigene Einordnung voneinander ab — das lag nicht
+    an der Grundstrategie, sondern daran, dass die Kategorie-Zuordnung bisher nicht konsequent nach den
+    dokumentierten Kriterien, sondern teils nach unzulässigen Proxies (Positionsgröße, EM-Status) erfolgte. Das ist
+    jetzt in <code>depot/kategorisierung.md</code> fest korrigiert.</p>
+    <p><b>Was ich konkret ergänzen würde:</b> die nächsten Kandidaten aus Watchlist/Pipeline sollten bewusst
+    Profi-Qualität ansteuern (solide Nischenführer, noch nicht volle Champions-Reife) — Profi ist mit 16,4% klar
+    das strukturell unterrepräsentierte Standbein, während bei Champions eher Zurückhaltung sinnvoll ist, bis der
+    Anteil wieder ins Band zurückläuft (organisch, durch weiteres Wachstum in Profi/Talent, nicht durch Verkäufe).</p>
+
+    <h2 class="sub-title display">Fazit für Brian</h2>
+    <p>Zur Ausgangsfrage "was für eine Strategie fahre ich, was habe ich mir bei der Aktienauswahl gedacht":
+    Zwei unabhängige KIs, die nichts über dein System wussten, kommen beide auf dasselbe Bild wie das offizielle
+    Regelwerk — ein <b>Core-Satellite-Ansatz aus globalem ETF-Fundament, Qualitäts-Compoundern mit echten
+    Burggräben und einem bewussten, klar dimensionierten Block aus asymmetrischen Zukunftswetten</b> (Deep Tech,
+    Space, Security, Fintech-Disruption). Das ist kein Zufallshaufen und kein reines Hype-Depot, sondern erkennbar
+    durchdacht — beide externen Bewertungen (7-8/10) bestätigen das. Die einzige echte Baustelle ist die
+    Kapitalgewichtung zwischen Champions und Profi, nicht die Titelauswahl selbst, und auch nicht (wie zunächst
+    fälschlich berechnet) eine Überkonzentration im Talent-Block.</p>
+  </div>
+
+  <div class="footer">
+    <span>Strategiespiegel #2 – Brians Aktien-Agent</span>
+    <span>Seite 4/4</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -543,6 +543,51 @@ seine Stimme im Vergleich trotzdem "Jack", nicht "Conan").
     Profi-Zuteilung an den 20 Slots übrig bleibt.
   - Zusammen ergeben Champions + Profi das, was Brian als "15-17 stabile Werte"
     bezeichnet hat; Talent sind die restlichen riskanten Werte on top.
+- **Update (2026-09-03, von Brian festgesetzt): feste Positionsanzahl-Formel
+  "10-6-4".** Löst die bisherige Spanne (Champions 8-10/Profi 3-5/Talent
+  5-9 Rest-Slots) durch eine einprägsame, feste Zielzahl ab: **10 Champions,
+  6 Profi, 4 Talent** = 20 Einzelwerte gesamt (passt exakt zur bestehenden
+  Max.-20-Grenze). Begründung/Herleitung:
+  - **10 Champions** – oberes Ende der alten Spanne, unverändert.
+  - **6 Profi** – gegenüber der alten Spanne (3-5) angehoben, weil Profi in
+    der Praxis (Stand 02./03.09.) sowohl bei Positionsanzahl als auch beim
+    Kapitalgewicht (16,4% vs. Ziel 20-30%) strukturell unterrepräsentiert
+    war. Ist ausdrücklich der Baustein, der als nächstes bevorzugt
+    aufgefüllt wird.
+  - **4 Talent** – gegenüber der alten Spanne (5-9) bewusst enger gefasst.
+    Grund: die harte 10%-Positionsgrenze (Ausnahme bis 12% nur bei
+    Top-Conviction, siehe oben) trifft sich bei genau 4 Positionen exakt
+    mit der Talent-Gewichts-Obergrenze (4 × 10% = 40%) – bei nur 3 Slots
+    (Variante "10-7-3", verworfen) wäre die 40%-Obergrenze nur über
+    wiederholte Nutzung der eigentlich seltenen 12%-Ausnahme erreichbar.
+  - **Langfristiger Ausblick (von Jarvis empfohlen, noch nicht
+    festgeschrieben):** Sobald das Depot deutlich über die aktuelle
+    Aufbauphase hinausgewachsen ist, spricht einiges dafür, Talent auf
+    5-6 Positionen aufzuweiten (echter Portfolio-Effekt bei spekulativen
+    Wetten statt Dominanz einzelner Ausfälle/Volltreffer bei nur 3-4
+    Positionen) – bewusst als spätere Anpassung vorgemerkt, nicht Teil der
+    aktuellen 10-6-4-Festlegung.
+  - **Praktische Konsequenz zum Zeitpunkt der Festlegung:** Champions
+    aktuell 8/10 (2 Slots frei), Profi aktuell 5/6 (1 Slot frei), Talent
+    aktuell 5/4 (**bereits über Ziel** – keine neuen Talent-Zukäufe, bis
+    eine bestehende Position ausscheidet, auch wenn das Kapitalgewicht noch
+    Spielraum hätte). Siehe `depot/kategorisierung.md` für die laufend
+    aktuelle Zählung.
+- **Update (2026-09-03, von Brian gefordert nach uneinheitlicher
+  Kategorisierung im Strategiespiegel-Report): feste Nachschlage-Tabelle
+  statt freier Einschätzung pro Analyse.** Auslöser: Jack, Conan und Jarvis
+  ordneten dieselben Positionen (u.a. Allianz, Bank Central Asia, Rambus,
+  Tristel) unterschiedlichen Kategorien zu – teils weil unzulässige Proxies
+  wie Positionsgröße oder Emerging-Markets-Status statt der eigentlichen
+  Kriterien (Marge/Marktstellung/Wachstumsverlässlichkeit) herangezogen
+  wurden. Ab jetzt gilt: **die Kategorie-Zuordnung jeder Depot-Position ist
+  in `depot/kategorisierung.md` fest hinterlegt und wird von KEINEM Report,
+  keiner Analyse und keinem Scheduled Task neu erraten** – nur dort
+  gepflegt, bei Neuaufnahme oder bewusster Neubewertung im Wochenfazit,
+  jeweils mit Begründung und Datum. Diese Datei ist die Quelle der Wahrheit
+  für Champions/Profi/Talent, nicht die Kriterien-Beschreibung unten (die
+  bleibt die Regel, nach der eingeordnet wird – aber die Zuordnung selbst
+  steht in der separaten Datei).
 - **Update (2026-08-29, von Brian präzisiert): qualitative Kriterien je
   Kategorie, geschärfte Beispiele, und Kapitalgewichts-Ziel statt reiner
   Positionsanzahl.** Ergänzt/präzisiert die obige, ursprünglich 2026-08-22
@@ -3069,6 +3114,27 @@ künftige Portfolio-Aufnahme** sind.
   können jederzeit aus beliebigem Grund von der Liste fliegen – schlechte
   Schlagzeilen, katastrophale Quartalszahlen, gerissene These usw. – das
   System muss dafür "ständig auf der Suche" und aktuell sein.
+- **Tägliche Watchlist-News-Ampel (2026-09-03, von Brian gefordert, als
+  schnelle Vorstufe zum wöchentlichen Check oben, nicht als Ersatz):**
+  Auslöser – Brian bemerkte anhand eines fremden Beispiel-Systems (tägliche
+  E-Mail mit Rot/Gelb/Grün-Einstufung je Watchlist-/Depotwert), dass sein
+  eigener wöchentlicher Rhythmus bei akuten Ereignissen (Rückruf,
+  Regulatorik-Warnung, Cybervorfall, Analysten-Down-/Upgrade) bis zu 6 Tage
+  Verzögerung bedeutet. Ab jetzt läuft zusätzlich TÄGLICH (Teil des
+  Täglichen Trigger-Checks, siehe unten, Schritt 3B) ein kompakter
+  News-Scan über alle aktuellen Watchlist-Werte mit einer Ampel:
+  - 🔴 ROT – erfüllt eines der bestehenden Ausschluss-Kriterien (siehe
+    "Ausschluss-/Abstiegs-Kriterien" in `watchlist.md`) → sofortige
+    Entfernung von der Watchlist, Chat + PushNotification + E-Mail.
+  - 🟡 GELB – kein Ausschlussgrund, aber These-relevante Entwicklung → Wert
+    bleibt, Status auf ⚠️ RISIKO gesetzt, kurzer Kommentar im Eintrag,
+    Erwähnung im Tages-Fazit.
+  - 🟢 GRÜN – keine relevante Änderung oder positive Bestätigung → keine
+    Aktion, bei echtem Neuigkeitswert kurz im Tages-Fazit erwähnt, sonst
+    still (kein Rauschen bei 20-30 Werten täglich).
+  Der wöchentliche Freitags-Check bleibt als tiefere, breitere Prüfung
+  zusätzlich bestehen – die tägliche Ampel ist die schnelle Vorstufe, kein
+  Ersatz.
 - **Täglicher automatisierter Kandidaten-Scan (2026-08-29, von Brian gefordert
   – Erweiterung, nicht Ersatz des wöchentlichen Checks oben):** Brian möchte
   ausdrücklich NICHT nur, dass bestehende Watchlist-Werte wöchentlich auf
