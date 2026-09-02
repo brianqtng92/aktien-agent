@@ -760,6 +760,103 @@ Für einzelne Kandidaten-Analysen ohne Depot-Bezug reichen weiterhin die
 einfachen `ask_chatgpt`/`ask_gemini`-Funktionen ohne den Mehraufwand des
 Relay-Loops (mehr Roundtrips = mehr Zeit/Tokens pro Analyse).
 
+### 10.12 ISIN-Gegenprobe bei WebSearch-Fundamentaldaten – gilt für JEDE Analyse, nicht nur Watchlist
+
+Beim Orion-Oyj-Testlauf (2026-09-02, ad-hoc Einzelanalyse auf Brians
+Wunsch) lieferte eine WebSearch nach Cashflow/Verschuldung scheinbar
+passende Zahlen, die tatsächlich zu **"Orion S.A."**/**"Orion Group
+Holdings"** gehörten – andere Firmen. Nur durch Plausibilitätsprüfung
+aufgefallen. **Neue Regel (architecture.md, Abschnitt "Watchlist-System",
+Unterpunkt "ISIN-Gegenprobe bei JEDER WebSearch-Fundamentaldaten-
+Recherche"):** gilt nicht nur bei Watchlist-Neuaufnahmen (dort schon
+länger über das Identity-Gate abgedeckt), sondern bei JEDER
+Fundamentaldaten-Recherche per WebSearch/WebFetch, auch bei einer
+spontanen Einzelanalyse mitten im Chat. Bei nicht eindeutigen Firmennamen:
+jede übernommene Kennzahl gegen ISIN/Ticker+Börsenplatz gegenprüfen, sonst
+[N/V] statt "wahrscheinlich richtig". Lieber Datenlücke im Fact-Pack als
+falsch zugeordnete Kennzahl.
+
+### 10.13 Standard-Meta-Instruktion für Bridge-Aufrufe (Pflicht ab 2026-09-02) – behebt Jacks systematischen Reflex-Abbruch
+
+**Symptom (Orion Oyj + Asahi Intecc, beide 2026-09-02):** Jack (Gemini)
+brach bei JEDEM frischen Quick-Filter-Kandidaten ohne vollständiges
+IR-Fact-Pack sofort auf SCHROTT/1 ab, während Conan (ChatGPT) mit
+denselben Lücken zu einem vollständigen Rating kam. Auf Brians
+ausdrückliche Bitte systematisch untersucht (nicht einfach hingenommen).
+
+**Diagnose (verifiziert, kein Prompt-Kürzungs-Bug):** Ein Diagnose-Prompt
+an Jack ("zitiere den letzten Satz vor dieser Frage wortwörtlich") kam mit
+dem exakt korrekten letzten Satz der 70KB-Methodik-Datei zurück – der
+volle Text kommt vollständig an. Die eigentliche Ursache waren ZWEI
+Stellen, an denen Jack eine im Regelwerk vorhandene Formulierung
+literalistischer als Conan ausgelegt hat und sich damit einen
+Abbruchgrund gesucht hat:
+1. Unklare Schwelle, wann `[TRAINING]` statt `[N/V]` bei fehlenden
+   K-Kriterien zulässig ist (Regelwerk erlaubt TRAINING für K technisch,
+   aber ohne explizite Daumenregel, wann eine Schätzung "gut genug" ist).
+2. SCHRITT-0-LIVE-CHECK und die RECHEN-DOKTRIN (Regel 20,
+   Python-Tool-Call-Pflicht für WACC/DCF) wörtlich genommen, obwohl die
+   API-Bridge strukturell weder Web-Search noch Tool-Calls hat – nachdem
+   Punkt 1 gefixt war, hat sich Jack genau diese zweite Stelle als neuen
+   Abbruchgrund gesucht.
+
+**Fix (getestet, funktioniert – Asahi Intecc lief danach vollständig
+durch: BEOBACHTEN, Reaper Score 5/10, nah an Conans unabhängigem 6/10):**
+Ab sofort bei JEDEM Bridge-Aufruf (`ask_chatgpt`/`ask_gemini`, sowohl
+Jack als auch Conan – identischer Wortlaut für beide, damit sie nach
+demselben Maßstab urteilen) folgende drei Klarstellungs-Blöcke VOR die
+Methodik-Datei setzen, zusätzlich zum bisherigen Fact-Pack-Hinweis:
+
+```
+WICHTIG: SCHRITT-0-LIVE-CHECK GILT ALS BEREITS DURCHGEFUEHRT UND ABGESCHLOSSEN.
+Jarvis (der Orchestrator) hat SCHRITT 0 bereits SELBST per echter Web-Recherche
+erledigt, BEVOR dieser Prompt an dich ging - das Ergebnis steht im FACT-PACK
+unten. Wo SCHRITT 0/Global-Regeln von "Live-Check", "Web-Search ausfuehren"
+oder "pausieren bis Live-Daten bestaetigt sind" sprechen: das bezieht sich auf
+den Fall, dass GAR KEINE Live-Recherche stattgefunden hat. Hier hat sie
+stattgefunden (durch Jarvis) - behandle das FACT-PACK exakt so, als haettest
+du selbst gerade die Web-Search ausgefuehrt.
+
+WICHTIG: WACC-KOMPONENTEN (Beta, Rf, ERP, CRP) UND DCF-BERECHNUNGEN OHNE
+PYTHON-TOOL-CALL. Du hast in dieser Sitzung keinen Python-Tool-Call zur
+Verfuegung (technische Einschraenkung der API-Bridge, nicht deine
+Entscheidung). Fuer QUICK FILTER ist ohnehin KEIN Full-DCF vorgesehen - die
+Tool-Call-Pflicht (Regel 20) bezieht sich auf FULL-DEEP-DIVE-DCF-Berechnungen.
+Schaetze WACC-Komponenten mit [TRAINING]-Tag statt die gesamte Analyse
+deswegen abzubrechen.
+
+WICHTIGE KLARSTELLUNG ZUR [TRAINING]-VS-[N/V]-ENTSCHEIDUNG BEI K-KRITERIEN
+(gilt gleichermassen fuer dich wie fuer die andere KI im selben Cross-Check):
+QUICK FILTER ist laut Methodik selbst ausdruecklich "geeignet fuer... datenarme
+Firmen". Ein sofortiger Abbruch bei jeder einzelnen fehlenden Zahl wuerde
+diesen erklaerten Zweck systematisch unterlaufen. Nutze [TRAINING] IMMER DANN,
+wenn du zu einer Kennzahl eine halbwegs plausible, aus deinem allgemeinen
+Wissen begruendbare GROESSENORDNUNG angeben kannst. Reserviere [N/V] NUR fuer
+den Fall, dass du zu einer Kennzahl GAR KEINE Einordnung hast.
+
+ZUSAMMENGEFASST: Fuehre die komplette Analyse bis zum Ende durch. Die zu
+erwartende Konfidenz ist wegen der vielen [TRAINING]-Tags 🔴 NIEDRIG - das ist
+ein KORREKTES, ERWARTETES Ergebnis dieser Sitzungsart, kein Grund zum Abbruch.
+Ein Abbruch ist nur bei einem ECHTEN K-Kriterium-[N/V] angemessen (siehe
+Klarstellung oben), nicht bei fehlendem Tool-Zugriff als solchem.
+```
+
+**Wichtig – was das NICHT ist:** Das ist keine Aufweichung der
+Datenintegrität-Philosophie und keine Änderung an Brians Methodik-Dateien
+(bleiben unverändert). Es ist eine Klarstellung EINER ECHTEN Unschärfe im
+Text selbst (QUICK FILTER soll für datenarme Firmen funktionieren, aber
+die ABBRUCH-LOGIK differenziert das nicht explizit) – auf beide KIs
+gleich angewendet, damit nicht die Modellwahl (Gemini vs. GPT) über das
+Ergebnis entscheidet, sondern die Faktenlage.
+
+**Praktische Konsequenz:** Die SCHROTT-Ergebnisse für Orion Oyj (Jack,
+2026-09-02) und den ersten Asahi-Intecc-Lauf (Jack, 2026-09-02, vor dem
+Fix) gelten als durch einen Prompt-Klarheits-Mangel verzerrt, nicht als
+belastbares Urteil über die Firmen – bei Bedarf mit dieser Standard-
+Instruktion neu laufen lassen. Ab sofort MUSS jeder neue Bridge-Aufruf
+für TMR/Scout-Analysen diese drei Blöcke enthalten (auch im Täglichen
+Trigger-Check, siehe dortiges SKILL.md).
+
 ---
 
 ## 11. Offene Punkte (Stand dieser Übergabe)

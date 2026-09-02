@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Reaper Kompakt – Asahi Intecc</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1A1C1F;
+    --bg-panel: #232629;
+    --bg-panel-2: #2A2D31;
+    --border: #3A3E43;
+    --border-soft: #303337;
+    --text: #EDE8DF;
+    --text-dim: #A39B8E;
+    --text-faint: #6E6860;
+    --gold: #C6922C;
+    --gold-bright: #E0B24E;
+    --gold-dim: #7A5F24;
+    --green: #5C9A5F;
+    --green-bg: rgba(92,154,95,0.14);
+    --yellow: #DDB13B;
+    --yellow-bg: rgba(221,177,59,0.14);
+    --red: #BC4F41;
+    --red-bg: rgba(188,79,65,0.16);
+  }
+
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Carlito", "DejaVu Sans", Arial, sans-serif;
+    font-size: 9.2pt;
+    line-height: 1.34;
+  }
+
+  .display {
+    font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif;
+    font-weight: 700;
+    font-stretch: condensed;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 8mm 12mm 6mm 12mm;
+    display: flex;
+    flex-direction: column;
+    gap: 2.6mm;
+  }
+
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 2.6mm;
+  }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 21pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 7.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag {
+    font-size: 6.8pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red);
+    border: 1px solid var(--red); border-radius: 2px; padding: 0.7mm 2mm; margin-top: 1.4mm;
+    display: inline-block; width: fit-content;
+  }
+  .meta-block { text-align: right; font-size: 7.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 8.6pt; }
+
+  .position-header {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold);
+    border-radius: 3px; padding: 2.8mm 4mm;
+  }
+  .position-name .ticker { font-size: 15pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 8pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 5mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 6.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); }
+  .stat .value { font-size: 9.8pt; color: var(--text); margin-top: 0.3mm; }
+  .stat .value .eur { font-size: 7pt; color: var(--text-dim); }
+  .cat-pill {
+    font-size: 6.8pt; letter-spacing: 0.06em; text-transform: uppercase; background: var(--red-bg); color: var(--red);
+    border: 1px solid var(--red); border-radius: 10px; padding: 1.1mm 2.8mm; white-space: nowrap;
+  }
+
+  .section-label {
+    font-size: 7.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 2.5mm;
+  }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+
+  .voices-row { display: flex; gap: 3mm; }
+  .voice-card {
+    flex: 1; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px;
+    padding: 2.4mm 2.8mm; position: relative; overflow: hidden;
+  }
+  .voice-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2.2mm; }
+  .voice-card.v-red::before { background: var(--red); }
+  .voice-card.v-yellow::before { background: var(--yellow); }
+  .voice-card.v-green::before { background: var(--green); }
+  .voice-name { font-size: 9.2pt; letter-spacing: 0.03em; padding-left: 2mm;}
+  .voice-role { font-size: 6.4pt; color: var(--text-faint); padding-left: 2mm; margin-bottom: 1mm;}
+  .voice-rating { padding-left: 2mm; font-size: 8.2pt; color: var(--text); }
+  .voice-rating b { color: inherit; }
+  .voice-sub { padding-left: 2mm; font-size: 7pt; color: var(--text-dim); margin-top: 0.6mm; }
+
+  .convergence-pill {
+    margin-top: 1.8mm; display: flex; align-items: center; gap: 2.5mm;
+    background: var(--red-bg); border: 1px solid var(--red); border-radius: 3px; padding: 1.8mm 3.5mm;
+  }
+  .convergence-pill .tag { font-size: 8pt; letter-spacing: 0.05em; color: var(--red); text-transform: uppercase; }
+  .convergence-pill .note { font-size: 6.9pt; color: var(--text-dim); font-style: italic; }
+
+  .pattern-banner {
+    display: flex; align-items: center; gap: 2.5mm;
+    background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.6mm 3.5mm;
+  }
+  .pattern-banner .tag { font-size: 7.4pt; letter-spacing: 0.05em; color: var(--yellow); text-transform: uppercase; white-space: nowrap; }
+  .pattern-banner .note { font-size: 6.7pt; color: var(--text-dim); font-style: italic; }
+
+  .dna-wrap { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.5mm; }
+  .dna-strip { display: flex; gap: 1.4mm; margin-top: 1.4mm; }
+  .dna-seg {
+    flex: 1; height: 6mm; border-radius: 1px; display: flex; align-items: center; justify-content: center;
+    font-size: 6.1pt; letter-spacing: 0.02em; color: var(--bg); font-weight: bold; text-align: center;
+  }
+  .dna-seg.pass { background: var(--green); }
+  .dna-seg.watch { background: var(--yellow); }
+  .dna-seg.fail { background: var(--red); }
+  .dna-note { font-size: 6.9pt; color: var(--text-dim); margin-top: 1.6mm; }
+  .dna-note b { color: var(--text); }
+
+  .two-col { display: flex; gap: 3mm; flex: 1; min-height: 0; overflow: hidden; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.2mm; min-height: 0; }
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; }
+  .box h3 {
+    font-size: 7.6pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 1.2mm;
+    font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700;
+  }
+  ul.bullets { list-style: none; }
+  ul.bullets li { font-size: 7pt; padding-left: 3mm; position: relative; margin-bottom: 0.8mm; color: var(--text); line-height: 1.28; }
+  ul.bullets.plus li::before { content: "+"; position: absolute; left: 0; color: var(--green); font-weight: bold; }
+  ul.bullets.minus li::before { content: "–"; position: absolute; left: 0; color: var(--red); font-weight: bold; }
+
+  .dissent-box {
+    border: 1px dashed var(--gold-dim); border-radius: 3px; padding: 2.2mm 3.2mm;
+    background: repeating-linear-gradient(135deg, rgba(198,146,44,0.04), rgba(198,146,44,0.04) 6px, transparent 6px, transparent 12px);
+  }
+  .dissent-box h3 { color: var(--gold-bright); }
+  .dissent-box p { font-size: 6.8pt; color: var(--text-dim); line-height: 1.3; }
+  .dissent-box p b { color: var(--text); }
+
+  .fazit-text {
+    background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim);
+    border-radius: 3px; padding: 2.8mm 3.8mm;
+  }
+  .fazit-text .head { display: flex; align-items: baseline; gap: 3mm; margin-bottom: 1.4mm; }
+  .fazit-text .rating { font-size: 12pt; color: var(--yellow); letter-spacing: 0.03em; }
+  .fazit-text .sub { font-size: 6.8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+  .fazit-text p { font-size: 7.3pt; color: var(--text); line-height: 1.42; }
+  .fazit-text p b { color: var(--gold-bright); }
+
+  .footer {
+    display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft);
+    padding-top: 1.6mm; font-size: 6.2pt; color: var(--text-faint);
+  }
+  .footer .gold-dot { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">REAPER <span class="accent">KOMPAKT</span></div>
+      <div class="brand-sub">3-KI Cross-Check · Jarvis · Jack · Conan</div>
+      <div class="edition-tag">Neuer Kandidat · TMR Quick Filter · WIDERSPRUCH nicht aufgelöst</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">2. September 2026</div>
+      <div>Regelwerk Jack – The Moat Reaper v11.7 · Standard K-BASIS 5S</div>
+      <div>Conan/Jack via API-Bridge live befragt · Jarvis mit eigener Recherche</div>
+    </div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">7747 <span style="color:var(--text-dim); font-size:9pt;">· Tokyo Stock Exchange</span></div>
+      <div class="company">Asahi Intecc Co., Ltd. — Medizintechnik: Guidewires &amp; Katheter für minimalinvasive Eingriffe · ISIN JP3110650003</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs (02.09.)</div><div class="value">3.601 JPY</div></div>
+      <div class="stat"><div class="label">Heute</div><div class="value" style="color:var(--red);">−5,16%</div></div>
+      <div class="stat"><div class="label">Marktkap.</div><div class="value">955,4 Mrd.¥</div></div>
+      <div class="cat-pill">Widerspruch — kein Rating vergebbar</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-label">3-Stimmen-Leiste — Quick Filter</div>
+    <div class="voices-row" style="margin-top:1.8mm;">
+      <div class="voice-card v-yellow">
+        <div class="voice-name display">JARVIS <span style="font-size:6.8pt; color:var(--text-faint);">— Claude</span></div>
+        <div class="voice-role">Identity-Gate geprüft: Ticker+ISIN doppelt bestätigt, keine Asahi-Verwechslung</div>
+        <div class="voice-rating"><b>ABBRUCH — Datenlücke</b></div>
+        <div class="voice-sub">FCF-Marge, Piotroski, historischer 5J-EPS-CAGR: alle drei echt N/V</div>
+      </div>
+      <div class="voice-card v-red">
+        <div class="voice-name display">JACK <span style="font-size:6.8pt; color:var(--text-faint);">— Gemini</span></div>
+        <div class="voice-role">Taggt FCF-Marge strikt als [N/V] → Sofort-Abbruch</div>
+        <div class="voice-rating"><b>SCHROTT</b> · Score 1/10</div>
+        <div class="voice-sub">"Wer nicht mal seine FCF-Marge ausweisen kann..." — Fass ohne Boden</div>
+      </div>
+      <div class="voice-card v-yellow">
+        <div class="voice-name display">CONAN <span style="font-size:6.8pt; color:var(--text-faint);">— ChatGPT</span></div>
+        <div class="voice-role">Taggt dieselben Lücken als [TRAINING]-Schätzung</div>
+        <div class="voice-rating"><b>BEOBACHTEN</b> · Score 6/10</div>
+        <div class="voice-sub">Abstauber-Limit 3.150 JPY · Tier 4 aktuell, max. Tier 3 bei Upgrade</div>
+      </div>
+    </div>
+    <div class="convergence-pill">
+      <span class="tag display">● Widerspruch</span>
+      <span class="note">Kein Zahlenkonflikt — alle drei hatten dasselbe Fact-Pack. Reiner Methodik-Dissens: [N/V] vs. [TRAINING] für fehlende K-Kriterien (FCF-Marge, Piotroski F-Score, historischer 5J-EPS-CAGR). Beide Positionen sind regelkonform vertretbar.</span>
+    </div>
+    <div class="pattern-banner" style="margin-top:1.4mm;">
+      <span class="tag display">⚠ Muster bestätigt (2/2)</span>
+      <span class="note">Exakt derselbe Jack-vs-Conan-Dissens trat wenige Stunden zuvor bei Orion Oyj (ORNBV) auf — reproduzierbares Verhalten bei jedem frischen Kandidaten ohne vollständiges IR-Fact-Pack, kein Einzelfall mehr. Siehe "Warum der Widerspruch entstanden ist" unten.</span>
+    </div>
+  </div>
+
+  <div class="dna-wrap">
+    <div class="section-label" style="margin-bottom:0;">DNA-Check-Strang (K-Kriterien, verifizierter Konsens)</div>
+    <div class="dna-strip">
+      <div class="dna-seg pass">ROIC/ROCE 23,21% · PASS</div>
+      <div class="dna-seg fail">FCF-MARGE · N/V</div>
+      <div class="dna-seg pass">OP. LEVERAGE · PASS</div>
+      <div class="dna-seg fail">PIOTROSKI · N/V</div>
+      <div class="dna-seg fail">EPS-CAGR 5J HIST. · N/V</div>
+    </div>
+    <div class="dna-note">K-Score: <b>3/5 klar verifiziert, 3/5 echte Datenlücke</b> (nicht schätzbar ohne falsche Präzision). Anders als bei Orion Oyj konnte Jarvis diesmal keine der Lücken mit eigener Zusatzrecherche schließen — die verfügbare Mehrjahres-Umsatz-CAGR (18,78%, 2022–2028E) ist teils Prognose, kein Ersatz für historische EPS-CAGR.</div>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="box">
+        <h3>Was verifiziert vorliegt (Konsens, unstrittig)</h3>
+        <ul class="bullets plus">
+          <li>ROIC/ROCE 23,21% — starke Kapitalrendite</li>
+          <li>Operative Marge 29,71% — sehr stark für Medtech</li>
+          <li>Umsatz +21,2% YoY, Nettogewinn +151,8% YoY — massiver operativer Hebel</li>
+          <li>Exklusive Japan-Rechte für Nexsphere-F-Embolisationsmittel gesichert (neuer Katalysator)</li>
+        </ul>
+      </div>
+      <div class="box" style="flex:1;">
+        <h3>Was offen bleibt</h3>
+        <ul class="bullets minus">
+          <li>FCF-Marge, Piotroski F-Score, Net Debt/EBITDA, historische EPS-CAGR — keine verlässliche Quelle gefunden</li>
+          <li>Heutiger Tagesverlust −5,16% trotz durchweg positiver News — Ursache ungeklärt</li>
+          <li>Analysten uneinig: Nomura Hold 3.500¥ vs. Citi Buy 5.400¥ bei Kurs 3.601¥</li>
+          <li>TA-Modul (Pflicht bei jeder Einzelanalyse) steht noch aus — Twelve Data deckt 7747 nicht ab</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <div class="box dissent-box" style="flex:1;">
+        <h3>Warum der Widerspruch entstanden ist</h3>
+        <p><b>Kein Datenkonflikt, sondern ein Regelverständnis-Dissens — jetzt zweimal reproduziert.</b> Jack verweigert jede Trainingswissen-Schätzung für harte K-Kriterien konsequent und löst damit die ABBRUCH-LOGIK aus, sobald irgendein K-Wert fehlt. Conan nutzt den regeltechnisch erlaubten [TRAINING]-Tag für plausible Schätzwerte. <b>Praktische Konsequenz:</b> Jack wird bei so gut wie JEDEM frischen Web-Recherche-Kandidaten reflexhaft SCHROTT/1 vergeben, unabhängig von der tatsächlichen Geschäftsqualität — sein Urteil bedeutet hier meist "Datenlage unzureichend", nicht "schlechte Firma". Empfehlung: bei Gelegenheit mit Brian klären, ob die ABBRUCH-LOGIK für QUICK FILTER etwas Kulanz vertragen sollte (Meta-Retro-Thema, ähnlich RKLB-Fall).</p>
+      </div>
+      <div class="box">
+        <h3>Nächste Schritte</h3>
+        <ul class="bullets">
+          <li style="padding-left:0;">Gezielte IR-/Jahresbericht-Recherche (asahi-intecc.co.jp) für FCF/Verschuldung/Piotroski</li>
+          <li style="padding-left:0;">TA-Modul nachholen (Chart-Quelle jenseits Twelve Data nötig)</li>
+          <li style="padding-left:0;">Klärung des −5,16%-Tagesverlusts (News-Suche gezielt auf den 02.09. eingrenzen)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="fazit-text">
+    <div class="head">
+      <span class="rating display" style="font-size:10pt;">Watchlist-würdig, aber kein Kauf-Rating vergebbar</span>
+      <span class="sub">3 KIs, 2 unterschiedliche Endurteile · echter Widerspruch, nicht künstlich geglättet</span>
+    </div>
+    <p>Asahi Intecc zeigt bei allem, was tatsächlich verifiziert ist, starke Qualität: ROCE 23%, operative Marge 30%, ein massiver Gewinnsprung (+152% Nettogewinn) und einen strukturellen Nischen-Moat bei Guidewires/Kathetern. <b>Aber</b>: für ein belastbares Rating fehlen zentrale Bilanz-/Cashflow-Kennzahlen komplett, die Bewertung ist mit KGV 25x forward nicht günstig, und der heutige Kurseinbruch trotz guter News bleibt unerklärt. Jack und Conan sind sich uneinig, ob man Datenlücken mit vorsichtigen Schätzungen überbrücken darf (Conan: ja, BEOBACHTEN) oder ob das automatisch zum Abbruch führen muss (Jack: SCHROTT) — dasselbe Muster wie schon bei Orion Oyj am selben Tag. <b>Für Brian heißt das konkret:</b> kein Kauf, kein verlässliches Rating heute — aber ein Kandidat für die Watchlist, sobald echte IR-Daten die Lücke schließen.</p>
+  </div>
+
+  <div class="footer">
+    <div>Vollständige Analysen: analysen/7747-TMR-quickfilter-*-2026-09-02.md, 7747-cross-check-fazit-2026-09-02.md</div>
+    <div>Keine Anlageberatung · TA-Modul ausstehend · Seite 1/1</div>
+  </div>
+
+</div>
+</body>
+</html>

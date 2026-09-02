@@ -115,6 +115,23 @@ umgestellt, da diese sich in der Zwischenzeit spürbar bewegt hatten (z.B.
 A10 Networks: alter Saldo -63,22€ vs. live-berechnet nur noch -19,32€).
 Rendite-Spalte = (Wert aktuell − Investsumme) / Investsumme.
 
+**Update 2026-09-02 (Jarvis, auf Brians Bitte):** Für 4 weitere bisherige
+Datenlücken-Positionen jetzt Live-Kurse abgerufen (Twelve Data, umgerechnet
+zu EUR/USD 1,15897). Rechenweg: Anteile aus der Timeline oben × aktueller
+USD-Kurs ÷ EUR/USD-Kurs.
+
+| Position | Anteile | Investsumme | Live-Kurs (USD) | **Wert aktuell** | Rendite |
+|---|---|---|---|---|---|
+| Broadridge Financial Solutions | 8 | 1.119,68 € | 178,08 $ | **1.229,24 €** | +9,8% |
+| CBOE Holdings Inc | 5 | 1.226,15 € | 293,95 $ | **1.268,13 €** | +3,4% |
+| Rambus Inc. | 6 | 533,64 € | 84,74 $ | **438,69 €** | -17,8% |
+| A10 Networks Inc | 21 | 506,52 € | 24,74 $ | **448,27 €** | -11,5% |
+
+Kraken Robotics Inc. und Rocket Lab USA (siehe "Neukäufe" unten) sowie
+HawkEye 360 (siehe `smartbroker-plus.md`) haben weiterhin keinen aktuellen
+Live-Wert – dort wird die Investsumme als Platzhalter verwendet, bis eine
+Live-Quelle verfügbar ist.
+
 ## Verkäufe & Umschichtungen (ab 2026-08-28, von Brian gemeldet, alle Angaben in €)
 
 Im Zuge der Depot-Restrukturierung (siehe architecture.md, "Depot-Restrukturierung

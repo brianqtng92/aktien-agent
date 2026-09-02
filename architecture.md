@@ -3036,6 +3036,31 @@ künftige Portfolio-Aufnahme** sind.
   dass Brian am Ende beim Broker das falsche Wertpapier findet. Fehlt eines
   der fünf Merkmale, bleibt der Kandidat vorläufig außen vor, bis es
   nachgezogen ist – kein Platzhalter-Eintrag ohne verifizierte Identität.
+- **ISIN-Gegenprobe bei JEDER WebSearch-Fundamentaldaten-Recherche
+  (2026-09-02, von Brian gefordert – ausgelöst durch einen echten
+  Beinahe-Fehler):** Das Identity-Gate oben gilt bisher nur für die
+  Watchlist-NEUAUFNAHME. Beim Orion-Oyj-Fall (ad-hoc Einzelanalyse auf
+  Brians Wunsch, kein Watchlist-Eintrag) lieferte eine WebSearch nach
+  "Free Cashflow/Net Debt" scheinbar passende Zahlen – tatsächlich gehörten
+  sie zu **"Orion S.A."** bzw. **"Orion Group Holdings"**, zwei völlig
+  andere, börsennotierte Firmen (US-Industrie/Carbon-Black bzw.
+  Bauwesen), nicht zu Orion Oyj (FI0009014377, finnischer Pharmakonzern).
+  Nur durch Plausibilitätsprüfung (falsche Größenordnung, falsche Währung/
+  Kennzahlen-Charakteristik) fiel das auf, nicht durch eine strukturierte
+  Prüfung. **Neue Pflicht, gilt für JEDE Fundamentaldaten-Recherche per
+  WebSearch/WebFetch, nicht nur Watchlist-Neuaufnahmen:** Bei Firmennamen,
+  die nicht eindeutig sind (mehrere börsennotierte Firmen mit ähnlichem/
+  gleichem Namen, unterschiedliche Aktienklassen, ADRs auf anderen Börsen)
+  muss jede übernommene Kennzahl gegen mindestens EIN Identitätsmerkmal der
+  Quelle gegengeprüft werden (ISIN, exakter Ticker inkl. Börsenplatz, oder
+  bei Fehlen dessen zumindest Land + Sektor + Größenordnung/Währung
+  plausibilisiert). Passt die Quelle nicht eindeutig zum recherchierten
+  Wertpapier, gilt die Kennzahl als **[N/V]**, nicht als "wahrscheinlich
+  richtig" – lieber eine Datenlücke im Fact-Pack als eine falsch
+  zugeordnete Kennzahl. Bei Namens-Ambiguität in der eigentlichen
+  WebSearch-Anfrage nach Möglichkeit ISIN oder Ticker+Börsenplatz explizit
+  in die Suchanfrage aufnehmen, um Kollisionen von vornherein zu
+  vermeiden, statt sie erst im Ergebnis zu bemerken.
 - **Wöchentlicher automatisierter Check (jeden Freitag, Teil des
   Wochenfazit-Laufs, siehe unten):** Für jeden Watchlist-Wert wird per
   WebSearch geprüft, ob es in der Woche etwas Meldenswertes gab (Earnings,
@@ -3247,6 +3272,14 @@ Empfehlungen. Gilt NUR für Scalable Capital (einzige Live-Transaktionsquelle)
 – die drei manuellen Broker haben keine API, dort bleibt Brians eigene
 Meldung per `depot/*.md`-Update der einzige Weg. Details zum Ablauf:
 `~/.claude/scheduled-tasks/taeglicher-trigger-check/SKILL.md`.
+
+**Tägliches Depot-Kuchendiagramm (2026-09-02, von Brian gefordert – "ohne
+dass ich jedes Mal ansprechen muss"):** Der Trigger-Check aktualisiert als
+Teil des Depot-Scans (Schritt 2) automatisch `reports/portfolio_pie.py` mit
+den frisch gesammelten Werten (Scalable live + `depot/*.md`, inkl. Cash und
+Gold-ETC) und rendert ein neues `reports/portfolio_pie_<Datum>.png` – ohne
+dass Brian danach fragen muss, jeden Tag. Kein eigener Benachrichtigungs-
+Anlass dafür, das PNG wird einfach mitcommittet.
 
 "Ständig im Hintergrund im Austausch" (Brians ursprüngliche Formulierung) ist
 im Kern als täglicher anlassbezogener Check umgesetzt – für echte Kurzfrist-
