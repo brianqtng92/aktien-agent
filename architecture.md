@@ -3135,6 +3135,65 @@ künftige Portfolio-Aufnahme** sind.
   Der wöchentliche Freitags-Check bleibt als tiefere, breitere Prüfung
   zusätzlich bestehen – die tägliche Ampel ist die schnelle Vorstufe, kein
   Ersatz.
+- **Erinnerungs-Mechanismus für offene Empfehlungen (2026-09-03, von Brian
+  gefordert: "bei Aktien, die für einen Kauf oder Verkauf in Frage kommen,
+  mich erinnern, falls ich es vergessen haben sollte, auch per Mail").**
+  Grund: eine einmalige Benachrichtigung bei Empfehlungs-Entstehung reicht
+  nicht – wenn Brian eine Kauf-/Verkaufszone übersieht oder vergisst, gibt
+  es bisher keinen Nachfass-Mechanismus. Neue, feste Datei
+  `depot/offene_empfehlungen.md` führt alle aktuell offenen KAUFEN/
+  NACHKAUFEN/VERKAUFEN/TEILVERKAUF-Empfehlungen (nicht BEOBACHTEN – das ist
+  nicht handlungsrelevant, gehört nicht in diese Liste).
+  - **Eintrag:** jede volle 3-fach-Analyse oder Zonen-Benachrichtigung mit
+    KAUFEN/NACHKAUFEN/VERKAUFEN/TEILVERKAUF-Ergebnis wird dort mit Datum
+    und Quelle vermerkt.
+  - **Tägliche Prüfung (Teil des Täglichen Trigger-Checks):** für jeden
+    offenen Eintrag wird geprüft, ob inzwischen eine passende Transaktion
+    erkannt wurde (Scalable via `list_portfolio_transactions`; bei den
+    drei manuellen Brokern über Brians Bestätigung/aktualisierte
+    `depot/*.md`-Datei) – wenn ja, Eintrag entfernen.
+  - **Erinnerungs-Rhythmus:** bleibt ein Eintrag **5 Werktage** ohne
+    Ausführung offen (ab Ursprungsdatum bzw. seit der letzten Erinnerung),
+    wird erneut erinnert – Chat-Nachricht UND E-Mail (Brians ausdrücklicher
+    Wunsch), Format kompakt ("Erinnerung: <Position> steht seit <Datum> als
+    <Empfehlung> offen, noch keine Ausführung erkannt. Zone/Preis: <...>").
+    Kein täglicher Spam – Intervall bewusst auf 5 Werktage gesetzt, um
+    Erinnerungsmüdigkeit zu vermeiden, aber ein Vergessen nicht auf
+    unbestimmte Zeit unbemerkt zu lassen.
+  - **Eintrag wird entfernt**, wenn: Ausführung erkannt, eine neue Analyse
+    die Empfehlung ersetzt/aufhebt, oder Brian sie manuell als erledigt/
+    verworfen markiert.
+  **Präzisierung (2026-09-03, von Brian gefordert – "auf unsere Strategie
+  angepasst", nicht das fremde Beispiel unverändert übernommen):** Vier
+  zusätzliche, verbindliche Anpassungen an das eigene System:
+  1. **Kategorie-abhängige Schwelle.** Dieselbe News wird bei Champions
+     zurückhaltender eingestuft als bei Talent/Zock – ein bewiesener,
+     breiter Moat (Champions-Kriterium) übersteht einzelne Ereignisse eher
+     als eine per Definition noch unbewiesene Talent-These. Faustregel:
+     bei Champions/Profi nur 🔴, wenn ein echtes Ausschluss-Kriterium hart
+     erfüllt ist (siehe watchlist.md); bei Talent reicht dafür schon eine
+     deutliche Verschlechterung der ohnehin dünneren Datenlage/These.
+  2. **Zeithorizont-Tag beachten (siehe "Zeithorizont-Tag innerhalb
+     Talent/Zock" oben).** Bei Talent-Werten mit Tag **Zock/Trade** ist
+     laut Regelwerk ohnehin die Charttechnik/das Stop-Loss maßgeblich für
+     Exit-Entscheidungen, nicht die fundamentale These – die tägliche
+     Ampel bewertet solche Werte NICHT eigenmächtig thesenbasiert auf 🔴,
+     sondern verweist bei News-Funden auf die bestehende
+     chart-/stop-loss-basierte Logik. Bei Tag **Talent (langfristig)**
+     gilt dagegen dieselbe thesenbasierte Ampel-Logik wie bei Champions/
+     Profi.
+  3. **Abgleich gegen die dokumentierte Kurzthese.** Die Ampel-Einstufung
+     bewertet nicht generisch "ist das schlechte News", sondern konkret:
+     widerspricht der Fund der in `watchlist.md` für genau diesen Wert
+     hinterlegten Kurzthese/Moat-Begründung? Eine News kann negativ klingen
+     und trotzdem 🟢/🟡 bleiben, wenn sie den eigentlichen Investment-Case
+     nicht berührt (z.B. eine Rechtsstreitigkeit in einem irrelevanten
+     Nebensegment).
+  4. **ISIN-Gegenprobe gilt auch hier** (siehe "ISIN-Gegenprobe bei JEDER
+     WebSearch-Fundamentaldaten-Recherche" weiter unten) – bei mehrdeutigen
+     Firmennamen wird jeder News-Fund gegen ISIN/Ticker+Börsenplatz der
+     watchlist.md-Zeile gegengeprüft, bevor er einer Ampel-Farbe zugeordnet
+     wird. Unklare Zuordnung zählt als [N/V], nicht als 🔴/🟡-Fund.
 - **Täglicher automatisierter Kandidaten-Scan (2026-08-29, von Brian gefordert
   – Erweiterung, nicht Ersatz des wöchentlichen Checks oben):** Brian möchte
   ausdrücklich NICHT nur, dass bestehende Watchlist-Werte wöchentlich auf
