@@ -3134,6 +3134,20 @@ künftige Portfolio-Aufnahme** sind.
   Snapshot veraltet sonst unbemerkt. Kein eigener täglicher Check nötig
   (das würde die tägliche Ampel aus dem folgenden Punkt unnötig
   überladen) – wöchentlicher Rhythmus reicht für ein Bewertungssignal.
+  **Margin of Safety / historisches Drawdown-Verhalten (2026-09-03, von
+  Brian ergänzt: "auch die Kurse aus der Vergangenheit mit einbeziehen,
+  z.B. dass Nvidia in der Vergangenheit auch mal 40-50% korrigieren
+  kann"):** ein 🟢-KAUFEN-Signal (günstig ggü. eigener Historie) ist KEINE
+  Garantie gegen eine erneute scharfe Korrektur – insbesondere bei
+  AI-Trend-/Hype-getriebenen Werten sind 30-50%+ Drawdowns historisch
+  normal, auch wenn die fundamentale These im Nachhinein intakt blieb
+  (Beispiel Nvidia: -56% 2018, -66% 2021/22, trotzdem seither jeweils
+  wieder deutlich höhere Hochs). Bei AI-Trend-exponierten Watchlist-Werten
+  wird das historische Max-Drawdown-Muster zusätzlich zur reinen
+  KGV-Kennzahl in der CRV-Begründung dokumentiert (siehe `watchlist.md`,
+  Feld "MoS-Hinweis"). Ersetzt nicht die bestehende Positionsgrößen-
+  Disziplin (Sizing-Tiers/Positions-Cap) – "günstig" heißt nicht
+  "risikofrei".
 - **Tägliche Watchlist-News-Ampel (2026-09-03, von Brian gefordert, als
   schnelle Vorstufe zum wöchentlichen Check oben, nicht als Ersatz):**
   Auslöser – Brian bemerkte anhand eines fremden Beispiel-Systems (tägliche
