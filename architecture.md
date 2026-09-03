@@ -3144,6 +3144,21 @@ künftige Portfolio-Aufnahme** sind.
   Kein eigener täglicher Check nötig
   (das würde die tägliche Ampel aus dem folgenden Punkt unnötig
   überladen) – wöchentlicher Rhythmus reicht für ein Bewertungssignal.
+  **Methodik-Klarstellung (2026-09-03, von Brian korrigiert: "du sollst
+  nach unserem System die Aktie bewerten... andere Webseiten kann man
+  dazu nehmen, aber nie als Benchmark"):** die Ampel-Farbe ist immer das
+  EIGENE Urteil (Jarvis bzw. bei vollen Cross-Checks das 3-KI-Team),
+  hergeleitet aus unserer eigenen Logik (KGV im Kontext von Wachstumsrate/
+  Marge/Moat-Qualität, analog zur Multiples-Schnellcheck-Logik aus
+  `jack-moat-reaper-v11.7.md`). Externe Quellen (GuruFocus,
+  stockanalysis.com u.ä.) liefern ausschließlich ROHDATEN (aktueller/
+  historischer KGV, Branchen-Durchschnitt) – ein fertiges
+  Drittanbieter-Urteil ("Significantly Overvalued", "X% above/below Fair
+  Value") wird NIEMALS direkt als eigene Einschätzung übernommen oder
+  zitiert, da ein proprietärer fremder Algorithmus keine nachvollziehbare,
+  im eigenen Regelwerk verankerte Methodik ist. Bei der Erstbefüllung am
+  2026-09-03 wurde das an mehreren Stellen nicht sauber getrennt, seither
+  korrigiert – gilt ab jetzt als feste Regel für jede künftige Pflege.
   **Margin of Safety / historisches Drawdown-Verhalten (2026-09-03, von
   Brian ergänzt: "auch die Kurse aus der Vergangenheit mit einbeziehen,
   z.B. dass Nvidia in der Vergangenheit auch mal 40-50% korrigieren

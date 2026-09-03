@@ -78,7 +78,7 @@ zeigt nur, ob ein NACHKAUF zum aktuellen Preis eine gute Idee wäre – bei
 | Position | CRV | Begründung Kategorie |
 |---|---|---|
 | Broadridge Financial Solutions | 🟢 KAUFEN/NACHKAUFEN – Forward-KGV 17,0x, deutlich unter 12M-Ø (31,7x) | Named-Beispiel Brian |
-| CBOE Holdings | 🟠 VORSICHT/TEUER – KGV ~22-24x, Forward-KGV 31% über Branchen-Ø, GuruFocus "24% über Fair Value" | Named-Beispiel Brian |
+| CBOE Holdings | 🟠 VORSICHT/TEUER – KGV ~22-24x, Forward-KGV 31% über Branchen-Ø – eigene Einordnung: spürbar teuer ggü. Sektor, kein Schnäppchen | Named-Beispiel Brian |
 | A10 Networks | 🟠 VORSICHT/TEUER – TTM-KGV 59,8x deutlich über 5J-Ø (23,2x)/7J-Ø (29,9x); Forward-KGV moderater (26,5x) – Diskrepanz beobachten, evtl. temporärer Gewinneinbruch | Named-Beispiel Brian |
 | Rambus | 🟡 HALTEN/BEOBACHTEN – KGV nahe eigenem 10J-Median (leicht darüber je nach Quelle) | Named-Beispiel Brian (22.08.), etablierte Semiconductor-IP-Firma seit 1990 (korrigiert 2026-09-03, vorher fälschlich Talent) |
 | Tristel PLC | 🟢 KAUFEN/NACHKAUFEN – KGV 23,3x, 41% unter 10J-Median (39,8x) | Named-Beispiel Brian (22.08.) (korrigiert 2026-09-03, vorher fälschlich Talent) |
@@ -89,7 +89,7 @@ zeigt nur, ob ein NACHKAUF zum aktuellen Preis eine gute Idee wäre – bei
 | SoFi Technologies | 🟡 HALTEN/BEOBACHTEN – KGV ~35-38x. **MoS-Hinweis:** bereits -53% Drawdown 2026 (Short-Seller-Attacke, Peak Ende 2025 → Tief 30.03.), aktuelle Bewertung nach der Korrektur moderater; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | Archetyp-Beispiel Brian für diese Kategorie |
 | Cellebrite DI Ltd | 🔴 MEIDEN/ÜBERBEWERTET – KGV 52,7x, 25% über 10J-Median (42,1x), 46,8x vs. Branchen-fair-Ratio ~30x. **MoS-Hinweis:** zusätzlich -33% Kursrückgang 2026 – teuer UND im Abwärtstrend gleichzeitig, kein Nachkauf-Zeitpunkt. | Jung notiert (SPAC 2021), noch kein etablierter Track Record |
 | Kraken Robotics | 🟠 VORSICHT/TEUER – KGV extrem verzerrt (nahe Gewinnschwelle, 100x+ teils berichtet), kaum aussagekräftig. **MoS-Hinweis:** bereits -41% vom 52-Wochen-Hoch – Vorsicht in beide Richtungen, Bewertung schwer greifbar. | Früher Umsatzaufbau, kein Live-Kurs, hohe Volatilität |
-| Rocket Lab USA | 🔴 MEIDEN/ÜBERBEWERTET – unprofitabel, GuruFocus "71% über Fair Value". **MoS-Hinweis:** bereits -61% vom Jahreshoch, historisch bis zu -70% Drawdown (2022) und im Schnitt -37% je Schock über 5 Marktphasen – auch nach Korrektur bleibt die Bewertung laut GuruFocus gespannt. | Wachstumsphase, historisch unprofitabel, kein Monopol |
+| Rocket Lab USA | 🔴 MEIDEN/ÜBERBEWERTET – unprofitabel (kein KGV berechenbar), Marktkap preist bereits deutliches künftiges Wachstum ein, ohne dass die Ertragslage das aktuell stützt – eigene Einordnung: Bewertung sportlich. **MoS-Hinweis:** bereits -61% vom Jahreshoch, historisch bis zu -70% Drawdown (2022) und im Schnitt -37% je Schock über 5 Marktphasen – auch nach Korrektur bleibt die Bewertung angespannt. | Wachstumsphase, historisch unprofitabel, kein Monopol |
 | HawkEye 360 | 🟡 HALTEN/BEOBACHTEN – kein KGV (jung/unprofitabel). **MoS-Hinweis:** bereits ca. -50% vom Allzeithoch (Mai 2026) und -32% unter IPO-Preis (26$) gefallen, keine belastbare Bewertungshistorie; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | Kein Live-Kurs, dünnste Datenlage im Depot |
 
 ## Änderungsprotokoll
@@ -103,3 +103,9 @@ zeigt nur, ob ein NACHKAUF zum aktuellen Preis eine gute Idee wäre – bei
 - 2026-09-03: CRV-Ampel (inkl. Margin-of-Safety/Drawdown-Hinweise) auch für
   alle 18 Depot-Positionen eingeführt (vorher nur Watchlist), 4-stufige
   Skala (🟢/🟡/🟠/🔴) statt 3-stufig – von Brian gefordert.
+- 2026-09-03: Methodik-Fix – GuruFocus-"Fair Value"-Label bei CBOE/Rocket
+  Lab (hier) und ASML/FICO/CPRT/ROL/MPWR/NVT/Rorze (watchlist.md) waren
+  fälschlich als Urteil zitiert statt nur als Rohdaten-Input genutzt zu
+  werden. Korrigiert (Brian: "andere Webseiten... aber nie als
+  Benchmark") – Ampel-Farbe ist immer eigenes Urteil aus unserer
+  Multiples-Logik, externe Quellen liefern nur Zahlen.
