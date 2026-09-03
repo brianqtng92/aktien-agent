@@ -3114,24 +3114,34 @@ künftige Portfolio-Aufnahme** sind.
   können jederzeit aus beliebigem Grund von der Liste fliegen – schlechte
   Schlagzeilen, katastrophale Quartalszahlen, gerissene These usw. – das
   System muss dafür "ständig auf der Suche" und aktuell sein.
-- **CRV-Ampel je Watchlist-Wert (2026-09-03, von Brian gefordert): Bewertungs-/
-  Timing-Signal zusätzlich zur Champions/Profi/Talent-Qualitätskategorie.**
-  Grund (Brians Formulierung, Beispiele): "DISCO CORP 🟡 ABWARTEN/BEOBACHTEN,
-  noch im Abwärtstrend oder noch überbewertet" bzw. "ALPHABET 🟢 KAUFEN,
-  Unterbewertung obwohl fundamental intakt". Champions/Profi/Talent sagt NUR
-  etwas über Geschäftsqualität aus, nichts über den aktuellen Einstiegs-
-  zeitpunkt – die CRV-Ampel schließt diese Lücke als eigene Spalte in
-  `watchlist.md`:
-  - 🟢 **KAUFEN** – klar unterbewertet ggü. eigener Historie/Peers, These intakt.
-  - 🟡 **ABWARTEN/BEOBACHTEN** – fair bis teuer, gemischte Signale, oder im Abwärtstrend.
-  - 🔴 **MEIDEN/ÜBERBEWERTET** – deutlich überbewertet und/oder echte Warnsignale
+- **CRV-Ampel je Watchlist- UND Depot-Wert (2026-09-03, von Brian gefordert):
+  Bewertungs-/Timing-Signal zusätzlich zur Champions/Profi/Talent-
+  Qualitätskategorie.** Grund (Brians Formulierung, Beispiele): "DISCO
+  CORP 🟡 ABWARTEN/BEOBACHTEN, noch im Abwärtstrend oder noch überbewertet"
+  bzw. "ALPHABET 🟢 KAUFEN, Unterbewertung obwohl fundamental intakt".
+  Champions/Profi/Talent sagt NUR etwas über Geschäftsqualität aus, nichts
+  über den aktuellen Einstiegszeitpunkt – die CRV-Ampel schließt diese
+  Lücke als eigene Spalte in `watchlist.md` UND (seit 2026-09-03, "das soll
+  auch für die Werte gelten, die bereits im Depot enthalten sind") in
+  `depot/kategorisierung.md` für alle 18 aktuellen Depot-Positionen.
+  **Vier Stufen** (2026-09-03 von Brian auf 🟠 erweitert, "verschiedene
+  Farben mit einbringen um flexibel zu sein"):
+  - 🟢 **KAUFEN/NACHKAUFEN** – klar unterbewertet ggü. eigener Historie/Peers, These intakt.
+  - 🟡 **ABWARTEN/BEOBACHTEN (bzw. HALTEN bei Depot-Werten)** – fair bewertet, kein starkes Signal in beide Richtungen.
+  - 🟠 **VORSICHT/TEUER** – spürbar teuer ggü. Historie/Peers, aber kein hartes Warnsignal (spekulativ, nicht fundamental gebrochen).
+  - 🔴 **MEIDEN/ÜBERBEWERTET** – deutlich überbewertet und/oder mehrere gleichzeitige Warnsignale
     (z.B. Bewertung läuft der Ertragsentwicklung erkennbar davon).
+  **Bei Depot-Positionen ausdrücklich kein automatisches Verkaufssignal**
+  – 🔴/🟠 heißt "kein Nachkauf jetzt", nicht "verkaufen"; dafür gelten
+  weiterhin ausschließlich die dokumentierten Abstauber-/Stop-These-
+  Trigger (siehe "Verkaufsdisziplin & Gewinnmitnahme-Regeln").
   Basiert auf KGV vs. historischem Durchschnitt (10J-Median wo verfügbar)
-  und Peer-/Branchenvergleich. Erstbefüllung aller 30 Werte am 2026-09-03
-  per WebSearch-Snapshot. **Pflege:** wird ab jetzt beim wöchentlichen
-  Watchlist-Check (siehe oben, Teil des Wochenfazit-Laufs) mitaktualisiert –
-  Bewertungen ändern sich schneller als Geschäftsqualität, ein einmaliger
-  Snapshot veraltet sonst unbemerkt. Kein eigener täglicher Check nötig
+  und Peer-/Branchenvergleich. Erstbefüllung aller 30 Watchlist- und 18
+  Depot-Werte am 2026-09-03 per WebSearch-Snapshot. **Pflege:** wird ab
+  jetzt beim wöchentlichen Watchlist-Check (siehe oben, Teil des
+  Wochenfazit-Laufs) mitaktualisiert – Bewertungen ändern sich schneller
+  als Geschäftsqualität, ein einmaliger Snapshot veraltet sonst unbemerkt.
+  Kein eigener täglicher Check nötig
   (das würde die tägliche Ampel aus dem folgenden Punkt unnötig
   überladen) – wöchentlicher Rhythmus reicht für ein Bewertungssignal.
   **Margin of Safety / historisches Drawdown-Verhalten (2026-09-03, von
