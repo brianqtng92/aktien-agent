@@ -504,6 +504,29 @@ seine Stimme im Vergleich trotzdem "Jack", nicht "Conan").
 
 ## 3. Depot-Ziel-Struktur (Portfolio-Konstruktion)
 
+**Basis-Matrix: zentrale Prozentwerte auf einen Blick (2026-09-03,
+ergänzt aus dem 3-KI-System-Audit, P2-Punkt Conans – "zentrale Basis-
+Matrix statt verstreuter Werte"):** dies ist eine reine
+Nachschlage-Zusammenfassung der unten im Detail hergeleiteten Werte,
+KEINE eigenständige Quelle – bei Widerspruch gilt immer die ausführliche
+Herleitung an der jeweils verlinkten Stelle, nicht diese Tabelle.
+
+| Kennzahl | Wert | Bezugsgröße | Quelle/Details |
+|---|---|---|---|
+| USA/Nordamerika-Obergrenze | ≤60% | Gesamtportfolio | Core-Rule 2, Abschnitt 14 |
+| ETF-Mindestanteil | ≥50% (Ziel langfristig 60%) | Gesamtportfolio | Core-Rule 3, unten "ETF-/Aktien-Verhältnis" |
+| Einzelposition max. | 10% (Ausnahme bis 12% bei Top-Conviction) | Gesamtportfolio | Core-Rule 4, unten "Positionsgrößen-Limits" |
+| Trailing-Weight-Hard-Cap | 18% (zwingendes Rebalancing) | Gesamtportfolio | Core-Rule 5, Advisory-Review-Schwelle bereits ab 15% |
+| Einzelposition min. | 1% (sonst Grenzfall-Markierung) | Gesamtportfolio | unten "Positionsgrößen-Limits" |
+| Max. Einzelpositionen gesamt | 20 (ohne ETF) | Stückzahl | Core-Rule 6 |
+| Positionsanzahl-Ziel | 10 Champions / 7 Profi / 3 Talent | Stückzahl | unten "10-7-3", Randfälle/Rundung dort |
+| Champions-Kapitalgewicht | 35-45% | Aktienanteil (ohne ETF/Gold/Cash) | unten "Kapitalgewichts-Zielkorridor" |
+| Profi-Kapitalgewicht | 20-30% | Aktienanteil | unten "Kapitalgewichts-Zielkorridor" |
+| Talent-Kapitalgewicht | 25-40% | Aktienanteil | unten "Kapitalgewichts-Zielkorridor" |
+| Watchlist-Kapazität | 20-30 Werte | Stückzahl | "Watchlist-System" |
+| Sperrlisten-Recheck | 90 Tage (Standard) | Zeitraum | "Watchlist-System", Vorfilter-Schritt |
+| Offene-Empfehlung-Erinnerung | 5 Werktage | Zeitraum | "Täglicher Trigger-Check" Schritt 3C |
+
 **Von Brian festgelegt (2026-08-22):**
 
 - **Max. 20 Einzelwerte ohne ETF** (der Vanguard FTSE All-World Sparplan zählt separat
@@ -600,6 +623,43 @@ seine Stimme im Vergleich trotzdem "Jack", nicht "Conan").
     mindestens eine bestehende Position ausscheidet, auch wenn das
     Kapitalgewicht noch Spielraum hätte). Siehe `depot/kategorisierung.md`
     für die laufend aktuelle Zählung.
+  - **Randfälle der Formel, explizit geklärt (2026-09-03, aus dem
+    3-KI-System-Audit – Conan hatte angemerkt, dass eine formal richtige
+    Formel trotzdem operativ instabil sein kann, solange diese Fälle offen
+    sind):**
+    - **Rundung:** kaufmännisch (nearest), nicht floor/ceil – siehe die
+      obige Herleitung "29,6% / 10% ≈ 2,96 → 3", nicht abgerundet auf 2.
+      Bei exakt x,5 (Gleichstand) wird aufgerundet, da eine zu enge
+      Talent-Grenze mehr Nachkauf-Verbote erzeugt als eine zu weite
+      Grenze Risiko – im Zweifel die praktisch handhabbarere Richtung.
+    - **Cash zählt NICHT zum Gesamtportfolio-Nenner der Positionscap-
+      Rechnung** – der 10%-Positionsdeckel und die 10-7-3-Formel beziehen
+      sich auf den investierten Gesamtwert (Aktien + ETF + Gold), Cash-
+      Bestand ist bewusst außen vor (sonst würde reine Cash-Haltung die
+      zulässige Talent-Zahl künstlich verzerren).
+    - **Illiquide/schwer handelbare Positionen** zählen normal als eine
+      Position in der 10-7-3-Zählung – es gibt keine Sonderbehandlung,
+      Illiquidität ist ein Risikofaktor der CRV-/Sizing-Einordnung, nicht
+      der Positionsanzahl-Formel.
+    - **Teilverkäufe:** eine Position, die nur teilverkauft wurde, aber
+      weiter gehalten wird, zählt weiter als 1 volle Position in der
+      Kategorie-Zählung, unabhängig vom verbleibenden Kapitalgewicht –
+      erst ein VOLLSTÄNDIGER Ausstieg reduziert die Positionsanzahl.
+    - **Sehr kleines Portfolio oder ungewöhnlich hohe Konzentration:**
+      die 10-7-3-Formel setzt implizit voraus, dass das Depot groß genug
+      ist, dass 10%-Positionen überhaupt sinnvoll diversifizieren (siehe
+      Aktienanteil-Abhängigkeit im Vorbehalt oben). Fällt der
+      Aktienanteil durch eine starke Konzentration in wenigen Positionen
+      deutlich unter die aktuell zugrunde gelegte ~74%-Quote oder
+      übersteigt eine Einzelposition durch reines Kursachterbahn-Wachstum
+      vorübergehend den 10%/12%-Deckel (siehe Positionsgrößen-Limits),
+      gilt: der Positions-CAP-Verstoß wird wie gehabt über die
+      12%-Ausnahme/Trailing-Weight-Review behandelt (Abschnitt 3/
+      Advisory-Rules), NICHT durch eine Neuberechnung der 10-7-3-Formel
+      im laufenden Betrieb – die Formel wird nur bei den oben genannten
+      strukturellen Prüfpunkten (jedes Wochenfazit bei Aktienanteil-
+      Verschiebung) neu hergeleitet, nicht ad-hoc bei jeder
+      Kursschwankung.
 - **Update (2026-09-03, von Brian gefordert nach uneinheitlicher
   Kategorisierung im Strategiespiegel-Report): feste Nachschlage-Tabelle
   statt freier Einschätzung pro Analyse.** Auslöser: Jack, Conan und Jarvis
@@ -1352,6 +1412,23 @@ unbegrenzt fortgeschrieben zu werden.
        (Bucket A) das nicht rechtfertigen – und umgekehrt wird eine junge
        Firma mit noch schwachem ROIC nicht automatisch von TMRs harten
        Kennzahlen aussortiert, wenn sie klar in Bucket B gehört.
+     → **Fallback-Regel bei widersprüchlichen/fehlenden Reifemetriken
+       (2026-09-03, Conans Vorschlag aus dem 3-KI-System-Audit, macht den
+       bisher subjektiven Begriff "Reifegrad" operational):** die
+       Bucket-Zuordnung ist nicht immer eindeutig – z.B. Umsatzwachstum
+       >25% und Bruttomarge >65% (Bucket-B-typisch), aber Rule-of-40/
+       Sales-Efficiency nicht verfügbar oder negativ. Für diesen Fall gilt
+       eine klare Rangfolge statt freier Einschätzung: **TMR nur, wenn
+       ausreichend Historie/Datenqualität vorhanden UND Rule-of-40 bzw.
+       Sales-Efficiency-Kriterien erfüllt sind. Scout, wenn nur Wachstum+
+       Bruttomarge erfüllt sind, aber die Monetarisierungs-/Effizienzqualität
+       (noch) nicht belastbar geprüft werden kann – also im Zweifel Scout,
+       nicht TMR.** Sind Umsatzbasis, Wachstum oder Bruttomarge selbst
+       nicht sinnvoll messbar (z.B. Pre-Revenue, Biotech ohne Umsatz,
+       Banken/Rohstofffirmen mit branchenuntypischer Kennzahlenlogik),
+       gehört der Fall weder klar zu TMR noch zu Scout – dann manuelle
+       Klärung durch Jarvis vor dem Deep-Dive, nicht automatische
+       Zuordnung zu einem der beiden Pfade.
      → (Auto-Detection-Logik aus den Prompts selbst nutzen, siehe TMR "Analyse-Tiefe"
         / Scout "Sektor-Override-Detection")
      → zusätzlich: Kategorie-Zuordnung nach Depot-Ziel-Struktur (siehe Abschnitt 3):
@@ -1539,6 +1616,26 @@ unbegrenzt fortgeschrieben zu werden.
        parallele Einzelmeinungen und eine einmalige Stellungnahme, sondern ein
        echter (aber budgetiert begrenzter) Hin-und-her-Austausch bis Konvergenz
        oder bis der Rundencap erreicht ist
+     → **Double-Counting-Prüfung beim Reaper Score (2026-09-03, Conans
+       Warnung aus dem 3-KI-System-Audit):** der Reaper Score fasst mehrere
+       Negativsignale zusammen (u.a. Kursverlust, Momentumbruch,
+       Analystenrevisionen, Guidance-Cut) – diese Signale sind oft NICHT
+       unabhängig voneinander, sondern Symptome desselben zugrunde
+       liegenden Ereignisses (z.B. ein Guidance-Cut löst typischerweise
+       auch Kursverlust, Momentumbruch UND Analystenrevisionen gleichzeitig
+       aus). Wird jedes Symptom separat und additiv gewertet, kann ein
+       einzelnes Ereignis den Score mehrfach drücken. Die eigentliche
+       Score-Berechnung liegt in den TMR-/Scout-Prompts selbst (Brians
+       eigene, unveränderte System-Prompts – siehe "Prompt-Änderungsrechte"
+       unten, eine Änderung DORT braucht den Meta-Retro-Pfad, nicht Jarvis'
+       eigenständige Bearbeitung). Bis eine solche Änderung ggf. über [3c]
+       vorgeschlagen und von Brian freigegeben ist, gilt als
+       Prozess-Pflicht: in der Diskussionsrunde [3b] aktiv prüfen, ob
+       mehrere abgewertete Signale erkennbar auf DASSELBE auslösende
+       Ereignis zurückgehen, und falls ja, das im Kurz-Fazit explizit
+       benennen ("Score X/10, davon Y Punkte auf denselben Guidance-Cut
+       zurückführbar – nicht als Y unabhängige Warnsignale lesen"), statt
+       den Score unkommentiert als Summe unabhängiger Signale darzustellen.
 
 [3c] META-RETRO-RUNDE — SELBSTVERBESSERUNG DES REGELWERKS (2026-08-28, von
      Brian gefordert: "können die Agenten unter sich ausmachen, was sie
@@ -1566,6 +1663,46 @@ unbegrenzt fortgeschrieben zu werden.
        KI-Aufrufe) und die meisten Analysen laufen ohne methodische Reibung
        durch – die Retro-Runde lohnt sich nur dort, wo tatsächlich ein Lern-
        Signal vorliegt.
+     → **Prompt-Änderungsrechte, explizit geklärt (2026-09-03, aus dem
+       3-KI-System-Audit – Conan hatte einen Widerspruch zwischen "Jarvis
+       darf eigenständig ändern" und "keine automatische Selbst-
+       Modifikation" bemängelt, Jack stimmte zu, dass das präzisiert
+       werden muss):** es gibt zwei kategorisch unterschiedliche
+       Änderungsarten, die bisher nicht explizit auseinandergehalten
+       waren:
+       - **Orchestrierungs-/Prozess-Ebene (architecture.md selbst,
+         `depot/*.md`, `watchlist.md`, `HANDOVER.md`, die Scheduled-Task-
+         SKILL.md-Dateien):** das ist das laufend gepflegte Regelwerk UND
+         der operative Betriebszustand des Systems (Depotstände,
+         Watchlist-Einträge, Kategorisierungen, Konfigurationen der
+         täglichen/wöchentlichen Automatisierungs-Läufe). Jarvis
+         (Claude) pflegt diese Ebene EIGENSTÄNDIG als Teil der normalen
+         Arbeit – neue Erkenntnisse, Korrekturen, von Brian im Gespräch
+         freigegebene Ergänzungen fließen direkt ein, ohne dass jede
+         einzelne Formulierungsänderung einen eigenen Freigabe-Zyklus
+         durchläuft. Diese Ebene bestimmt WIE das System arbeitet und
+         WORAUF es sich bezieht, nicht WELCHES fachliche Urteil TMR/
+         Scout/TA über eine konkrete Aktie fällen.
+       - **Methodik-/Bewertungslogik-Ebene (die drei Prompt-Dateien unter
+         `prompts/`: TMR/jack-moat-reaper, Scout/conan-the-scout,
+         TA/jack-technical-analyst):** das sind Brians EIGENE, von ihm
+         formulierte Bewertungs-Systeme (DNA-Check-Kriterien, Reaper-
+         Score-Berechnung, Kill-Gates, K-Kriterien-Schwellen usw.). Diese
+         werden NIEMALS eigenständig von Jarvis oder den KIs selbst
+         umformuliert oder inhaltlich verändert – dafür gilt exklusiv der
+         oben beschriebene [3c]-Meta-Retro-Pfad: KI-Vorschlag → Jarvis
+         sichtet auf Widersprüche → Brian gibt frei → erst dann neue
+         Versionsnummer und Datei-Update. Rein redaktionelle/technische
+         Anpassungen ohne inhaltliche Wirkung (z.B. ein offensichtlicher
+         Tippfehler, ein kaputter Dateipfad-Verweis) sind davon
+         ausgenommen und dürfen direkt korrigiert werden – sobald aber
+         eine Änderung Kriterien, Schwellen, Gewichtungen oder die
+         Bewertungslogik selbst berührt, gilt zwingend der Meta-Retro-Pfad,
+         auch wenn die Änderung noch so klein oder "offensichtlich richtig"
+         erscheint.
+       - Kurzfassung: **architecture.md & Betriebsdateien = Jarvis pflegt
+         eigenständig. Die drei Bewertungs-Prompts = nur über Meta-Retro +
+         Brians Freigabe.**
 
 [4] TECHNISCHE ANALYSE (TA) — ebenfalls 3-fach mit Diskussionsrunde [3b]-Logik,
     mit TMR-Handoff falls vorhanden
@@ -3262,6 +3399,11 @@ künftige Portfolio-Aufnahme** sind.
   - 🔴 ROT – erfüllt eines der bestehenden Ausschluss-Kriterien (siehe
     "Ausschluss-/Abstiegs-Kriterien" in `watchlist.md`) → sofortige
     Entfernung von der Watchlist, Chat + PushNotification + E-Mail.
+    **Archivierung statt Löschen (2026-09-03, P2-Punkt aus dem
+    3-KI-System-Audit):** die Zeile wird dabei nicht ersatzlos gestrichen,
+    sondern in den Abschnitt "Ausschluss-Archiv" am Ende von
+    `watchlist.md` verschoben (Format dort dokumentiert) – Historie bleibt
+    nachvollziehbar.
   - 🟡 GELB – kein Ausschlussgrund, aber These-relevante Entwicklung → Wert
     bleibt, Status auf ⚠️ RISIKO gesetzt, kurzer Kommentar im Eintrag,
     Erwähnung im Tages-Fazit.
@@ -3367,40 +3509,50 @@ künftige Portfolio-Aufnahme** sind.
      Börsenplatz/Land/Sektor). Kandidaten, die daran scheitern, werden
      verworfen und nicht erneut vorgeschlagen (kurze Sperrliste führen, damit
      nicht jeden Tag dieselben abgelehnten Namen erneut auftauchen).
+     **Recheck-Termin statt Dauersperre (2026-09-03, aus dem
+     3-KI-System-Audit, P2-Punkt Conans):** ein Ablehnungsgrund kann sich
+     ändern (z.B. Duplikations-Check schlägt heute fehl, weil der ETF eine
+     ähnliche Position hält, aber der ETF-Anteil verschiebt sich; oder das
+     Strategie-Fit-Gate scheitert an einer aktuell unpassenden Kennzahl, die
+     sich über Quartale verbessert). Jeder Sperrlisten-Eintrag bekommt daher
+     ein Recheck-Datum (Standard: 90 Tage nach Ablehnung, bei eindeutig
+     dauerhaften Gründen wie Delisting/Fraud/fehlender Börsenplatz auch
+     länger oder unbegrenzt) – erst NACH diesem Datum wird der Kandidat
+     wieder regulär geprüft, nicht bei jedem täglichen Scan sofort erneut.
+     Vor Ablauf des Recheck-Datums bleibt er weiter stillschweigend
+     ausgefiltert.
   3. **3-fach-Quick-Filter-Bestätigung (gemäß der 2026-08-29 von Brian
      bestätigten Regel "immer alle drei KIs, auch im Quick-Filter"):** Für
      jeden Kandidaten, der Schritt 2 übersteht, folgt ein TMR-Quick-Filter
-     (bzw. Scout-Kurzform) mit Jarvis, Jack UND Conan. **Technische
-     Einschränkung, ehrlich benannt:** Jack/Conan benötigen Browser-Zugriff
-     auf Brians verbundenen Chrome-Browser (siehe "Täglicher Trigger-Check"
-     unten) – das setzt voraus, dass sein Laptop zum Trigger-Zeitpunkt an und
-     die Desktop-App/Chrome verbunden ist, was bei einem unbeaufsichtigt
-     laufenden Scheduled Task nicht garantiert ist. Ist der Browser gerade
-     nicht erreichbar, wird der Kandidat mit einem klar markierten
-     Jarvis-Only-Vorabbefund konkret in die Datei
-     `/root/aktien-agent/watchlist_pending_3fach.md` eingetragen (feste
-     Warteschlangen-Datei, Format dort dokumentiert, seit 2026-08-29 real
-     implementiert statt nur als Konzept beschrieben) – kein automatisches
+     (bzw. Scout-Kurzform) mit Jarvis, Jack UND Conan. **Update
+     2026-09-03 (Mechanismus veraltet, im 3-KI-System-Audit von Jack UND
+     Conan unabhängig voneinander bemängelt):** Jack/Conan laufen seit
+     2026-09-02 primär per **API-Bridge** (`gemini-bridge`/`openai-bridge`,
+     siehe HANDOVER.md 10.9-10.11) – die vorherige Chrome-Browser-
+     Abhängigkeit ("Laptop muss an und Chrome verbunden sein") ist damit
+     nur noch ein **letzter Fallback**, falls BEIDE Bridges an einem Lauf
+     ausfallen. Sind auch dann Jack/Conan nicht erreichbar, wird der
+     Kandidat mit einem klar markierten Jarvis-Only-Vorabbefund konkret in
+     die Datei `watchlist_pending_3fach.md` (Repo-Root, NICHT der
+     veraltete Pfad `/root/aktien-agent/...`) eingetragen (feste
+     Warteschlangen-Datei, Format dort dokumentiert) – kein automatisches
      Aufnehmen in die Watchlist nur auf Jarvis-Basis, das widerspräche der
      "immer alle drei"-Regel. **Automatischer Nachhol-Mechanismus
      (2026-08-29, von Brian gefordert, nachdem er fragte "wie behebt man das,
-     wenn der Laptop aus war"):** Jeder tägliche Trigger-Check prüft VOR dem
-     eigentlichen Tages-Screening zuerst diese Datei (siehe "Täglicher
-     Trigger-Check" Schritt 3b) – liegen dort offene Einträge und ist Chrome
-     JETZT verbunden, wird die fehlende Jack/Conan-Bestätigung sofort
-     nachgeholt, der Kandidat entweder regulär in `watchlist.md` aufgenommen
-     oder verworfen, und der Eintrag in den "Erledigt"-Bereich der
-     Warteschlangen-Datei verschoben. Ist Chrome auch beim nächsten Lauf noch
-     nicht verbunden, bleibt der Eintrag unverändert stehen und wird beim
-     übernächsten Lauf erneut versucht – so wird kein zurückgestellter
-     Kandidat stillschweigend vergessen, unabhängig davon, wie oft Brians
-     Laptop zwischenzeitlich aus war. Praktischer Hinweis für Brian: den
-     Laptop/Chrome zu den drei Trigger-Zeitpunkten (täglich 19:00, freitags
-     zusätzlich 20:00, an Monatsende zusätzlich 21:00) eingeschaltet/verbunden
-     zu halten (z.B. per Energieeinstellung), vermeidet das Zurückstellen
-     von vornherein; ist der Laptop dennoch mal aus, kann der jeweilige
-     Scheduled Task nach dem Wiedereinschalten auch manuell sofort erneut
-     gefeuert werden, statt bis zum nächsten Zeitplan zu warten.
+     wenn der Laptop aus war"; Auslöser seit 2026-09-03 auf Bridge-Ausfall
+     statt Chrome-Ausfall umgestellt):** Jeder tägliche Trigger-Check prüft
+     VOR dem eigentlichen Tages-Screening zuerst diese Datei (siehe
+     "Täglicher Trigger-Check" Schritt 1) – liegen dort offene Einträge und
+     sind die Bridges (bzw. als letzter Fallback Chrome) JETZT erreichbar,
+     wird die fehlende Jack/Conan-Bestätigung sofort nachgeholt, der
+     Kandidat entweder regulär in `watchlist.md` aufgenommen oder
+     verworfen, und der Eintrag in den "Erledigt"-Bereich der
+     Warteschlangen-Datei verschoben. Sind auch beim nächsten Lauf weder
+     Bridges noch Chrome erreichbar, bleibt der Eintrag unverändert stehen
+     und wird beim übernächsten Lauf erneut versucht – so wird kein
+     zurückgestellter Kandidat stillschweigend vergessen. Da die Bridges
+     serverseitig laufen (kein Laptop/Chrome-Zustand nötig), sollte dieser
+     Fallback-Fall in der Praxis deutlich seltener eintreten als früher.
   4. **Automatische Aufnahme (2026-08-29, von Brian so entschieden):** Besteht
      ein Kandidat den vollen 3-fach-Quick-Filter UND Strategie-Fit-Gate UND
      Duplikations-Check, wird er OHNE Rückfrage direkt in `watchlist.md`
@@ -3428,7 +3580,15 @@ künftige Portfolio-Aufnahme** sind.
      E-Mail/Push-Benachrichtigung (analog zur bestehenden Eskalationslogik
      des Täglichen Trigger-Checks), inkl. kurzer Begründung, warum es
      zeitkritisch erscheint. Das ist eine bewusste Ausnahme vom sonst üblichen
-     "keine Zwischen-Benachrichtigungen"-Prinzip.
+     "keine Zwischen-Benachrichtigungen"-Prinzip. **Begriffs-Klarstellung
+     (2026-09-03, aus dem 3-KI-System-Audit, P2-Punkt Conans):** "Sofort-
+     Kauf" bezeichnet ausschließlich die DRINGLICHKEIT der Benachrichtigung
+     (sofort statt bis Freitag warten), NIEMALS eine automatische
+     Order-Ausführung – die bleibt wie überall im System ausnahmslos
+     Brians manuelle Entscheidung (siehe FIXE GRENZEN, Order-Tools). Jede
+     Formulierung in Chat/E-Mail/PDF zu einem solchen Fund muss das
+     erkennbar als Vorschlag/Zeitfenster-Hinweis rahmen, nicht als bereits
+     erfolgte oder ausgelöste Handlung.
   6. **Aufwand/Realismus:** Screening (Schritt 1) läuft günstig und stabil
      täglich. Die 3-fach-Bestätigung (Schritt 3) ist der teurere Teil und
      bleibt auf die wenigen Kandidaten beschränkt, die den Vorfilter
@@ -4704,6 +4864,20 @@ dynamische Anpassungen (dürfen Gewichtungen INNERHALB der Core-Grenzen
 verändern, nie die Core-Grenzen selbst); Chartmuster-Erkennungs-
 Feinheiten; Watchlist-Kategorisierungslogik (Champions/Profi/Talent-
 Zuordnung).
+
+**Sizing-Tier-Basis, explizit geklärt (2026-09-03, aus dem
+3-KI-System-Audit, P2-Punkt Conans):** die Sizing-Tier-Prozentwerte
+(z.B. 0,5%/1%/1,5%/2%...) beziehen sich, wie der 10%/12%-Positionsdeckel
+selbst (Core-Rule 4), auf das **Gesamtportfolio**, NICHT auf den
+Aktienanteil – ein Sizing-Tier von "1%" heißt also 1% des
+Gesamtportfolios inkl. ETF/Gold/Cash, nicht 1% der Aktienpositionen
+allein. Das ist dieselbe Bezugsgrößen-Unterscheidung, die bei der
+10-6-4→10-7-3-Korrektur zum Fehler führte (siehe Abschnitt 3) – deshalb
+hier explizit festgehalten, um denselben Fehlertyp an anderer Stelle zu
+vermeiden. Die Kategorie-Kapitalgewichtsbänder (Champions 35-45%/Profi
+20-30%/Talent 25-40%, Abschnitt 3) bleiben davon unberührt weiter auf
+Aktienanteil-Basis – zwei unterschiedliche Kennzahlen mit zwei
+unterschiedlichen, jeweils fest zugeordneten Bezugsgrößen.
 
 ### Canonical Failure Case: Rocket Lab (RKLB), 28.08.-01.09.2026
 

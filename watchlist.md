@@ -261,6 +261,27 @@ wandern (z.B. Profi → Champions nach mehreren bewiesenen Quartalen, oder
 Champions → Talent bei aufkommenden Zweifeln), ohne die Watchlist komplett zu
 verlassen.
 
+**Entfernung heißt Archivierung, nicht Löschen (2026-09-03, aus dem
+3-KI-System-Audit, P2-Punkt Conans):** ein 🔴-Ausschluss wird NICHT
+stillschweigend aus der Datei gelöscht, sondern in den Abschnitt
+"Ausschluss-Archiv" unten verschoben (Ticker, Datum, Kategorie zum
+Ausschlusszeitpunkt, Ausschlussgrund, letzter CRV-Stand) – so bleibt
+nachvollziehbar, welche Werte wann aus welchem Grund geflogen sind, statt
+dass die Historie mit jeder Watchlist-Bearbeitung verloren geht.
+
+## Ausschluss-Archiv
+
+_Noch keine archivierten Ausschlüsse._
+
+<!-- Format je archiviertem Eintrag:
+
+### TICKER - Firmenname (Ausschluss: YYYY-MM-DD)
+- Kategorie zum Ausschlusszeitpunkt: Champions/Profi/Talent
+- Ausschlussgrund: [1-5 aus der Liste oben, kurz begründet]
+- Letzter CRV-Stand vor Ausschluss: [Farbe + Kurzbegründung]
+
+-->
+
 ## Offene Punkte
 - Lateinamerika-Slot bewusst leer gelassen (siehe oben) – Alicorp (Peru) als
   möglicher erster Talent-Kandidat steht zur Diskussion mit Brian an.

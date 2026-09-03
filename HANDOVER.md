@@ -372,11 +372,15 @@ einen Slot bekommt oder als reiner LatAm-Beobachtungsposten außerhalb der
 
 `watchlist_pending_3fach.md`: Warteschlange für Kandidaten aus dem
 täglichen automatisierten Scan, die das Strategie-Fit-Gate, den
-Duplikations-Check und das Identity-Gate bestanden haben, aber mangels
-verbundenem Chrome-Browser nur einen Jarvis-Only-Vorabbefund haben. Regel:
-**niemals** wird ein Eintrag allein auf Jarvis-Basis übernommen – es
-braucht immer alle drei KIs, auch im Quick-Filter (Brian-Regel vom
-2026-08-29). Stand Übergabe: Datei ist leer, keine offenen Einträge.
+Duplikations-Check und das Identity-Gate bestanden haben, aber nur einen
+Jarvis-Only-Vorabbefund haben, weil Jack/Conan am Scan-Tag nicht
+erreichbar waren. **Update 2026-09-03:** seit der API-Bridge-Migration
+(2026-09-02) landet hier nur noch etwas, wenn BEIDE Bridges UND der
+Chrome-Fallback an einem Lauf ausfallen – der alte "Laptop/Chrome war
+aus"-Fall ist nicht mehr der Regelfall. Regel unverändert: **niemals**
+wird ein Eintrag allein auf Jarvis-Basis übernommen – es braucht immer
+alle drei KIs, auch im Quick-Filter (Brian-Regel vom 2026-08-29). Stand
+Übergabe: Datei ist leer, keine offenen Einträge.
 
 ---
 
