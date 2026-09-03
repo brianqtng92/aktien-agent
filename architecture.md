@@ -1625,12 +1625,12 @@ unbegrenzt fortgeschrieben zu werden.
        auch Kursverlust, Momentumbruch UND Analystenrevisionen gleichzeitig
        aus). Wird jedes Symptom separat und additiv gewertet, kann ein
        einzelnes Ereignis den Score mehrfach drücken. Die eigentliche
-       Score-Berechnung liegt in den TMR-/Scout-Prompts selbst (Brians
-       eigene, unveränderte System-Prompts – siehe "Prompt-Änderungsrechte"
-       unten, eine Änderung DORT braucht den Meta-Retro-Pfad, nicht Jarvis'
-       eigenständige Bearbeitung). Bis eine solche Änderung ggf. über [3c]
-       vorgeschlagen und von Brian freigegeben ist, gilt als
-       Prozess-Pflicht: in der Diskussionsrunde [3b] aktiv prüfen, ob
+       Score-Berechnung liegt im TMR-Prompt selbst (siehe "Prompt-
+       Änderungsrechte" unten – Jarvis DARF das eigenständig korrigieren,
+       braucht dafür keine vorherige Freigabe, aber eine neue
+       Versionsnummer + dokumentierte Änderung). Bis diese Korrektur im
+       TMR-Prompt selbst nachgezogen ist, gilt zusätzlich als
+       Übergangs-Prozess-Pflicht: in der Diskussionsrunde [3b] aktiv prüfen, ob
        mehrere abgewertete Signale erkennbar auf DASSELBE auslösende
        Ereignis zurückgehen, und falls ja, das im Kurz-Fazit explizit
        benennen ("Score X/10, davon Y Punkte auf denselben Guidance-Cut
@@ -1664,45 +1664,48 @@ unbegrenzt fortgeschrieben zu werden.
        durch – die Retro-Runde lohnt sich nur dort, wo tatsächlich ein Lern-
        Signal vorliegt.
      → **Prompt-Änderungsrechte, explizit geklärt (2026-09-03, aus dem
-       3-KI-System-Audit – Conan hatte einen Widerspruch zwischen "Jarvis
-       darf eigenständig ändern" und "keine automatische Selbst-
-       Modifikation" bemängelt, Jack stimmte zu, dass das präzisiert
-       werden muss):** es gibt zwei kategorisch unterschiedliche
-       Änderungsarten, die bisher nicht explizit auseinandergehalten
-       waren:
+       3-KI-System-Audit – Conan hatte einen scheinbaren Widerspruch
+       zwischen "Jarvis darf eigenständig ändern" (Abschnitt 2,
+       "Spielraum für Prompt-Anpassungen", 2026-08-29) und "keine
+       automatische Selbst-Modifikation" (hier in [3c], 2026-08-28)
+       bemängelt. Klarstellung nach Prüfung: KEIN echter Widerspruch,
+       sondern zwei Zeitpunkte – Abschnitt 2 ist die spätere, von Brian
+       BEWUSST gelockerte Fassung und damit die aktuell gültige Regel.
+       [3c] beschreibt seither nur noch EINEN von zwei Wegen, wie eine
+       Prompt-Änderung entstehen kann, nicht mehr die einzige/exklusive
+       Freigabe-Voraussetzung):**
        - **Orchestrierungs-/Prozess-Ebene (architecture.md selbst,
          `depot/*.md`, `watchlist.md`, `HANDOVER.md`, die Scheduled-Task-
-         SKILL.md-Dateien):** das ist das laufend gepflegte Regelwerk UND
-         der operative Betriebszustand des Systems (Depotstände,
-         Watchlist-Einträge, Kategorisierungen, Konfigurationen der
-         täglichen/wöchentlichen Automatisierungs-Läufe). Jarvis
-         (Claude) pflegt diese Ebene EIGENSTÄNDIG als Teil der normalen
-         Arbeit – neue Erkenntnisse, Korrekturen, von Brian im Gespräch
-         freigegebene Ergänzungen fließen direkt ein, ohne dass jede
-         einzelne Formulierungsänderung einen eigenen Freigabe-Zyklus
-         durchläuft. Diese Ebene bestimmt WIE das System arbeitet und
-         WORAUF es sich bezieht, nicht WELCHES fachliche Urteil TMR/
-         Scout/TA über eine konkrete Aktie fällen.
+         SKILL.md-Dateien):** laufend gepflegter Betriebszustand + Regelwerk-
+         Dokumentation. Jarvis pflegt diese Ebene eigenständig, keine
+         Versionsnummer nötig, nur nachvollziehbare Commits.
        - **Methodik-/Bewertungslogik-Ebene (die drei Prompt-Dateien unter
          `prompts/`: TMR/jack-moat-reaper, Scout/conan-the-scout,
-         TA/jack-technical-analyst):** das sind Brians EIGENE, von ihm
-         formulierte Bewertungs-Systeme (DNA-Check-Kriterien, Reaper-
-         Score-Berechnung, Kill-Gates, K-Kriterien-Schwellen usw.). Diese
-         werden NIEMALS eigenständig von Jarvis oder den KIs selbst
-         umformuliert oder inhaltlich verändert – dafür gilt exklusiv der
-         oben beschriebene [3c]-Meta-Retro-Pfad: KI-Vorschlag → Jarvis
-         sichtet auf Widersprüche → Brian gibt frei → erst dann neue
-         Versionsnummer und Datei-Update. Rein redaktionelle/technische
-         Anpassungen ohne inhaltliche Wirkung (z.B. ein offensichtlicher
-         Tippfehler, ein kaputter Dateipfad-Verweis) sind davon
-         ausgenommen und dürfen direkt korrigiert werden – sobald aber
-         eine Änderung Kriterien, Schwellen, Gewichtungen oder die
-         Bewertungslogik selbst berührt, gilt zwingend der Meta-Retro-Pfad,
-         auch wenn die Änderung noch so klein oder "offensichtlich richtig"
-         erscheint.
-       - Kurzfassung: **architecture.md & Betriebsdateien = Jarvis pflegt
-         eigenständig. Die drei Bewertungs-Prompts = nur über Meta-Retro +
-         Brians Freigabe.**
+         TA/jack-technical-analyst):** Brians eigene Bewertungs-Systeme
+         (DNA-Check-Kriterien, Reaper-Score, Kill-Gates, K-Kriterien-
+         Schwellen usw.). Gemäß Abschnitt 2 **darf Jarvis diese
+         eigenständig modifizieren/ergänzen/abändern, wenn das dem
+         Nordstern (Abschnitt 1) besser dient – OHNE vorherige
+         Freigabe-Runde** durch Brian oder die anderen KIs. Zwei
+         Bedingungen bleiben dabei zwingend: (a) **neue Versionsnummer
+         + nachvollziehbare Dokumentation der Änderung** (nie eine
+         stille Änderung), (b) die Order-Ausführungs-Grenze aus
+         Abschnitt 1 bleibt unberührt – der Spielraum betrifft
+         ausschließlich Analyse-/Bewertungs-/Exit-Logik, nicht
+         Ausführungsbefugnis. Der [3c]-Meta-Retro-Pfad (KI-Vorschlag →
+         Jarvis sichtet → Brian gibt frei → Versionsnummer) bleibt der
+         bevorzugte Weg für Fälle, die aus einem ECHTEN Cross-KI-
+         Streitfall entstehen (Konvergenz "widerspruch", wiederholter
+         Fehlertyp) – dort lohnt sich die strukturierte
+         Mehrfach-Perspektive VOR der Umsetzung. Bei einer klar
+         erkannten, unstrittigen Methodik-Lücke (wie dem Reaper-Score-
+         Double-Counting-Risiko oben) kann Jarvis auch direkt
+         korrigieren und Brian danach im laufenden Gespräch informieren,
+         statt einen eigenen Freigabe-Zyklus abzuwarten.
+       - Kurzfassung: **beide Ebenen sind eigenständig editierbar – der
+         Unterschied ist nicht "darf/darf nicht", sondern dass
+         Prompt-Änderungen immer versioniert + dokumentiert werden
+         müssen, während Betriebsdateien das nicht brauchen.**
 
 [4] TECHNISCHE ANALYSE (TA) — ebenfalls 3-fach mit Diskussionsrunde [3b]-Logik,
     mit TMR-Handoff falls vorhanden
