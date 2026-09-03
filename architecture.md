@@ -3114,6 +3114,26 @@ künftige Portfolio-Aufnahme** sind.
   können jederzeit aus beliebigem Grund von der Liste fliegen – schlechte
   Schlagzeilen, katastrophale Quartalszahlen, gerissene These usw. – das
   System muss dafür "ständig auf der Suche" und aktuell sein.
+- **CRV-Ampel je Watchlist-Wert (2026-09-03, von Brian gefordert): Bewertungs-/
+  Timing-Signal zusätzlich zur Champions/Profi/Talent-Qualitätskategorie.**
+  Grund (Brians Formulierung, Beispiele): "DISCO CORP 🟡 ABWARTEN/BEOBACHTEN,
+  noch im Abwärtstrend oder noch überbewertet" bzw. "ALPHABET 🟢 KAUFEN,
+  Unterbewertung obwohl fundamental intakt". Champions/Profi/Talent sagt NUR
+  etwas über Geschäftsqualität aus, nichts über den aktuellen Einstiegs-
+  zeitpunkt – die CRV-Ampel schließt diese Lücke als eigene Spalte in
+  `watchlist.md`:
+  - 🟢 **KAUFEN** – klar unterbewertet ggü. eigener Historie/Peers, These intakt.
+  - 🟡 **ABWARTEN/BEOBACHTEN** – fair bis teuer, gemischte Signale, oder im Abwärtstrend.
+  - 🔴 **MEIDEN/ÜBERBEWERTET** – deutlich überbewertet und/oder echte Warnsignale
+    (z.B. Bewertung läuft der Ertragsentwicklung erkennbar davon).
+  Basiert auf KGV vs. historischem Durchschnitt (10J-Median wo verfügbar)
+  und Peer-/Branchenvergleich. Erstbefüllung aller 30 Werte am 2026-09-03
+  per WebSearch-Snapshot. **Pflege:** wird ab jetzt beim wöchentlichen
+  Watchlist-Check (siehe oben, Teil des Wochenfazit-Laufs) mitaktualisiert –
+  Bewertungen ändern sich schneller als Geschäftsqualität, ein einmaliger
+  Snapshot veraltet sonst unbemerkt. Kein eigener täglicher Check nötig
+  (das würde die tägliche Ampel aus dem folgenden Punkt unnötig
+  überladen) – wöchentlicher Rhythmus reicht für ein Bewertungssignal.
 - **Tägliche Watchlist-News-Ampel (2026-09-03, von Brian gefordert, als
   schnelle Vorstufe zum wöchentlichen Check oben, nicht als Ersatz):**
   Auslöser – Brian bemerkte anhand eines fremden Beispiel-Systems (tägliche

@@ -41,50 +41,64 @@ manuell in eine andere Kategorie verschieben.
 
 ---
 
+## CRV-Ampel (neu, 2026-09-03, von Brian gefordert)
+
+Zusätzlich zur Champions/Profi/Talent-Kategorie (Geschäftsqualität) zeigt die
+**CRV-Ampel** (Chance-Risiko-Verhältnis) je Wert, ob JETZT ein guter
+Einstiegszeitpunkt ist – Bewertung/Trend, nicht Qualität:
+- 🟢 **KAUFEN** – klar unterbewertet gegenüber eigener Historie/Peers, These intakt.
+- 🟡 **ABWARTEN/BEOBACHTEN** – fair bis teuer, gemischte Signale, oder im Abwärtstrend.
+- 🔴 **MEIDEN/ÜBERBEWERTET** – deutlich überbewertet und/oder echte Warnsignale (z.B. Bewertung läuft der Ertragslage davon).
+
+Basiert auf KGV vs. historischem Durchschnitt (10J-Median wo verfügbar) und
+Peer-Vergleich, Stand 2026-09-03 (WebSearch-Snapshot). Wird ab jetzt beim
+wöchentlichen Watchlist-Check (Wochenfazit) mitgepflegt – Kurse/Bewertungen
+ändern sich, dieser Stand ist kein Dauerzustand.
+
 ## 🏆 Champions (13) – etablierte Weltklasse-Compounder
 
-| Ticker/Börse | ISIN | Firma | Region | Sektor | Herkunft | Status | Kurzthese |
-|---|---|---|---|---|---|---|---|
-| NVDA (NASDAQ) | US67066G1040 | Nvidia Corp. | USA | Halbleiter (KI-Beschleuniger) | BRIAN | 🆕 | Dominanter GPU-/KI-Infrastruktur-Anbieter, faktisches Ökosystem-Monopol (CUDA), zentrale Position im KI-Capex-Zyklus. |
-| V (NYSE) | US92826C8394 | Visa Inc. | USA | Zahlungsverkehr | BRIAN | 🆕 **[EX-DEPOT]** | Ehemalige Depot-Position (verkauft 27.08.2026 @ 326,40€). Zahlungsnetzwerk-Duopol mit Mastercard, extrem hohe Kapitalrendite. |
-| MA (NYSE) | US57636Q1040 | Mastercard Inc. | USA | Zahlungsverkehr | JARVIS | 🆕 | Direktes Duopol-Pendant zu Visa – falls Visa nicht zurückgekauft wird, naheliegende Alternative mit identischer Moat-Logik. |
-| SPGI (NYSE) | US78409V1044 | S&P Global Inc. | USA | Finanzinfrastruktur (Ratings/Indizes/Daten) | BRIAN | 🆕 **[EX-DEPOT]** | Ehemalige Depot-Position (verkauft 27.08.2026 @ 378,15€). Duopol-Moat bei Ratings/Indizes. |
-| SYK (NYSE) | US8636671013 | Stryker Corp. | USA | MedTech (Orthopädie/Chirurgierobotik) | BRIAN | 🆕 **[EX-DEPOT]** | Ehemalige Depot-Position (verkauft 27.08.2026 @ 279,75€). Qualitäts-MedTech mit starkem Robotik-Wachstumstreiber (Mako-System). |
-| ASML (Amsterdam) | NL0010273215 | ASML Holding N.V. | Europa (NL) | Halbleiterausrüstung (EUV-Lithografie) | JARVIS | 🆕 | EUV-Lithografie-Monopolist – ohne ASML keine Advanced-Chip-Fertigung möglich, der kritischste Baustein der gesamten Halbleiter-Lieferkette. |
-| TSM (NYSE ADR) | US8740391003 | Taiwan Semiconductor Mfg. (TSMC) | Asien (Taiwan) | Halbleiter-Auftragsfertigung (Foundry) | JARVIS | 🆕 | Fertigt die KI-Chips von Nvidia & Co. tatsächlich – größter Foundry-Moat der Welt, strukturelles Kernstück der KI-Lieferkette. |
-| FICO (NYSE) | US3032501047 | Fair Isaac Corp. | USA | Finanzdaten/Analytics (Kredit-Scoring) | JARVIS | 🆕 | Faktisches Monopol beim US-Kredit-Scoring (FICO-Score als Industriestandard) – einer der stärksten Preissetzungsmacht-Moats überhaupt. |
-| 6861 (Tokyo) | JP3236200006 | Keyence Corp. | Japan | Fabrikautomatisierung (Sensorik/Machine Vision) | BRIAN | 🆕 **[EX-DEPOT]** | Ehemalige Depot-Position (verkauft 27.08.2026 @ 439,90€). Einer der profitabelsten Industriekonzerne der Welt (fabless, extrem hohe Marge). |
-| 7741 (Tokyo) | JP3837800006 | Hoya Corp. | Japan | Optik/Halbleiter-Photomasken & MedTech | BRIAN | 🆕 | Diversifizierter Qualitätskonzern mit Weltmarktführerschaft bei Halbleiter-Photomasken-Rohlingen plus stabilem MedTech-Standbein. |
-| BN (NYSE/TSX) | CA11271J1075 | Brookfield Corp. | Kanada | Alternative Asset Management/Holding | BRIAN | 🆕 | Diversifizierter Vermögensverwalter/Holding (Infrastruktur/Erneuerbare/Private Equity) – Compounder über Kapitalallokation statt Einzelprodukt-Moat. |
-| CPRT (NASDAQ) | US2172041061 | Copart Inc. | USA | Fahrzeugauktionen/Salvage | JARVIS | 🆕 | Marktführer bei Online-Fahrzeugauktionen mit Netzwerk-Moat (Flächen/Logistik) und sehr hoher Kapitalrendite. |
-| ROL (NYSE) | US7757111049 | Rollins Inc. | USA | Schädlingsbekämpfung (Dienstleistung) | JARVIS | 🆕 | Extrem stabiler, wiederkehrender Cashflow (Abo-artiges Geschäftsmodell), einer der zuverlässigsten Compounder im S&P 500. |
+| Ticker/Börse | ISIN | Firma | Region | Sektor | Herkunft | Status | CRV | Kurzthese |
+|---|---|---|---|---|---|---|---|---|
+| NVDA (NASDAQ) | US67066G1040 | Nvidia Corp. | USA | Halbleiter (KI-Beschleuniger) | BRIAN | 🆕 | 🟢 KAUFEN – KGV 27,5x, unter eigenem Ø (31,6x) | Dominanter GPU-/KI-Infrastruktur-Anbieter, faktisches Ökosystem-Monopol (CUDA), zentrale Position im KI-Capex-Zyklus. |
+| V (NYSE) | US92826C8394 | Visa Inc. | USA | Zahlungsverkehr | BRIAN | 🆕 **[EX-DEPOT]** | 🟢 KAUFEN – KGV 29,6x, unter 3J-Ø (32,4x) | Ehemalige Depot-Position (verkauft 27.08.2026 @ 326,40€). Zahlungsnetzwerk-Duopol mit Mastercard, extrem hohe Kapitalrendite. |
+| MA (NYSE) | US57636Q1040 | Mastercard Inc. | USA | Zahlungsverkehr | JARVIS | 🆕 | 🟢 KAUFEN – KGV unter 3J/5J-Ø | Direktes Duopol-Pendant zu Visa – falls Visa nicht zurückgekauft wird, naheliegende Alternative mit identischer Moat-Logik. |
+| SPGI (NYSE) | US78409V1044 | S&P Global Inc. | USA | Finanzinfrastruktur (Ratings/Indizes/Daten) | BRIAN | 🆕 **[EX-DEPOT]** | 🟢 KAUFEN – KGV 24,9x, -20% ggü. 12M-Ø | Ehemalige Depot-Position (verkauft 27.08.2026 @ 378,15€). Duopol-Moat bei Ratings/Indizes. |
+| SYK (NYSE) | US8636671013 | Stryker Corp. | USA | MedTech (Orthopädie/Chirurgierobotik) | BRIAN | 🆕 **[EX-DEPOT]** | 🟡 BEOBACHTEN – unter Eigenhistorie, aber 44% über Branchen-Ø | Ehemalige Depot-Position (verkauft 27.08.2026 @ 279,75€). Qualitäts-MedTech mit starkem Robotik-Wachstumstreiber (Mako-System). |
+| ASML (Amsterdam) | NL0010273215 | ASML Holding N.V. | Europa (NL) | Halbleiterausrüstung (EUV-Lithografie) | JARVIS | 🆕 | 🟡 BEOBACHTEN – KGV 52,7x, 42% über 10J-Median, "significantly overvalued" | EUV-Lithografie-Monopolist – ohne ASML keine Advanced-Chip-Fertigung möglich, der kritischste Baustein der gesamten Halbleiter-Lieferkette. |
+| TSM (NYSE ADR) | US8740391003 | Taiwan Semiconductor Mfg. (TSMC) | Asien (Taiwan) | Halbleiter-Auftragsfertigung (Foundry) | JARVIS | 🆕 | 🟢 KAUFEN – KGV 30,2x, -10% ggü. 12M-Ø | Fertigt die KI-Chips von Nvidia & Co. tatsächlich – größter Foundry-Moat der Welt, strukturelles Kernstück der KI-Lieferkette. |
+| FICO (NYSE) | US3032501047 | Fair Isaac Corp. | USA | Finanzdaten/Analytics (Kredit-Scoring) | JARVIS | 🆕 | 🟢 KAUFEN – KGV 30,2x, 39% unter 10J-Median, ~52% unter GF-Fair-Value | Faktisches Monopol beim US-Kredit-Scoring (FICO-Score als Industriestandard) – einer der stärksten Preissetzungsmacht-Moats überhaupt. |
+| 6861 (Tokyo) | JP3236200006 | Keyence Corp. | Japan | Fabrikautomatisierung (Sensorik/Machine Vision) | BRIAN | 🆕 **[EX-DEPOT]** | 🟡 BEOBACHTEN – KGV 43,6x, leicht erhöht, unter historischem Hoch (65x) | Ehemalige Depot-Position (verkauft 27.08.2026 @ 439,90€). Einer der profitabelsten Industriekonzerne der Welt (fabless, extrem hohe Marge). |
+| 7741 (Tokyo) | JP3837800006 | Hoya Corp. | Japan | Optik/Halbleiter-Photomasken & MedTech | BRIAN | 🆕 | 🟡 BEOBACHTEN – KGV ~32-37x, deutlich über Branchen-Ø (16,6x) | Diversifizierter Qualitätskonzern mit Weltmarktführerschaft bei Halbleiter-Photomasken-Rohlingen plus stabilem MedTech-Standbein. |
+| BN (NYSE/TSX) | CA11271J1075 | Brookfield Corp. | Kanada | Alternative Asset Management/Holding | BRIAN | 🆕 | 🟡 BEOBACHTEN – KGV 78x absolut hoch, aber -28% ggü. 12M-Ø (Holding-Struktur, KGV schwer vergleichbar) | Diversifizierter Vermögensverwalter/Holding (Infrastruktur/Erneuerbare/Private Equity) – Compounder über Kapitalallokation statt Einzelprodukt-Moat. |
+| CPRT (NASDAQ) | US2172041061 | Copart Inc. | USA | Fahrzeugauktionen/Salvage | JARVIS | 🆕 | 🟢 KAUFEN – KGV 17,4x, 46% unter 10J-Median, ~51% unter GF-Fair-Value | Marktführer bei Online-Fahrzeugauktionen mit Netzwerk-Moat (Flächen/Logistik) und sehr hoher Kapitalrendite. |
+| ROL (NYSE) | US7757111049 | Rollins Inc. | USA | Schädlingsbekämpfung (Dienstleistung) | JARVIS | 🆕 | 🟢 KAUFEN – KGV 33,2x, 38% unter 10J-Median, ~39% unter GF-Fair-Value | Extrem stabiler, wiederkehrender Cashflow (Abo-artiges Geschäftsmodell), einer der zuverlässigsten Compounder im S&P 500. |
 
 ## ⚙️ Profi (10) – solide Qualitätsfirmen/Nischenführer, Bewährung läuft noch
 
-| Ticker/Börse | ISIN | Firma | Region | Sektor | Herkunft | Status | Kurzthese |
-|---|---|---|---|---|---|---|---|
-| CRWD (NASDAQ) | US22788C1053 | CrowdStrike Holdings | USA | Cybersecurity (Endpoint/Cloud) | BRIAN | 🆕 | Cloud-native Cybersecurity-Plattform mit hoher Kundenbindung (Falcon), profitiert von wachsender Angriffsfläche – noch nicht so lange bewiesen wie ein Champions-Titel. |
-| ANET (NYSE) | US0404132054 | Arista Networks | USA | Netzwerktechnik (Rechenzentren) | BRIAN | 🆕 | Führender Anbieter von Hochleistungs-Switches für Cloud-/KI-Rechenzentren, direkter Profiteur des KI-Infrastruktur-Ausbaus. |
-| VRT (NYSE) | US92537N1081 | Vertiv Holdings | USA | Rechenzentrums-Infrastruktur (Kühlung/Stromversorgung) | BRIAN | 🆕 | Zentraler Ausrüster für Rechenzentrums-Kühlung/-Stromversorgung, noch relativ junge Börsenhistorie als eigenständiger Titel. |
-| FTNT (NASDAQ) | US34959E1091 | Fortinet Inc. | USA | Cybersecurity (Netzwerksicherheit/Firewalls) | JARVIS | 🆕 | Ergänzt CrowdStrike um die Netzwerk-/Firewall-Seite der Cybersecurity-Landschaft – Diversifikation innerhalb des Sektors. |
-| MPWR (NASDAQ) | US6098391054 | Monolithic Power Systems | USA | Halbleiter (Power Management) | BRIAN | 🆕 | Nischenführer bei Power-Management-Chips für Rechenzentren/KI-Server, hohe Margen, aber zyklischer als ein reiner Champions-Titel. |
-| AIT (NYSE) | US03820C1053 | Applied Industrial Technologies | USA | Industrielle Distribution (Antriebstechnik/Automatisierung) | BRIAN | 🆕 | Qualitäts-Distributor mit stetigem Cross-Selling-Modell, profitiert von Reshoring/Automatisierung in der US-Industrie. |
-| 6146 (Tokyo) | JP3548600000 | Disco Corp. | Japan | Halbleiterausrüstung (Wafer-Dicing/-Schleifen) | BRIAN | 🆕 | Führend bei Präzisions-Schneide-/Schleiftechnik für Halbleiter-Wafer, profitiert vom Advanced-Packaging-Trend – zyklisches Semicap-Geschäft. |
-| WSO (NYSE) | US9426222009 | Watsco Inc. | USA | HVAC-Distribution (Klima-/Heiztechnik) | JARVIS | 🆕 | Familiengeführter Marktführer in der nordamerikanischen HVAC-Distribution – US-Pendant zur Beijer-Ref-Logik aus dem Nicht-Index-Screening. **ISIN am 2026-09-01 korrigiert** – die ursprünglich erfasste US9427491025 gehört tatsächlich zu Watts Water Technologies, einer anderen Firma; beim Scalable-Watchlist-Abgleich aufgefallen. |
-| NVT (NYSE) | IE00BDVJJQ56 | nVent Electric plc | USA/Irland | Elektrotechnik (Verbindungs-/Schutztechnik) | BRIAN | 🆕 | Profiteur von Elektrifizierung, Rechenzentrums-Ausbau und Reshoring; solide, aber weniger dominant als ein Champions-Titel. |
-| EXPO (NASDAQ) | US30214U1025 | Exponent, Inc. | USA | Wissenschaftlich-technisches Consulting (Gerichtsgutachten/Produktsicherheit/Schadensanalyse) | JARVIS | 🆕 | 2026-08-29 aus gezielter Depot-Lücken-Suche: kapitalleichtes Reputations-/Expertise-Moat-Geschäft (ROIC ~27%, Nettomarge ~20%), unkorreliert zu bestehenden Software-/Fintech-/Space-Positionen. Bewusster Gegenentwurf zur AIT-Analyse (margenschwacher Distributor) – hier margenstark und asset-light. Wachstum moderat (~9%), daher Profi statt Champions. |
+| Ticker/Börse | ISIN | Firma | Region | Sektor | Herkunft | Status | CRV | Kurzthese |
+|---|---|---|---|---|---|---|---|---|
+| CRWD (NASDAQ) | US22788C1053 | CrowdStrike Holdings | USA | Cybersecurity (Endpoint/Cloud) | BRIAN | 🆕 | 🟡 BEOBACHTEN – KGV nicht aussagekräftig (TTM-EPS nahe Null), Bewertung nicht sauber beurteilbar | Cloud-native Cybersecurity-Plattform mit hoher Kundenbindung (Falcon), profitiert von wachsender Angriffsfläche – noch nicht so lange bewiesen wie ein Champions-Titel. |
+| ANET (NYSE) | US0404132054 | Arista Networks | USA | Netzwerktechnik (Rechenzentren) | BRIAN | 🆕 | 🟡 BEOBACHTEN – KGV 63,4x, 54% über 10J-Median | Führender Anbieter von Hochleistungs-Switches für Cloud-/KI-Rechenzentren, direkter Profiteur des KI-Infrastruktur-Ausbaus. |
+| VRT (NYSE) | US92537N1081 | Vertiv Holdings | USA | Rechenzentrums-Infrastruktur (Kühlung/Stromversorgung) | BRIAN | 🆕 | 🟢 KAUFEN – KGV 58,2x absolut hoch, aber 16% unter 10J-Median | Zentraler Ausrüster für Rechenzentrums-Kühlung/-Stromversorgung, noch relativ junge Börsenhistorie als eigenständiger Titel. |
+| FTNT (NASDAQ) | US34959E1091 | Fortinet Inc. | USA | Cybersecurity (Netzwerksicherheit/Firewalls) | JARVIS | 🆕 | 🟡 BEOBACHTEN – KGV ~54-62x, moderat teuer, aber profitabelster der Cybersecurity-Gruppe | Ergänzt CrowdStrike um die Netzwerk-/Firewall-Seite der Cybersecurity-Landschaft – Diversifikation innerhalb des Sektors. |
+| MPWR (NASDAQ) | US6098391054 | Monolithic Power Systems | USA | Halbleiter (Power Management) | BRIAN | 🆕 | 🟡 BEOBACHTEN – KGV 74,8x, laut GuruFocus "fair bewertet", kein Schnäppchen | Nischenführer bei Power-Management-Chips für Rechenzentren/KI-Server, hohe Margen, aber zyklischer als ein reiner Champions-Titel. |
+| AIT (NYSE) | US03820C1053 | Applied Industrial Technologies | USA | Industrielle Distribution (Antriebstechnik/Automatisierung) | BRIAN | 🆕 | 🟡 BEOBACHTEN – KGV ~25-29x, keine klaren Extremsignale, moderat | Qualitäts-Distributor mit stetigem Cross-Selling-Modell, profitiert von Reshoring/Automatisierung in der US-Industrie. |
+| 6146 (Tokyo) | JP3548600000 | Disco Corp. | Japan | Halbleiterausrüstung (Wafer-Dicing/-Schleifen) | BRIAN | 🆕 | 🟡 ABWARTEN/BEOBACHTEN – KGV ~50x teuer, FCF-Marge (16,9%) unter 20%-Schwelle, volle Analyse 2026-09-03 (Jarvis ABBRUCH/Jack SCHROTT/Conan BEOBACHTEN 5,5) | Führend bei Präzisions-Schneide-/Schleiftechnik für Halbleiter-Wafer, profitiert vom Advanced-Packaging-Trend – zyklisches Semicap-Geschäft. |
+| WSO (NYSE) | US9426222009 | Watsco Inc. | USA | HVAC-Distribution (Klima-/Heiztechnik) | JARVIS | 🆕 | 🟢 KAUFEN – KGV 26,9x, 6% unter 10J-Ø | Familiengeführter Marktführer in der nordamerikanischen HVAC-Distribution – US-Pendant zur Beijer-Ref-Logik aus dem Nicht-Index-Screening. **ISIN am 2026-09-01 korrigiert** – die ursprünglich erfasste US9427491025 gehört tatsächlich zu Watts Water Technologies, einer anderen Firma; beim Scalable-Watchlist-Abgleich aufgefallen. |
+| NVT (NYSE) | IE00BDVJJQ56 | nVent Electric plc | USA/Irland | Elektrotechnik (Verbindungs-/Schutztechnik) | BRIAN | 🆕 | 🔴 MEIDEN/ÜBERBEWERTET – KGV 55,1x, 171% über 10J-Median, GuruFocus "Significantly Overvalued" (stärkstes Überbewertungssignal der Liste) | Profiteur von Elektrifizierung, Rechenzentrums-Ausbau und Reshoring; solide, aber weniger dominant als ein Champions-Titel. |
+| EXPO (NASDAQ) | US30214U1025 | Exponent, Inc. | USA | Wissenschaftlich-technisches Consulting (Gerichtsgutachten/Produktsicherheit/Schadensanalyse) | JARVIS | 🆕 | 🟡 BEOBACHTEN – KGV ~27-35x, deutlich über Branchen-Ø (18x) | 2026-08-29 aus gezielter Depot-Lücken-Suche: kapitalleichtes Reputations-/Expertise-Moat-Geschäft (ROIC ~27%, Nettomarge ~20%), unkorreliert zu bestehenden Software-/Fintech-/Space-Positionen. Bewusster Gegenentwurf zur AIT-Analyse (margenschwacher Distributor) – hier margenstark und asset-light. Wachstum moderat (~9%), daher Profi statt Champions. |
 
 ## 🚀 Talent (7) – spekulative Spitze, hohes Risiko/hohe Upside
 
-| Ticker/Börse | ISIN | Firma | Region | Sektor | Herkunft | Status | Kurzthese |
-|---|---|---|---|---|---|---|---|
-| PLTR (NASDAQ) | US69608A1088 | Palantir Technologies | USA | Software (Daten-/KI-Plattform) | BRIAN | 🆕 | Trotz riesiger Marktkap ein echter Talent-Fall: extreme Bewertung, These noch nicht über einen vollen Zyklus bewiesen – Größe schützt hier nicht vor Risiko. |
-| INOD (NASDAQ) | US4576422053 | Innodata Inc. | USA | Daten-/KI-Trainingsdienstleistungen | BRIAN | 🆕 | Kleiner, spekulativer Profiteur des KI-Booms (Daten-Annotation für große KI-Modelle), Kundenkonzentrationsrisiko. |
-| USLM (NASDAQ) | US9119221029 | United States Lime & Minerals | USA | Baustoffe/Industriemineralien | BRIAN | 🆕 | Regionaler Nischenmonopolist mit sehr hoher Kapitalrendite, aber klein/illiquide genug, um als Talent statt Champions zu gelten. |
-| SKWD (NASDAQ) | US8309401029 | Skyward Specialty Insurance | USA | Spezialversicherung (Nischen-Underwriting) | BRIAN | 🆕 | Kleinerer Spezialversicherer mit diszipliniertem Underwriting, noch kurze Börsenhistorie – bereits Gegenstand einer früheren TMR-Analyse (siehe `analysen/`). |
-| 6920 (Tokyo) | JP3979200007 | Lasertec Corp. | Japan | Halbleiterausrüstung (EUV-Masken-Inspektion) | BRIAN | 🆕 | Faktisches Weltmonopol bei EUV-Masken-Inspektion, aber klassisch zyklisches Semicap-Geschäft mit hoher Kursvolatilität. |
-| 6323 (Tokyo) | JP3982200002 | Rorze Corp. | Japan | Halbleiterausrüstung (Wafer-Handling-Robotik) | BRIAN | 🆕 | Kleiner Nischenzulieferer für Wafer-Transport-Robotik – hohe Relevanz für den Fab-Ausbau, aber kleine, zyklische Firma. |
-| 7747 (Tokyo) | JP3110650003 | Asahi Intecc Co. | Japan | MedTech (Führungsdrähte für Katheter) | BRIAN | 🆕 | Weltmarktführer bei Katheter-Führungsdrähten, enger technischer Moat, aber konzentriertes Nischengeschäft mit begrenzter Diversifikation. |
+| Ticker/Börse | ISIN | Firma | Region | Sektor | Herkunft | Status | CRV | Kurzthese |
+|---|---|---|---|---|---|---|---|---|
+| PLTR (NASDAQ) | US69608A1088 | Palantir Technologies | USA | Software (Daten-/KI-Plattform) | BRIAN | 🆕 | 🔴 MEIDEN/ÜBERBEWERTET – Forward-KGV ~98-176x, "much of future growth already reflected in price" | Trotz riesiger Marktkap ein echter Talent-Fall: extreme Bewertung, These noch nicht über einen vollen Zyklus bewiesen – Größe schützt hier nicht vor Risiko. |
+| INOD (NASDAQ) | US4576422053 | Innodata Inc. | USA | Daten-/KI-Trainingsdienstleistungen | BRIAN | 🆕 | 🟡 BEOBACHTEN – KGV 52,5x vs. Branchen-Ø 23,3x, aber starkes Momentum (+86% YTD) | Kleiner, spekulativer Profiteur des KI-Booms (Daten-Annotation für große KI-Modelle), Kundenkonzentrationsrisiko. |
+| USLM (NASDAQ) | US9119221029 | United States Lime & Minerals | USA | Baustoffe/Industriemineralien | BRIAN | 🆕 | 🟢 KAUFEN – KGV 23,3x, moderat für Nischenmonopolisten | Regionaler Nischenmonopolist mit sehr hoher Kapitalrendite, aber klein/illiquide genug, um als Talent statt Champions zu gelten. |
+| SKWD (NASDAQ) | US8309401029 | Skyward Specialty Insurance | USA | Spezialversicherung (Nischen-Underwriting) | BRIAN | 🆕 | 🟡 BEOBACHTEN – KGV 15x, nah am fairen Wert (14,7x), leicht über Branche (11,6x) | Kleinerer Spezialversicherer mit diszipliniertem Underwriting, noch kurze Börsenhistorie – bereits Gegenstand einer früheren TMR-Analyse (siehe `analysen/`). |
+| 6920 (Tokyo) | JP3979200007 | Lasertec Corp. | Japan | Halbleiterausrüstung (EUV-Masken-Inspektion) | BRIAN | 🆕 | 🟡 BEOBACHTEN – KGV 41,5x, nahe 10J-Median (44,3x), über JP-Sektor-Ø (25,5x) | Faktisches Weltmonopol bei EUV-Masken-Inspektion, aber klassisch zyklisches Semicap-Geschäft mit hoher Kursvolatilität. |
+| 6323 (Tokyo) | JP3982200002 | Rorze Corp. | Japan | Halbleiterausrüstung (Wafer-Handling-Robotik) | BRIAN | 🆕 | 🔴 MEIDEN/ÜBERBEWERTET – GuruFocus "Significantly Overvalued", Marktkap +137% bei Nettogewinn -19% (Bewertung läuft Ertrag davon) | Kleiner Nischenzulieferer für Wafer-Transport-Robotik – hohe Relevanz für den Fab-Ausbau, aber kleine, zyklische Firma. |
+| 7747 (Tokyo) | JP3110650003 | Asahi Intecc Co. | Japan | MedTech (Führungsdrähte für Katheter) | BRIAN | 🆕 | 🟡 ABWARTEN/BEOBACHTEN – KGV ~25x forward nicht günstig, gemischtes Rating (Jarvis ABBRUCH/Jack SCHROTT/Conan BEOBACHTEN 6), volle Analyse 2026-09-02 | Weltmarktführer bei Katheter-Führungsdrähten, enger technischer Moat, aber konzentriertes Nischengeschäft mit begrenzter Diversifikation. |
 
 ---
 
