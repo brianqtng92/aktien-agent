@@ -1921,10 +1921,56 @@ Für jede bestehende Depot-/Watchlist-Position, in regelmäßigem Rhythmus:
        Widerstandszone (Pivot-Punkte bzw. jüngste Hochs/Tiefs). Siehe
        "Technische Analyse via Twelve Data" unten.
 
-[D] CASH-ALLOKATIONS-CHECK (neu, noch nicht scharf spezifiziert – offener Punkt)
-     → grobe Einschätzung: gerade eher Käufe attraktiv, oder eher abwarten/
-       Cash halten (Makro-Radar, Bewertungsniveau breiter Markt, Anzahl aktiver
-       KAUFEN-Signale vs. Cash-Reserve)
+[D] CASH-ALLOKATIONS-CHECK / TÄGLICHER MARKT-/MAKRO-KONTEXT (2026-09-03,
+    vollständig spezifiziert – von Brian gefordert: "du sollst den Markt
+    ständig im Auge behalten, Sentiment, Schwankungen, geopolitische
+    Entscheidungen, Zinsentscheid, News an der Börse, immer up to date
+    sein"):
+     → **Bisher nur MONATLICH erfasst** (Monatsrecap, "Makro-Radar/
+       Sentiment") – das ist für Brians Anspruch "ständig im Auge
+       behalten" zu selten. Ab jetzt zusätzlich TÄGLICH, als Teil des
+       Täglichen Trigger-Checks (siehe dortige SKILL.md, neuer Schritt),
+       PLUS ein marktweiter Schock-Trigger im stündlichen Blitz-Scan (nicht
+       nur Einzelwert-Ereignisse wie bisher).
+     → **Tägliche Momentaufnahme** (WebSearch/WebFetch, kompakt, keine
+       Tiefenrecherche): CNN Fear & Greed Index (Stand + Zone), VIX,
+       S&P 500/Nasdaq 100 Tagesveränderung, US-10J-Rendite + Kurvenform
+       (normal/invers/flach), EUR/USD, Gold als Risk-off-Indikator, sowie
+       ein kurzer Blick auf den Wirtschaftskalender der nächsten 48h (Fed/
+       EZB-Termine, wichtige Konjunkturdaten) und akute geopolitische
+       Schlagzeilen mit erkennbarem Marktbezug (Kriege/Konflikte,
+       Sanktionen, Handelskonflikte, Wahlen mit Marktrelevanz).
+       Gespeichert/fortgeschrieben in `depot/macro_context.md` (neue
+       Zeile pro Tag), damit ein Tag-über-Tag-Vergleich möglich ist, statt
+       jeden Tag bei Null anzufangen.
+     → **Material-Shift-Kriterien (lösen eine Eskalation aus, sonst reine
+       stille Protokollierung):** VIX-Sprung >20% ggü. Vortag, Fear&Greed
+       wechselt die Zone (z.B. Neutral→Extreme Fear oder Greed→Extreme
+       Greed), S&P 500/Nasdaq 100 Tagesbewegung >±3%, eine ÜBERRASCHENDE
+       Zins-/Notfallentscheidung einer Notenbank (nicht die regulär
+       terminierten, erwarteten Sitzungen selbst – die werden im
+       Wirtschaftskalender-Blick oben nur vorab angekündigt), oder ein
+       gravierendes geopolitisches Ereignis mit unmittelbar erkennbarer
+       Marktreaktion.
+     → **Einordnung, KEINE Handlungsanweisung:** aus der Momentaufnahme
+       wird eine grobe Investitionsklima-Einordnung abgeleitet (eher
+       günstig für Zukäufe / neutral / eher Vorsicht-Cash-halten) – das
+       ist ein ADVISORY-Signal (siehe Abschnitt 14, Core-vs-Advisory), das
+       in die ohnehin bestehende KAUFEN-/NACHKAUF-/Cash-Disziplin-
+       Einordnung pro Einzelposition einfließt, sie aber NIE ersetzt oder
+       überschreibt – eine fundamental intakte 🟢-KAUFEN-Position bleibt
+       ein Kauf-Kandidat auch bei "Vorsicht"-Marktklima (ggf. mit
+       kleinerer Tranche/vorsichtigerer Tranchierung), eine fundamental
+       gebrochene These wird nicht durch "Markt ist gerade euphorisch"
+       zum Kauf. **Ausdrücklich keine Anlageberatung im regulatorischen
+       Sinn** – die Einordnung ist Recherche-/Kontext-Unterstützung für
+       Brians eigene, manuelle Entscheidung, keine professionelle
+       Finanzberatung und kein Ersatz dafür.
+     → **Tages-Sichtbarkeit:** die Kernwerte (Fear&Greed, VIX, Zinskurve)
+       erscheinen als Kurzzeile in JEDER täglichen Trigger-Check-Mail
+       (auch an ruhigen Tagen ohne Aktien-Anlass, siehe dortige
+       SKILL.md) – das ist der Kanal, über den Brian "immer up to date"
+       bleibt, ohne dass jede Marktschwankung eine Eskalation auslöst.
 
 [E] EXIT-/GEWINNMITNAHME-/NACHKAUF-CHECK für bestehende Depot-Positionen
     (2026-08-29, von Brian gefordert – siehe "Verkaufsdisziplin &
