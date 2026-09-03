@@ -3170,6 +3170,31 @@ künftige Portfolio-Aufnahme** sind.
   überschreibt, um den Vergleich ziehen zu können. Stand 2026-09-03 ist
   die Basislinie ohne Vorwert – erste Pfeile entstehen frühestens beim
   nächsten wöchentlichen Watchlist-/Depot-Check.
+  **Drei Ergänzungen nach 3-KI-Produkt-Feedback-Runde (2026-09-03, Jack UND
+  Conan unabhängig um Verbesserungsvorschläge gebeten, überschneidende
+  Punkte priorisiert umgesetzt):**
+  1. **MoS-Drawdown-Hinweis gilt jetzt für ALLE 48 Werte** (Watchlist +
+     Depot), nicht mehr nur für AI-Trend-exponierte – beide KIs bemängelten
+     unabhängig, dass der Fokus nur auf AI-Hype-Werte fälschlich den
+     Eindruck erweckt, andere Werte seien vor scharfen Korrekturen sicherer.
+  2. **Qualität-×-CRV-Matrix ergänzt** (siehe `watchlist.md` und
+     `depot/kategorisierung.md`) – beide KIs nannten das die wichtigste
+     strukturelle Ergänzung: eine Kreuztabelle Champions/Profi/Talent ×
+     CRV-Farbe macht sofort sichtbar, wo Qualität UND Preis zusammenpassen
+     ("Champions+Grün" = höchste Priorität) und wo eine gute Firma nur
+     gerade teuer ist ("Champions+Rot" ≠ schlechtes Unternehmen).
+  3. **Depot-CRV-Wortwahl entschärft:** "MEIDEN/ÜBERBEWERTET" klingt bei
+     einer bestehenden Position wie ein Verkaufssignal, obwohl es keins
+     ist – für Depot-Positionen jetzt "NACHKAUF ATTRAKTIV" / "HALTEN-
+     BEOBACHTEN" / "KEIN NACHKAUF (TEUER)" / "KEIN NACHKAUF – ÜBERBEWERTET
+     (Review empfohlen)" statt der Watchlist-Formulierungen KAUFEN/MEIDEN.
+  Weitere Vorschläge aus der Feedback-Runde (Bewertungsanker je
+  Geschäftsmodell statt reinem KGV, 5. Farbe GRAU für "KGV nicht
+  aussagekräftig", PEG/FCF-Yield/Insider-Käufe/Short-Interest als
+  Sekundärsignale, Confidence-Level, Revisionstrend) sind bewusst NICHT
+  sofort umgesetzt – als offener Punkt für eine spätere, gezielte
+  Erweiterung vorgemerkt, um das System nicht in einem Schritt zu
+  überladen.
   **Margin of Safety / historisches Drawdown-Verhalten (2026-09-03, von
   Brian ergänzt: "auch die Kurse aus der Vergangenheit mit einbeziehen,
   z.B. dass Nvidia in der Vergangenheit auch mal 40-50% korrigieren
