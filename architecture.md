@@ -543,36 +543,63 @@ seine Stimme im Vergleich trotzdem "Jack", nicht "Conan").
     Profi-Zuteilung an den 20 Slots übrig bleibt.
   - Zusammen ergeben Champions + Profi das, was Brian als "15-17 stabile Werte"
     bezeichnet hat; Talent sind die restlichen riskanten Werte on top.
-- **Update (2026-09-03, von Brian festgesetzt): feste Positionsanzahl-Formel
-  "10-6-4".** Löst die bisherige Spanne (Champions 8-10/Profi 3-5/Talent
-  5-9 Rest-Slots) durch eine einprägsame, feste Zielzahl ab: **10 Champions,
-  6 Profi, 4 Talent** = 20 Einzelwerte gesamt (passt exakt zur bestehenden
-  Max.-20-Grenze). Begründung/Herleitung:
+- **Update (2026-09-03, von Brian festgesetzt, dann per 3-KI-System-Audit
+  am selben Tag als rechnerisch fehlerhaft entlarvt und auf "10-7-3"
+  korrigiert): feste Positionsanzahl-Formel.** Löst die ursprüngliche
+  Spanne (Champions 8-10/Profi 3-5/Talent 5-9 Rest-Slots) durch eine feste
+  Zielzahl ab: **10 Champions, 7 Profi, 3 Talent** = 20 Einzelwerte gesamt
+  (passt exakt zur bestehenden Max.-20-Grenze).
+  - **Verifizierter Rechenfehler in der ursprünglichen "10-6-4"-Version
+    (2026-09-03, im 3-KI-System-Audit von Conan gefunden, von Jarvis gegen
+    architecture.md:913 verifiziert, von Jack nachgerechnet):** die
+    ursprüngliche Begründung "4 Talent-Slots, weil 4×10%-Positionscap
+    exakt die 40%-Talent-Obergrenze trifft" vermischte zwei verschiedene
+    Bezugsgrößen – der 10%-Positionsdeckel (siehe "Positionsgrößen-Limits"
+    oben) gilt für das **Gesamtportfolio**, die 40%-Talent-Obergrenze für
+    den **Aktienanteil** (ohne ETF). Bei einem Aktienanteil von ca. 74%
+    des Gesamtportfolios (Stand 2026-09-03) entsprechen 4 Positionen à
+    10% Gesamtportfolio (=40% Gesamtportfolio) tatsächlich ca. 54% des
+    Aktienanteils – weit über der 40%-Obergrenze, nicht exakt daran.
+    Korrekt gerechnet: 40% Aktienanteil × 74% ≈ 29,6% Gesamtportfolio;
+    29,6% / 10%-Positionscap ≈ 2,96 → **3 Positionen**, nicht 4.
   - **10 Champions** – oberes Ende der alten Spanne, unverändert.
-  - **6 Profi** – gegenüber der alten Spanne (3-5) angehoben, weil Profi in
+  - **7 Profi** – gegenüber der alten Spanne (3-5) angehoben (der frei
+    gewordene Slot aus der Talent-Korrektur geht hierhin), weil Profi in
     der Praxis (Stand 02./03.09.) sowohl bei Positionsanzahl als auch beim
     Kapitalgewicht (16,4% vs. Ziel 20-30%) strukturell unterrepräsentiert
     war. Ist ausdrücklich der Baustein, der als nächstes bevorzugt
     aufgefüllt wird.
-  - **4 Talent** – gegenüber der alten Spanne (5-9) bewusst enger gefasst.
-    Grund: die harte 10%-Positionsgrenze (Ausnahme bis 12% nur bei
-    Top-Conviction, siehe oben) trifft sich bei genau 4 Positionen exakt
-    mit der Talent-Gewichts-Obergrenze (4 × 10% = 40%) – bei nur 3 Slots
-    (Variante "10-7-3", verworfen) wäre die 40%-Obergrenze nur über
-    wiederholte Nutzung der eigentlich seltenen 12%-Ausnahme erreichbar.
+  - **3 Talent** – rechnerisch korrekt hergeleitet aus dem
+    10%-Positionsdeckel (Gesamtportfolio-Basis) im Verhältnis zur
+    40%-Talent-Obergrenze (Aktienanteil-Basis) bei aktueller
+    Portfolio-Zusammensetzung, siehe Herleitung oben.
+  - **Wichtiger Vorbehalt (2026-09-03, aus dem System-Audit):** diese
+    Herleitung hängt am AKTUELLEN Verhältnis Aktienanteil/Gesamtportfolio
+    (~74%). Wächst der ETF-Anteil wie langfristig geplant Richtung 50-60%
+    des Gesamtportfolios, sinkt der Aktienanteil-Anteil entsprechend, und
+    dieselbe Rechnung würde eine NOCH niedrigere Talent-Positionszahl
+    ergeben (bei 45% Aktienanteil z.B. nur noch ca. 2 Positionen). Die
+    Zahl "3" ist also kein für alle Zeit stabiler Wert, sondern an die
+    aktuelle Aufbauphase gebunden – bei spürbarer Verschiebung des
+    ETF/Aktienanteil-Verhältnisses (Prüfpunkt: jedes Wochenfazit) muss
+    diese Herleitung neu gerechnet werden, nicht nur einmalig festgelegt
+    bleiben.
   - **Langfristiger Ausblick (von Jarvis empfohlen, noch nicht
-    festgeschrieben):** Sobald das Depot deutlich über die aktuelle
-    Aufbauphase hinausgewachsen ist, spricht einiges dafür, Talent auf
-    5-6 Positionen aufzuweiten (echter Portfolio-Effekt bei spekulativen
-    Wetten statt Dominanz einzelner Ausfälle/Volltreffer bei nur 3-4
-    Positionen) – bewusst als spätere Anpassung vorgemerkt, nicht Teil der
-    aktuellen 10-6-4-Festlegung.
-  - **Praktische Konsequenz zum Zeitpunkt der Festlegung:** Champions
-    aktuell 8/10 (2 Slots frei), Profi aktuell 5/6 (1 Slot frei), Talent
-    aktuell 5/4 (**bereits über Ziel** – keine neuen Talent-Zukäufe, bis
-    eine bestehende Position ausscheidet, auch wenn das Kapitalgewicht noch
-    Spielraum hätte). Siehe `depot/kategorisierung.md` für die laufend
-    aktuelle Zählung.
+    festgeschrieben):** unabhängig von der Positionscap-Rechnung spricht
+    aus reiner Diversifikations-Sicht (Portfolio-Effekt bei spekulativen
+    Wetten statt Dominanz einzelner Ausfälle/Volltreffer bei nur 2-3
+    Positionen) einiges dafür, Talent perspektivisch eher auf 5-6
+    Positionen aufzuweiten als weiter zu verengen – das steht in
+    Spannung zum obigen Cap-Argument (das eher Richtung 2 tendiert, wenn
+    der Aktienanteil weiter sinkt) und ist bewusst als ungelöste
+    Zielkonflikt-Frage für eine spätere, bewusste Entscheidung vorgemerkt,
+    nicht Teil der aktuellen Festlegung.
+  - **Praktische Konsequenz zum Zeitpunkt der Korrektur:** Champions
+    aktuell 8/10 (2 Slots frei), Profi aktuell 5/7 (2 Slots frei), Talent
+    aktuell 5/3 (**2 über Ziel** – keine neuen Talent-Zukäufe, bis
+    mindestens eine bestehende Position ausscheidet, auch wenn das
+    Kapitalgewicht noch Spielraum hätte). Siehe `depot/kategorisierung.md`
+    für die laufend aktuelle Zählung.
 - **Update (2026-09-03, von Brian gefordert nach uneinheitlicher
   Kategorisierung im Strategiespiegel-Report): feste Nachschlage-Tabelle
   statt freier Einschätzung pro Analyse.** Auslöser: Jack, Conan und Jarvis

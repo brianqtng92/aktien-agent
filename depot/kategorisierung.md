@@ -28,17 +28,24 @@ Kaufhistorien-Dokumentation (ein Dokumentationsproblem ist kein
 Geschäftsqualitäts-Urteil). Nur die drei oben genannten Kriterien
 (Marge, Marktstellung, Wachstumsverlässlichkeit) entscheiden.
 
-## Ziel-Positionsanzahl: "10-6-4" (festgesetzt 2026-09-03)
+## Ziel-Positionsanzahl: "10-7-3" (festgesetzt 2026-09-03, korrigiert 2026-09-03)
 
-**10 Champions / 6 Profi / 4 Talent = 20 Einzelwerte gesamt** (siehe
-architecture.md, Abschnitt 3, für die vollständige Begründung inkl. der
-10%-Positionscap-Logik hinter der 4er-Talent-Grenze).
+**10 Champions / 7 Profi / 3 Talent = 20 Einzelwerte gesamt** (siehe
+architecture.md, Abschnitt 3, für die vollständige Begründung). Ursprünglich
+als "10-6-4" festgelegt – noch am selben Tag im 3-KI-System-Audit als
+rechnerisch fehlerhaft erkannt (der 10%-Positionsdeckel gilt fürs
+Gesamtportfolio, die 40%-Talent-Grenze fürs Aktienanteil – beides zu
+vermischen ergab die falsche Zahl 4 statt korrekt 3) und auf "10-7-3"
+korrigiert. **Vorbehalt:** die "3" hängt am aktuellen Aktienanteil-Anteil
+(~74% des Gesamtportfolios) – wächst der ETF-Anteil wie geplant, sinkt
+diese Zahl rechnerisch weiter (siehe architecture.md für Details), daher
+kein für immer fixer Wert.
 
 | Kategorie | Ziel | Ist (03.09.2026) | Freie Slots |
 |---|---|---|---|
 | Champions | 10 | 8 | 2 frei |
-| Profi | 6 | 5 | 1 frei |
-| Talent | 4 | 5 | **1 über Ziel** – keine neuen Talent-Zukäufe, bis eine bestehende Position ausscheidet |
+| Profi | 7 | 5 | 2 frei |
+| Talent | 3 | 5 | **2 über Ziel** – keine neuen Talent-Zukäufe, bis mindestens eine bestehende Position ausscheidet |
 
 ## CRV-Ampel (2026-09-03, von Brian gefordert: "das soll auch für Depot-Werte gelten")
 
@@ -137,6 +144,10 @@ Verkaufssignal vorliegt.
   uneinig sind.
 - 2026-09-03: Ziel-Positionsanzahl auf "10-6-4" festgesetzt (Brian), löst
   die alte Spanne (8-10/3-5/5-9 Rest) ab.
+- 2026-09-03 (später am selben Tag): "10-6-4" im 3-KI-System-Audit (Jarvis/
+  Jack/Conan) als rechnerisch fehlerhaft erkannt (Basen-Verwechslung
+  Gesamtportfolio vs. Aktienanteil) und auf **"10-7-3"** korrigiert – siehe
+  architecture.md für die vollständige Herleitung.
 - 2026-09-03: CRV-Ampel (inkl. Margin-of-Safety/Drawdown-Hinweise) auch für
   alle 18 Depot-Positionen eingeführt (vorher nur Watchlist), 4-stufige
   Skala (🟢/🟡/🟠/🔴) statt 3-stufig – von Brian gefordert.

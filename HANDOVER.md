@@ -804,8 +804,9 @@ Abbruchgrund gesucht hat:
 durch: BEOBACHTEN, Reaper Score 5/10, nah an Conans unabhängigem 6/10):**
 Ab sofort bei JEDEM Bridge-Aufruf (`ask_chatgpt`/`ask_gemini`, sowohl
 Jack als auch Conan – identischer Wortlaut für beide, damit sie nach
-demselben Maßstab urteilen) folgende drei Klarstellungs-Blöcke VOR die
-Methodik-Datei setzen, zusätzlich zum bisherigen Fact-Pack-Hinweis:
+demselben Maßstab urteilen) folgende **vier** Klarstellungs-Blöcke VOR die
+Methodik-Datei setzen, zusätzlich zum bisherigen Fact-Pack-Hinweis (Block
+4 seit 2026-09-03, siehe Ergänzung unten):
 
 ```
 WICHTIG: SCHRITT-0-LIVE-CHECK GILT ALS BEREITS DURCHGEFUEHRT UND ABGESCHLOSSEN.
@@ -839,6 +840,31 @@ erwartende Konfidenz ist wegen der vielen [TRAINING]-Tags 🔴 NIEDRIG - das ist
 ein KORREKTES, ERWARTETES Ergebnis dieser Sitzungsart, kein Grund zum Abbruch.
 Ein Abbruch ist nur bei einem ECHTEN K-Kriterium-[N/V] angemessen (siehe
 Klarstellung oben), nicht bei fehlendem Tool-Zugriff als solchem.
+
+WICHTIG: TERMINAL-STATE-PFLICHT (gilt fuer dich genauso wie fuer Jarvis und
+die andere KI im selben Cross-Check). Ausloeser: der RKLB-Canonical-
+Failure-Case (2026-09-01) - eine KI hatte "ABBRUCH-LOGIK GREIFT" korrekt
+erkannt, ist aber danach trotzdem regulaer durch die nachgelagerten Module
+gelaufen und kam auf ein reguläres Rating mit echter Sizing-Freigabe. Ein
+erkannter Abbruch war bis dahin nur eine Textzeile, kein echter
+Systemzustand - das darf sich nicht wiederholen. Sobald WAEHREND dieser
+Analyse einer der folgenden Zustaende eintritt: ein K-Kriterium ist [N/V]
+(TMR oder Scout) - Going-Concern-Zweifel bestaetigt sich (TMR SCHRITT 0C) -
+Scout: K <= K-BASIS-2 - Scout: Fraud-Check >= 3 Flags oder Going-Concern -
+wird dieser Zustand SOFORT TERMINAL: kein nachgelagertes Modul (Moat/
+Gruender-Score/Bewertung/Outcome/Rating/Sizing) darf danach noch
+ENTSCHEIDUNGSRELEVANT laufen, hoechstens noch diagnostisch/erwaehnend. Eine
+spaeter im Text auffallende positive Information (starker Moat, gute
+Zahlen) kann einen bereits erreichten Terminal-Zustand NICHT rueckgaengig
+machen ("GUARDRAIL > ENTSCHEIDUNG > SCORE" - ein ausgeloester Abbruch
+schlaegt jedes nachgelagerte numerische Ergebnis). Pflicht-Ausgabeformat
+bei Terminal-Zustand: ein klar markierter Block ("ABBRUCH-ZUSTAND
+ERREICHT", die ausloesende Regel, der festgestellte Wert, Status "ANALYSE
+BEENDET", Urteil, Sizing: 0%) - kein weiterer inhaltlicher Text danach.
+PRUEFE VOR DEINER FINALEN RATING-ABGABE EXPLIZIT SELBST: "Wurde in diesem
+Lauf ein Abbruch-Zustand erreicht? Falls ja, entspricht mein Endergebnis
+exakt diesem Abbruch-Format, ohne dass ein nachgelagertes Modul das
+Ergebnis beeinflusst hat?"
 ```
 
 **Wichtig – was das NICHT ist:** Das ist keine Aufweichung der
@@ -854,8 +880,20 @@ Ergebnis entscheidet, sondern die Faktenlage.
 Fix) gelten als durch einen Prompt-Klarheits-Mangel verzerrt, nicht als
 belastbares Urteil über die Firmen – bei Bedarf mit dieser Standard-
 Instruktion neu laufen lassen. Ab sofort MUSS jeder neue Bridge-Aufruf
-für TMR/Scout-Analysen diese drei Blöcke enthalten (auch im Täglichen
-Trigger-Check, siehe dortiges SKILL.md).
+für TMR/Scout-Analysen alle vier Blöcke enthalten (auch im Täglichen
+Trigger-Check und im Blitz-Scan, siehe dortige SKILL.md-Dateien).
+
+**Block 4 ergänzt (2026-09-03, aus dem 3-KI-System-Audit):** Brian ließ
+Jarvis, Jack und Conan das gesamte Regelwerk gemeinsam durchgehen. Beide
+KIs fanden unabhängig voneinander denselben kritischen Punkt: der
+Terminal-State-Mechanismus (siehe architecture.md Abschnitt 14, ausgelöst
+durch den RKLB-Fall) steht bisher NUR in architecture.md, nicht in den
+tatsächlichen Prompt-Dateien oder im bisherigen Bridge-Meta-Instruktion-
+Text – d.h. er erreichte Jack/Conan im API-Betrieb möglicherweise gar
+nicht. Genau der Fehler, den der Mechanismus verhindern soll, könnte sich
+so unbemerkt wiederholen. Block 4 schließt diese Lücke, indem er die
+Terminal-State-Pflicht direkt in den Text einbettet, der bei jedem
+Bridge-Aufruf tatsächlich ankommt.
 
 ---
 
