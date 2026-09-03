@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Watchlist Übersicht</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1A1C1F; --bg-panel: #232629; --bg-panel-2: #2A2D31;
+    --border: #3A3E43; --border-soft: #303337;
+    --text: #EDE8DF; --text-dim: #A39B8E; --text-faint: #6E6860;
+    --gold: #C6922C; --gold-bright: #E0B24E; --gold-dim: #7A5F24;
+    --green: #5C9A5F; --green-bg: rgba(92,154,95,0.15);
+    --yellow: #DDB13B; --yellow-bg: rgba(221,177,59,0.15);
+    --orange: #C97A3D; --orange-bg: rgba(201,122,61,0.16);
+    --red: #BC4F41; --red-bg: rgba(188,79,65,0.17);
+    --blue: #6C93B8; --blue-bg: rgba(108,147,184,0.14);
+  }
+  html, body { background: var(--bg); color: var(--text); font-family: "Carlito", "DejaVu Sans", Arial, sans-serif; font-size: 9.3pt; line-height: 1.4; }
+  .display { font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif; font-weight: 700; font-stretch: condensed; }
+  .page { width: 210mm; min-height: 297mm; padding: 12mm 13mm 10mm 13mm; }
+
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 3mm; margin-bottom: 4mm; }
+  .brand { font-size: 19pt; letter-spacing: 0.04em; }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 7.4pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .meta-block { text-align: right; font-size: 7.8pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 9pt; }
+
+  .legend-row { display: flex; gap: 4mm; margin-bottom: 5mm; flex-wrap: wrap; }
+  .legend-pill { display: flex; align-items: center; gap: 1.5mm; font-size: 7.4pt; color: var(--text-dim); }
+  .dot { width: 2.6mm; height: 2.6mm; border-radius: 50%; display: inline-block; }
+  .dot.g { background: var(--green); } .dot.y { background: var(--yellow); } .dot.o { background: var(--orange); } .dot.r { background: var(--red); }
+
+  h1.section-title { font-size: 14pt; color: var(--gold-bright); letter-spacing: 0.02em; margin: 6mm 0 3mm 0; padding-bottom: 1.5mm; border-bottom: 1px solid var(--border-soft); }
+  h1.section-title .count { font-size: 8.5pt; color: var(--text-faint); font-weight: normal; font-family: "Carlito"; }
+
+  .card { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 3mm 4mm; margin-bottom: 2.6mm; page-break-inside: avoid; }
+  .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 3mm; margin-bottom: 1.5mm; }
+  .card-name { display: flex; align-items: baseline; gap: 2.5mm; flex-wrap: wrap; }
+  .ticker { font-size: 10.5pt; letter-spacing: 0.02em; }
+  .company { font-size: 8.4pt; color: var(--text-dim); }
+  .meta-tags { font-size: 6.8pt; color: var(--text-faint); }
+
+  .crv-pill { font-size: 7.4pt; font-weight: bold; padding: 1mm 2.6mm; border-radius: 10px; white-space: nowrap; flex-shrink: 0; }
+  .crv-g { background: var(--green-bg); color: var(--green); }
+  .crv-y { background: var(--yellow-bg); color: var(--yellow); }
+  .crv-o { background: var(--orange-bg); color: var(--orange); }
+  .crv-r { background: var(--red-bg); color: var(--red); }
+
+  .crv-detail { font-size: 7.6pt; color: var(--text-dim); margin-top: 1mm; line-height: 1.35; }
+  .thesis { font-size: 7.9pt; color: var(--text); margin-top: 1.6mm; line-height: 1.35; }
+  .mos-box { margin-top: 1.6mm; padding: 1.6mm 2.4mm; background: var(--bg-panel-2); border-left: 2px solid var(--gold-dim); font-size: 7.3pt; color: var(--text-dim); border-radius: 2px; }
+  .mos-box b { color: var(--gold-bright); }
+
+  .info-box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold); border-radius: 3px; padding: 3mm 4mm; margin-bottom: 4mm; font-size: 8pt; color: var(--text-dim); line-height: 1.4; }
+  .info-box b { color: var(--text); }
+  .info-box p { margin-bottom: 1.5mm; }
+  .info-box p:last-child { margin-bottom: 0; }
+
+  .footer { margin-top: 6mm; padding-top: 3mm; border-top: 1px solid var(--border-soft); font-size: 6.6pt; color: var(--text-faint); display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <div>
+      <div class="brand display">WATCHLIST <span class="accent">ÜBERSICHT</span></div>
+      <div class="brand-sub">Champions · Profi · Talent — mit CRV-Ampel & Margin of Safety</div>
+    </div>
+    <div class="meta-block">
+      <div class="date display">03.09.2026</div>
+      <div>30 Werte · 13 Champions · 10 Profi · 7 Talent</div>
+      <div>CRV-Stand: WebSearch-Snapshot, eigenes Urteil</div>
+    </div>
+  </div>
+
+  <div class="legend-row">
+    <div class="legend-pill"><span class="dot g"></span>KAUFEN — unterbewertet ggü. Historie</div>
+    <div class="legend-pill"><span class="dot y"></span>ABWARTEN/BEOBACHTEN — fair, kein Signal</div>
+    <div class="legend-pill"><span class="dot o"></span>VORSICHT/TEUER — spürbar teuer, kein hartes Warnsignal</div>
+    <div class="legend-pill"><span class="dot r"></span>MEIDEN/ÜBERBEWERTET — deutlich überbewertet/Warnsignale</div>
+  </div>
+
+  <div class="info-box">
+    <p><b>Was diese Liste ist:</b> Werte außerhalb des Depots, die entweder Ersatzkandidaten für bestehende Positionen oder interessante Ergänzungen sind. Läuft automatisiert im Hintergrund (täglicher Kandidaten-Scan + tägliche News-Ampel + wöchentliche Tiefenprüfung). Max. 20-30 Werte, damit die Übersicht bleibt.</p>
+    <p><b>CRV-Ampel ≠ Champions/Profi/Talent:</b> Die Kategorie zeigt Geschäftsqualität, die CRV-Ampel zeigt, ob JETZT ein guter Einstiegszeitpunkt ist. Beides kann auseinanderfallen — ein Champion kann trotzdem gerade teuer sein (z.B. ASML).</p>
+    <p><b>Methodik:</b> CRV-Urteil ist immer die eigene Einordnung (KGV im Kontext von Wachstum/Marge/Moat), externe Quellen liefern nur Rohdaten, nie das fertige Urteil. Margin-of-Safety-Hinweise (grauer Kasten) zeigen bei AI-Trend-Werten zusätzlich das historische Korrektur-Muster — ein 🟢 KAUFEN ist kein Schutz vor einem erneuten Rücksetzer.</p>
+  </div>
+
+  <h1 class="section-title display">🏆 Champions <span class="count">— 13 etablierte Weltklasse-Compounder</span></h1>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">NVDA</span><span class="company">Nvidia Corp. · USA · Halbleiter (KI-Beschleuniger)</span></div><span class="crv-pill crv-g">🟢 KAUFEN</span></div>
+    <div class="crv-detail">KGV 27,5x, unter eigenem Ø (31,6x)</div>
+    <div class="thesis">Dominanter GPU-/KI-Infrastruktur-Anbieter, faktisches Ökosystem-Monopol (CUDA), zentrale Position im KI-Capex-Zyklus.</div>
+    <div class="mos-box"><b>MoS:</b> 3 Korrekturen &gt;35% im letzten Jahrzehnt (-56% 2018, -66% 2021/22, -22-25% 2023/24) trotz seither intakter These — günstiges KGV schützt nicht vor einem erneuten Rücksetzer, der AI-Capex-Hype erhöht dieses Risiko eher.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">V</span><span class="company">Visa Inc. · USA · Zahlungsverkehr <span class="meta-tags">[EX-DEPOT, verkauft 27.08. @326,40€]</span></span></div><span class="crv-pill crv-g">🟢 KAUFEN</span></div>
+    <div class="crv-detail">KGV 29,6x, unter 3J-Ø (32,4x)</div>
+    <div class="thesis">Zahlungsnetzwerk-Duopol mit Mastercard, extrem hohe Kapitalrendite.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">MA</span><span class="company">Mastercard Inc. · USA · Zahlungsverkehr</span></div><span class="crv-pill crv-g">🟢 KAUFEN</span></div>
+    <div class="crv-detail">KGV unter 3J/5J-Ø</div>
+    <div class="thesis">Duopol-Pendant zu Visa — naheliegende Alternative mit identischer Moat-Logik, falls Visa nicht zurückgekauft wird.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">SPGI</span><span class="company">S&amp;P Global Inc. · USA · Finanzinfrastruktur <span class="meta-tags">[EX-DEPOT, verkauft 27.08. @378,15€]</span></span></div><span class="crv-pill crv-g">🟢 KAUFEN</span></div>
+    <div class="crv-detail">KGV 24,9x, -20% ggü. 12M-Ø</div>
+    <div class="thesis">Duopol-Moat bei Ratings/Indizes.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">SYK</span><span class="company">Stryker Corp. · USA · MedTech <span class="meta-tags">[EX-DEPOT, verkauft 27.08. @279,75€]</span></span></div><span class="crv-pill crv-y">🟡 BEOBACHTEN</span></div>
+    <div class="crv-detail">Unter Eigenhistorie, aber 44% über Branchen-Ø</div>
+    <div class="thesis">Qualitäts-MedTech mit starkem Robotik-Wachstumstreiber (Mako-System).</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">ASML</span><span class="company">ASML Holding N.V. · Europa (NL) · Halbleiterausrüstung</span></div><span class="crv-pill crv-o">🟠 VORSICHT/TEUER</span></div>
+    <div class="crv-detail">KGV 52,7x, 42% über 10J-Median — deutlich teuer ggü. eigener Historie</div>
+    <div class="thesis">EUV-Lithografie-Monopolist — der kritischste Baustein der gesamten Halbleiter-Lieferkette.</div>
+    <div class="mos-box"><b>MoS:</b> historisch bis -90% Max-Drawdown seit Börsengang, zuletzt -45% seit Hoch Mitte 2024 — bei bereits hoher Bewertung wenig Sicherheitsmarge.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">TSM</span><span class="company">Taiwan Semiconductor Mfg. · Asien (Taiwan) · Foundry</span></div><span class="crv-pill crv-g">🟢 KAUFEN</span></div>
+    <div class="crv-detail">KGV 30,2x, -10% ggü. 12M-Ø</div>
+    <div class="thesis">Fertigt die KI-Chips von Nvidia &amp; Co. — größter Foundry-Moat der Welt.</div>
+    <div class="mos-box"><b>MoS:</b> historisch bis -89% Max-Drawdown möglich (zyklisches Foundry-Geschäft + geopolitisches Taiwan-Risiko) — Korrekturrisiko bleibt real trotz günstigem KGV.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">FICO</span><span class="company">Fair Isaac Corp. · USA · Kredit-Scoring</span></div><span class="crv-pill crv-g">🟢 KAUFEN</span></div>
+    <div class="crv-detail">KGV 30,2x, 39% unter 10J-Median — deutlicher Abschlag</div>
+    <div class="thesis">Faktisches Monopol beim US-Kredit-Scoring — einer der stärksten Preissetzungsmacht-Moats überhaupt.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">6861 · Tokyo</span><span class="company">Keyence Corp. · Japan · Fabrikautomatisierung <span class="meta-tags">[EX-DEPOT, verkauft 27.08. @439,90€]</span></span></div><span class="crv-pill crv-y">🟡 BEOBACHTEN</span></div>
+    <div class="crv-detail">KGV 43,6x, leicht erhöht, unter historischem Hoch (65x)</div>
+    <div class="thesis">Einer der profitabelsten Industriekonzerne der Welt (fabless, extrem hohe Marge).</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">7741 · Tokyo</span><span class="company">Hoya Corp. · Japan · Optik/Photomasken &amp; MedTech</span></div><span class="crv-pill crv-o">🟠 VORSICHT/TEUER</span></div>
+    <div class="crv-detail">KGV ~32-37x, deutlich über Branchen-Ø (16,6x)</div>
+    <div class="thesis">Weltmarktführerschaft bei Halbleiter-Photomasken-Rohlingen plus stabilem MedTech-Standbein.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">BN</span><span class="company">Brookfield Corp. · Kanada · Alternative Asset Management</span></div><span class="crv-pill crv-y">🟡 BEOBACHTEN</span></div>
+    <div class="crv-detail">KGV 78x absolut hoch, aber -28% ggü. 12M-Ø (Holding-Struktur, KGV schwer vergleichbar)</div>
+    <div class="thesis">Compounder über Kapitalallokation statt Einzelprodukt-Moat.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">CPRT</span><span class="company">Copart Inc. · USA · Fahrzeugauktionen/Salvage</span></div><span class="crv-pill crv-g">🟢 KAUFEN</span></div>
+    <div class="crv-detail">KGV 17,4x, 46% unter 10J-Median — deutlicher Abschlag</div>
+    <div class="thesis">Marktführer bei Online-Fahrzeugauktionen, sehr hohe Kapitalrendite.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">ROL</span><span class="company">Rollins Inc. · USA · Schädlingsbekämpfung</span></div><span class="crv-pill crv-g">🟢 KAUFEN</span></div>
+    <div class="crv-detail">KGV 33,2x, 38% unter 10J-Median — deutlicher Abschlag</div>
+    <div class="thesis">Extrem stabiler, wiederkehrender Cashflow, einer der zuverlässigsten Compounder im S&amp;P 500.</div>
+  </div>
+
+  <div class="footer">
+    <span>Watchlist-Übersicht — Brians Aktien-Agent</span>
+    <span>Seite 1</span>
+  </div>
+</div>
+
+<div class="page">
+  <h1 class="section-title display">⚙️ Profi <span class="count">— 10 solide Qualitätsfirmen/Nischenführer</span></h1>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">CRWD</span><span class="company">CrowdStrike Holdings · USA · Cybersecurity</span></div><span class="crv-pill crv-y">🟡 BEOBACHTEN</span></div>
+    <div class="crv-detail">KGV nicht aussagekräftig (TTM-EPS nahe Null), Bewertung nicht sauber beurteilbar</div>
+    <div class="thesis">Cloud-native Cybersecurity-Plattform (Falcon) mit hoher Kundenbindung.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">ANET</span><span class="company">Arista Networks · USA · Netzwerktechnik Rechenzentren</span></div><span class="crv-pill crv-o">🟠 VORSICHT/TEUER</span></div>
+    <div class="crv-detail">KGV 63,4x, 54% über 10J-Median</div>
+    <div class="thesis">Führender Anbieter von Hochleistungs-Switches für Cloud-/KI-Rechenzentren.</div>
+    <div class="mos-box"><b>MoS:</b> -37% Drawdown allein im Inflations-Schock 2022 — bei aktuell hoher Bewertung kaum Sicherheitsmarge.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">VRT</span><span class="company">Vertiv Holdings · USA · Rechenzentrums-Infrastruktur</span></div><span class="crv-pill crv-y">🟡 BEOBACHTEN</span></div>
+    <div class="crv-detail">KGV 58,2x absolut hoch, 16% unter 10J-Median — aber kurze Handelshistorie (erst seit 2020) macht den Vergleich wenig belastbar</div>
+    <div class="thesis">Zentraler Ausrüster für Rechenzentrums-Kühlung/-Stromversorgung.</div>
+    <div class="mos-box"><b>MoS:</b> direktes AI-Rechenzentrums-Play ohne lange eigene Krisen-Historie — Vorsicht vor falscher Sicherheit durch die relative KGV-Zahl.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">FTNT</span><span class="company">Fortinet Inc. · USA · Cybersecurity/Firewalls</span></div><span class="crv-pill crv-y">🟡 BEOBACHTEN</span></div>
+    <div class="crv-detail">KGV ~54-62x, moderat teuer, aber profitabelster der Cybersecurity-Gruppe</div>
+    <div class="thesis">Ergänzt CrowdStrike um die Netzwerk-/Firewall-Seite.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">MPWR</span><span class="company">Monolithic Power Systems · USA · Power Management</span></div><span class="crv-pill crv-y">🟡 BEOBACHTEN</span></div>
+    <div class="crv-detail">KGV 74,8x, im Rahmen der eigenen Bewertungsspanne — kein klares Signal, kein Schnäppchen</div>
+    <div class="thesis">Nischenführer bei Power-Management-Chips für Rechenzentren/KI-Server, hohe Margen.</div>
+    <div class="mos-box"><b>MoS:</b> -46% Drawdown 2022, aktuell bereits wieder -27% vom letzten Hoch — deutliches Korrekturmuster trotz starker Erholungsfähigkeit (+74% 2023).</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">AIT</span><span class="company">Applied Industrial Technologies · USA · Industrielle Distribution</span></div><span class="crv-pill crv-y">🟡 BEOBACHTEN</span></div>
+    <div class="crv-detail">KGV ~25-29x, keine klaren Extremsignale, moderat</div>
+    <div class="thesis">Qualitäts-Distributor, profitiert von Reshoring/Automatisierung.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">6146 · Tokyo</span><span class="company">Disco Corp. · Japan · Wafer-Dicing/-Schleifen</span></div><span class="crv-pill crv-y">🟡 ABWARTEN/BEOBACHTEN</span></div>
+    <div class="crv-detail">KGV ~50x teuer, FCF-Marge (16,9%) unter 20%-Schwelle — volle 3-fach-Analyse 03.09. (Jarvis ABBRUCH / Jack SCHROTT / Conan BEOBACHTEN 5,5)</div>
+    <div class="thesis">Führend bei Präzisions-Wafer-Dicing, profitiert vom Advanced-Packaging-Trend.</div>
+    <div class="mos-box"><b>MoS:</b> Halbleiterausrüster generell stark zyklusanfällig (vgl. ASML/TSM: 45-90% Max-Drawdowns) — bei bereits hohem KGV kaum Sicherheitsmarge.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">WSO</span><span class="company">Watsco Inc. · USA · HVAC-Distribution</span></div><span class="crv-pill crv-g">🟢 KAUFEN</span></div>
+    <div class="crv-detail">KGV 26,9x, 6% unter 10J-Ø</div>
+    <div class="thesis">Familiengeführter Marktführer in der nordamerikanischen HVAC-Distribution.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">NVT</span><span class="company">nVent Electric plc · USA/Irland · Elektrotechnik</span></div><span class="crv-pill crv-r">🔴 MEIDEN/ÜBERBEWERTET</span></div>
+    <div class="crv-detail">KGV 55,1x, 171% über 10J-Median — stärkstes Überbewertungssignal der ganzen Liste</div>
+    <div class="thesis">Profiteur von Elektrifizierung, Rechenzentrums-Ausbau und Reshoring.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">EXPO</span><span class="company">Exponent, Inc. · USA · Wissenschaftlich-technisches Consulting</span></div><span class="crv-pill crv-o">🟠 VORSICHT/TEUER</span></div>
+    <div class="crv-detail">KGV ~27-35x, deutlich über Branchen-Ø (18x)</div>
+    <div class="thesis">Kapitalleichtes Reputations-/Expertise-Moat-Geschäft (ROIC ~27%), unkorreliert zum Rest der Watchlist.</div>
+  </div>
+
+  <h1 class="section-title display">🚀 Talent <span class="count">— 7 spekulative Spitze, hohes Risiko/hohe Upside</span></h1>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">PLTR</span><span class="company">Palantir Technologies · USA · Daten-/KI-Plattform</span></div><span class="crv-pill crv-r">🔴 MEIDEN/ÜBERBEWERTET</span></div>
+    <div class="crv-detail">Forward-KGV ~98-176x — sehr viel Zukunft bereits im Preis</div>
+    <div class="thesis">Trotz riesiger Marktkap ein echter Talent-Fall — Größe schützt nicht vor Bewertungsrisiko.</div>
+    <div class="mos-box"><b>MoS:</b> -85% Max-Drawdown 2021-2022 trotz seither operativ deutlich besserer Story — ein ähnlich scharfer Rücksetzer ist bei aktuell erneut extremer Bewertung nicht auszuschließen.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">INOD</span><span class="company">Innodata Inc. · USA · KI-Trainingsdienstleistungen</span></div><span class="crv-pill crv-y">🟡 BEOBACHTEN</span></div>
+    <div class="crv-detail">KGV 52,5x vs. Branchen-Ø 23,3x, aber starkes Momentum (+86% YTD)</div>
+    <div class="thesis">Kleiner, spekulativer Profiteur des KI-Booms (Daten-Annotation), Kundenkonzentrationsrisiko.</div>
+    <div class="mos-box"><b>MoS:</b> kleine, illiquide Aktie ohne belastbare eigene Drawdown-Historie — Positionsgröße vorsichtig wählen trotz Momentum.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">USLM</span><span class="company">United States Lime &amp; Minerals · USA · Industriemineralien</span></div><span class="crv-pill crv-g">🟢 KAUFEN</span></div>
+    <div class="crv-detail">KGV 23,3x, moderat für einen Nischenmonopolisten</div>
+    <div class="thesis">Regionaler Nischenmonopolist mit sehr hoher Kapitalrendite.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">SKWD</span><span class="company">Skyward Specialty Insurance · USA · Spezialversicherung</span></div><span class="crv-pill crv-y">🟡 BEOBACHTEN</span></div>
+    <div class="crv-detail">KGV 15x, nah am fairen Wert, leicht über Branche</div>
+    <div class="thesis">Kleinerer Spezialversicherer mit diszipliniertem Underwriting.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">6920 · Tokyo</span><span class="company">Lasertec Corp. · Japan · EUV-Masken-Inspektion</span></div><span class="crv-pill crv-y">🟡 BEOBACHTEN</span></div>
+    <div class="crv-detail">KGV 41,5x, nahe 10J-Median, über JP-Sektor-Ø (25,5x)</div>
+    <div class="thesis">Faktisches Weltmonopol bei EUV-Masken-Inspektion, klassisch zyklisches Semicap-Geschäft.</div>
+    <div class="mos-box"><b>MoS:</b> keine spezifische Drawdown-Quelle recherchiert, aber Sektor strukturell stark zyklisch — analog ASML/TSM 40-90%-Korrekturen möglich.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">6323 · Tokyo</span><span class="company">Rorze Corp. · Japan · Wafer-Handling-Robotik</span></div><span class="crv-pill crv-r">🔴 MEIDEN/ÜBERBEWERTET</span></div>
+    <div class="crv-detail">Marktkap +137% bei Nettogewinn -19% — Bewertung läuft der Ertragsentwicklung erkennbar davon</div>
+    <div class="thesis">Kleiner Nischenzulieferer für Wafer-Transport-Robotik, hohe Relevanz für Fab-Ausbau.</div>
+    <div class="mos-box"><b>MoS:</b> Kombination aus kleiner Marktkap, Zyklik und Bewertungs-Ertrags-Schere — klassisches Setup für eine scharfe Korrektur, praktisch keine Sicherheitsmarge.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-name"><span class="ticker display">7747 · Tokyo</span><span class="company">Asahi Intecc Co. · Japan · Katheter-Führungsdrähte</span></div><span class="crv-pill crv-y">🟡 ABWARTEN/BEOBACHTEN</span></div>
+    <div class="crv-detail">KGV ~25x forward nicht günstig — gemischtes Rating (Jarvis ABBRUCH / Jack SCHROTT / Conan BEOBACHTEN 6), volle Analyse 02.09.</div>
+    <div class="thesis">Weltmarktführer bei Katheter-Führungsdrähten, enger technischer Moat, konzentriertes Nischengeschäft.</div>
+  </div>
+
+  <div class="info-box" style="margin-top: 5mm;">
+    <p><b>Lateinamerika-Slot noch offen:</b> WEG S.A. (Brasilien, Elektrotechnik) besteht alle Gates, alle drei KIs stufen die Qualität als Champion-Tier ein — aber KGV ~33-34x lässt keine Sicherheitsmarge, daher noch nicht formal aufgenommen (Watchlist bei 30/30). Nächster Prüfpunkt: Rücksetzer Richtung 23-25x KGV.</p>
+  </div>
+
+  <div class="footer">
+    <span>Watchlist-Übersicht — Brians Aktien-Agent</span>
+    <span>Seite 2</span>
+  </div>
+</div>
+
+</body>
+</html>
