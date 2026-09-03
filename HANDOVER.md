@@ -921,6 +921,23 @@ hier nur die wichtigsten für den Sessionstart):
 13. **Ungelöster RKLB-Scout-Quick-Filter-Meta-Retro-Fall:** Jarvis/Jack/
     Conan uneins, wie die Scout-Abbruch-Logik mit dem Rating interagieren
     soll – noch offen.
+14. **E-Mail-Versand aus Scheduled Tasks lief nie, seit 2026-09-01
+    diagnostiziert und gefixt (2026-09-03):** Brian bekam trotz "verdrahtet
+    und getestet" markiertem Gmail-Connector nie eine E-Mail aus
+    `taeglicher-trigger-check`/`blitz-scan`/`wochenfazit`, obwohl die
+    Läufe selbst (inkl. Commits) normal durchliefen. Per Gmail
+    `search_threads` verifiziert: seit der Verbindungstest-Mail vom
+    2026-09-01 keine einzige weitere Aktien-Agent-Mail im
+    "Gesendet"-Ordner. Wahrscheinliche Ursache: `send_message` (Gmail)
+    und `PushNotification` sind deferred tools und müssen vor dem ersten
+    Aufruf per `ToolSearch` geladen werden (wie es für die Bridge-Tools
+    bereits von Anfang an in den SKILL.md-Dateien stand) – das fehlte für
+    Gmail/PushNotification. Fix in allen drei SKILL.md-Dateien ergänzt
+    (expliziter `ToolSearch`-Aufruf ganz am Anfang jedes Laufs + Pflicht,
+    das tatsächliche Erfolgsergebnis von `send_message` zu prüfen). Noch
+    NICHT verifiziert, ob der Fix greift – Prüfpunkt ist die tägliche
+    "alles ruhig"-Bestätigungsmail am 2026-09-04. Siehe
+    `project_trigger_check_email_verifizierung`-Memory für Details.
 
 **Zusätzlich aus dieser Übergabe neu identifiziert (noch nicht in
 architecture.md eingetragen, da dieses Dokument keine Regeln ändert –
