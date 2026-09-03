@@ -52,6 +52,15 @@ keins):**
 - 🟡 **HALTEN/BEOBACHTEN** – fair bewertet, kein starkes Signal in beide Richtungen.
 - 🟠 **KEIN NACHKAUF (TEUER)** – spürbar teuer ggü. Historie/Peers, aber kein hartes Warnsignal (spekulativ, nicht fundamental gebrochen).
 - 🔴 **KEIN NACHKAUF – ÜBERBEWERTET (Review empfohlen)** – deutlich überbewertet und/oder mehrere gleichzeitige Warnsignale; löst KEINEN automatischen Verkauf aus, aber eine bewusste Prüfung, ob die These die Überbewertung rechtfertigt.
+- 🔘 **GRAU – KEINE BELASTBARE AUSSAGE** (siehe `watchlist.md`, identisches Prinzip) – KGV liefert kein sinnvolles Ergebnis und kein tragfähiger Ersatzmaßstab ist verfügbar.
+
+**Bewertungsanker je Geschäftsmodell** (siehe `watchlist.md`, identisches
+Prinzip): bei den drei Versicherern/der Bank im Depot (Münchener Rück,
+Allianz, Bank Central Asia) ist **KBV/ROE** der sachlich passendere Anker
+als KGV – Versicherer/Banken werden am Markt strukturell über
+Buchwert-Multiples bewertet, nicht über Gewinn-Multiples wie
+Industrie-/Tech-Werte. Bei Kraken Robotics und HawkEye 360 ist KGV wegen
+fehlender/verzerrter Gewinnhistorie nicht sinnvoll anwendbar.
 
 **Wichtig:** Die CRV-Ampel bei einer bestehenden Depot-Position ist KEIN
 automatisches Verkaufssignal – dafür gelten weiterhin ausschließlich die
@@ -73,11 +82,11 @@ Analog zur Watchlist-Matrix (siehe `watchlist.md`) – zeigt auf einen
 Blick, welche Depot-Positionen aktuell nachkaufwürdig sind (nach
 Qualitätsstufe geordnet) und wo Vorsicht angebracht ist.
 
-| Qualität \\ CRV | 🟢 Nachkauf attraktiv | 🟡 Halten/Beobachten | 🟠 Kein Nachkauf (teuer) | 🔴 Kein Nachkauf – überbewertet |
-|---|---|---|---|---|
-| 🏆 Champions (8) | Intuitive Surgical, Münchener Rück, ServiceNow, Hermès, MercadoLibre, Bank Central Asia (6) | Constellation Software, Allianz (2) | – | – |
-| ⚙️ Profi (5) | Broadridge, Tristel (2) | Rambus (1) | CBOE, A10 Networks (2) | – |
-| 🚀 Talent (5) | – | SoFi, HawkEye 360 (2) | Kraken Robotics (1) | Cellebrite, Rocket Lab (2) |
+| Qualität \\ CRV | 🟢 Nachkauf attraktiv | 🟡 Halten/Beobachten | 🟠 Kein Nachkauf (teuer) | 🔴 Kein Nachkauf – überbewertet | 🔘 Grau |
+|---|---|---|---|---|---|
+| 🏆 Champions (8) | Intuitive Surgical, Münchener Rück, ServiceNow, Hermès, MercadoLibre, Bank Central Asia (6) | Constellation Software, Allianz (2) | – | – | – |
+| ⚙️ Profi (5) | Broadridge, Tristel (2) | Rambus (1) | CBOE, A10 Networks (2) | – | – |
+| 🚀 Talent (5) | – | SoFi (1) | – | Cellebrite, Rocket Lab (2) | Kraken Robotics, HawkEye 360 (2) |
 
 **Lesehilfe:** 6 der 8 Champions sind aktuell nachkaufattraktiv – passt zum
 Befund aus dem letzten Ist-Abgleich, dass Champions beim Gewicht bereits
@@ -94,13 +103,13 @@ Verkaufssignal vorliegt.
 | Position | CRV | Begründung Kategorie |
 |---|---|---|
 | Intuitive Surgical | 🟢 KAUFEN/NACHKAUFEN – KGV 40,1x, 42% unter 10J-Median (68,8x). **MoS-Hinweis:** historischer Max-Drawdown -82,3% (2001), -75,9% (2009), -49,9% (2022), aktuell bereits selbst -44,2% im laufenden Drawdown – der günstige KGV-Vergleich spiegelt genau diesen laufenden Rücksetzer. | Named-Beispiel Brian (Quasi-Monopol Roboterchirurgie) |
-| Münchener Rückversicherung | 🟢 KAUFEN/NACHKAUFEN – KGV ~10-11x, absolut günstig für Qualitäts-Rückversicherer. **MoS-Hinweis:** dokumentierter schwerer Kursrückgang während der Finanzkrise 2008 (genaue % nicht verlässlich recherchierbar) – auch Rückversicherer sind bei Systemkrisen nicht immun. | Named-Beispiel Brian (Oligopol Rückversicherung) |
+| Münchener Rückversicherung | 🟢 KAUFEN/NACHKAUFEN – **Anker: KBV/ROE statt KGV** (Rückversicherer). KGV ~10-11x zur Einordnung ergänzend absolut günstig für Qualitäts-Rückversicherer. **MoS-Hinweis:** dokumentierter schwerer Kursrückgang während der Finanzkrise 2008 (genaue % nicht verlässlich recherchierbar) – auch Rückversicherer sind bei Systemkrisen nicht immun. | Named-Beispiel Brian (Oligopol Rückversicherung) |
 | ServiceNow | 🟢 KAUFEN/NACHKAUFEN – KGV 80,3x, 45% unter 10J-Median (146,8x). **MoS-Hinweis:** absolute Bewertung bleibt hoch, "günstig" ist relativ zur eigenen Historie, nicht zu Sicherheitsmarge im klassischen Sinn. | Named-Beispiel Brian (Enterprise-Software-Standard) |
 | Constellation Software | 🟡 HALTEN/BEOBACHTEN – KGV 55,6x, nur 17% unter 10J-Median (66,9x), moderater Abschlag. **MoS-Hinweis:** bemerkenswert flache Drawdown-Historie für einen Software-Compounder (-23,7% 2008, -24,8% 2015/16, -24,2% 2020) – deutlich stabiler als die meisten Tech-Werte dieser Liste. | Serial-Acquirer, Nischen-Monopole, sehr hohe Marge |
 | Hermès | 🟢 KAUFEN/NACHKAUFEN – KGV ~36-38x, 25-28% unter 10J-Median (49,2x). **MoS-Hinweis:** keine spezifische Drawdown-Quelle recherchiert, aber Luxusgüter historisch bei Konsumeinbrüchen (2008, 2020) mit deutlichen zweistelligen bis niedrigen dreistelligen Korrekturen. | Luxusmonopol, extreme Pricing Power |
 | MercadoLibre | 🟢 KAUFEN/NACHKAUFEN – KGV 46,7x, 40% unter 10J-Median (77,4x). **MoS-Hinweis:** LatAm-Fintech/E-Commerce, historisch volatil bei Makro-/Währungsschocks. | Dominante E-Commerce/Fintech-Plattform LatAm |
-| Allianz SE | 🟡 HALTEN/BEOBACHTEN – KGV ~14-15x, leicht über eigenem 3J/5J-Ø (~10-11x) und 10% über Branchen-Ø. **MoS-Hinweis:** historischer Max-Drawdown -72,7% (2008), -48,7% (2020) – auch globale Top-Versicherer sind in Systemkrisen extrem exponiert. | Quasi-Monopol-Skala wie Münchener Rück, AA-Bonität, globaler Top-3-Versicherer/Vermögensverwalter (korrigiert 2026-09-03, vorher fälschlich Talent – Grund war Positionsgröße, kein zulässiges Kriterium) |
-| Bank Central Asia | 🟢 KAUFEN/NACHKAUFEN – KGV ~12-14x, 52% unter 10J-Median (24,4x). **MoS-Hinweis:** Max-Drawdown -42,8% (COVID-Crash März 2020) – EM-Bank trotz Qualität nicht immun gegen globale Schocks. | ROE >20%, dominante Marktstellung Indonesien, verlässliches Wachstum (korrigiert 2026-09-03, vorher fälschlich Talent – Grund war EM-Status, kein zulässiges Kriterium) |
+| Allianz SE | 🟡 HALTEN/BEOBACHTEN – **Anker: KBV/ROE statt KGV** (Versicherer/Vermögensverwalter). KGV ~14-15x, leicht über eigenem 3J/5J-Ø (~10-11x) und 10% über Branchen-Ø. **MoS-Hinweis:** historischer Max-Drawdown -72,7% (2008), -48,7% (2020) – auch globale Top-Versicherer sind in Systemkrisen extrem exponiert. | Quasi-Monopol-Skala wie Münchener Rück, AA-Bonität, globaler Top-3-Versicherer/Vermögensverwalter (korrigiert 2026-09-03, vorher fälschlich Talent – Grund war Positionsgröße, kein zulässiges Kriterium) |
+| Bank Central Asia | 🟢 KAUFEN/NACHKAUFEN – **Anker: KBV/ROE statt KGV** (Bank). ROE >20% ist der eigentlich tragende Beleg, KGV ~12-14x, 52% unter 10J-Median (24,4x). **MoS-Hinweis:** Max-Drawdown -42,8% (COVID-Crash März 2020) – EM-Bank trotz Qualität nicht immun gegen globale Schocks. | ROE >20%, dominante Marktstellung Indonesien, verlässliches Wachstum (korrigiert 2026-09-03, vorher fälschlich Talent – Grund war EM-Status, kein zulässiges Kriterium) |
 
 ### Profi
 | Position | CRV | Begründung Kategorie |
@@ -116,9 +125,9 @@ Verkaufssignal vorliegt.
 |---|---|---|
 | SoFi Technologies | 🟡 HALTEN/BEOBACHTEN – KGV ~35-38x. **MoS-Hinweis:** bereits -53% Drawdown 2026 (Short-Seller-Attacke, Peak Ende 2025 → Tief 30.03.), aktuelle Bewertung nach der Korrektur moderater; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | Archetyp-Beispiel Brian für diese Kategorie |
 | Cellebrite DI Ltd | 🔴 KEIN NACHKAUF – ÜBERBEWERTET – KGV 52,7x, 25% über 10J-Median (42,1x), 46,8x vs. Branchen-fair-Ratio ~30x. **MoS-Hinweis:** zusätzlich -33% Kursrückgang 2026 – teuer UND im Abwärtstrend gleichzeitig, kein Nachkauf-Zeitpunkt. | Jung notiert (SPAC 2021), noch kein etablierter Track Record |
-| Kraken Robotics | 🟠 KEIN NACHKAUF (TEUER) – KGV extrem verzerrt (nahe Gewinnschwelle, 100x+ teils berichtet), kaum aussagekräftig. **MoS-Hinweis:** bereits -41% vom 52-Wochen-Hoch – Vorsicht in beide Richtungen, Bewertung schwer greifbar. | Früher Umsatzaufbau, kein Live-Kurs, hohe Volatilität |
+| Kraken Robotics | 🔘 GRAU – KEINE BELASTBARE AUSSAGE – **Anker: KGV ungeeignet** (nahe Gewinnschwelle, 100x+ teils berichtet, extrem verzerrt), kein tragfähiger Ersatzmaßstab aus dem Fact-Pack ableitbar. **MoS-Hinweis:** bereits -41% vom 52-Wochen-Hoch – Vorsicht in beide Richtungen, Bewertung schwer greifbar. | Früher Umsatzaufbau, kein Live-Kurs, hohe Volatilität |
 | Rocket Lab USA | 🔴 KEIN NACHKAUF – ÜBERBEWERTET – unprofitabel (kein KGV berechenbar), Marktkap preist bereits deutliches künftiges Wachstum ein, ohne dass die Ertragslage das aktuell stützt – eigene Einordnung: Bewertung sportlich. **MoS-Hinweis:** bereits -61% vom Jahreshoch, historisch bis zu -70% Drawdown (2022) und im Schnitt -37% je Schock über 5 Marktphasen – auch nach Korrektur bleibt die Bewertung angespannt. | Wachstumsphase, historisch unprofitabel, kein Monopol |
-| HawkEye 360 | 🟡 HALTEN/BEOBACHTEN – kein KGV (jung/unprofitabel). **MoS-Hinweis:** bereits ca. -50% vom Allzeithoch (Mai 2026) und -32% unter IPO-Preis (26$) gefallen, keine belastbare Bewertungshistorie; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | Kein Live-Kurs, dünnste Datenlage im Depot |
+| HawkEye 360 | 🔘 GRAU – KEINE BELASTBARE AUSSAGE – **Anker: KGV ungeeignet** (jung, unprofitabel, kein tragfähiger Ersatzmaßstab recherchiert). **MoS-Hinweis:** bereits ca. -50% vom Allzeithoch (Mai 2026) und -32% unter IPO-Preis (26$) gefallen, keine belastbare Bewertungshistorie; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | Kein Live-Kurs, dünnste Datenlage im Depot |
 
 ## Änderungsprotokoll
 - 2026-09-03: Erstanlage dieser Datei. Korrektur von 4 Fehlzuordnungen aus

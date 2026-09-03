@@ -3188,13 +3188,27 @@ künftige Portfolio-Aufnahme** sind.
      ist – für Depot-Positionen jetzt "NACHKAUF ATTRAKTIV" / "HALTEN-
      BEOBACHTEN" / "KEIN NACHKAUF (TEUER)" / "KEIN NACHKAUF – ÜBERBEWERTET
      (Review empfohlen)" statt der Watchlist-Formulierungen KAUFEN/MEIDEN.
-  Weitere Vorschläge aus der Feedback-Runde (Bewertungsanker je
-  Geschäftsmodell statt reinem KGV, 5. Farbe GRAU für "KGV nicht
-  aussagekräftig", PEG/FCF-Yield/Insider-Käufe/Short-Interest als
-  Sekundärsignale, Confidence-Level, Revisionstrend) sind bewusst NICHT
-  sofort umgesetzt – als offener Punkt für eine spätere, gezielte
-  Erweiterung vorgemerkt, um das System nicht in einem Schritt zu
-  überladen.
+  **Zwei weitere Ergänzungen (2026-09-03, auf Brians ausdrücklichen
+  Wunsch nach der ersten Runde nachgezogen):**
+  4. **Bewertungsanker je Geschäftsmodell (Conans Vorschlag):** KGV ist
+     der Standard-Anker, aber nicht überall sachlich richtig. Banken/
+     Versicherer (Münchener Rück, Allianz, Bank Central Asia) bekommen
+     explizit den Zusatz "Anker: KBV/ROE statt KGV" – diese
+     Geschäftsmodelle werden am Markt strukturell über Buchwert-Multiples
+     bewertet, nicht Gewinn-Multiples. Kein Ankerhinweis in der Zelle
+     bedeutet: KGV ist der passende Standard-Anker.
+  5. **5. Farbe 🔘 GRAU – "keine belastbare Aussage" (Conans Vorschlag):**
+     für Fälle, in denen weder KGV noch ein tragfähiger Ersatzmaßstab aus
+     dem Fact-Pack ableitbar ist (Gewinn nahe null/stark verzerrt, keine
+     Historie) – methodisch sauberer, als eine nicht belastbare Zahl
+     künstlich in eine der vier Farben zu pressen. Aktuell angewendet auf
+     CrowdStrike (Watchlist) sowie Kraken Robotics und HawkEye 360
+     (Depot).
+  Weitere Vorschläge aus der Feedback-Runde (PEG/FCF-Yield/Insider-Käufe/
+  Short-Interest als Sekundärsignale, Confidence-Level, Revisionstrend)
+  sind weiterhin bewusst NICHT umgesetzt – als offener Punkt für eine
+  spätere, gezielte Erweiterung vorgemerkt, um das System nicht in einem
+  Schritt zu überladen.
   **Margin of Safety / historisches Drawdown-Verhalten (2026-09-03, von
   Brian ergänzt: "auch die Kurse aus der Vergangenheit mit einbeziehen,
   z.B. dass Nvidia in der Vergangenheit auch mal 40-50% korrigieren
