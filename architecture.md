@@ -444,7 +444,9 @@ den bestehenden Grenzen und Prozessen, im Gegenteil – es macht sie wichtiger:
 
 Drei eigenständige Prompts, gespeichert unter `prompts/`:
 
-1. **TMR – "Jack, The Moat Reaper" (v11.7)**: Fundamentalanalyse etablierter Firmen.
+1. **TMR – "Jack, The Moat Reaper" (v11.8, 2026-09-03: Korrelierte-Mali-Regel
+   gegen Reaper-Score-Double-Counting ergänzt, siehe Abschnitt 4 [3b])**:
+   Fundamentalanalyse etablierter Firmen.
    DNA-Check (K-/E-Kriterien), Data-Integrity-Tagging, DCF/Reverse-DCF, Reaper Score
    1-10, Sizing-Tiers 1-4, Rating KAUFEN/BEOBACHTEN/SCHROTT, Exit-Strategie mit
    fundamentalen Stop-These-Triggern (kein starrer Kurs-Stop).
@@ -1624,18 +1626,19 @@ unbegrenzt fortgeschrieben zu werden.
        liegenden Ereignisses (z.B. ein Guidance-Cut löst typischerweise
        auch Kursverlust, Momentumbruch UND Analystenrevisionen gleichzeitig
        aus). Wird jedes Symptom separat und additiv gewertet, kann ein
-       einzelnes Ereignis den Score mehrfach drücken. Die eigentliche
-       Score-Berechnung liegt im TMR-Prompt selbst (siehe "Prompt-
-       Änderungsrechte" unten – Jarvis DARF das eigenständig korrigieren,
-       braucht dafür keine vorherige Freigabe, aber eine neue
-       Versionsnummer + dokumentierte Änderung). Bis diese Korrektur im
-       TMR-Prompt selbst nachgezogen ist, gilt zusätzlich als
-       Übergangs-Prozess-Pflicht: in der Diskussionsrunde [3b] aktiv prüfen, ob
-       mehrere abgewertete Signale erkennbar auf DASSELBE auslösende
-       Ereignis zurückgehen, und falls ja, das im Kurz-Fazit explizit
-       benennen ("Score X/10, davon Y Punkte auf denselben Guidance-Cut
-       zurückführbar – nicht als Y unabhängige Warnsignale lesen"), statt
-       den Score unkommentiert als Summe unabhängiger Signale darzustellen.
+       einzelnes Ereignis den Score mehrfach drücken. **Behoben direkt an
+       der Quelle (2026-09-03, TMR-Prompt v11.7 → v11.8):** die
+       STAPEL-LOGIK im TMR-Prompt hat jetzt eine "KORRELIERTE-MALI-REGEL"
+       – gehen zwei oder mehr aktive Mali erkennbar auf dasselbe
+       auslösende Ereignis zurück, zählt nur der GRÖSSERE Einzel-Malus,
+       nicht die Summe; die Zusammenführung muss im Output explizit
+       benannt werden (siehe `prompts/jack-moat-reaper-v11.7.md`,
+       Abschnitt "STAPEL-LOGIK"). Umgesetzt gemäß der in Abschnitt 2
+       ("Spielraum für Prompt-Anpassungen") von Brian erteilten
+       eigenständigen Änderungsbefugnis. Zur Absicherung bleibt es
+       trotzdem sinnvoll, in der Diskussionsrunde [3b] gegenzuprüfen, ob
+       die Zusammenführung im konkreten Fall korrekt begründet wurde,
+       statt sie unhinterfragt zu übernehmen.
 
 [3c] META-RETRO-RUNDE — SELBSTVERBESSERUNG DES REGELWERKS (2026-08-28, von
      Brian gefordert: "können die Agenten unter sich ausmachen, was sie
