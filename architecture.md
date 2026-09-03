@@ -3159,6 +3159,17 @@ künftige Portfolio-Aufnahme** sind.
   im eigenen Regelwerk verankerte Methodik ist. Bei der Erstbefüllung am
   2026-09-03 wurde das an mehreren Stellen nicht sauber getrennt, seither
   korrigiert – gilt ab jetzt als feste Regel für jede künftige Pflege.
+  **Trend-Pfeile bei Auf-/Abstufung (2026-09-03, von Brian gefordert):**
+  ändert sich die CRV-Farbe eines Werts gegenüber der vorherigen
+  wöchentlichen Pflege, wird das zusätzlich mit 🔺 (Aufstufung, Ampel
+  verbessert sich, z.B. 🟠→🟡 oder 🟡→🟢) bzw. 🔻 (Abstufung, Ampel
+  verschlechtert sich, z.B. 🟢→🟡 oder 🟡→🟠/🔴) markiert – Format
+  "Farbe+Pfeil KURZLABEL (hoch-/abgestuft von [alte Farbe]) – Grund".
+  Unveränderte Ampeln bekommen keinen Pfeil. Voraussetzung: der
+  wöchentliche Pflege-Schritt muss die BISHERIGE Farbe lesen, bevor er sie
+  überschreibt, um den Vergleich ziehen zu können. Stand 2026-09-03 ist
+  die Basislinie ohne Vorwert – erste Pfeile entstehen frühestens beim
+  nächsten wöchentlichen Watchlist-/Depot-Check.
   **Margin of Safety / historisches Drawdown-Verhalten (2026-09-03, von
   Brian ergänzt: "auch die Kurse aus der Vergangenheit mit einbeziehen,
   z.B. dass Nvidia in der Vergangenheit auch mal 40-50% korrigieren

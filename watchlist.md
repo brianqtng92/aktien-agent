@@ -58,6 +58,20 @@ Depot-Position ist die CRV-Ampel KEIN automatisches Verkaufssignal, nur
 ein Nachkauf-Zeitpunkt-Signal – für Verkäufe gelten weiterhin
 ausschließlich die dokumentierten Abstauber-/Stop-These-Trigger.
 
+**Trend-Pfeile bei Auf-/Abstufung (2026-09-03, von Brian gefordert):**
+Ändert sich die CRV-Farbe eines Werts gegenüber der letzten Prüfung
+(vorherige wöchentliche Pflege), wird das zusätzlich zur neuen Farbe mit
+einem Pfeil markiert:
+- 🔺 **Aufstufung** – Ampel hat sich verbessert (z.B. 🟠→🟡 oder 🟡→🟢) – Aktie ist interessanter/günstiger geworden.
+- 🔻 **Abstufung** – Ampel hat sich verschlechtert (z.B. 🟢→🟡 oder 🟡→🟠/🔴) – Aktie ist teurer/unattraktiver geworden.
+
+Format: Farbe + Pfeil + Kurzgrund, z.B. "🟢🔺 KAUFEN (hochgestuft von 🟡) –
+KGV nach Kursrücksetzer jetzt X% unter Historie". Bleibt die Ampel
+unverändert, kein Pfeil (kein Rauschen bei stabilen Einstufungen). **Stand
+2026-09-03 ist die Basislinie** – noch keine Vorwoche zum Vergleich, daher
+aktuell überall ohne Pfeil. Erste mögliche Pfeile entstehen beim nächsten
+wöchentlichen Watchlist-Check.
+
 Basiert auf KGV vs. historischem Durchschnitt (10J-Median wo verfügbar) und
 Peer-Vergleich, Stand 2026-09-03 (WebSearch-Snapshot). Wird ab jetzt beim
 wöchentlichen Watchlist-Check (Wochenfazit) mitgepflegt – Kurse/Bewertungen

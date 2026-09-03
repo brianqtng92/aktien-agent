@@ -60,6 +60,11 @@ zeigt nur, ob ein NACHKAUF zum aktuellen Preis eine gute Idee wäre – bei
 (WebSearch-Snapshot), Pflege ab jetzt wöchentlich über den Wochenfazit-Lauf
 (analog Watchlist).
 
+**Trend-Pfeile bei Auf-/Abstufung** (siehe `watchlist.md`, "CRV-Ampel",
+identisches Prinzip): 🔺 bei Verbesserung ggü. letzter Prüfung, 🔻 bei
+Verschlechterung, kein Pfeil bei unveränderter Einstufung. Stand
+2026-09-03 ist die Basislinie, noch ohne Pfeile.
+
 ## Aktuelle Zuordnung (Stand 2026-09-03)
 
 ### Champions
