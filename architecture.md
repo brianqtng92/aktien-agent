@@ -1972,6 +1972,77 @@ Für jede bestehende Depot-/Watchlist-Position, in regelmäßigem Rhythmus:
        SKILL.md) – das ist der Kanal, über den Brian "immer up to date"
        bleibt, ohne dass jede Marktschwankung eine Eskalation auslöst.
 
+**Erweiterung (2026-09-03, von Brian ergänzt + eigenständig vervollständigt
+– "es gibt noch mehr Makro-Check die ich nicht erwähnt habe... das musst
+du berücksichtigen... die Ergänzungen die ich unerwähnt gelassen habe,
+musst du vollziehen"):**
+
+- **S&P-500-Schlüssel-Level & Korrektur-Risiko-Einordnung:** täglich
+  aktueller Kurs gegen 50-Tage- und 200-Tage-Durchschnitt (SMA) prüfen,
+  in `depot/macro_context.md` mitführen. **No-False-Precision-Regel gilt
+  auch hier (siehe Abschnitt 4, Core-Rule 13):** KEINE erfundene exakte
+  Prozent-Wahrscheinlichkeit für "wie hoch ist die Wahrscheinlichkeit
+  einer Korrektur" – stattdessen die recherchegestützte, qualitative
+  Heuristik verwenden: der entscheidende Faktor bei einem Bruch der
+  200-Tage-Linie ist nicht der Bruch selbst, sondern ob die 200-Tage-
+  Linie zum Bruchzeitpunkt selbst noch STEIGT oder bereits FLACH/
+  FALLEND ist. Bei steigender 200-Tage-Linie waren Unterschreitungen
+  historisch meist kurze Whipsaws mit schneller Erholung (Beispiel
+  Anfang 2023). Bei flacher/fallender 200-Tage-Linie waren
+  Unterschreitungen historisch häufiger der Auftakt zu einem
+  nachhaltigeren Rückgang (Beispiele 2000, 2008, 2022, März 2025 mit
+  ca. -15%). Unterhalb der 200-Tage-Linie ist historisch zusätzlich die
+  Volatilität strukturell höher und die durchschnittliche Rendite
+  niedriger als oberhalb – das allein ist aber kein Timing-Signal für
+  einen bestimmten Tag. Diese Einordnung immer mit Quellenangabe/
+  Recherche-Beleg versehen, nie als eigene Vorhersage ausgeben.
+- **Politischer/Wahlkalender (langfristiger Horizont, nicht täglich neu
+  recherchiert – Pflege im Wochenfazit, nur Erinnerungs-Hinweis im
+  Trigger-Check ab ca. 14 Tage vorher):** US-Midterms (2026-11-03) als
+  nächster großer marktrelevanter Termin – historisch häufig erhöhte
+  Volatilität im Vorfeld, tendenziell Erleichterungs-/Rally-Muster nach
+  Auflösung der Unsicherheit, aber KEINE verlässliche Regel für jeden
+  Zyklus (auch hier keine erfundene Erfolgsquote angeben). Zusätzlich
+  regionale Wahlen/politische Termine mit Relevanz für gehaltene
+  Positionen im Blick behalten (u.a. Indonesien/Bank Central Asia,
+  Brasilien/Argentinien-Umfeld/MercadoLibre, EU/Deutschland wegen
+  Allianz/Münchener Rück/ASML), sowie US-Fiskalrisiken (Debt-Ceiling-
+  Fristen, Shutdown-Risiko), falls terminlich absehbar.
+- **Fed-/Notenbank-Zinspfad, nicht nur reaktiv bei Überraschungen:**
+  vollständiger FOMC-Terminkalender (2026: 27.-28.01, 17.-18.03,
+  28.-29.04, 16.-17.06, 28.-29.07, 15.-16.09, 27.-28.10, 08.-09.12 –
+  März/Juni/September/Dezember inkl. Summary of Economic Projections/
+  Dot Plot) in `depot/macro_context.md` mitführen, aktueller Fed-Funds-
+  Zielkorridor immer aktuell halten, vor jeder Sitzung kurz auf
+  markt-implizite Erwartungen (falls recherchierbar, z.B. über
+  CME-FedWatch-artige Quellen) hinweisen. Ergänzend die EZB- und (wegen
+  starker Japan-Gewichtung im Depot) BoJ-Sitzungstermine im selben
+  Kalender mitführen.
+- **Weitere Dimensionen (eigenständig ergänzt, da Brian selbst nicht
+  jede einzelne benennen konnte):** US-Dollar-Index (DXY) als breiteres
+  FX-Risikosignal zusätzlich zu EUR/USD (relevant für die LatAm-/EM-/
+  Asien-Positionen); High-Yield-Credit-Spreads als Frühindikator für
+  Risk-off-Stimmung (läuft VIX teils voraus); Öl/Energiepreis als
+  Inflations-/Konjunktur-Frühindikator; chinesische Regulatorik-/
+  Konjunktur-Nachrichten (Exportkontrollen, PBoC-Maßnahmen) wegen der
+  Halbleiter-/Tech-Lastigkeit des Depots. Diese vier NICHT täglich in
+  voller Tiefe recherchieren (Aufwand/Nutzen), sondern als Teil des
+  wöchentlichen Wochenfazit-Makro-Blicks pflegen und nur bei einer
+  offensichtlichen akuten Auffälligkeit vorzeitig in den täglichen
+  Check ziehen.
+- **Beratungs-Charakter (Brian, 2026-09-03: "du kannst mich ausführlich
+  beraten, mit entsprechenden Argumenten"):** die tägliche/wöchentliche
+  Makro-Einordnung soll nicht nur Zahlen auflisten, sondern eine
+  begründete Einschätzung mit Argumenten liefern (z.B. "Fear&Greed im
+  Greed-Bereich UND S&P deutlich über der noch steigenden 200-Tage-
+  Linie spricht eher für Fortsetzung des Trends, ABER die enge
+  Kombination mit hoher Bewertung mehrerer Depot-Schwergewichte
+  rechtfertigt trotzdem eher normale Tranchierung statt Euphorie-
+  Nachkäufe" statt nur "Fear&Greed: 62"). Bleibt dabei innerhalb der
+  bestehenden Grenze: begründete Einschätzung/Diskussionsgrundlage für
+  Brians eigene Entscheidung, keine professionelle Anlageberatung im
+  regulatorischen Sinn und kein Ersatz dafür.
+
 [E] EXIT-/GEWINNMITNAHME-/NACHKAUF-CHECK für bestehende Depot-Positionen
     (2026-08-29, von Brian gefordert – siehe "Verkaufsdisziplin &
     Gewinnmitnahme-Regeln" unten für die volle Logik inkl. der 2026-08-29
