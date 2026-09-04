@@ -541,6 +541,27 @@ Aufnahme-Disziplin oben, nicht optional. Aktuell sechs Standard-Blöcke
 (Blöcke 1-4, 2026-09-02/03), Gründliche-These-Prüfung (Block 5) und
 Master-Status/Vorrang-Hierarchie-Hinweis (Block 6, beide 2026-09-04).
 
+**Jack/Conan haben jetzt eigene Live-Web-Recherche (2026-09-04, von Brian
+gefordert: "Jack und Conan sollen die Freiheit haben, selbst zu
+recherchieren").** Beide Bridge-Tools (`ask_gemini`, `ask_chatgpt`)
+rufen standardmäßig (`enable_search=True`) das jeweilige native
+Such-Tool auf – Gemini's Google-Search-Grounding bzw. OpenAI's
+`web_search` über die Responses-API – statt sich ausschließlich auf
+Jarvis' vorab recherchiertes FACT-PACK zu verlassen. Beide mit echten
+End-to-End-Tests bestätigt (siehe HANDOVER.md 10.9/10.10 für Details,
+inkl. eines Tests mit dem VOLLEN ~77KB-Scout-Methodik-Prompt). Bewusste
+Konsequenz: die drei KI-Beine des Cross-Checks können jetzt tatsächlich
+unabhängig voneinander unterschiedliche Fakten finden, nicht nur
+unterschiedliche Interpretationen desselben kuratierten Datensatzes –
+macht den Cross-Check echter unabhängig, aber auch potenziell
+divergenter. Eine Abweichung zwischen KI-Rechercheergebnis und Jarvis'
+Fact-Pack ist ab jetzt ein zu erwartendes, gesundes Cross-Check-Signal,
+kein Fehler – bei Bedarf im finalen Cross-Check-Fazit explizit benennen,
+welche Quelle/welches Datum sich als aktueller/verlässlicher erwiesen hat.
+Kosten-/Latenz-Trade-off bewusst in Kauf genommen (siehe HANDOVER.md für
+Details) – `enable_search=False` bleibt für reine Diagnose-/
+Formatierungs-Anfragen ohne Recherchebedarf verfügbar.
+
 ## 2. Das Regelwerk (bereits vollständig von Brian geliefert)
 
 Drei eigenständige Prompts, gespeichert unter `prompts/`:

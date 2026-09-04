@@ -571,11 +571,31 @@ Neuer projekt-lokaler MCP-Server (`.mcp.json` im Repo-Root → Eintrag
 `openai-bridge`, Code unter `~/.claude/mcp-servers/openai-bridge/`,
 API-Key in dortiger `.env`). Stellt zwei Tools bereit:
 
-- `mcp__openai-bridge__ask_chatgpt(prompt, system_prompt="", model="gpt-5.5")`
+- `mcp__openai-bridge__ask_chatgpt(prompt, system_prompt="", model="gpt-5.5", enable_search=True)`
   – schickt den Prompt direkt an die OpenAI Chat-Completions-API, gibt den
   Antworttext zurück. Ersetzt den bisherigen Weg über
   `claude-in-chrome`/chatgpt.com für die Conan-Rolle vollständig (siehe
   Docstring in `server.py`).
+  **`enable_search` (2026-09-04, von Brian gefordert: "Jack und Conan
+  sollen die Freiheit haben, selbst zu recherchieren"):** aktiviert
+  OpenAI's natives `web_search`-Tool über die **Responses-API**
+  (`/v1/responses` statt `/v1/chat/completions`, da Chat Completions kein
+  hosted Such-Tool hat) – ChatGPT entscheidet SELBST, ob/wann/was es
+  sucht. Default `True`, dann wird IMMER über die Responses-API gerufen
+  (auch für Nicht-Pro-Modelle wie das Standard-`gpt-5.5`). Gefundene
+  URL-Zitate (`annotations` vom Typ `url_citation`) werden als "Quellen
+  (Web Search)"-Anhang an die Antwort angehängt. **Zwei echte Testläufe
+  bestätigt:** (1) kurze Live-Kurs-Frage (RKLB/CLBT) – Antwort inkl.
+  korrekter aktueller Kurse und Yahoo-Finance-Zitat; (2) VOLLER
+  ~77KB-Scout-Methodik-Prompt (identisch zum Rorze-Cross-Check vom selben
+  Tag) + `web_search` gemeinsam – lief sauber durch (111,5s, 26.097
+  Input-Tokens, 19.259 Zeichen Analyse-Output). Das ist wichtig, weil das
+  frühere TPM-Limit-Problem (siehe unten, 50k TPM nur bei `-pro`-Modellen)
+  hier NICHT greift, da `gpt-5.5` kein `-pro`-Modell ist. **Auf `False`
+  setzen** für reine Diagnose-/Formatierungs-Anfragen ohne Recherchebedarf
+  (dann regulärer, günstigerer Chat-Completions-Pfad für Nicht-Pro-Modelle).
+  Motivation/Kosten-Hinweis: siehe identische Begründung bei
+  `gemini-bridge` in 10.10 – gilt hier genauso.
 - `mcp__openai-bridge__list_openai_models()` – listet verfügbare
   Modell-IDs für den API-Key (zum Prüfen/Aktualisieren der Modellwahl,
   da OpenAI-Modellnamen sich ändern).
@@ -635,11 +655,32 @@ Analog zu 10.9, aber für Gemini/Jack. Neuer projekt-lokaler MCP-Server
 eingetragen – **nie** vom Agenten im Chat abgefragt/eingetippt). Stellt
 zwei Tools bereit:
 
-- `mcp__gemini-bridge__ask_gemini(prompt, system_prompt="", model="gemini-2.5-flash")`
+- `mcp__gemini-bridge__ask_gemini(prompt, system_prompt="", model="gemini-2.5-flash", enable_search=True)`
   – schickt den Prompt direkt an die Google-Gemini-API
   (`generativelanguage.googleapis.com/v1beta/models/{model}:generateContent`),
   gibt den Antworttext zurück. Ersetzt den bisherigen Weg über
   `claude-in-chrome`/gemini.google.com für die Jack-Rolle vollständig.
+  **`enable_search` (2026-09-04, von Brian gefordert: "Jack und Conan
+  sollen die Freiheit haben, selbst zu recherchieren"):** aktiviert
+  Gemini's natives Google-Search-Grounding-Tool (`tools: [{"google_search":
+  {}}]` im API-Payload) – Gemini entscheidet SELBST, ob/wann/was es sucht,
+  kein Tool-Call-Loop wie bei `ask_gemini_agentic` nötig. Default `True`.
+  Gefundene Quellen (aus `groundingMetadata.groundingChunks`) werden als
+  "Quellen (Google Search Grounding)"-Anhang an die Antwort angehängt –
+  echte Test-Anfrage (RKLB-Live-Kurs) bestätigt: Antwort inkl. Quellen
+  robinhood.com/tradingview.com. **Bekannte Einschränkung:** Google
+  proxied Quellen-URLs über `vertexaisearch.cloud.google.com/grounding-
+  api-redirect/...` statt der Original-URL direkt auszugeben – das ist ein
+  bekanntes Verhalten von Gemini Grounding, kein Bug. **Motivation:**
+  bisher bekamen alle drei KIs (Jarvis/Jack/Conan) dasselbe von Jarvis
+  kuratierte FACT-PACK – ein blinder Fleck dort vererbte sich auf alle
+  drei Urteile. Mit eigener Live-Recherche kann Jack jetzt unabhängig
+  gefundene Fakten einbringen, was den Cross-Check echter unabhängig
+  macht (kann auch zu mehr Divergenz zwischen den drei Urteilen führen -
+  das ist beabsichtigt, kein Fehler). **Kosten-/Latenz-Hinweis:** jede
+  Suche kostet extra (Google-Grounding-Pricing) und dauert etwas länger -
+  auf `enable_search=False` setzen für reine Diagnose-/Formatierungs-
+  Anfragen ohne Recherchebedarf.
 - `mcp__gemini-bridge__list_gemini_models()` – listet verfügbare
   Modell-IDs für den API-Key.
 
@@ -819,8 +860,21 @@ erledigt, BEVOR dieser Prompt an dich ging - das Ergebnis steht im FACT-PACK
 unten. Wo SCHRITT 0/Global-Regeln von "Live-Check", "Web-Search ausfuehren"
 oder "pausieren bis Live-Daten bestaetigt sind" sprechen: das bezieht sich auf
 den Fall, dass GAR KEINE Live-Recherche stattgefunden hat. Hier hat sie
-stattgefunden (durch Jarvis) - behandle das FACT-PACK exakt so, als haettest
-du selbst gerade die Web-Search ausgefuehrt.
+stattgefunden (durch Jarvis) - behandle das FACT-PACK als soliden Ausgangspunkt,
+nicht als von dir nochmal komplett neu zu recherchierende Leerstelle.
+
+WICHTIG, ERGAENZT 2026-09-04: DU HAST JETZT SELBST LIVE-WEB-SUCHE (Google Search
+Grounding). Das FACT-PACK ersetzt NICHT deine eigene Recherche, es ist die
+Ausgangsbasis. Nutze deine eigene Suche gezielt fuer: (a) jedes [TRAINING]- oder
+[N/V]-getaggte K-Kriterium im Fact-Pack, das sich per Suche zu [VERIFIED]
+aufwerten liesse, (b) Zahlen im Fact-Pack, die dir veraltet oder unplausibel
+vorkommen, (c) News/Ereignisse NACH dem im Fact-Pack genannten Recherche-Datum.
+Wenn deine eigene Recherche vom Fact-Pack abweicht: das explizit benennen (nicht
+stillschweigend uebernehmen oder stillschweigend ersetzen) - genau diese
+Divergenz macht den 3-fach-Cross-Check wertvoller, nicht ungenauer. Bei
+widerspruechlichen Quellen gilt weiterhin die aktuelle Zahl vor der aelteren,
+und eine erst waehrend deiner Suche gefundene Primaerquelle (Geschaeftsbericht,
+Ad-hoc-Meldung) vor einer sekundaeren (Analysten-Kommentar, Forum).
 
 WICHTIG: WACC-KOMPONENTEN (Beta, Rf, ERP, CRP) UND DCF-BERECHNUNGEN OHNE
 PYTHON-TOOL-CALL. Du hast in dieser Sitzung keinen Python-Tool-Call zur
