@@ -899,6 +899,17 @@ so unbemerkt wiederholen. Block 4 schließt diese Lücke, indem er die
 Terminal-State-Pflicht direkt in den Text einbettet, der bei jedem
 Bridge-Aufruf tatsächlich ankommt.
 
+**Bridge-Status-Log ergänzt (2026-09-04, Conans Vorschlag aus dem
+3-KI-Pulse-Check vom 2026-09-03):** nach dem E-Mail-Bug (dokumentiert als
+funktionierend, aber nie verifiziert, tagelang unbemerkt ausgefallen)
+merkte Conan an, dass derselbe blinde Fleck beim API-Bridge-Mechanismus
+selbst bestehen könnte – "die Architektur ist besser, aber Ausfälle
+werden nicht sichtbar". Neue Datei `depot/bridge_status.md`: jeder
+Scheduled-Task-Lauf, der Jack/Conan per Bridge einsetzt (oder bewusst
+nicht einsetzt), hängt eine Statuszeile an (OK/FAIL/Fallback je KI). Fällt
+eine Bridge über mehrere Läufe hinweg aus, ist das jetzt aus der Datei
+ablesbar, statt erst aufzufallen, wenn eine Analyse spürbar fehlt.
+
 ---
 
 ## 11. Offene Punkte (Stand dieser Übergabe)
