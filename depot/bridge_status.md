@@ -27,6 +27,7 @@ selbst schon ein Warnsignal sind.
 | 2026-09-04 ~08:20 UTC | taeglicher-trigger-check (2. Durchlauf desselben Tages) | n.a. - kein Einsatz nötig | n.a. - kein Einsatz nötig | Reiner Ampel-/Depot-Scan (Jarvis-only WebSearch-Bündelsuche über alle 18 Depot- + 30 Watchlist-Werte), keine neuen 🔴-Ausschlüsse/Sofort-Kauf-Funde, daher kein 3-fach-Cross-Check nötig. Bestätigt/korrespondiert mit dem 1. Durchlauf (~08:00 UTC, Commit 887a2a2) - keine neuen Transaktionen, ruhig. Auffällig: dies ist der zweite taeglicher-trigger-check-Lauf für 2026-09-04 (Grund unklar, evtl. doppelte Scheduler-Ausführung) - siehe "Auffälligkeiten" unten. |
 | 2026-09-04 ~14:30 UTC | ad-hoc-chat (Rorze Scout-Quick-Filter, freier Talent-Slot-Kandidat) | OK (auf Anhieb, kein Retry nötig) | OK (auf Anhieb) | Neue Vollanalyse (Modus A), nicht nur Kategorisierung - siehe `analysen/RORZE-cross-check-fazit-2026-09-04.md`. Beide Bridges konvergierten unabhängig auf Moat 2/4 und keine Kauf-Freigabe. |
 | 2026-09-04 ~16:15 UTC | blitz-scan (akuter Treffer Disco Corp/6146, -5,4%) | FAIL: Tool nicht geladen/nicht in dieser Session verfügbar (ToolSearch mit mehreren Queries "select:...", "ask_gemini", "gemini", "bridge" - keine Treffer) | FAIL: identisch, Tool nicht verfügbar (ToolSearch "ask_chatgpt", "openai chatgpt", "bridge" - keine Treffer) | Beide Bridges in dieser Session nicht erreichbar (nicht nur Timeout/503, sondern gar nicht als Tool auffindbar) - Chrome-Fallback bewusst nicht versucht (unbeaufsichtigter Scheduled-Task-Lauf, Login-Risiko). Ergebnis als Jarvis-Only gekennzeichnet, siehe Chat-Ausgabe. Volle 3-fach-Bestätigung folgt beim nächsten Blitz-Scan/Trigger-Check mit Bridge-Zugriff. |
+| 2026-09-04 ~20:35 UTC | taeglicher-trigger-check (3. Durchlauf desselben Tages) | n.a. - kein Einsatz nötig | n.a. - kein Einsatz nötig | Pending-Queue leer, keine neuen Scalable-Transaktionen (fromTime=08:19:47 UTC → 0 Treffer), gebündelte Jarvis-Only-WebSearch über alle 18 Depot- + 30 Watchlist-Werte plus Markt-Snapshot ohne neue 🔴/🟡-Ampel-Funde oder Trigger-Auslösung (FICO/VantageScore- und Rocket-Lab/Nasdaq-100-News sind bereits bekannt bzw. lösen keinen der hinterlegten Trigger aus), daher kein 3-fach-Cross-Check nötig. Kandidaten-Scan (Schritt 7) diesmal bewusst NICHT erneut vollständig durchlaufen - dritter Lauf am selben Tag, vorherige Läufe (Rorze-Aufnahme, Portfolio-Lücken-Regel) bereits substanziell, siehe Auffälligkeiten unten. Macro-Kontext/Pie-Chart für 2026-09-04 bereits vom 2./1. Durchlauf befüllt, nicht erneut dupliziert. |
 
 <!-- Format je Zeile:
 Zeitpunkt (UTC, ISO oder TT.MM.JJJJ HH:MM) | Task-Name (taeglicher-trigger-check/blitz-scan/wochenfazit) | Jack-Status (OK / FAIL: <Grund> / FALLBACK-Chrome / n.a.-kein Einsatz) | Conan-Status (gleiches Schema) | Kurznotiz (z.B. betroffener Ticker, oder "kein Bridge-Einsatz noetig, ruhiger Tag")
@@ -36,10 +37,19 @@ Bei FAIL: kurzer Grund falls erkennbar (Timeout, Verbindungsfehler, Tool nicht g
 
 ## Auffälligkeiten (manuell/bei Bedarf ergänzt)
 
-**2026-09-04:** taeglicher-trigger-check lief zweimal am selben Tag (~08:00 UTC
-und ~08:20 UTC, siehe Log oben) - Grund von hier aus nicht feststellbar (evtl.
-doppelte Scheduler-Auslösung). Kein inhaltlicher Schaden (2. Durchlauf hat nur
-bestätigt, keine widersprüchlichen Aktionen ausgelöst), aber falls sich das
-wiederholt, lohnt sich ein Blick auf die Scheduled-Task-Konfiguration.
+**2026-09-04:** taeglicher-trigger-check lief inzwischen DREIMAL am selben Tag
+(~08:00 UTC, ~08:20 UTC, ~19:03/20:35 UTC, siehe Log oben). **Update (3.
+Durchlauf, 20:35 UTC): Ursache jetzt tatsächlich geklärt, per
+`list_scheduled_tasks` geprüft.** Es existiert nur EIN Cron-Eintrag für
+`taeglicher-trigger-check` ("At 09:03 PM, every day" = 21:03 CEST/19:03 UTC,
+`cronExpression: 0 21 * * *`, `lastRunAt: 2026-09-04T19:03:58.933Z`,
+`nextRunAt: 2026-09-05T19:03:22.000Z`) - KEINE doppelte Schedule-Definition.
+Die ~19:03-UTC-Firing passt exakt zum regulären Cron und ist vermutlich
+dieser aktuelle (3.) Lauf selbst. Die beiden früheren Läufe (~08:00/~08:20
+UTC) liegen zeitlich weit außerhalb dieses Cron-Fensters und stammen damit
+NICHT vom Scheduler, sondern waren offenbar manuelle/Ad-hoc-Auslösungen
+(z.B. Setup-/Test-Zwecke früh am Tag) - kein Scheduler-Bug. Damit ist dieses
+Auffälligkeits-Muster geklärt, kein weiterer Handlungsbedarf an der
+Scheduled-Task-Konfiguration.
 
 <!-- Wird ergänzt, wenn ein Muster auffällt (z.B. "Jack fällt seit 3 Tagen in Folge um 21 Uhr aus") - dient als Ausgangspunkt für eine gezielte Diagnose, nicht als taegliche Pflichtnotiz. -->

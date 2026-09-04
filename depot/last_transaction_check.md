@@ -7,7 +7,15 @@ Scalable Capital. Bei jedem Lauf wird `list_portfolio_transactions` mit
 letzten Lauf zu erkennen (siehe architecture.md, Abschnitt "Täglicher
 Trigger-Check" → "Depot-Transaktions-Erkennung").
 
-Zuletzt gesehene Transaktion (lastEventAt, ISO-8601 UTC): 2026-09-04T08:19:47.000Z
+Zuletzt gesehene Transaktion (lastEventAt, ISO-8601 UTC): 2026-09-04T20:35:00.000Z
+
+Lauf 2026-09-04 (3. Durchlauf desselben Tages, ca. 20:35 UTC): keine neuen
+Security-Transaktionen seit letztem Checkpoint (list_portfolio_transactions
+fromTime=2026-09-04T08:19:47.000Z → 0 Treffer). Checkpoint auf aktuellen
+Abfragezeitpunkt vorgezogen. Dies ist bereits der DRITTE taeglicher-trigger-
+check-Lauf für 2026-09-04 (nach ~08:00 und ~08:20 UTC, siehe
+depot/bridge_status.md "Auffälligkeiten" – Ursache für die Mehrfachausführung
+weiterhin ungeklärt).
 
 Lauf 2026-09-04 (2. Durchlauf desselben Tages, ca. 08:20 UTC): keine neuen
 Security-Transaktionen seit letztem Checkpoint (list_portfolio_transactions
