@@ -917,11 +917,25 @@ ablesbar, statt erst aufzufallen, wenn eine Analyse spürbar fehlt.
 Aus `architecture.md` Abschnitt 8 (13 nummerierte Punkte, dort im Detail –
 hier nur die wichtigsten für den Sessionstart):
 
-1. **Core-vs-Advisory-Rules-Split** – noch nicht von Brian genehmigt.
-2. Scalable-Capital-MCP-Integration mit vollständiger 39-Tool-Whitelist –
-   siehe Abschnitt 10.7 oben.
-3. Daten-Lücken blockieren sofortige Portfolio-Regel-Checks für 9 benannte
-   Positionen (Details in architecture.md).
+1. **Core-vs-Advisory-Rules-Split — GELÖST (2026-09-01, hier nur
+   nachträglich als erledigt markiert, 2026-09-04 geprüft):** architecture.md
+   Abschnitt 14 dokumentiert die Freigabe explizit ("von Brian am 01.09.2026
+   angeordnet... mit sofortiger Wirkung freigegeben") - 16 Core-Rules +
+   Advisory-Rules + Terminal-State-Mechanismus sind seither aktiv im Einsatz
+   (u.a. Grundlage für die Terminal-State-Pflicht in jedem Bridge-Aufruf,
+   siehe HANDOVER.md 10.13).
+2. Scalable-Capital-MCP-Integration mit Tool-Whitelist (Abschnitt 10.7) —
+   **funktional in aktivem täglichen Einsatz** (das 4-Stufen-Modell
+   read-only/Verwaltung-ohne-Geldbewegung/Preview/PERMANENT-VERBOTEN steht
+   wortgleich in jeder Scheduled-Task-SKILL.md und wird dort durchgesetzt).
+   Nicht verifiziert: ob die Liste literal exakt 39 Tools umfasst (reine
+   Zähl-/Vollständigkeitsfrage, kein funktionales Problem).
+3. Daten-Lücken bei 9 benannten Positionen — **geprüft 2026-09-04, keine
+   offenen 🔴-Datenqualitäts-Flags mehr in `depot/trade-republic.md`,
+   `depot/smartbroker-plus.md`, `depot/finanzen-net-zero.md` gefunden**;
+   alle drei Dateien sind seit der am 2026-08-23 bestätigten vollständigen
+   Depot-Erfassung durchgängig ohne Datenlücken-Markierung. Punkt betraf
+   vermutlich den Zustand vor dieser Erfassung.
 4-10. Diverse kleinere offene Punkte (siehe Original).
 11. **2026-08-28 Wochenfazit-Zuverlässigkeitsvorfall:** "SUCCEEDED" beim
     Scheduled Task bedeutete nicht zwangsläufig "Task tatsächlich
