@@ -141,7 +141,7 @@ Neukategorisierung zu Profi nicht mehr Teil dieser Zählung).
 |---|---|---|
 | SoFi Technologies | 🟡 HALTEN/BEOBACHTEN – KGV ~35-38x. **MoS-Hinweis:** bereits -53% Drawdown 2026 (Short-Seller-Attacke, Peak Ende 2025 → Tief 30.03.), aktuelle Bewertung nach der Korrektur moderater; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | Archetyp-Beispiel Brian für diese Kategorie |
 | Kraken Robotics | 🔘 GRAU – KEINE BELASTBARE AUSSAGE – **Anker: KGV ungeeignet** (nahe Gewinnschwelle, 100x+ teils berichtet, extrem verzerrt), kein tragfähiger Ersatzmaßstab aus dem Fact-Pack ableitbar. **MoS-Hinweis:** bereits -41% vom 52-Wochen-Hoch – Vorsicht in beide Richtungen, Bewertung schwer greifbar. | Früher Umsatzaufbau, kein Live-Kurs, hohe Volatilität |
-| Rocket Lab USA | 🔴 KEIN NACHKAUF – ÜBERBEWERTET – unprofitabel (kein KGV berechenbar), Marktkap preist bereits deutliches künftiges Wachstum ein, ohne dass die Ertragslage das aktuell stützt – eigene Einordnung: Bewertung sportlich. **MoS-Hinweis:** bereits -61% vom Jahreshoch, historisch bis zu -70% Drawdown (2022) und im Schnitt -37% je Schock über 5 Marktphasen – auch nach Korrektur bleibt die Bewertung angespannt. | Wachstumsphase, historisch unprofitabel, kein Monopol |
+| Rocket Lab USA | 🔴 KEIN NACHKAUF – ÜBERBEWERTET – unprofitabel (kein KGV berechenbar), Marktkap preist bereits deutliches künftiges Wachstum ein, ohne dass die Ertragslage das aktuell stützt – eigene Einordnung: Bewertung sportlich. **MoS-Hinweis:** bereits -61% vom Jahreshoch, historisch bis zu -70% Drawdown (2022) und im Schnitt -37% je Schock über 5 Marktphasen – auch nach Korrektur bleibt die Bewertung angespannt. **Nachkauf-Aufstufungs-Trigger (2026-09-04, auf Brians Bitte hinterlegt – mind. 2 von 3 fundamental für ein Aufstufungssignal, Technik nur als Bestätigung, nie als eigenständiger Auslöser):** (1) **Neutron erfolgreicher Erstflug** (Pad-Delivery weiter Q4 2026 geplant, Zeitfenster für Start noch 2026 laut Unternehmen selbst "eng" – das ist der von Rocket Lab selbst genannte Auslöser für die EBITDA-Wende); (2) **Verwässerungstempo verlangsamt sich** – aktuell real und beschleunigend (Aktien im Umlauf 2023 ~482 Mio → Mitte 2026 ~598 Mio, davon 1,53 Mrd. USD allein aus ATM-Emissionen in H1/2026) – Trigger erfüllt, wenn 2 aufeinanderfolgende Quartale ohne neues großvolumiges ATM-Programm vergehen ODER Management explizit Selbstfinanzierung ohne weitere Aktienausgabe in Aussicht stellt; (3) **Burn-Multiple <2,5x UND Cash-Runway ≥18 Monate** wieder erfüllt (beide waren im frischen Scout-Check vom 04.09. die ausschlaggebenden K-Kriterien für den Terminal-State) – nächster Prüfpunkt Q3-Zahlen (Guidance: Umsatz $250-265 Mio, Adj.-EBITDA-Verlust $17-23 Mio, damit erstmals grob quantifiziert prüfbar). **Technischer Kontext (Stand 03.09., NUR Bestätigung, kein eigenständiger Trigger):** Kurs $63,81 bereits unter 50D-SMA ($75,24) UND 200D-SMA ($79,37), RSI(14) 36,1 (Richtung überverkauft, noch nicht dort) – "günstig" laut Chart, aber ohne erfüllte fundamentale Trigger laut eigenem Antizyklik-Grundprinzip explizit KEIN Kaufgrund ("falling knife"-Risiko). Analysten-Konsens-Kursziele (GuruFocus/Zacks-artige Quellen, $80-116) nur als Rohdaten-Kontext, nicht als eigene Bewertung übernommen. | Wachstumsphase, historisch unprofitabel, kein Monopol – **aber #2 aktivster Launch-Anbieter der westlichen Welt nach SpaceX (21 Starts 2025), echte Nischenführerschaft im Smallsat-Dedicated-Launch-Segment (Brian, 04.09.: "2. größter Space Player") – Marktstellung-Kriterium für Profi erfüllt, Marge/Kapitaldisziplin-Kriterium noch nicht (siehe Verwässerung oben), daher vorerst weiter Talent, kein klarer Profi-Fall wie Cellebrite** |
 | HawkEye 360 | 🔘 GRAU – KEINE BELASTBARE AUSSAGE – **Anker: KGV ungeeignet** (jung, unprofitabel, kein tragfähiger Ersatzmaßstab recherchiert). **MoS-Hinweis:** bereits ca. -50% vom Allzeithoch (Mai 2026) und -32% unter IPO-Preis (26$) gefallen, keine belastbare Bewertungshistorie; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | Kein Live-Kurs, dünnste Datenlage im Depot |
 
 ## Änderungsprotokoll
@@ -190,3 +190,17 @@ Neukategorisierung zu Profi nicht mehr Teil dieser Zählung).
   Verweis auf die noch fehlende Gesamt-Profitabilität (Neutron-
   Testflug-Abhängigkeit) hinterfragt – Antwort von Brian steht noch aus,
   Rocket Lab bleibt vorerst Talent.
+- 2026-09-04 (wenige Stunden später): Brian hakte nach ("nur weil ein
+  Unternehmen unprofitabel ist, heißt das nicht automatisch Talent –
+  differenziere Backlog-Wachstum vs. Verwässerung") – berechtigter
+  Einwand zur Prüfung. Recherche ergab ein gemischtes Bild: Marktstellung
+  spricht klar für Profi (#2 aktivster Launch-Anbieter der westlichen
+  Welt nach SpaceX, echte Nischenführerschaft Smallsat-Segment), aber die
+  Verwässerung ist real und beschleunigt (Aktien im Umlauf +14%/Jahr,
+  1,53 Mrd. USD ATM-Emissionen allein in H1/2026) – genau das
+  Warnsignal-Muster, das Brian selbst als Unterscheidungskriterium
+  genannt hatte. Brian akzeptierte die Gegenrecherche: Rocket Lab bleibt
+  Talent. Konkrete, recherchierte Nachkauf-Aufstufungs-Trigger hinterlegt
+  (siehe CRV-Zelle oben: Neutron-Erstflug, Verwässerungstempo,
+  Burn-Multiple/Cash-Runway – technische Lage nur als Bestätigung, nie
+  als eigenständiger Auslöser).
