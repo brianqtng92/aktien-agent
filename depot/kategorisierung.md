@@ -41,18 +41,24 @@ korrigiert. **Vorbehalt:** die "3" hängt am aktuellen Aktienanteil-Anteil
 diese Zahl rechnerisch weiter (siehe architecture.md für Details), daher
 kein für immer fixer Wert.
 
-| Kategorie | Ziel | Ist (03.09.2026) | Freie Slots |
+| Kategorie | Ziel | Ist (04.09.2026) | Freie Slots |
 |---|---|---|---|
-| Champions | 10 | 8 | 2 frei |
+| Champions | 10 | 9 | 1 frei |
 | Profi | 7 | 6 | 1 frei |
-| Talent | 3 | 4 | **1 über Ziel** – keine neuen Talent-Zukäufe, bis mindestens eine bestehende Position ausscheidet |
+| Talent | 3 | 3 | **exakt auf Ziel** |
 
-**Update 2026-09-04:** Cellebrite von Talent zu Profi umkategorisiert (siehe
-Änderungsprotokoll unten) – damit Profi 5→6, Talent 5→4. Talent-
-Rebalancierung damit fast abgeschlossen (nur noch 1 statt 2 über Ziel),
-ohne dass eine Position tatsächlich verkauft wurde – die ursprüngliche
-Talent-Zuordnung von Cellebrite war schlicht falsch (Proxy-Fehler wie bei
-Allianz/Bank Central Asia am 03.09., siehe dort).
+**Update 2026-09-04 (im Tagesverlauf, zwei Korrekturrunden):** Zuerst
+Cellebrite von Talent zu Profi umkategorisiert (Profi 5→6, Talent 5→4).
+Dann, nach Brians Einwand zu CBOE ("extrem einmaliges Geschäftsmodell")
+und SoFi: CBOE von Profi zu Champions (echtes SPX-/VIX-Exklusivmonopol,
+gegenrecherchiert und bestätigt), SoFi von Talent zu Profi (9 Quartale
+GAAP-profitabel, gegenrecherchiert und bestätigt, mit einem transparent
+benannten Vorbehalt – laufender Muddy-Waters-Short-Report, siehe
+Profi-Tabelle). Talent-Rebalancierung damit **exakt auf Ziel** erreicht,
+ohne dass eine einzige Position tatsächlich verkauft wurde – die
+ursprünglichen Talent-Zuordnungen von Cellebrite/SoFi und die
+Profi-Zuordnung von CBOE waren schlicht zu konservativ/falsch (derselbe
+Proxy-Fehlertyp wie bei Allianz/Bank Central Asia am 03.09.).
 
 ## CRV-Ampel (2026-09-03, von Brian gefordert: "das soll auch für Depot-Werte gelten")
 
@@ -98,21 +104,22 @@ Qualitätsstufe geordnet) und wo Vorsicht angebracht ist.
 
 | Qualität \\ CRV | 🟢 Nachkauf attraktiv | 🟡 Halten/Beobachten | 🟠 Kein Nachkauf (teuer) | 🔴 Kein Nachkauf – überbewertet | 🔘 Grau |
 |---|---|---|---|---|---|
-| 🏆 Champions (8) | Intuitive Surgical, Münchener Rück, ServiceNow, Hermès, MercadoLibre, Bank Central Asia (6) | Constellation Software, Allianz (2) | – | – | – |
-| ⚙️ Profi (6) | Broadridge, Tristel (2) | Rambus, Cellebrite (2) | CBOE, A10 Networks (2) | – | – |
-| 🚀 Talent (4) | – | SoFi (1) | – | Rocket Lab (1) | Kraken Robotics, HawkEye 360 (2) |
+| 🏆 Champions (9) | Intuitive Surgical, Münchener Rück, ServiceNow, Hermès, MercadoLibre, Bank Central Asia (6) | Constellation Software, Allianz (2) | CBOE (1) | – | – |
+| ⚙️ Profi (6) | Broadridge, Tristel (2) | Rambus, Cellebrite, SoFi (3) | A10 Networks (1) | – | – |
+| 🚀 Talent (3) | – | – | – | Rocket Lab (1) | Kraken Robotics, HawkEye 360 (2) |
 
-**Lesehilfe:** 6 der 8 Champions sind aktuell nachkaufattraktiv – passt zum
+**Lesehilfe:** 6 der 9 Champions sind aktuell nachkaufattraktiv – passt zum
 Befund aus dem letzten Ist-Abgleich, dass Champions beim Gewicht bereits
 über Ziel liegt, aber preislich trotzdem günstig ist (kein Widerspruch:
 Gewichtsdisziplin und Einzelpreis-Attraktivität sind unabhängige Fragen).
-Bei Talent liegt noch 1 von 4 Positionen (Rocket Lab) in der ungünstigsten
-Kombination (spekulativ + überbewertet) – das ist der Bereich, wo eine
-bewusste Prüfung der These am ehesten angebracht ist, auch wenn kein
-automatisches Verkaufssignal vorliegt (Update 2026-09-04: Cellebrite nach
-Neukategorisierung zu Profi nicht mehr Teil dieser Zählung).
+Bei Talent liegt nur noch 1 von 3 Positionen (Rocket Lab) in der
+ungünstigsten Kombination (spekulativ + überbewertet) – das ist der
+Bereich, wo eine bewusste Prüfung der These am ehesten angebracht ist,
+auch wenn kein automatisches Verkaufssignal vorliegt (Update 2026-09-04:
+Cellebrite und SoFi nach Neukategorisierung zu Profi, CBOE zu Champions,
+nicht mehr Teil dieser Zählung).
 
-## Aktuelle Zuordnung (Stand 2026-09-03)
+## Aktuelle Zuordnung (Stand 2026-09-04)
 
 ### Champions
 | Position | CRV | Begründung Kategorie |
@@ -125,21 +132,21 @@ Neukategorisierung zu Profi nicht mehr Teil dieser Zählung).
 | MercadoLibre | 🟢 KAUFEN/NACHKAUFEN – KGV 46,7x, 40% unter 10J-Median (77,4x). **MoS-Hinweis:** LatAm-Fintech/E-Commerce, historisch volatil bei Makro-/Währungsschocks. | Dominante E-Commerce/Fintech-Plattform LatAm |
 | Allianz SE | 🟡 HALTEN/BEOBACHTEN – **Anker: KBV/ROE statt KGV** (Versicherer/Vermögensverwalter). KGV ~14-15x, leicht über eigenem 3J/5J-Ø (~10-11x) und 10% über Branchen-Ø. **MoS-Hinweis:** historischer Max-Drawdown -72,7% (2008), -48,7% (2020) – auch globale Top-Versicherer sind in Systemkrisen extrem exponiert. | Quasi-Monopol-Skala wie Münchener Rück, AA-Bonität, globaler Top-3-Versicherer/Vermögensverwalter (korrigiert 2026-09-03, vorher fälschlich Talent – Grund war Positionsgröße, kein zulässiges Kriterium) |
 | Bank Central Asia | 🟢 KAUFEN/NACHKAUFEN – **Anker: KBV/ROE statt KGV** (Bank). ROE >20% ist der eigentlich tragende Beleg, KGV ~12-14x, 52% unter 10J-Median (24,4x). **MoS-Hinweis:** Max-Drawdown -42,8% (COVID-Crash März 2020) – EM-Bank trotz Qualität nicht immun gegen globale Schocks. | ROE >20%, dominante Marktstellung Indonesien, verlässliches Wachstum (korrigiert 2026-09-03, vorher fälschlich Talent – Grund war EM-Status, kein zulässiges Kriterium) |
+| CBOE Holdings | 🟠 KEIN NACHKAUF (TEUER) – KGV ~22-24x, Forward-KGV 31% über Branchen-Ø – eigene Einordnung: spürbar teuer ggü. Sektor, kein Schnäppchen. **MoS-Hinweis:** 5J-Max-Drawdown -24,4% – moderat im Vergleich zur restlichen Liste, aber bei bereits hoher Bewertung zusätzlich wenig Puffer. | Named-Beispiel Brian – **umkategorisiert 2026-09-04 von Profi zu Champions** (Brian: "extrem einmaliges Geschäftsmodell" – bestätigt: Operating-Marge ~35-53% je Periode, UND ein echtes, vertraglich/regulatorisch abgesichertes Monopol bei SPX-/VIX-Optionen – VIX ist ein CBOE-Markenzeichen, laut CBOE >98% des gesamten US-Index-Optionsvolumens läuft über CBOE-Venues. Stärkerer, konzentrierterer Moat als mehrere bestehende Champions. **Einziges Risiko, transparent benannt:** die SPX-Exklusivlizenz mit S&P Global ist vertraglich, nicht ewig – ein Lizenzverlust wäre ein echtes, wenn auch aktuell nicht akutes These-Bruch-Kriterium für die Zukunft.) |
 
 ### Profi
 | Position | CRV | Begründung Kategorie |
 |---|---|---|
 | Broadridge Financial Solutions | 🟢 KAUFEN/NACHKAUFEN – Forward-KGV 17,0x, deutlich unter 12M-Ø (31,7x). **MoS-Hinweis:** aktuell bereits selbst -34,4% vom 52-Wochen-Hoch – der günstige KGV-Vergleich spiegelt zu einem Teil genau diesen laufenden Rücksetzer, nicht nur strukturelle Unterbewertung. | Named-Beispiel Brian |
-| CBOE Holdings | 🟠 KEIN NACHKAUF (TEUER) – KGV ~22-24x, Forward-KGV 31% über Branchen-Ø – eigene Einordnung: spürbar teuer ggü. Sektor, kein Schnäppchen. **MoS-Hinweis:** 5J-Max-Drawdown -24,4% – moderat im Vergleich zur restlichen Liste, aber bei bereits hoher Bewertung zusätzlich wenig Puffer. | Named-Beispiel Brian |
 | A10 Networks | 🟠 KEIN NACHKAUF (TEUER) – TTM-KGV 59,8x deutlich über 5J-Ø (23,2x)/7J-Ø (29,9x); Forward-KGV moderater (26,5x) – Diskrepanz beobachten, evtl. temporärer Gewinneinbruch. **MoS-Hinweis:** keine spezifische Drawdown-Quelle recherchiert – als kleinerer Netzwerktechnik-Titel mit volatiler Ertragslage realistisch überdurchschnittlich schwankungsanfällig. | Named-Beispiel Brian |
 | Rambus | 🟡 HALTEN/BEOBACHTEN – KGV nahe eigenem 10J-Median (leicht darüber je nach Quelle). **MoS-Hinweis:** 5J-Max-Drawdown -48,8% (u.a. -30% allein 2022, -45% 2024) – Halbleiter-IP-Lizenzgeschäft mit Patentstreit-getriebenem, unregelmäßigem Ertragsmuster bleibt volatil. | Named-Beispiel Brian (22.08.), etablierte Semiconductor-IP-Firma seit 1990 (korrigiert 2026-09-03, vorher fälschlich Talent) |
 | Tristel PLC | 🟢 KAUFEN/NACHKAUFEN – KGV 23,3x, 41% unter 10J-Median (39,8x). **MoS-Hinweis:** keine spezifische Drawdown-Quelle recherchiert – als kleiner UK-AIM-Nebenwert mit dünnem Handelsvolumen realistisch überdurchschnittlich volatil, unabhängig vom günstigen KGV. | Named-Beispiel Brian (22.08.) (korrigiert 2026-09-03, vorher fälschlich Talent) |
 | Cellebrite DI Ltd | 🟡 HALTEN – Checkpoint Q3-Earnings. KGV 52,7x, 25% über 10J-Median – **eigene Einordnung optisch teuer, aber CRV allein ist hier nicht aussagekräftig genug**, siehe Begründung. **MoS-Hinweis:** -33% Kursrückgang 2026 nach Guidance-Cut/CEO-Wechsel. **Korrigiert 2026-09-04** (vorher fälschlich SCHROTT/VERKAUFEN nach einem vorschnellen 3-fach-Scout-Check): gründliche These-Prüfung (siehe architecture.md, "Gründliche-These-Prüfung-vor-Verkaufsempfehlung-Pflicht") ergab, dass 2 von 3 Re-Rating-Triggern mangels Q3-Zahlen noch gar nicht prüfbar waren (nicht "durchgefallen"), und der Guidance-Cut plausibel auf verzögerte statt verlorene Großaufträge zurückgeht (Timing-, kein Struktur-Problem). **Nächster Prüfpunkt: Q3-Earnings** (Guidance: Umsatz $145-148 Mio) – dann die drei Re-Rating-Trigger mit echten Daten neu prüfen. | Named-Beispiel Brian – **umkategorisiert 2026-09-04 von Talent zu Profi** (Brian: profitabel, $500M+ wiederkehrender ARR-Umsatz, echter regulatorischer Moat bei lizenziertem forensischem Gerätezugriff für Strafverfolgung – passt nicht zur Talent-Definition "eventuell noch unprofitabel/Hype-getrieben") |
+| SoFi Technologies | 🟡 HALTEN/BEOBACHTEN – KGV ~35-38x. **MoS-Hinweis:** bereits -53% Drawdown 2026 (Short-Seller-Attacke, Peak Ende 2025 → Tief 30.03.), aktuelle Bewertung nach der Korrektur moderater; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | **Umkategorisiert 2026-09-04 von Talent zu Profi** (Brian-Vorschlag, gegenrecherchiert und bestätigt): 9 aufeinanderfolgende Quartale GAAP-profitabel (Stand Q4 2025), Nettomarge TTM 10,1%, Q2 2026 Adj.-Nettomarge 13%, FY2026-Guidance ~18% – "eventuell noch unprofitabel" (Talent-Definition) trifft nicht mehr zu. **Wichtiger, transparent zu benennender Vorbehalt:** Muddy-Waters-Short-Report (März 2026) wirft SoFi vor, Risiko aus verkauften Krediten zurückzubehalten und die tatsächliche Ausfallrate zu niedrig auszuweisen (behauptet 6,1% vs. berichtete 2,89%), mit dem Vorwurf zirkulärer Finanzierungspraktiken und möglichem Restatement-/SEC-Risiko – bisher unbewiesen, SoFi weist es zurück, CEO kaufte danach eigene Aktien nach. Genau die Zahlen, auf denen diese Hochstufung beruht, stehen damit unter einem laufenden, ungeklärten Vorbehalt – bei Bestätigung der Vorwürfe wäre das ein echtes Rückstufungs-/Ausschluss-Kriterium (Bilanzintegrität), kein reines Bewertungsthema. |
 
 ### Talent/Zock
 | Position | CRV | Begründung Kategorie |
 |---|---|---|
-| SoFi Technologies | 🟡 HALTEN/BEOBACHTEN – KGV ~35-38x. **MoS-Hinweis:** bereits -53% Drawdown 2026 (Short-Seller-Attacke, Peak Ende 2025 → Tief 30.03.), aktuelle Bewertung nach der Korrektur moderater; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | Archetyp-Beispiel Brian für diese Kategorie |
 | Kraken Robotics | 🔘 GRAU – KEINE BELASTBARE AUSSAGE – **Anker: KGV ungeeignet** (nahe Gewinnschwelle, 100x+ teils berichtet, extrem verzerrt), kein tragfähiger Ersatzmaßstab aus dem Fact-Pack ableitbar. **MoS-Hinweis:** bereits -41% vom 52-Wochen-Hoch – Vorsicht in beide Richtungen, Bewertung schwer greifbar. | Früher Umsatzaufbau, kein Live-Kurs, hohe Volatilität |
 | Rocket Lab USA | 🔴 KEIN NACHKAUF – ÜBERBEWERTET – unprofitabel (kein KGV berechenbar), Marktkap preist bereits deutliches künftiges Wachstum ein, ohne dass die Ertragslage das aktuell stützt – eigene Einordnung: Bewertung sportlich. **MoS-Hinweis:** bereits -61% vom Jahreshoch, historisch bis zu -70% Drawdown (2022) und im Schnitt -37% je Schock über 5 Marktphasen – auch nach Korrektur bleibt die Bewertung angespannt. **Nachkauf-Aufstufungs-Trigger (2026-09-04, auf Brians Bitte hinterlegt – mind. 2 von 3 fundamental für ein Aufstufungssignal, Technik nur als Bestätigung, nie als eigenständiger Auslöser):** (1) **Neutron erfolgreicher Erstflug** (Pad-Delivery weiter Q4 2026 geplant, Zeitfenster für Start noch 2026 laut Unternehmen selbst "eng" – das ist der von Rocket Lab selbst genannte Auslöser für die EBITDA-Wende); (2) **Verwässerungstempo verlangsamt sich** – aktuell real und beschleunigend (Aktien im Umlauf 2023 ~482 Mio → Mitte 2026 ~598 Mio, davon 1,53 Mrd. USD allein aus ATM-Emissionen in H1/2026) – Trigger erfüllt, wenn 2 aufeinanderfolgende Quartale ohne neues großvolumiges ATM-Programm vergehen ODER Management explizit Selbstfinanzierung ohne weitere Aktienausgabe in Aussicht stellt; (3) **Burn-Multiple <2,5x UND Cash-Runway ≥18 Monate** wieder erfüllt (beide waren im frischen Scout-Check vom 04.09. die ausschlaggebenden K-Kriterien für den Terminal-State) – nächster Prüfpunkt Q3-Zahlen (Guidance: Umsatz $250-265 Mio, Adj.-EBITDA-Verlust $17-23 Mio, damit erstmals grob quantifiziert prüfbar). **Technischer Kontext (Stand 03.09., NUR Bestätigung, kein eigenständiger Trigger):** Kurs $63,81 bereits unter 50D-SMA ($75,24) UND 200D-SMA ($79,37), RSI(14) 36,1 (Richtung überverkauft, noch nicht dort) – "günstig" laut Chart, aber ohne erfüllte fundamentale Trigger laut eigenem Antizyklik-Grundprinzip explizit KEIN Kaufgrund ("falling knife"-Risiko). Analysten-Konsens-Kursziele (GuruFocus/Zacks-artige Quellen, $80-116) nur als Rohdaten-Kontext, nicht als eigene Bewertung übernommen. | Wachstumsphase, historisch unprofitabel, kein Monopol – **aber #2 aktivster Launch-Anbieter der westlichen Welt nach SpaceX (21 Starts 2025), echte Nischenführerschaft im Smallsat-Dedicated-Launch-Segment (Brian, 04.09.: "2. größter Space Player") – Marktstellung-Kriterium für Profi erfüllt, Marge/Kapitaldisziplin-Kriterium noch nicht (siehe Verwässerung oben), daher vorerst weiter Talent, kein klarer Profi-Fall wie Cellebrite** |
 | HawkEye 360 | 🔘 GRAU – KEINE BELASTBARE AUSSAGE – **Anker: KGV ungeeignet** (jung, unprofitabel, kein tragfähiger Ersatzmaßstab recherchiert). **MoS-Hinweis:** bereits ca. -50% vom Allzeithoch (Mai 2026) und -32% unter IPO-Preis (26$) gefallen, keine belastbare Bewertungshistorie; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | Kein Live-Kurs, dünnste Datenlage im Depot |
@@ -204,3 +211,22 @@ Neukategorisierung zu Profi nicht mehr Teil dieser Zählung).
   (siehe CRV-Zelle oben: Neutron-Erstflug, Verwässerungstempo,
   Burn-Multiple/Cash-Runway – technische Lage nur als Bestätigung, nie
   als eigenständiger Auslöser).
+- 2026-09-04 (direkt im Anschluss an die Depot-Übersicht): Brian schlug
+  zwei weitere Hochstufungen vor – CBOE zu Champions ("extrem einmaliges
+  Geschäftsmodell"), SoFi zu Profi. Beide gegenrechercht statt blind
+  übernommen: **CBOE bestätigt** – Operating-Marge ~35-53%, echtes
+  vertraglich/regulatorisch abgesichertes SPX-/VIX-Optionsmonopol
+  (>98% des US-Index-Optionsvolumens läuft über CBOE, VIX ist CBOE-
+  Markenzeichen) – stärkerer, konzentrierterer Moat als mehrere
+  bestehende Champions, Umkategorisierung Profi→Champions umgesetzt.
+  **SoFi bestätigt, aber mit Vorbehalt** – 9 Quartale GAAP-profitabel,
+  Nettomarge-Trend 10%→15%→18% (Guidance), "eventuell noch
+  unprofitabel" trifft nicht mehr zu, Umkategorisierung Talent→Profi
+  umgesetzt – ABER ein laufender, ungeklärter Muddy-Waters-Short-Report
+  (Vorwurf: zurückbehaltenes Kreditrisiko, zu niedrig ausgewiesene
+  Ausfallrate, zirkuläre Finanzierung, mögliches SEC-/Restatement-
+  Risiko) stellt genau die Zahlen infrage, auf denen die Hochstufung
+  beruht – transparent in der Profi-Tabelle dokumentiert, nicht
+  verschwiegen. Ergebnis: Champions 8→9, Profi 6→6 (CBOE raus, SoFi
+  rein), Talent 4→3 – **Talent-Rebalancierung damit exakt auf Ziel
+  abgeschlossen**, ohne eine einzige Position tatsächlich zu verkaufen.
