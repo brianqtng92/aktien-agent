@@ -44,8 +44,15 @@ kein für immer fixer Wert.
 | Kategorie | Ziel | Ist (03.09.2026) | Freie Slots |
 |---|---|---|---|
 | Champions | 10 | 8 | 2 frei |
-| Profi | 7 | 5 | 2 frei |
-| Talent | 3 | 5 | **2 über Ziel** – keine neuen Talent-Zukäufe, bis mindestens eine bestehende Position ausscheidet |
+| Profi | 7 | 6 | 1 frei |
+| Talent | 3 | 4 | **1 über Ziel** – keine neuen Talent-Zukäufe, bis mindestens eine bestehende Position ausscheidet |
+
+**Update 2026-09-04:** Cellebrite von Talent zu Profi umkategorisiert (siehe
+Änderungsprotokoll unten) – damit Profi 5→6, Talent 5→4. Talent-
+Rebalancierung damit fast abgeschlossen (nur noch 1 statt 2 über Ziel),
+ohne dass eine Position tatsächlich verkauft wurde – die ursprüngliche
+Talent-Zuordnung von Cellebrite war schlicht falsch (Proxy-Fehler wie bei
+Allianz/Bank Central Asia am 03.09., siehe dort).
 
 ## CRV-Ampel (2026-09-03, von Brian gefordert: "das soll auch für Depot-Werte gelten")
 
@@ -92,17 +99,18 @@ Qualitätsstufe geordnet) und wo Vorsicht angebracht ist.
 | Qualität \\ CRV | 🟢 Nachkauf attraktiv | 🟡 Halten/Beobachten | 🟠 Kein Nachkauf (teuer) | 🔴 Kein Nachkauf – überbewertet | 🔘 Grau |
 |---|---|---|---|---|---|
 | 🏆 Champions (8) | Intuitive Surgical, Münchener Rück, ServiceNow, Hermès, MercadoLibre, Bank Central Asia (6) | Constellation Software, Allianz (2) | – | – | – |
-| ⚙️ Profi (5) | Broadridge, Tristel (2) | Rambus (1) | CBOE, A10 Networks (2) | – | – |
-| 🚀 Talent (5) | – | SoFi (1) | – | Cellebrite, Rocket Lab (2) | Kraken Robotics, HawkEye 360 (2) |
+| ⚙️ Profi (6) | Broadridge, Tristel (2) | Rambus, Cellebrite (2) | CBOE, A10 Networks (2) | – | – |
+| 🚀 Talent (4) | – | SoFi (1) | – | Rocket Lab (1) | Kraken Robotics, HawkEye 360 (2) |
 
 **Lesehilfe:** 6 der 8 Champions sind aktuell nachkaufattraktiv – passt zum
 Befund aus dem letzten Ist-Abgleich, dass Champions beim Gewicht bereits
 über Ziel liegt, aber preislich trotzdem günstig ist (kein Widerspruch:
 Gewichtsdisziplin und Einzelpreis-Attraktivität sind unabhängige Fragen).
-Bei Talent liegen 2 von 5 Positionen in der ungünstigsten Kombination
-(spekulativ + überbewertet) – das ist der Bereich, wo eine bewusste
-Prüfung der These am ehesten angebracht ist, auch wenn kein automatisches
-Verkaufssignal vorliegt.
+Bei Talent liegt noch 1 von 4 Positionen (Rocket Lab) in der ungünstigsten
+Kombination (spekulativ + überbewertet) – das ist der Bereich, wo eine
+bewusste Prüfung der These am ehesten angebracht ist, auch wenn kein
+automatisches Verkaufssignal vorliegt (Update 2026-09-04: Cellebrite nach
+Neukategorisierung zu Profi nicht mehr Teil dieser Zählung).
 
 ## Aktuelle Zuordnung (Stand 2026-09-03)
 
@@ -126,12 +134,12 @@ Verkaufssignal vorliegt.
 | A10 Networks | 🟠 KEIN NACHKAUF (TEUER) – TTM-KGV 59,8x deutlich über 5J-Ø (23,2x)/7J-Ø (29,9x); Forward-KGV moderater (26,5x) – Diskrepanz beobachten, evtl. temporärer Gewinneinbruch. **MoS-Hinweis:** keine spezifische Drawdown-Quelle recherchiert – als kleinerer Netzwerktechnik-Titel mit volatiler Ertragslage realistisch überdurchschnittlich schwankungsanfällig. | Named-Beispiel Brian |
 | Rambus | 🟡 HALTEN/BEOBACHTEN – KGV nahe eigenem 10J-Median (leicht darüber je nach Quelle). **MoS-Hinweis:** 5J-Max-Drawdown -48,8% (u.a. -30% allein 2022, -45% 2024) – Halbleiter-IP-Lizenzgeschäft mit Patentstreit-getriebenem, unregelmäßigem Ertragsmuster bleibt volatil. | Named-Beispiel Brian (22.08.), etablierte Semiconductor-IP-Firma seit 1990 (korrigiert 2026-09-03, vorher fälschlich Talent) |
 | Tristel PLC | 🟢 KAUFEN/NACHKAUFEN – KGV 23,3x, 41% unter 10J-Median (39,8x). **MoS-Hinweis:** keine spezifische Drawdown-Quelle recherchiert – als kleiner UK-AIM-Nebenwert mit dünnem Handelsvolumen realistisch überdurchschnittlich volatil, unabhängig vom günstigen KGV. | Named-Beispiel Brian (22.08.) (korrigiert 2026-09-03, vorher fälschlich Talent) |
+| Cellebrite DI Ltd | 🟡 HALTEN – Checkpoint Q3-Earnings. KGV 52,7x, 25% über 10J-Median – **eigene Einordnung optisch teuer, aber CRV allein ist hier nicht aussagekräftig genug**, siehe Begründung. **MoS-Hinweis:** -33% Kursrückgang 2026 nach Guidance-Cut/CEO-Wechsel. **Korrigiert 2026-09-04** (vorher fälschlich SCHROTT/VERKAUFEN nach einem vorschnellen 3-fach-Scout-Check): gründliche These-Prüfung (siehe architecture.md, "Gründliche-These-Prüfung-vor-Verkaufsempfehlung-Pflicht") ergab, dass 2 von 3 Re-Rating-Triggern mangels Q3-Zahlen noch gar nicht prüfbar waren (nicht "durchgefallen"), und der Guidance-Cut plausibel auf verzögerte statt verlorene Großaufträge zurückgeht (Timing-, kein Struktur-Problem). **Nächster Prüfpunkt: Q3-Earnings** (Guidance: Umsatz $145-148 Mio) – dann die drei Re-Rating-Trigger mit echten Daten neu prüfen. | Named-Beispiel Brian – **umkategorisiert 2026-09-04 von Talent zu Profi** (Brian: profitabel, $500M+ wiederkehrender ARR-Umsatz, echter regulatorischer Moat bei lizenziertem forensischem Gerätezugriff für Strafverfolgung – passt nicht zur Talent-Definition "eventuell noch unprofitabel/Hype-getrieben") |
 
 ### Talent/Zock
 | Position | CRV | Begründung Kategorie |
 |---|---|---|
 | SoFi Technologies | 🟡 HALTEN/BEOBACHTEN – KGV ~35-38x. **MoS-Hinweis:** bereits -53% Drawdown 2026 (Short-Seller-Attacke, Peak Ende 2025 → Tief 30.03.), aktuelle Bewertung nach der Korrektur moderater; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | Archetyp-Beispiel Brian für diese Kategorie |
-| Cellebrite DI Ltd | 🔴 KEIN NACHKAUF – ÜBERBEWERTET – KGV 52,7x, 25% über 10J-Median (42,1x), 46,8x vs. Branchen-fair-Ratio ~30x. **MoS-Hinweis:** zusätzlich -33% Kursrückgang 2026 – teuer UND im Abwärtstrend gleichzeitig, kein Nachkauf-Zeitpunkt. **Über CRV hinaus (2026-09-04): echtes Verkaufsdisziplin-Kriterium erfüllt**, kein reines Timing-Signal mehr – frischer 3-fach-Scout-These-Check (Jarvis/Jack/Conan einstimmig SCHROTT/DURCHGEFALLEN) bestätigt 0 von 3 Re-Rating-Triggern aus der Erstanalyse (FCF-Marge ≥20%, NRR ≥120%, Guidance-Bestätigung), FY2026-Wachstum nach Guidance-Cut nur noch 17-18% (unter der 20%-SaaS-Schwelle). Siehe `depot/offene_empfehlungen.md` – VERKAUFEN-Empfehlung aktiv. | Jung notiert (SPAC 2021), noch kein etablierter Track Record |
 | Kraken Robotics | 🔘 GRAU – KEINE BELASTBARE AUSSAGE – **Anker: KGV ungeeignet** (nahe Gewinnschwelle, 100x+ teils berichtet, extrem verzerrt), kein tragfähiger Ersatzmaßstab aus dem Fact-Pack ableitbar. **MoS-Hinweis:** bereits -41% vom 52-Wochen-Hoch – Vorsicht in beide Richtungen, Bewertung schwer greifbar. | Früher Umsatzaufbau, kein Live-Kurs, hohe Volatilität |
 | Rocket Lab USA | 🔴 KEIN NACHKAUF – ÜBERBEWERTET – unprofitabel (kein KGV berechenbar), Marktkap preist bereits deutliches künftiges Wachstum ein, ohne dass die Ertragslage das aktuell stützt – eigene Einordnung: Bewertung sportlich. **MoS-Hinweis:** bereits -61% vom Jahreshoch, historisch bis zu -70% Drawdown (2022) und im Schnitt -37% je Schock über 5 Marktphasen – auch nach Korrektur bleibt die Bewertung angespannt. | Wachstumsphase, historisch unprofitabel, kein Monopol |
 | HawkEye 360 | 🔘 GRAU – KEINE BELASTBARE AUSSAGE – **Anker: KGV ungeeignet** (jung, unprofitabel, kein tragfähiger Ersatzmaßstab recherchiert). **MoS-Hinweis:** bereits ca. -50% vom Allzeithoch (Mai 2026) und -32% unter IPO-Preis (26$) gefallen, keine belastbare Bewertungshistorie; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | Kein Live-Kurs, dünnste Datenlage im Depot |
@@ -168,3 +176,17 @@ Verkaufssignal vorliegt.
   Analyse vom 01.09. (Jarvis) hatte die Trace-Position explizit
   ausgenommen. Bewusst NICHT einseitig aufgelöst, offener
   Diskussionspunkt mit Brian.
+- 2026-09-04 (Korrektur, wenige Stunden später): Brian widersprach der
+  vorschnellen Cellebrite-VERKAUFEN-Empfehlung ("erst gründlich die These
+  durchgehen, nicht voreilig einen Verkauf in Erwägung ziehen") – zu
+  Recht: 2 von 3 Re-Rating-Triggern waren mangels Q3-Zahlen noch gar
+  nicht prüfbar, Guidance-Cut plausibel Timing- statt Struktur-Problem.
+  Führte zu einer neuen systemweiten Regel (architecture.md,
+  "Gründliche-These-Prüfung-vor-Verkaufsempfehlung-Pflicht"). Cellebrite:
+  VERKAUFEN → HALTEN mit Checkpoint Q3-Earnings. Zusätzlich, unabhängig
+  davon: Brian stufte Cellebrite als Profi statt Talent ein (profitabel,
+  $500M+ ARR, echter regulatorischer Moat) – umgesetzt. Rocket Lab
+  ebenfalls als Profi-Kandidat vorgeschlagen, aber von Jarvis mit
+  Verweis auf die noch fehlende Gesamt-Profitabilität (Neutron-
+  Testflug-Abhängigkeit) hinterfragt – Antwort von Brian steht noch aus,
+  Rocket Lab bleibt vorerst Talent.
