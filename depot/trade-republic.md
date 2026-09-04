@@ -35,6 +35,10 @@ Sparplan-artige monatliche Käufe (Bruchstück-Aktien), 16.04.2025 bis 03.08.202
 Aktueller Kurs (implizit aus Einstandskurs + Gewinn%): ca. 438 €/Aktie – passt zum
 Allianz-SE-Kursniveau.
 
+**Update 2026-09-04 (Wochenfazit-Lauf, boerse.de, Stand 21:55):** Live-Kurs
+449,60 €/Aktie. Investiert (Summe aller Sparraten oben): 504,43 €. Aktueller
+Wert: 1,151396 × 449,60 € = **517,67 €** (+2,6%).
+
 ## Position 2 – WM (vermutlich Waste Management Inc.) — **VERKAUFT 27.08.2026 @ 187,35€, vollständiger Exit**
 
 **Letzte Aktualisierung laut App:** 12.08., 21:16 Uhr

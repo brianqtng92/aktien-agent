@@ -43,6 +43,34 @@ nicht als tägliche Meldung.
 - **Beobachtungs-/Nachkauf-Trigger:** Abstauber-Limit 3.150 JPY (Conans vorläufige Orientierung, NICHT als bestätigtes Urteil markiert) ODER vollständige K-Kriterien-Verifikation über echte Primärquellen ermöglicht ein belastbares volles Rating.
 - **Prüf-Zeithorizont:** 6 Monate (2027-03-02) - kürzeres Fenster als Disco Corp, weil die offene Frage hier primär Datenverfügbarkeit ist (schneller klärbar), nicht ein mehrjähriger Zyklus.
 
+### 2026-09-04 — Münchener Rückversicherung (Depot, Champions) — nachgetragen
+- **Anlass:** Bestehende Depot-Position (Kauf vor 2026-08-30, daher bisher kein Ledger-Eintrag), im Rahmen des "geschärfter Blick"-Reviews vom 04.09.2026 als [B] THESE-CHECK nachgetragen (schrittweise Nachpflege, siehe architecture.md).
+- **Zentrale These:** Oligopol-Rückversicherer, ROE weiterhin exzellent (23,0% H1 2026, 25,5% Q2 allein), an der Spitze der Peer-Gruppe (Swiss Re 22,7%, Hannover Re 21,2%). Aktueller Beobachtungspunkt: Preiszyklus dreht real (Januar-2026-Erneuerungen -14,7% Property-Cat, Juli -5,5% bis -9,1%), Combined Ratio (~82%) leicht über Guidance (~80%), aber klar profitabel.
+- **These-Bruch-Kriterien:** (a) Januar-2027-Erneuerungspreise fallen nochmals deutlich UND Combined Ratio schiebt sich Richtung 90%+; (b) ROE fällt 2+ Jahre in Folge unter ~15% (Kapitalkosten) — beide zusammen wären ein struktureller statt zyklischer Softening-Befund.
+- **Nächster Prüfpunkt:** Januar-2027-Erneuerungspreise + FY2026-Combined-Ratio vs. ~80%-Guidance.
+- **Prüf-Zeithorizont:** 6 Monate (2027-03-04).
+
+### 2026-09-04 — Constellation Software (Depot, Champions) — nachgetragen
+- **Anlass:** wie oben (schrittweise Nachpflege bestehender Depot-Positionen).
+- **Zentrale These:** Serial-Acquirer mit Nischen-Monopolen, Akquisitionstempo weiter hoch (~$2,5 Mrd. in 7,5 Monaten 2026). Beobachtungspunkt: organisches Wachstum verlangsamte auf 2% in Q2 2026 (von 4%/6%), EBITA-Marge -130 Bp YoY auf 25,2%, aber sequenziell von Q1 erholt; 2026er-Akquisitions-Kohorte bereits von -16% auf +16% Marge verbessert.
+- **These-Bruch-Kriterium:** organisches Wachstum bleibt 2 weitere Quartale (bis Q4 2026/Q1 2027) unter 3%, statt sich Richtung historischer 5-6% zu erholen.
+- **Nächster Prüfpunkt:** Q4 2026/Q1 2027-Zahlen.
+- **Prüf-Zeithorizont:** 6 Monate (2027-03-04).
+
+### 2026-09-04 — MercadoLibre (Depot, Champions) — nachgetragen
+- **Anlass:** wie oben.
+- **Zentrale These:** Dominante E-Commerce/Fintech-Plattform LatAm, Umsatz Q2 2026 erstmals >$10 Mrd. (+50% YoY). Beobachtungspunkt: operative Marge komprimierte auf 6,7% (von 12,2%, -550 Bp) durch bewusste Reinvestition (Logistik, MELI+, Cross-Border, PIX-Rabatte) plus höhere Kreditrückstellungen — aber Kreditqualität selbst stabil (NPL 15-90 Tage nahe historischem Tief 7,0%, Nettozinsmarge nach Verlusten verbessert auf 21%).
+- **These-Bruch-Kriterium:** operative Marge bleibt 3+ Quartale unter 8% UND NPL-Quote steigt über ~8-9% (beide zusammen = echte Kreditqualitäts-/Wettbewerbserosion statt bewusster Offensiv-Investition).
+- **Nächster Prüfpunkt:** Q4 2026/Q1 2027-Zahlen.
+- **Prüf-Zeithorizont:** 6 Monate (2027-03-04).
+
+### 2026-09-04 — Bank Central Asia (Depot, Champions) — nachgetragen
+- **Anlass:** wie oben.
+- **Zentrale These:** ROE 24,1%, dominante Marktstellung Indonesien. Beobachtungspunkt: Nettozinsmarge komprimierte YoY von ~5,8% auf ~5,4% durch branchenweite Bank-Indonesia-Zinserhöhungen (Sektor-NIMs laut Macquarie ~14% gefallen, keine BBCA-spezifische Schwäche) — Kreditwachstum beschleunigte trotzdem wieder auf 8,0% YoY / +4,2% QoQ, NPL 1,9% im Normalbereich, CAR 27,4%.
+- **These-Bruch-Kriterium:** ROE fällt nachhaltig unter ~20% AUCH NACHDEM sich der BI-Zinszyklus stabilisiert hat (nicht während der laufenden Zinsphase).
+- **Nächster Prüfpunkt:** NIM-Entwicklung über die nächsten 2-3 Quartale.
+- **Prüf-Zeithorizont:** 6 Monate (2027-03-04).
+
 ## Erledigt (Post-Mortem abgeschlossen)
 
 _Noch keine fälligen Einträge._

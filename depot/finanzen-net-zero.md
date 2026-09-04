@@ -127,10 +127,33 @@ USD-Kurs ÷ EUR/USD-Kurs.
 | Rambus Inc. | 6 | 533,64 € | 84,74 $ | **438,69 €** | -17,8% |
 | A10 Networks Inc | 21 | 506,52 € | 24,74 $ | **448,27 €** | -11,5% |
 
-Kraken Robotics Inc. und Rocket Lab USA (siehe "Neukäufe" unten) sowie
-HawkEye 360 (siehe `smartbroker-plus.md`) haben weiterhin keinen aktuellen
-Live-Wert – dort wird die Investsumme als Platzhalter verwendet, bis eine
-Live-Quelle verfügbar ist.
+**Update 2026-09-04 (Wochenfazit-Lauf, Twelve Data/stockanalysis.com,
+EUR/USD 1,16132, EUR/CAD 1,60698):** Alle Positionen dieser Datei jetzt mit
+Live-Kurs aktualisiert, inkl. der bisherigen Platzhalter Kraken Robotics
+(TSXV:PNG 5,13 CAD) und Rocket Lab (64,245 USD).
+
+| Position | Anteile | Investsumme | Live-Kurs | **Wert aktuell (EUR)** | Rendite |
+|---|---|---|---|---|---|
+| SoFi Technologies | 250 | 2.612,93 € | 18,51 $ | **3.984,69 €** | +52,5% |
+| ServiceNow Inc | 20 | 1.948,96 € | 145,59 $ | **2.507,32 €** | +28,7% |
+| Cellebrite DI Ltd | 200 | 2.166,15 € | 11,94 $ | **2.056,28 €** | -5,1% |
+| MercadoLibre Inc | 1 | 1.442,80 € | 1.991,06 $ | **1.714,48 €** | +18,8% |
+| Hermès | 1 | 1.905,09 € | (nicht diese Woche aufgefrischt, siehe Datenlücken-Hinweis unten) | **1.541,50 €** | -19,1% |
+| Constellation Software Inc | 1 | 1.380,00 € | 3.023,96 CAD | **1.881,77 €** | +36,4% |
+| Intuitive Surgical Inc | 4 | 1.400,50 € | 369,83 $ | **1.273,83 €** | -9,0% |
+| Tristel PLC | 210 | 1.002,67 € | ~-1,6% Wochenänd. (GBX-EUR-Kurs nicht sauber gegengeprüft, aus EUR-Vorwert abgeleitet) | **929,88 €** | -7,3% |
+| Broadridge Financial Solutions | 8 | 1.119,68 € | 178,91 $ | **1.232,46 €** | +10,1% |
+| CBOE Holdings Inc | 5 | 1.226,15 € | 298,50 $ | **1.285,18 €** | +4,8% |
+| Rambus Inc. | 6 | 533,64 € | 84,34 $ | **435,75 €** | -18,3% |
+| A10 Networks Inc | 21 | 506,52 € | 24,71 $ | **446,83 €** | -11,8% |
+| Kraken Robotics Inc. | 300 | 1.050,00 € | 5,13 CAD (TSXV:PNG) | **957,70 €** | -8,8% |
+| Rocket Lab USA, Inc. | 10 | 554,00 € | 64,245 $ | **553,21 €** | -0,1% |
+
+**Datenlücken-Hinweis:** Hermès und Münchener Rückversicherung (siehe
+Teil 2 oben) wurden diesem Zyklus NICHT frisch abgerufen (im
+Recherche-Auftrag versehentlich ausgelassen) – Werte bleiben auf dem
+Stand vom 29.08./02.09.2026 stehen, nächster Wochenfazit-Lauf holt das
+nach.
 
 ## Verkäufe & Umschichtungen (ab 2026-08-28, von Brian gemeldet, alle Angaben in €)
 

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><title>Reaper Wochenreport</title>
+<style>@page { size:A4; margin:0; }
+:root {
+  --bg: #1A1C1F; --bg-panel: #232629; --bg-panel-2: #2A2D31;
+  --border: #3A3E43; --border-soft: #303337;
+  --text: #EDE8DF; --text-dim: #A39B8E; --text-faint: #6E6860;
+  --gold: #C6922C; --gold-bright: #E0B24E; --gold-dim: #7A5F24;
+  --green: #5C9A5F; --green-bg: rgba(92,154,95,0.14);
+  --yellow: #DDB13B; --yellow-bg: rgba(221,177,59,0.14);
+  --orange: #C9823D; --orange-bg: rgba(201,130,61,0.16);
+  --red: #BC4F41; --red-bg: rgba(188,79,65,0.16);
+}
+* { box-sizing: border-box; margin:0; padding:0; }
+html, body { background: var(--bg); color: var(--text); font-family:"Carlito","DejaVu Sans",Arial,sans-serif; font-size:9.6pt; line-height:1.4; }
+.display { font-family:"DejaVu Sans Condensed","DejaVu Sans",Arial,sans-serif; font-weight:700; }
+.page { width:210mm; height:297mm; padding:11mm 13mm 8mm 13mm; display:flex; flex-direction:column; gap:3.6mm; page-break-after: always; }
+.page:last-child { page-break-after: auto; }
+.masthead { display:flex; justify-content:space-between; align-items:flex-end; border-bottom:2px solid var(--gold); padding-bottom:3mm; }
+.brand { font-size:24pt; letter-spacing:0.05em; }
+.brand .accent { color: var(--gold-bright); }
+.brand-sub { font-size:7.8pt; letter-spacing:0.13em; text-transform:uppercase; color:var(--text-dim); margin-top:0.6mm; }
+.meta { text-align:right; font-size:8pt; color:var(--text-dim); }
+.meta .big { color:var(--text); font-size:10pt; }
+.section-title { font-size:11pt; letter-spacing:0.03em; color:var(--gold-bright); margin-bottom:1mm; }
+.section-label { font-size:7.4pt; letter-spacing:0.13em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:2.5mm; }
+.section-label::after { content:""; flex:1; height:1px; background:var(--border-soft); }
+.ampel-box { display:flex; gap:4mm; align-items:center; background:var(--bg-panel); border:1px solid var(--border-soft); border-left:4px solid var(--yellow); border-radius:3px; padding:4mm 5mm; }
+.ampel-dot { width:9mm; height:9mm; border-radius:50%; background:var(--yellow); flex-shrink:0; box-shadow:0 0 10px rgba(221,177,59,0.5); }
+.ampel-text .status { font-size:14pt; }
+.ampel-text .sub { font-size:8.4pt; color:var(--text-dim); margin-top:1mm; }
+.cat-grid { display:flex; gap:3mm; }
+.cat-grid.g5 > .cat-card { flex:1; }
+.cat-card { flex:1; background:var(--bg-panel); border:1px solid var(--border-soft); border-radius:3px; padding:3mm 4mm; }
+.cat-card .name { font-size:10pt; color:var(--gold-bright); }
+.cat-card .fill { font-size:16pt; margin-top:1mm; }
+.cat-card .fill .target { font-size:8pt; color:var(--text-faint); }
+.cat-card .note { font-size:7.2pt; color:var(--text-dim); margin-top:1mm; }
+.bar-track { height:2.4mm; border-radius:2px; background:var(--border-soft); margin-top:1.6mm; overflow:hidden; }
+.bar-fill { height:100%; border-radius:2px; }
+table.ranks { width:100%; border-collapse:collapse; font-size:8pt; }
+table.ranks th { text-align:left; text-transform:uppercase; letter-spacing:0.05em; font-size:6.8pt; color:var(--text-faint); border-bottom:1px solid var(--border-soft); padding:1.6mm 2mm; }
+table.ranks td { padding:1.4mm 2mm; border-bottom:1px solid var(--border-soft); vertical-align:top; }
+table.ranks tr:last-child td { border-bottom:none; }
+.pill { display:inline-block; padding:0.5mm 2.2mm; border-radius:8px; font-size:6.8pt; letter-spacing:0.03em; text-transform:uppercase; }
+.pill.green { background:var(--green-bg); color:var(--green); border:1px solid var(--green); }
+.pill.yellow { background:var(--yellow-bg); color:var(--yellow); border:1px solid var(--yellow); }
+.pill.orange { background:var(--orange-bg); color:var(--orange); border:1px solid var(--orange); }
+.pill.red { background:var(--red-bg); color:var(--red); border:1px solid var(--red); }
+.tick { color:var(--text-faint); font-size:7.4pt; }
+.box { background:var(--bg-panel); border:1px solid var(--border-soft); border-radius:3px; padding:3mm 4mm; }
+.box h3 { font-size:8.6pt; text-transform:uppercase; letter-spacing:0.06em; color:var(--gold); margin-bottom:1.4mm; }
+.box p { font-size:8pt; color:var(--text-dim); line-height:1.42; }
+.box p b { color:var(--text); }
+.event-list { display:flex; flex-direction:column; gap:2.4mm; }
+.event { display:flex; gap:3mm; background:var(--bg-panel); border:1px solid var(--border-soft); border-radius:3px; padding:2.6mm 3.5mm; }
+.event .tag { flex:0 0 24mm; font-size:8.6pt; }
+.event .tag .t { display:block; font-size:6.4pt; color:var(--text-faint); text-transform:uppercase; }
+.event .body { flex:1; font-size:7.9pt; color:var(--text-dim); line-height:1.4; }
+.event .body b { color:var(--text); }
+.cash-line { border:1px solid var(--gold-dim); border-radius:3px; padding:3.4mm 4mm; background:linear-gradient(135deg,var(--bg-panel-2),var(--bg-panel)); }
+.cash-line .h { color:var(--gold-bright); font-size:9.4pt; margin-bottom:1mm; }
+.cash-line p { font-size:8.4pt; color:var(--text); }
+.footer { display:flex; justify-content:space-between; border-top:1px solid var(--border-soft); padding-top:1.6mm; font-size:6.2pt; color:var(--text-faint); margin-top:auto; }
+.imgbox { text-align:center; }
+.imgbox img { max-width:100%; max-height:78mm; border:1px solid var(--border-soft); border-radius:3px; background:#fff; }
+.imgbox .cap { font-size:7.4pt; color:var(--text-dim); margin-top:1mm; }
+.chart-grid { display:grid; grid-template-columns:1fr 1fr; gap:3mm; }
+.src-list { font-size:7.6pt; color:var(--text-dim); line-height:1.7; }
+table.simple { width:100%; border-collapse:collapse; font-size:7.8pt; }
+table.simple th { text-align:left; text-transform:uppercase; letter-spacing:0.04em; font-size:6.6pt; color:var(--text-faint); border-bottom:1px solid var(--border-soft); padding:1.6mm 2mm; }
+table.simple td { padding:1.4mm 2mm; border-bottom:1px solid var(--border-soft); color:var(--text-dim); }
+table.simple td b { color:var(--text); }
+.up { color:var(--green); } .down { color:var(--red); }
+</style></head>
+<body>
+
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">REAPER <span class="accent">WOCHENREPORT</span></div>
+      <div class="brand-sub">3-KI Cross-Check &middot; Jarvis &middot; Conan &middot; Jack</div>
+    </div>
+    <div class="meta">
+      <div class="big">Woche zum 4. September 2026</div>
+      <div>Gesamtdepot &middot; 18 Einzelwerte + Vanguard-FTSE-All-World-Sparplan + Gold-ETC</div>
+    </div>
+  </div>
+
+  <div class="section-label">Depotstatus</div>
+  <div class="ampel-box">
+    <div class="ampel-dot"></div>
+    <div class="ampel-text">
+      <div class="status display">BEOBACHTEN &mdash; kein akuter Handlungsbedarf, aber zwei strukturelle Punkte im Blick</div>
+      <div class="sub">Depotwert 35.029,69&nbsp;€, praktisch unverändert zur Vorwoche (-0,01%) und im Gleichschritt mit dem breiten Markt. Ruhige Woche: keine neuen 🔴-Ausschlüsse, keine neue VERKAUF-Empfehlung (Cellebrite-Fehlalarm wurde noch am selben Tag korrigiert). Zwei strukturelle Befunde verdienen bewusste Aufmerksamkeit, sind aber keine akuten Handlungsauslöser: der <b>ETF-Anteil liegt mit 21,7% deutlich unter der harten 50%-Untergrenze</b>, und <b>SoFi liegt mit 11,4% knapp über dem 10%-Positionsdeckel</b> (noch innerhalb der 12%-Ausnahme). Siehe Portfolio-Regel-Check, Seite 4.</div>
+    </div>
+  </div>
+
+  <div class="section-label">Kategorie-Füllstand (Depot-Ziel-Struktur &bdquo;10-7-3&ldquo;)</div>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <div class="name display">CHAMPIONS</div>
+      <div class="fill display">10 <span class="target">/ Ziel 10</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--green);"></div></div>
+      <div class="note">Exakt auf Ziel. Diese Woche 3 weitere Positionen ("geschärfter Blick"-Review) hochgestuft: Tristel, Kraken Robotics, HawkEye 360 (Profi&rarr;Champions/Profi, keine echten Verkäufe).</div>
+    </div>
+    <div class="cat-card">
+      <div class="name display">PROFI</div>
+      <div class="fill display">7 <span class="target">/ Ziel 7</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--green);"></div></div>
+      <div class="note">Exakt auf Ziel. CBOE&rarr;Champions, SoFi &amp; Cellebrite Talent&rarr;Profi diese Woche umkategorisiert.</div>
+    </div>
+    <div class="cat-card">
+      <div class="name display">TALENT</div>
+      <div class="fill display">1 <span class="target">/ Ziel 3</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:33%; background:var(--yellow);"></div></div>
+      <div class="note">2 Slots frei (nur Rocket Lab). Rorze (Japan) heute geprüft &amp; abgelehnt (keine überzeugende Scout-These) &mdash; Suche läuft weiter, kein Kandidat wird nur zur Lückenfüllung gekauft.</div>
+    </div>
+  </div>
+
+  <div class="section-label">Kernzahlen dieser Woche</div>
+  <div class="cat-grid">
+    <div class="cat-card"><div class="name">Depotwert</div><div class="fill display" style="color:var(--text);">35.029,69&nbsp;€</div><div class="note">-0,01% ggü. Vorwoche-Baseline (30.08.). S&amp;P 500 +0,09%, Nasdaq 100 +0,38%, MSCI World +0,12% &mdash; praktisch gleichauf mit dem Markt.</div></div>
+    <div class="cat-card"><div class="name">Watchlist</div><div class="fill display" style="color:var(--gold-bright);">30 Werte</div><div class="note">17 Champions / 10 Profi / 3 Talent, unverändert in der Zahl. 8 Hochstufungen, 2 Abstufungen (Copart, Rollins) im "geschärfter Blick"-Review.</div></div>
+    <div class="cat-card"><div class="name">Neue Ausschlüsse</div><div class="fill display" style="color:var(--green);">0</div><div class="note">Ausschluss-Archiv weiterhin leer &mdash; kein Wert diese Woche von der Watchlist geflogen.</div></div>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 1</div>
+    <div>Regelwerk TMR v11.8 / Scout v1.12</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:16pt;">AUFFÄLLIGKEITEN <span class="accent">DER WOCHE</span></div>
+    <div class="brand-sub">Was sich wirklich bewegt hat &mdash; verdichtet aus den täglichen Trigger-Checks der Woche</div></div>
+  </div>
+
+  <div class="event-list">
+    <div class="event">
+      <div class="tag"><span class="t">Depot</span><b class="display">Geschärfter Blick</b><br><span class="pill green">Review</span></div>
+      <div class="body">Vollständiger Neu-Review aller 14 verbliebenen Depot-Positionen (nach den bereits laufenden Talent-Korrekturen). Ergebnis: <b>kein einziger struktureller Bruch gefunden.</b> 3 echte Hochstufungen (Tristel, Kraken Robotics, HawkEye&nbsp;360), 4 Positionen mit dokumentierten, aber zyklischen/timing-bedingten Beobachtungspunkten (Constellation Software, MercadoLibre, Münchener Rück, Bank Central Asia &mdash; je mit konkretem Prüfpunkt, siehe Prediction Ledger). Keine einzige Position tatsächlich verkauft.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">Depot</span><b class="display">CLBT</b><br><span class="pill yellow">Korrigiert</span></div>
+      <div class="body">Ein frischer 3-fach-Scout-Check kam vorschnell zu SCHROTT/VERKAUFEN &mdash; Brian widersprach ("erst gründlich die These durchgehen"), zu Recht: 2 von 3 Re-Rating-Triggern waren mangels Q3-Zahlen noch gar nicht prüfbar, der Guidance-Cut ist plausibel ein Timing- statt Struktur-Problem. <b>Korrigiert: VERKAUFEN &rarr; HALTEN mit Checkpoint Q3-Earnings.</b> Löste eine neue systemweite Regel aus ("Gründliche-These-Prüfung-vor-Verkaufsempfehlung-Pflicht") &mdash; siehe architecture.md.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">Depot</span><b class="display">RKLB</b><br><span class="pill red">Terminal-State</span></div>
+      <div class="body">K≤K-BASIS-2-Terminal-State vom 01.09. bestätigt unverändert (0% Sizing für Neu-/Nachkauf) &mdash; aber die bestehende 10-Stück-Trace-Position bleibt bewusst unangetastet (kein Exit-Signal für Bestand). Konkrete, recherchierte Nachkauf-Aufstufungs-Trigger hinterlegt: Neutron-Erstflug, Verwässerungstempo, Burn-Multiple/Cash-Runway &mdash; nächster Prüfpunkt Q3-Zahlen.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">Talent-Slot</span><b class="display">6323 Rorze</b><br><span class="pill yellow">Geprüft, abgelehnt</span></div>
+      <div class="body">Gezielte 3-fach-Scout-Prüfung für einen der 2 freien Talent-Slots (Japan/Asien strukturell unterbesetzt, siehe Portfolio-Regel-Check). Konvergenz aller drei KIs: solide Finanzqualität (ROIC 20,1%, Netto-Cash), aber Moat nur 2/4 (fragmentierter Markt) und Wachstum real beschädigt (+3,5% statt vormals &gt;40%). <b>Kein Kauf</b> &mdash; Strukturbedarf überschreibt keine schwache Einzelthese. Nächster Prüfpunkt: Quartalszahlen 08.10.2026.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">Watchlist</span><b class="display">Geschärfter Blick</b><br><span class="pill green">Review</span></div>
+      <div class="body">Kompletter Review aller 30 Watchlist-Werte. Hochstufungen: Lasertec &amp; Asahi Intecc (Talent&rarr;Champions/Profi), ANET, USLM, Vertiv, Fortinet, Exponent (jeweils Profi&rarr;Champions), Skyward Specialty (Talent&rarr;Profi). Abstufungen: Copart, Rollins (Champions&rarr;Profi &mdash; echte Marge-/Wachstumserosion, kein Kursschwäche-Artefakt). NVDA &amp; FICO mit neuen Beobachtungspunkten (Custom-Silicon-Konkurrenz bzw. VantageScore-Regulatorik), Kategorie vorerst unverändert.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">Regelwerk</span><b class="display">Neue Regel</b><br><span class="pill yellow">Prozess</span></div>
+      <div class="body">"Automatisierte Portfolio-Lücken-Kandidatensuche-Pflicht": erkennt der wöchentliche Regel-Check eine offene Kategorie-/Region-/Sektor-Lücke ohne plausiblen Watchlist-Kandidaten, wird noch im selben Lauf eine gezielte, systematische Index-Durchsuchung angestoßen (z.B. kompletter Nikkei 225/TOPIX bei einer Japan-Lücke) &mdash; darf sich über mehrere Tages-Läufe erstrecken. Der Rorze-Check oben ist der erste Anwendungsfall.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 2</div>
+    <div>Quelle: depot/kategorisierung.md, watchlist.md, analysen/*.md, Git-Historie der Woche</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:16pt;">WATCHLIST-UPDATE</div>
+    <div class="brand-sub">30 Werte &middot; Champions/Profi/Talent-Logik wie im Depot &middot; volle Liste in watchlist.md</div></div>
+    <div class="meta"><div class="big">17 / 10 / 3</div></div>
+  </div>
+
+  <div class="box">
+    <h3>Zusammenfassung der Woche</h3>
+    <p>Keine Neuzugänge, keine Abgänge (Ausschluss-Archiv weiterhin leer) &mdash; die Watchlist-Bewegung dieser Woche war ausschließlich <b>Rekategorisierung</b> aus dem "geschärfter Blick"-Review (siehe Seite 2): 8 Hochstufungen, 2 Abstufungen. Alle CRV-Ampeln wurden im selben Zuge gegen die aktuelle Bewertung neu hergeleitet (eigene KGV-/Peer-Logik, externe Quellen nur als Rohdaten) &mdash; das erfüllt die wöchentliche CRV-Pflege für diese Woche bereits vollständig.</p>
+  </div>
+
+  <div class="box">
+    <h3>Qualitäts-Upgrade-Funde diese Woche</h3>
+    <p>Keine neue "möglicher Qualitäts-Upgrade ggü. bestehendem Depot-Wert"-Markierung diese Woche &mdash; der Fokus lag auf der Konsolidierung bestehender Fehlzuordnungen (Liquiditäts-/Marktkap-Proxys wurden mehrfach als unzulässiges Kriterium erkannt und korrigiert), nicht auf neuen Funden. Nächster Kandidat mit Upgrade-Potenzial bleibt offen für die kommende Woche.</p>
+  </div>
+
+  <div class="section-label">Talent (3) &mdash; CRV-Ampel</div>
+  <table class="simple">
+    <tr><th>Ticker</th><th>Firma</th><th>CRV</th><th>Kurznotiz</th></tr>
+    <tr><td><b>PLTR</b></td><td>Palantir</td><td><span class="pill red">MEIDEN</span></td><td>Forward-KGV 98-176x, extreme Bewertung trotz operativ verbesserter Story.</td></tr>
+    <tr><td><b>INOD</b></td><td>Innodata</td><td><span class="pill yellow">BEOBACHTEN</span></td><td>KGV 52,5x vs. Branchen-Ø 23,3x, aber starkes Momentum (+86% YTD), Wochenänd. -2,7%.</td></tr>
+    <tr><td><b>6323</b></td><td>Rorze Corp.</td><td><span class="pill red">MEIDEN</span></td><td>Bewertung läuft der Ertragsentwicklung davon; diese Woche zusätzlich vollständig als Depot-Talent-Kandidat geprüft &amp; abgelehnt (s. Seite 2), Wochenänd. -8,1%.</td></tr>
+  </table>
+
+  <div class="section-label">Ausschluss-Archiv</div>
+  <div class="box"><p>Weiterhin leer &mdash; kein Wert seit Bestehen der Watchlist archiviert.</p></div>
+
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 3</div>
+    <div>Vollständige Liste inkl. Kurzthesen: watchlist.md</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:16pt;">PORTFOLIO-REGEL-CHECK</div>
+    <div class="brand-sub">Regelverstöße klar benannt, kein Verstecken in der Kennzahlen-Tabelle</div></div>
+  </div>
+
+  <table class="simple">
+    <tr><th>Regel</th><th>Ziel</th><th>Ist</th><th>Status</th></tr>
+    <tr><td>Größte Einzelposition</td><td>≤10% (Ausnahme bis 12%)</td><td><b>SoFi Technologies 11,4%</b></td><td><span class="pill orange">GRENZWERTIG</span></td></tr>
+    <tr><td>Keine Position &lt;1%</td><td>&ge;1% (außer markierte Trace-Pos.)</td><td>kleinste: Rambus 1,24%</td><td><span class="pill green">ERFÜLLT</span></td></tr>
+    <tr><td>ETF-Mindestanteil</td><td>≥50% (Ziel langfr. 60%)</td><td><b>21,7%</b></td><td><span class="pill red">VERSTOSS</span></td></tr>
+    <tr><td>Region USA</td><td>≤55% (hart ≤60%)</td><td>53,5%</td><td><span class="pill green">ERFÜLLT</span></td></tr>
+    <tr><td>Region Europa/UK</td><td>15-20%</td><td>14,8%</td><td><span class="pill orange">KNAPP UNTER</span></td></tr>
+    <tr><td>Region Japan/Asien</td><td>10-15%</td><td>9,4%</td><td><span class="pill orange">UNTER ZIEL</span></td></tr>
+    <tr><td>Region LatAm</td><td>nur bei echten Kandidaten</td><td>5,1% (MercadoLibre)</td><td><span class="pill green">OK</span></td></tr>
+    <tr><td>Region Sonstige (CA/IL)</td><td>kein festes Band</td><td>17,2% (Kraken, Constellation, Cellebrite)</td><td><span class="pill yellow">HINWEIS</span></td></tr>
+    <tr><td>Sektor Technologie</td><td>30-35%</td><td>29,5%</td><td><span class="pill orange">KNAPP UNTER</span></td></tr>
+    <tr><td>Sektor Finanzwesen</td><td>20-25%</td><td><b>33,7%</b></td><td><span class="pill red">VERSTOSS</span></td></tr>
+    <tr><td>Sektor Gesundheitswesen</td><td>10-15%</td><td>8,4%</td><td><span class="pill orange">UNTER ZIEL</span></td></tr>
+    <tr><td>Sektor Industriewerte</td><td>10-15%</td><td>11,8%</td><td><span class="pill green">ERFÜLLT</span></td></tr>
+    <tr><td>Sektor Rest</td><td>5-10%</td><td><b>16,6%</b></td><td><span class="pill red">VERSTOSS</span></td></tr>
+  </table>
+
+  <div class="box">
+    <h3>Einordnung</h3>
+    <p><b>ETF-Anteil (21,7% statt ≥50%)</b> ist der klarste Regelverstoß und seit Wochen strukturell unverändert (Baseline 29.08. war ähnlich niedrig) &mdash; keine akute Marktentscheidung, aber eine bewusste Aufbauphase-Spannung: die 28 Einzelwert-Käufe der Depot-Restrukturierung (27.08.) haben den ETF-Anteil verwässert, während der Sparplan nur 600€/Monat zuführt. Kein Sofort-Handlungsbedarf laut Regelwerk (harte Leitplanke ohne Phasen-Ausnahme, aber auch kein Zwang zum sofortigen Einmalkauf außerhalb der Trockenpulver-Logik) &mdash; siehe Klare Linie, Seite 6.<br><br>
+    <b>SoFi 11,4%</b> ist organischer Kursanstieg (+52,5% seit Kauf), nicht bewusster Nachkauf &mdash; liegt innerhalb der 12%-Ausnahme für Top-Conviction-Positionen, kein Handlungsdruck.<br><br>
+    <b>Finanzwesen (33,7%) und "Rest" (16,6%)</b> überschreiten ihre Bänder spürbar &mdash; primär weil BCA, Münchener Rück, Allianz, CBOE, Broadridge, SoFi alle als Finanzwesen zählen und MercadoLibre/Hermès in "Rest" fallen. Kein einzelner Fehlkauf, sondern die Summe vieler für sich genommen sinnvoller Positionen. <b>Gesundheitswesen (8,4%) und Japan/Asien (9,4%)</b> sind die am stärksten unterrepräsentierten Töpfe &mdash; deckt sich mit der offenen Talent-Slot-Suche in Japan (siehe Seite 2).<br><br>
+    Zusatzinfo (kein formeller Wochen-Check, aber informativ): Kategorie-Kapitalgewicht Champions 56,8% (Ziel 35-45%, über Ziel) / Profi 41,0% (Ziel 20-30%, über Ziel) / Talent 2,1% (Ziel 25-40%, weit unter Ziel) &mdash; spiegelt exakt die Talent-Untergewichtung in der Positionsanzahl.</p>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 4</div>
+    <div>Basis: ETF+Aktien für Region/Sektor, Gesamtportfolio (inkl. Gold+Cash) für Positionsgrößen</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:16pt;">CHARTS <span class="accent">&amp; MARKT-VERGLEICH</span></div>
+    <div class="brand-sub">Frisch erzeugt mit den aktuellen Wochendaten (Stand 04.09.2026)</div></div>
+  </div>
+  <div class="chart-grid">
+    <div class="imgbox"><img src="chart_zusammensetzung.png"><div class="cap">Gesamt-Zusammensetzung (33.465,87€ Einzelwerte+ETF, ohne Gold/Cash)</div></div>
+    <div class="imgbox"><img src="chart_regionen.png"><div class="cap">Regionen-Verteilung &mdash; Japan/Asien unter Ziel (siehe Seite 4)</div></div>
+    <div class="imgbox"><img src="chart_sektoren.png"><div class="cap">Sektor-Verteilung &mdash; Finanzwesen &amp; Rest über Ziel</div></div>
+    <div class="imgbox"><img src="chart_rendite.png"><div class="cap">Rendite je Position seit Kauf</div></div>
+  </div>
+  <div class="imgbox" style="margin-top:2mm;"><img src="benchmark_vs_depot.png" style="max-height:70mm;"><div class="cap">Depot vs. Markt seit Trackingbeginn (30.08.2026) &mdash; Depot -0,01%, praktisch gleichauf mit allen drei Indizes (max. Differenz 0,4 Pp.)</div></div>
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 5</div>
+    <div>reports/weekly_charts.py &amp; benchmark_chart.py, diese Woche neu ausgeführt</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:15pt;">TOP-BEWEGER <span class="accent">&amp; EXIT-/NACHKAUF-AMPEL</span></div>
+    <div class="brand-sub">Gesamtes Universum (Depot + Watchlist, 48 Werte) &middot; Wochenperformance</div></div>
+  </div>
+
+  <div class="section-label">Top 3 Gewinner / Top 3 Verlierer der Woche</div>
+  <table class="simple">
+    <tr><th>Position</th><th>Herkunft</th><th>Wochenänd.</th><th>Grund</th></tr>
+    <tr><td><b>NVDA</b> Nvidia</td><td>Watchlist</td><td class="up">+5,01%</td><td>Hugging-Face-Übernahme (12,9 Mrd. $) + nachlassende Fed-Zinssorgen</td></tr>
+    <tr><td><b>VRT</b> Vertiv</td><td>Watchlist</td><td class="up">+4,57%</td><td>Übernahme UtilityInnovation Group (~1,45 Mrd. $), AI-Rechenzentrums-Ausbau</td></tr>
+    <tr><td><b>BBCA</b> Bank Central Asia</td><td><b>Depot</b></td><td class="up">+3,47%</td><td>kein klarer Einzelgrund identifiziert</td></tr>
+    <tr><td><b>6146</b> Disco Corp</td><td>Watchlist</td><td class="down">-8,24%</td><td>Sektor-Rotation weg von jap. Halbleiterausrüstern, Yen-Stärke (BoJ-Erwartung)</td></tr>
+    <tr><td><b>6323</b> Rorze</td><td>Watchlist</td><td class="down">-8,09%</td><td>dito, kein spezifischer Einzelgrund</td></tr>
+    <tr><td><b>7747</b> Asahi Intecc</td><td>Watchlist</td><td class="down">-7,58%</td><td>dito, kein spezifischer Einzelgrund</td></tr>
+  </table>
+
+  <div class="section-label">Exit-/Gewinnmitnahme-/Nachkauf-Ampel (nur Kategorie ≠ HALTEN unauffällig)</div>
+  <div class="event-list">
+    <div class="event">
+      <div class="tag"><span class="t">CBOE</span><b class="display">Champions</b><br><span class="pill orange">Kein Nachkauf</span></div>
+      <div class="body">KGV 22-24x, Forward-KGV 31% über Branchen-Ø &mdash; spürbar teuer, kein Schnäppchen. Kein Verkaufsgrund (SPX-/VIX-Monopol unangetastet), einfach kein günstiger Nachkaufzeitpunkt.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">ATEN</span><b class="display">Profi</b><br><span class="pill orange">Kein Nachkauf</span></div>
+      <div class="body">TTM-KGV 59,8x deutlich über 5J-Ø (23,2x); Forward-KGV moderater (26,5x) &mdash; Diskrepanz weiter beobachten, evtl. temporärer Gewinneinbruch.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">RKLB</span><b class="display">Talent</b><br><span class="pill red">Kein Nachkauf</span></div>
+      <div class="body">Terminal-State bestätigt, 0% Sizing für Neu-/Nachkauf. Bestehende 10-Stück-Trace-Position bleibt (kein Exit) &mdash; siehe Auffälligkeiten, Seite 2, für die konkreten Aufstufungs-Trigger.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">CLBT</span><b class="display">Profi</b><br><span class="pill yellow">Checkpoint</span></div>
+      <div class="body">HALTEN mit aktivem Checkpoint Q3-Earnings (Guidance $145-148 Mio. Umsatz) &mdash; diese Woche von einer vorschnellen VERKAUFEN-Empfehlung korrigiert (siehe Seite 2). Kein Nachkauf vor Checkpoint.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">KRKN</span><b class="display">Offene Zone</b><br><span class="pill green">Nachkauf-Zone</span></div>
+      <div class="body">Preisalarm aktiv bei ≤2,80 CAD (Downside-Alert) &mdash; aktueller Kurs 5,13 CAD, noch weit über der Zone. Offen seit 01.09.2026, unverändert diese Woche.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">RMBS</span><b class="display">Offene Zone</b><br><span class="pill green">Nachkauf-Zone</span></div>
+      <div class="body">Preisalarm aktiv bei ≤65 USD (Downside-Alert) &mdash; aktueller Kurs 84,34 USD, noch weit über der Zone. Offen seit 01.09.2026, unverändert diese Woche.</div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Umschichtungs-Prüfung</h3>
+    <p>Keine Position steht diese Woche in Kategorie 4 (Teilverkauf) oder 5 (Verkauf erwägen) &mdash; damit kein Umschichtungs-Kandidat zu prüfen.</p>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 6</div>
+    <div>Zonen unverändert &rarr; keine neue Zonen-E-Mail diese Woche (nur bei echter Änderung)</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:15pt;">MAKRO-AUSBLICK <span class="accent">&amp; KLARE LINIE</span></div>
+    <div class="brand-sub">Nächste 7 Tage &middot; Cash-Disziplin fürs Wochenende</div></div>
+  </div>
+
+  <div class="box">
+    <h3>Makro-Ausblick nächste Woche</h3>
+    <p><b>EZB-Ratssitzung (Zinsentscheid), 09./10.09.2026</b> &mdash; innerhalb der nächsten 7 Tage, relevant für Europa-Exposure (Allianz, Münchener Rück, Hermès, Tristel). Danach, knapp außerhalb des 7-Tage-Fensters: FOMC-Sitzung 15./16.09. (Fed-Funds-Zielkorridor aktuell 3,50-3,75%) und BoJ-Sitzung 16./17.09. (Yen-Zinspfad relevant für BCA-Umrechnung sowie Disco/Lasertec/Rorze/Asahi Intecc in der Watchlist).<br><br>
+    <b>Investitionsklima (Stand 04.09., Tagesscan):</b> Aktien-Technik bullisch (S&amp;P über 50D- UND 200D-SMA, 200D-Linie steigend, VIX ruhig bei 14,3), aber Fear&amp;Greed-Quellenlage uneinheitlich (eher Fear trotz Kursen nahe Hoch) und Gold nahe Rekordhoch (~4.430-4.480 USD/oz) deuten auf fortlaufende Absicherungsnachfrage. US-Dollar-Index moderat (~99), US-High-Yield-Spreads historisch eng (~265 Bps, kein Kreditmarkt-Stress-Signal), Ölpreis erhöht/Richtung uneinheitlich (~91 USD/Barrel, mögliche Nahost-Prämie) &mdash; im Blick als Inflationsrisiko. China: kalibrierter, schrittweiser Stimulus-Kurs (zusätzliche Anleiheemission ~2 Bio. Yuan für H2) statt großem Knall, tendenziell unterstützend. In Summe: kein reines "Alles-Grün"-Bild, aber auch kein Vorsichts-Signal, das gegen die laufende Strategie spricht.</p>
+  </div>
+
+  <div class="cash-line">
+    <div class="h display">KLARE LINIE FÜRS WOCHENENDE</div>
+    <p>Champions und Profi sind beide exakt auf Ziel (10/10, 7/7) &mdash; kein Bedarf für eine komplett neue Position. Von den 7 aktuell 🟢-bewerteten Champions (Intuitive Surgical, Münchener Rück, ServiceNow, Hermès, MercadoLibre, Bank Central Asia, Tristel) sticht <b>Bank Central Asia</b> hervor: klar unterbewertet (KGV ~12-14x, 52% unter 10J-Median, ROE 24,1%) UND adressiert gleichzeitig die Japan/Asien-Regionslücke (9,4% vs. Ziel 10-15%) &mdash; ein seltener Fall, in dem Bewertungssignal und Struktur-Bedarf zusammenfallen. Kraken Robotics und HawkEye 360 sind laut Brians eigener Festlegung "erstmal voll", kein aktiver Nachkauf-Wunsch dort.<br><br>
+    Der auffälligste strukturelle Punkt bleibt der <b>ETF-Anteil (21,7% statt ≥50%)</b> &mdash; keine Korrektur- oder Regime-Wechsel-Trigger ist laut Tagesscan aktuell erfüllt, die 200€/Monat-Korrektur-Reserve (aktuell 1.060,33€, noch unter dem 3-5%-Cash-Cap) bleibt also regelkonform als Trockenpulver liegen, statt vorzeitig als ETF-Einmalkauf eingesetzt zu werden. Wer trotzdem gezielt gegensteuern will: der reguläre 600€/Monat-Sparplan (nächste Ausführung 07.09.) trägt strukturell zur Annäherung bei, ein bewusster zusätzlicher ETF-Einmalbeitrag (statt eines weiteren Einzelwert-Kaufs) wäre die direkteste Stellschraube.<br><br>
+    <b>Nicht auf Teufel komm raus investieren &mdash; wenn nichts klar überzeugt, bleibt das Geld Cash.</b> Diese Woche überzeugt nichts stark genug für einen impulsiven Kauf; BCA ist eine solide, aber keine dringende Gelegenheit.</p>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 7</div>
+    <div>Keine Anlageberatung &middot; alle Einschätzungen sind Entscheidungsunterstützung, keine Order-Empfehlung</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:15pt;">METHODIK <span class="accent">&amp; QUELLEN</span></div></div>
+  </div>
+  <div class="box">
+    <h3>Methodik-Hinweise</h3>
+    <p>Positionsgrößen-Prozente auf Basis Gesamtportfolio inkl. Gold-ETC und Cash (35.029,69€ finanzen.net zero + Trade Republic + Smartbroker+ + Scalable Capital). Region-/Sektor-Prozente auf Basis ETF+Aktien (ohne Gold/Cash, wie architecture.md vorgibt). Hermès und Münchener Rückversicherung wurden diesen Zyklus nicht frisch abgerufen (Datenlücke, siehe finanzen-net-zero.md) &mdash; Werte vom 29.08./02.09. übernommen, geringer Effekt auf Gesamtsumme. Tristel-Kurs aus der berichteten Wochenperformance (ca. -1,6%) auf den letzten bekannten EUR-Kurs abgeleitet, statt aus einer selbst geschätzten GBP/EUR-Umrechnung &mdash; No-False-Precision-Prinzip. CRV-Ampel-Urteile sind stets eigene Herleitung aus KGV/Wachstum/Marge-Logik bzw. KBV/ROE bei Banken/Versicherern, externe Quellen dienen nur als Rohdaten.</p>
+  </div>
+  <div class="box">
+    <h3>Primärquellen dieser Woche</h3>
+    <p class="src-list">
+      Scalable Capital MCP (Live-Portfoliodaten) &middot; Twelve Data (Live-Kurse SoFi, ServiceNow, Cellebrite, MercadoLibre, Constellation Software, Intuitive Surgical, Broadridge, CBOE, Rambus, A10 Networks, Rocket Lab, HawkEye 360, BCA-Wochenperf.) &middot; stockanalysis.com (Kraken Robotics TSXV:PNG, Tokyo-Werte) &middot; boerse.de (Allianz SE) &middot; WebSearch/WebFetch (S&amp;P 500/Nasdaq 100/MSCI-World-Proxy-Indexstände, Earnings-Kalender, DXY/HY-Spread/WTI/China-Makro, Top-Beweger-Begründungen) &middot; depot/kategorisierung.md, watchlist.md, depot/prediction_ledger.md, depot/earnings_calendar.md, depot/macro_context.md (interne Regelwerks-Dateien).
+    </p>
+  </div>
+  <div class="box">
+    <h3>Rechtlicher Hinweis</h3>
+    <p>Dieser Report ist Recherche-/Entscheidungsunterstützung für Brians eigene manuelle Anlageentscheidung, keine regulierte Anlageberatung. Keine erfundenen exakten Wahrscheinlichkeiten (No-False-Precision-Prinzip). Alle Kauf-/Verkaufsorders werden ausschließlich manuell durch Brian ausgeführt.</p>
+  </div>
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 8</div>
+    <div>Ende des Reports</div>
+  </div>
+</div>
+
+</body></html>

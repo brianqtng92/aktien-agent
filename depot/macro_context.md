@@ -42,4 +42,15 @@ qualitativ + quellenbasiert.
 
 ## Weitere Dimensionen (wöchentlich im Wochenfazit gepflegt, nicht täglich)
 
-_Noch kein Eintrag - DXY, High-Yield-Credit-Spreads, Öl/Energie, China-Regulatorik/Konjunktur ab dem nächsten Wochenfazit._
+Erstbefüllung 2026-09-04 (Wochenfazit), Quelle: WebSearch. Keine
+erfundenen exakten Wahrscheinlichkeiten - nur recherchierte Werte +
+vorsichtige qualitative Einordnung.
+
+| Dimension | Stand/Datum | Wert | Einordnung |
+|---|---|---|---|
+| US-Dollar-Index (DXY) | 2026-09-04 | ca. 98,99 | Mittleres Niveau ohne extremen Ausschlag; kein klares Signal für starke USD-Stärke/-Schwäche aus dieser Einzelzahl ableitbar. |
+| US-High-Yield-Spread (ICE BofA US HY OAS) | 2026-09-01 | ca. 2,65 Prozentpunkte (265 Bps) | Historisch eng/niedrig (typische Bandbreite eher 300-500 Bps) - deutet auf entspannte Kreditmarkt-/Risikoaufschlags-Lage hin, kein Stress-Signal. |
+| Ölpreis (WTI) | 2026-09-04 | ca. 91 USD/Barrel | Quellen uneinheitlich (eine Quelle: -0,25% zum Vortag; andere Quelle: +9% auf Wochensicht durch Nahost-Spannungen/Sorge um Straße von Hormuz) - Richtung der Wochenperformance nicht sauber verifizierbar, Niveau aber klar erhöht ggü. ruhigeren Phasen; als Vorsicht-Signal für Energiepreis-getriebene Inflation zu werten. |
+| China Regulatorik/Konjunktur | Ende August 2026 (ca. 22.-25.08.) | Offizielle Kommentare betonen kalibrierten, schrittweisen Stimulus-Ansatz (u.a. zusätzliche Anleiheemission von ca. 2 Billionen Yuan für H2 2026, Zinssubventionen/Kreditunterstützung) angesichts Wachstumssorgen (BIP, Konsum, Investitionen, Immobilien-/Kommunalschulden) | Tendenziell unterstützend für Marktstimmung (kein "großer Knall", aber laufende Nachsteuerung) - keine belastbare Einzelquelle für Ereignisse in den letzten 1-2 Tagen vor dem 04.09. gefunden, daher Fokus auf die Ende-August-Meldungslage. |
+
+<!-- Format je Zeile: Dimension | Stand/Datum der Quelle | recherchierter Wert | 1-2 Satz qualitative Einordnung, klar als recherchiert (nicht geschätzt) gekennzeichnet, "n/v" falls nicht sauber recherchierbar. -->

@@ -41,6 +41,7 @@ Wachstumsrate, nicht um eine exakte währungsbereinigte Renditevergleichsgröße
 |---|---|---|---|---|---|---|---|---|---|
 | ~~29.08.2026~~ | ~~33.403,32 €~~ | ~~0,0%~~ | ~~7.711,76~~ | ~~0,0%~~ | ~~29.433,43~~ | ~~0,0%~~ | ~~127,735 €~~ | ~~0,0%~~ | verworfen, siehe Korrektur oben |
 | 30.08.2026 | 35.034,17 € | 0,0% | 7.711,76 | 0,0% | 29.433,43 | 0,0% | 127,735 € | 0,0% | Neuer Startpunkt, noch kein Vergleich möglich |
+| 04.09.2026 | 35.029,69 € | -0,01% | 7.718,60 | +0,09% | 29.544,15 | +0,38% | 127,89 € | +0,12% | Praktisch gleichauf mit allen drei Indizes, marginal dahinter (Differenz max. 0,4 Pp.) – ruhige Woche ohne große Marktbewegung |
 
 ## Prozess für den wöchentlichen Wochenfazit-Lauf (freitags)
 

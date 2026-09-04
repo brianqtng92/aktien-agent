@@ -21,6 +21,11 @@ Zuletzt aktualisiert: 2026-09-02 (Nachkauf gemeldet).
 HawkEye-360-Analysen/Watchlist-Charts diesen Status berücksichtigen (kein
 aktives "Nachkauf erwägen"-Signal solange dieser Hinweis nicht widerrufen wird).
 
+**Update 2026-09-04 (Wochenfazit-Lauf, Twelve Data, EUR/USD 1,16132):**
+Erster Live-Kurs für diese Position: 17,355 $/Aktie. Aktueller Wert:
+100 × 17,355 $ ÷ 1,16132 = **1.494,42 €** (-11,1% ggü. Investsumme
+1.681,70 €).
+
 Hinweis (2026-08-23, weiterhin gültig): Depot-Erfassung insgesamt abgeschlossen –
 von Brian bestätigt ("das sind meine ganzen Positionen"). Zusammen mit
 `scalable-capital.md`, `finanzen-net-zero.md` und `trade-republic.md` ist das
