@@ -24,6 +24,7 @@ selbst schon ein Warnsignal sind.
 |---|---|---|---|---|
 | 2026-09-04 (Anlage) | - | - | - | Datei angelegt, noch kein echter Lauf protokolliert - erster Eintrag beim nächsten taeglicher-trigger-check/blitz-scan-Lauf mit Bridge-Einsatz. |
 | 2026-09-04 ~11:00 UTC | ad-hoc-chat (CLBT/RKLB-These-Check, Talent-Rebalancierung) | FAIL x2 dann OK (503 "high demand", 3. Versuch erfolgreich für beide) | OK (beide Ticker auf Anhieb) | Erster echter Log-Eintrag. Gemini 503 ist ein bekanntes transientes Problem (siehe frühere Sessions), kein struktureller Ausfall - Retry-Logik hat funktioniert. |
+| 2026-09-04 ~08:20 UTC | taeglicher-trigger-check (2. Durchlauf desselben Tages) | n.a. - kein Einsatz nötig | n.a. - kein Einsatz nötig | Reiner Ampel-/Depot-Scan (Jarvis-only WebSearch-Bündelsuche über alle 18 Depot- + 30 Watchlist-Werte), keine neuen 🔴-Ausschlüsse/Sofort-Kauf-Funde, daher kein 3-fach-Cross-Check nötig. Bestätigt/korrespondiert mit dem 1. Durchlauf (~08:00 UTC, Commit 887a2a2) - keine neuen Transaktionen, ruhig. Auffällig: dies ist der zweite taeglicher-trigger-check-Lauf für 2026-09-04 (Grund unklar, evtl. doppelte Scheduler-Ausführung) - siehe "Auffälligkeiten" unten. |
 
 <!-- Format je Zeile:
 Zeitpunkt (UTC, ISO oder TT.MM.JJJJ HH:MM) | Task-Name (taeglicher-trigger-check/blitz-scan/wochenfazit) | Jack-Status (OK / FAIL: <Grund> / FALLBACK-Chrome / n.a.-kein Einsatz) | Conan-Status (gleiches Schema) | Kurznotiz (z.B. betroffener Ticker, oder "kein Bridge-Einsatz noetig, ruhiger Tag")
@@ -33,6 +34,10 @@ Bei FAIL: kurzer Grund falls erkennbar (Timeout, Verbindungsfehler, Tool nicht g
 
 ## Auffälligkeiten (manuell/bei Bedarf ergänzt)
 
-_Noch keine dokumentierten Auffälligkeiten._
+**2026-09-04:** taeglicher-trigger-check lief zweimal am selben Tag (~08:00 UTC
+und ~08:20 UTC, siehe Log oben) - Grund von hier aus nicht feststellbar (evtl.
+doppelte Scheduler-Auslösung). Kein inhaltlicher Schaden (2. Durchlauf hat nur
+bestätigt, keine widersprüchlichen Aktionen ausgelöst), aber falls sich das
+wiederholt, lohnt sich ein Blick auf die Scheduled-Task-Konfiguration.
 
 <!-- Wird ergänzt, wenn ein Muster auffällt (z.B. "Jack fällt seit 3 Tagen in Folge um 21 Uhr aus") - dient als Ausgangspunkt für eine gezielte Diagnose, nicht als taegliche Pflichtnotiz. -->
