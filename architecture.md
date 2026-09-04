@@ -3811,12 +3811,28 @@ künftige Portfolio-Aufnahme** sind.
      Sizing-Freigabe).
   2. **Pflicht-Reaktion, SOFORT im selben Lauf, nicht erst beim nächsten
      turnusmäßigen Scan-Slot:** eine GEZIELTE Kandidatensuche für genau
-     diese Lücke anstoßen (Kategorie + Region/Sektor-Kombination explizit
-     als Suchkriterium, nicht die generische Index-Rotation aus Schritt 1
-     des Kandidaten-Scans abwarten). Mehrere Kandidaten pro Lücke prüfen,
-     nicht nach dem ersten Fehlschlag aufgeben. Jeder gefundene Kandidat
-     durchläuft dieselben Gates wie beim normalen Kandidaten-Scan
-     (Identity-/Strategie-Fit-/Duplikations-Gate, dann voller 3-fach-Check).
+     diese Lücke anstoßen. **Klarstellung (2026-09-04, von Brian präzisiert:
+     "ich meinte damit die ganzen Indizes durchforsten"):** "gezielt" heißt
+     hier NICHT nur ein, zwei Kandidaten grob anschauen, sondern den bzw.
+     die für die Lücke einschlägigen Index/Indizes aus dem
+     "Kandidaten-Universum" oben (z.B. bei einer Japan/Asien-Lücke Nikkei
+     225/TOPIX vollständig, nicht nur die tagesübliche Rotations-Scheibe;
+     bei einer Sektor-Lücke die einschlägigen Branchen-Ausschnitte über
+     mehrere Indizes hinweg) systematisch UND VOLLSTÄNDIG durchgehen, nicht
+     nur einen kleinen täglichen Ausschnitt. Diese Vollständigkeits-Pflicht
+     gilt NUR für den Lücken-Auslöser-Fall hier – die normale tägliche
+     Index-Rotation (Schritt 1 oben) bleibt bewusst scheibenweise, damit sie
+     günstig/stabil bleibt (siehe Aufwand/Realismus-Punkt oben). Ein
+     Lücken-Lauf darf dafür mehrere Tage/mehrere aufeinanderfolgende
+     Scheduled-Task-Läufe brauchen, um einen ganzen Index abzudecken, ohne
+     dass das ein Fehlschlag ist – Fortschritt (welcher Index-Ausschnitt
+     schon geprüft wurde) wird zwischen Läufen festgehalten (z.B. kurze
+     Notiz in `depot/bridge_status.md` oder Commit-Message), damit nicht bei
+     jedem Lauf wieder bei Null angefangen wird. Mehrere Kandidaten pro
+     Lücke prüfen, nicht nach dem ersten Fehlschlag aufgeben. Jeder
+     gefundene Kandidat durchläuft dieselben Gates wie beim normalen
+     Kandidaten-Scan (Identity-/Strategie-Fit-/Duplikations-Gate, dann
+     voller 3-fach-Check).
   3. **Kein Qualitäts-Rabatt wegen Strukturbedarf:** ein struktureller
      Bedarf (offener Slot, unterbesetzter Topf) darf einen Kandidaten in
      der Vorauswahl positiv hervorheben (siehe bereits bestehende Regel
