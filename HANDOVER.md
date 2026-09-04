@@ -918,9 +918,15 @@ hier nur die wichtigsten für den Sessionstart):
     stichprobenartig zu verifizieren.
 12. Praktischer PDF-Scope-Kompromiss: 6-Positionen-pro-Seite-Kartenraster
     für Wochenreports.
-13. **Ungelöster RKLB-Scout-Quick-Filter-Meta-Retro-Fall:** Jarvis/Jack/
-    Conan uneins, wie die Scout-Abbruch-Logik mit dem Rating interagieren
-    soll – noch offen.
+13. **RKLB-Scout-Quick-Filter-Meta-Retro-Fall — GELÖST (2026-09-01, hier
+    nur nachträglich als erledigt markiert, 2026-09-04 im Rahmen der
+    Gaps-Abarbeitung geprüft):** Jacks Rating widersprach seinem eigenen
+    Abbruch-Befund (Regelfehler, nicht gleichwertige Auslegung) - Auflösung
+    in `analysen/KRKN-RKLB-nachholanalyse-final-2026-09-01.md`: Jarvis'
+    ursprüngliches Ergebnis vom 28.08. (RATING ZU FRÜH, Sizing 0%) als
+    offizielles System-Ergebnis bestätigt. Dieser Fall wurde zudem zum
+    Canonical Failure Case für den späteren Terminal-State-Mechanismus
+    (architecture.md Abschnitt 14, 2026-09-01).
 14. **E-Mail-Versand aus Scheduled Tasks lief nie, seit 2026-09-01
     diagnostiziert und gefixt (2026-09-03):** Brian bekam trotz "verdrahtet
     und getestet" markiertem Gmail-Connector nie eine E-Mail aus
