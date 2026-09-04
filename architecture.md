@@ -3791,6 +3791,56 @@ künftige Portfolio-Aufnahme** sind.
      überstehen – nicht auf einen kompletten Marktscan mit 3-fachem Cross-
      Check täglich, das wäre nicht robust finanzierbar/stabil (siehe
      Abschnitt 6, "Warum nicht alles täglich voll automatisch?").
+- **Automatisierte Portfolio-Lücken-Kandidatensuche-Pflicht (2026-09-04, von
+  Brian gefordert: "die Agenten müssen automatisch agieren können, weil
+  kein passender Kandidat in der Watchlist gefunden wird, dann müssen die
+  Agenten automatisiert auf die Suche gehen, und nicht warten bis ich das
+  erwähne").** Auslöser des Tages: bei der Depot-Talent-Neuzählung sank
+  Talent auf 1/3 (2 freie Slots), Japan/Asien lag mit ~9% klar unter dem
+  Zielband (10-15%), und Rorze (der einzige naheliegende Watchlist-
+  Kandidat für diese spezifische Lücke) fiel nach vollem 3-fach-Scout-Check
+  durch (siehe `analysen/RORZE-cross-check-fazit-2026-09-04.md`). Bis
+  dahin wäre die Lücke einfach offen geblieben, bis Brian von sich aus
+  nachfragt – genau das darf nicht mehr passieren.
+  1. **Auslöser (jeder einzelne reicht):** (a) ein Kategorie-Slot ist offen
+     (Ist < Ziel in der "10-7-3"-Struktur, siehe `depot/kategorisierung.md`),
+     (b) der wöchentliche Portfolio-Regel-Check (Region/Sektor-Bänder,
+     siehe oben) meldet einen unterbesetzten Topf, (c) ein zur Behebung
+     einer solchen Lücke geprüfter Kandidat (egal ob aus der Watchlist oder
+     neu gefunden) fällt nach vollem 3-fach-Check durch (KEIN Kauf, KEINE
+     Sizing-Freigabe).
+  2. **Pflicht-Reaktion, SOFORT im selben Lauf, nicht erst beim nächsten
+     turnusmäßigen Scan-Slot:** eine GEZIELTE Kandidatensuche für genau
+     diese Lücke anstoßen (Kategorie + Region/Sektor-Kombination explizit
+     als Suchkriterium, nicht die generische Index-Rotation aus Schritt 1
+     des Kandidaten-Scans abwarten). Mehrere Kandidaten pro Lücke prüfen,
+     nicht nach dem ersten Fehlschlag aufgeben. Jeder gefundene Kandidat
+     durchläuft dieselben Gates wie beim normalen Kandidaten-Scan
+     (Identity-/Strategie-Fit-/Duplikations-Gate, dann voller 3-fach-Check).
+  3. **Kein Qualitäts-Rabatt wegen Strukturbedarf:** ein struktureller
+     Bedarf (offener Slot, unterbesetzter Topf) darf einen Kandidaten in
+     der Vorauswahl positiv hervorheben (siehe bereits bestehende Regel
+     oben, "Vorab-Check schon bei jeder Kurs-/Chancen-Vorauswahl"), aber
+     NIE eine schwache Einzelthese überschreiben oder einen im 3-fach-Check
+     durchgefallenen Kandidaten doch aufnehmen. Findet die gezielte Suche
+     keinen echten Kandidaten: das explizit so benennen ("Lücke X geprüft,
+     kein passender Kandidat gefunden trotz gezielter Suche, weiter
+     beobachten") statt die Lücke stillschweigend fallen zu lassen – dieselbe
+     Ehrlichkeits-Pflicht wie bei "kein Verstoß" im Portfolio-Regel-Check.
+  4. **Kein Dauerlauf ohne Ende:** eine erfolglose gezielte Suche muss nicht
+     bei jedem einzelnen Lauf wiederholt werden (das wäre reine
+     Rechenverschwendung ohne neue Information) – sie wird erneut
+     ausgelöst, sobald sich die Datenlage ändert (neuer Kandidat aus dem
+     normalen täglichen Scan taucht in der betroffenen Region/Sektor auf,
+     ein bereits abgelehnter Kandidat erreicht sein Recheck-Datum, oder der
+     nächste Wochenfazit-Lauf bestätigt die Lücke erneut) – dann aber
+     wieder ohne dass Brian es erst ansprechen muss.
+  5. **Benachrichtigung:** ein gefundener, bestätigter Kandidat läuft durch
+     die normale Eskalationslogik (automatische Watchlist-Aufnahme, siehe
+     oben). Eine erfolglose gezielte Suche braucht KEINE Sofort-
+     Benachrichtigung (kein handlungsrelevanter Fund), wird aber im
+     nächsten Wochenfazit als "geprüft, noch offen" kurz erwähnt statt
+     kommentarlos zu verschwinden.
 - **Ad-hoc-Einzelwert-Check auf Zuruf (2026-08-30, von Brian gefordert):**
   Zusätzlich zum systematischen täglichen Scan oben kann Brian jederzeit
   einen konkreten, selbst benannten Wert einreichen (eigene Idee oder z.B.
