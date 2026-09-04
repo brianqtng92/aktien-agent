@@ -26,12 +26,18 @@ qualitativ + quellenbasiert.
 
 | Datum | Ereignis | Relevanz | Status |
 |---|---|---|---|
+| 2026-09-09/10 | EZB-Ratssitzung (Zinsentscheid) | Europa-Exposure via Allianz, Münchener Rück, ASML, Hermès - Sondertermin diesmal in Berlin (Bundesbank), sonst kein Unterschied. | anstehend |
 | 2026-09-15/16 | FOMC-Sitzung (inkl. Dot Plot/SEP) | Fed-Funds-Zielkorridor aktuell 3,50-3,75% (Stand 2026-09-01) | anstehend |
+| 2026-09-16/17 | BoJ-Sitzung (Zinsentscheid) | Japan-Exposure zahlreicher Depot-/Watchlist-Werte (Hoya, Disco, Lasertec, Rorze, Asahi Intecc, Keyence u.a.) - Yen-Zinspfad wirkt sowohl auf Kurse als auch EUR/JPY-Umrechnung. | anstehend |
 | 2026-10-27/28 | FOMC-Sitzung | - | anstehend |
+| 2026-10-28/29 | EZB-Ratssitzung (Zinsentscheid) | siehe oben | anstehend |
+| 2026-10-29/30 | BoJ-Sitzung (Zinsentscheid, inkl. Outlook Report) | siehe oben | anstehend |
 | 2026-11-03 | US-Midterms | historisch oft erhöhte Vorfeld-Volatilität, kein verlässliches Muster pro Zyklus | anstehend, ab ca. 2026-10-20 im Trigger-Check als "bald"-Hinweis |
 | 2026-12-08/09 | FOMC-Sitzung (inkl. Dot Plot/SEP) | - | anstehend |
+| 2026-12-16/17 | EZB-Ratssitzung (Zinsentscheid) | siehe oben | anstehend |
+| 2026-12-17/18 | BoJ-Sitzung (Zinsentscheid) | siehe oben | anstehend |
 
-<!-- Format je Zeile: Datum | Ereignis (FOMC-Sitzung/EZB-Sitzung/BoJ-Sitzung/Wahl/Debt-Ceiling-Frist/sonstiges) | Relevanz-Kurzsatz | Status (anstehend/erledigt+Ergebnis). Vollständigen 2026er-FOMC-Kalender siehe architecture.md Abschnitt 5. EZB-/BoJ-Termine sowie Debt-Ceiling-Fristen bei Bekanntwerden ergänzen. -->
+<!-- Format je Zeile: Datum | Ereignis (FOMC-Sitzung/EZB-Sitzung/BoJ-Sitzung/Wahl/Debt-Ceiling-Frist/sonstiges) | Relevanz-Kurzsatz | Status (anstehend/erledigt+Ergebnis). Vollständigen 2026er-FOMC-Kalender siehe architecture.md Abschnitt 5. EZB-/BoJ-Termine hier per WebSearch (ecb.europa.eu, boj.or.jp) recherchiert am 2026-09-04, Rest-2026-Jahr - Debt-Ceiling-Fristen bei Bekanntwerden ergänzen. -->
 
 ## Weitere Dimensionen (wöchentlich im Wochenfazit gepflegt, nicht täglich)
 
