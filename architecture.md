@@ -4149,21 +4149,16 @@ via yfinance"-Vorgehen funktioniert hier also nicht. Stattdessen:
      von jeder Freigabe:** `submit_buy_order`, `submit_sell_order`,
      `submit_savings_plan`, `cancel_order`. Siehe Grenze oben – diese vier
      bleiben exklusiv Brians eigene Handlung im Scalable-Interface.
-- **NEU (2026-08-28): Datenlücken blockieren einen sofortigen Portfolio-Regel-
-  Check.** Die neuen Regeln (max. 10%/min. 1% Positionsgröße, ETF-Anteil
-  ≥50%, Regionen-Verteilung übers Gesamtportfolio) sind dokumentiert und im
-  Wochenfazit-Trigger verankert, aber eine verlässliche Berechnung JETZT ist
-  nicht möglich: mehreren Positionen fehlt der aktuelle Wert komplett
+- **ERLEDIGT (2026-08-28, geprüft und als gelöst markiert 2026-09-04):
+  Datenlücken blockieren einen sofortigen Portfolio-Regel-Check.** Die
+  neuen Regeln (max. 10%/min. 1% Positionsgröße, ETF-Anteil ≥50%,
+  Regionen-Verteilung übers Gesamtportfolio) sind dokumentiert und im
+  Wochenfazit-Trigger verankert. Die damals genannten 9 Positionen
   (Intuitive Surgical, Constellation Software, Hermès, ServiceNow,
-  MercadoLibre, Cellebrite, Broadridge, CBOE Holdings, Rambus – siehe die
-  "Noch offen"-Hinweise in den jeweiligen `depot/`-Dateien), teils fehlt
-  sogar die Stückzahl. Der Wochenfazit-Lauf (Freitag) wird versuchen, fehlende
-  aktuelle Kurse per WebSearch zu ergänzen, kann aber ohne Stückzahl/
-  Kaufkurs-Basis keine exakte Positionsgröße berechnen – wird dann als
-  Näherung bzw. explizite Datenlücke gekennzeichnet, nicht verschwiegen.
-  **Für eine wirklich belastbare erste Prüfung wäre es hilfreich, wenn Brian
-  bei Gelegenheit die fehlenden Zusammenfassungs-Screenshots nachreicht**
-  (gleiche Ansicht wie bei den bereits vollständig erfassten Positionen).
+  MercadoLibre, Cellebrite, Broadridge, CBOE Holdings, Rambus) haben
+  inzwischen alle vollständige, laufend gepflegte Daten in
+  `depot/kategorisierung.md` (inkl. CRV-Ampel, KGV, MoS-Hinweis) – keine
+  offenen Datenlücken mehr gefunden.
 
 - Genaue quantitative Vorfilter-Kriterien für Schritt 1 (Universum-Screening)
 - Diskrepanz-Schwellenwerte (ab wann gilt ein Fair-Value-Unterschied als "Konflikt"?)
