@@ -11,9 +11,9 @@ Begründung/Historie einer einzelnen Position bleiben
 `depot/kategorisierung.md`, `watchlist.md` etc. maßgeblich. Wird am Ende
 jedes `taeglicher-trigger-check`- und `wochenfazit`-Laufs aktualisiert.
 
-**Zuletzt aktualisiert:** 2026-09-04, ~22:35 (ad-hoc, nach Anlage dieser
-Datei) – nächste reguläre Aktualisierung beim nächsten
-`taeglicher-trigger-check`-Lauf.
+**Zuletzt aktualisiert:** 2026-09-04, ~23:10 (ad-hoc – echter Portfolio-
+Regel-Check mit Live-Daten statt Schätzung nachgezogen) – nächste
+reguläre Aktualisierung beim nächsten `taeglicher-trigger-check`-Lauf.
 
 ---
 
@@ -64,19 +64,47 @@ Quelle: `depot/offene_empfehlungen.md` (dort maßgeblich, hier nur Kurzstand).
 | Kraken Robotics | Nachkauf-Zone (Preisalarm) | ≤2,80 |
 | Rambus | Nachkauf-Zone (Preisalarm) | ≤65 |
 
-## 5. Offene Portfolio-Regel-Fragen (noch nicht live verifiziert)
+## 5. Portfolio-Regel-Check (echt berechnet, 2026-09-04)
 
-**Wichtig:** die folgenden Zahlen sind grobe Schätzungen aus einer
-manuellen Überschlagsrechnung (04.09.2026, Ad-hoc-Diskussion), NICHT aus
-einer echten Live-Berechnung mit exakten ETF-Binnengewichten – siehe
-Regionen-Frage unten. Nächster `wochenfazit`-Lauf sollte den echten
-Portfolio-Regel-Check (Region/Sektor-Bänder) mit sauberen Daten
-durchführen und diese Zeile ersetzen.
+**Methodik:** Live-Positionswerte aller 18 Depot-Einzelwerte (4 Broker,
+Kraken/RKLB/HawkEye mit frischen Twelve-Data-Kursen aktualisiert) + echte
+Vanguard-FTSE-All-World-Regions-/Sektor-Gewichte (offizielles Factsheet,
+Stand 31.07.2026, justETF/vanguard.co.uk) – NICHT mehr aus dem Gedächtnis
+geschätzt. Gold-ETC und Cash bewusst ausgeschlossen (siehe
+`scalable-capital.md`). Portfolio-Gesamtwert (Aktien+ETF): ~33.576 €.
 
-| Topf | Geschätzt | Ziel-Band | Status |
+### Region
+
+| Topf | Real | Ziel-Band | Status |
 |---|---|---|---|
-| USA/Nordamerika (inkl. Kanada) | ~64% | ≤55-60% | möglicherweise über Cap – zu verifizieren |
-| Japan/Asien | ~9% | 10-15% | unterbesetzt |
+| USA/Nordamerika (inkl. Kanada) | **63,03%** | ≤55-60% | **bestätigt über der harten Grenze** |
+| Europa/UK | 14,72% | 15-20% | knapp unterbesetzt |
+| Japan/Asien | 9,79% | 10-15% | unterbesetzt |
+| LatAm (MercadoLibre) | 4,98% | Rest | – |
+| Cellebrite (Israel) | 6,20% | *keinem der 4 Töpfe zuordenbar* | **Methodik-Lücke – architecture.md ergänzen** |
+
+### Sektor
+
+| Topf | Real | Ziel-Band | Status |
+|---|---|---|---|
+| Technologie/Halbleiter | 29,05% | 30-38% | knapp unterbesetzt |
+| **Finanzwesen** | **36,17%** | **20-25%** | **massiv über dem Zielband** (neu entdeckt, vorher unbekannt) |
+| Gesundheitswesen | 8,51% | 10-15% | unterbesetzt |
+| Industriewerte | 11,37% | 10-15% | im Zielband |
+| Rest | 14,90% | 5-10% | über dem Zielband |
+
+**Zwei Näherungen, transparent:** (1) Cellebrite (Israel) passt in keinen
+der 4 Regionen-Töpfe – bisher ungelöst, Ergänzung in architecture.md
+nötig. (2) MercadoLibre wurde näherungsweise 45%/55% auf Finanzwesen
+(Mercado Pago)/Rest (E-Commerce) gesplittet, keine exakte
+Segment-Umsatzzahl verwendet. ETF-"Rest"-Anteil bei Region (~5,7%) nicht
+weiter aufgeschlüsselt (Vanguard-Factsheet deckt nur Top-15-Länder ab,
+94,3% der ETF-Ländergewichtung).
+
+**Konsequenz:** kein automatisches Verkaufssignal (siehe architecture.md),
+aber die neue Portfolio-Lücken-Kandidatensuche-Pflicht sollte Kandidaten
+aus Finanzwesen/USA jetzt konsequent niedriger priorisieren, Kandidaten aus
+Japan/Asien, Gesundheitswesen oder Europa/UK bevorzugen.
 
 ## 6. Offene gezielte Kandidatensuchen (Portfolio-Lücken-Regel)
 
