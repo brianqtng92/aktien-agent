@@ -23,6 +23,7 @@ selbst schon ein Warnsignal sind.
 | Zeitpunkt (UTC) | Task | Jack/Gemini | Conan/ChatGPT | Notiz |
 |---|---|---|---|---|
 | 2026-09-04 (Anlage) | - | - | - | Datei angelegt, noch kein echter Lauf protokolliert - erster Eintrag beim nächsten taeglicher-trigger-check/blitz-scan-Lauf mit Bridge-Einsatz. |
+| 2026-09-04 ~11:00 UTC | ad-hoc-chat (CLBT/RKLB-These-Check, Talent-Rebalancierung) | FAIL x2 dann OK (503 "high demand", 3. Versuch erfolgreich für beide) | OK (beide Ticker auf Anhieb) | Erster echter Log-Eintrag. Gemini 503 ist ein bekanntes transientes Problem (siehe frühere Sessions), kein struktureller Ausfall - Retry-Logik hat funktioniert. |
 
 <!-- Format je Zeile:
 Zeitpunkt (UTC, ISO oder TT.MM.JJJJ HH:MM) | Task-Name (taeglicher-trigger-check/blitz-scan/wochenfazit) | Jack-Status (OK / FAIL: <Grund> / FALLBACK-Chrome / n.a.-kein Einsatz) | Conan-Status (gleiches Schema) | Kurznotiz (z.B. betroffener Ticker, oder "kein Bridge-Einsatz noetig, ruhiger Tag")

@@ -131,7 +131,7 @@ Verkaufssignal vorliegt.
 | Position | CRV | Begründung Kategorie |
 |---|---|---|
 | SoFi Technologies | 🟡 HALTEN/BEOBACHTEN – KGV ~35-38x. **MoS-Hinweis:** bereits -53% Drawdown 2026 (Short-Seller-Attacke, Peak Ende 2025 → Tief 30.03.), aktuelle Bewertung nach der Korrektur moderater; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | Archetyp-Beispiel Brian für diese Kategorie |
-| Cellebrite DI Ltd | 🔴 KEIN NACHKAUF – ÜBERBEWERTET – KGV 52,7x, 25% über 10J-Median (42,1x), 46,8x vs. Branchen-fair-Ratio ~30x. **MoS-Hinweis:** zusätzlich -33% Kursrückgang 2026 – teuer UND im Abwärtstrend gleichzeitig, kein Nachkauf-Zeitpunkt. | Jung notiert (SPAC 2021), noch kein etablierter Track Record |
+| Cellebrite DI Ltd | 🔴 KEIN NACHKAUF – ÜBERBEWERTET – KGV 52,7x, 25% über 10J-Median (42,1x), 46,8x vs. Branchen-fair-Ratio ~30x. **MoS-Hinweis:** zusätzlich -33% Kursrückgang 2026 – teuer UND im Abwärtstrend gleichzeitig, kein Nachkauf-Zeitpunkt. **Über CRV hinaus (2026-09-04): echtes Verkaufsdisziplin-Kriterium erfüllt**, kein reines Timing-Signal mehr – frischer 3-fach-Scout-These-Check (Jarvis/Jack/Conan einstimmig SCHROTT/DURCHGEFALLEN) bestätigt 0 von 3 Re-Rating-Triggern aus der Erstanalyse (FCF-Marge ≥20%, NRR ≥120%, Guidance-Bestätigung), FY2026-Wachstum nach Guidance-Cut nur noch 17-18% (unter der 20%-SaaS-Schwelle). Siehe `depot/offene_empfehlungen.md` – VERKAUFEN-Empfehlung aktiv. | Jung notiert (SPAC 2021), noch kein etablierter Track Record |
 | Kraken Robotics | 🔘 GRAU – KEINE BELASTBARE AUSSAGE – **Anker: KGV ungeeignet** (nahe Gewinnschwelle, 100x+ teils berichtet, extrem verzerrt), kein tragfähiger Ersatzmaßstab aus dem Fact-Pack ableitbar. **MoS-Hinweis:** bereits -41% vom 52-Wochen-Hoch – Vorsicht in beide Richtungen, Bewertung schwer greifbar. | Früher Umsatzaufbau, kein Live-Kurs, hohe Volatilität |
 | Rocket Lab USA | 🔴 KEIN NACHKAUF – ÜBERBEWERTET – unprofitabel (kein KGV berechenbar), Marktkap preist bereits deutliches künftiges Wachstum ein, ohne dass die Ertragslage das aktuell stützt – eigene Einordnung: Bewertung sportlich. **MoS-Hinweis:** bereits -61% vom Jahreshoch, historisch bis zu -70% Drawdown (2022) und im Schnitt -37% je Schock über 5 Marktphasen – auch nach Korrektur bleibt die Bewertung angespannt. | Wachstumsphase, historisch unprofitabel, kein Monopol |
 | HawkEye 360 | 🔘 GRAU – KEINE BELASTBARE AUSSAGE – **Anker: KGV ungeeignet** (jung, unprofitabel, kein tragfähiger Ersatzmaßstab recherchiert). **MoS-Hinweis:** bereits ca. -50% vom Allzeithoch (Mai 2026) und -32% unter IPO-Preis (26$) gefallen, keine belastbare Bewertungshistorie; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | Kein Live-Kurs, dünnste Datenlage im Depot |
@@ -157,3 +157,14 @@ Verkaufssignal vorliegt.
   werden. Korrigiert (Brian: "andere Webseiten... aber nie als
   Benchmark") – Ampel-Farbe ist immer eigenes Urteil aus unserer
   Multiples-Logik, externe Quellen liefern nur Zahlen.
+- 2026-09-04: Talent/Profi-Rebalancierungs-Diskussion (Talent 2 über Ziel)
+  – frischer 3-fach-Scout-These-Check für die zwei stärksten Exit-
+  Kandidaten (Cellebrite, Rocket Lab). **Cellebrite: einstimmig
+  SCHROTT/DURCHGEFALLEN, VERKAUFEN-Empfehlung aktiv** (siehe
+  `depot/offene_empfehlungen.md`). **Rocket Lab: K≤K-BASIS-2-Terminal-
+  State vom 01.09. bestätigt unverändert (Sizing 0% für Neu-/Nachkauf),
+  aber Uneinigkeit ob das auch die bestehende 10-Stück-Trace-Position
+  betrifft** – Conan (frisch) plädiert für Exit, die ursprüngliche
+  Analyse vom 01.09. (Jarvis) hatte die Trace-Position explizit
+  ausgenommen. Bewusst NICHT einseitig aufgelöst, offener
+  Diskussionspunkt mit Brian.
