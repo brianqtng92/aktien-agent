@@ -805,6 +805,40 @@ Für einzelne Kandidaten-Analysen ohne Depot-Bezug reichen weiterhin die
 einfachen `ask_chatgpt`/`ask_gemini`-Funktionen ohne den Mehraufwand des
 Relay-Loops (mehr Roundtrips = mehr Zeit/Tokens pro Analyse).
 
+**Erweitert 2026-09-05 um `get_quote` und `read_master_status` (Brian:
+"Twelve-Data erweitern, Dateizugriff mit begrenzter Variante").** Zwei
+neue Tools zur bestehenden Whitelist hinzugefügt, gleiches Relay-Prinzip
+wie oben:
+- **`get_quote(symbol)`:** Jarvis führt das echte
+  `mcp__57370ae8-105f-49c4-a0dd-b4c78cb6ceb7__get_quote`-Tool dieser
+  Session mit dem angeforderten `symbol` aus und reicht das Ergebnis
+  zurück. Gibt Jack/Conan einen exakten, strukturierten Live-Kurs statt
+  einer aus der Websuche zusammengesuchten Zahl – nützlich für Abstauber-
+  Limit-/Einstiegszonen-Berechnungen.
+- **`read_master_status()`:** Jarvis liest `depot/master_status.md` (das
+  konsolidierte Status-Dashboard, siehe architecture.md "Konsolidierter
+  Master-Status") und reicht den Inhalt zurück. **Bewusst die EINZIGE per
+  Tool zugängliche Repo-Datei** – kein Zugriff auf `architecture.md`,
+  `watchlist.md`, `depot/kategorisierung.md` oder sonstige Dateien.
+  **Begründung für diese enge Grenze (Jarvis, von Brian bestätigt):** Jack
+  und Conan sollen unabhängige Gutachter für eine konkrete, von Jarvis
+  gestellte Aufgabe bleiben, keine freien Systembrowser – mit Zugriff aufs
+  ganze Regelwerk könnten sie anfangen, sich ihre eigene Aufgabenstellung
+  zusammenzusuchen oder Regeln zu hinterfragen statt sie anzuwenden, was
+  die Vergleichbarkeit der drei unabhängigen Urteile verwässern würde.
+  `master_status.md` allein liefert nützlichen Portfolio-Kontext (offene
+  Kategorie-Slots, Region-/Sektor-Übergewichte, offene Prüfpunkte) ohne
+  dieses Risiko, weil es reine Kennzahlen aggregiert, keine Regeln enthält.
+
+**Beide neuen Tools mit echten End-to-End-Tests bestätigt (2026-09-05,
+beide Bridges):** ein Test-Prompt forderte gezielt beide Tools parallel
+an (`get_quote(RKLB)` + `read_master_status`), Jarvis führte beide aus
+(echter Twelve-Data-Call + echter Datei-Read) und reichte die Ergebnisse
+zurück – beide KIs lieferten eine korrekte, beide Datenpunkte
+einbeziehende Zusammenfassung im finalen `"status":"final"`-Ergebnis.
+Funktioniert identisch bei Gemini (`functionCall`/`tool_name`-Matching)
+und OpenAI (`tool_calls`/`tool_call_id`-Matching).
+
 ### 10.12 ISIN-Gegenprobe bei WebSearch-Fundamentaldaten – gilt für JEDE Analyse, nicht nur Watchlist
 
 Beim Orion-Oyj-Testlauf (2026-09-02, ad-hoc Einzelanalyse auf Brians

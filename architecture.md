@@ -562,6 +562,24 @@ Kosten-/Latenz-Trade-off bewusst in Kauf genommen (siehe HANDOVER.md für
 Details) – `enable_search=False` bleibt für reine Diagnose-/
 Formatierungs-Anfragen ohne Recherchebedarf verfügbar.
 
+**Jack/Conan bekommen zusätzlich exakte Kursdaten und einen eng begrenzten
+Datei-Zugriff (2026-09-05, siehe HANDOVER.md 10.11 für die vollständige
+technische Beschreibung).** Im agentischen Modus (`ask_gemini_agentic`/
+`ask_chatgpt_agentic`) können sie jetzt zusätzlich zu den bestehenden
+Depot-Tools `get_quote(symbol)` (echter Twelve-Data-Live-Kurs statt
+Websuche-Schätzung) und `read_master_status()` (liest
+`depot/master_status.md`) anfordern – Jarvis führt beides aus und reicht
+das Ergebnis zurück, wie bei allen anderen agentischen Tools auch.
+**`read_master_status` ist bewusst die EINZIGE per Tool zugängliche
+Repo-Datei** – kein Zugriff auf `architecture.md` selbst oder sonstige
+Dateien. Begründung: Jack/Conan sollen unabhängige Gutachter für eine
+konkrete, von Jarvis gestellte Aufgabe bleiben, kein freier
+Systembrowser – vollständiger Regelwerk-Zugriff würde die Vergleichbarkeit
+der drei unabhängigen Urteile verwässern (sie könnten anfangen, Regeln zu
+hinterfragen statt sie anzuwenden). Beide Tools mit echten End-to-End-Tests
+bestätigt (parallele Anforderung beider Tools, korrekte Jarvis-Ausführung,
+korrekte finale Synthese bei beiden Bridges).
+
 ## 2. Das Regelwerk (bereits vollständig von Brian geliefert)
 
 Drei eigenständige Prompts, gespeichert unter `prompts/`:
