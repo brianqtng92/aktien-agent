@@ -4357,6 +4357,17 @@ entschieden):**
    nächsten regulären [B] THESE-CHECK nachgetragen (analog zum Vorgehen
    beim Investment-These-Protokoll oben), statt alle auf einmal
    rückwirkend zu befüllen.
+   **Korrektur (2026-09-03, im 3-KI-Pulse-Check gefunden):** diese
+   Aussage war faktisch falsch – die Datei `depot/prediction_ledger.md`
+   existierte trotz "ab sofort aktiv" nie, kein einziger Eintrag wurde
+   zwischen 2026-08-30 und 2026-09-03 angelegt. Derselbe Fehlertyp wie
+   der E-Mail-Bug (dokumentiert als laufend ≠ tatsächlich laufend). Am
+   2026-09-03 rückwirkend geschlossen: Datei angelegt, zwei echte
+   Watchlist-Empfehlungen aus der Zwischenzeit nachgetragen (Disco Corp,
+   Asahi Intecc), und die Pflicht in allen vier Scheduled-Task-SKILL.md-
+   Dateien strukturell verankert statt nur hier dokumentiert – gleiche
+   Lehre wie beim E-Mail-Bug: eine Pflicht ist erst dann wirksam, wenn
+   sie im tatsächlichen Ausführungspfad steht, nicht nur im Regelwerk.
 3. **Phase 3 – Analyse-Upgrade (geplant):** geschärfte Rollenverteilung
    Jack/Jarvis/Conan explizit in Abschnitt 2 verankern, rotierende
    Advocatus-Diaboli-Rolle, Wahrscheinlichkeits-Bandbreiten statt vager
