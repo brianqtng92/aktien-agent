@@ -884,8 +884,11 @@ Ergebnis entscheidet, sondern die Faktenlage.
 Fix) gelten als durch einen Prompt-Klarheits-Mangel verzerrt, nicht als
 belastbares Urteil über die Firmen – bei Bedarf mit dieser Standard-
 Instruktion neu laufen lassen. Ab sofort MUSS jeder neue Bridge-Aufruf
-für TMR/Scout-Analysen alle vier Blöcke enthalten (auch im Täglichen
-Trigger-Check und im Blitz-Scan, siehe dortige SKILL.md-Dateien).
+für TMR/Scout-Analysen alle sechs Blöcke enthalten (auch im Täglichen
+Trigger-Check und im Blitz-Scan, siehe dortige SKILL.md-Dateien) – Block 5
+(Gründliche-These-Prüfung) ist bei jeder Analyse einer bestehenden
+Depot-Position Pflicht, Block 6 (Master-Status/Vorrang-Hierarchie) nur bei
+agentischem Depot-Tool-Zugriff (siehe unten für beide).
 
 **Block 4 ergänzt (2026-09-03, aus dem 3-KI-System-Audit):** Brian ließ
 Jarvis, Jack und Conan das gesamte Regelwerk gemeinsam durchgehen. Beide
@@ -898,6 +901,77 @@ nicht. Genau der Fehler, den der Mechanismus verhindern soll, könnte sich
 so unbemerkt wiederholen. Block 4 schließt diese Lücke, indem er die
 Terminal-State-Pflicht direkt in den Text einbettet, der bei jedem
 Bridge-Aufruf tatsächlich ankommt.
+
+**Block 5 ergänzt (2026-09-04, Brian: "das ganze System soll für alle
+Agenten gelten, sowohl für Jack als auch für Conan").** Dieselbe Lücke wie
+bei Block 4 trat erneut auf: die am selben Tag gebaute "Gründliche-These-
+Prüfung-vor-Verkaufsempfehlung-Pflicht" (Auslöser: der Cellebrite-Fall,
+siehe architecture.md "Verkaufsdisziplin & Gewinnmitnahme-Regeln") wurde
+zunächst nur in architecture.md und den FIXE-GRENZEN-Abschnitten der
+SKILL.md-Dateien verankert – das steuert Jarvis' eigenes Verhalten, aber
+NICHT das, was Jack/Conan bei einem Bridge-Aufruf tatsächlich zu lesen
+bekommen. Ohne diesen Block hätte ein künftiger Scout-/TMR-Lauf für eine
+bestehende Depot-Position genau denselben vorschnellen SCHROTT-Reflex
+wiederholen können, den die Regel eigentlich verhindern soll. Block 5:
+
+```
+WICHTIG: GRUENDLICHE-THESE-PRUEFUNG-VOR-VERKAUFSEMPFEHLUNG-PFLICHT (gilt fuer
+dich genauso wie fuer Jarvis und die andere KI im selben Cross-Check). Ausloeser:
+der Cellebrite-Fall (2026-09-04) - ein vorschneller Scout-Check kam zu SCHROTT/
+VERKAUFEN fuer eine BEREITS GEHALTENE Depot-Position, obwohl 2 von 3 Re-Rating-
+Triggern mangels aktueller Quartalszahlen noch gar nicht pruefbar waren (nicht
+"durchgefallen", sondern schlicht noch nicht faellig) und der Guidance-Cut
+plausibel auf Timing (verzoegerte Grossauftraege) statt einen echten
+Struktur-Bruch zurueckging. Bevor du fuer eine im FACT-PACK als "bereits
+gehalten"/"bestehende Depot-Position" gekennzeichnete Firma eine Kategorie-5-
+Empfehlung (VERKAUF ERWAEGEN) allein aus deiner eigenen Abbruch-Logik (K<=K-
+BASIS-2, Terminal-State, SCHROTT-Rating) ableitest, PRUEFE ZWINGEND UND WEISE
+IM OUTPUT EXPLIZIT AUS:
+1. TIMING vs. STRUKTUR: ist das ausloesende Ereignis (Guidance-Cut, Kursrutsch,
+   ein K-Kriterium knapp verfehlt) ein temporaeres/zyklisches Ereignis oder ein
+   echtes strukturelles Problem? Nicht reflexhaft die negativste Lesart nehmen.
+2. CHECKPOINT RESPEKTIEREN: nennt das FACT-PACK bereits einen definierten
+   kuenftigen Pruefpunkt (z.B. naechste Earnings), der noch in der Zukunft liegt?
+   Dann bleibt es bei HALTEN+Checkpoint statt Verkauf, AUSSER ein hartes,
+   unabhaengiges Ausschlusskriterium (Fraud/Going-Concern/Moat-Verlust/
+   Uebernahme) ist JETZT bereits erfuellt.
+3. REIFEGRAD-METHODIK-MISMATCH: greift ein fuer junge/spekulative Firmen
+   gebauter Wachstumsmassstab (z.B. eine hohe CAGR-Schwelle) hier mechanisch bei
+   einer bereits etablierten, umsatzstarken/profitablen Position, fuer die
+   dieser Massstab methodisch gar nicht gebaut wurde?
+Gilt NICHT fuer die Erstpruefung eines NEUEN Kandidaten (kein "bereits gehalten"
+im FACT-PACK) - dort bleibt deine Abbruch-Logik unveraendert streng (bewusste
+Asymmetrie: hohe Huerde fuer neues Kapital, mehr Geduld vor dem Rauswerfen einer
+bereits finanzierten These).
+```
+
+**Block 6 ergänzt (2026-09-04, gleicher Anlass):** Master-Status/
+Informations-Vorrang-Hierarchie – nur relevant, wenn Jack/Conan im
+agentischen Modus (`ask_gemini_agentic`/`ask_chatgpt_agentic`, siehe
+10.11) selbst Depot-Tools aufrufen und dabei auf mehrere, potenziell
+widersprüchliche Datenquellen stoßen könnten. Kurzer Hinweis statt langer
+Block, da im normalen (nicht-agentischen) Bridge-Betrieb ohnehin nur das
+fertige FACT-PACK ankommt, keine eigene Dateisuche stattfindet:
+
+```
+HINWEIS (nur relevant, falls du in diesem Lauf selbst Depot-Tools aufrufst):
+`depot/master_status.md` ist das konsolidierte, laufend aktualisierte Status-
+Dashboard (Kategorie-Zaehlungen, offene Pruefpunkte, offene Empfehlungen,
+offene Portfolio-Regel-Fragen). Bei widersprüchlichen Informationen zwischen
+Dateien gilt diese Rangfolge (hoechste zuerst): 1. eine jüngste, explizit
+bestätigte Transaktion/Entscheidung, 2. `depot/master_status.md`,
+3. `architecture.md`, 4. ältere Analysen/Chat-Historie.
+```
+
+**Bewusst NICHT in die Bridge-Blöcke übernommen (2026-09-04, Abwägung
+dokumentiert):** die "Regel-Aufnahme-Disziplin/Ruleset-Hygiene" und der
+"Tieferer Zweck der Kandidatensuche" (Bereicherung/Unter-Radar/Watchlist-
+Vergleich) sind reine Jarvis-Orchestrierungs-Aufgaben (Screening, Datei-
+Pflege, Regelwerk-Pflege) – Jack/Conan bewerten nur den ihnen vorgelegten
+einzelnen Kandidaten, sie screenen nicht selbst und pflegen keine Regeln.
+Diese beiden Mechanismen bräuchten deshalb keinen eigenen Bridge-Block;
+sollte sich das ändern (z.B. Jack/Conan werden künftig selbst zum
+Screening herangezogen), müsste das hier nachgezogen werden.
 
 **Bridge-Status-Log ergänzt (2026-09-04, Conans Vorschlag aus dem
 3-KI-Pulse-Check vom 2026-09-03):** nach dem E-Mail-Bug (dokumentiert als

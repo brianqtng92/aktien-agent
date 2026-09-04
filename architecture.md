@@ -517,6 +517,30 @@ NICHT die Detail-Dateien (siehe Vorrang-Hierarchie oben, Stufe 2) – reine
 Aggregation der Kernzahlen für den schnellen Überblick, v.a. beim Einstieg
 in einen neuen Chat/Task-Lauf ohne Erinnerung an vorherige Sessions.
 
+**Geltungsbereich: das gesamte Regelwerk gilt für alle drei KIs, nicht nur
+Jarvis (2026-09-04, von Brian gefordert: "das ganze System soll für alle
+Agenten gelten, sowohl für Jack als auch für Conan").** Jack und Conan
+lesen dieses Dokument NICHT selbst – sie bekommen bei jedem Bridge-Aufruf
+nur das FACT-PACK + die Methodik-Datei (TMR/Scout/TA) + eine Handvoll
+vorangestellter Klarstellungs-Blöcke (siehe HANDOVER.md 10.13). Das
+bedeutet: eine neue Regel hier gilt automatisch NUR für Jarvis, es sei
+denn, sie wird explizit in einen dieser Blöcke übersetzt und bei jedem
+Bridge-Aufruf mitgeschickt – genau das Problem, das schon beim Terminal-
+State-Mechanismus auftrat (Block 4, HANDOVER.md 10.13: "er erreichte
+Jack/Conan im API-Betrieb möglicherweise gar nicht") und sich am selben
+Tag beim Bridge-Block 5 wiederholte (die Gründliche-These-Prüfung-Pflicht
+stand zunächst nur hier, nicht im tatsächlichen Bridge-Prompt-Text).
+**Feste Pflicht ab jetzt:** bei jeder neuen Regel mit inhaltlicher
+Rating-/Empfehlungs-Wirkung (nicht reine Datei-Pflege-/Commit-Mechanik,
+die bleibt Jarvis-only) explizit prüfen, ob sie auch Jack/Conan erreichen
+muss – wenn ja, als neuen Klarstellungs-Block in HANDOVER.md 10.13
+ergänzen UND die Blockzahl in `taeglicher-trigger-check`/`blitz-scan`
+SKILL.md aktualisieren. Diese Prüfung ist explizit Teil der Regel-
+Aufnahme-Disziplin oben, nicht optional. Aktuell sechs Standard-Blöcke
+(siehe HANDOVER.md 10.13): SCHRITT-0/WACC/TRAINING-vs-N/V/Terminal-State
+(Blöcke 1-4, 2026-09-02/03), Gründliche-These-Prüfung (Block 5) und
+Master-Status/Vorrang-Hierarchie-Hinweis (Block 6, beide 2026-09-04).
+
 ## 2. Das Regelwerk (bereits vollständig von Brian geliefert)
 
 Drei eigenständige Prompts, gespeichert unter `prompts/`:
