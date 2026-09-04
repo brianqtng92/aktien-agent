@@ -3857,6 +3857,56 @@ künftige Portfolio-Aufnahme** sind.
      Benachrichtigung (kein handlungsrelevanter Fund), wird aber im
      nächsten Wochenfazit als "geprüft, noch offen" kurz erwähnt statt
      kommentarlos zu verschwinden.
+- **Tieferer Zweck der ständigen Suche – Watchlist-Bereicherung UND
+  Qualitäts-Benchmark, nicht nur Lücken-Füllung (2026-09-04, von Brian
+  präzisiert: "der Grund warum ich die Agenten ständig auf die Suche
+  schicke möchte, ist eventuell sogar tiefer als du denkst").** Brians
+  drei ausdrücklich genannte Gründe, warum der tägliche/gezielte
+  Kandidaten-Scan wichtiger ist als reine Lücken-Reparatur:
+  1. Die Suche soll die Watchlist grundsätzlich BEREICHERN – neue,
+     interessante Kandidaten sind für sich genommen wertvoll, nicht nur als
+     Mittel zum Zweck einer offenen Kategorie-/Region-/Sektor-Lücke.
+  2. Die Suche soll gezielt Werte finden, die **unterm Radar der meisten
+     Anleger laufen** – nicht nur die immer gleichen bekannten Mega-Caps
+     eines Index. Bei der Index-Durchsuchung (siehe oben) bewusst NICHT nur
+     bei den größten/bekanntesten Marktkap-Werten hängen bleiben, sondern
+     gezielt auch kleinere, weniger analystenabgedeckte Titel innerhalb des
+     jeweiligen Index prüfen (z.B. niedrige Analysten-Coverage, geringe
+     institutionelle Eigentümerquote, oder schlicht Namen, die in der
+     Finanzpresse selten auftauchen) – solange sie die üblichen
+     Qualitätskriterien (Marge/Marktstellung/Wachstumsverlässlichkeit)
+     erfüllen. "Unbekannt" ist kein Qualitätsmerkmal für sich, aber ein
+     bewusstes Gegengewicht gegen den natürlichen Bias, immer nur die
+     ohnehin schon bekannten Namen zu finden.
+  3. Die Suche soll aktiv prüfen, ob ein neuer Fund SOGAR BESSER ist als
+     bereits vorhandene Watchlist-Kandidaten – nicht nur "besteht er die
+     Mindestkriterien", sondern ein echter Qualitäts-Vergleich.
+  **Watchlist-interner Qualitäts-Vergleich (neue, eigenständige Praxis,
+  analog zum bestehenden "Head-to-Head-Ersatz-Gate gegen die schwächste
+  Depot-Position", siehe Abschnitt 3 – hier aber Watchlist-intern, nicht
+  Depot-Ersatz-getrieben):** JEDER neue Kandidat, der das Vorfilter-Gate
+  (Identity/Strategie-Fit/Duplikation) und den 3-fach-Quick-Filter besteht,
+  wird zusätzlich – unabhängig davon, ob die Watchlist bereits voll ist
+  oder nicht – kurz gegen die bestehenden Watchlist-Werte SEINER
+  Zielkategorie (Champions/Profi/Talent) UND, wo sinnvoll, seiner
+  Region/seines Sektors verglichen ("schnelle Gegenüberstellung", kein
+  komplett neuer 3-fach-Check für die Vergleichswerte nötig – die
+  bestehende Kurzthese/CRV/Rating aus `watchlist.md` reicht als
+  Vergleichsbasis). Ergebnis-Fälle:
+  - Neuer Kandidat ist klar überzeugender als der schwächste bestehende
+    Wert seiner Kategorie → das wird EXPLIZIT im Aufnahme-Eintrag vermerkt
+    ("möglicher Qualitäts-Upgrade ggü. [bestehender Wert]") und im
+    Wochenfazit hervorgehoben – auch wenn noch freie Slots vorhanden sind
+    und daher kein Zwang besteht, etwas zu ersetzen. Das ist eine
+    Diskussionsgrundlage für Brian, keine automatische Ersetzung – die
+    Watchlist verliert dadurch nicht automatisch den schwächeren Wert.
+  - Neuer Kandidat ist grundsätzlich watchlist-würdig, aber nicht klar
+    stärker als vorhandene Vergleichswerte → normale Aufnahme ohne
+    besonderen Vermerk.
+  - Die Watchlist-Obergrenze (20-30) ist bereits erreicht → hier greift
+    weiterhin zusätzlich die bestehende Regel oben ("nur aufnehmen, wenn
+    klar überzeugender als der schwächste Wert der Zielkategorie") als
+    hartes Aufnahme-Kriterium, nicht nur als Vermerk.
 - **Ad-hoc-Einzelwert-Check auf Zuruf (2026-08-30, von Brian gefordert):**
   Zusätzlich zum systematischen täglichen Scan oben kann Brian jederzeit
   einen konkreten, selbst benannten Wert einreichen (eigene Idee oder z.B.
