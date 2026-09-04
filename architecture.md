@@ -1060,13 +1060,27 @@ Herleitung an der jeweils verlinkten Stelle, nicht diese Tabelle.
   vom selben Tag): **USA maximal 55%** des Gesamtportfolios (**absolute
   Obergrenze 60%** – wird diese gerissen, ist das ein sofortiger Warnhinweis im
   Wochenfazit, kein Toleranzbereich), **15-20% Europa/Großbritannien**,
-  **10-15% Japan/Asien**, **Rest Lateinamerika/sonstige Länder** – aber nur,
-  **wenn es dort tatsächlich interessante Kandidaten gibt**. Gibt es aktuell
-  keine überzeugenden Lateinamerika-Kandidaten (siehe z.B. das dünne Ergebnis
-  im Nicht-Index-Screening vom 2026-08-28), wird der dafür vorgesehene
-  Prozentanteil stattdessen zusätzlich auf Europa/UK und Japan/Asien verteilt,
-  nicht einfach der USA-Quote zugeschlagen. Wird im Wochenfazit/Gesamtübersicht
-  als eigene Kennzahl geführt, nicht nur die Champions/Profi/Talent-Aufteilung.
+  **10-15% Japan/Asien**, **Rest (Lateinamerika, Naher Osten/Israel, sonstige
+  nicht anders zuordenbare Länder)** – aber nur, **wenn es dort tatsächlich
+  interessante Kandidaten gibt**. Gibt es aktuell keine überzeugenden
+  Lateinamerika-Kandidaten (siehe z.B. das dünne Ergebnis im Nicht-Index-
+  Screening vom 2026-08-28), wird der dafür vorgesehene Prozentanteil
+  stattdessen zusätzlich auf Europa/UK und Japan/Asien verteilt, nicht einfach
+  der USA-Quote zugeschlagen. Wird im Wochenfazit/Gesamtübersicht als eigene
+  Kennzahl geführt, nicht nur die Champions/Profi/Talent-Aufteilung.
+  **Methodik-Lücke geschlossen (2026-09-04, aufgefallen beim ersten echten
+  Portfolio-Regel-Check mit Live-Daten statt Schätzung):** Cellebrite DI Ltd.
+  (Israel) passte bis dahin in KEINEN der vier Töpfe – weder USA/Nordamerika,
+  Europa/UK noch Japan/Asien, und der vierte Topf hieß explizit nur
+  "Lateinamerika/sonstige Länder", ohne dass "sonstige" bisher klar genug
+  definiert war. Israel zählt ab jetzt explizit in den vierten
+  ("Rest"-)Topf – geografisch/wirtschaftlich näher an Europa als an den
+  anderen drei benannten Töpfen, aber kein eigener Israel-Topf nötig für
+  eine einzelne Position. Cellebrites Anteil (Stand 2026-09-04: 6,20% des
+  Gesamtportfolios) zählt damit zum "Rest"-Topf, der dadurch faktisch
+  bereits ausgelastet ist – ein weiterer Nicht-LatAm/Nicht-Europa/Nicht-
+  Asien-Kandidat sollte entsprechend zurückhaltender priorisiert werden,
+  analog zur bestehenden Logik für überdehnte Töpfe.
   **Klarstellung zur Länder-Zuordnung (2026-08-30, von Brian entschieden):**
   Kanada-domizilierte Positionen (z.B. Constellation Software, Kraken Robotics)
   zählen für diesen Check zum **USA/Nordamerika-Topf**, nicht zu "Rest" – es
@@ -3121,7 +3135,9 @@ Portfolio-Regel-Check (2026-08-28, von Brian festgelegt, siehe Abschnitt 3):
   - ETF-Anteil ≥50% des Gesamtportfolios (Ziel langfristig 60%)?
   - Regionen-Verteilung übers GESAMTE Portfolio (ETF+Aktien zusammen):
     USA ≤55% (harte Obergrenze 60%), Europa/UK 15-20%, Japan/Asien 10-15%,
-    Rest Lateinamerika (nur bei echten Kandidaten, sonst Umverteilung auf
+    Rest (Lateinamerika, Naher Osten/Israel, sonstige – siehe "Geografische
+    Streuung" oben für die vollständige Definition inkl. Cellebrite/Israel-
+    Klarstellung 2026-09-04; nur bei echten Kandidaten, sonst Umverteilung auf
     Europa/UK + Japan/Asien).
   - Sektor-Verteilung übers GESAMTE Portfolio (2026-08-29, von Brian
     festgelegt, siehe Abschnitt 3): Technologie/Halbleiter 30-35%,

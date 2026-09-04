@@ -75,13 +75,17 @@ geschätzt. Gold-ETC und Cash bewusst ausgeschlossen (siehe
 
 ### Region
 
+**Update 2026-09-04 (Methodik-Lücke geschlossen):** architecture.md wurde
+präzisiert – der vierte Topf heißt jetzt explizit "Rest (Lateinamerika,
+Naher Osten/Israel, sonstige)" statt nur "Lateinamerika/sonstige Länder".
+Cellebrite (Israel) zählt damit offiziell in diesen Topf.
+
 | Topf | Real | Ziel-Band | Status |
 |---|---|---|---|
 | USA/Nordamerika (inkl. Kanada) | **63,03%** | ≤55-60% | **bestätigt über der harten Grenze** |
 | Europa/UK | 14,72% | 15-20% | knapp unterbesetzt |
 | Japan/Asien | 9,79% | 10-15% | unterbesetzt |
-| LatAm (MercadoLibre) | 4,98% | Rest | – |
-| Cellebrite (Israel) | 6,20% | *keinem der 4 Töpfe zuordenbar* | **Methodik-Lücke – architecture.md ergänzen** |
+| Rest (MercadoLibre/LatAm 4,98% + Cellebrite/Israel 6,20% + ETF-Rest 1,29%) | **12,47%** | *kein festes Band, "nur bei echten Kandidaten"* | faktisch bereits ausgelastet durch Cellebrite allein – neue Nicht-LatAm/Europa/Asien-Kandidaten zurückhaltender priorisieren |
 
 ### Sektor
 
@@ -93,13 +97,11 @@ geschätzt. Gold-ETC und Cash bewusst ausgeschlossen (siehe
 | Industriewerte | 11,37% | 10-15% | im Zielband |
 | Rest | 14,90% | 5-10% | über dem Zielband |
 
-**Zwei Näherungen, transparent:** (1) Cellebrite (Israel) passt in keinen
-der 4 Regionen-Töpfe – bisher ungelöst, Ergänzung in architecture.md
-nötig. (2) MercadoLibre wurde näherungsweise 45%/55% auf Finanzwesen
-(Mercado Pago)/Rest (E-Commerce) gesplittet, keine exakte
-Segment-Umsatzzahl verwendet. ETF-"Rest"-Anteil bei Region (~5,7%) nicht
-weiter aufgeschlüsselt (Vanguard-Factsheet deckt nur Top-15-Länder ab,
-94,3% der ETF-Ländergewichtung).
+**Eine verbleibende Näherung, transparent:** MercadoLibre wurde
+näherungsweise 45%/55% auf Finanzwesen (Mercado Pago)/Rest (E-Commerce)
+gesplittet, keine exakte Segment-Umsatzzahl verwendet. ETF-"Rest"-Anteil
+bei Region (~5,7%) nicht weiter aufgeschlüsselt (Vanguard-Factsheet deckt
+nur Top-15-Länder ab, 94,3% der ETF-Ländergewichtung).
 
 **Konsequenz:** kein automatisches Verkaufssignal (siehe architecture.md),
 aber die neue Portfolio-Lücken-Kandidatensuche-Pflicht sollte Kandidaten
