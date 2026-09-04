@@ -440,6 +440,83 @@ den bestehenden Grenzen und Prozessen, im Gegenteil – es macht sie wichtiger:
    groß, riskant oder von der bisherigen Linie abweichend ist, statt das
    Brian allein überlassen.
 
+**Informations-Vorrang-Hierarchie bei Widersprüchen (2026-09-04, von
+Raketentonis "55555-Portfolio-System" übernommen und an unser System
+angepasst – Brian: "wichtig finde ich die restlichen 3 Punkte wo sein
+System voraus ist, darauf will ich jetzt aufbauen").** Raketentoni trennt
+in seinem System explizit ein "Masterbook" (Strategie/Regeln) von einem
+"Master-Status" (aktueller operativer Stand) und löst Widersprüche
+zwischen beiden nach einer festen Reihenfolge auf – genau das übernehmen
+wir, weil diese Session mehrfach gezeigt hat, dass veraltete Aussagen
+(z.B. in `HANDOVER.md`) sonst stillschweigend wieder als aktuell behandelt
+werden. Ab jetzt gilt bei WIDERSPRÜCHLICHEN Informationen zwischen
+verschiedenen Quellen diese Rangfolge (höchste zuerst, IMMER die höchste
+zutreffende Stufe gewinnt):
+1. **Jüngste explizit bestätigte Entscheidung/Transaktion** – eine
+   tatsächlich erkannte Transaktion (z.B. via `list_portfolio_transactions`)
+   oder eine explizite Aussage/Bestätigung von Brian im aktuellen Chat.
+   Schlägt IMMER alles andere, auch eine scheinbar aktuelle Datei.
+2. **`depot/master_status.md`** (neu angelegt, siehe unten) – das
+   konsolidierte, laufend aktualisierte Status-Dashboard (Kategorie-Zählungen,
+   offene Prüfpunkte, offene Empfehlungen, offene Lücken-Suchen). Bei einem
+   Widerspruch zwischen dieser Datei und einer der Detail-Dateien unten gilt
+   diese Datei als der aktuellere Stand – ABER: für die vollständige
+   Begründung/Historie einer einzelnen Position bleiben die Detail-Dateien
+   (`depot/kategorisierung.md`, `watchlist.md` etc.) maßgeblich, dieser Status
+   ersetzt sie nicht, er aggregiert nur die Kernzahlen.
+3. **`architecture.md`** (dieses Dokument, das "Masterbook") – das
+   verbindliche Regelwerk selbst.
+4. **Ältere Aussagen/Analysen** (`analysen/*.md`, ältere Chat-Historie,
+   `HANDOVER.md`) – Kontext und Begründungshistorie, aber im Zweifel NICHT
+   der aktuelle Stand, wenn eine der drei Stufen oben etwas anderes sagt.
+   Genau dieser Fall trat mehrfach auf (siehe `HANDOVER.md`-Korrekturen
+   2026-09-04) – künftig explizit gegen diese Rangfolge prüfen, statt eine
+   ältere Datei unreflektiert als aktuell zu behandeln.
+
+**Regel-Aufnahme-Disziplin / Ruleset-Hygiene (2026-09-04, ebenfalls von
+Raketentoni übernommen: "nicht jede einzelne schlechte Erfahrung erzeugt
+sofort eine neue pauschale Regel").** Ehrlicher Befund aus dieser Session:
+allein am 2026-09-04 kamen mehrere neue, teils lange Regeln dazu (Gründliche-
+These-Prüfung, Portfolio-Lücken-Kandidatensuche, Tieferer-Zweck-der-Suche) –
+jede einzelne war berechtigt und von Brian angefordert, aber die Summe
+zeigt ein reales Risiko: das Regelwerk kann durch lauter Einzelfall-Reaktionen
+unübersichtlich wachsen, statt sauber zu bleiben. Ab jetzt gilt:
+1. **Vor jeder neuen dauerhaften Regel** (ob von Brian gefordert oder vom
+   Agenten vorgeschlagen) kurz prüfen: deckt eine BESTEHENDE Regel das
+   Problem bereits ab und muss nur präzisiert/erweitert werden (siehe z.B.
+   die Präzisierung "ganze Indizes durchforsten" heute – Erweiterung einer
+   bestehenden Regel, keine neue), oder ist es wirklich ein neuer,
+   eigenständiger Fall? Im Zweifel erweitern statt duplizieren.
+2. **Einzelfall vs. Muster explizit benennen:** bei einer neu vorgeschlagenen
+   Regel kurz sagen, ob dies der ERSTE Vorfall dieser Art ist (dann evtl.
+   erstmal als Beobachtungspunkt/Notiz statt sofort als bindende Regel
+   vorschlagen) oder ob sich das bereits wiederholt hat (dann ist eine feste
+   Regel gerechtfertigt). Diese Einschätzung gehört explizit in den
+   Änderungsvermerk der neuen Regel, nicht nur die Regel selbst.
+3. **Ruleset-Hygiene beim monatlichen Recap (siehe `monatsrecap`-Task):**
+   einmal im Monat kurz prüfen, ob mehrere kleinere, im Monatsverlauf
+   entstandene Regeln zu einer saubereren, generalisierten Regel
+   zusammengefasst werden könnten, oder ob eine Regel durch eine neuere
+   bereits überholt ist und archiviert (nicht gelöscht – siehe
+   Änderungsprotokoll-Prinzip) werden sollte, statt beide nebeneinander
+   stehen zu lassen.
+4. **Kein Freibrief gegen berechtigte neue Regeln:** diese Disziplin soll
+   Wildwuchs verhindern, nicht dazu führen, dass echte, von Brian explizit
+   geforderte Regeln verzögert oder abgelehnt werden – im Zweifel wird die
+   Regel trotzdem angelegt, aber mit der ehrlichen Einordnung aus Punkt 2.
+
+**Konsolidierter Master-Status (2026-09-04, dritter von Raketentoni
+übernommener Punkt):** neue Datei `depot/master_status.md` – EIN
+konsolidiertes Status-Dashboard (Kategorie-Zählungen Depot+Watchlist, offene
+Prüfpunkte/Checkpoints, offene Empfehlungen, offene Portfolio-Regel-
+Verstöße, offene gezielte Kandidatensuchen, letzte Scheduled-Task-Läufe)
+statt den aktuellen Stand aus 6+ verstreuten Dateien selbst
+zusammensuchen zu müssen. Wird am Ende jedes `taeglicher-trigger-check`-
+und `wochenfazit`-Laufs aktualisiert (siehe jeweilige SKILL.md). Ersetzt
+NICHT die Detail-Dateien (siehe Vorrang-Hierarchie oben, Stufe 2) – reine
+Aggregation der Kernzahlen für den schnellen Überblick, v.a. beim Einstieg
+in einen neuen Chat/Task-Lauf ohne Erinnerung an vorherige Sessions.
+
 ## 2. Das Regelwerk (bereits vollständig von Brian geliefert)
 
 Drei eigenständige Prompts, gespeichert unter `prompts/`:
