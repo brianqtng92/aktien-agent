@@ -2591,6 +2591,79 @@ nächsten regulären [B] THESE-CHECK bzw. Wochenfazit nachgetragen (Jarvis'
 Einschätzung auf Basis der ursprünglichen TMR-/Scout-Bewertung, von Brian
 jederzeit korrigierbar), statt alle 18 Positionen auf einmal nachzuziehen.
 
+**Gründliche-These-Prüfung-vor-Verkaufsempfehlung-Pflicht (2026-09-04, von
+Brian gefordert nach dem Cellebrite-Fall):** Auslöser: ein frischer
+3-fach-Scout-These-Check kam am 04.09.2026 für die bestehende Cellebrite-
+Position vorschnell zu SCHROTT/VERKAUFEN – obwohl (a) zwei der drei
+bereits vordefinierten Re-Rating-Trigger noch gar nicht prüfbar waren
+(die Q3-Zahlen standen erst noch aus, "0/3 erfüllt" verwechselte "noch
+nicht testbar" mit "durchgefallen"), und (b) das Wachstums-K-Kriterium
+mechanisch gegen den für junge/spekulative Firmen gebauten Scout-Maßstab
+(≥30% Umsatz-CAGR) geprüft wurde, obwohl Cellebrite ein etabliertes,
+profitables Unternehmen mit echtem regulatorischem Moat ist (lizenzierter
+forensischer Gerätezugriff für Strafverfolgung – Zertifizierungen, Chain-
+of-Custody-Anforderungen, Behördenbeziehungen als reale Eintrittsbarriere,
+kein reines Wachstumsstory-Geschäft). Brian: "erst gründlich die These
+durchgehen, wie bei Cellebrite grad der Fall war, und nicht schon
+voreilig einen Verkauf in Erwägung ziehen." **Bleibt die These nach dieser
+Prüfung nachweislich gebrochen, bleibt die Verkaufsempfehlung
+selbstverständlich bestehen** – die Regel verlangt eine gründliche
+Prüfung, kein automatisches Pro-Halten-Bias.
+
+Ab sofort PFLICHT, bevor eine Kategorie-5-Empfehlung (VERKAUF ERWÄGEN) für
+eine BEREITS GEHALTENE Depot-Position allein aus einem ausgelösten Scout-/
+TMR-Mechanismus (Abbruch-Logik, K≤K-BASIS-2, Terminal-State, SCHROTT-
+Rating) abgeleitet wird:
+1. **Timing vs. Struktur explizit unterscheiden:** Ist der auslösende
+   negative Befund (Guidance-Cut, Umsatz-Verfehlung, Margen-Delle) plausibel
+   ein temporäres/zyklisches Ereignis (z.B. verzögerte statt verlorene
+   Großaufträge, ein Sondereffekt, ein einzelnes schwaches Quartal) oder ein
+   strukturelles Problem (nachgewiesene Kundenabwanderung, Wettbewerbs-
+   verlust, Moat-Erosion)? Beide Lesarten benennen und begründen, welche
+   nach den vorliegenden Fakten wahrscheinlicher ist – NICHT reflexhaft die
+   negativste Interpretation übernehmen, nur weil ein mechanischer
+   Abbruch-Trigger gegriffen hat.
+2. **Bereits definierten Checkpoint respektieren:** Existiert aus der
+   Erstanalyse oder dem Investment-These-Protokoll bereits ein konkreter
+   künftiger Prüfpunkt (z.B. die nächsten Quartalszahlen), der genau diese
+   offene Frage klären soll, und liegt dieser Checkpoint noch in der
+   Zukunft? Dann bleibt es bei HALTEN mit explizit benanntem Checkpoint,
+   KEIN Verkauf vor dessen Erreichen – es sei denn, ein hartes,
+   UNABHÄNGIGES Ausschluss-Kriterium (Fraud, bestätigter Going-Concern,
+   nachgewiesener Moat-Verlust, Übernahme/Delisting) ist bereits JETZT
+   eingetreten, unabhängig vom offenen Checkpoint.
+3. **Reifegrad-Methodik-Mismatch prüfen:** Greift bei einer bereits
+   etablierten, umsatzstarken Position mechanisch ein für junge/
+   spekulative Firmen gebauter Scout-Wachstumsmaßstab (K-BASIS, ≥30%
+   CAGR usw.)? Falls ja, das explizit benennen und im Gesamturteil gegen
+   die tatsächliche Geschäftsqualität/den Moat abwägen, statt den rohen
+   K-Count unreflektiert eins-zu-eins als Handlungsempfehlung zu
+   übernehmen (derselbe Mismatch war bereits beim RKLB-Fall vom 01.09.
+   dokumentiert – "das Deep-Tech-Override-Raster ist eigentlich für
+   kleine Vorab-Umsatz-Firmen gebaut, nicht für diese 'etabliertes
+   Kerngeschäft + Moonshot-Anhängsel'-Konstellation").
+4. **Ergebnis dieser drei Prüfpunkte explizit im Output ausweisen**
+   ("These-Prüfung vor Verkaufsempfehlung: Timing/Struktur-Einordnung +
+   Checkpoint-Status + Methodik-Fit-Check"), nicht nur das rohe Scout-/
+   TMR-Abbruch-Ergebnis unkommentiert als finale Handlungsempfehlung
+   weiterreichen.
+5. Erst wenn die These nach dieser Prüfung weiterhin als gebrochen gilt
+   (oder ein hartes, unabhängiges Ausschluss-Kriterium bereits erfüllt
+   ist), bleibt es bei Kategorie 5 (VERKAUF ERWÄGEN) – sonst HALTEN
+   (mit Checkpoint) oder BEOBACHTEN ENGER.
+
+**Bewusste Asymmetrie, gilt NUR für bereits gehaltene Depot-Positionen:**
+diese vertiefte Prüfpflicht gilt NICHT für die Erstprüfung neuer
+Watchlist-/Kauf-Kandidaten – dort bleibt die strengere, reflexive
+Abbruch-Logik unverändert in Kraft (ein neuer Kandidat, der die Kriterien
+nicht erfüllt, wird weiterhin ohne Nachsicht aussortiert). Die Begründung
+für die Asymmetrie: die Hürde für NEUES Kapital darf hoch bleiben, aber
+eine bereits mit echtem Geld finanzierte These verdient vor einem
+Exit-Vorschlag dieselbe Sorgfalt wie beim ursprünglichen Kauf – analog
+zum bereits etablierten Prinzip "reine Kursrückgänge sind kein
+automatischer Ausschlussgrund" bei der Watchlist (siehe "Watchlist-
+System", Ausschluss-/Abstiegs-Kriterien).
+
 **Einstiegszonen bei NACHKAUF ERWÄGEN, symmetrisch zu den
 Gewinnmitnahme-Zielzonen (2026-08-29):** Ebenfalls zusätzlich in EUR
 umgerechnet (siehe "Einheitliche EUR-Umrechnung" oben). Analog zu
