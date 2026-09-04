@@ -2,12 +2,12 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-# Vollstaendige, aktuell bewertbare Positionen (Stand 2026-09-02, Kurse per Twelve-Data-Live-Abruf
-# bzw. Investsumme als Platzhalter fuer Positionen ohne Live-Quelle - siehe depot/*.md fuer Details/Quellen)
+# Vollstaendige, aktuell bewertbare Positionen (Stand 2026-09-04, Scalable-Positionen live per MCP,
+# uebrige Broker aus depot/*.md bzw. Investsumme als Platzhalter fuer Positionen ohne Live-Quelle)
 data = [
-    ("Vanguard FTSE All-World (ETF)", 7541.94, "#2E5A8C"),
+    ("Vanguard FTSE All-World (ETF)", 7607.61, "#2E5A8C"),
     ("SoFi Technologies", 4120.00, "#E4572E"),
-    ("Bank Central Asia", 2009.72, "#4A7FB5"),
+    ("Bank Central Asia", 2022.09, "#4A7FB5"),
     ("ServiceNow Inc", 2487.20, "#F2A541"),
     ("Cellebrite DI Ltd", 2082.00, "#7A6FB0"),
     ("MercadoLibre Inc", 1671.20, "#5CA793"),
@@ -22,7 +22,7 @@ data = [
     ("Münchener Rück", 1030.80, "#B85C5C"),
     ("Tristel PLC", 945.00, "#8C6BB1"),
     ("Rocket Lab USA", 554.00, "#3E9C8C"),
-    ("EUWAX Gold II", 496.60, "#D4B106"),
+    ("EUWAX Gold II", 507.87, "#D4B106"),
     ("Allianz SE", 504.31, "#2F6B5E"),
     ("A10 Networks", 448.27, "#C46A6A"),
     ("Rambus Inc.", 438.69, "#A0A0A0"),
@@ -52,7 +52,7 @@ for at in autotexts:
 
 total_str = f"{total:,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
 ax.set_title(
-    f"Portfolio-Zusammensetzung – alle 4 Broker, Stand 2026-09-02\n"
+    f"Portfolio-Zusammensetzung – alle 4 Broker, Stand 2026-09-04\n"
     f"Gesamtwert: {total_str}",
     fontsize=13, fontweight="bold", pad=20,
 )
@@ -64,7 +64,7 @@ ax.text(
 )
 ax.axis("equal")
 plt.tight_layout()
-plt.savefig("/Users/brianqtng/Downloads/aktien-agent/reports/portfolio_pie_2026-09-02.png", dpi=150, bbox_inches="tight")
+plt.savefig("/Users/brianqtng/Downloads/aktien-agent/reports/portfolio_pie_2026-09-04.png", dpi=150, bbox_inches="tight")
 print("Saved. Total value:", total)
 for name, value, _ in data:
     print(f"{name}: {value:.2f} EUR -> {value/total*100:.1f}%")
