@@ -596,6 +596,29 @@ API-Key in dortiger `.env`). Stellt zwei Tools bereit:
   (dann regulärer, günstigerer Chat-Completions-Pfad für Nicht-Pro-Modelle).
   Motivation/Kosten-Hinweis: siehe identische Begründung bei
   `gemini-bridge` in 10.10 – gilt hier genauso.
+
+**Bekannte Einschränkung entdeckt (2026-09-05, erster Produktiv-Lauf mit
+vollem TMR-Methodik-Prompt für Lasertec):** bei `ask_gemini` mit
+`enable_search=True` UND einem sehr langen Prompt (>70K Zeichen, wie bei
+den vollen TMR/Scout-Methodik-Dateien) brach Gemini nach nur 359 Output-
+Tokens mit `finishReason: STOP` ab, obwohl 26.571 Prompt-Tokens + 29.040
+Tool-Use-Tokens verarbeitet wurden – das Modell "erledigte" offenbar die
+Suche und hielt das für eine abgeschlossene Antwort, statt mit der vollen
+Methodik fortzufahren. **Workaround (getestet, funktioniert):**
+`enable_search=False` bei vollen TMR/Scout/TA-Methodik-Aufrufen setzen
+(Jarvis' eigenes Fact-Pack lieferte in diesem Fall ausreichend Grundlage) –
+lief danach sauber durch (7.981 Zeichen vollständige Analyse). **Für
+KURZE, gezielte Anfragen (z.B. "aktueller Kurs von X") bleibt
+`enable_search=True` Default und funktioniert nachweislich zuverlässig**
+(siehe RKLB-Testlauf oben). **Regel bis zur genaueren Untersuchung:** bei
+`ask_gemini`-Aufrufen mit dem vollen TMR/Scout/TA-Methodik-Prompt
+(>50K Zeichen) `enable_search=False` setzen; bei `ask_chatgpt` trat dieses
+Problem NICHT auf (Conan lief mit `enable_search=True` UND vollem
+~74K-Zeichen-Prompt sauber durch, 22.826 Zeichen Analyse-Output,
+inklusive einem wichtigen Fund: Conans Live-Suche deckte einen ~29%-
+Kursfehler in Jarvis' Fact-Pack auf, siehe
+`analysen/LASERTEC-cross-check-fazit-2026-09-05.md`) – das Problem ist
+Gemini-spezifisch, keine grundsätzliche Grenze der Architektur.
 - `mcp__openai-bridge__list_openai_models()` – listet verfügbare
   Modell-IDs für den API-Key (zum Prüfen/Aktualisieren der Modellwahl,
   da OpenAI-Modellnamen sich ändern).
@@ -1071,6 +1094,31 @@ Scheduled-Task-Lauf, der Jack/Conan per Bridge einsetzt (oder bewusst
 nicht einsetzt), hängt eine Statuszeile an (OK/FAIL/Fallback je KI). Fällt
 eine Bridge über mehrere Läufe hinweg aus, ist das jetzt aus der Datei
 ablesbar, statt erst aufzufallen, wenn eine Analyse spürbar fehlt.
+
+**Dritte dokumentierte Wiederholung des Reflex-Abbruch-Bugs (2026-09-05,
+Lasertec-Lauf):** trotz Block 2/3 (TRAINING-vs-N/V-Klarstellung) UND
+eigener Websuche brach Jack erneut mit SCHROTT/Terminal-State ab, weil
+Piotroski-F-Score (für japanische Emittenten strukturell oft nicht sauber
+ermittelbar) und eine durch Working-Capital-Timing verzerrte
+Quartals-FCF-Marge als [N/V] statt [TRAINING] eingestuft wurden – identisch
+zum Muster bei Asahi Intecc und Disco Corp (siehe watchlist.md-
+Änderungsprotokoll). **Bemerkenswert:** Conan stand im selben Lauf vor
+GENAU denselben Datenlücken und schätzte beide korrekt mit [TRAINING]
+(Piotroski 7-8/9, FCF-Marge ~19,5-20,3%) statt abzubrechen. Das bestätigt:
+Block 2/3 hat das Problem für Conan gelöst, für Jack/Gemini nur
+teilweise – die Klarstellung wird zwar gelesen (Jack referenziert sie
+explizit im Output), aber bei genau diesen zwei Kennzahlen (Piotroski bei
+Nicht-US-Emittenten, Quartals-FCF-Marge bei Working-Capital-Verzerrung)
+entscheidet sich Jack trotzdem für die strengste Lesart. **Noch nicht
+behoben, nur dokumentiert:** ein möglicher nächster Schritt wäre ein noch
+konkreteres Beispiel im Klarstellungsblock ("Piotroski bei japanischen/
+nicht-US-Emittenten OHNE 10-K: nutze eine plausible TRAINING-Schätzung
+basierend auf Profitabilität/Bilanzqualität, niemals N/V allein deswegen")
+– bei Gelegenheit prüfen, ob das die Wiederholungsrate senkt. Bis dahin:
+ein Jack-SCHROTT/Terminal-State-Ergebnis, das ausschließlich auf Piotroski
+und/oder einer einzelnen verzerrten FCF-Quartalszahl beruht, wird als
+Datenlücken-Artefakt behandelt, nicht als belastbares Urteil – Conans und
+Jarvis' Einschätzung erhalten in diesem Fall mehr Gewicht.
 
 ---
 
