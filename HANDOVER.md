@@ -613,7 +613,12 @@ KURZE, gezielte Anfragen (z.B. "aktueller Kurs von X") bleibt
 (siehe RKLB-Testlauf oben). **Regel bis zur genaueren Untersuchung:** bei
 `ask_gemini`-Aufrufen mit dem vollen TMR/Scout/TA-Methodik-Prompt
 (>50K Zeichen) `enable_search=False` setzen; bei `ask_chatgpt` trat dieses
-Problem NICHT auf (Conan lief mit `enable_search=True` UND vollem
+Problem NICHT auf; **Update 2026-09-05 (alle drei KIs bekommen jetzt alle
+drei Methodik-Dateien, siehe architecture.md Abschnitt "Kategorisierung"):**
+diese Regel gilt jetzt ERST RECHT für den neuen Standardfall, dass ALLE
+DREI Dateien (TMR+Scout+TA, zusammen ~190KB) in einem Prompt an Jack
+gehen – `enable_search=False` ist hier PFLICHT, nicht optional, das Risiko
+ist strukturell größer als beim bisherigen Einzeldatei-Fall (Conan lief mit `enable_search=True` UND vollem
 ~74K-Zeichen-Prompt sauber durch, 22.826 Zeichen Analyse-Output,
 inklusive einem wichtigen Fund: Conans Live-Suche deckte einen ~29%-
 Kursfehler in Jarvis' Fact-Pack auf, siehe

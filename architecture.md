@@ -1587,6 +1587,39 @@ unbegrenzt fortgeschrieben zu werden.
        Zuordnung zu einem der beiden Pfade.
      → (Auto-Detection-Logik aus den Prompts selbst nutzen, siehe TMR "Analyse-Tiefe"
         / Scout "Sektor-Override-Detection")
+     → **Alle drei KIs bekommen ab sofort alle drei Methodik-Dateien
+       (2026-09-05, von Brian gefordert: "alle Agenten Zugriff auf alle 3
+       Dateien haben, um viele Sichtweisen bei einer Analyse
+       herauszufinden... alle bekommen die gleiche Voraussetzung, die
+       gleichen Analysetools").** Bisher bekam Jack/Conan über die Bridge
+       NUR die eine, per Bucket geroutete Methodik-Datei (TMR ODER Scout)
+       zugeteilt – Jarvis las zwar alle drei, aber Jack/Conan sahen jeweils
+       nur einen Ausschnitt des Werkzeugkastens. Ab sofort gilt: bei JEDER
+       vollständigen Einzelanalyse (Quick Filter und Full/Deep-Dive) werden
+       ALLE DREI Dateien (`jack-moat-reaper-v11.7.md`/TMR,
+       `conan-the-scout-v1.12.md`/Scout, `jack-technical-analyst-v1.9.md`/TA)
+       an Jarvis (liest sie ohnehin selbst), Jack UND Conan gegeben – nicht
+       mehr nur die eine, laut Bucket "richtige". **Was sich dadurch NICHT
+       ändert:** die Bucket-Zuordnung (TMR-Pfad vs. Scout-Pfad, siehe oben)
+       bleibt bestehen und bestimmt weiterhin, welches Rating das
+       OFFIZIELLE/PRIMÄRE Ergebnis für Kategorisierung, Sizing und
+       Kurz-Fazit ist – TMR-Kennzahlen werden nicht plötzlich auf eine
+       Pre-Revenue-Firma angewendet oder umgekehrt. Was sich ändert: jede
+       KI hat jetzt zusätzlich die VOLLE Perspektive der jeweils anderen
+       Methodik zur Verfügung und kann explizit benennen, wenn sie aus
+       dieser zusätzlichen Linse eine relevante Beobachtung ableitet (z.B.
+       Conan bringt bei einem TMR-Fall trotzdem einen Wachstumsqualitäts-
+       Einwand ein, oder Jack/TMR bemerkt bei einem Scout-Fall eine bereits
+       messbare Preissetzungsmacht) – das macht die Cross-Check-Vielfalt
+       größer, ohne die Bucket-Logik selbst aufzuweichen. TA bleibt wie
+       bisher bei jeder Einzelanalyse Pflicht (war schon immer Teil aller
+       drei Dateien für jede Analyse, jetzt nur explizit auch an Jack/Conan
+       mitgegeben statt implizit vorausgesetzt). **Technische Konsequenz
+       (siehe HANDOVER.md 10.10):** die drei Dateien zusammen sind
+       deutlich länger als eine einzelne Methodik-Datei – bei Gemini/Jack
+       ist `enable_search` bei diesem kombinierten Mega-Prompt IMMER auf
+       `False` zu setzen (bekanntes Kontextlängen-/Abbruch-Problem, siehe
+       dort), bei Conan/ChatGPT ist das nicht nötig.
      → zusätzlich: Kategorie-Zuordnung nach Depot-Ziel-Struktur (siehe Abschnitt 3):
        Champions / Profi / Talent – inkl. Platz-Check pro Kategorie
      → **AUTOMATISCHE Kategorie-Zuordnung bei KAUFEN-Ergebnis (2026-08-29,
