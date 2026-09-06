@@ -4042,6 +4042,35 @@ künftige Portfolio-Aufnahme** sind.
      gefundene Kandidat durchläuft dieselben Gates wie beim normalen
      Kandidaten-Scan (Identity-/Strategie-Fit-/Duplikations-Gate, dann
      voller 3-fach-Check).
+  2b. **Jack/Conan als zusätzliche, unabhängige Suchquelle (2026-09-07, von
+     Brian gefordert: "die ganzen Indizes auf der ganzen Welt durchforsten,
+     um interessante Kandidaten fürs Watchlist oder das Portfolio zu
+     finden... alle 3 KI-Agenten sollen gegenseitig kontrollieren,
+     miteinander diskutieren, verbessern, weil jeder die Stärken mit
+     einbringen kann").** Bisher screente NUR Jarvis selbst (Jack/Conan
+     bewerteten nur bereits von Jarvis vorgelegte Einzelkandidaten). Bei
+     JEDEM Lücken-Auslöser (siehe Punkt 1 oben) zusätzlich zu Jarvis'
+     eigenem systematischem Index-Durchlauf einen GEZIELTEN Such-Auftrag an
+     Jack (`ask_gemini`) UND Conan (`ask_chatgpt`) schicken – NICHT den
+     Einzelwert-Analyse-Prompt (keine Methodik-Dateien, keine Klarstellungs-
+     Blöcke nötig, das ist hier kein Rating-Auftrag), sondern einen
+     kompakten Rechercheauftrag: Index/Region/Sektor der Lücke benennen (z.B.
+     "Nikkei 225, Talent-Kategorie, Kriterien: Marge/Marktstellung/
+     Wachstumsverlässlichkeit aus dem Kategorisierungs-Kriterien-Abschnitt in
+     `depot/master_status.md`"), eigene Live-Suche nutzen (`enable_search=True`
+     bei beiden – hier KEIN langer Methodik-Prompt, also nicht das
+     Gemini-Kontextlängen-Risiko aus HANDOVER.md 10.10), 3-5 plausible
+     Kandidaten mit je 1-2 Sätzen Begründung nennen, KEIN vollständiges
+     Rating (das ist nur ein Vorfilter). Jarvis sammelt die Vorschläge aus
+     beiden Quellen (eigener Scan + Jack + Conan), dedupliziert gegen bereits
+     geprüfte/gesperrte Kandidaten, und schickt ALLE neuen Namen durch
+     dieselben Gates wie jeden anderen Kandidaten (Identity-/Strategie-Fit-/
+     Duplikations-Gate, dann voller 3-fach-Check) – ein Jack- oder
+     Conan-Vorschlag bekommt KEINEN Qualitäts-Bonus/-Rabatt nur weil er von
+     einer der beiden KIs kam, er muss dieselbe Hürde nehmen wie jeder
+     andere Kandidat. Zweck: echte zusätzliche Perspektive statt nur
+     Jarvis' eigenem Screening-Blickwinkel – Jack/Conan könnten Kandidaten
+     finden, die Jarvis' eigene Suchstrategie/Suchbegriffe übersieht.
   3. **Kein Qualitäts-Rabatt wegen Strukturbedarf:** ein struktureller
      Bedarf (offener Slot, unterbesetzter Topf) darf einen Kandidaten in
      der Vorauswahl positiv hervorheben (siehe bereits bestehende Regel
