@@ -1061,23 +1061,37 @@ Asymmetrie: hohe Huerde fuer neues Kapital, mehr Geduld vor dem Rauswerfen einer
 bereits finanzierten These).
 ```
 
-**Block 6 ergänzt (2026-09-04, gleicher Anlass):** Master-Status/
-Informations-Vorrang-Hierarchie – nur relevant, wenn Jack/Conan im
-agentischen Modus (`ask_gemini_agentic`/`ask_chatgpt_agentic`, siehe
-10.11) selbst Depot-Tools aufrufen und dabei auf mehrere, potenziell
-widersprüchliche Datenquellen stoßen könnten. Kurzer Hinweis statt langer
-Block, da im normalen (nicht-agentischen) Bridge-Betrieb ohnehin nur das
-fertige FACT-PACK ankommt, keine eigene Dateisuche stattfindet:
+**Block 6 ergänzt (2026-09-04), erweitert (2026-09-06, Brian: "alle Agenten
+sollen Zugriff auf das master-status haben und wissen was zu tun ist"):**
+Master-Status/Informations-Vorrang-Hierarchie. Ursprünglich nur ein kurzer
+Hinweis für den agentischen Modus (`ask_gemini_agentic`/`ask_chatgpt_agentic`,
+siehe 10.11) – jetzt UNBEDINGT bei JEDEM Bridge-Aufruf (auch dem normalen,
+nicht-agentischen `ask_gemini`/`ask_chatgpt`), da Jack/Conan sonst keinerlei
+Sicht auf den aktuellen Projekt-/Depot-Status haben (Fact-Pack deckt nur den
+einzelnen Kandidaten ab, nicht Kategorie-Zählungen, offene Checkpoints oder
+Portfolio-Regel-Verstöße). Jarvis liest `depot/master_status.md` VOR jedem
+Bridge-Dispatch frisch ein und fügt den **vollständigen aktuellen Inhalt**
+direkt in Block 6 ein (nicht nur einen Verweis auf den Dateinamen – Jack/Conan
+können die Datei selbst nicht lesen, nur was hier im Prompt-Text steht):
 
 ```
-HINWEIS (nur relevant, falls du in diesem Lauf selbst Depot-Tools aufrufst):
-`depot/master_status.md` ist das konsolidierte, laufend aktualisierte Status-
-Dashboard (Kategorie-Zaehlungen, offene Pruefpunkte, offene Empfehlungen,
-offene Portfolio-Regel-Fragen). Bei widersprüchlichen Informationen zwischen
-Dateien gilt diese Rangfolge (hoechste zuerst): 1. eine jüngste, explizit
-bestätigte Transaktion/Entscheidung, 2. `depot/master_status.md`,
-3. `architecture.md`, 4. ältere Analysen/Chat-Historie.
+MASTER-STATUS (aktueller Stand von depot/master_status.md, von Jarvis
+unmittelbar vor diesem Aufruf frisch eingelesen – NICHT rein informativ,
+sondern aktiv nutzen fuer Kategorie-Konsistenz, Vergleich mit bestehenden
+Positionen/Checkpoints und Portfolio-Regel-Kontext):
+
+[HIER: vollstaendiger aktueller Inhalt von depot/master_status.md einfuegen]
+
+Bei widersprüchlichen Informationen zwischen Dateien gilt diese Rangfolge
+(hoechste zuerst): 1. eine juengste, explizit bestaetigte Transaktion/
+Entscheidung, 2. der Master-Status oben, 3. die Methodik-/Regel-Dateien in
+diesem Prompt, 4. aeltere Analysen/Chat-Historie.
 ```
+
+**Kosten-/Längen-Hinweis:** `master_status.md` ist mit ~130 Zeilen deutlich
+kürzer als die Methodik-Dateien – das Längenrisiko (Lost-in-the-Middle,
+Gemini-Kontextlimit) bleibt dadurch überschaubar, sollte aber beobachtet
+werden, falls die Datei künftig stark wächst.
 
 **Block 7 ergänzt (2026-09-06, echte Ursache des wiederholten Jack-Reflex-Abbruch-Bugs gefunden):** Bisher wurde der wiederholte SCHROTT/Terminal-State-Abbruch bei Jack (Asahi Intecc, Disco Corp, Lasertec) als Gemini-spezifisches Modellverhalten eingeordnet ("Jack tendiert reflexhaft zu N/V statt TRAINING"). Brian machte den entscheidenden Beobachtungshinweis: bei manueller Anwendung des Jack-Prompts (ohne Jarvis' Fact-Pack) läuft dieselbe Analyse normal durch, kein Abbruch. Beim Nachlesen von Jacks eigener Begründung (siehe `analysen/LASERTEC-TMR-quickfilter-jack-gemini-2026-09-05.md` Zeile 19-29 und `analysen/DISCO-6146-TMR-quickfilter-jarvis-claude-2026-08-31.md` Zeile 53) bestätigte sich: Jarvis' EIGENES Fact-Pack hatte Piotroski F-Score/FCF-Marge bereits selbst als `[N/V]` getaggt (obwohl daneben oft eine plausible qualitative Einschätzung stand, die `[TRAINING]` verdient hätte) – Jack übernahm dieses bereits gesetzte Tag als vorentschieden, statt es selbst neu zu bewerten. Die eigentliche Ursache liegt also in Jarvis' Fact-Pack-Erstellung (siehe architecture.md "Fact-Pack-Tag-Disziplin", neu ergänzt), nicht in Gemini selbst – Block 7 ist das zusätzliche Sicherheitsnetz auf Bridge-Seite:
 

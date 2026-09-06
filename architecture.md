@@ -520,8 +520,8 @@ in einen neuen Chat/Task-Lauf ohne Erinnerung an vorherige Sessions.
 **Geltungsbereich: das gesamte Regelwerk gilt für alle drei KIs, nicht nur
 Jarvis (2026-09-04, von Brian gefordert: "das ganze System soll für alle
 Agenten gelten, sowohl für Jack als auch für Conan").** Jack und Conan
-lesen dieses Dokument NICHT selbst – sie bekommen bei jedem Bridge-Aufruf
-nur das FACT-PACK + die Methodik-Datei (TMR/Scout/TA) + eine Handvoll
+lesen `architecture.md` selbst NICHT – sie bekommen bei jedem Bridge-Aufruf
+nur das FACT-PACK + die Methodik-Dateien (TMR+Scout+TA) + eine Handvoll
 vorangestellter Klarstellungs-Blöcke (siehe HANDOVER.md 10.13). Das
 bedeutet: eine neue Regel hier gilt automatisch NUR für Jarvis, es sei
 denn, sie wird explizit in einen dieser Blöcke übersetzt und bei jedem
@@ -530,16 +530,24 @@ State-Mechanismus auftrat (Block 4, HANDOVER.md 10.13: "er erreichte
 Jack/Conan im API-Betrieb möglicherweise gar nicht") und sich am selben
 Tag beim Bridge-Block 5 wiederholte (die Gründliche-These-Prüfung-Pflicht
 stand zunächst nur hier, nicht im tatsächlichen Bridge-Prompt-Text).
+**Ausnahme seit 2026-09-06 (Brian: "alle Agenten sollen Zugriff auf das
+master-status haben und wissen was zu tun ist"):** `depot/master_status.md`
+selbst wird bei JEDEM Bridge-Aufruf mit vollem aktuellem Inhalt in Block 6
+eingebettet (siehe HANDOVER.md 10.13) – das ist die einzige Datei außer den
+Methodik-Dateien, die Jack/Conan tatsächlich im Volltext zu sehen bekommen,
+bewusst begrenzt auf dieses eine kompakte Status-Dashboard, nicht das ganze
+Regelwerk.
 **Feste Pflicht ab jetzt:** bei jeder neuen Regel mit inhaltlicher
 Rating-/Empfehlungs-Wirkung (nicht reine Datei-Pflege-/Commit-Mechanik,
 die bleibt Jarvis-only) explizit prüfen, ob sie auch Jack/Conan erreichen
 muss – wenn ja, als neuen Klarstellungs-Block in HANDOVER.md 10.13
 ergänzen UND die Blockzahl in `taeglicher-trigger-check`/`blitz-scan`
 SKILL.md aktualisieren. Diese Prüfung ist explizit Teil der Regel-
-Aufnahme-Disziplin oben, nicht optional. Aktuell sechs Standard-Blöcke
+Aufnahme-Disziplin oben, nicht optional. Aktuell sieben Standard-Blöcke
 (siehe HANDOVER.md 10.13): SCHRITT-0/WACC/TRAINING-vs-N/V/Terminal-State
-(Blöcke 1-4, 2026-09-02/03), Gründliche-These-Prüfung (Block 5) und
-Master-Status/Vorrang-Hierarchie-Hinweis (Block 6, beide 2026-09-04).
+(Blöcke 1-4, 2026-09-02/03), Gründliche-These-Prüfung (Block 5, 2026-09-04),
+Master-Status mit Volltext-Einbettung (Block 6, erweitert 2026-09-06) und
+Fact-Pack-Tags-sind-nicht-bindend (Block 7, 2026-09-06).
 
 **Jack/Conan haben jetzt eigene Live-Web-Recherche (2026-09-04, von Brian
 gefordert: "Jack und Conan sollen die Freiheit haben, selbst zu
