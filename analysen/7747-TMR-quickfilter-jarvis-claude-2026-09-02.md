@@ -1,7 +1,7 @@
 # JARVIS – TMR QUICK FILTER: ASAHI INTECC CO., LTD. (7747)
 **Datum:** 2026-09-02 · **Analyst:** Jarvis (Claude) · **Modus:** MODUS A EINZELANALYSE, QUICK FILTER · **Regelwerk:** jack-moat-reaper-v11.7.md
 **Anlass:** Brian bat um eine Analyse von Asahi Intecc, neuer Kandidat, noch nicht in Watchlist/Depot.
-**Identity-Gate (neu seit 2026-09-02, siehe architecture.md):** Ticker 7747, ISIN JP3110650003, Tokyo Stock Exchange — gegengeprüft gegen zwei unabhängige Quellen (stockanalysis.com, stockopedia.com), beide bestätigen dieselbe Firma. KEINE Verwechslung mit Asahi Group Holdings (Bier), Asahi Kasei (Chemie) oder AGC/Asahi Glass — alles andere Ticker/ISINs.
+**Identity-Gate (neu seit 2026-09-02, siehe Agent-Playbook.md):** Ticker 7747, ISIN JP3110650003, Tokyo Stock Exchange — gegengeprüft gegen zwei unabhängige Quellen (stockanalysis.com, stockopedia.com), beide bestätigen dieselbe Firma. KEINE Verwechslung mit Asahi Group Holdings (Bier), Asahi Kasei (Chemie) oder AGC/Asahi Glass — alles andere Ticker/ISINs.
 
 ---
 

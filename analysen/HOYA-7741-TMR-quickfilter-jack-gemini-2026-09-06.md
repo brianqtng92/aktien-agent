@@ -6,7 +6,7 @@ Methodik-Dateien TMR/Scout/TA + Jarvis' Fact-Pack), `enable_search=False`
 (siehe HANDOVER.md 10.10 - bei Gemini+3-Datei-Mega-Prompt bekanntes Abbruch-
 Risiko mit aktiver Suche). Dies ist zugleich der Test-Lauf fuer den heute
 (2026-09-06) implementierten Fact-Pack-Tag-Fix (siehe HANDOVER.md 10.13 Block 7
-und architecture.md "Fact-Pack-Tag-Disziplin").
+und Agent-Playbook.md "Fact-Pack-Tag-Disziplin").
 
 **ERGEBNIS DES TESTS: KEIN ABBRUCH.** Jack lief die komplette Analyse bis zum
 Ende durch, kein SCHROTT/Terminal-State. Piotroski F-Score (7-8/9) und

@@ -10,7 +10,7 @@ Zuordnung wird nur bei Neuaufnahme (Watchlist→Depot) oder bewusster
 Neubewertung im Wochenfazit geändert – dann hier aktualisiert, mit
 Begründung und Datum.
 
-## Kriterien (Quelle: architecture.md, Brians Formulierung 2026-08-29)
+## Kriterien (Quelle: Agent-Playbook.md, Brians Formulierung 2026-08-29)
 
 - **Champions** – absolute Weltklasse-Unternehmen: hohe/sehr hohe Margen,
   Monopol- oder Quasi-Monopolstellung, hohe und verlässliche
@@ -31,14 +31,14 @@ Geschäftsqualitäts-Urteil). Nur die drei oben genannten Kriterien
 ## Ziel-Positionsanzahl: "10-7-3" (festgesetzt 2026-09-03, korrigiert 2026-09-03)
 
 **10 Champions / 7 Profi / 3 Talent = 20 Einzelwerte gesamt** (siehe
-architecture.md, Abschnitt 3, für die vollständige Begründung). Ursprünglich
+Agent-Playbook.md, Abschnitt 3, für die vollständige Begründung). Ursprünglich
 als "10-6-4" festgelegt – noch am selben Tag im 3-KI-System-Audit als
 rechnerisch fehlerhaft erkannt (der 10%-Positionsdeckel gilt fürs
 Gesamtportfolio, die 40%-Talent-Grenze fürs Aktienanteil – beides zu
 vermischen ergab die falsche Zahl 4 statt korrekt 3) und auf "10-7-3"
 korrigiert. **Vorbehalt:** die "3" hängt am aktuellen Aktienanteil-Anteil
 (~74% des Gesamtportfolios) – wächst der ETF-Anteil wie geplant, sinkt
-diese Zahl rechnerisch weiter (siehe architecture.md für Details), daher
+diese Zahl rechnerisch weiter (siehe Agent-Playbook.md für Details), daher
 kein für immer fixer Wert.
 
 | Kategorie | Ziel | Ist (04.09.2026, nach vollständigem "geschärfter Blick"-Review) | Freie Slots |
@@ -98,7 +98,7 @@ fehlender/verzerrter Gewinnhistorie nicht sinnvoll anwendbar.
 **Wichtig:** Die CRV-Ampel bei einer bestehenden Depot-Position ist KEIN
 automatisches Verkaufssignal – dafür gelten weiterhin ausschließlich die
 in `analysen/*.md` dokumentierten Abstauber-/Stop-These-Trigger (siehe
-"Verkaufsdisziplin & Gewinnmitnahme-Regeln", architecture.md). Die Ampel
+"Verkaufsdisziplin & Gewinnmitnahme-Regeln", Agent-Playbook.md). Die Ampel
 zeigt nur, ob ein NACHKAUF zum aktuellen Preis eine gute Idee wäre. Stand
 2026-09-03 (WebSearch-Snapshot), Pflege ab jetzt wöchentlich über den
 Wochenfazit-Lauf
@@ -153,7 +153,7 @@ methodisch korrekt, keine Bewertungslücke.
 | Broadridge Financial Solutions | 🟢 KAUFEN/NACHKAUFEN – Forward-KGV 17,0x, deutlich unter 12M-Ø (31,7x). **MoS-Hinweis:** aktuell bereits selbst -34,4% vom 52-Wochen-Hoch – der günstige KGV-Vergleich spiegelt zu einem Teil genau diesen laufenden Rücksetzer, nicht nur strukturelle Unterbewertung. | Named-Beispiel Brian |
 | A10 Networks | 🟠 KEIN NACHKAUF (TEUER) – TTM-KGV 59,8x deutlich über 5J-Ø (23,2x)/7J-Ø (29,9x); Forward-KGV moderater (26,5x) – Diskrepanz beobachten, evtl. temporärer Gewinneinbruch. **MoS-Hinweis:** keine spezifische Drawdown-Quelle recherchiert – als kleinerer Netzwerktechnik-Titel mit volatiler Ertragslage realistisch überdurchschnittlich schwankungsanfällig. | Named-Beispiel Brian |
 | Rambus | 🟡 HALTEN/BEOBACHTEN – KGV nahe eigenem 10J-Median (leicht darüber je nach Quelle). **MoS-Hinweis:** 5J-Max-Drawdown -48,8% (u.a. -30% allein 2022, -45% 2024) – Halbleiter-IP-Lizenzgeschäft mit Patentstreit-getriebenem, unregelmäßigem Ertragsmuster bleibt volatil. | Named-Beispiel Brian (22.08.), etablierte Semiconductor-IP-Firma seit 1990 (korrigiert 2026-09-03, vorher fälschlich Talent) |
-| Cellebrite DI Ltd | 🟡 HALTEN – Checkpoint Q3-Earnings. KGV 52,7x, 25% über 10J-Median – **eigene Einordnung optisch teuer, aber CRV allein ist hier nicht aussagekräftig genug**, siehe Begründung. **MoS-Hinweis:** -33% Kursrückgang 2026 nach Guidance-Cut/CEO-Wechsel. **Korrigiert 2026-09-04** (vorher fälschlich SCHROTT/VERKAUFEN nach einem vorschnellen 3-fach-Scout-Check): gründliche These-Prüfung (siehe architecture.md, "Gründliche-These-Prüfung-vor-Verkaufsempfehlung-Pflicht") ergab, dass 2 von 3 Re-Rating-Triggern mangels Q3-Zahlen noch gar nicht prüfbar waren (nicht "durchgefallen"), und der Guidance-Cut plausibel auf verzögerte statt verlorene Großaufträge zurückgeht (Timing-, kein Struktur-Problem). **Nächster Prüfpunkt: Q3-Earnings** (Guidance: Umsatz $145-148 Mio) – dann die drei Re-Rating-Trigger mit echten Daten neu prüfen. | Named-Beispiel Brian – **umkategorisiert 2026-09-04 von Talent zu Profi** (Brian: profitabel, $500M+ wiederkehrender ARR-Umsatz, echter regulatorischer Moat bei lizenziertem forensischem Gerätezugriff für Strafverfolgung – passt nicht zur Talent-Definition "eventuell noch unprofitabel/Hype-getrieben") |
+| Cellebrite DI Ltd | 🟡 HALTEN – Checkpoint Q3-Earnings. KGV 52,7x, 25% über 10J-Median – **eigene Einordnung optisch teuer, aber CRV allein ist hier nicht aussagekräftig genug**, siehe Begründung. **MoS-Hinweis:** -33% Kursrückgang 2026 nach Guidance-Cut/CEO-Wechsel. **Korrigiert 2026-09-04** (vorher fälschlich SCHROTT/VERKAUFEN nach einem vorschnellen 3-fach-Scout-Check): gründliche These-Prüfung (siehe Agent-Playbook.md, "Gründliche-These-Prüfung-vor-Verkaufsempfehlung-Pflicht") ergab, dass 2 von 3 Re-Rating-Triggern mangels Q3-Zahlen noch gar nicht prüfbar waren (nicht "durchgefallen"), und der Guidance-Cut plausibel auf verzögerte statt verlorene Großaufträge zurückgeht (Timing-, kein Struktur-Problem). **Nächster Prüfpunkt: Q3-Earnings** (Guidance: Umsatz $145-148 Mio) – dann die drei Re-Rating-Trigger mit echten Daten neu prüfen. | Named-Beispiel Brian – **umkategorisiert 2026-09-04 von Talent zu Profi** (Brian: profitabel, $500M+ wiederkehrender ARR-Umsatz, echter regulatorischer Moat bei lizenziertem forensischem Gerätezugriff für Strafverfolgung – passt nicht zur Talent-Definition "eventuell noch unprofitabel/Hype-getrieben") |
 | SoFi Technologies | 🟡 HALTEN/BEOBACHTEN – KGV ~35-38x. **MoS-Hinweis:** bereits -53% Drawdown 2026 (Short-Seller-Attacke, Peak Ende 2025 → Tief 30.03.), aktuelle Bewertung nach der Korrektur moderater; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | **Umkategorisiert 2026-09-04 von Talent zu Profi** (Brian-Vorschlag, gegenrecherchiert und bestätigt): 9 aufeinanderfolgende Quartale GAAP-profitabel (Stand Q4 2025), Nettomarge TTM 10,1%, Q2 2026 Adj.-Nettomarge 13%, FY2026-Guidance ~18% – "eventuell noch unprofitabel" (Talent-Definition) trifft nicht mehr zu. **Wichtiger, transparent zu benennender Vorbehalt:** Muddy-Waters-Short-Report (März 2026) wirft SoFi vor, Risiko aus verkauften Krediten zurückzubehalten und die tatsächliche Ausfallrate zu niedrig auszuweisen (behauptet 6,1% vs. berichtete 2,89%), mit dem Vorwurf zirkulärer Finanzierungspraktiken und möglichem Restatement-/SEC-Risiko – bisher unbewiesen, SoFi weist es zurück, CEO kaufte danach eigene Aktien nach. Genau die Zahlen, auf denen diese Hochstufung beruht, stehen damit unter einem laufenden, ungeklärten Vorbehalt – bei Bestätigung der Vorwürfe wäre das ein echtes Rückstufungs-/Ausschluss-Kriterium (Bilanzintegrität), kein reines Bewertungsthema. |
 | Kraken Robotics | 🔘 GRAU – KEINE BELASTBARE AUSSAGE – **Anker: KGV ungeeignet** (erst seit Kurzem konsistent profitabel, Bewertungskennzahlen noch verzerrt), kein tragfähiger Ersatzmaßstab aus dem Fact-Pack ableitbar. **MoS-Hinweis:** bereits -41% vom 52-Wochen-Hoch – Vorsicht in beide Richtungen, Bewertung schwer greifbar. | **Umkategorisiert 2026-09-04 von Talent zu Profi** ("geschärfter Blick"-Review): Q2 2026 zeigt echte, nicht nur nahende Profitabilität – Bruttomarge 59% (von 56% YoY), Adj.-EBITDA-Marge 18-20%, kombinierter Auftragsbestand (Kraken+Covelya) $327 Mio 2026. Proprietäre AquaPix-Synthetic-Aperture-Sonar-Technologie liefert höher auflösende Meeresboden-Bildgebung als Wettbewerber bei ~50% Produkt-Bruttomarge, SeaPower-Unterwasserbatterien ohne bekannten Konkurrenten bei vergleichbarer Energiedichte in 6000m Tiefe – zwei konkrete, verteidigbare technische Alleinstellungsmerkmale statt nur einer frühen Wachstumsstory. Die bisherige "kein Live-Kurs"-Begründung war faktisch falsch (notiert an TSXV: PNG, OTC: KRKNF) – Grenzfall-Hochstufung, kein Selbstläufer (Moat-Tiefe von Analysten uneinheitlich beurteilt), aber Marge-/Wachstumskriterien sprechen klar für Profi statt Talent. |
 | HawkEye 360 | 🔘 GRAU – KEINE BELASTBARE AUSSAGE – **Anker: KGV ungeeignet** (jung, GAAP-unprofitabel trotz starkem Wachstum, kein tragfähiger Ersatzmaßstab recherchiert). **MoS-Hinweis:** bereits ca. -50% vom Allzeithoch (Mai 2026) und -32% unter IPO-Preis (26$) gefallen, keine belastbare Bewertungshistorie; Brian hat Position ohnehin als "erstmal voll" markiert, kein Nachkauf geplant. | **Umkategorisiert 2026-09-04 von Talent zu Profi** ("geschärfter Blick"-Review – korrigiert eine veraltete Tatsachenbehauptung): "Kein Live-Kurs" war schlicht nicht mehr aktuell – IPO am 07.05.2026 ($416 Mio, NASDAQ: HAWK). Umsatzwachstum FY2025 +74% YoY ($117,7 Mio), H1 2026 +101% YoY ($99,6 Mio), Q2 2026 +87% YoY, FY2026-Guidance $215-220 Mio. Bruttomarge 70-82% (software-/lizenzähnliche Ökonomie, kein typisches Hardware-Frühphasen-Profil). Finanzierter Auftragsbestand $302,7 Mio (2,6x FY2025-Umsatz), überwiegend US-Regierung/NRO und verbündete Verteidigungskunden – weltweit erste und einzige börsennotierte kommerzielle RF-SIGINT-Satellitenkonstellation (30+ Satelliten im Orbit), NRO baut die Nutzung sogar aus. "Dünnste Datenlage" war schon vor dem IPO eine dünne Rechtfertigung angesichts des im S-1-Prozess offengelegten Auftragsbestands. |
@@ -174,7 +174,7 @@ methodisch korrekt, keine Bewertungslücke.
 - 2026-09-03 (später am selben Tag): "10-6-4" im 3-KI-System-Audit (Jarvis/
   Jack/Conan) als rechnerisch fehlerhaft erkannt (Basen-Verwechslung
   Gesamtportfolio vs. Aktienanteil) und auf **"10-7-3"** korrigiert – siehe
-  architecture.md für die vollständige Herleitung.
+  Agent-Playbook.md für die vollständige Herleitung.
 - 2026-09-03: CRV-Ampel (inkl. Margin-of-Safety/Drawdown-Hinweise) auch für
   alle 18 Depot-Positionen eingeführt (vorher nur Watchlist), 4-stufige
   Skala (🟢/🟡/🟠/🔴) statt 3-stufig – von Brian gefordert.
@@ -200,7 +200,7 @@ methodisch korrekt, keine Bewertungslücke.
   durchgehen, nicht voreilig einen Verkauf in Erwägung ziehen") – zu
   Recht: 2 von 3 Re-Rating-Triggern waren mangels Q3-Zahlen noch gar
   nicht prüfbar, Guidance-Cut plausibel Timing- statt Struktur-Problem.
-  Führte zu einer neuen systemweiten Regel (architecture.md,
+  Führte zu einer neuen systemweiten Regel (Agent-Playbook.md,
   "Gründliche-These-Prüfung-vor-Verkaufsempfehlung-Pflicht"). Cellebrite:
   VERKAUFEN → HALTEN mit Checkpoint Q3-Earnings. Zusätzlich, unabhängig
   davon: Brian stufte Cellebrite als Profi statt Talent ein (profitabel,

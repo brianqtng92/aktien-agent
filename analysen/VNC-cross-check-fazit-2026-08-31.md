@@ -45,7 +45,7 @@ Brian hatte ausdrücklich nach diesem Vergleich gefragt. Die PDF ist selbst kein
 
 ## Ins Regelwerk übernommene Systemverbesserungen
 
-Direkt in `architecture.md` umgesetzt (Abschnitt 4, "IPO-Lock-up-/Overhang-Check..." sowie neuer Abschnitt 13):
+Direkt in `Agent-Playbook.md` umgesetzt (Abschnitt 4, "IPO-Lock-up-/Overhang-Check..." sowie neuer Abschnitt 13):
 
 1. **Neues Prüfmodul "IPO-Lock-up-/Overhang-Check"** — Pflichtsektion für jeden Kandidaten mit IPO/Spin-off <24 Monate + Alt-Eigentümer >25% + bekannter Lock-up-Frist (Overhang-vs.-Liquidität, Szenario-Leiter, Block-Discount-Tabelle, Cornerstone-Investor-Signal).
 2. **Neue Konfidenz-Kategorie "N/V wegen kurzer Handelshistorie"**, getrennt von normalem N/V, mit identischem mechanischem Deckel aber transparenter Ursachen-Kennzeichnung und Re-Evaluation-Trigger nach 2 vollen Geschäftsjahren als Public Company.

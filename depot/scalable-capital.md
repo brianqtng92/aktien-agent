@@ -16,7 +16,7 @@ nichts an ihrer strategischen Einordnung. Das Gold-ETC bleibt wie bisher
 bewusst außerhalb der Champions/Profi/Talent-Struktur (siehe unten).
 
 **Update 2026-08-30: Live-Anbindung über Scalable MCP aktiv (siehe
-architecture.md, "Broker-Anbindung Scalable Capital").** Ab jetzt read-only
+Agent-Playbook.md, "Broker-Anbindung Scalable Capital").** Ab jetzt read-only
 Live-Daten statt manueller Screenshot-Erfassung – Zuletzt live abgeglichen:
 2026-08-30 (Kurse vom Handelsschluss 28.08.2026, Inventar-Stand 30.08.2026).
 
@@ -27,10 +27,10 @@ Live-Daten statt manueller Screenshot-Erfassung – Zuletzt live abgeglichen:
 | Vanguard FTSE All-World (Acc) | 7.585,00 € | 6.153,40 € | +1.431,60 € (+23,27 %) | 167,75 € | 136,09 € | 45,216082 | 600 €/Monat, nächste Ausführung 07.09.2026 |
 
 **Cash/Verrechnungskonto (live):** 1.047,14 € (Kaufkraft identisch, keine offenen
-Kredite/Orders). Weicht vom zuletzt in architecture.md notierten Stand
+Kredite/Orders). Weicht vom zuletzt in Agent-Playbook.md notierten Stand
 (447,14 € Korrektur-Reserve, Stand 29.08.2026) um +600 € ab – plausibel die
 noch nicht abgebuchte Sparrate vor der nächsten Sparplan-Ausführung, aber
-nicht abschließend rekonstruiert; architecture.md "Budget & Cashflow" bei
+nicht abschließend rekonstruiert; Agent-Playbook.md "Budget & Cashflow" bei
 Gelegenheit mit diesem Live-Wert abgleichen.
 
 **Gesamtwert Scalable Capital (live): 11.091,71 €** (Wertpapiere 10.044,57 € +
@@ -55,12 +55,12 @@ gesamt auf das Scalable-Capital-Konto, davon 600 €/Monat per Sparplan in den
 Vanguard FTSE All-World (Acc., live bestätigt: nächste Ausführung 07.09.2026)
 und 200 €/Monat als Puffer auf dem Verrechnungskonto (kein aktiver Sparplan).
 Der BCA-Sparplan (zuvor 100 €/Monat) läuft nicht mehr – siehe
-`architecture.md`, Abschnitt "Budget & Cashflow (2026-08-28)".
+`Agent-Playbook.md`, Abschnitt "Budget & Cashflow (2026-08-28)".
 
 Hinweis (2026-08-23): Depot-Erfassung insgesamt abgeschlossen – von Brian bestätigt
 ("das sind meine ganzen Positionen"). Zusammen mit `finanzen-net-zero.md`,
 `trade-republic.md` und `smartbroker-plus.md` ist das jetzt das vollständige Depot.
-Update 2026-08-28: nach der Depot-Restrukturierung (siehe `architecture.md`) sind
+Update 2026-08-28: nach der Depot-Restrukturierung (siehe `Agent-Playbook.md`) sind
 es 18 Einzelwerte ohne ETF + Vanguard-FTSE-All-World-ETF-Sparplan (Update
 2026-08-30: plus die neu entdeckte Gold-ETC-Position, siehe oben – zählt
 NICHT zu den aktiven Einzelwerten, siehe Klarstellung ganz oben). BBCA

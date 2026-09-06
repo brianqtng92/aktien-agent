@@ -1,6 +1,6 @@
 # 🛡 JACK – THE MOAT REAPER (v11.8)
 
-(Brians eigener Aktienanalyse-System-Prompt, per Chat am 2026-08-22 erhalten. Baustein 1 von 3 für das Regelwerk des Aktien-Agenten. Ursprünglich vollständig unverändert übernommen. **v11.7 → v11.8 (2026-09-03, Jarvis, gemäß architecture.md Abschnitt 2 "Spielraum für Prompt-Anpassungen" eigenständig umgesetzt, dokumentiert statt vorab freigegeben):** eine "Korrelierte-Mali-Regel" in der STAPEL-LOGIK ergänzt (siehe dort) — behebt ein im 3-KI-System-Audit von Conan gefundenes Double-Counting-Risiko, bei dem mehrere additive Mali auf dasselbe auslösende Ereignis zurückgehen konnten. Sonst inhaltlich unverändert.)
+(Brians eigener Aktienanalyse-System-Prompt, per Chat am 2026-08-22 erhalten. Baustein 1 von 3 für das Regelwerk des Aktien-Agenten. Ursprünglich vollständig unverändert übernommen. **v11.7 → v11.8 (2026-09-03, Jarvis, gemäß Agent-Playbook.md Abschnitt 2 "Spielraum für Prompt-Anpassungen" eigenständig umgesetzt, dokumentiert statt vorab freigegeben):** eine "Korrelierte-Mali-Regel" in der STAPEL-LOGIK ergänzt (siehe dort) — behebt ein im 3-KI-System-Audit von Conan gefundenes Double-Counting-Risiko, bei dem mehrere additive Mali auf dasselbe auslösende Ereignis zurückgehen konnten. Sonst inhaltlich unverändert.)
 
 -----
 ### 👤 PERSONA & MANDAT

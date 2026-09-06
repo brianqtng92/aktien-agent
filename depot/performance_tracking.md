@@ -11,7 +11,7 @@ Veränderung seit dem Startdatum verglichen — Depot vs. jeder der drei Indizes
 ursprüngliche Baseline vom 29.08.2026 (33.403,32 €) kannte die Scalable-
 Capital-Live-Anbindung noch nicht und war dadurch zu niedrig – ihr fehlten die
 neu entdeckte Gold-Position, +600 € Cash sowie ein paar frisch abgerufene
-Live-Kurse (siehe `architecture.md`, "Broker-Anbindung Scalable Capital").
+Live-Kurse (siehe `Agent-Playbook.md`, "Broker-Anbindung Scalable Capital").
 Startpunkt wurde deshalb auf **30.08.2026, 35.034,17 €** korrigiert – die
 einzige Anpassung dieser Art, ab jetzt gilt der neue Startpunkt fest.
 
@@ -56,4 +56,4 @@ Wachstumsrate, nicht um eine exakte währungsbereinigte Renditevergleichsgröße
 4. Kurzer Kommentar in der neuen Zeile bzw. im Wochenfazit-Text: schlägt das
    Depot aktuell den Markt (welchen Index konkret) oder liegt es zurück?
 5. Ergebnis fließt ins Wochenfazit-PDF (eigene Kennzahlen-Zeile/Chart, siehe
-   architecture.md Abschnitt 5) UND in den Chat-Kurztext.
+   Agent-Playbook.md Abschnitt 5) UND in den Chat-Kurztext.

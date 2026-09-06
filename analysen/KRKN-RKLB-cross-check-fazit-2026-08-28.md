@@ -27,7 +27,7 @@
 
 **Konvergenz:** SCHWACH – hier zeigt sich echter Dissens, nicht nur graduelle Unterschiede. Auffällig: Jarvis und Jack kommen beim DNA-Check-Rohbefund fast identisch heraus (K-Erfüllung 2-3 von 5, Abbruch-Schwelle laut Wortlaut des Regelwerks erreicht), ziehen daraus aber gegensätzliche Konsequenzen – Jarvis deckelt hart auf ZU FRÜH/0%, Jack lässt trotz eigenem "ABBRUCH-LOGIK GREIFT"-Befund die Moat-/Gründer-/Outcome-Module normal weiterlaufen und vergibt am Ende BEOBACHTEN-STARK mit echter Sizing-Empfehlung (0,5-1,5%). Conan hat die Abbruch-Logik gar nicht formal durchgerechnet und liegt inhaltlich zwischen den beiden.
 
-**Das ist ein "auffälliger Fall" im Sinne der neuen Meta-Retro-Runde ([3c] in architecture.md):** die eigentliche Frage ist nicht, ob Rocket Lab ein gutes Unternehmen ist (da sind sich alle einig: ja, mit hohem Bewertungs-/Execution-Risiko), sondern ob ein festgestellter DNA-Abbruch das Rating verbindlich deckeln soll (Vorrang-Prinzip, Regel 31) oder ob "starke Moat/Gründer-Werte" das im Einzelfall aufwiegen dürfen. Aktuell handhabt das jede KI anders streng – dokumentiert in architecture.md, Abschnitt 8.
+**Das ist ein "auffälliger Fall" im Sinne der neuen Meta-Retro-Runde ([3c] in Agent-Playbook.md):** die eigentliche Frage ist nicht, ob Rocket Lab ein gutes Unternehmen ist (da sind sich alle einig: ja, mit hohem Bewertungs-/Execution-Risiko), sondern ob ein festgestellter DNA-Abbruch das Rating verbindlich deckeln soll (Vorrang-Prinzip, Regel 31) oder ob "starke Moat/Gründer-Werte" das im Einzelfall aufwiegen dürfen. Aktuell handhabt das jede KI anders streng – dokumentiert in Agent-Playbook.md, Abschnitt 8.
 
 ## Was das für Brian bedeutet (unabhängig vom Regelwerks-Streit)
 
@@ -36,4 +36,4 @@ Bei Kraken Robotics sind sich alle drei KIs einig: kleine Beobachtungs-/Trace-Po
 Bei Rocket Lab reicht die Bandbreite von "noch nicht investierbar, reine Beobachtung" (Jarvis) bis "ernsthafter Beobachtungskandidat mit moderater Sizing-Freigabe" (Jack) – in jedem Fall aber KEIN Signal für signifikanten Nachkauf über die bestehenden 10 Stück hinaus, und alle drei benennen den erfolgreichen Neutron-Erstflug (Q4 2026 avisiert) als den entscheidenden nächsten Prüfpunkt.
 
 ## Offene Entscheidung für Brian
-Soll die Meta-Retro-Runde (Methodik-Diskussion zwischen den drei KIs über die Abbruch-Logik-Anwendung) jetzt angestoßen werden, oder erst gesammelt mit weiteren künftigen Fällen? Aktuell ist das als offener Punkt in architecture.md vermerkt, aber noch nicht ausgelöst.
+Soll die Meta-Retro-Runde (Methodik-Diskussion zwischen den drei KIs über die Abbruch-Logik-Anwendung) jetzt angestoßen werden, oder erst gesammelt mit weiteren künftigen Fällen? Aktuell ist das als offener Punkt in Agent-Playbook.md vermerkt, aber noch nicht ausgelöst.

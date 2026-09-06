@@ -11,7 +11,7 @@ Block 5 (Gründliche-These-Prüfung-vor-Verkauf) daher nicht einschlägig.
 
 **Zweiter Zweck dieses Laufs:** bewusster Test des heute (2026-09-06)
 implementierten Fact-Pack-Tag-Fixes (siehe HANDOVER.md 10.13 "Block 7
-ergänzt" und architecture.md "Fact-Pack-Tag-Disziplin") – frühere
+ergänzt" und Agent-Playbook.md "Fact-Pack-Tag-Disziplin") – frühere
 Läufe (Disco Corp, Lasertec) hatten Piotroski F-Score/FCF-Marge in Jarvis'
 eigenem Fact-Pack fälschlich als [N/V] statt [TRAINING] getaggt, was Jacks
 (Gemini) SCHROTT/Terminal-State-Abbruch auslöste. Ich wende hier bewusst

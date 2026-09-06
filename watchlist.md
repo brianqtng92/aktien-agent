@@ -4,13 +4,13 @@
 Aktien außerhalb des aktuellen Depots, die entweder als möglicher **Ersatz für
 bestehende Depot-Positionen** dienen könnten oder als **interessante Ergänzung**
 fürs Portfolio beobachtet werden. Läuft **jede Woche automatisiert im Hintergrund**
-(siehe `architecture.md`, Abschnitt "Watchlist-System") mit fester Obergrenze
+(siehe `Agent-Playbook.md`, Abschnitt "Watchlist-System") mit fester Obergrenze
 **max. 20-30 Werte**, damit Brian nicht den Überblick verliert. Erscheint ab sofort
 als eigener Abschnitt im wöchentlichen Wochenfazit (neu rein / raus + 1-2 Sätze
 Begründung).
 
 **Struktur (2026-08-28, von Brian gefordert):** Die Watchlist folgt derselben
-Kategorie-Logik wie das Depot selbst (siehe `architecture.md`, Abschnitt 3) –
+Kategorie-Logik wie das Depot selbst (siehe `Agent-Playbook.md`, Abschnitt 3) –
 **Champions / Profi / Talent** – damit ein Watchlist-Wert direkt erkennen lässt,
 in welche Depot-Kategorie er bei einer Aufnahme fallen würde bzw. welche Art von
 Depot-Position er ersetzen könnte. Alle drei Kategorien sind bewusst gefüllt.
@@ -118,7 +118,7 @@ normal sind. Ab jetzt fließt bei AI-Trend-exponierten Werten zusätzlich
 das historische Max-Drawdown-Muster in die CRV-Begründung ein (siehe
 Tabellen unten), nicht nur der aktuelle KGV-Vergleich. Kein Ersatz für
 eigene Positionsgrößen-Disziplin (siehe Sizing-Tiers/Positions-Cap,
-Abschnitt 3 architecture.md) – ein 🟢-KAUFEN-Signal bedeutet "günstiger
+Abschnitt 3 Agent-Playbook.md) – ein 🟢-KAUFEN-Signal bedeutet "günstiger
 Einstiegspunkt ggü. Historie", nicht "risikofrei" oder "Kursziel
 garantiert".
 
@@ -238,7 +238,7 @@ aufgenommen, wenn mindestens eines zutrifft:
 
 **Seit 2026-09-03:** Zusätzlich zur wöchentlichen Tiefenprüfung (Freitag,
 Wochenfazit) läuft täglich (Teil des Täglichen Trigger-Checks) eine
-schnelle 🔴/🟡/🟢-Ampel über alle Werte unten – siehe architecture.md,
+schnelle 🔴/🟡/🟢-Ampel über alle Werte unten – siehe Agent-Playbook.md,
 "Watchlist-System", "Tägliche Watchlist-News-Ampel". Ein 🔴-Fund führt zur
 sofortigen Entfernung noch am selben Tag, nicht erst freitags.
 

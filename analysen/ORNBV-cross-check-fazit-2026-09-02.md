@@ -31,7 +31,7 @@
 
 ## Was offen bleibt
 
-FCF-Marge, Piotroski F-Score, Net Debt/EBITDA, Debt-Maturity — keine belastbare, eindeutig Orion-Oyj-zuordenbare Quelle gefunden. **Wichtiger Nebenbefund:** Bei der Suche danach wurde eine Namensverwechslung mit "Orion S.A."/"Orion Group Holdings" entdeckt und verworfen — Anlass für die neue, projektweite ISIN-Gegenprobe-Regel bei jeder Fundamentalrecherche (siehe architecture.md, HANDOVER.md 10.12).
+FCF-Marge, Piotroski F-Score, Net Debt/EBITDA, Debt-Maturity — keine belastbare, eindeutig Orion-Oyj-zuordenbare Quelle gefunden. **Wichtiger Nebenbefund:** Bei der Suche danach wurde eine Namensverwechslung mit "Orion S.A."/"Orion Group Holdings" entdeckt und verworfen — Anlass für die neue, projektweite ISIN-Gegenprobe-Regel bei jeder Fundamentalrecherche (siehe Agent-Playbook.md, HANDOVER.md 10.12).
 
 ## Offen für Brian
 

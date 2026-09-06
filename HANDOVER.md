@@ -5,12 +5,12 @@ neuer Claude-Code-Agent (Cowork-Session) dieses Projekt **ohne jeden vorherigen
 Chatverlauf** übernehmen kann. Dieses Dokument verändert **keine** bestehende
 Regel – es ordnet, verweist und dokumentiert Infrastruktur-Wissen, das bisher
 nur im Chatverlauf existierte. Die einzige verbindliche Quelle für Regeln
-bleibt **`architecture.md`** (Repo-Root) plus die drei Prompt-Dateien unter
+bleibt **`Agent-Playbook.md`** (Repo-Root) plus die drei Prompt-Dateien unter
 `prompts/`. Wo dieses Dokument etwas zusammenfasst, gilt im Zweifel immer das
-Original in `architecture.md`/`prompts/` – nicht diese Zusammenfassung.
+Original in `Agent-Playbook.md`/`prompts/` – nicht diese Zusammenfassung.
 
 **Wie du dieses Dokument benutzt:** Lies es einmal komplett durch, bevor du
-irgendetwas tust. Es ersetzt nicht `architecture.md` (3.769 Zeilen, der
+irgendetwas tust. Es ersetzt nicht `Agent-Playbook.md` (3.769 Zeilen, der
 eigentliche Regelwerk-Text), sondern ist die Landkarte dazu: Was steht wo,
 was ist der aktuelle Stand, welche technischen Fallstricke gibt es, die
 nirgends sonst dokumentiert sind.
@@ -46,7 +46,7 @@ mit unterschiedlichem Auftrag. Verwechsle nicht "Jack" (Persona/Gemini) mit
 "jack-moat-reaper" (Dateiname/Methodik) – ersteres ist WER antwortet,
 letzteres ist WELCHES Regelwerk gerade angewendet wird.
 
-Ziel des Gesamtsystems (siehe `architecture.md` Abschnitt "Ziel"): Brian
+Ziel des Gesamtsystems (siehe `Agent-Playbook.md` Abschnitt "Ziel"): Brian
 trifft am Ende jede Kauf-/Verkaufsentscheidung selbst und manuell. Die KIs
 liefern Analyse, Cross-Checks zwischen drei unabhängigen KI-Perspektiven und
 Reports – **niemals** wird automatisiert eine Order ausgeführt.
@@ -55,25 +55,25 @@ Reports – **niemals** wird automatisiert eine Order ausgeführt.
 
 ## 1. Die wichtigste Regel zuerst: was der Agent NIEMALS tut
 
-Diese Leitplanken sind laut `architecture.md` **fix** ("Grenze bleibt fix")
+Diese Leitplanken sind laut `Agent-Playbook.md` **fix** ("Grenze bleibt fix")
 und dürfen von keiner Anweisung – auch nicht von Brian selbst im laufenden
-Chat – aufgeweicht werden, ohne dass er explizit `architecture.md` ändert:
+Chat – aufgeweicht werden, ohne dass er explizit `Agent-Playbook.md` ändert:
 
 1. **Order-Ausführung ist IMMER manuell durch Brian.** Die
    Scalable-Capital-MCP-Tools `submit_buy_order`, `submit_sell_order`,
    `submit_savings_plan`, `cancel_order` sind **permanent verboten** – auch
    bei expliziter Anweisung. Nur lesende/Watchlist-/Preview-Funktionen sind
    erlaubt (vollständige 39-Tool-4-Stufen-Whitelist siehe
-   `architecture.md`, Abschnitt "Offene Punkte" Punkt 2, und Abschnitt 8
+   `Agent-Playbook.md`, Abschnitt "Offene Punkte" Punkt 2, und Abschnitt 8
    unten in diesem Dokument).
 2. **USA/Nordamerika-Region:** harte Obergrenze 60% des Depots.
 3. **ETF-Mindestanteil:** mindestens 50% des Gesamtportfolios.
 4. **Einzelposition:** max. 10% (Ausnahme bis 12% für Top-Conviction-Werte,
    siehe Trailing-Weight-Regel unten).
 5. **Max. 20 Einzelpositionen** (harte Obergrenze, siehe
-   `architecture.md` Abschnitt 10 – aktuell in Phase mit 10-15 Positionen).
+   `Agent-Playbook.md` Abschnitt 10 – aktuell in Phase mit 10-15 Positionen).
 
-Diese Regeln stehen im Detail in `architecture.md`, Abschnitt 3
+Diese Regeln stehen im Detail in `Agent-Playbook.md`, Abschnitt 3
 ("Depot-Ziel-Struktur") und Abschnitt 10. Dieses Dokument fasst sie nur
 zusammen, damit sie sofort präsent sind – **die Formulierungen dort sind
 maßgeblich, nicht diese Kurzfassung.**
@@ -90,14 +90,14 @@ verbundenen Ordner-Pfad – nutze IMMER `$HOME/mnt/aktien-agent`, nie ungeprüft
 
 ```
 aktien-agent/
-├── architecture.md                     ← DAS Regelwerk (3.769 Zeilen, s.u.)
+├── Agent-Playbook.md                     ← DAS Regelwerk (3.769 Zeilen, s.u.)
 ├── watchlist.md                        ← 30 Werte, Champions/Profi/Talent
 ├── watchlist_pending_3fach.md          ← Warteschlange offener Quick-Filter
 ├── prompts/
 │   ├── jack-moat-reaper-v11.7.md       ← TMR-Methodik (Fundamentalanalyse)
 │   ├── conan-the-scout-v1.12.md        ← Scout-Methodik (Frühphasen-Screening)
 │   └── jack-technical-analyst-v1.9.md  ← TA-Methodik (reines Timing/Charts)
-│       (architecture.md referenziert bereits "v1.10" nach einem Update vom
+│       (Agent-Playbook.md referenziert bereits "v1.10" nach einem Update vom
 │        2026-08-30, das noch nicht in den Dateinamen übernommen wurde –
 │        Dateiinhalt selbst ist v1.9, unverändert prüfen vor Gebrauch)
 ├── depot/
@@ -113,15 +113,15 @@ aktien-agent/
 ```
 
 **Für eine schnelle Bestandsaufnahme beim Sessionstart:** lies zuerst dieses
-Dokument, dann `architecture.md` Section-Overview (Abschnitt 3 unten), dann
+Dokument, dann `Agent-Playbook.md` Section-Overview (Abschnitt 3 unten), dann
 bei Bedarf die drei Prompt-Dateien vollständig (sie sind Brians eigene,
 unveränderte System-Prompts – niemals umformulieren, nur ausführen).
 
 ---
 
-## 3. architecture.md – Navigationskarte (13 Abschnitte)
+## 3. Agent-Playbook.md – Navigationskarte (13 Abschnitte)
 
-`architecture.md` ist 3.769 Zeilen lang. Damit ein neuer Agent nicht die
+`Agent-Playbook.md` ist 3.769 Zeilen lang. Damit ein neuer Agent nicht die
 gesamte Datei am Stück lesen muss, hier die Section-Karte (ungefähre
 Zeilenbereiche zum Zeitpunkt dieser Übergabe – bei künftigen Ergänzungen
 verschieben sich die Zeilennummern, die Reihenfolge der Abschnitte bleibt
@@ -181,7 +181,7 @@ Muster aus dieser Übergabe: 4 Subagenten für je ~700 Zeilen).
    Positionen ab.
 
 Vollständige Detailregeln (exakte Schwellenwerte, Formate, Sonderfälle)
-stehen ausschließlich in `architecture.md` – siehe Section-Karte oben.
+stehen ausschließlich in `Agent-Playbook.md` – siehe Section-Karte oben.
 
 ---
 
@@ -429,7 +429,7 @@ Cowork-Desktop-App (Scheduled-Tasks-Verwaltung) nachsehen/mit Brian
 abgleichen, statt sich auf eine der `/tmp/`-Kopien zu verlassen. Keine
 Regel wurde dadurch verändert – es ist eine reine Wissenslücke über den
 technischen Wrapper-Text, nicht über den Inhalt der auszuführenden Schritte
-(die Rulebook-Logik selbst ist unverändert `architecture.md`).
+(die Rulebook-Logik selbst ist unverändert `Agent-Playbook.md`).
 
 ---
 
@@ -490,7 +490,7 @@ Konfiguration), `pdfkit` vorhanden aber ohne das nötige `wkhtmltopdf`-Binary.
 5. Über `device_bash` git add/commit/push.
 
 ### 10.3 `device_stage_files` ist aktuell (Stand dieser Übergabe) NICHT nutzbar
-Beim Versuch, `architecture.md` und die Prompt-Dateien zu staged, schlägt
+Beim Versuch, `Agent-Playbook.md` und die Prompt-Dateien zu staged, schlägt
 der Aufruf konsistent fehl mit:
 ```
 HTTP 403 adding session file: untrusted_device
@@ -524,7 +524,7 @@ Sektion (inkl. `#prompt-textarea`/`.ql-editor`-Selektoren) ist damit
 Altlast-Wissen, nur relevant falls beide Bridges mal ausfallen und auf den
 Browser-Weg zurückgefallen werden muss.
 
-### 10.5 Gemini-Trunkierungsbug (dokumentiert in architecture.md Abschnitt 7)
+### 10.5 Gemini-Trunkierungsbug (dokumentiert in Agent-Playbook.md Abschnitt 7)
 **Betraf nur den alten Gemini-Browser-Betrieb, seit 2026-09-02 (Umstieg auf
 `gemini-bridge`, Abschnitt 10.10) nicht mehr relevant – als Fallback-Wissen
 aufbewahrt, falls wieder auf Browser-Automation zurückgefallen werden muss.**
@@ -542,7 +542,7 @@ funktionieren einwandfrei. Bei Bedarf an Fundamentaldaten für TMR/Scout auf
 SEC/IR/Websearch ausweichen (ohnehin die Primärquelle laut Prompt-Regeln).
 
 ### 10.7 Scalable Capital MCP – Tool-Whitelist (4 Stufen)
-Vollständig dokumentiert in `architecture.md` Abschnitt 8 (Offene Punkte,
+Vollständig dokumentiert in `Agent-Playbook.md` Abschnitt 8 (Offene Punkte,
 Punkt 2) – hier nur die Kategorien-Übersicht:
 1. Reine Analyse-Tools: immer erlaubt (`get_quote`, `get_security_chart`,
    `get_portfolio_holdings`, `get_portfolio_performance`, `list_*`, etc.)
@@ -562,7 +562,7 @@ Dunkles Anthrazit/Gold-Theme, Schriften DejaVu Sans Condensed + Carlito,
 Reaper-Score-Gauge (Halbkreis-Anzeige), DNA-Check-Strang (farbiges
 Segmentband). Gerendert per Playwright/Chromium aus einer
 Single-Page-HTML-Datei. Vollständiges CSS-Token-System steht in
-`architecture.md` im Abschnitt "PDF-Report-Design" – als Referenzbeispiel
+`Agent-Playbook.md` im Abschnitt "PDF-Report-Design" – als Referenzbeispiel
 für den Aufbau dient `reports/WEGE3-reaper-kompakt-2026-08-31.html` bzw.
 die zuletzt gebaute `reports/HAWK-reaper-kompakt-2026-08-31.html`.
 
@@ -614,7 +614,7 @@ KURZE, gezielte Anfragen (z.B. "aktueller Kurs von X") bleibt
 `ask_gemini`-Aufrufen mit dem vollen TMR/Scout/TA-Methodik-Prompt
 (>50K Zeichen) `enable_search=False` setzen; bei `ask_chatgpt` trat dieses
 Problem NICHT auf; **Update 2026-09-05 (alle drei KIs bekommen jetzt alle
-drei Methodik-Dateien, siehe architecture.md Abschnitt "Kategorisierung"):**
+drei Methodik-Dateien, siehe Agent-Playbook.md Abschnitt "Kategorisierung"):**
 diese Regel gilt jetzt ERST RECHT für den neuen Standardfall, dass ALLE
 DREI Dateien (TMR+Scout+TA, zusammen ~190KB) in einem Prompt an Jack
 gehen – `enable_search=False` ist hier PFLICHT, nicht optional, das Risiko
@@ -667,7 +667,7 @@ Chrome-Browser-Automation" stand (3-fach Cross-Check [3], Scout-Methodik
 `prompt`-Argument aufgerufen (1:1 der Text, der vorher ins ChatGPT-
 Textfeld eingefügt wurde) – kein Tab, kein `#prompt-textarea`-Workaround,
 keine Timeout-/Encoding-Probleme aus Abschnitt 10.4 mehr für diesen
-KI-Slot. Der in `architecture.md` an mehreren Stellen erwähnte Status
+KI-Slot. Der in `Agent-Playbook.md` an mehreren Stellen erwähnte Status
 "fragiles Browser-Automation-Bein" wurde dort **nachträglich, mit Brians
 Freigabe, angepasst** (Zeilen um 1433, 1633, 3211, 3392 – Stand nach dieser
 Übergabe; siehe Git-Historie für den genauen Diff). Update seit demselben
@@ -736,7 +736,7 @@ infrage kommt – das kann nur Brian selbst tun (Zahlungsdaten).
 
 **Praktische Konsequenz:** Mit `gemini-bridge` UND `openai-bridge` laufen
 jetzt **beide** externen KI-Beine (Jack + Conan) ohne Chrome-Abhängigkeit.
-Das hebt die alte Scheduled-Task-Einschränkung auf (siehe architecture.md,
+Das hebt die alte Scheduled-Task-Einschränkung auf (siehe Agent-Playbook.md,
 Abschnitt "Wichtige technische Einschränkung" bei den Earnings-/Trigger-
 Checks) – ein unbeaufsichtigter Scheduled Task kann jetzt den vollen
 3-fach-Check fahren, auch wenn Brians Desktop-App/Chrome nicht offen ist.
@@ -844,9 +844,9 @@ wie oben:
   einer aus der Websuche zusammengesuchten Zahl – nützlich für Abstauber-
   Limit-/Einstiegszonen-Berechnungen.
 - **`read_master_status()`:** Jarvis liest `depot/master_status.md` (das
-  konsolidierte Status-Dashboard, siehe architecture.md "Konsolidierter
+  konsolidierte Status-Dashboard, siehe Agent-Playbook.md "Konsolidierter
   Master-Status") und reicht den Inhalt zurück. **Bewusst die EINZIGE per
-  Tool zugängliche Repo-Datei** – kein Zugriff auf `architecture.md`,
+  Tool zugängliche Repo-Datei** – kein Zugriff auf `Agent-Playbook.md`,
   `watchlist.md`, `depot/kategorisierung.md` oder sonstige Dateien.
   **Begründung für diese enge Grenze (Jarvis, von Brian bestätigt):** Jack
   und Conan sollen unabhängige Gutachter für eine konkrete, von Jarvis
@@ -873,7 +873,7 @@ Beim Orion-Oyj-Testlauf (2026-09-02, ad-hoc Einzelanalyse auf Brians
 Wunsch) lieferte eine WebSearch nach Cashflow/Verschuldung scheinbar
 passende Zahlen, die tatsächlich zu **"Orion S.A."**/**"Orion Group
 Holdings"** gehörten – andere Firmen. Nur durch Plausibilitätsprüfung
-aufgefallen. **Neue Regel (architecture.md, Abschnitt "Watchlist-System",
+aufgefallen. **Neue Regel (Agent-Playbook.md, Abschnitt "Watchlist-System",
 Unterpunkt "ISIN-Gegenprobe bei JEDER WebSearch-Fundamentaldaten-
 Recherche"):** gilt nicht nur bei Watchlist-Neuaufnahmen (dort schon
 länger über das Identity-Gate abgedeckt), sondern bei JEDER
@@ -1009,8 +1009,8 @@ agentischem Depot-Tool-Zugriff (siehe unten für beide).
 **Block 4 ergänzt (2026-09-03, aus dem 3-KI-System-Audit):** Brian ließ
 Jarvis, Jack und Conan das gesamte Regelwerk gemeinsam durchgehen. Beide
 KIs fanden unabhängig voneinander denselben kritischen Punkt: der
-Terminal-State-Mechanismus (siehe architecture.md Abschnitt 14, ausgelöst
-durch den RKLB-Fall) steht bisher NUR in architecture.md, nicht in den
+Terminal-State-Mechanismus (siehe Agent-Playbook.md Abschnitt 14, ausgelöst
+durch den RKLB-Fall) steht bisher NUR in Agent-Playbook.md, nicht in den
 tatsächlichen Prompt-Dateien oder im bisherigen Bridge-Meta-Instruktion-
 Text – d.h. er erreichte Jack/Conan im API-Betrieb möglicherweise gar
 nicht. Genau der Fehler, den der Mechanismus verhindern soll, könnte sich
@@ -1022,8 +1022,8 @@ Bridge-Aufruf tatsächlich ankommt.
 Agenten gelten, sowohl für Jack als auch für Conan").** Dieselbe Lücke wie
 bei Block 4 trat erneut auf: die am selben Tag gebaute "Gründliche-These-
 Prüfung-vor-Verkaufsempfehlung-Pflicht" (Auslöser: der Cellebrite-Fall,
-siehe architecture.md "Verkaufsdisziplin & Gewinnmitnahme-Regeln") wurde
-zunächst nur in architecture.md und den FIXE-GRENZEN-Abschnitten der
+siehe Agent-Playbook.md "Verkaufsdisziplin & Gewinnmitnahme-Regeln") wurde
+zunächst nur in Agent-Playbook.md und den FIXE-GRENZEN-Abschnitten der
 SKILL.md-Dateien verankert – das steuert Jarvis' eigenes Verhalten, aber
 NICHT das, was Jack/Conan bei einem Bridge-Aufruf tatsächlich zu lesen
 bekommen. Ohne diesen Block hätte ein künftiger Scout-/TMR-Lauf für eine
@@ -1094,11 +1094,11 @@ Stand 2026-09-07 nach Ergänzung um Kategorisierungs-Kriterien und
 Watchlist-Kompaktübersicht) deutlich kürzer als die Methodik-Dateien – das
 Längenrisiko (Lost-in-the-Middle, Gemini-Kontextlimit) bleibt dadurch
 überschaubar, sollte aber beobachtet werden, falls die Datei künftig weiter
-stark wächst. Bewusst NICHT die vollen `architecture.md`/`watchlist.md`
+stark wächst. Bewusst NICHT die vollen `Agent-Playbook.md`/`watchlist.md`
 eingebettet (siehe 10.10 zum bekannten Gemini-Längenproblem) – stattdessen
 nur die daraus destillierten Kern-Kriterien bzw. eine 30-Zeilen-Tabelle.
 
-**Block 7 ergänzt (2026-09-06, echte Ursache des wiederholten Jack-Reflex-Abbruch-Bugs gefunden):** Bisher wurde der wiederholte SCHROTT/Terminal-State-Abbruch bei Jack (Asahi Intecc, Disco Corp, Lasertec) als Gemini-spezifisches Modellverhalten eingeordnet ("Jack tendiert reflexhaft zu N/V statt TRAINING"). Brian machte den entscheidenden Beobachtungshinweis: bei manueller Anwendung des Jack-Prompts (ohne Jarvis' Fact-Pack) läuft dieselbe Analyse normal durch, kein Abbruch. Beim Nachlesen von Jacks eigener Begründung (siehe `analysen/LASERTEC-TMR-quickfilter-jack-gemini-2026-09-05.md` Zeile 19-29 und `analysen/DISCO-6146-TMR-quickfilter-jarvis-claude-2026-08-31.md` Zeile 53) bestätigte sich: Jarvis' EIGENES Fact-Pack hatte Piotroski F-Score/FCF-Marge bereits selbst als `[N/V]` getaggt (obwohl daneben oft eine plausible qualitative Einschätzung stand, die `[TRAINING]` verdient hätte) – Jack übernahm dieses bereits gesetzte Tag als vorentschieden, statt es selbst neu zu bewerten. Die eigentliche Ursache liegt also in Jarvis' Fact-Pack-Erstellung (siehe architecture.md "Fact-Pack-Tag-Disziplin", neu ergänzt), nicht in Gemini selbst – Block 7 ist das zusätzliche Sicherheitsnetz auf Bridge-Seite:
+**Block 7 ergänzt (2026-09-06, echte Ursache des wiederholten Jack-Reflex-Abbruch-Bugs gefunden):** Bisher wurde der wiederholte SCHROTT/Terminal-State-Abbruch bei Jack (Asahi Intecc, Disco Corp, Lasertec) als Gemini-spezifisches Modellverhalten eingeordnet ("Jack tendiert reflexhaft zu N/V statt TRAINING"). Brian machte den entscheidenden Beobachtungshinweis: bei manueller Anwendung des Jack-Prompts (ohne Jarvis' Fact-Pack) läuft dieselbe Analyse normal durch, kein Abbruch. Beim Nachlesen von Jacks eigener Begründung (siehe `analysen/LASERTEC-TMR-quickfilter-jack-gemini-2026-09-05.md` Zeile 19-29 und `analysen/DISCO-6146-TMR-quickfilter-jarvis-claude-2026-08-31.md` Zeile 53) bestätigte sich: Jarvis' EIGENES Fact-Pack hatte Piotroski F-Score/FCF-Marge bereits selbst als `[N/V]` getaggt (obwohl daneben oft eine plausible qualitative Einschätzung stand, die `[TRAINING]` verdient hätte) – Jack übernahm dieses bereits gesetzte Tag als vorentschieden, statt es selbst neu zu bewerten. Die eigentliche Ursache liegt also in Jarvis' Fact-Pack-Erstellung (siehe Agent-Playbook.md "Fact-Pack-Tag-Disziplin", neu ergänzt), nicht in Gemini selbst – Block 7 ist das zusätzliche Sicherheitsnetz auf Bridge-Seite:
 
 ```
 WICHTIG: FACT-PACK-TAGS SIND NICHT BINDEND. Das Fact-Pack ist Jarvis' eigene
@@ -1164,11 +1164,11 @@ Jarvis' Einschätzung erhalten in diesem Fall mehr Gewicht.
 
 ## 11. Offene Punkte (Stand dieser Übergabe)
 
-Aus `architecture.md` Abschnitt 8 (13 nummerierte Punkte, dort im Detail –
+Aus `Agent-Playbook.md` Abschnitt 8 (13 nummerierte Punkte, dort im Detail –
 hier nur die wichtigsten für den Sessionstart):
 
 1. **Core-vs-Advisory-Rules-Split — GELÖST (2026-09-01, hier nur
-   nachträglich als erledigt markiert, 2026-09-04 geprüft):** architecture.md
+   nachträglich als erledigt markiert, 2026-09-04 geprüft):** Agent-Playbook.md
    Abschnitt 14 dokumentiert die Freigabe explizit ("von Brian am 01.09.2026
    angeordnet... mit sofortiger Wirkung freigegeben") - 16 Core-Rules +
    Advisory-Rules + Terminal-State-Mechanismus sind seither aktiv im Einsatz
@@ -1201,7 +1201,7 @@ hier nur die wichtigsten für den Sessionstart):
     ursprüngliches Ergebnis vom 28.08. (RATING ZU FRÜH, Sizing 0%) als
     offizielles System-Ergebnis bestätigt. Dieser Fall wurde zudem zum
     Canonical Failure Case für den späteren Terminal-State-Mechanismus
-    (architecture.md Abschnitt 14, 2026-09-01).
+    (Agent-Playbook.md Abschnitt 14, 2026-09-01).
 14. **E-Mail-Versand aus Scheduled Tasks lief nie, seit 2026-09-01
     diagnostiziert und gefixt (2026-09-03):** Brian bekam trotz "verdrahtet
     und getestet" markiertem Gmail-Connector nie eine E-Mail aus
@@ -1221,7 +1221,7 @@ hier nur die wichtigsten für den Sessionstart):
     `project_trigger_check_email_verifizierung`-Memory für Details.
 
 **Zusätzlich aus dieser Übergabe neu identifiziert (noch nicht in
-architecture.md eingetragen, da dieses Dokument keine Regeln ändert –
+Agent-Playbook.md eingetragen, da dieses Dokument keine Regeln ändert –
 Eintragung obliegt einer bewussten Entscheidung mit Brian):**
 
 - `device_stage_files` liefert aktuell `untrusted_device`/HTTP 403 (siehe
@@ -1240,7 +1240,7 @@ Eintragung obliegt einer bewussten Entscheidung mit Brian):**
 ## 12. Erste Schritte für den neuen Agenten (Quickstart)
 
 1. Dieses Dokument vollständig gelesen? Dann weiter.
-2. `architecture.md` per `grep -n "^#\{1,4\} "` scannen, um zu prüfen, ob
+2. `Agent-Playbook.md` per `grep -n "^#\{1,4\} "` scannen, um zu prüfen, ob
    seit dieser Übergabe (2026-08-31) neue Abschnitte/Zeilen hinzugekommen
    sind (Datei wächst chronologisch).
 3. Aktuellen Depot-Stand über die Scalable-Capital-MCP-Tools live abfragen
@@ -1285,11 +1285,11 @@ Mechanismen umgestellt:
 - Die vier alten, geräte-gebundenen Cowork-Tasks müssen von Brian separat
   in der Cowork-Desktop-App deaktiviert werden, sobald die neuen
   Claude-Code-Tasks laufen (sonst Doppel-Pushes).
-- Inhaltlich unverändert: `architecture.md` und die drei Prompt-Dateien
+- Inhaltlich unverändert: `Agent-Playbook.md` und die drei Prompt-Dateien
   bleiben wortwörtlich die Regelquelle. Diese Migration betrifft nur die
   Infrastruktur, keine einzige Analyse-/Portfolio-Regel.
 - **Eskalations-Kanal vollständig (2026-09-01, Update im Laufe des Tages):**
-  `architecture.md` verlangt an mehreren Stellen "E-Mail/Push" bei echtem
+  `Agent-Playbook.md` verlangt an mehreren Stellen "E-Mail/Push" bei echtem
   Anlass. Push funktioniert seit dem Vormittag (Remote Control verbunden,
   `PushNotification`-Tool). **E-Mail war zunächst NICHT verdrahtet** (kein
   Connector in der Registry, mehrfach erfolglos gesucht – vermutlich auch
@@ -1322,4 +1322,4 @@ Mechanismen umgestellt:
 Dokumentations-/Konsolidierungsarbeit erstellt, auf Brians expliziten
 Wunsch ohne jede Änderung an bestehenden Regeln. Es fasst zusammen und
 verweist – bei jedem Widerspruch zwischen diesem Dokument und
-`architecture.md`/`prompts/*.md` gilt ausschließlich Letzteres.*
+`Agent-Playbook.md`/`prompts/*.md` gilt ausschließlich Letzteres.*

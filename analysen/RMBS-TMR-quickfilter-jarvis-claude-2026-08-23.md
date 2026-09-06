@@ -170,7 +170,7 @@ KGV (fwd): **26,95** · PEG: **1,11** (klar <1,5 → nach PEG-Maßstab **fair**,
 
 ## 🔄 UPDATE 2026-09-01 — Kompaktes Fazit auf Ad-hoc-Nachfrage ("interessant für einen Nachkauf?")
 
-**Kein voller 3-fach-Cross-Check** (kein Upgrade-/Downgrade-Trigger aus dem BEOBACHTEN-Protokoll unten ausgelöst → gemäß architecture.md Abschnitt "Trigger-Eskalation" bleibt es beim kompakten Jarvis-Fazit, kein PDF/Cross-Check nötig).
+**Kein voller 3-fach-Cross-Check** (kein Upgrade-/Downgrade-Trigger aus dem BEOBACHTEN-Protokoll unten ausgelöst → gemäß Agent-Playbook.md Abschnitt "Trigger-Eskalation" bleibt es beim kompakten Jarvis-Fazit, kein PDF/Cross-Check nötig).
 
 **📍 Live-Kurs: ca. $86,69 (Schlusskurs 31.08.2026) / 73,17-73,36€ (live, Scalable, 01.09.2026, 13:01 UTC)** [LIVE, Scalable-Quote + WebSearch-Cross-Check; EUR/USD-Kurs Twelve-Data-seitig aktuell nicht abrufbar (Connector-Ausfall in dieser Sitzung), Umrechnung daher aus dem Verhältnis der beiden Quellen abgeleitet (~1,16), nicht per Live-Devisenkurs verifiziert — Kennzeichnung gemäß No-False-Precision-Regel]. Damit ca. **-5% seit der Analyse vom 23.08. ($91,24)**, aber **klar oberhalb** des gesetzten Abstauber-Limits ($75 ≈ €65).
 

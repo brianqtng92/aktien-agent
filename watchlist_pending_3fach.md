@@ -3,7 +3,7 @@ Datei: Warteschlange für offene 3-fach-Bestätigungen (täglicher Kandidaten-Sc
 Angelegt: 2026-08-29
 Aktualisiert: 2026-09-03 (Mechanismus auf API-Bridge umgestellt, siehe unten)
 Zweck: Kandidaten aus dem täglichen automatisierten Kandidaten-Scan (siehe
-architecture.md, "Watchlist-System" → "Täglicher automatisierter
+Agent-Playbook.md, "Watchlist-System" → "Täglicher automatisierter
 Kandidaten-Scan"), die das Strategie-Fit-Gate, den Duplikations-Check und
 das Identity-Gate bereits bestanden haben, deren 3-fach-Quick-Filter
 (Jarvis/Jack/Conan) aber nur als Jarvis-Only-Vorabbefund vorliegt, weil

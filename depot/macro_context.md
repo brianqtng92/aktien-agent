@@ -2,7 +2,7 @@
 Datei: Tägliche Markt-/Makro-Kontext-Momentaufnahme + langfristiger politischer/Notenbank-Kalender
 Angelegt: 2026-09-03, erweitert 2026-09-03 (S&P-Level, Wahlkalender, Fed-Pfad, weitere Dimensionen)
 Zweck: Tag-über-Tag-Vergleichsbasis für den täglichen Markt-/Makro-Check
-(siehe architecture.md, Abschnitt 5, "[D] CASH-ALLOKATIONS-CHECK / TÄGLICHER
+(siehe Agent-Playbook.md, Abschnitt 5, "[D] CASH-ALLOKATIONS-CHECK / TÄGLICHER
 MARKT-/MAKRO-KONTEXT" inkl. Erweiterung). Wird vom Täglichen Trigger-Check
 gepflegt: pro Tag eine neue Zeile anhängen, Material-Shift-Kriterien gegen
 die VORHERIGE Zeile prüfen. Der Kalender-Teil unten wird primär im
@@ -22,7 +22,7 @@ qualitativ + quellenbasiert.
 | 2026-09-04 | uneinheitlich recherchiert: 33 (Fear, CNN-attribuiert, Stand 03.09.) vs. 41 (Fear, andere Quelle) vs. 64 (Greed, dritte Quelle, wirkt veraltet/inkonsistent) – **keine belastbare Einzelzahl**, Tendenz aber klar Richtung Fear/neutral, nicht Greed | 14,32 (03.09., CBOE, ruhig) | 7.666,60 (03.09., +0,5% Tagesänd.) | über 50D-SMA (SPY-Proxy ×10 ≈ 7.561) UND über 200D-SMA (≈ 7.116), 200D-SMA-Richtung: steigend (Twelve-Data-SMA-Reihe 28.08.–03.09. durchgehend steigend) | n/v (Tagesänderung nicht verlässlich isoliert recherchiert; Stand 02.09. ca. 29.113,61) | 4,78% (03.09.) | normal/steigend (1J 4,11% → 30J 5,25%, keine Inversion) | 1,16 | ca. 4.428–4.481 USD/oz (03./04.09., nahe Rekordniveau) | tendenziell konstruktiv für Zukäufe, mit Vorsicht-Unterton: Aktien-Technik bullisch (über beiden SMAs, 200D steigend, VIX ruhig), ABER Fear&Greed-Quellenlage uneinheitlich (eher Fear trotz Kursen nahe Hoch) und Gold nahe Rekordhoch deuten auf fortlaufende Absicherungsnachfrage – kein Grund für defensive Cash-Haltung, aber kein reines "Alles-Grün"-Bild | - (kein Material Shift ggü. 01.09.-Referenz; erster vollständiger Tagesscan seit Dateianlage, daher noch kein echter Vortagesvergleich für VIX/F&G/Kurve/EUR-USD/Gold möglich) |
 | 2026-09-05 | 42 (Fear, CNN, Stand 04.09.) – gleiche Zone wie Vortag (Fear), keine Zonenverschiebung | 14,32 (04.09., CBOE) – unverändert ggü. Vortag | 7.718,60 (04.09., -0,38% Tagesänd.) | weiterhin über 50D-SMA und 200D-SMA, 200D-Richtung unverändert steigend (keine neue Einzelabfrage, keine Bewegung erwartbar bei nur +0,7% Wochenveränderung) | +0,2% (04.09.) | 4,79% (04.09., +1 Bp ggü. Vortag) | normal/steigend, keine Inversion, unverändert | ca. 1,161 (04.09., ECB/Investing.com leicht abweichend 1,1610-1,1622) | ca. 4.470 USD/oz (04.09.) | unverändert konstruktiv-mit-Vorsicht wie Vortag: robuster August-Jobsbericht (+162k vs. 53k erwartet) erhöhte kurzfristig Zinssorgen (10J-Rendite leicht rauf, Dow am Freitag schwächer), Aktien-Technik bleibt aber intakt (über beiden SMAs, VIX ruhig bei 14,3) – kein Grund für defensive Cash-Haltung, Fed-Pfad nach dem Jobsbericht aber etwas unsicherer geworden als noch vor einer Woche | - (kein Material Shift: F&G-Zone unverändert Fear, VIX unverändert, S&P-Tagesbewegung -0,38% weit unter ±3%-Schwelle, keine CB-Notfallentscheidung, keine neue geopolitische Eskalation seit dem bereits bekannten/eingepreisten Iran-Ereignis vom 01.09.) |
 
-<!-- Format je Zeile: Datum YYYY-MM-DD | Fear&Greed-Wert + Zone | VIX-Stand | S&P-Stand + Tagesänderung in % | Kurs relativ zu 50D/200D-SMA + Richtung der 200D-SMA (steigend/flach/fallend - wichtig für die Korrektur-Risiko-Einordnung, siehe architecture.md) | NQ100-Tagesänderung in % | US-10J-Rendite in % | normal/invers/flach | EUR/USD-Kurs | Gold-Preis (USD/oz) | eher günstig für Zukäufe / neutral / eher Vorsicht-Cash-halten, mit 1-Satz-Begründung | kurzer Hinweis bei Material-Shift, sonst "-" -->
+<!-- Format je Zeile: Datum YYYY-MM-DD | Fear&Greed-Wert + Zone | VIX-Stand | S&P-Stand + Tagesänderung in % | Kurs relativ zu 50D/200D-SMA + Richtung der 200D-SMA (steigend/flach/fallend - wichtig für die Korrektur-Risiko-Einordnung, siehe Agent-Playbook.md) | NQ100-Tagesänderung in % | US-10J-Rendite in % | normal/invers/flach | EUR/USD-Kurs | Gold-Preis (USD/oz) | eher günstig für Zukäufe / neutral / eher Vorsicht-Cash-halten, mit 1-Satz-Begründung | kurzer Hinweis bei Material-Shift, sonst "-" -->
 
 ## Politischer/Wahl- & Notenbank-Kalender (langfristiger Horizont, primär im Wochenfazit gepflegt)
 
@@ -39,7 +39,7 @@ qualitativ + quellenbasiert.
 | 2026-12-16/17 | EZB-Ratssitzung (Zinsentscheid) | siehe oben | anstehend |
 | 2026-12-17/18 | BoJ-Sitzung (Zinsentscheid) | siehe oben | anstehend |
 
-<!-- Format je Zeile: Datum | Ereignis (FOMC-Sitzung/EZB-Sitzung/BoJ-Sitzung/Wahl/Debt-Ceiling-Frist/sonstiges) | Relevanz-Kurzsatz | Status (anstehend/erledigt+Ergebnis). Vollständigen 2026er-FOMC-Kalender siehe architecture.md Abschnitt 5. EZB-/BoJ-Termine hier per WebSearch (ecb.europa.eu, boj.or.jp) recherchiert am 2026-09-04, Rest-2026-Jahr - Debt-Ceiling-Fristen bei Bekanntwerden ergänzen. -->
+<!-- Format je Zeile: Datum | Ereignis (FOMC-Sitzung/EZB-Sitzung/BoJ-Sitzung/Wahl/Debt-Ceiling-Frist/sonstiges) | Relevanz-Kurzsatz | Status (anstehend/erledigt+Ergebnis). Vollständigen 2026er-FOMC-Kalender siehe Agent-Playbook.md Abschnitt 5. EZB-/BoJ-Termine hier per WebSearch (ecb.europa.eu, boj.or.jp) recherchiert am 2026-09-04, Rest-2026-Jahr - Debt-Ceiling-Fristen bei Bekanntwerden ergänzen. -->
 
 ## Weitere Dimensionen (wöchentlich im Wochenfazit gepflegt, nicht täglich)
 

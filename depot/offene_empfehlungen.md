@@ -6,7 +6,7 @@ Wird vom Täglichen Trigger-Check geführt: neue Empfehlungen werden
 eingetragen, ausgeführte oder durch neue Analysen überholte Empfehlungen
 werden entfernt, offene Empfehlungen ab einem gewissen Alter erneut
 per Chat + E-Mail in Erinnerung gebracht (nicht täglich, um Ermüdung zu
-vermeiden – siehe architecture.md "Erinnerungs-Mechanismus für offene
+vermeiden – siehe Agent-Playbook.md "Erinnerungs-Mechanismus für offene
 Empfehlungen").
 
 | Position | ISIN | Empfehlung | Zone/Preis | Quelle | Datum | Zuletzt erinnert |

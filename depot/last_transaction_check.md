@@ -4,7 +4,7 @@
 Timestamp markiert die zuletzt vom Trigger-Check gesehene Transaktion bei
 Scalable Capital. Bei jedem Lauf wird `list_portfolio_transactions` mit
 `fromTime` = diesem Wert abgefragt, um NUR neue Transaktionen seit dem
-letzten Lauf zu erkennen (siehe architecture.md, Abschnitt "Täglicher
+letzten Lauf zu erkennen (siehe Agent-Playbook.md, Abschnitt "Täglicher
 Trigger-Check" → "Depot-Transaktions-Erkennung").
 
 Zuletzt gesehene Transaktion (lastEventAt, ISO-8601 UTC): 2026-09-05T20:14:00.000Z

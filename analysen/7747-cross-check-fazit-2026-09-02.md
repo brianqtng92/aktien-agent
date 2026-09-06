@@ -15,7 +15,7 @@ Bei Orion Oyj (selber Tag, siehe `ORNBV-cross-check-fazit-2026-09-02.md`) trat e
 
 **Das ist keine Fehlfunktion** — beide KIs folgen dem Regelwerk korrekt (TRAINING ist für K-Kriterien technisch erlaubt, N/V löst zwingend Abbruch aus). Es ist ein struktureller Interpretationsunterschied bei der Risikotoleranz gegenüber unverifizierten Schätzungen. Aber es bedeutet: **Jacks SCHROTT-Urteil bei einem frischen Quick-Filter-Kandidaten sollte NICHT unreflektiert als "schlechte Firma" gelesen werden**, sondern in der Praxis meist als "Datenlage für ein Urteil unzureichend" — bis eine echte IR-Recherche das Fact-Pack vervollständigt.
 
-**Empfehlung an Brian:** Diesen Punkt bei Gelegenheit klären — entweder bewusst akzeptieren (Jacks Härte als Feature, Conan als Gegengewicht, Jarvis vermittelt), oder als Thema für eine Meta-Retrospektive aufgreifen (ähnlich dem RKLB-Fall aus architecture.md Abschnitt 14), ob die ABBRUCH-LOGIK für QUICK FILTER spezifisch etwas Kulanz bei plausibel schätzbaren, aber unverifizierten K-Kriterien vertragen sollte — ohne die grundsätzliche Datenintegrität-Philosophie aufzuweichen.
+**Empfehlung an Brian:** Diesen Punkt bei Gelegenheit klären — entweder bewusst akzeptieren (Jacks Härte als Feature, Conan als Gegengewicht, Jarvis vermittelt), oder als Thema für eine Meta-Retrospektive aufgreifen (ähnlich dem RKLB-Fall aus Agent-Playbook.md Abschnitt 14), ob die ABBRUCH-LOGIK für QUICK FILTER spezifisch etwas Kulanz bei plausibel schätzbaren, aber unverifizierten K-Kriterien vertragen sollte — ohne die grundsätzliche Datenintegrität-Philosophie aufzuweichen.
 
 ## Was verifiziert vorliegt (Konsens)
 

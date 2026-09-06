@@ -157,7 +157,7 @@ nach.
 
 ## Verkäufe & Umschichtungen (ab 2026-08-28, von Brian gemeldet, alle Angaben in €)
 
-Im Zuge der Depot-Restrukturierung (siehe architecture.md, "Depot-Restrukturierung
+Im Zuge der Depot-Restrukturierung (siehe Agent-Playbook.md, "Depot-Restrukturierung
 2026-08-28" – mehr Fokus auf High-Upside-/Big-Player-Potenzial-Titel) meldet Brian
 laufend Verkäufe und Neukäufe. Diese werden hier chronologisch protokolliert;
 Positionstabellen oben bleiben als historischer Kaufkontext stehen, Status-Spalte

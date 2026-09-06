@@ -3,7 +3,7 @@
 
 **Kontext:** Dieser Lauf war zugleich ein bewusster Test des am 2026-09-06
 implementierten Fact-Pack-Tag-Fixes (siehe HANDOVER.md 10.13 "Block 7
-ergänzt" und architecture.md "Fact-Pack-Tag-Disziplin"). Bisher hatte Jarvis'
+ergänzt" und Agent-Playbook.md "Fact-Pack-Tag-Disziplin"). Bisher hatte Jarvis'
 eigenes Fact-Pack Kennzahlen wie Piotroski F-Score und FCF-Marge bei fehlender
 Einzelquelle vorschnell als [N/V] getaggt, obwohl daneben eine plausible
 qualitative Einschätzung stand – das brachte Jack (Gemini) wiederholt dazu

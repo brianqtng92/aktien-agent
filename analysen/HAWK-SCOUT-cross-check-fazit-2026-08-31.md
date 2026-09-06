@@ -41,7 +41,7 @@ Jarvis stuft HAWK als "Rohtalent" (Stufe 1) ein, mit der Begründung, dass selbs
 | Conan | 30% | 20% | 20% | 20% | 10% | 3,33x | 50% | 🟢 Bestanden |
 
 **Zwei Probleme werden hier sichtbar:**
-- **Regelauslegung an der 50%-Grenze:** Jack und Conan kommen beide auf exakt 50% Downside, ziehen daraus aber unterschiedliche Schlüsse (Jack: "gelb gedeckelt", Conan: "grün bestanden"). Das Regelwerk selbst ("EV ab 1,5x UND Downside bis 50% → grün") ist an dieser exakten Grenze mehrdeutig – ein Kandidat für eine künftige Klarstellung in architecture.md/conan-the-scout-v1.12.md (ist "bis 50%" inklusive oder exklusive?).
+- **Regelauslegung an der 50%-Grenze:** Jack und Conan kommen beide auf exakt 50% Downside, ziehen daraus aber unterschiedliche Schlüsse (Jack: "gelb gedeckelt", Conan: "grün bestanden"). Das Regelwerk selbst ("EV ab 1,5x UND Downside bis 50% → grün") ist an dieser exakten Grenze mehrdeutig – ein Kandidat für eine künftige Klarstellung in Agent-Playbook.md/conan-the-scout-v1.12.md (ist "bis 50%" inklusive oder exklusive?).
 - **Tenbagger+-Konsistenz:** Conan vergibt 10% Tenbagger+-Wahrscheinlichkeit, obwohl er HAWK selbst nur bei Stufe 2 (nicht Stufe 3) einordnet – laut Trichter-Logik setzt Tenbagger+ eigentlich eine Stufe-3-Bahn voraus. Das ist ein interner Widerspruch in Conans eigener Anwendung des Regelwerks.
 - **Trotz dieser Streuung** (EV zwischen 1,53x und 3,33x) bleibt das qualitative Bild gleich: alle drei sehen ein asymmetrisches, aber unsicheres Chance-Risiko-Profil, das wegen des Hype-Strikes ohnehin auf Trace-Sizing gedeckelt ist – die genaue EV-Zahl ändert die Handlungsempfehlung nicht.
 
@@ -78,7 +78,7 @@ Jack nutzte für Planet Labs/BlackSky/Spire teils veraltete oder falsch erinnert
 
 ---
 
-## 📈 CHART- UND EINSTIEGSLAGE (nachgetragen 01.09.2026, siehe architecture.md "TA-Pflicht bei JEDER Einzelanalyse")
+## 📈 CHART- UND EINSTIEGSLAGE (nachgetragen 01.09.2026, siehe Agent-Playbook.md "TA-Pflicht bei JEDER Einzelanalyse")
 
 **Datenbasis:** Twelve Data, Stand 01.09.2026. Kurs 18,96 $ ≈ 16,32€ (Kurs USD/EUR 0,861).
 

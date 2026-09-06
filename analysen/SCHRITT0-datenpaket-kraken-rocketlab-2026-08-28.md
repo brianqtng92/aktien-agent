@@ -2,7 +2,7 @@
 
 Erhoben von Jarvis (Claude) am 2026-08-28 per Web-Search, identisch an alle drei
 KI-Personas (Jack/Gemini, Conan/ChatGPT, Jarvis/Claude) weitergegeben. DNA-Check,
-Moat-Einschätzung und Scout-Urteil bleiben pro KI unabhängig (siehe architecture.md,
+Moat-Einschätzung und Scout-Urteil bleiben pro KI unabhängig (siehe Agent-Playbook.md,
 "Gemeinsames Schritt-0-Datenpaket").
 
 Sektor-Override für beide: **⚡ DEEP-TECH-OVERRIDE** (Robotik/Advanced Manufacturing

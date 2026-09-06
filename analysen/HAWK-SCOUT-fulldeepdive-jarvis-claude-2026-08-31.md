@@ -1,7 +1,7 @@
 # CONAN THE SCOUT – FULL SCOUT: HAWKEYE 360 (NYSE: HAWK)
 **Datum:** 2026-08-31 · **Analyst:** Jarvis (Claude) · **Modus:** FULL SCOUT (volle Tiefe, alle Module) · **Regelwerk:** conan-the-scout-v1.12.md
 **Sektor-Override:** ⚡ DEEP-TECH-OVERRIDE (Satelliten-Hardware/RF-Geolocation) · K-BASIS = 5 · E-Kriterien = 4
-**Anlass:** Brian bat alle drei KIs (Jarvis/Jack/Conan), HawkEye 360 vom bisherigen QUICK SCOUT (26.08.) auf FULL SCOUT zu heben – zugleich erster Live-Test der neuen Verständlichkeits-Formulierungsregel (architecture.md, 2026-08-31).
+**Anlass:** Brian bat alle drei KIs (Jarvis/Jack/Conan), HawkEye 360 vom bisherigen QUICK SCOUT (26.08.) auf FULL SCOUT zu heben – zugleich erster Live-Test der neuen Verständlichkeits-Formulierungsregel (Agent-Playbook.md, 2026-08-31).
 **Aktueller Kurs (31.08.2026, Twelve Data LIVE):** 18,92 USD (Vortag 19,38 USD, −2,4%) · 52W-Range 17,02–35,73 USD
 
 ---

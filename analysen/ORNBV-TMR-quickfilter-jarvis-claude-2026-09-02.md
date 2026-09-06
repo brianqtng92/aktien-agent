@@ -41,7 +41,7 @@ Aktive K-BASIS: Standard 5S
 
 ## Warum ich hier NICHT wie Conan mit [TRAINING]-Schätzwerten weiterlaufe
 
-Ich habe bewusst versucht, die Lücke zu schließen (WebSearch nach Cashflow/Verschuldung) — und bin dabei auf Daten zu **"Orion S.A."** bzw. **"Orion Group Holdings"** gestoßen, zwei völlig andere Firmen. Genau das Risiko, vor dem das Regelwerk beim Identity-Gate warnt (jetzt als neue Regel auf JEDE Fundamentalrecherche ausgeweitet, siehe architecture.md). Ich habe keine belastbare, eindeutig Orion-Oyj-zuordenbare Quelle für FCF-Marge/Piotroski/Net-Debt gefunden — im Gegensatz zur EPS-Historie, die ich sauber verifizieren konnte (2 unabhängige, eindeutig zuordenbare Quellen).
+Ich habe bewusst versucht, die Lücke zu schließen (WebSearch nach Cashflow/Verschuldung) — und bin dabei auf Daten zu **"Orion S.A."** bzw. **"Orion Group Holdings"** gestoßen, zwei völlig andere Firmen. Genau das Risiko, vor dem das Regelwerk beim Identity-Gate warnt (jetzt als neue Regel auf JEDE Fundamentalrecherche ausgeweitet, siehe Agent-Playbook.md). Ich habe keine belastbare, eindeutig Orion-Oyj-zuordenbare Quelle für FCF-Marge/Piotroski/Net-Debt gefunden — im Gegensatz zur EPS-Historie, die ich sauber verifizieren konnte (2 unabhängige, eindeutig zuordenbare Quellen).
 
 Damit stehe ich inhaltlich näher bei **Jack** (SCHROTT wegen echtem Abbruch) als bei **Conan** (BEOBACHTEN via TRAINING-Schätzung) — mit einer wichtigen Nuance: die EPS-CAGR-Lücke, die BEIDEN als offen galt, konnte ich tatsächlich mit echten Daten schließen. Es bleiben nur noch 2 echte K-Lücken (FCF-Marge, Piotroski), nicht 3.
 

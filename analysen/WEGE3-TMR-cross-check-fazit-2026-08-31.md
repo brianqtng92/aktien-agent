@@ -3,7 +3,7 @@
 **Datum:** 2026-08-31 · **Regelwerk:** jack-moat-reaper-v11.7.md (kondensierte Quick-Filter-Fassung,
 siehe Methodik-Hinweis unten) · **Modus:** QUICK FILTER, Chrome verbunden (Live-Lauf,
 Jarvis + Jack via Gemini + Conan via ChatGPT, unabhängige Chats).
-**Anlass:** Täglicher automatisierter Kandidaten-Scan (architecture.md, "Watchlist-System" →
+**Anlass:** Täglicher automatisierter Kandidaten-Scan (Agent-Playbook.md, "Watchlist-System" →
 "Täglicher automatisierter Kandidaten-Scan"), gezielt auf den seit 2026-08-28 offenen
 Lateinamerika-Slot der Watchlist ausgerichtet (siehe watchlist.md, "Lateinamerika / sonstige
 Schwellenländer – noch offen").
@@ -60,12 +60,12 @@ außergewöhnlicher Überzeugung aussprechen — hier ist es umgekehrt: alle dre
 Unternehmensqualität außergewöhnlich überzeugt, aber einig in der Ablehnung des aktuellen
 Einstiegspreises. Kein Sofort-Kauf-Signal (Kriterium "besonders günstige Bewertung" klar
 nicht erfüllt) — daher keine Eil-Eskalation nötig, wohl aber die reguläre
-"neuer watchlist-würdiger Kandidat"-Eskalation (siehe architecture.md, Abschnitt 6).
+"neuer watchlist-würdiger Kandidat"-Eskalation (siehe Agent-Playbook.md, Abschnitt 6).
 
 ## Watchlist-Kapazitätsfrage (siehe watchlist.md)
 
 Die Watchlist steht aktuell bei **30/30 Werten (Champions 13 / Profi 10 / Talent 7)** —
-der harten Obergrenze. Nach Regelwerk ("Automatische Aufnahme", architecture.md
+der harten Obergrenze. Nach Regelwerk ("Automatische Aufnahme", Agent-Playbook.md
 Watchlist-System) wird ein neuer Kandidat bei voller Liste nur aufgenommen, wenn er
 **klar überzeugender ist als der schwächste Wert seiner Zielkategorie** — sonst
 zurückgestellt, nicht verworfen. WEG ist fundamental erstklassig, aber ein direkter

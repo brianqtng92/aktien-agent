@@ -464,7 +464,7 @@ zutreffende Stufe gewinnt):
    Begründung/Historie einer einzelnen Position bleiben die Detail-Dateien
    (`depot/kategorisierung.md`, `watchlist.md` etc.) maßgeblich, dieser Status
    ersetzt sie nicht, er aggregiert nur die Kernzahlen.
-3. **`architecture.md`** (dieses Dokument, das "Masterbook") – das
+3. **`Agent-Playbook.md`** (dieses Dokument, das "Masterbook") – das
    verbindliche Regelwerk selbst.
 4. **Ältere Aussagen/Analysen** (`analysen/*.md`, ältere Chat-Historie,
    `HANDOVER.md`) – Kontext und Begründungshistorie, aber im Zweifel NICHT
@@ -522,7 +522,7 @@ Kategorisierungs-Kriterien (Champions/Profi/Talent + Bucket-A/B/C/D-Logik,
 knapp zusammengefasst statt der vollen Herleitung hier) und eine
 Watchlist-Kompaktübersicht (eine Tabellenzeile je der 30 Watchlist-Werte:
 Kategorie, CRV-Ampel, Kurzthese) – NICHT die vollständigen Dateien
-`architecture.md`/`watchlist.md` selbst, um das Kontextlängen-/Kosten-
+`Agent-Playbook.md`/`watchlist.md` selbst, um das Kontextlängen-/Kosten-
 Risiko bei Jack/Conan zu vermeiden (siehe HANDOVER.md 10.10). Zweck: Jack/
 Conan können damit bei einer Analyse erkennen, ob ein Kandidat zu einer
 offenen Depot-/Watchlist-Lücke passt, ohne vollen Zugriff auf diese beiden
@@ -531,7 +531,7 @@ großen Dateien zu benötigen.
 **Geltungsbereich: das gesamte Regelwerk gilt für alle drei KIs, nicht nur
 Jarvis (2026-09-04, von Brian gefordert: "das ganze System soll für alle
 Agenten gelten, sowohl für Jack als auch für Conan").** Jack und Conan
-lesen `architecture.md` selbst NICHT – sie bekommen bei jedem Bridge-Aufruf
+lesen `Agent-Playbook.md` selbst NICHT – sie bekommen bei jedem Bridge-Aufruf
 nur das FACT-PACK + die Methodik-Dateien (TMR+Scout+TA) + eine Handvoll
 vorangestellter Klarstellungs-Blöcke (siehe HANDOVER.md 10.13). Das
 bedeutet: eine neue Regel hier gilt automatisch NUR für Jarvis, es sei
@@ -590,7 +590,7 @@ Websuche-Schätzung) und `read_master_status()` (liest
 `depot/master_status.md`) anfordern – Jarvis führt beides aus und reicht
 das Ergebnis zurück, wie bei allen anderen agentischen Tools auch.
 **`read_master_status` ist bewusst die EINZIGE per Tool zugängliche
-Repo-Datei** – kein Zugriff auf `architecture.md` selbst oder sonstige
+Repo-Datei** – kein Zugriff auf `Agent-Playbook.md` selbst oder sonstige
 Dateien. Begründung: Jack/Conan sollen unabhängige Gutachter für eine
 konkrete, von Jarvis gestellte Aufgabe bleiben, kein freier
 Systembrowser – vollständiger Regelwerk-Zugriff würde die Vergleichbarkeit
@@ -735,7 +735,7 @@ Herleitung an der jeweils verlinkten Stelle, nicht diese Tabelle.
   (passt exakt zur bestehenden Max.-20-Grenze).
   - **Verifizierter Rechenfehler in der ursprünglichen "10-6-4"-Version
     (2026-09-03, im 3-KI-System-Audit von Conan gefunden, von Jarvis gegen
-    architecture.md:913 verifiziert, von Jack nachgerechnet):** die
+    Agent-Playbook.md:913 verifiziert, von Jack nachgerechnet):** die
     ursprüngliche Begründung "4 Talent-Slots, weil 4×10%-Positionscap
     exakt die 40%-Talent-Obergrenze trifft" vermischte zwei verschiedene
     Bezugsgrößen – der 10%-Positionsdeckel (siehe "Positionsgrößen-Limits"
@@ -1884,7 +1884,7 @@ unbegrenzt fortgeschrieben zu werden.
        [3c] beschreibt seither nur noch EINEN von zwei Wegen, wie eine
        Prompt-Änderung entstehen kann, nicht mehr die einzige/exklusive
        Freigabe-Voraussetzung):**
-       - **Orchestrierungs-/Prozess-Ebene (architecture.md selbst,
+       - **Orchestrierungs-/Prozess-Ebene (Agent-Playbook.md selbst,
          `depot/*.md`, `watchlist.md`, `HANDOVER.md`, die Scheduled-Task-
          SKILL.md-Dateien):** laufend gepflegter Betriebszustand + Regelwerk-
          Dokumentation. Jarvis pflegt diese Ebene eigenständig, keine
@@ -4338,7 +4338,7 @@ Relevantes passiert (Brians eigene Entscheidung gegen 24/7 aus Kostengründen).
 Der Blitz-Scan ist ausdrücklich KEIN Ersatz für den täglichen 19-Uhr-Trigger-
 Check oder das Wochenfazit, sondern eine schnelle Zwischen-Absicherung:
 
-1. Kurzer WebSearch-Scan (kein Browser, kein voller architecture.md-Reread
+1. Kurzer WebSearch-Scan (kein Browser, kein voller Agent-Playbook.md-Reread
    nötig) über alle Depot- UND Watchlist-Werte, aber NUR auf akute Treffer
    der letzten Stunde: Kurssprung >5% seit letztem Schlusskurs/letztem
    Blitz-Scan, Earnings-Überraschung, Gewinnwarnung, M&A-Meldung, Regulatorik-/
@@ -4641,12 +4641,12 @@ wurde gebeten zu priorisieren/zu widersprechen.
 
 - **Top-Priorität ist die Zuverlässigkeit des Systems selbst, nicht neue
   Analyse-Features.** Conan benannte das am explizitesten: Ohne eine
-  garantiert synchrone, versionierte Wissensbasis zwischen `architecture.md`
+  garantiert synchrone, versionierte Wissensbasis zwischen `Agent-Playbook.md`
   und den tatsächlich laufenden Scheduled-Task-Prompts ist jede
   Analyse-Verbesserung auf wackligem Fundament gebaut. Das deckt sich mit
   einem eigenen Befund von Jarvis noch VOR der Retrospektive (2026-08-29):
   die beiden laufenden Scheduled-Task-Prompts waren tatsächlich hinter
-  mehreren `architecture.md`-Änderungen zurückgefallen und mussten
+  mehreren `Agent-Playbook.md`-Änderungen zurückgefallen und mussten
   nachgezogen werden (siehe `update_trigger`-Historie) – ein echter, schon
   eingetretener Fall des genau hier kritisierten Problems.
 - **Eine gemeinsame, geprüfte Datenbasis für alle drei KIs** (das
@@ -5432,5 +5432,5 @@ durchgesetzt werden (Terminal-State statt reine Texterwähnung) — keine
 einzige inhaltliche Analyse-/Portfolio-Regel wurde dadurch verändert. Die
 drei Methodik-Prompt-Dateien (`prompts/*.md`) bleiben unverändert, wie in
 Abschnitt 2 festgelegt — der Terminal-State-Mechanismus ist eine
-Ausführungs-Vorgabe für den Agenten (dieses architecture.md-Dokument),
+Ausführungs-Vorgabe für den Agenten (dieses Agent-Playbook.md-Dokument),
 keine Änderung an Brians eigenen Prompt-Texten.

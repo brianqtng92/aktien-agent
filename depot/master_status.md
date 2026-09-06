@@ -1,7 +1,7 @@
 # Master-Status – Aktien-Agent (Brian)
 
 **Zweck (2026-09-04, von Raketentonis "Master-Status"-Konzept übernommen,
-siehe architecture.md "Informations-Vorrang-Hierarchie" für die
+siehe Agent-Playbook.md "Informations-Vorrang-Hierarchie" für die
 vollständige Einordnung):** EIN konsolidiertes Status-Dashboard für den
 schnellen Überblick – v.a. beim Einstieg in einen neuen Chat oder
 Scheduled-Task-Lauf ohne Erinnerung an vorherige Sessions, damit nicht
@@ -13,7 +13,7 @@ jedes `taeglicher-trigger-check`- und `wochenfazit`-Laufs aktualisiert.
 
 **Zuletzt aktualisiert:** 2026-09-07 (Ergänzung um Kategorisierungs-Kriterien
 + Watchlist-Kompaktübersicht, damit Jack/Conan bei Bridge-Aufrufen ohne
-vollen Zugriff auf architecture.md/watchlist.md dennoch die Ziel-Struktur
+vollen Zugriff auf Agent-Playbook.md/watchlist.md dennoch die Ziel-Struktur
 kennen) – nächste reguläre Aktualisierung beim nächsten
 `taeglicher-trigger-check`-Lauf.
 
@@ -34,7 +34,7 @@ Fehlzuordnungen.
 
 ## 2. Kategorisierungs-Kriterien (Champions/Profi/Talent)
 
-Quelle: `architecture.md` Abschnitt 3 (qualitative Kriterien) +
+Quelle: `Agent-Playbook.md` Abschnitt 3 (qualitative Kriterien) +
 "[1.5]/[2] KATEGORISIERUNG" (Bucket-Modell). Die feste Ist-Zuordnung steht
 in `depot/kategorisierung.md`/`watchlist.md` – hier nur die Kriterien,
 NICHT pro Analyse neu erraten (siehe Abschnitt 1).
@@ -155,7 +155,7 @@ geschätzt. Gold-ETC und Cash bewusst ausgeschlossen (siehe
 
 ### Region
 
-**Update 2026-09-04 (Methodik-Lücke geschlossen):** architecture.md wurde
+**Update 2026-09-04 (Methodik-Lücke geschlossen):** Agent-Playbook.md wurde
 präzisiert – der vierte Topf heißt jetzt explizit "Rest (Lateinamerika,
 Naher Osten/Israel, sonstige)" statt nur "Lateinamerika/sonstige Länder".
 Cellebrite (Israel) zählt damit offiziell in diesen Topf.
@@ -183,7 +183,7 @@ gesplittet, keine exakte Segment-Umsatzzahl verwendet. ETF-"Rest"-Anteil
 bei Region (~5,7%) nicht weiter aufgeschlüsselt (Vanguard-Factsheet deckt
 nur Top-15-Länder ab, 94,3% der ETF-Ländergewichtung).
 
-**Konsequenz:** kein automatisches Verkaufssignal (siehe architecture.md),
+**Konsequenz:** kein automatisches Verkaufssignal (siehe Agent-Playbook.md),
 aber die neue Portfolio-Lücken-Kandidatensuche-Pflicht sollte Kandidaten
 aus Finanzwesen/USA jetzt konsequent niedriger priorisieren, Kandidaten aus
 Japan/Asien, Gesundheitswesen oder Europa/UK bevorzugen.

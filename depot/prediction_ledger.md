@@ -1,10 +1,10 @@
 ---
 Datei: Prediction Ledger / Decision Journal
 Angelegt: 2026-09-03 (Lücke geschlossen - Mechanismus war seit 2026-08-30 in
-architecture.md als "aktiv" dokumentiert, aber die Datei existierte nicht und
+Agent-Playbook.md als "aktiv" dokumentiert, aber die Datei existierte nicht und
 kein einziger Eintrag wurde je angelegt; im 3-KI-System-Audit vom 2026-09-03
 gefunden und rückwirkend geschlossen)
-Zweck (siehe architecture.md, "Meta-Retrospektive", Phase 2): systematisches
+Zweck (siehe Agent-Playbook.md, "Meta-Retrospektive", Phase 2): systematisches
 Nachhalten der eigenen Prognosen, damit sich das System über die Zeit
 kalibrieren kann - ohne das bleibt jede noch so saubere Kriterien-Logik
 unüberprüft. Ausdrücklich KEIN Scoring zwischen Jack/Jarvis/Conan - dient dem
@@ -44,7 +44,7 @@ nicht als tägliche Meldung.
 - **Prüf-Zeithorizont:** 6 Monate (2027-03-02) - kürzeres Fenster als Disco Corp, weil die offene Frage hier primär Datenverfügbarkeit ist (schneller klärbar), nicht ein mehrjähriger Zyklus.
 
 ### 2026-09-04 — Münchener Rückversicherung (Depot, Champions) — nachgetragen
-- **Anlass:** Bestehende Depot-Position (Kauf vor 2026-08-30, daher bisher kein Ledger-Eintrag), im Rahmen des "geschärfter Blick"-Reviews vom 04.09.2026 als [B] THESE-CHECK nachgetragen (schrittweise Nachpflege, siehe architecture.md).
+- **Anlass:** Bestehende Depot-Position (Kauf vor 2026-08-30, daher bisher kein Ledger-Eintrag), im Rahmen des "geschärfter Blick"-Reviews vom 04.09.2026 als [B] THESE-CHECK nachgetragen (schrittweise Nachpflege, siehe Agent-Playbook.md).
 - **Zentrale These:** Oligopol-Rückversicherer, ROE weiterhin exzellent (23,0% H1 2026, 25,5% Q2 allein), an der Spitze der Peer-Gruppe (Swiss Re 22,7%, Hannover Re 21,2%). Aktueller Beobachtungspunkt: Preiszyklus dreht real (Januar-2026-Erneuerungen -14,7% Property-Cat, Juli -5,5% bis -9,1%), Combined Ratio (~82%) leicht über Guidance (~80%), aber klar profitabel.
 - **These-Bruch-Kriterien:** (a) Januar-2027-Erneuerungspreise fallen nochmals deutlich UND Combined Ratio schiebt sich Richtung 90%+; (b) ROE fällt 2+ Jahre in Folge unter ~15% (Kapitalkosten) — beide zusammen wären ein struktureller statt zyklischer Softening-Befund.
 - **Nächster Prüfpunkt:** Januar-2027-Erneuerungspreise + FY2026-Combined-Ratio vs. ~80%-Guidance.
