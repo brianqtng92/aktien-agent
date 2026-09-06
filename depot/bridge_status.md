@@ -68,3 +68,15 @@ Chats. Noch keine endgültige Diagnose, aber ein sich wiederholendes Muster,
 das Brian ggf. bei Gelegenheit prüfen sollte (z.B. ob die
 `taeglicher-trigger-check`-Scheduled-Task-Definition dieselben MCP-Connector
 wie ein normaler Chat verbunden hat).
+
+**2026-09-06 (Hoya Corp 7741, Ad-hoc-3-fach-Cross-Check, zugleich Fact-Pack-
+Tag-Fix-Test):** `gemini-bridge` (Jack, `enable_search=False`) UND
+`openai-bridge` (Conan, `enable_search=True`) beide OK, vollständige Analysen
+erhalten, kein Tool-Fehler. **Wichtigstes Ergebnis:** Jack brach diesmal NICHT
+mit SCHROTT/Terminal-State ab (im Gegensatz zu Disco Corp 31.08. und Lasertec
+05.09., beide mit identischem Datenlücken-Muster bei japanischen Emittenten
+ohne 10-K) - erster bestätigter Erfolg des am selben Tag implementierten
+Fact-Pack-Tag-Fixes (Piotroski F-Score/FCF-Marge korrekt als [TRAINING] statt
+[N/V] getaggt, siehe HANDOVER.md 10.13 Block 7 und
+`analysen/HOYA-7741-cross-check-fazit-2026-09-06.md`). n=1, aber starkes
+positives Signal.
