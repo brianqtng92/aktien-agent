@@ -7,7 +7,12 @@ Scalable Capital. Bei jedem Lauf wird `list_portfolio_transactions` mit
 letzten Lauf zu erkennen (siehe architecture.md, Abschnitt "Täglicher
 Trigger-Check" → "Depot-Transaktions-Erkennung").
 
-Zuletzt gesehene Transaktion (lastEventAt, ISO-8601 UTC): 2026-09-04T20:35:00.000Z
+Zuletzt gesehene Transaktion (lastEventAt, ISO-8601 UTC): 2026-09-05T20:14:00.000Z
+
+Lauf 2026-09-05 (regulärer taeglicher Lauf, ca. 20:14 UTC): keine neuen
+Security-Transaktionen seit letztem Checkpoint (list_portfolio_transactions
+fromTime=2026-09-04T20:35:00.000Z → 0 Treffer). Checkpoint auf aktuellen
+Abfragezeitpunkt vorgezogen.
 
 Lauf 2026-09-04 (3. Durchlauf desselben Tages, ca. 20:35 UTC): keine neuen
 Security-Transaktionen seit letztem Checkpoint (list_portfolio_transactions

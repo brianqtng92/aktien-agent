@@ -11,9 +11,9 @@ Begründung/Historie einer einzelnen Position bleiben
 `depot/kategorisierung.md`, `watchlist.md` etc. maßgeblich. Wird am Ende
 jedes `taeglicher-trigger-check`- und `wochenfazit`-Laufs aktualisiert.
 
-**Zuletzt aktualisiert:** 2026-09-04, ~23:10 (ad-hoc – echter Portfolio-
-Regel-Check mit Live-Daten statt Schätzung nachgezogen) – nächste
-reguläre Aktualisierung beim nächsten `taeglicher-trigger-check`-Lauf.
+**Zuletzt aktualisiert:** 2026-09-05/06 (regulärer `taeglicher-trigger-check`,
+Lauf zog sich über Mitternacht) – nächste reguläre Aktualisierung beim
+nächsten `taeglicher-trigger-check`-Lauf.
 
 ---
 
@@ -112,7 +112,7 @@ Japan/Asien, Gesundheitswesen oder Europa/UK bevorzugen.
 
 | Lücke | Zuletzt geprüfter Kandidat | Ergebnis | Nächster Schritt |
 |---|---|---|---|
-| Talent-Slot + Japan/Asien-Region | Rorze (6323) | Durchgefallen (3-fach Scout-Check, 04.09.2026) – Moat 2/4, Wachstum eingebrochen | Vollständige Nikkei225/TOPIX-Durchsuchung noch ausstehend (siehe architecture.md "Automatisierte Portfolio-Lücken-Kandidatensuche-Pflicht") – nächster `taeglicher-trigger-check`-Lauf sollte damit beginnen |
+| Talent-Slot + Japan/Asien-Region | Rorze (6323) | Durchgefallen (3-fach Scout-Check, 04.09.2026) – Moat 2/4, Wachstum eingebrochen | Vollständige Nikkei225/TOPIX-Durchsuchung weiterhin ausstehend – Lauf 2026-09-05 hat wegen Bridge-Ausfall (siehe bridge_status.md) und Zeitpriorität auf die Pflicht-Tagesschritte (Depot-/Watchlist-Ampel, Makro, Transaktionen) nur eine oberflächliche Sondierung gemacht (keine belastbaren Einzelkandidaten gefunden), noch kein systematischer Indexdurchlauf begonnen – nächster Lauf mit funktionierender Bridge sollte einen echten Abschnitt (z.B. Nikkei225 Top 50 nach Marktkap) vollständig durchgehen |
 
 ## 7. Letzte Scheduled-Task-Läufe
 
@@ -120,14 +120,16 @@ Quelle: `depot/bridge_status.md` (Log) + `list_scheduled_tasks` (Live-Stand).
 
 | Task | Letzter Lauf | Nächster Lauf |
 |---|---|---|
-| taeglicher-trigger-check | 2026-09-04 ~20:35 UTC (3. Durchlauf, siehe Auffälligkeiten in bridge_status.md) | täglich ~21:03 lokale Zeit |
+| taeglicher-trigger-check | 2026-09-05 (regulärer Lauf, Bridges FAIL/nicht auffindbar, Jarvis-Only, keine Trigger ausgelöst) | täglich ~21:03 lokale Zeit |
 | blitz-scan | 2026-09-04 ~16:15 UTC (Bridges FAIL, Jarvis-Only) | stündlich |
 | wochenfazit | noch nicht gelaufen | Freitag, ~22:03 lokale Zeit |
 | monatsrecap | noch nicht gelaufen | 28.-31. des Monats |
 
 ## 8. Cash-Stand (nur Scalable Capital, live abrufbar)
 
-Verfügbare Kaufkraft: 460,33 € (Stand 2026-09-04, Cash-Bestand 1.060,33 €,
-teilweise durch ETF-Sparplan gebunden). Für die drei manuellen Broker
-(finanzen.net zero, Trade Republic, Smartbroker+) kein Live-Zugriff –
-siehe jeweilige `depot/*.md`-Datei für den zuletzt gemeldeten Stand.
+Verfügbare Kaufkraft: 460,33 € (Stand 2026-09-05, Cash-Bestand 1.060,33 €,
+unverändert ggü. 04.09., teilweise durch ETF-Sparplan gebunden). Für die
+drei manuellen Broker (finanzen.net zero, Trade Republic, Smartbroker+)
+kein Live-Zugriff – siehe jeweilige `depot/*.md`-Datei für den zuletzt
+gemeldeten Stand. Gesamtportfoliowert (alle 4 Broker inkl. Cash+Gold,
+siehe `reports/portfolio_pie_2026-09-05.png`): ~35.041 €.
