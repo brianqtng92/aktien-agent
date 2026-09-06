@@ -516,6 +516,17 @@ und `wochenfazit`-Laufs aktualisiert (siehe jeweilige SKILL.md). Ersetzt
 NICHT die Detail-Dateien (siehe Vorrang-Hierarchie oben, Stufe 2) – reine
 Aggregation der Kernzahlen für den schnellen Überblick, v.a. beim Einstieg
 in einen neuen Chat/Task-Lauf ohne Erinnerung an vorherige Sessions.
+**Erweitert (2026-09-07):** enthält jetzt zusätzlich zwei kompakte, aus
+dieser Datei bzw. `watchlist.md` destillierte Abschnitte – die
+Kategorisierungs-Kriterien (Champions/Profi/Talent + Bucket-A/B/C/D-Logik,
+knapp zusammengefasst statt der vollen Herleitung hier) und eine
+Watchlist-Kompaktübersicht (eine Tabellenzeile je der 30 Watchlist-Werte:
+Kategorie, CRV-Ampel, Kurzthese) – NICHT die vollständigen Dateien
+`architecture.md`/`watchlist.md` selbst, um das Kontextlängen-/Kosten-
+Risiko bei Jack/Conan zu vermeiden (siehe HANDOVER.md 10.10). Zweck: Jack/
+Conan können damit bei einer Analyse erkennen, ob ein Kandidat zu einer
+offenen Depot-/Watchlist-Lücke passt, ohne vollen Zugriff auf diese beiden
+großen Dateien zu benötigen.
 
 **Geltungsbereich: das gesamte Regelwerk gilt für alle drei KIs, nicht nur
 Jarvis (2026-09-04, von Brian gefordert: "das ganze System soll für alle

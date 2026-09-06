@@ -1068,8 +1068,9 @@ Hinweis für den agentischen Modus (`ask_gemini_agentic`/`ask_chatgpt_agentic`,
 siehe 10.11) – jetzt UNBEDINGT bei JEDEM Bridge-Aufruf (auch dem normalen,
 nicht-agentischen `ask_gemini`/`ask_chatgpt`), da Jack/Conan sonst keinerlei
 Sicht auf den aktuellen Projekt-/Depot-Status haben (Fact-Pack deckt nur den
-einzelnen Kandidaten ab, nicht Kategorie-Zählungen, offene Checkpoints oder
-Portfolio-Regel-Verstöße). Jarvis liest `depot/master_status.md` VOR jedem
+einzelnen Kandidaten ab, nicht Kategorie-Zählungen, offene Checkpoints,
+Portfolio-Regel-Verstöße, Kategorisierungs-Kriterien oder einen
+Watchlist-Vergleichsmaßstab). Jarvis liest `depot/master_status.md` VOR jedem
 Bridge-Dispatch frisch ein und fügt den **vollständigen aktuellen Inhalt**
 direkt in Block 6 ein (nicht nur einen Verweis auf den Dateinamen – Jack/Conan
 können die Datei selbst nicht lesen, nur was hier im Prompt-Text steht):
@@ -1088,10 +1089,14 @@ Entscheidung, 2. der Master-Status oben, 3. die Methodik-/Regel-Dateien in
 diesem Prompt, 4. aeltere Analysen/Chat-Historie.
 ```
 
-**Kosten-/Längen-Hinweis:** `master_status.md` ist mit ~130 Zeilen deutlich
-kürzer als die Methodik-Dateien – das Längenrisiko (Lost-in-the-Middle,
-Gemini-Kontextlimit) bleibt dadurch überschaubar, sollte aber beobachtet
-werden, falls die Datei künftig stark wächst.
+**Kosten-/Längen-Hinweis:** `master_status.md` ist mit ~215 Zeilen (~13KB,
+Stand 2026-09-07 nach Ergänzung um Kategorisierungs-Kriterien und
+Watchlist-Kompaktübersicht) deutlich kürzer als die Methodik-Dateien – das
+Längenrisiko (Lost-in-the-Middle, Gemini-Kontextlimit) bleibt dadurch
+überschaubar, sollte aber beobachtet werden, falls die Datei künftig weiter
+stark wächst. Bewusst NICHT die vollen `architecture.md`/`watchlist.md`
+eingebettet (siehe 10.10 zum bekannten Gemini-Längenproblem) – stattdessen
+nur die daraus destillierten Kern-Kriterien bzw. eine 30-Zeilen-Tabelle.
 
 **Block 7 ergänzt (2026-09-06, echte Ursache des wiederholten Jack-Reflex-Abbruch-Bugs gefunden):** Bisher wurde der wiederholte SCHROTT/Terminal-State-Abbruch bei Jack (Asahi Intecc, Disco Corp, Lasertec) als Gemini-spezifisches Modellverhalten eingeordnet ("Jack tendiert reflexhaft zu N/V statt TRAINING"). Brian machte den entscheidenden Beobachtungshinweis: bei manueller Anwendung des Jack-Prompts (ohne Jarvis' Fact-Pack) läuft dieselbe Analyse normal durch, kein Abbruch. Beim Nachlesen von Jacks eigener Begründung (siehe `analysen/LASERTEC-TMR-quickfilter-jack-gemini-2026-09-05.md` Zeile 19-29 und `analysen/DISCO-6146-TMR-quickfilter-jarvis-claude-2026-08-31.md` Zeile 53) bestätigte sich: Jarvis' EIGENES Fact-Pack hatte Piotroski F-Score/FCF-Marge bereits selbst als `[N/V]` getaggt (obwohl daneben oft eine plausible qualitative Einschätzung stand, die `[TRAINING]` verdient hätte) – Jack übernahm dieses bereits gesetzte Tag als vorentschieden, statt es selbst neu zu bewerten. Die eigentliche Ursache liegt also in Jarvis' Fact-Pack-Erstellung (siehe architecture.md "Fact-Pack-Tag-Disziplin", neu ergänzt), nicht in Gemini selbst – Block 7 ist das zusätzliche Sicherheitsnetz auf Bridge-Seite:
 
