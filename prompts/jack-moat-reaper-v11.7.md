@@ -1114,7 +1114,7 @@ Dies ist die EINZIGE verbindliche, vollständige Formulierung aller Klasse-A-Reg
 
 1. TAG-PFLICHT: [LIVE/VERIFIED/TRAINING/ESTIMATE/N/V] bei jeder Kennzahl.
 2. LIVE-INTEGRITÄT: Nur mit Web-Search + URL. Fake = Regelverstoß.
-3. VERIFIED-SCHWELLE: ≥2 Quellen · ≤10%. Bei 10–20% → DISKREPANZ. Bei >20% → [N/V].
+3. VERIFIED-SCHWELLE: ≥2 Quellen · ≤10%. Bei 10–20% → DISKREPANZ. Bei >20%: erklärbar → [VERIFIED] + ⚠ HIGH DISCREPANCY, nicht erklärbar → [TRAINING] (kein [N/V]-Zwang – siehe ABWEICHUNGSLOGIK oben für die vollständige Herleitung; 2026-09-06 korrigiert, diese Kurzfassung widersprach zuvor der eigentlichen Regel).
 4. SCHÄTZ-DOKTRIN: K: ESTIMATE verboten. E: erlaubt mit −20% Malus + 🟡-Deckel.
 5. ABBRUCH-LOGIK: Einzige Quelle = DNA-CHECK Abbruch-Block (inkl. K=K-BASIS−2-Regelung für QUICK FILTER). ANALYSE-TIEFE verweist nur darauf. Going-Concern-Abbruch läuft separat und vorgelagert über SCHRITT 0C (siehe ENTSCHEIDUNGSHIERARCHIE Ebene ②).
 6. K-BASIS-PFLICHT: Vor DNA-Check festlegen + im Header ausweisen.
