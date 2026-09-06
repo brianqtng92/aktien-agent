@@ -1000,7 +1000,7 @@ Ergebnis entscheidet, sondern die Faktenlage.
 Fix) gelten als durch einen Prompt-Klarheits-Mangel verzerrt, nicht als
 belastbares Urteil über die Firmen – bei Bedarf mit dieser Standard-
 Instruktion neu laufen lassen. Ab sofort MUSS jeder neue Bridge-Aufruf
-für TMR/Scout-Analysen alle sechs Blöcke enthalten (auch im Täglichen
+für TMR/Scout-Analysen alle sieben Blöcke enthalten (auch im Täglichen
 Trigger-Check und im Blitz-Scan, siehe dortige SKILL.md-Dateien) – Block 5
 (Gründliche-These-Prüfung) ist bei jeder Analyse einer bestehenden
 Depot-Position Pflicht, Block 6 (Master-Status/Vorrang-Hierarchie) nur bei
@@ -1077,6 +1077,22 @@ offene Portfolio-Regel-Fragen). Bei widersprüchlichen Informationen zwischen
 Dateien gilt diese Rangfolge (hoechste zuerst): 1. eine jüngste, explizit
 bestätigte Transaktion/Entscheidung, 2. `depot/master_status.md`,
 3. `architecture.md`, 4. ältere Analysen/Chat-Historie.
+```
+
+**Block 7 ergänzt (2026-09-06, echte Ursache des wiederholten Jack-Reflex-Abbruch-Bugs gefunden):** Bisher wurde der wiederholte SCHROTT/Terminal-State-Abbruch bei Jack (Asahi Intecc, Disco Corp, Lasertec) als Gemini-spezifisches Modellverhalten eingeordnet ("Jack tendiert reflexhaft zu N/V statt TRAINING"). Brian machte den entscheidenden Beobachtungshinweis: bei manueller Anwendung des Jack-Prompts (ohne Jarvis' Fact-Pack) läuft dieselbe Analyse normal durch, kein Abbruch. Beim Nachlesen von Jacks eigener Begründung (siehe `analysen/LASERTEC-TMR-quickfilter-jack-gemini-2026-09-05.md` Zeile 19-29 und `analysen/DISCO-6146-TMR-quickfilter-jarvis-claude-2026-08-31.md` Zeile 53) bestätigte sich: Jarvis' EIGENES Fact-Pack hatte Piotroski F-Score/FCF-Marge bereits selbst als `[N/V]` getaggt (obwohl daneben oft eine plausible qualitative Einschätzung stand, die `[TRAINING]` verdient hätte) – Jack übernahm dieses bereits gesetzte Tag als vorentschieden, statt es selbst neu zu bewerten. Die eigentliche Ursache liegt also in Jarvis' Fact-Pack-Erstellung (siehe architecture.md "Fact-Pack-Tag-Disziplin", neu ergänzt), nicht in Gemini selbst – Block 7 ist das zusätzliche Sicherheitsnetz auf Bridge-Seite:
+
+```
+WICHTIG: FACT-PACK-TAGS SIND NICHT BINDEND. Das Fact-Pack ist Jarvis' eigene
+Ersteinschaetzung, keine bereits abgeschlossene, unveraenderliche Bewertung.
+Ist eine Kennzahl im Fact-Pack als [N/V] getaggt: pruefe SELBST (aus eigenem
+Training und/oder eigener Live-Suche), ob DU eine halbwegs plausible
+Groessenordnung ableiten kannst - z.B. aus qualitativen Indikatoren, die im
+Fact-Pack selbst schon genannt werden, aber nicht ins Tag eingeflossen sind.
+Falls ja: hebe das Tag eigenstaendig auf [TRAINING] an, mit kurzer eigener
+Begruendung, statt das [N/V]-Tag unkritisch zu uebernehmen. Reserviere die
+Weitergabe von [N/V] nur fuer den Fall, dass auch DEINE eigene Einschaetzung
+zu keiner plausiblen Groessenordnung kommt - nicht schon deshalb, weil das
+Fact-Pack selbst [N/V] sagt.
 ```
 
 **Bewusst NICHT in die Bridge-Blöcke übernommen (2026-09-04, Abwägung
