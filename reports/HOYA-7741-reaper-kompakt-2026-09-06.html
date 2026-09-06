@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Reaper Kompakt – Hoya Corporation</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1A1C1F;
+    --bg-panel: #232629;
+    --bg-panel-2: #2A2D31;
+    --border: #3A3E43;
+    --border-soft: #303337;
+    --text: #EDE8DF;
+    --text-dim: #A39B8E;
+    --text-faint: #6E6860;
+    --gold: #C6922C;
+    --gold-bright: #E0B24E;
+    --gold-dim: #7A5F24;
+    --green: #5C9A5F;
+    --green-bg: rgba(92,154,95,0.14);
+    --yellow: #DDB13B;
+    --yellow-bg: rgba(221,177,59,0.14);
+    --red: #BC4F41;
+    --red-bg: rgba(188,79,65,0.16);
+  }
+
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Carlito", "DejaVu Sans", Arial, sans-serif;
+    font-size: 9.6pt;
+    line-height: 1.38;
+  }
+
+  .display {
+    font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif;
+    font-weight: 700;
+    font-stretch: condensed;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 9mm 12mm 6mm 12mm;
+    display: flex;
+    flex-direction: column;
+    gap: 3.2mm;
+  }
+
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 3mm;
+  }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 23pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 7.6pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag {
+    font-size: 7pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim);
+    border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm;
+    display: inline-block; width: fit-content;
+  }
+  .meta-block { text-align: right; font-size: 8pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 9pt; }
+
+  .position-header {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold);
+    border-radius: 3px; padding: 3.2mm 4mm;
+  }
+  .position-name .ticker { font-size: 16pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 8.4pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 6mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 6.6pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); }
+  .stat .value { font-size: 10.5pt; color: var(--text); margin-top: 0.4mm; }
+  .stat .value .eur { font-size: 7.4pt; color: var(--text-dim); }
+  .cat-pill {
+    font-size: 7pt; letter-spacing: 0.06em; text-transform: uppercase; background: var(--yellow-bg); color: var(--yellow);
+    border: 1px solid var(--yellow); border-radius: 10px; padding: 1.2mm 3mm; white-space: nowrap;
+  }
+
+  .section-label {
+    font-size: 7.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 2.5mm;
+  }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+
+  .voices-row { display: flex; gap: 3mm; }
+  .voice-card {
+    flex: 1; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px;
+    padding: 2.6mm 3mm; position: relative; overflow: hidden;
+  }
+  .voice-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2.2mm; }
+  .voice-card.v-red::before { background: var(--red); }
+  .voice-card.v-yellow::before { background: var(--yellow); }
+  .voice-card.v-green::before { background: var(--green); }
+  .voice-name { font-size: 9.6pt; letter-spacing: 0.03em; padding-left: 2mm;}
+  .voice-role { font-size: 6.6pt; color: var(--text-faint); padding-left: 2mm; margin-bottom: 1mm;}
+  .voice-rating { padding-left: 2mm; font-size: 8.6pt; color: var(--text); }
+  .voice-rating b { color: inherit; }
+  .voice-sub { padding-left: 2mm; font-size: 7.4pt; color: var(--text-dim); margin-top: 0.6mm; }
+
+  .convergence-pill {
+    margin-top: 2mm; display: flex; align-items: center; gap: 2.5mm;
+    background: var(--green-bg); border: 1px solid var(--green); border-radius: 3px; padding: 2mm 3.5mm;
+  }
+  .convergence-pill .tag { font-size: 8.4pt; letter-spacing: 0.05em; color: var(--green); text-transform: uppercase; }
+  .convergence-pill .note { font-size: 7.2pt; color: var(--text-dim); font-style: italic; }
+
+  .dna-wrap { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.6mm 3.5mm; }
+  .dna-strip { display: flex; gap: 1.4mm; margin-top: 1.6mm; }
+  .dna-seg {
+    flex: 1; height: 6.5mm; border-radius: 1px; display: flex; align-items: center; justify-content: center;
+    font-size: 6.4pt; letter-spacing: 0.02em; color: var(--bg); font-weight: bold; text-align: center;
+  }
+  .dna-seg.pass { background: var(--green); }
+  .dna-seg.fail { background: var(--red); }
+  .dna-caption { display: flex; gap: 1.4mm; margin-top: 1mm; }
+  .dna-caption div { flex: 1; font-size: 6.2pt; color: var(--text-faint); text-align: center; }
+  .dna-note { font-size: 7.2pt; color: var(--text-dim); margin-top: 1.8mm; }
+  .dna-note b { color: var(--text); }
+
+  .two-col { display: flex; gap: 3mm; flex: 1; min-height: 0; overflow: hidden; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.5mm; min-height: 0; }
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.6mm 3.5mm; overflow: hidden; }
+  .box h3 {
+    font-size: 8pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 1.4mm;
+    font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700;
+  }
+  ul.bullets { list-style: none; }
+  ul.bullets li { font-size: 7.4pt; padding-left: 3mm; position: relative; margin-bottom: 0.9mm; color: var(--text); line-height: 1.3; }
+  ul.bullets.plus li::before { content: "+"; position: absolute; left: 0; color: var(--green); font-weight: bold; }
+  ul.bullets.minus li::before { content: "–"; position: absolute; left: 0; color: var(--red); font-weight: bold; }
+
+  .dissent-box {
+    border: 1px dashed var(--gold-dim); border-radius: 3px; padding: 2.4mm 3.5mm;
+    background: repeating-linear-gradient(135deg, rgba(198,146,44,0.04), rgba(198,146,44,0.04) 6px, transparent 6px, transparent 12px);
+  }
+  .dissent-box h3 { color: var(--gold-bright); }
+  .dissent-box p { font-size: 6.9pt; color: var(--text-dim); line-height: 1.32; }
+  .dissent-box p b { color: var(--text); }
+
+  .fv-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .fv-table th, .fv-table td { font-size: 6.8pt; padding: 1mm 1.5mm; text-align: right; border-bottom: 1px solid var(--border-soft); }
+  .fv-table th:first-child, .fv-table td:first-child { text-align: left; color: var(--text-dim); }
+  .fv-table th { color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.04em; font-weight: normal; }
+  .fv-table td { color: var(--text); }
+
+  .fazit {
+    background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim);
+    border-radius: 3px; padding: 3.2mm 4mm; display: flex; align-items: center; gap: 5mm;
+  }
+  .fazit-verdict { flex: 0 0 auto; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 13pt; color: var(--yellow); letter-spacing: 0.03em; }
+  .fazit-verdict .sub { font-size: 6.6pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.6mm; }
+  .fazit-grid { flex: 1; display: flex; justify-content: space-between; }
+  .fazit-item { text-align: center; }
+  .fazit-item .label { font-size: 6.6pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+  .fazit-item .value { font-size: 10pt; color: var(--text); margin-top: 0.5mm; }
+
+  .footer {
+    display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft);
+    padding-top: 1.8mm; font-size: 6.4pt; color: var(--text-faint);
+  }
+  .footer .gold-dot { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">REAPER <span class="accent">KOMPAKT</span></div>
+      <div class="brand-sub">3-KI Cross-Check · Jarvis · Jack · Conan</div>
+      <div class="edition-tag">Watchlist-Auffrischung · Champions · Fact-Pack-Tag-Fix-Testlauf</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">6. September 2026</div>
+      <div>Regelwerk TMR v11.7 (kondensierte Quick-Filter-Instruktion)</div>
+      <div>Watchlist-Auffrischung · Bridge-Blöcke 5+6/7</div>
+    </div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">7741 <span style="color:var(--text-dim); font-size:10pt;">· TSE TOKYO (ADR HOCPY)</span></div>
+      <div class="company">Hoya Corporation — Optik/Halbleiter-Zulieferer (EUV-Mask-Blanks, Brillengläser, Kontaktlinsen, Medizintechnik)</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs (04.09.)</div><div class="value">¥24.140 <span class="eur">$156,10 ADR</span></div></div>
+      <div class="stat"><div class="label">KGV (trail./fwd)</div><div class="value">28-37x je Quelle</div></div>
+      <div class="stat"><div class="label">Marktkap.</div><div class="value">~¥8,08 Bio. <span class="eur">≈$52,3 Mrd.</span></div></div>
+      <div class="cat-pill">Champions · 🟠 Watchlist</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-label">3-Stimmen-Leiste — Finale Verdicts</div>
+    <div class="voices-row" style="margin-top:2mm;">
+      <div class="voice-card v-yellow">
+        <div class="voice-name display">JARVIS <span style="font-size:7pt; color:var(--text-faint);">— Claude</span></div>
+        <div class="voice-role">Eigene Einschätzung, Watchlist-Auffrischung (kein isolierter DCF)</div>
+        <div class="voice-rating"><b>BEOBACHTEN</b> · Champions/🟠, kein Kauf</div>
+        <div class="voice-sub">Duopol-Moat EUV-Mask-Blanks, Elite-Margen, Net-Cash-nahe Bilanz — Bewertung ohne Sicherheitsmarge</div>
+      </div>
+      <div class="voice-card v-yellow">
+        <div class="voice-name display">JACK <span style="font-size:7pt; color:var(--text-faint);">— Gemini</span></div>
+        <div class="voice-role">Kein Abbruch (Fix-Testlauf bestanden) · K 5/5, alle TRAINING</div>
+        <div class="voice-rating"><b>BEOBACHTEN</b> · Reaper Score 6/10</div>
+        <div class="voice-sub">Konfidenz NIEDRIG (Deckel wegen 4 TRAINING-K-Kriterien) · Moat 3-4/4 STARK</div>
+      </div>
+      <div class="voice-card v-yellow">
+        <div class="voice-name display">CONAN <span style="font-size:7pt; color:var(--text-faint);">— ChatGPT</span></div>
+        <div class="voice-role">Eigene Live-Recherche, Piotroski-Rekonstruktion ~6/9 (Grenzfall K 4/5)</div>
+        <div class="voice-rating"><b>BEOBACHTEN</b> · Reaper Score 6,5/10</div>
+        <div class="voice-sub">Konfidenz 🟡 GELB 62% · EV/FCF 32x, PEG 3,08 (Warnzone) verhindert Kauf-Rating</div>
+      </div>
+    </div>
+    <div class="convergence-pill">
+      <span class="tag display">● Stark konvergent</span>
+      <span class="note">Alle drei KIs unabhängig: BEOBACHTEN, kein Kauf, kein SCHROTT. Konsens: exzellentes Unternehmen (Duopol-Moat, Elite-Margen, Net Cash, Q1-FY2027-Reakzeleration), aber aktuell ohne Sicherheitsmarge bewertet (KGV 28-37x je nach Datenstichtag, deutlich über Branchendurchschnitt ~16,6x). Fact-Pack-Tag-Fix (Piotroski/FCF-Marge korrekt [TRAINING] statt [N/V]) verhinderte diesmal Jacks SCHROTT-Abbruch wie bei Disco Corp/Lasertec.</span>
+    </div>
+  </div>
+
+  <div class="dna-wrap">
+    <div class="section-label" style="margin-bottom:0;">DNA-Check-Strang (Konsens aller drei KIs, K-BASIS 5S)</div>
+    <div class="dna-strip">
+      <div class="dna-seg pass">ROIC · PASS</div>
+      <div class="dna-seg pass">FCF-MARGE · PASS</div>
+      <div class="dna-seg pass">OP. LEVERAGE · PASS</div>
+      <div class="dna-seg pass">PIOTROSKI · GRENZFALL</div>
+      <div class="dna-seg pass">EPS-CAGR 5J · PASS</div>
+    </div>
+    <div class="dna-caption">
+      <div>~20-30% (Quellen streuen 16,4-60%, Median klar &gt;20%)</div>
+      <div>~23,4% (CFO ¥278,45 Mrd. − Capex ¥56,58 Mrd. / Umsatz ¥947,75 Mrd.)</div>
+      <div>Q1 FY27: Umsatz +16,0%, Gewinn +28,1% YoY</div>
+      <div>7-8/9 (Jarvis/Jack, aus GF Score 98/100) vs. ~6/9 (Conans eigene Rekonstruktion) — 3 externe Quellen widersprechen sich (3/4/7)</div>
+      <div>~12-18% (Jarvis/Jack) bzw. ~13,7% (Conan, verifiziert)</div>
+    </div>
+    <div class="dna-note">K-Score: <b>5/5 (Jarvis/Jack) bzw. 4/5 (Conan, Piotroski als nicht erfüllt gewertet)</b> — kein Kriterium [N/V], daher <b>kein Abbruch</b>. Alle K-Werte durchgehend [TRAINING] statt [VERIFIED] → automatischer Konfidenz-Deckel (NIEDRIG/GELB), aber kein SCHROTT/Terminal-State.</div>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="box" style="flex:0 0 auto;">
+        <h3>Moat &amp; Geschäftsmodell</h3>
+        <p style="font-size:7.4pt; color:var(--text-dim); line-height:1.32;">Hoya + AGC bilden ein <b>Duopol bei EUV-Mask-Blanks</b> (kombiniert ~90-93% Weltmarktanteil; Hoya &gt;60% bei konventionellen, &gt;75% bei EUV-Mask-Blanks), abgesichert durch extreme technische Eintrittsbarrieren (defektfreie Mo/Si-Multilayer-Beschichtung). IT-Segment (inkl. Halbleiter-Substrate) &lt;30% Umsatz, aber &gt;50% Gewinn. Life-Care-Segment (Brillengläser, Kontaktlinsen, Medizintechnik) &gt;60% Umsatz, zweistelliges Wachstum (Brillengläser +11% YoY). Doppelt abgesicherter Moat: enges Halbleiter-Nischenmonopol PLUS breites Konsumgüter-Standbein. Manche Quellen sehen AGC (nicht Hoya) als führend — echtes Duopol mit Wettbewerbsspannung, kein reines Monopol.</p>
+      </div>
+      <div class="box dissent-box" style="flex:1;">
+        <h3>Warum jetzt (noch) kein Kauf</h3>
+        <p><b>Der Reaper-Killer ist die Bewertung, nicht das Unternehmen.</b> KGV trailing 28-37x je nach Datenstichtag (Jarvis 36,9x, Conan per Live-Suche 30,6x), deutlich über Branchendurchschnitt ~16,6x, PEG 2,3-3,1x (TMR-Warnzone &gt;2,5). EV/FCF 32-36,6x — keine Sicherheitsmarge. Aktienrückkaufprogramm (bis ¥200 Mrd.) und laufende strategische Prüfung des PENTAX-Medical-Endoskopiegeschäfts (möglicher Verkauf, seit 31.07.2026) sind potenziell relevant für künftige Kapitalallokation, aber ohne Rating-Konsequenz in diesem Lauf.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="box">
+        <h3>Bewertung (Quick-Check, kein DCF)</h3>
+        <table class="fv-table">
+          <tr><th></th><th style="text-align:left;">Kennzahl</th><th style="text-align:left;">Einordnung</th></tr>
+          <tr><td>KGV trailing</td><td colspan="1" style="text-align:left; color:var(--text);">28-37x</td><td style="text-align:left; color:var(--red);">weit über Branche (~16,6x)</td></tr>
+          <tr><td>PEG</td><td colspan="1" style="text-align:left; color:var(--text);">2,3-3,1x</td><td style="text-align:left; color:var(--red);">TMR-Warnzone &gt;2,5</td></tr>
+          <tr><td>EV/FCF</td><td colspan="1" style="text-align:left; color:var(--text);">32-36,6x</td><td style="text-align:left; color:var(--red);">keine Sicherheitsmarge</td></tr>
+          <tr><td>Abstauber-Limit</td><td colspan="1" style="text-align:left; color:var(--text);">~KGV &lt;24-30x</td><td style="text-align:left; color:var(--green);">≈¥20.000-20.500</td></tr>
+        </table>
+      </div>
+      <div class="box" style="flex:1;">
+        <h3>Risiken (Konsens aller 3)</h3>
+        <ul class="bullets minus">
+          <li>Bewertung ohne Sicherheitsmarge — KGV 28-37x je nach Quelle, mehr als doppelt so hoch wie Branchendurchschnitt</li>
+          <li>Piotroski F-Score unscharf: vier verschiedene Werte (3/4/6/7-8) je nach Datenanbieter — Bilanzqualität qualitativ stark, aber Kennzahl selbst nicht sauber verifizierbar</li>
+          <li>Kurs unter SMA50/SMA200 (RSI 37,83) — Konsolidierung, kein Trendbruch, aber kein technischer Kaufzwang; PENTAX-Medical-Prüfung als Kapitalallokations-Unsicherheit</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">BEOBACHTEN</div>
+      <div class="sub">3 von 3 · Einstimmig</div>
+    </div>
+    <div class="fazit-grid">
+      <div class="fazit-item"><div class="label">Reaper Score</div><div class="value">6/10 – 6,5/10</div></div>
+      <div class="fazit-item"><div class="label">Konfidenz</div><div class="value">Niedrig / 🟡 62%</div></div>
+      <div class="fazit-item"><div class="label">Watchlist-Status</div><div class="value">Champions/🟠, bestätigt</div></div>
+      <div class="fazit-item"><div class="label">Nächster Prüfpunkt</div><div class="value">Q2-FY2027, ~Ende Okt./Anf. Nov.</div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Quick-Filter-Cross-Check <span class="gold-dot">·</span> Vollständige Analyse: analysen/HOYA-7741-cross-check-fazit-2026-09-06.md</div>
+    <div>Keine Anlageberatung · Quick Filter (kein DCF) · Seite 1/1</div>
+  </div>
+
+</div>
+</body>
+</html>
