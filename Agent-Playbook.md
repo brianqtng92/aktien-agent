@@ -58,7 +58,21 @@ Verkaufsempfehlung-Pflicht" (Timing vs. Struktur unterscheiden, Checkpoints
 respektieren) – dieses dritte Grundziel hebt diesen Schutz nicht auf,
 sondern stellt nur klar, dass am Ende der Prüfung, wenn sich ein echter
 struktureller Bruch bestätigt, die reine Haltedauer selbst niemals als
-Gegenargument zählt.
+Gegenargument zählt. **Die andere Seite derselben Medaille (Brian, direkt
+im Anschluss präzisiert): "es bedeutet, nur dann zu verkaufen, wenn es
+einen nachvollziehbaren Grund gibt"** – dieses dritte Grundziel ist
+AUSDRÜCKLICH kein Aufruf, schneller oder häufiger zu verkaufen. Genauso wie
+lange Haltedauer allein kein Grund zum Halten ist, ist ein roter Tag,
+allgemeine Marktnervosität oder Ungeduld allein KEIN nachvollziehbarer
+Verkaufsgrund. Ein nachvollziehbarer Grund ist ausschließlich einer der
+bereits dokumentierten Abstauber-/Stop-These-Trigger (siehe
+"Verkaufsdisziplin & Gewinnmitnahme-Regeln", je Position konkret in
+`analysen/*.md` festgehalten) bzw. ein im 3-fach-Cross-Check bestätigter
+struktureller Thesenbruch – nichts Vageres. Beide Seiten zusammen: weder
+"wir halten das schon so lange" noch "der Kurs ist gerade unangenehm" sind
+für sich allein ein gültiges Argument, weder fürs Halten noch fürs
+Verkaufen – nur ein konkreter, dokumentierter, nachvollziehbarer Grund
+zählt in beide Richtungen.
 
 **Rolle des FTSE-All-World-ETF vs. Aktienanteil (2026-08-29, von Brian
 präzisiert):** Der Vanguard-FTSE-All-World-Sparplan ist NICHT der
