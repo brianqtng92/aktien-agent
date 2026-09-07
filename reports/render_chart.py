@@ -7,6 +7,11 @@ Ersetzt die bisherigen reinen Tabellen-Sektionen in "Chart- und Einstiegslage"
 durch ein echtes Chart-Bild, analog zu Raketentonis Referenz-PDFs, aber im
 eigenen Design statt 1:1-Screenshot-Uebernahme.
 
+Seit 2026-09-08 (Full-Deep-Dive-Erweiterung, "Reaper Deep Dive Report"):
+optionale RSI(14)- und MACD(12,26,9)-Subplots unter dem Hauptchart (--rsi /
+--macd), fuer Full Deep Dive gedacht -- Quick Filter nutzt weiterhin nur den
+einfachen Haupt-Chart ohne Indikator-Subplots, um Renderzeit klein zu halten.
+
 Workflow (vom Agenten pro Analyse ausgefuehrt):
   1. get_time_series (Twelve Data MCP) fuer den Ticker abrufen (z.B. 120-180
      Tage, interval=1day), Ergebnis-JSON in eine Datei schreiben
@@ -14,6 +19,7 @@ Workflow (vom Agenten pro Analyse ausgefuehrt):
   2. python3 reports/render_chart.py --json /tmp/<TICKER>_series.json
      --out reports/<TICKER>_chart.png --ema 20,50 --title "HAWK -- NYSE"
      [--zone "21.43:EMA20 Widerstand" --zone "17.00:52W-Tief"]
+     [--rsi --macd]   (nur bei Full Deep Dive)
   3. Erzeugtes PNG in die PDF-Sektion "Chart- und Einstiegslage" einbetten
      (<img src="...">).
 
@@ -48,6 +54,11 @@ GOLD_BRIGHT = "#E0B24E"
 GREEN = "#5C9A5F"
 RED = "#BC4F41"
 EMA_COLORS = ["#5B8FC7", "#C97BC9", "#D9A441"]
+RSI_LINE = "#D9A441"
+RSI_OVERBOUGHT = "#BC4F41"
+RSI_OVERSOLD = "#5C9A5F"
+MACD_LINE = "#5B8FC7"
+MACD_SIGNAL = "#C97BC9"
 
 
 def load_series(path: str) -> pd.DataFrame:
@@ -68,15 +79,48 @@ def load_series(path: str) -> pd.DataFrame:
     return df
 
 
-def render(df: pd.DataFrame, out_path: str, ema_periods, zones, title: str, currency: str):
+def compute_rsi(close: pd.Series, period: int = 14) -> pd.Series:
+    delta = close.diff()
+    gain = delta.clip(lower=0)
+    loss = -delta.clip(upper=0)
+    avg_gain = gain.ewm(alpha=1 / period, adjust=False).mean()
+    avg_loss = loss.ewm(alpha=1 / period, adjust=False).mean()
+    rs = avg_gain / avg_loss.replace(0, pd.NA)
+    rsi = 100 - (100 / (1 + rs))
+    return rsi.fillna(50)
+
+
+def compute_macd(close: pd.Series, fast: int = 12, slow: int = 26, signal: int = 9):
+    ema_fast = close.ewm(span=fast, adjust=False).mean()
+    ema_slow = close.ewm(span=slow, adjust=False).mean()
+    macd_line = ema_fast - ema_slow
+    signal_line = macd_line.ewm(span=signal, adjust=False).mean()
+    hist = macd_line - signal_line
+    return macd_line, signal_line, hist
+
+
+def render(df: pd.DataFrame, out_path: str, ema_periods, zones, title: str, currency: str,
+           show_rsi: bool = False, show_macd: bool = False):
     has_volume = "volume" in df.columns and df["volume"].notna().any()
-    fig_h = 5.4 if has_volume else 4.2
-    fig, axes = plt.subplots(
-        2 if has_volume else 1, 1, figsize=(9.6, fig_h),
-        gridspec_kw={"height_ratios": [3, 1]} if has_volume else None,
-        sharex=has_volume,
+
+    rows = [("main", 3)]
+    if has_volume:
+        rows.append(("volume", 1))
+    if show_macd and len(df) >= 26:
+        rows.append(("macd", 1))
+    if show_rsi and len(df) >= 14:
+        rows.append(("rsi", 1))
+
+    fig_h = 3.2 + 1.35 * (len(rows) - 1)
+    fig, axes_raw = plt.subplots(
+        len(rows), 1, figsize=(9.6, fig_h),
+        gridspec_kw={"height_ratios": [r[1] for r in rows]},
+        sharex=True,
     )
-    ax = axes[0] if has_volume else axes
+    axes_raw = [axes_raw] if len(rows) == 1 else list(axes_raw)
+    axes = dict(zip((r[0] for r in rows), axes_raw))
+
+    ax = axes["main"]
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
 
@@ -112,7 +156,7 @@ def render(df: pd.DataFrame, out_path: str, ema_periods, zones, title: str, curr
         leg = ax.legend(loc="upper left", fontsize=7, facecolor=PANEL, edgecolor=BORDER, labelcolor=TEXT)
 
     if has_volume:
-        axv = axes[1]
+        axv = axes["volume"]
         axv.set_facecolor(BG)
         vol_colors = [GREEN if c >= o else RED for o, c in zip(df["open"], df["close"])]
         axv.bar(dates, df["volume"], width=width, color=vol_colors, alpha=0.6)
@@ -121,11 +165,42 @@ def render(df: pd.DataFrame, out_path: str, ema_periods, zones, title: str, curr
         for spine in axv.spines.values():
             spine.set_color(BORDER)
         axv.grid(True, color=BORDER, linewidth=0.3, alpha=0.4)
-        axv.xaxis.set_major_formatter(mdates.DateFormatter("%d.%m."))
-        fig.autofmt_xdate(rotation=0, ha="center")
-    else:
-        ax.xaxis.set_major_formatter(mdates.DateFormatter("%d.%m."))
-        fig.autofmt_xdate(rotation=0, ha="center")
+
+    if "macd" in axes:
+        axm = axes["macd"]
+        axm.set_facecolor(BG)
+        macd_line, signal_line, hist = compute_macd(df["close"])
+        hist_colors = [GREEN if v >= 0 else RED for v in hist]
+        axm.bar(dates, hist, width=width, color=hist_colors, alpha=0.5, zorder=1)
+        axm.plot(dates, macd_line, color=MACD_LINE, linewidth=1.0, label="MACD", zorder=2)
+        axm.plot(dates, signal_line, color=MACD_SIGNAL, linewidth=1.0, label="Signal", zorder=2)
+        axm.axhline(0, color=BORDER, linewidth=0.6)
+        axm.tick_params(colors=TEXT_DIM, labelsize=7)
+        axm.set_ylabel("MACD", color=TEXT_DIM, fontsize=7.5)
+        for spine in axm.spines.values():
+            spine.set_color(BORDER)
+        axm.grid(True, color=BORDER, linewidth=0.3, alpha=0.4)
+        axm.legend(loc="upper left", fontsize=6.5, facecolor=PANEL, edgecolor=BORDER, labelcolor=TEXT)
+
+    if "rsi" in axes:
+        axr = axes["rsi"]
+        axr.set_facecolor(BG)
+        rsi = compute_rsi(df["close"])
+        axr.plot(dates, rsi, color=RSI_LINE, linewidth=1.1, zorder=2)
+        axr.axhline(70, color=RSI_OVERBOUGHT, linewidth=0.6, linestyle="--", alpha=0.7)
+        axr.axhline(30, color=RSI_OVERSOLD, linewidth=0.6, linestyle="--", alpha=0.7)
+        axr.fill_between(dates, 70, 100, color=RSI_OVERBOUGHT, alpha=0.08, zorder=1)
+        axr.fill_between(dates, 0, 30, color=RSI_OVERSOLD, alpha=0.08, zorder=1)
+        axr.set_ylim(0, 100)
+        axr.set_yticks([30, 50, 70])
+        axr.tick_params(colors=TEXT_DIM, labelsize=7)
+        axr.set_ylabel("RSI(14)", color=TEXT_DIM, fontsize=7.5)
+        for spine in axr.spines.values():
+            spine.set_color(BORDER)
+        axr.grid(True, color=BORDER, linewidth=0.3, alpha=0.4)
+
+    axes_raw[-1].xaxis.set_major_formatter(mdates.DateFormatter("%d.%m."))
+    fig.autofmt_xdate(rotation=0, ha="center")
 
     fig.tight_layout()
     fig.savefig(out_path, dpi=160, facecolor=BG)
@@ -140,6 +215,8 @@ if __name__ == "__main__":
     p.add_argument("--zone", action="append", default=[], help="Zonen-Linie als 'Kurs:Label', mehrfach verwendbar")
     p.add_argument("--title", default="", help="Chart-Titel (z.B. 'HAWK -- NYSE')")
     p.add_argument("--currency", default="", help="Waehrungslabel fuer Y-Achse, z.B. 'USD'")
+    p.add_argument("--rsi", action="store_true", help="RSI(14)-Subplot rendern (Full Deep Dive)")
+    p.add_argument("--macd", action="store_true", help="MACD(12,26,9)-Subplot rendern (Full Deep Dive)")
     args = p.parse_args()
 
     df = load_series(args.json)
@@ -156,5 +233,6 @@ if __name__ == "__main__":
         except ValueError:
             print(f"Warnung: Zone '{z}' ignoriert (Format 'Kurs:Label' erwartet).", file=sys.stderr)
 
-    render(df, args.out, ema_periods, zones, args.title, args.currency)
+    render(df, args.out, ema_periods, zones, args.title, args.currency,
+           show_rsi=args.rsi, show_macd=args.macd)
     print(f"OK: {args.out} ({len(df)} Kerzen)")

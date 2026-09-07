@@ -3689,6 +3689,99 @@ dort (Depotstatus-Ampel, Kategorie-Füllstand, Auffälligkeiten, Cash-Disziplin-
 Zeile) bleiben Pflichtbestandteil, werden aber jetzt in diesem saubereren
 Layout statt als reiner Fließtext präsentiert.
 
+### PDF-Report-Design: "Reaper Deep Dive Report" (Full Deep Dive, 2026-09-08)
+
+Brian hat eine weitere, deutlich ausgereiftere Beispiel-PDF von Raketentonis
+System geteilt ("MP Materials – Große Aktienanalyse", 13 Seiten, mehrstufiger
+Report statt Kompakt-Layout) und ausdrücklich als Inspiration für einen
+eigenen "Full Deep Dive"-PDF-Standard gewünscht – **gleiche Regel wie beim
+Reaper Wochenreport oben: lose strukturelle Inspiration, KEIN 1:1-Klon.**
+Aufbau/Reihenfolge/Sprache bleiben unser eigenes Reaper-Vokabular (Ampel-
+Farbwelt, Score-Gauge, 3-Stimmen-Leiste, DNA-Check-Strang), NICHT
+Raketentonis Kapitel-Nummerierung oder Formulierungen. Gilt NUR für Full
+Deep Dive (Quick Filter bleibt beim bestehenden Reaper-Kompakt-Einseiter,
+siehe "PDF-Report-Design: Reaper Kompakt" – ein 13-Seiten-Report für jeden
+Quick-Filter-Kandidaten wäre nicht mit dem Aufwand-/Realismus-Prinzip
+vereinbar, siehe Abschnitt 6).
+
+**Was aus der Vorlage strukturell übernommen wird (jeweils in eigener
+Reaper-Optik, nicht 1:1):**
+
+1. **Mehrseitiges Format statt Einseiter** – Full Deep Dive bekommt ab
+   sofort ein eigenständiges PDF (`reports/<TICKER>-deep-dive-<Datum>.pdf`,
+   Reaper-Deep-Dive-Layout), NICHT mehr das Reaper-Kompakt-Layout gequetscht
+   – der Kompakt-Einseiter bleibt für Quick Filter/Blitz-Scan-Treffer.
+2. **Multi-Panel-Chart statt reiner Kurs+EMA-Grafik (technische Erweiterung
+   von `reports/render_chart.py`):** zusätzlich zum bestehenden
+   Haupt-Chart (Candlestick + EMA + Zonen) werden RSI(14)- und MACD-Subplots
+   als eigene Panels UNTER dem Hauptchart gerendert (neue Flags
+   `--rsi` und `--macd`, Rohdaten aus denselben Twelve-Data-Indikatoren, die
+   das TA-Modul ohnehin schon abruft – keine zusätzliche Datenquelle nötig,
+   nur zusätzliche Visualisierung dessen, was bereits berechnet wird). Nur
+   für Full Deep Dive Pflicht – Quick Filter bleibt beim einfachen
+   Haupt-Chart, um die Renderzeit klein zu halten.
+3. **"Was steckt wirklich dahinter"-Sektion bei mehrstufigen
+   Geschäftsmodellen (optional, nur wenn zutreffend):** bei Unternehmen mit
+   einer klaren Wertschöpfungskette (Rohstoff→Verarbeitung→Endprodukt→Kunde,
+   o.ä.) eine kompakte Kettendarstellung (Textblöcke mit Pfeilen reichen,
+   kein aufwändiges Grafikelement nötig) VOR der eigentlichen These – hilft
+   bei komplexen Geschäftsmodellen, den Kontext vor den Zahlen zu setzen.
+   Bei einfachen Geschäftsmodellen (Standard-Software, Einzelhandel usw.)
+   entfällt dieser Punkt ersatzlos, kein Zwang zur künstlichen Aufblähung.
+4. **"Der unterschätzte Punkt"-Kasten (neu, Pflicht bei Full Deep Dive):**
+   ein eigener, kurzer Absatz, der GEZIELT die eine Sache benennt, die bei
+   oberflächlicher Betrachtung leicht übersehen wird, aber die Bewertung/
+   These material beeinflusst (z.B. versteckte Verwässerung durch
+   Wandelanleihen, ein Vertrag mit Kündigungsklausel, eine buchhalterische
+   Besonderheit). Zwingt zur echten Tiefenrecherche statt nur der
+   Oberflächen-Kennzahlen – kein Pflichtfund um jeden Preis, bei wirklich
+   sauberen Fällen explizit "kein versteckter Sonderpunkt gefunden"
+   vermerken statt einen künstlich zu konstruieren.
+5. **Bear/Base/Bull-Wertebalken als Grafik statt nur Tabelle:** die bereits
+   bestehenden TMR-/Scout-Fair-Value-Bandbreiten (Bear/Base/Bull) werden bei
+   Full Deep Dive zusätzlich als horizontales Balkendiagramm visualisiert
+   (Balken je Szenario + eine vierte Markierung für den aktuellen Kurs),
+   nicht mehr nur als Zahlenzeile – macht auf einen Blick sichtbar, wo der
+   aktuelle Kurs relativ zur Bandbreite liegt.
+6. **Gepaarte "Aufstufungs-Trigger" / "Abstauber-Trigger"-Kästen:** unsere
+   bereits bestehenden Nachkauf-Aufstufungs-Trigger (siehe z.B. Rocket Lab
+   in `depot/kategorisierung.md`) und Abstauber-/Stop-These-Trigger (siehe
+   "Verkaufsdisziplin & Gewinnmitnahme-Regeln") werden bei Full Deep Dive
+   konsequent als zwei nebeneinanderstehende Kästen dargestellt statt nur
+   im Fließtext verstreut – macht auf einen Blick sichtbar, was für UND was
+   gegen die These sprechen würde.
+7. **Score-Aufschlüsselungs-Tabelle:** die bereits bestehende Reaper-Score-
+   Stapel-Logik (siehe "REAPER-SCORE-STAPEL-LOGIK") wird bei Full Deep Dive
+   zusätzlich als Tabelle mit den Einzeldimensionen (z.B. Moat/Burggraben,
+   Wachstum, Bilanz/Finanzierung, Profitabilität/Cashflow, Bewertung,
+   Ausführungsrisiko, Chart/Timing – Dimensionen je nach TMR/Scout-Pfad
+   leicht unterschiedlich) sichtbar gemacht statt nur das Endergebnis zu
+   zeigen – Transparenz, wo genau Punkte verloren gehen, nicht nur die
+   Summe.
+8. **Formale Abschluss-Seite "Quellen, Annahmen und Hinweise":** eine
+   nummerierte Quellenliste (Primärquellen: SEC-Filings/Investor-Relations/
+   Geschäftsberichte zuerst, siehe Datenintegritäts-System) mit Links,
+   ein kurzer "Modellannahmen"-Absatz (verwendete Diskontsätze/Exit-
+   Multiples/Zeithorizont für die Bear/Base/Bull-Herleitung, damit die
+   Zahlen nachvollziehbar bleiben, nicht als Black Box), und der bereits
+   bestehende Anlageberatungs-Disclaimer – als letzte Seite jedes Full-
+   Deep-Dive-PDFs.
+9. **Fact-Check-Tabelle bei mitgelieferten Drittquellen (nur wenn
+   zutreffend, z.B. wenn Brian selbst einen fremden Report/Artikel als
+   Kontext mitgibt):** Format "Fremdaussage | saubere Lesart (unsere
+   eigene Herleitung) | warum das relevant ist" – ist bereits inhaltlich
+   durch die bestehende Regel "Externe Quellen nie Benchmark" abgedeckt,
+   hier nur als saubere Tabellen-Visualisierung übernommen statt reinem
+   Fließtext-Widerspruch.
+
+**Was AUSDRÜCKLICH NICHT übernommen wird:** Raketentonis Navy-Corporate-
+Farbwelt, Kapitel-Nummerierung/-Titel, Formulierungen und die reine
+Multiples-/DCF-Bewertungslogik (unsere TMR-/Scout-Fair-Value-Herleitung
+bleibt methodisch unverändert die eigene, siehe jeweilige Methodik-Datei) –
+nur die strukturellen/visuellen Elemente oben, in unserer bereits
+etablierten Reaper-Optik (dunkles Anthrazit/Gold, kondensierte
+Display-Schrift, 3-Stimmen-Leiste ganz oben).
+
 ### Watchlist-System (2026-08-28, von Brian gefordert)
 
 Zusätzlich zum eigentlichen Depot führt der Agent eine eigenständige
