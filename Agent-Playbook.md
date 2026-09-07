@@ -3866,6 +3866,128 @@ einziges eigenständiges Skript mit identischer Token-Liste separat
 mitgezogen (Chart-PNGs müssen zum hellen PDF-Hintergrund passen, kein
 dunkler Chart-Kasten mehr auf hellem Report).
 
+### Full-Deep-Dive-Tiefe: Rigor-Standard nach uncoveredjapan.com-Vorbild (2026-09-07)
+
+Brian hat die 5-teilige Digital-Arts-(2326)-Deep-Dive-Serie von
+uncoveredjapan.com als Qualitätsmaßstab vorgegeben ("das nenn ich einen
+Deep Dive!") und ausdrücklich verlangt, eine ähnliche Tiefe/Ausführlichkeit
+in unsere eigenen Full-Deep-Dive-Analysen einzubringen. **Gleiches Prinzip
+wie bei allen bisherigen externen Vorbildern (Raketentoni, MP Materials):
+lose methodische Inspiration, KEIN 1:1-Klon** – die konkreten Techniken
+unten werden in unser eigenes TMR-/Scout-/Agent-Vokabular übersetzt, nicht
+Autor-Formulierungen oder fremde Struktur kopiert. Alle 5 Teile wurden
+einzeln durchgearbeitet (nicht nur Teil 1), da die Serie bewusst Business/
+Moat, Zahlen, Kapitalallokation, Strategie und Bewertung in getrennten,
+jeweils vollwertigen Teilen behandelt – die Summe daraus definiert den
+Tiefe-Maßstab, nicht ein einzelner Teil.
+
+**Was konkret als neue Full-Deep-Dive-Pflicht bzw. Best-Effort-Ergänzung
+übernommen wird (jeweils nur wo die Datenlage es zulässt – siehe
+No-False-Precision-Regel, kein Erfinden von Zahlen):**
+
+1. **5-Jahres-Finanzhistorie statt nur TTM-Snapshot.** Umsatz und
+   Betriebsergebnis/Operating Profit über die letzten 5 Geschäftsjahre in
+   einer Tabelle, inkl. CAGR. Einmaleffekte (Verkäufe, Akquisitionen,
+   Sondererträge) explizit benennen und eine "like-for-like"-bereinigte
+   Wachstumsrate danebenstellen, statt eine durch Einmaleffekte verzerrte
+   YoY-Zahl unkommentiert stehen zu lassen.
+2. **Guidance-Track-Record-Tabelle (neu, sofern Management eigene
+   Jahres-Guidance kommuniziert).** Für die letzten 3-5 Jahre: Guidance
+   vs. tatsächliches Ergebnis (Umsatz UND operatives Ergebnis), daraus
+   Durchschnitts-Erreichungsgrad, Streuung/Standardabweichung, Trend-
+   richtung (verbessert/verschlechtert sich die Prognosequalität?), und
+   wo erkennbar eine zeitliche Clusterung der Fehlschläge (z.B. immer
+   Q4-lastig wegen öffentlicher Aufträge). Das ist ein eigenständiges,
+   objektives Managementglaubwürdigkeits-Signal, unabhängig von Rating/
+   Score – Ziel: "Discount company forecasts" so weit wie die Historie es
+   nahelegt, nicht blind übernehmen.
+3. **Cashflow-Normalisierung bei Sondereffekten.** Wenn Working-Capital-/
+   Deferred-Revenue-Bewegungen den operativen Cashflow einmalig auf- oder
+   abblähen: explizit herausrechnen und die "wahre" wiederkehrende
+   Cash-Erzeugungsfähigkeit danebenstellen, mit einem Satz Begründung,
+   warum die Rohzahl irreführend wäre.
+4. **Bilanzkennzahlen-Fallstrick-Check.** Bevor ein auf den ersten Blick
+   negativ wirkender Bilanztrend (z.B. sinkende Eigenkapitalquote)
+   kommentiert wird: prüfen, ob die Ursache tatsächlich Schwäche ist oder
+   ein an sich positiver Grund (z.B. Wachstum der Deferred-Revenue-
+   Passivposition durch mehr Cloud-/Subscription-Verträge bei gleichzeitig
+   steigendem Cash-Bestand). Beide Lesarten benennen, nicht nur die
+   pessimistische.
+5. **Produktlinien-/Segment-Tabelle mit benannten Wettbewerbern.** Wo das
+   Geschäftsmodell mehrere klar unterscheidbare Produktlinien hat: pro
+   Zeile Produkt, adressiertes Problem, wichtigste 1-2 namentlich genannte
+   Wettbewerber, statt nur eine aggregierte "Moat ist stark"-Aussage für
+   das Gesamtunternehmen.
+6. **Konzentrations-Transparenz mit Namen statt nur Prozent, wo
+   auffindbar.** Bei Kunden-/Vertriebspartner-Konzentration nach Möglichkeit
+   den/die konkreten Namen nennen (z.B. bestimmter Großdistributor/-kunde
+   mit Umsatzanteil), nicht nur eine anonyme "Top-X = Y%"-Zahl – macht das
+   Risiko greifbar statt abstrakt. Wenn nicht auffindbar: wie bisher
+   anonymisiert, aber explizit vermerken, dass keine Namen recherchierbar
+   waren (kein stilles Weglassen).
+7. **Eigenständige, proaktive "Offene Schwächen"-Sektion.** Getrennt vom
+   bestehenden Devil's Advocate (der die BULL-These angreift): eine Sektion,
+   die strukturelle Schwächen so benennt, wie das Management selbst sie
+   einräumen würde – inkl. direkter Management-Zitate, wenn in Earnings-
+   Calls/Transkripten auffindbar (z.B. ein CEO, der einen Prognosefehler
+   selbst zugibt). Nicht am Ende versteckt, sondern gleichrangig zu den
+   Stärken platziert.
+8. **Kapitalrückführungs-Historie statt nur aktuellem Status.** Dividenden-
+   Historie (Streak aufeinanderfolgender Erhöhungen, falls zutreffend),
+   Gesamtausschüttungsquote (Dividende + Buybacks) über mehrere Jahre als
+   Trend, und Buyback-Timing als Glaubwürdigkeits-Indiz (z.B. Rückkäufe
+   direkt nach einem Kurscrash = starkes Signal, dass Management den
+   eigenen Kurs für unterbewertet hält).
+9. **Management-Glaubwürdigkeits-Matrix statt einzelnem Management-Score.**
+   Mehrere GETRENNTE Achsen bewerten statt einer Gesamtnote: Guidance-
+   Treffsicherheit, Aktionärsrückgabe-Konsistenz, Transparenz (werden
+   Booking/Backlog/Segment-Daten offengelegt?), Selbstreflexion (werden
+   Fehler eingeräumt oder schöngeredet?) – ein Unternehmen kann bei
+   Kapitalrückführung exzellent und bei Prognosetreue schwach sein
+   gleichzeitig, das muss sichtbar bleiben statt zu einer Note verschmolzen
+   zu werden.
+10. **Peer-Multiple-Vergleichstabelle mit benannten Wettbewerbern.**
+    Mindestens 2-3 namentlich genannte, wirklich vergleichbare Wettbewerber
+    mit Forward-KGV, P/B, EV/EBITDA nebeneinander – und wenn eine Anomalie
+    auffällt (z.B. höchste Marge im Vergleichsfeld bei gleichzeitig
+    niedrigstem Multiple), das explizit als Spannung benennen statt nur
+    Zahlen tabellarisch abzulegen.
+11. **DCF-Cross-Check per Reverse-Engineering.** Zusätzlich zum bestehenden
+    Bear/Base/Bull-DCF: aus dem AKTUELLEN Kurs rückwärts rechnen, welches
+    implizite Wachstum/welche implizite Marge der Markt gerade einpreist –
+    macht sichtbar, ob der Markt bereits pessimistischer/optimistischer ist
+    als das eigene Base-Case-Szenario, als zusätzliche Plausibilitätsprüfung
+    neben der bestehenden TV-Anteil-Warnung.
+12. **Downside-Boden explizit quantifizieren.** Wo eine Netto-Cash-Position
+    signifikant ist: explizit als Cash-pro-Aktie ausweisen und als
+    "effektiver Bewertungsboden" einordnen (z.B. "selbst im Extrem-Bear-Fall
+    liegt der Cash-Wert pro Aktie bei X, was Y% Downside-Schutz ab dem
+    aktuellen Kurs bedeutet").
+13. **Bear-Case als benannter Wahrscheinlichkeits-Katalog statt Fließtext-
+    Liste.** 3-5 konkrete, einzeln benannte Risiken, jeweils mit eigener
+    Eintrittswahrscheinlichkeits-Einschätzung (Niedrig/Mittel/Hoch) statt
+    einem undifferenzierten Absatz "es gibt Risiken".
+14. **Root-Cause-Analyse bei jeder Guidance-Kürzung/negativen Überraschung.**
+    Nicht nur feststellen DASS gekürzt wurde, sondern explizit einordnen:
+    Nachfrage-Problem (strukturell, schlechter) oder Ausführungs-/Timing-
+    Problem (Vertriebskanal, Verzögerung, potenziell vorübergehend)? Diese
+    Unterscheidung ist entscheidend für die Bull/Bear-Einordnung und wird
+    oft übersprungen, wenn nur die Prozentzahl der Kürzung genannt wird.
+15. **SWOT-Synthese-Tabelle als optionale Zusatz-Visualisierung**, wenn die
+    übrigen Sektionen (Moat, Reality-Check, Devil's Advocate, offene
+    Schwächen, Katalysator-Ausblick) bereits genug Substanz für alle vier
+    Felder liefern – kein Pflichtelement, aber eine sinnvolle Ein-Blick-
+    Zusammenfassung bei komplexen Fällen mit vielen beweglichen Teilen.
+
+**Was AUSDRÜCKLICH NICHT übernommen wird:** die Serien-Aufteilung in 5
+separate Veröffentlichungen (unser Full Deep Dive bleibt EIN
+zusammenhängender Report, auch wenn er dadurch länger wird), die englische
+Sprache/der Autoren-Ton, und die Praxis "AI-generated from primary
+Japanese sources" als Selbstzweck zu betonen – unsere eigene
+Datenintegritäts-/Tagging-Disziplin (LIVE/VERIFIED/TRAINING/ESTIMATE/N/V)
+bleibt die eigene, bereits etablierte Methode, um Quellenqualität
+transparent zu machen.
+
 ### Watchlist-System (2026-08-28, von Brian gefordert)
 
 Zusätzlich zum eigentlichen Depot führt der Agent eine eigenständige
