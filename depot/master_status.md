@@ -11,11 +11,30 @@ Begründung/Historie einer einzelnen Position bleiben
 `depot/kategorisierung.md`, `watchlist.md` etc. maßgeblich. Wird am Ende
 jedes `taeglicher-trigger-check`- und `wochenfazit`-Laufs aktualisiert.
 
-**Zuletzt aktualisiert:** 2026-09-07 (automatisierte Portfolio-Lücken-
-Kandidatensuche: Talent-Slot-Trigger ausgelöst, Jack+Conan gezielt befragt,
+**Zuletzt aktualisiert:** 2026-09-07 ~15:00 UTC (regulärer
+`taeglicher-trigger-check`-Folgelauf, ersetzt einen abgebrochenen Versuch
+desselben Tages ~22:55 UTC, der ohne Commit/E-Mail endete, siehe
+`depot/bridge_status.md`). Frühere 2026-09-07-Aktivität desselben Tages
+bereits committet (Commit e603bbd): automatisierte Portfolio-Lücken-
+Kandidatensuche, Talent-Slot-Trigger ausgelöst, Jack+Conan gezielt befragt,
 BONESUPPORT Holding AB nach vollem 3-fach-Quick-Filter in die Watchlist
-aufgenommen, ersetzt Rorze – siehe Abschnitt 4 + 8) – nächste reguläre
-Aktualisierung beim nächsten `taeglicher-trigger-check`-Lauf.
+aufgenommen, ersetzt Rorze (siehe Abschnitt 4 + 8). **In diesem Folgelauf:**
+Scalable-Capital-MCP-Verbindung war wieder funktionsfähig (`ping` → pong,
+der zuvor gemeldete "needs to reconnect"-Zustand war offenbar transient/
+zwischenzeitlich vom Nutzer behoben) – Depot-Live-Scan, Cash-Stand
+(460,33 € Kaufkraft/Cash, nach Ausführung der monatlichen ETF-Sparplanrate),
+Kuchendiagramm (Stand 07.09., Gesamtwert ~34.992,90 €) und
+Transaktions-Erkennung nachgeholt: 1 neue Transaktion seit Checkpoint
+(Vanguard-FTSE-All-World-Sparplanausführung, 599,9999 €, 07.09.), als
+routinemäßig gewertet, kein 3-fach-Cross-Check-Anlass. Jack/Conan-Bridges
+heute grundsätzlich erreichbar (ToolSearch erfolgreich), aber nicht
+eingesetzt, da kein Trigger vorlag. Watchlist-Tages-Ampel/Markt-Makro-
+Kontext/Kandidaten-Scan für 2026-09-07 bereits durch den früheren Lauf
+desselben Tages abgedeckt, nicht erneut dupliziert. Offene-Empfehlungen-
+Erinnerung (Kraken Robotics, Rambus, seit 2026-09-01 unverändert, 5+
+Werktage) heute per E-Mail ausgelöst (siehe Abschnitt 4). Earnings-Kalender
+geprüft: kein Termin für heute fällig. Pending-3fach-Queue: leer. – nächste
+reguläre Aktualisierung beim nächsten `taeglicher-trigger-check`-Lauf.
 
 ---
 
@@ -201,16 +220,18 @@ Quelle: `depot/bridge_status.md` (Log) + `list_scheduled_tasks` (Live-Stand).
 
 | Task | Letzter Lauf | Nächster Lauf |
 |---|---|---|
-| taeglicher-trigger-check | 2026-09-05 (regulärer Lauf, Bridges FAIL/nicht auffindbar, Jarvis-Only, keine Trigger ausgelöst) | täglich ~21:03 lokale Zeit |
+| taeglicher-trigger-check | 2026-09-07 ~15:00 UTC (regulärer Folgelauf, Scalable-Capital wieder erreichbar, Bridges erreichbar aber nicht benötigt, keine inhaltlichen Trigger ausgelöst) | täglich ~21:03 lokale Zeit |
 | blitz-scan | 2026-09-04 ~16:15 UTC (Bridges FAIL, Jarvis-Only) | stündlich |
 | wochenfazit | noch nicht gelaufen | Freitag, ~22:03 lokale Zeit |
 | monatsrecap | noch nicht gelaufen | 28.-31. des Monats |
 
 ## 10. Cash-Stand (nur Scalable Capital, live abrufbar)
 
-Verfügbare Kaufkraft: 460,33 € (Stand 2026-09-05, Cash-Bestand 1.060,33 €,
-unverändert ggü. 04.09., teilweise durch ETF-Sparplan gebunden). Für die
-drei manuellen Broker (finanzen.net zero, Trade Republic, Smartbroker+)
-kein Live-Zugriff – siehe jeweilige `depot/*.md`-Datei für den zuletzt
-gemeldeten Stand. Gesamtportfoliowert (alle 4 Broker inkl. Cash+Gold,
-siehe `reports/portfolio_pie_2026-09-05.png`): ~35.041 €.
+Stand 2026-09-07 ~15:00 UTC (live verifiziert): verfügbare Kaufkraft/
+Cash-Bestand 460,33 € (Rückgang ggü. 05.09. durch Ausführung der
+monatlichen 600-€-ETF-Sparplanrate am 07.09.). Für die drei manuellen
+Broker (finanzen.net zero, Trade Republic, Smartbroker+) kein Live-Zugriff
+– siehe jeweilige `depot/*.md`-Datei für den zuletzt gemeldeten Stand.
+Gesamtportfoliowert (alle 4 Broker inkl. Cash+Gold, Scalable-Anteil live,
+übrige Broker Stand 05.09., siehe `reports/portfolio_pie_2026-09-07.png`):
+~34.993 €.

@@ -7,7 +7,7 @@ Scalable Capital. Bei jedem Lauf wird `list_portfolio_transactions` mit
 letzten Lauf zu erkennen (siehe Agent-Playbook.md, Abschnitt "Täglicher
 Trigger-Check" → "Depot-Transaktions-Erkennung").
 
-Zuletzt gesehene Transaktion (lastEventAt, ISO-8601 UTC): 2026-09-05T20:14:00.000Z
+Zuletzt gesehene Transaktion (lastEventAt, ISO-8601 UTC): 2026-09-07T10:55:33.757Z
 
 Lauf 2026-09-05 (regulärer taeglicher Lauf, ca. 20:14 UTC): keine neuen
 Security-Transaktionen seit letztem Checkpoint (list_portfolio_transactions
@@ -40,3 +40,18 @@ nicht die gesamte bisherige Historie als "neu" meldet.
 
 Format bei Aktualisierung: nur die Zeile "Zuletzt gesehene Transaktion: ..."
 ersetzen, restlichen Text als Dokumentation stehen lassen oder kürzen.
+
+Lauf 2026-09-06/07 ~22:55 UTC (vorheriger Versuch desselben Tages): Scalable-
+Capital-MCP-Verbindung war zu diesem Zeitpunkt invalidiert ("needs to
+reconnect", `ping`/`get_portfolio_overview`/`get_portfolio_cash_breakdown`
+schlugen fehl) - `list_portfolio_transactions` konnte NICHT aufgerufen
+werden, Checkpoint bewusst nicht vorgezogen, Lauf endete ohne Commit/E-Mail.
+
+Lauf 2026-09-07 (Folgelauf, ~15:00 UTC): Scalable-Capital-Verbindung war
+diesmal wieder funktionsfähig (`ping` → pong). `list_portfolio_transactions`
+mit fromTime=2026-09-05T20:14:00.000Z → 1 Treffer: Vanguard FTSE All-World
+(Acc), IE00BK5BQT80, SAVINGS_PLAN BUY, -599,9999 EUR, 2026-09-07T10:55:33.757Z.
+Als routinemäßige monatliche ETF-Sparplanausführung des Kern-ETF gewertet,
+nicht als diskretionäre Einzelwert-Transaktion mit Thesen-Prüfungsbedarf -
+daher KEIN 3-fach-Cross-Check ausgelöst (kein handlungsrelevanter Anlass).
+Checkpoint auf diesen Transaktionszeitpunkt vorgezogen.
