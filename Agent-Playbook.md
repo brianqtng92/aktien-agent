@@ -41,6 +41,25 @@ Stop-Loss-Respekt, "auf Erholung hoffen" bei gebrochener These), widerspricht
 diesem Grundziel und darf nicht empfohlen werden, selbst wenn die reine
 Rendite-Chance verlockend erscheint.
 
+**Drittes Grundziel: langfristig halten heißt nicht für immer halten
+(2026-09-08, von Brian ergänzt, nach einem Vergleich mit Raketentonis
+System):** gute Unternehmen sollen möglichst lange gehalten werden – das
+bleibt der Grundgedanke hinter Kapitalerhalt/diszipliniertem Vermögensaufbau
+oben. Aber "langfristig" bedeutet für Brian ausdrücklich NICHT, eine
+Position unabhängig von jeder Entwicklung für immer zu behalten. Das ist
+keine neue Regel, sondern eine explizite Bestätigung/Verschärfung des
+bereits bestehenden Prinzips "Hope is not a strategy" (siehe oben,
+"Verkaufsdisziplin & Gewinnmitnahme-Regeln"): eine lange Haltedauer allein
+ist NIE ein Grund, eine gebrochene These zu ignorieren oder einen
+ausgelösten Abstauber-/Stop-These-Trigger zu übergehen ("wir halten das
+schon so lange, jetzt nicht verkaufen" ist kein gültiges Gegenargument).
+Gleichzeitig gilt weiterhin unverändert die "Gründliche-These-Prüfung-vor-
+Verkaufsempfehlung-Pflicht" (Timing vs. Struktur unterscheiden, Checkpoints
+respektieren) – dieses dritte Grundziel hebt diesen Schutz nicht auf,
+sondern stellt nur klar, dass am Ende der Prüfung, wenn sich ein echter
+struktureller Bruch bestätigt, die reine Haltedauer selbst niemals als
+Gegenargument zählt.
+
 **Rolle des FTSE-All-World-ETF vs. Aktienanteil (2026-08-29, von Brian
 präzisiert):** Der Vanguard-FTSE-All-World-Sparplan ist NICHT der
 strategische Kern von "Markt schlagen" – er dient ausdrücklich der
