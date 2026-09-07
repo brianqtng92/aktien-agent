@@ -98,3 +98,9 @@ BEOBACHTEN-SPEKULATIV, siehe
 die übrigen 7 Kandidaten NICHT durch den vollen 3-fach-Check gelaufen
 (Zeit-/Kostenpriorität auf den stärksten Kandidaten) – bleiben als Backlog
 für einen künftigen Lauf, kein Abschluss-Urteil.
+
+**2026-09-07 (taeglicher-trigger-check, Folgelauf 2, ~19:15 UTC):**
+Jack n.a. - kein Einsatz nötig, Conan n.a. - kein Einsatz nötig (kein
+Bridge-Einsatz in diesem Lauf, nur WebSearch für die tägliche
+Watchlist-News-Ampel). Zweiter Lauf desselben Tages nach dem ~17:00-UTC-
+Lauf (abab2f3) - kein neuer Anlass, Bestätigungsmail verschickt.

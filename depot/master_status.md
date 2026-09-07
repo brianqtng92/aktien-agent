@@ -11,6 +11,18 @@ Begründung/Historie einer einzelnen Position bleiben
 `depot/kategorisierung.md`, `watchlist.md` etc. maßgeblich. Wird am Ende
 jedes `taeglicher-trigger-check`- und `wochenfazit`-Laufs aktualisiert.
 
+**Nachtrag 2026-09-07 ~19:15 UTC (taeglicher-trigger-check, Folgelauf 2):**
+zweiter Trigger-Check-Lauf desselben Tages (nach abab2f3, ~17:00 UTC) -
+neue Hermes-Cron-Automatisierung feuert den Task offenbar mehrfach am
+selben Tag, wie am 2026-09-04 bereits einmal beobachtet, Ursache weiterhin
+ungeklärt. Inhaltlich nichts Neues: `list_portfolio_transactions` seit dem
+Checkpoint (07.09. 10:55 UTC) liefert nur die bereits verarbeitete
+Sparplanrate, Checkpoint unverändert. Zusätzlich zum vorherigen Lauf: alle
+30 Watchlist-Werte per gebündelter Websuche auf News-Ampel geprüft (Punkt
+3B) - keine neuen 🔴/🟡-Funde, bestehende Flags (MPWR/WSO/SYK) unverändert.
+Kraken/Rambus-Erinnerung nicht erneut nötig (bereits heute im Vorlauf
+erinnert). Bestätigungsmail verschickt (Message-ID 1a07d4722696b7ea).
+
 **Zuletzt aktualisiert:** 2026-09-07 ~17:15 lokale Zeit (`wochenfazit`-Lauf,
 ersetzt den entfernten nativen Scheduled-Task-Eintrag 1:1 – Automatisierung
 läuft seither über Hermes-Cron). Deckt bewusst nur ein **verkürztes
