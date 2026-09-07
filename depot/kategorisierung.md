@@ -164,6 +164,17 @@ methodisch korrekt, keine Bewertungslücke.
 | Rocket Lab USA | 🔴 KEIN NACHKAUF – ÜBERBEWERTET – unprofitabel (kein KGV berechenbar), Marktkap preist bereits deutliches künftiges Wachstum ein, ohne dass die Ertragslage das aktuell stützt – eigene Einordnung: Bewertung sportlich. **MoS-Hinweis:** bereits -61% vom Jahreshoch, historisch bis zu -70% Drawdown (2022) und im Schnitt -37% je Schock über 5 Marktphasen – auch nach Korrektur bleibt die Bewertung angespannt. **Nachkauf-Aufstufungs-Trigger (2026-09-04, auf Brians Bitte hinterlegt – mind. 2 von 3 fundamental für ein Aufstufungssignal, Technik nur als Bestätigung, nie als eigenständiger Auslöser):** (1) **Neutron erfolgreicher Erstflug** (Pad-Delivery weiter Q4 2026 geplant, Zeitfenster für Start noch 2026 laut Unternehmen selbst "eng" – das ist der von Rocket Lab selbst genannte Auslöser für die EBITDA-Wende); (2) **Verwässerungstempo verlangsamt sich** – aktuell real und beschleunigend (Aktien im Umlauf 2023 ~482 Mio → Mitte 2026 ~598 Mio, davon 1,53 Mrd. USD allein aus ATM-Emissionen in H1/2026) – Trigger erfüllt, wenn 2 aufeinanderfolgende Quartale ohne neues großvolumiges ATM-Programm vergehen ODER Management explizit Selbstfinanzierung ohne weitere Aktienausgabe in Aussicht stellt; (3) **Burn-Multiple <2,5x UND Cash-Runway ≥18 Monate** wieder erfüllt (beide waren im frischen Scout-Check vom 04.09. die ausschlaggebenden K-Kriterien für den Terminal-State) – nächster Prüfpunkt Q3-Zahlen (Guidance: Umsatz $250-265 Mio, Adj.-EBITDA-Verlust $17-23 Mio, damit erstmals grob quantifiziert prüfbar). **Technischer Kontext (Stand 03.09., NUR Bestätigung, kein eigenständiger Trigger):** Kurs $63,81 bereits unter 50D-SMA ($75,24) UND 200D-SMA ($79,37), RSI(14) 36,1 (Richtung überverkauft, noch nicht dort) – "günstig" laut Chart, aber ohne erfüllte fundamentale Trigger laut eigenem Antizyklik-Grundprinzip explizit KEIN Kaufgrund ("falling knife"-Risiko). Analysten-Konsens-Kursziele (GuruFocus/Zacks-artige Quellen, $80-116) nur als Rohdaten-Kontext, nicht als eigene Bewertung übernommen. | Wachstumsphase, historisch unprofitabel, kein Monopol – **aber #2 aktivster Launch-Anbieter der westlichen Welt nach SpaceX (21 Starts 2025), echte Nischenführerschaft im Smallsat-Dedicated-Launch-Segment (Brian, 04.09.: "2. größter Space Player") – Marktstellung-Kriterium für Profi erfüllt, Marge/Kapitaldisziplin-Kriterium noch nicht (siehe Verwässerung oben), daher vorerst weiter Talent, kein klarer Profi-Fall wie Cellebrite** |
 
 ## Änderungsprotokoll
+- 2026-09-07 (Wochenfazit-Folgelauf, verkürztes 3-Tage-Fenster seit dem
+  letzten Wochenfazit vom 04.09., ausgelöst durch die Reaktivierung der
+  Automatisierung über Hermes-Cron): keine Kategorie-Änderungen. CRV-Ampel-
+  Pflege für diesen Lauf bewusst NICHT vollständig neu hergeleitet – über
+  das Wochenende gab es keine neue US-Handelssession (US-Feiertag Labor
+  Day, 07.09.), und für mehrere Nicht-US-Positionen (Tokyo/Stockholm) ist
+  aktuell keine Live-Kursquelle verfügbar (Twelve-Data-Plan-Limit). Keine
+  neuen K-Kriterien-Verletzungen oder Trigger seit dem letzten vollen
+  Review bekannt (siehe tägliche Trigger-Check-Läufe der Woche, Commits
+  e603bbd/abab2f3) – Ampeln bleiben auf dem Stand vom 04.09. stehen, volle
+  Neubewertung folgt beim nächsten reguären Freitags-Wochenfazit.
 - 2026-09-03: Erstanlage dieser Datei. Korrektur von 4 Fehlzuordnungen aus
   dem Strategiespiegel-Report vom 02.09. (Allianz, Bank Central Asia,
   Rambus, Tristel – alle vorher fälschlich Talent statt Champions/Profi).

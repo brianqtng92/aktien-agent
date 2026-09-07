@@ -10,6 +10,10 @@ prüft diese Datei täglich auf heute fällige Termine.
 Werte recherchiert (Kraken Robotics als eine Zeile mit beiden Tickern
 PNG/KRKNF). Wo keine belastbare Quelle einen konkreten Termin lieferte,
 steht "n/v" statt eines geratenen Datums (No-False-Precision-Prinzip).
+**Update 2026-09-07 (Wochenfazit-Folgelauf):** Rorze-Zeile entfernt (aus
+Watchlist ausgeschlossen, ersetzt durch BONESUPPORT, siehe watchlist.md) –
+BONESUPPORT-Zeile neu ergänzt (Q3-Termin 22.10.2026, investing.com-
+Aggregator, "erwartet" nicht "bestätigt").
 
 | Ticker | Firma | Depot/Watchlist | Nächster erwarteter Termin | Status | Zuletzt recherchiert |
 |---|---|---|---|---|---|
@@ -58,4 +62,4 @@ steht "n/v" statt eines geratenen Datums (No-False-Precision-Prinzip).
 | SKWD | Skyward Specialty Insurance | Watchlist | 2026-11-04 | bestätigt | 2026-09-04 |
 | PLTR | Palantir Technologies | Watchlist | 2026-11-09 | erwartet | 2026-09-04 |
 | INOD | Innodata | Watchlist | 2026-11-05 | erwartet | 2026-09-04 |
-| 6323.T | Rorze Corp | Watchlist | n/v | n/v | 2026-09-04 |
+| BONEX.ST | BONESUPPORT Holding AB | Watchlist | 2026-10-22 | erwartet | 2026-09-07 |

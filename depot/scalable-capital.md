@@ -17,25 +17,24 @@ bewusst außerhalb der Champions/Profi/Talent-Struktur (siehe unten).
 
 **Update 2026-08-30: Live-Anbindung über Scalable MCP aktiv (siehe
 Agent-Playbook.md, "Broker-Anbindung Scalable Capital").** Ab jetzt read-only
-Live-Daten statt manueller Screenshot-Erfassung – Zuletzt live abgeglichen:
-2026-08-30 (Kurse vom Handelsschluss 28.08.2026, Inventar-Stand 30.08.2026).
+Live-Daten statt manueller Screenshot-Erfassung.
+
+**Update 2026-09-07 (Wochenfazit-Folgelauf, live):** monatliche
+600-€-ETF-Sparplanrate wurde am 07.09. ausgeführt (siehe
+`depot/last_transaction_check.md`), Kaufkraft dadurch entsprechend gesunken.
 
 | Position | Wert aktuell | Kaufwert | Gewinn/Verlust | Kurs/Stück | Kurs bei Kauf | Anteile | Sparplan |
 |---|---|---|---|---|---|---|---|
-| Boerse Stuttgart EUWAX Gold II | 505,50 € | 532,58 € | -27,08 € (-5,08 %) | 126,37 € | 138,21 € | 4 | kein Sparplan |
-| Bank Central Asia | 1.954,07 € | 1.999,94 € | -45,87 € (-2,29 %) | 0,316 € | 0,32 € | 6.183,767567 | GESTOPPT (seit 2026-08-28) |
-| Vanguard FTSE All-World (Acc) | 7.585,00 € | 6.153,40 € | +1.431,60 € (+23,27 %) | 167,75 € | 136,09 € | 45,216082 | 600 €/Monat, nächste Ausführung 07.09.2026 |
+| Boerse Stuttgart EUWAX Gold II | 498,40 € | 532,58 € | -34,18 € (-6,42 %) | 124,57 € | 138,21 € | 4 | kein Sparplan |
+| Bank Central Asia | 2.003,54 € | 1.999,94 € | +3,60 € (+0,18 %) | 0,323 € | 0,32 € | 6.183,767567 | GESTOPPT (seit 2026-08-28) |
+| Vanguard FTSE All-World (Acc) | 8.186,86 € | 6.753,40 € | +1.433,46 € (+21,23 %) | 167,73 € | 136,09 € | 48,786235 | 600 €/Monat, nächste Ausführung ca. 07.10.2026 |
 
-**Cash/Verrechnungskonto (live):** 1.047,14 € (Kaufkraft identisch, keine offenen
-Kredite/Orders). Weicht vom zuletzt in Agent-Playbook.md notierten Stand
-(447,14 € Korrektur-Reserve, Stand 29.08.2026) um +600 € ab – plausibel die
-noch nicht abgebuchte Sparrate vor der nächsten Sparplan-Ausführung, aber
-nicht abschließend rekonstruiert; Agent-Playbook.md "Budget & Cashflow" bei
-Gelegenheit mit diesem Live-Wert abgleichen.
+**Cash/Verrechnungskonto (live, Stand 07.09.2026 ~15:00 UTC):** 460,33 €
+(Kaufkraft identisch, keine offenen Kredite/Orders) – Rückgang ggü. dem
+letzten Stand durch die am 07.09. ausgeführte Sparplanrate.
 
-**Gesamtwert Scalable Capital (live): 11.091,71 €** (Wertpapiere 10.044,57 € +
-Cash 1.047,14 €) – korrigiert den bisher angenommenen Stand von 9.451,34 €,
-der die Gold-Position komplett nicht kannte und leicht ältere Kurse nutzte.
+**Gesamtwert Scalable Capital (live, Stand 07.09.2026): 11.149,13 €**
+(Wertpapiere 10.688,80 € + Cash 460,33 €).
 
 **NEU entdeckt über die Live-Anbindung: Boerse Stuttgart EUWAX Gold II**
 (physisches Gold-ETC, 4 Stück, Kauf 30.01.2026 @ 138,21€). War in keiner

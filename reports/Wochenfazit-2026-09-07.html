@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><title>Reaper Wochenreport</title>
+<style>@page { size:A4; margin:0; }
+:root {
+  --bg: #1A1C1F; --bg-panel: #232629; --bg-panel-2: #2A2D31;
+  --border: #3A3E43; --border-soft: #303337;
+  --text: #EDE8DF; --text-dim: #A39B8E; --text-faint: #6E6860;
+  --gold: #C6922C; --gold-bright: #E0B24E; --gold-dim: #7A5F24;
+  --green: #5C9A5F; --green-bg: rgba(92,154,95,0.14);
+  --yellow: #DDB13B; --yellow-bg: rgba(221,177,59,0.14);
+  --orange: #C9823D; --orange-bg: rgba(201,130,61,0.16);
+  --red: #BC4F41; --red-bg: rgba(188,79,65,0.16);
+}
+* { box-sizing: border-box; margin:0; padding:0; }
+html, body { background: var(--bg); color: var(--text); font-family:"Carlito","DejaVu Sans",Arial,sans-serif; font-size:9.6pt; line-height:1.4; }
+.display { font-family:"DejaVu Sans Condensed","DejaVu Sans",Arial,sans-serif; font-weight:700; }
+.page { width:210mm; height:297mm; padding:11mm 13mm 8mm 13mm; display:flex; flex-direction:column; gap:3.6mm; page-break-after: always; }
+.page:last-child { page-break-after: auto; }
+.masthead { display:flex; justify-content:space-between; align-items:flex-end; border-bottom:2px solid var(--gold); padding-bottom:3mm; }
+.brand { font-size:24pt; letter-spacing:0.05em; }
+.brand .accent { color: var(--gold-bright); }
+.brand-sub { font-size:7.8pt; letter-spacing:0.13em; text-transform:uppercase; color:var(--text-dim); margin-top:0.6mm; }
+.meta { text-align:right; font-size:8pt; color:var(--text-dim); }
+.meta .big { color:var(--text); font-size:10pt; }
+.section-title { font-size:11pt; letter-spacing:0.03em; color:var(--gold-bright); margin-bottom:1mm; }
+.section-label { font-size:7.4pt; letter-spacing:0.13em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:2.5mm; }
+.section-label::after { content:""; flex:1; height:1px; background:var(--border-soft); }
+.ampel-box { display:flex; gap:4mm; align-items:center; background:var(--bg-panel); border:1px solid var(--border-soft); border-left:4px solid var(--yellow); border-radius:3px; padding:4mm 5mm; }
+.ampel-dot { width:9mm; height:9mm; border-radius:50%; background:var(--yellow); flex-shrink:0; box-shadow:0 0 10px rgba(221,177,59,0.5); }
+.ampel-text .status { font-size:14pt; }
+.ampel-text .sub { font-size:8.4pt; color:var(--text-dim); margin-top:1mm; }
+.cat-grid { display:flex; gap:3mm; }
+.cat-grid.g5 > .cat-card { flex:1; }
+.cat-card { flex:1; background:var(--bg-panel); border:1px solid var(--border-soft); border-radius:3px; padding:3mm 4mm; }
+.cat-card .name { font-size:10pt; color:var(--gold-bright); }
+.cat-card .fill { font-size:16pt; margin-top:1mm; }
+.cat-card .fill .target { font-size:8pt; color:var(--text-faint); }
+.cat-card .note { font-size:7.2pt; color:var(--text-dim); margin-top:1mm; }
+.bar-track { height:2.4mm; border-radius:2px; background:var(--border-soft); margin-top:1.6mm; overflow:hidden; }
+.bar-fill { height:100%; border-radius:2px; }
+table.ranks { width:100%; border-collapse:collapse; font-size:8pt; }
+table.ranks th { text-align:left; text-transform:uppercase; letter-spacing:0.05em; font-size:6.8pt; color:var(--text-faint); border-bottom:1px solid var(--border-soft); padding:1.6mm 2mm; }
+table.ranks td { padding:1.4mm 2mm; border-bottom:1px solid var(--border-soft); vertical-align:top; }
+table.ranks tr:last-child td { border-bottom:none; }
+.pill { display:inline-block; padding:0.5mm 2.2mm; border-radius:8px; font-size:6.8pt; letter-spacing:0.03em; text-transform:uppercase; }
+.pill.green { background:var(--green-bg); color:var(--green); border:1px solid var(--green); }
+.pill.yellow { background:var(--yellow-bg); color:var(--yellow); border:1px solid var(--yellow); }
+.pill.orange { background:var(--orange-bg); color:var(--orange); border:1px solid var(--orange); }
+.pill.red { background:var(--red-bg); color:var(--red); border:1px solid var(--red); }
+.tick { color:var(--text-faint); font-size:7.4pt; }
+.box { background:var(--bg-panel); border:1px solid var(--border-soft); border-radius:3px; padding:3mm 4mm; }
+.box h3 { font-size:8.6pt; text-transform:uppercase; letter-spacing:0.06em; color:var(--gold); margin-bottom:1.4mm; }
+.box p { font-size:8pt; color:var(--text-dim); line-height:1.42; }
+.box p b { color:var(--text); }
+.event-list { display:flex; flex-direction:column; gap:2.4mm; }
+.event { display:flex; gap:3mm; background:var(--bg-panel); border:1px solid var(--border-soft); border-radius:3px; padding:2.6mm 3.5mm; }
+.event .tag { flex:0 0 24mm; font-size:8.6pt; }
+.event .tag .t { display:block; font-size:6.4pt; color:var(--text-faint); text-transform:uppercase; }
+.event .body { flex:1; font-size:7.9pt; color:var(--text-dim); line-height:1.4; }
+.event .body b { color:var(--text); }
+.cash-line { border:1px solid var(--gold-dim); border-radius:3px; padding:3.4mm 4mm; background:linear-gradient(135deg,var(--bg-panel-2),var(--bg-panel)); }
+.cash-line .h { color:var(--gold-bright); font-size:9.4pt; margin-bottom:1mm; }
+.cash-line p { font-size:8.4pt; color:var(--text); }
+.footer { display:flex; justify-content:space-between; border-top:1px solid var(--border-soft); padding-top:1.6mm; font-size:6.2pt; color:var(--text-faint); margin-top:auto; }
+.imgbox { text-align:center; }
+.imgbox img { max-width:100%; max-height:78mm; border:1px solid var(--border-soft); border-radius:3px; background:#fff; }
+.imgbox .cap { font-size:7.4pt; color:var(--text-dim); margin-top:1mm; }
+.chart-grid { display:grid; grid-template-columns:1fr 1fr; gap:3mm; }
+.src-list { font-size:7.6pt; color:var(--text-dim); line-height:1.7; }
+table.simple { width:100%; border-collapse:collapse; font-size:7.8pt; }
+table.simple th { text-align:left; text-transform:uppercase; letter-spacing:0.04em; font-size:6.6pt; color:var(--text-faint); border-bottom:1px solid var(--border-soft); padding:1.6mm 2mm; }
+table.simple td { padding:1.4mm 2mm; border-bottom:1px solid var(--border-soft); color:var(--text-dim); }
+table.simple td b { color:var(--text); }
+.up { color:var(--green); } .down { color:var(--red); }
+</style></head>
+<body>
+
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">REAPER <span class="accent">WOCHENREPORT</span></div>
+      <div class="brand-sub">3-KI Cross-Check &middot; Jarvis &middot; Conan &middot; Jack</div>
+    </div>
+    <div class="meta">
+      <div class="big">Woche zum 7. September 2026</div>
+      <div>Gesamtdepot &middot; 18 Einzelwerte + Vanguard-FTSE-All-World-Sparplan + Gold-ETC</div>
+    </div>
+  </div>
+
+  <div class="box" style="border-left:3px solid var(--gold);">
+    <h3>Hinweis zu diesem Lauf</h3>
+    <p>Der native Scheduled-Task-Eintrag für dieses Wochenfazit wurde am 07.09.2026 bewusst entfernt, weil die Automatisierung jetzt vollständig über Hermes-Cron läuft &mdash; dieser Lauf ist die neue, autorisierte Ausführung und deckt das <b>verkürzte 3-Tage-Fenster seit dem letzten Wochenfazit (04.09.2026)</b> ab, nicht eine volle Kalenderwoche. Am 07.09. war zudem US-Feiertag (Labor Day) &mdash; keine neue US-/kanadische Handelssession, entsprechend wenig Kursbewegung bei der Mehrheit der Positionen.</p>
+  </div>
+
+  <div class="section-label">Depotstatus</div>
+  <div class="ampel-box">
+    <div class="ampel-dot"></div>
+    <div class="ampel-text">
+      <div class="status display">BEOBACHTEN &mdash; kein akuter Handlungsbedarf</div>
+      <div class="sub">Depotwert 34.992,90&nbsp;€ (-0,12% ggü. Baseline 30.08., praktisch unverändert ggü. 04.09.). Ruhige drei Tage: keine neuen 🔴-Ausschlüsse, keine neue Kauf-/Verkaufsempfehlung, keine Kategorie-Änderung. Einzige inhaltliche Bewegung: BONESUPPORT (Talent) ersetzt Rorze in der Watchlist (automatisierte Portfolio-Lücken-Suche, siehe Seite 2). Die bereits bekannten strukturellen Punkte (ETF-Anteil unter 50%, Finanzwesen-/Rest-Sektor über Zielband) bleiben unverändert im Blick, siehe Portfolio-Regel-Check, Seite 4.</div>
+    </div>
+  </div>
+
+  <div class="section-label">Kategorie-Füllstand (Depot-Ziel-Struktur &bdquo;10-7-3&ldquo;)</div>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <div class="name display">CHAMPIONS</div>
+      <div class="fill display">10 <span class="target">/ Ziel 10</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--green);"></div></div>
+      <div class="note">Exakt auf Ziel, unverändert seit 04.09.</div>
+    </div>
+    <div class="cat-card">
+      <div class="name display">PROFI</div>
+      <div class="fill display">7 <span class="target">/ Ziel 7</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--green);"></div></div>
+      <div class="note">Exakt auf Ziel, unverändert seit 04.09.</div>
+    </div>
+    <div class="cat-card">
+      <div class="name display">TALENT</div>
+      <div class="fill display">1 <span class="target">/ Ziel 3</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:33%; background:var(--yellow);"></div></div>
+      <div class="note">2 Slots weiterhin frei (nur Rocket Lab). Watchlist-Talent-Slot wurde diese Woche mit BONESUPPORT neu besetzt &mdash; Depot-Slot bleibt offen, kein Kandidat wird nur zur Lückenfüllung gekauft.</div>
+    </div>
+  </div>
+
+  <div class="section-label">Kernzahlen dieser drei Tage</div>
+  <div class="cat-grid">
+    <div class="cat-card"><div class="name">Depotwert</div><div class="fill display" style="color:var(--text);">34.992,90&nbsp;€</div><div class="note">-0,12% ggü. Baseline (30.08.). S&amp;P 500/Nasdaq 100 unverändert (US-Feiertag), MSCI World Proxy -0,19%.</div></div>
+    <div class="cat-card"><div class="name">Watchlist</div><div class="fill display" style="color:var(--gold-bright);">30 Werte</div><div class="note">17 Champions / 10 Profi / 3 Talent, Zahl unverändert &mdash; Rorze raus, BONESUPPORT rein (Talent).</div></div>
+    <div class="cat-card"><div class="name">Neue Ausschlüsse</div><div class="fill display" style="color:var(--yellow);">1 (Watchlist)</div><div class="note">Rorze (Ersatz, kein Notfall-Ausschluss) &mdash; siehe Ausschluss-Archiv watchlist.md. Depot-Ausschluss-Archiv weiterhin leer.</div></div>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 1</div>
+    <div>Regelwerk TMR v11.8 / Scout v1.12</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:16pt;">AUFFÄLLIGKEITEN <span class="accent">DER LETZTEN 3 TAGE</span></div>
+    <div class="brand-sub">Verdichtet aus den täglichen Trigger-Check-Läufen seit dem 04.09.2026</div></div>
+  </div>
+
+  <div class="event-list">
+    <div class="event">
+      <div class="tag"><span class="t">Watchlist</span><b class="display">BONESUPPORT</b><br><span class="pill green">Neu (Talent)</span></div>
+      <div class="body">Automatisierte Portfolio-Lücken-Kandidatensuche (Talent-Slot 1/3, Region Europa/UK + Sektor Gesundheitswesen unterbesetzt) fand über Conans eigene Vorfilter-Suche BONESUPPORT Holding AB (BONEX, Stockholm) &mdash; bestand Identity-/Strategie-Fit-/Duplikations-Gate und danach den vollen 3-fach-Quick-Filter einstimmig mit <b>BEOBACHTEN-STARK</b> (Jarvis, Jack/Gemini Scout 7/10 Moat 4/4, Conan/ChatGPT Scout 7,7/10 Moat 4/4). CERAMENT G ist das erste FDA-De-Novo-zugelassene antibiotika-eluierende Knochentransplantat, Bruttomarge seit 2+ Jahren stabil &gt;90%, operativer Cashflow durchgehend positiv. <b>Ersetzt Rorze</b> (schwächster Talent-Wert, war bereits am 04.09. durch einen vollen 3-fach-Scout-Check gefallen) &mdash; Watchlist steht an ihrer festen Obergrenze (30), daher Ersatz statt reiner Ergänzung.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">Infrastruktur</span><b class="display">Scalable-MCP</b><br><span class="pill yellow">Kurzausfall behoben</span></div>
+      <div class="body">Ein Trigger-Check-Versuch in der Nacht 06./07.09. (~22:55 UTC) scheiterte an einer invalidierten Scalable-Capital-Verbindung (<code>ping</code>/<code>get_portfolio_overview</code> schlugen fehl) und brach vor Commit/E-Mail ab &mdash; keine fehlerhafte Mail wurde verschickt (das ursprünglich fälschlich vermerkte Gegenteil wurde im Log korrigiert). Der Folgelauf am 07.09. ~15:00 UTC fand die Verbindung wieder funktionsfähig vor (transient/vom Nutzer behoben) und holte Depot-Scan, Cash-Stand, Kuchendiagramm und Transaktions-Check nach.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">Depot</span><b class="display">Transaktion erkannt</b><br><span class="pill green">Routine</span></div>
+      <div class="body">1 neue Scalable-Transaktion seit letztem Checkpoint: Vanguard FTSE All-World (Acc), SAVINGS_PLAN BUY, -599,9999&nbsp;€, 07.09.2026. Als routinemäßige monatliche ETF-Sparplanausführung des Kern-ETF gewertet, kein diskretionärer Einzelwert-Kauf &mdash; daher kein 3-fach-Cross-Check-Anlass. ETF-Anteil dadurch von 21,7% auf 23,4% des Gesamtportfolios gestiegen (siehe Seite 4).</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">Erinnerung</span><b class="display">KRKN / RMBS</b><br><span class="pill yellow">5+ Werktage offen</span></div>
+      <div class="body">Die offenen Nachkauf-Zonen für Kraken Robotics (&le;2,80 CAD) und Rambus (&le;65 USD) stehen seit 01.09.2026 unverändert offen (5+ Werktage) &mdash; turnusmäßige Erinnerung per Chat + E-Mail am 07.09. ausgelöst (siehe <code>depot/offene_empfehlungen.md</code>). Beide Kurse liegen weiterhin deutlich über der jeweiligen Zone, keine Handlung erforderlich, reine Erinnerungspflicht.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">Regelwerk</span><b class="display">Keine neuen Regeln</b><br><span class="pill green">Stabil</span></div>
+      <div class="body">Anders als in den Vorwochen wurden in diesen drei Tagen keine neuen Prozess-/Regelwerks-Ergänzungen nötig &mdash; die Woche war operativ ruhig (kein Trigger, keine Kategorie-Fehlzuordnung, kein Bridge-Dauerausfall).</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 2</div>
+    <div>Quelle: depot/bridge_status.md, depot/last_transaction_check.md, watchlist.md, Git-Historie seit 04.09.</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:16pt;">WATCHLIST-UPDATE</div>
+    <div class="brand-sub">30 Werte &middot; Champions/Profi/Talent-Logik wie im Depot &middot; volle Liste in watchlist.md</div></div>
+    <div class="meta"><div class="big">17 / 10 / 3</div></div>
+  </div>
+
+  <div class="box">
+    <h3>Zusammenfassung dieser drei Tage</h3>
+    <p>Ein Wechsel: <b>Rorze (6323, Tokyo) raus &rarr; BONESUPPORT Holding AB (BONEX, Stockholm) rein</b>, beide Talent-Kategorie, Gesamtzahl (30) und Kategorie-Verteilung (17/10/3) unverändert. Kein weiterer Auf-/Abgang. CRV-Ampeln wurden für diesen kurzen Zeitraum NICHT vollständig neu hergeleitet &mdash; keine neue US-Handelssession (Feiertag) und für mehrere Nicht-US-Werte (Tokyo/Stockholm) fehlt aktuell eine tagesaktuelle Live-Kursquelle. Keine der zuletzt (04.09.) hergeleiteten Bewertungen wurde durch bekannt gewordene News infrage gestellt &mdash; volle Neubewertung folgt beim nächsten regulären Freitags-Wochenfazit.</p>
+  </div>
+
+  <div class="box">
+    <h3>Qualitäts-Upgrade-Fund dieser Woche</h3>
+    <p>BONESUPPORT wird explizit als stärkstes Profil des bisherigen Talent-Trios geführt (stabile &gt;90%-Bruttomarge, positiver operativer Cashflow, FDA-De-Novo-Moat) &mdash; kein "möglicher Qualitäts-Upgrade ggü. bestehendem Wert"-Vermerk im engeren Sinne, da es Rorze direkt ersetzt (Struktur-Ersatz), aber inhaltlich ein klar stärkeres Profil als der bisherige schwächste Talent-Wert.</p>
+  </div>
+
+  <div class="section-label">Talent (3) &mdash; CRV-Ampel (Stand 04.09./07.09.)</div>
+  <table class="simple">
+    <tr><th>Ticker</th><th>Firma</th><th>CRV</th><th>Kurznotiz</th></tr>
+    <tr><td><b>PLTR</b></td><td>Palantir</td><td><span class="pill red">MEIDEN</span></td><td>Forward-KGV 98-176x, extreme Bewertung trotz operativ verbesserter Story. Unverändert.</td></tr>
+    <tr><td><b>INOD</b></td><td>Innodata</td><td><span class="pill yellow">BEOBACHTEN</span></td><td>KGV 52,5x vs. Branchen-Ø 23,3x, starkes Momentum (+86% YTD). Unverändert.</td></tr>
+    <tr><td><b>BONEX</b></td><td>BONESUPPORT Holding AB</td><td><span class="pill yellow">BEOBACHTEN</span></td><td>EV/Sales LTM ~9-11x, kein Schnäppchen trotz starker operativer Kennzahlen. FDA-Entscheidung CERAMENT-V auf Oktober 2026 verschoben &mdash; nächster Q3-Termin 22.10.2026.</td></tr>
+  </table>
+
+  <div class="section-label">Ausschluss-Archiv</div>
+  <div class="box"><p><b>6323 Rorze Corp. (Ausschluss: 07.09.2026)</b> &mdash; Kategorie zum Zeitpunkt: Talent. Grund: Ersetzt im Rahmen der automatisierten Portfolio-Lücken-Kandidatensuche (Watchlist an fester Obergrenze) &mdash; Rorze war bereits am 04.09. durch einen vollen 3-fach-Scout-Quick-Filter gefallen (Moat nur 2/4, Jahresgewinn -19% bei Marktkap +137%). Kein Fraud-/Bilanz-Red-Flag, kein Delisting &mdash; reiner Qualitäts-/Struktur-Ersatz. Letzter CRV-Stand vor Ausschluss: 🔴 MEIDEN/ÜBERBEWERTET.</p></div>
+
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 3</div>
+    <div>Vollständige Liste inkl. Kurzthesen: watchlist.md</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:16pt;">PORTFOLIO-REGEL-CHECK</div>
+    <div class="brand-sub">Regelverstöße klar benannt, kein Verstecken in der Kennzahlen-Tabelle</div></div>
+  </div>
+
+  <table class="simple">
+    <tr><th>Regel</th><th>Ziel</th><th>Ist</th><th>Status</th></tr>
+    <tr><td>Größte Einzelposition</td><td>≤10% (Ausnahme bis 12%)</td><td><b>SoFi Technologies 11,39%</b></td><td><span class="pill orange">GRENZWERTIG</span></td></tr>
+    <tr><td>Keine Position &lt;1%</td><td>&ge;1% (außer markierte Trace-Pos.)</td><td>kleinste: Rambus 1,25%</td><td><span class="pill green">ERFÜLLT</span></td></tr>
+    <tr><td>ETF-Mindestanteil</td><td>≥50% (Ziel langfr. 60%)</td><td><b>23,40%</b> (🔺 von 21,7%)</td><td><span class="pill red">VERSTOSS, aber verbessert</span></td></tr>
+    <tr><td>Region USA</td><td>≤55% (hart ≤60%)</td><td>53,65%</td><td><span class="pill green">ERFÜLLT</span></td></tr>
+    <tr><td>Region Europa/UK</td><td>15-20%</td><td>14,73%</td><td><span class="pill orange">KNAPP UNTER</span></td></tr>
+    <tr><td>Region Japan/Asien</td><td>10-15%</td><td>9,49%</td><td><span class="pill orange">UNTER ZIEL</span></td></tr>
+    <tr><td>Region LatAm</td><td>nur bei echten Kandidaten</td><td>5,04% (MercadoLibre)</td><td><span class="pill green">OK</span></td></tr>
+    <tr><td>Region Sonstige (CA/IL)</td><td>kein festes Band</td><td>17,10% (Kraken, Constellation, Cellebrite)</td><td><span class="pill yellow">HINWEIS</span></td></tr>
+    <tr><td>Sektor Technologie</td><td>30-35%</td><td>29,57%</td><td><span class="pill orange">KNAPP UNTER</span></td></tr>
+    <tr><td>Sektor Finanzwesen</td><td>20-25%</td><td><b>33,32%</b></td><td><span class="pill red">VERSTOSS</span></td></tr>
+    <tr><td>Sektor Gesundheitswesen</td><td>10-15%</td><td>8,38%</td><td><span class="pill orange">UNTER ZIEL</span></td></tr>
+    <tr><td>Sektor Industriewerte</td><td>10-15%</td><td>11,86%</td><td><span class="pill green">ERFÜLLT</span></td></tr>
+    <tr><td>Sektor Rest</td><td>5-10%</td><td><b>16,88%</b></td><td><span class="pill red">VERSTOSS</span></td></tr>
+  </table>
+
+  <div class="box">
+    <h3>Einordnung</h3>
+    <p>Gegenüber dem 04.09. praktisch unverändertes Bild &mdash; einzige nennenswerte Bewegung: der <b>ETF-Anteil stieg von 21,7% auf 23,40%</b> durch die am 07.09. ausgeführte 600-€-Sparplanrate (+ steigenden ETF-Kurs). Bleibt klar unter der 50%-Untergrenze, aber die Richtung stimmt &mdash; keine Sofortmaßnahme laut Regelwerk (harte Leitplanke ohne Phasen-Ausnahme, aber kein Zwang zum Einmalkauf außerhalb der Trockenpulver-Logik).<br><br>
+    <b>SoFi 11,39%</b> weiterhin organischer Kursanstieg, innerhalb der 12%-Ausnahme, kein Handlungsdruck. <b>Finanzwesen (33,32%) und "Rest" (16,88%)</b> bleiben strukturell über ihrem Band (BCA, Münchener Rück, Allianz, CBOE, Broadridge, SoFi zählen als Finanzwesen; MercadoLibre/Hermès als Rest) &mdash; keine neue Einzelursache, dieselbe strukturelle Situation wie letzte Woche. <b>Gesundheitswesen (8,38%) und Japan/Asien (9,49%)</b> bleiben die am stärksten unterrepräsentierten Töpfe.<br><br>
+    Kategorie-Kapitalgewicht (informativ): Champions 56,82% (Ziel 35-45%, über Ziel) / Profi 41,04% (Ziel 20-30%, über Ziel) / Talent 2,14% (Ziel 25-40%, weit unter Ziel) &mdash; praktisch identisch zur Vorwoche.</p>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 4</div>
+    <div>Basis: ETF+Aktien für Region/Sektor, Gesamtportfolio (inkl. Gold+Cash) für Positionsgrößen</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:16pt;">CHARTS <span class="accent">&amp; MARKT-VERGLEICH</span></div>
+    <div class="brand-sub">Frisch erzeugt mit den aktuellen Daten (Stand 07.09.2026)</div></div>
+  </div>
+  <div class="chart-grid">
+    <div class="imgbox"><img src="chart_zusammensetzung.png"><div class="cap">Gesamt-Zusammensetzung (34.034,17€ Einzelwerte+ETF, ohne Gold/Cash)</div></div>
+    <div class="imgbox"><img src="chart_regionen.png"><div class="cap">Regionen-Verteilung &mdash; Japan/Asien weiterhin unter Ziel</div></div>
+    <div class="imgbox"><img src="chart_sektoren.png"><div class="cap">Sektor-Verteilung &mdash; Finanzwesen &amp; Rest weiterhin über Ziel</div></div>
+    <div class="imgbox"><img src="chart_rendite.png"><div class="cap">Rendite je Position seit Kauf</div></div>
+  </div>
+  <div class="imgbox" style="margin-top:2mm;"><img src="benchmark_vs_depot.png" style="max-height:70mm;"><div class="cap">Depot vs. Markt seit Trackingbeginn (30.08.2026) &mdash; Depot -0,12%, S&amp;P 500/Nasdaq 100 unverändert seit 04.09. (US-Feiertag, keine neue Session), MSCI World Proxy -0,19%.</div></div>
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 5</div>
+    <div>reports/weekly_charts.py &amp; benchmark_chart.py, für diesen Lauf neu ausgeführt</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:15pt;">TOP-BEWEGER <span class="accent">&amp; EXIT-/NACHKAUF-AMPEL</span></div>
+    <div class="brand-sub">Gesamtes Universum (Depot + Watchlist, 48 Werte) &middot; Bewegung seit 04.09.2026</div></div>
+  </div>
+
+  <div class="box">
+    <h3>Einschränkung dieser Ausgabe</h3>
+    <p>07.09.2026 war US-Feiertag (Labor Day) &mdash; für die Mehrheit des Universums (US- und kanadisch notierte Werte, inkl. der meisten Depot-Positionen) gab es seit dem 04.09. <b>keine neue Handelssession</b>, entsprechend keine belastbare Wochenperformance zu berichten (kein Rauschen aus erfundenen Zahlen, No-False-Precision-Prinzip). Einzige konkret verifizierte Bewegung: <b>Bank Central Asia (BBCA, Jakarta) -0,83%</b> (2.020,37€&rarr;2.003,54€ Positionswert, Scalable-Live-Kurs) &mdash; kein spezifischer Einzelgrund identifiziert. Ein vollständiger Kurs-Rescan der Tokyo-/Stockholm-/Europa-notierten Watchlist-Werte für dieses verkürzte 3-Tage-Fenster wurde nicht durchgeführt (Twelve-Data-Plananbindung deckt diese Börsenplätze aktuell nicht ab) &mdash; wird beim nächsten regulären Freitags-Wochenfazit mit vollem 7-Tage-Fenster nachgeholt.</p>
+  </div>
+
+  <div class="section-label">Exit-/Gewinnmitnahme-/Nachkauf-Ampel (nur Kategorie ≠ HALTEN unauffällig)</div>
+  <div class="event-list">
+    <div class="event">
+      <div class="tag"><span class="t">CBOE</span><b class="display">Champions</b><br><span class="pill orange">Kein Nachkauf</span></div>
+      <div class="body">KGV 22-24x, Forward-KGV 31% über Branchen-Ø &mdash; spürbar teuer, kein Schnäppchen. Kein Verkaufsgrund (SPX-/VIX-Monopol unangetastet), einfach kein günstiger Nachkaufzeitpunkt. Unverändert seit 04.09.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">ATEN</span><b class="display">Profi</b><br><span class="pill orange">Kein Nachkauf</span></div>
+      <div class="body">TTM-KGV 59,8x deutlich über 5J-Ø (23,2x); Forward-KGV moderater (26,5x) &mdash; Diskrepanz weiter beobachten. Unverändert seit 04.09.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">RKLB</span><b class="display">Talent</b><br><span class="pill red">Kein Nachkauf</span></div>
+      <div class="body">Terminal-State bestätigt, 0% Sizing für Neu-/Nachkauf. Bestehende 10-Stück-Trace-Position bleibt (kein Exit). Nächster Prüfpunkt Q3-Zahlen. Unverändert seit 04.09.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">CLBT</span><b class="display">Profi</b><br><span class="pill yellow">Checkpoint</span></div>
+      <div class="body">HALTEN mit aktivem Checkpoint Q3-Earnings (Guidance $145-148 Mio. Umsatz, ~November 2026) &mdash; kein Nachkauf vor Checkpoint. Unverändert seit 04.09.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">KRKN</span><b class="display">Offene Zone</b><br><span class="pill green">Nachkauf-Zone</span></div>
+      <div class="body">Preisalarm aktiv bei ≤2,80 CAD (Downside-Alert) &mdash; noch weit über der Zone. Offen seit 01.09.2026, 5+ Werktage &mdash; Erinnerung heute (07.09.) per Chat+E-Mail ausgelöst (siehe Seite 2).</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">RMBS</span><b class="display">Offene Zone</b><br><span class="pill green">Nachkauf-Zone</span></div>
+      <div class="body">Preisalarm aktiv bei ≤65 USD (Downside-Alert) &mdash; noch weit über der Zone. Offen seit 01.09.2026, 5+ Werktage &mdash; Erinnerung heute (07.09.) per Chat+E-Mail ausgelöst (siehe Seite 2).</div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Umschichtungs-Prüfung</h3>
+    <p>Keine Position steht aktuell in Kategorie 4 (Teilverkauf) oder 5 (Verkauf erwägen) &mdash; damit kein Umschichtungs-Kandidat zu prüfen. Unverändert seit 04.09.</p>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 6</div>
+    <div>Zonen unverändert &rarr; keine neue Zonen-E-Mail diesen Lauf (nur bei echter Änderung)</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:15pt;">MAKRO-AUSBLICK <span class="accent">&amp; KLARE LINIE</span></div>
+    <div class="brand-sub">Nächste 7 Tage &middot; Cash-Disziplin fürs Wochenende</div></div>
+  </div>
+
+  <div class="box">
+    <h3>Makro-Ausblick nächste Woche</h3>
+    <p><b>EZB-Ratssitzung (Zinsentscheid), 09./10.09.2026</b> &mdash; in 2-3 Tagen, relevant für Europa-Exposure (Allianz, Münchener Rück, Hermès, Tristel, ASML). <b>Copart (CPRT) Earnings, 10.09.2026</b> &mdash; Watchlist-Wert (Profi), Kundenverlust-These an IAA im Blick. Danach, knapp außerhalb des 7-Tage-Fensters: FOMC-Sitzung 15./16.09. (Fed-Funds-Zielkorridor 3,50-3,75%) und BoJ-Sitzung 16./17.09. (Yen-Zinspfad relevant für BCA sowie Disco/Lasertec/Asahi Intecc/Hoya in der Watchlist).<br><br>
+    <b>Investitionsklima (Stand 07.09., Tagesscan):</b> keine neue US-Handelssession zu bewerten (Feiertag) &mdash; Aktien-Technik unverändert bullisch (S&amp;P/Nasdaq weiterhin über 50D- UND 200D-SMA, 200D-Linie steigend), VIX leicht gestiegen auf 14,53 (+1,5%, weit unter der 20%-Materialitätsschwelle), Fear&amp;Greed unverändert in der Fear-Zone (42, CNN). Fortlaufende US-Iran-Tanker-Zwischenfälle (Straße von Hormuz) bleiben als bekanntes, bereits eingepreistes Risiko geführt &mdash; keine neue Eskalationsstufe seit 01.09. Gold nahe Rekordniveau (~4.429 USD/oz), US-High-Yield-Spreads weiter historisch eng (kein Kreditmarkt-Stress). In Summe: unverändert kein reines "Alles-Grün"-Bild, aber auch kein neues Vorsichts-Signal gegen die laufende Strategie.</p>
+  </div>
+
+  <div class="cash-line">
+    <div class="h display">KLARE LINIE FÜR DIE KOMMENDEN TAGE</div>
+    <p>Champions und Profi bleiben beide exakt auf Ziel (10/10, 7/7) &mdash; kein Bedarf für eine komplett neue Position. Von den weiterhin 🟢-bewerteten Champions (Intuitive Surgical, Münchener Rück, ServiceNow, Hermès, MercadoLibre, Bank Central Asia, Tristel) bleibt <b>Bank Central Asia</b> der naheliegendste Nachkauf-Kandidat: klar unterbewertet (KGV ~12-14x, 52% unter 10J-Median, ROE 24,1%) UND adressiert die Japan/Asien-Regionslücke (9,49% vs. Ziel 10-15%) &mdash; unverändert seit letzter Woche, kein neuer Kurs-Trigger diese drei Tage. Kraken Robotics und HawkEye 360 bleiben laut Brians eigener Festlegung "erstmal voll".<br><br>
+    Der auffälligste strukturelle Punkt bleibt der <b>ETF-Anteil</b> &mdash; jetzt 23,40% (verbessert von 21,7%), aber weiter unter der 50%-Untergrenze. Kein Korrektur-/Regime-Wechsel-Trigger ist laut Tagesscan erfüllt, die Cash-Reserve (460,33€ bei Scalable, nach der Sparplanausführung) bleibt regelkonform als Trockenpulver liegen.<br><br>
+    <b>Nicht auf Teufel komm raus investieren &mdash; wenn nichts klar überzeugt, bleibt das Geld Cash.</b> Diese drei Tage brachten keinen neuen, zeitkritischen Kauf-Anlass; BCA bleibt eine solide, aber keine dringende Gelegenheit.</p>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 7</div>
+    <div>Keine Anlageberatung &middot; alle Einschätzungen sind Entscheidungsunterstützung, keine Order-Empfehlung</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:15pt;">METHODIK <span class="accent">&amp; QUELLEN</span></div></div>
+  </div>
+  <div class="box">
+    <h3>Methodik-Hinweise</h3>
+    <p>Dieser Lauf deckt bewusst nur ein <b>verkürztes 3-Tage-Fenster</b> (04.09.-07.09.2026) ab, ausgelöst durch die Reaktivierung der Automatisierung über Hermes-Cron am 07.09. &mdash; der nächste reguläre Freitags-Lauf (voraussichtlich 11.09.2026) deckt wieder ein volles 7-Tage-Fenster ab. Positionsgrößen-Prozente auf Basis Gesamtportfolio inkl. Gold-ETC und Cash (34.992,90€, alle 4 Broker). Region-/Sektor-Prozente auf Basis ETF+Aktien (ohne Gold/Cash). Scalable-Capital-Positionen (ETF, Bank Central Asia, Gold, Cash) live per MCP zum Zeitpunkt dieses Laufs; die übrigen 3 Broker (finanzen.net zero, Trade Republic, Smartbroker+) wurden für dieses kurze Fenster NICHT erneut live abgefragt (keine neue US-Handelssession seit der letzten Aktualisierung am 04.09., Werte daher unverändert übernommen) &mdash; volle Aktualisierung aller 4 Broker folgt beim nächsten regulären Wochenfazit. CRV-Ampel-Urteile sind stets eigene Herleitung aus KGV/Wachstum/Marge-Logik bzw. KBV/ROE bei Banken/Versicherern, externe Quellen dienen nur als Rohdaten.</p>
+  </div>
+  <div class="box">
+    <h3>Primärquellen dieses Laufs</h3>
+    <p class="src-list">
+      Scalable Capital MCP (Live-Portfoliodaten, Cash, Transaktionen) &middot; Twelve Data (MSCI-World-Proxy-Quote-Versuch, EUR/USD) &middot; WebSearch (Labor-Day-Bestätigung, iShares Core MSCI World UCITS ETF EUR-Kurs onvista/Tradegate, BONESUPPORT-Earnings-Termin investing.com) &middot; depot/kategorisierung.md, watchlist.md, depot/prediction_ledger.md, depot/earnings_calendar.md, depot/macro_context.md, depot/bridge_status.md, depot/last_transaction_check.md (interne Regelwerks-/Log-Dateien).
+    </p>
+  </div>
+  <div class="box">
+    <h3>Rechtlicher Hinweis</h3>
+    <p>Dieser Report ist Recherche-/Entscheidungsunterstützung für Brians eigene manuelle Anlageentscheidung, keine regulierte Anlageberatung. Keine erfundenen exakten Wahrscheinlichkeiten (No-False-Precision-Prinzip). Alle Kauf-/Verkaufsorders werden ausschließlich manuell durch Brian ausgeführt.</p>
+  </div>
+  <div class="footer">
+    <div>Reaper Wochenreport &middot; Seite 8</div>
+    <div>Ende des Reports</div>
+  </div>
+</div>
+
+</body></html>

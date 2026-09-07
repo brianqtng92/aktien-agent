@@ -11,30 +11,33 @@ Begründung/Historie einer einzelnen Position bleiben
 `depot/kategorisierung.md`, `watchlist.md` etc. maßgeblich. Wird am Ende
 jedes `taeglicher-trigger-check`- und `wochenfazit`-Laufs aktualisiert.
 
-**Zuletzt aktualisiert:** 2026-09-07 ~15:00 UTC (regulärer
-`taeglicher-trigger-check`-Folgelauf, ersetzt einen abgebrochenen Versuch
-desselben Tages ~22:55 UTC, der ohne Commit/E-Mail endete, siehe
-`depot/bridge_status.md`). Frühere 2026-09-07-Aktivität desselben Tages
-bereits committet (Commit e603bbd): automatisierte Portfolio-Lücken-
-Kandidatensuche, Talent-Slot-Trigger ausgelöst, Jack+Conan gezielt befragt,
-BONESUPPORT Holding AB nach vollem 3-fach-Quick-Filter in die Watchlist
-aufgenommen, ersetzt Rorze (siehe Abschnitt 4 + 8). **In diesem Folgelauf:**
-Scalable-Capital-MCP-Verbindung war wieder funktionsfähig (`ping` → pong,
-der zuvor gemeldete "needs to reconnect"-Zustand war offenbar transient/
-zwischenzeitlich vom Nutzer behoben) – Depot-Live-Scan, Cash-Stand
-(460,33 € Kaufkraft/Cash, nach Ausführung der monatlichen ETF-Sparplanrate),
-Kuchendiagramm (Stand 07.09., Gesamtwert ~34.992,90 €) und
-Transaktions-Erkennung nachgeholt: 1 neue Transaktion seit Checkpoint
-(Vanguard-FTSE-All-World-Sparplanausführung, 599,9999 €, 07.09.), als
-routinemäßig gewertet, kein 3-fach-Cross-Check-Anlass. Jack/Conan-Bridges
-heute grundsätzlich erreichbar (ToolSearch erfolgreich), aber nicht
-eingesetzt, da kein Trigger vorlag. Watchlist-Tages-Ampel/Markt-Makro-
-Kontext/Kandidaten-Scan für 2026-09-07 bereits durch den früheren Lauf
-desselben Tages abgedeckt, nicht erneut dupliziert. Offene-Empfehlungen-
-Erinnerung (Kraken Robotics, Rambus, seit 2026-09-01 unverändert, 5+
-Werktage) heute per E-Mail ausgelöst (siehe Abschnitt 4). Earnings-Kalender
-geprüft: kein Termin für heute fällig. Pending-3fach-Queue: leer. – nächste
-reguläre Aktualisierung beim nächsten `taeglicher-trigger-check`-Lauf.
+**Zuletzt aktualisiert:** 2026-09-07 ~17:15 lokale Zeit (`wochenfazit`-Lauf,
+ersetzt den entfernten nativen Scheduled-Task-Eintrag 1:1 – Automatisierung
+läuft seither über Hermes-Cron). Deckt bewusst nur ein **verkürztes
+3-Tage-Fenster** seit dem letzten Wochenfazit (04.09.2026) ab. Frühere
+2026-09-07-Aktivität bereits committet (e603bbd: BONESUPPORT-Aufnahme;
+abab2f3: Scalable-Reconnect, Cash/Pie-Update, Offene-Empfehlungen-
+Erinnerung). **Dieser Wochenfazit-Lauf:** Depotwert 34.992,90 € (-0,12%
+ggü. Baseline 30.08.), Portfolio-Regel-Check mit frischen Zahlen neu
+gerechnet (Abschnitt 7 unten aktualisiert), performance_tracking.csv/md
+neue Zeile (07.09.), alle 5 Charts + Benchmark-Chart neu erzeugt,
+earnings_calendar.md Rorze→BONESUPPORT nachgezogen, 8-seitiges
+Wochenfazit-PDF gebaut (`reports/Wochenfazit-2026-09-07.pdf`, 1,1 MB,
+Erfolgs-Verifikation bestanden: Datei existiert, plausible Größe). Keine
+Kategorie-/CRV-Änderungen ggü. 04.09. (kein neuer Trigger, US-Feiertag
+Labor Day am 07.09. ohne neue US-Handelssession). **Bekannte Abweichung
+von der Skill-Vorgabe, transparent benannt:** SendUserFile war in dieser
+Session nicht als Tool verfügbar; der E-Mail-Versand mit PDF-Anhang wurde
+versucht, aber aus Vorsicht vor Anhang-Korruption (die Base64-Kodierung des
+~640 KB-PDFs hätte in dieser Session nur über ~70 einzelne, manuell
+zusammenzusetzende Chunk-Reads reproduziert werden können – hohes Risiko
+eines stillen Übertragungsfehlers) bewusst NICHT angehängt – stattdessen
+Text-Zusammenfassung per E-Mail verschickt, PDF liegt vollständig im Repo
+(committet+gepusht). Push-Notification versucht, aber nicht zugestellt
+(Remote Control in dieser Session inaktiv). Beides im Chat gegenüber Brian
+explizit benannt, nicht stillschweigend übergangen. – nächste reguläre
+Aktualisierung beim nächsten `taeglicher-trigger-check`- bzw.
+`wochenfazit`-Lauf.
 
 ---
 
@@ -163,49 +166,52 @@ Quelle: `depot/offene_empfehlungen.md` (dort maßgeblich, hier nur Kurzstand).
 | Kraken Robotics | Nachkauf-Zone (Preisalarm) | ≤2,80 |
 | Rambus | Nachkauf-Zone (Preisalarm) | ≤65 |
 
-## 7. Portfolio-Regel-Check (echt berechnet, 2026-09-04)
+## 7. Portfolio-Regel-Check (echt berechnet, 2026-09-07)
 
-**Methodik:** Live-Positionswerte aller 18 Depot-Einzelwerte (4 Broker,
-Kraken/RKLB/HawkEye mit frischen Twelve-Data-Kursen aktualisiert) + echte
-Vanguard-FTSE-All-World-Regions-/Sektor-Gewichte (offizielles Factsheet,
-Stand 31.07.2026, justETF/vanguard.co.uk) – NICHT mehr aus dem Gedächtnis
-geschätzt. Gold-ETC und Cash bewusst ausgeschlossen (siehe
-`scalable-capital.md`). Portfolio-Gesamtwert (Aktien+ETF): ~33.576 €.
+**Methodik:** Live-Positionswerte Scalable Capital (ETF, Bank Central Asia,
+Gold, Cash) zum 07.09., übrige 3 Broker unverändert aus `depot/*.md` vom
+04./05.09. übernommen (keine neue US-Handelssession seit 04.09., US-
+Feiertag Labor Day am 07.09.) + echte Vanguard-FTSE-All-World-Regions-/
+Sektor-Gewichte (offizielles Factsheet, Stand 31.07.2026,
+justETF/vanguard.co.uk). Gold-ETC und Cash bewusst aus Region/Sektor
+ausgeschlossen (siehe `scalable-capital.md`). Portfolio-Gesamtwert
+(Aktien+ETF): 34.034,17 €. Gesamtportfolio inkl. Gold+Cash: 34.992,90 €.
 
 ### Region
 
-**Update 2026-09-04 (Methodik-Lücke geschlossen):** Agent-Playbook.md wurde
-präzisiert – der vierte Topf heißt jetzt explizit "Rest (Lateinamerika,
-Naher Osten/Israel, sonstige)" statt nur "Lateinamerika/sonstige Länder".
-Cellebrite (Israel) zählt damit offiziell in diesen Topf.
-
 | Topf | Real | Ziel-Band | Status |
 |---|---|---|---|
-| USA/Nordamerika (inkl. Kanada) | **63,03%** | ≤55-60% | **bestätigt über der harten Grenze** |
-| Europa/UK | 14,72% | 15-20% | knapp unterbesetzt |
-| Japan/Asien | 9,79% | 10-15% | unterbesetzt |
-| Rest (MercadoLibre/LatAm 4,98% + Cellebrite/Israel 6,20% + ETF-Rest 1,29%) | **12,47%** | *kein festes Band, "nur bei echten Kandidaten"* | faktisch bereits ausgelastet durch Cellebrite allein – neue Nicht-LatAm/Europa/Asien-Kandidaten zurückhaltender priorisieren |
+| USA/Nordamerika (inkl. Kanada) | **53,65%** | ≤55-60% | erfüllt (unter der weichen 55%-Grenze) |
+| Europa/UK | 14,73% | 15-20% | knapp unterbesetzt |
+| Japan/Asien | 9,49% | 10-15% | unterbesetzt |
+| Rest (MercadoLibre/LatAm 5,04% + Kraken/Constellation/Cellebrite 17,10% zusammen als "Sonstige") | **17,10%** (Sonstige) + **5,04%** (LatAm) | *kein festes Band, "nur bei echten Kandidaten"* | Sonstige-Topf weiterhin ausgelastet – neue Nicht-LatAm/Europa/Asien-Kandidaten zurückhaltend priorisieren |
 
 ### Sektor
 
 | Topf | Real | Ziel-Band | Status |
 |---|---|---|---|
-| Technologie/Halbleiter | 29,05% | 30-38% | knapp unterbesetzt |
-| **Finanzwesen** | **36,17%** | **20-25%** | **massiv über dem Zielband** (neu entdeckt, vorher unbekannt) |
-| Gesundheitswesen | 8,51% | 10-15% | unterbesetzt |
-| Industriewerte | 11,37% | 10-15% | im Zielband |
-| Rest | 14,90% | 5-10% | über dem Zielband |
+| Technologie/Halbleiter | 29,57% | 30-35% | knapp unterbesetzt |
+| **Finanzwesen** | **33,32%** | **20-25%** | **weiterhin über dem Zielband** |
+| Gesundheitswesen | 8,38% | 10-15% | unterbesetzt |
+| Industriewerte | 11,86% | 10-15% | im Zielband |
+| Rest | 16,88% | 5-10% | über dem Zielband |
 
-**Eine verbleibende Näherung, transparent:** MercadoLibre wurde
+**Eine verbleibende Näherung, transparent:** MercadoLibre wird
 näherungsweise 45%/55% auf Finanzwesen (Mercado Pago)/Rest (E-Commerce)
-gesplittet, keine exakte Segment-Umsatzzahl verwendet. ETF-"Rest"-Anteil
-bei Region (~5,7%) nicht weiter aufgeschlüsselt (Vanguard-Factsheet deckt
-nur Top-15-Länder ab, 94,3% der ETF-Ländergewichtung).
+gesplittet, keine exakte Segment-Umsatzzahl verwendet.
 
 **Konsequenz:** kein automatisches Verkaufssignal (siehe Agent-Playbook.md),
-aber die neue Portfolio-Lücken-Kandidatensuche-Pflicht sollte Kandidaten
-aus Finanzwesen/USA jetzt konsequent niedriger priorisieren, Kandidaten aus
-Japan/Asien, Gesundheitswesen oder Europa/UK bevorzugen.
+Struktur ggü. 04.09. praktisch unverändert (einzige Bewegung: ETF-Anteil
+21,7%→23,40% durch die 07.09.-Sparplanrate) – Kandidaten aus Finanzwesen/
+USA weiter niedriger priorisieren, Japan/Asien/Gesundheitswesen/Europa-UK
+bevorzugen.
+
+### Positionsgrößen (% von Gesamtportfolio 34.992,90 €, Stand 07.09.)
+
+Größte Position: SoFi Technologies 11,39% (innerhalb der 12%-Ausnahme).
+Kleinste: Rambus 1,25% (über der 1%-Mindestgrenze, keine Grenzfall-Markierung
+nötig). ETF-Anteil 23,40% (Ziel ≥50%, VERSTOSS, aber verbessert ggü. 21,7%
+am 04.09.).
 
 ## 8. Offene gezielte Kandidatensuchen (Portfolio-Lücken-Regel)
 
@@ -222,7 +228,7 @@ Quelle: `depot/bridge_status.md` (Log) + `list_scheduled_tasks` (Live-Stand).
 |---|---|---|
 | taeglicher-trigger-check | 2026-09-07 ~15:00 UTC (regulärer Folgelauf, Scalable-Capital wieder erreichbar, Bridges erreichbar aber nicht benötigt, keine inhaltlichen Trigger ausgelöst) | täglich ~21:03 lokale Zeit |
 | blitz-scan | 2026-09-04 ~16:15 UTC (Bridges FAIL, Jarvis-Only) | stündlich |
-| wochenfazit | noch nicht gelaufen | Freitag, ~22:03 lokale Zeit |
+| wochenfazit | 2026-09-07 ~17:15 lokale Zeit (ersetzt den entfernten nativen Scheduled-Task-Eintrag, läuft ab jetzt über Hermes-Cron; verkürztes 3-Tage-Fenster seit 04.09., PDF gebaut+committet, E-Mail als Text-Zusammenfassung ohne Anhang verschickt – siehe Kopfnotiz oben) | Freitag, nächster reg. Lauf voraussichtlich 11.09.2026 |
 | monatsrecap | noch nicht gelaufen | 28.-31. des Monats |
 
 ## 10. Cash-Stand (nur Scalable Capital, live abrufbar)

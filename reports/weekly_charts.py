@@ -28,7 +28,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-STAND = "2026-09-04"
+STAND = "2026-09-07"
 
 # (Name, Investsumme, Wert aktuell, Region, Sektor)
 # Region-Buckets: USA | Europa/UK | Japan/Asien | Lateinamerika | Sonstige (CA/IL/etc.)
@@ -45,7 +45,7 @@ DATA = [
     ("Rocket Lab USA",                  554.00,  553.21, "USA",          "Industriewerte"),
     ("Rambus Inc.",                     533.64,  435.75, "USA",          "Technologie"),
     ("HawkEye 360",                    1681.70, 1494.42, "USA",          "Industriewerte"),
-    ("Bank Central Asia",              1999.94, 2020.37, "Japan/Asien",  "Finanzwesen"),
+    ("Bank Central Asia",              1999.94, 2003.54, "Japan/Asien",  "Finanzwesen"),
     ("Münchener Rück",                 1051.00, 1030.80, "Europa/UK",    "Finanzwesen"),
     ("A10 Networks",                    506.52,  446.83, "USA",          "Technologie"),
     ("Intuitive Surgical",             1400.50, 1273.83, "USA",          "Gesundheitswesen"),
@@ -54,8 +54,8 @@ DATA = [
     ("Hermès",                         1905.09, 1541.50, "Europa/UK",    "Rest"),
 ]
 ETF_NAME = "Vanguard FTSE All-World (ETF)"
-ETF_INVEST = 6153.40
-ETF_WERT = 7601.73
+ETF_INVEST = 6753.40
+ETF_WERT = 8186.86
 
 # Naeherung, Stand 31.07.2026 (justetf/Vanguard-Factsheet, siehe architecture.md)
 ETF_REGION_SPLIT = {

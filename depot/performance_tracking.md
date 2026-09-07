@@ -42,6 +42,7 @@ Wachstumsrate, nicht um eine exakte währungsbereinigte Renditevergleichsgröße
 | ~~29.08.2026~~ | ~~33.403,32 €~~ | ~~0,0%~~ | ~~7.711,76~~ | ~~0,0%~~ | ~~29.433,43~~ | ~~0,0%~~ | ~~127,735 €~~ | ~~0,0%~~ | verworfen, siehe Korrektur oben |
 | 30.08.2026 | 35.034,17 € | 0,0% | 7.711,76 | 0,0% | 29.433,43 | 0,0% | 127,735 € | 0,0% | Neuer Startpunkt, noch kein Vergleich möglich |
 | 04.09.2026 | 35.029,69 € | -0,01% | 7.718,60 | +0,09% | 29.544,15 | +0,38% | 127,89 € | +0,12% | Praktisch gleichauf mit allen drei Indizes, marginal dahinter (Differenz max. 0,4 Pp.) – ruhige Woche ohne große Marktbewegung |
+| 07.09.2026 | 34.992,90 € | -0,12% | 7.718,60 (unverändert – US-Feiertag Labor Day 07.09., keine neue Handelssession) | +0,09% | 29.544,15 (unverändert, dito) | +0,38% | 127,495 € | -0,19% | Depot leicht hinter S&P 500/Nasdaq 100 (max. 0,5 Pp. Differenz), aber leicht VOR dem MSCI-World-Proxy – kein Handelstag-Vergleich möglich für US-Indizes (Feiertag), reine Momentaufnahme über ein verkürztes 3-Tage-Fenster seit dem letzten Wochenfazit |
 
 ## Prozess für den wöchentlichen Wochenfazit-Lauf (freitags)
 
