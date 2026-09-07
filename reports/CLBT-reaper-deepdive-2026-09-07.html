@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Reaper Deep Dive – CLBT</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1A1C1F;
+    --bg-panel: #232629;
+    --bg-panel-2: #2A2D31;
+    --border: #3A3E43;
+    --border-soft: #303337;
+    --text: #EDE8DF;
+    --text-dim: #A39B8E;
+    --text-faint: #6E6860;
+    --gold: #C6922C;
+    --gold-bright: #E0B24E;
+    --gold-dim: #7A5F24;
+    --green: #5C9A5F;
+    --green-bg: rgba(92,154,95,0.14);
+    --yellow: #DDB13B;
+    --yellow-bg: rgba(221,177,59,0.14);
+    --red: #BC4F41;
+    --red-bg: rgba(188,79,65,0.16);
+    --blue: #6FA8C9;
+    --blue-bg: rgba(111,168,201,0.14);
+  }
+
+  html, body {
+    width: 210mm;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Carlito", "DejaVu Sans", Arial, sans-serif;
+    font-size: 9pt;
+    line-height: 1.36;
+  }
+
+  .display {
+    font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif;
+    font-weight: 700;
+    font-stretch: condensed;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 8mm 12mm 5mm 12mm;
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .masthead {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    border-bottom: 2px solid var(--gold); padding-bottom: 2.6mm;
+  }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 21pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 7.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag {
+    font-size: 7pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim);
+    border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm;
+    display: inline-block; width: fit-content;
+  }
+  .meta-block { text-align: right; font-size: 7.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 8.6pt; }
+
+  .position-header {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold);
+    border-radius: 3px; padding: 2.6mm 4mm;
+  }
+  .position-name .ticker { font-size: 15pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 8pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 5mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 6.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); }
+  .stat .value { font-size: 10pt; color: var(--text); margin-top: 0.4mm; }
+
+  .voices-strip { display: flex; gap: 2.4mm; }
+  .voice-box { flex: 1; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm 3mm; }
+  .voice-box .who { font-size: 6.6pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); }
+  .voice-box .rating { font-size: 10.5pt; color: var(--yellow); margin-top: 0.6mm; }
+  .voice-box .sub { font-size: 6.6pt; color: var(--text-dim); margin-top: 0.5mm; }
+  .voices-conv { flex: 0 0 auto; width: 34mm; background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 2mm 3mm; text-align: center; display:flex; flex-direction:column; justify-content:center; }
+  .voices-conv .label { font-size: 6.2pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-faint); }
+  .voices-conv .val { font-size: 9pt; color: var(--gold-bright); margin-top: 0.8mm; }
+
+  .section-label {
+    font-size: 7.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0;
+  }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
+  .box h3 {
+    font-size: 7.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm;
+    font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700;
+  }
+  .box p { font-size: 7.2pt; color: var(--text-dim); line-height: 1.32; }
+  .box p b { color: var(--text); }
+
+  .verify-table, .compare-table, .scenario-table, .score-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .verify-table th, .verify-table td, .compare-table th, .compare-table td,
+  .scenario-table th, .scenario-table td, .score-table th, .score-table td {
+    font-size: 6.7pt; padding: 1mm 1.5mm; text-align: left; border-bottom: 1px solid var(--border-soft);
+  }
+  .verify-table th, .compare-table th, .scenario-table th, .score-table th {
+    color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; font-weight: normal; font-size: 6.1pt;
+  }
+  .verify-table td, .compare-table td, .score-table td { color: var(--text); }
+  .scenario-table th, .scenario-table td { text-align: right; }
+  .scenario-table th:first-child, .scenario-table td:first-child { text-align: left; color: var(--text-dim); }
+  .scenario-table td.pos { color: var(--green); }
+  .scenario-table td.neg { color: var(--red); }
+  .score-table td.num { text-align: right; color: var(--gold-bright); }
+
+  .two-col { display: flex; gap: 3mm; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+
+  .chart-frame {
+    background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm;
+    display: flex; align-items: center; justify-content: center;
+    height: 92mm; flex: 0 0 auto;
+  }
+  .chart-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; border-radius: 2px; }
+  .bbb-frame {
+    background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm;
+    display: flex; align-items: center; justify-content: center; height: 34mm; flex: 0 0 auto;
+  }
+  .bbb-frame img { max-width: 100%; max-height: 100%; }
+
+  .underrated-box {
+    background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--blue);
+    border-radius: 3px; padding: 2.6mm 3.6mm;
+  }
+  .underrated-box h3 { color: var(--blue); font-size: 7.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
+  .underrated-box p { font-size: 7.4pt; color: var(--text); line-height: 1.35; }
+
+  .trigger-row { display: flex; gap: 3mm; }
+  .trigger-box { flex: 1; border-radius: 3px; padding: 2.4mm 3.4mm; }
+  .trigger-box.bull { background: var(--green-bg); border: 1px solid var(--green); }
+  .trigger-box.bear { background: var(--red-bg); border: 1px solid var(--red); }
+  .trigger-box h3 { font-size: 7.4pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2mm; }
+  .trigger-box.bull h3 { color: var(--green); }
+  .trigger-box.bear h3 { color: var(--red); }
+  .trigger-box ul { list-style: none; }
+  .trigger-box li { font-size: 6.9pt; color: var(--text); padding: 0.6mm 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .trigger-box li:last-child { border-bottom: none; }
+
+  .warn-strip {
+    background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.7mm 3mm;
+    font-size: 6.8pt; color: var(--yellow); margin-top: 1mm;
+  }
+  .warn-strip b { color: var(--text); }
+
+  .fazit {
+    background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim);
+    border-radius: 3px; padding: 2.8mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0;
+  }
+  .fazit-verdict { flex: 0 0 auto; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 12.5pt; color: var(--yellow); letter-spacing: 0.02em; }
+  .fazit-verdict .sub { font-size: 6.2pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.6mm; }
+  .fazit-grid { flex: 1; display: flex; justify-content: space-between; }
+  .fazit-item { text-align: center; }
+  .fazit-item .label { font-size: 6.2pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .fazit-item .value { font-size: 9.2pt; color: var(--text); margin-top: 0.5mm; }
+
+  .sources-list { font-size: 7pt; color: var(--text-dim); line-height: 1.55; }
+  .sources-list .n { color: var(--gold); margin-right: 1.5mm; }
+  .sources-list a { color: var(--blue); text-decoration: none; }
+
+  .footer {
+    display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft);
+    padding-top: 1.5mm; font-size: 6.1pt; color: var(--text-faint); flex-shrink: 0;
+  }
+  .footer .gold-dot { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">REAPER <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">3-fach TMR-Cross-Check · Jarvis · Jack · Conan</div>
+      <div class="edition-tag">Depot-Position · Kategorie Profi · Full Deep Dive</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">7. September 2026</div>
+      <div>SAAS-Override · K-BASIS 5 · Modus A</div>
+      <div>DCF Python-verifiziert (Rule 20)</div>
+    </div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">CLBT <span style="color:var(--text-dim); font-size:9.5pt;">· NASDAQ</span></div>
+      <div class="company">Cellebrite DI Ltd — Digital Forensics / Investigative Intelligence Software (ARR/SaaS)</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs (Schluss 04.09.)</div><div class="value">$11,45</div></div>
+      <div class="stat"><div class="label">Marktkap.</div><div class="value">$2,87 Mrd</div></div>
+      <div class="stat"><div class="label">Beta</div><div class="value" style="color:var(--text);">1,15</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">3-Stimmen-Leiste</div>
+  <div class="voices-strip">
+    <div class="voice-box">
+      <div class="who">Jarvis · Claude (Synthese)</div>
+      <div class="rating">BEOBACHTEN</div>
+      <div class="sub">Score-Konsens ~5/10 · Tier 3 · Abstauber $9,00-10,25</div>
+    </div>
+    <div class="voice-box">
+      <div class="who">Jack · Gemini (TMR)</div>
+      <div class="rating">BEOBACHTEN</div>
+      <div class="sub">Score 4/10 · Konfidenz 🟡 · Abstauber $9,00-9,50</div>
+    </div>
+    <div class="voice-box">
+      <div class="who">Conan · ChatGPT (Scout)</div>
+      <div class="rating">HALTEN/BEOBACHTEN</div>
+      <div class="sub">Score 5,5/10 · Konfidenz 🔴/🟡 · Abstauber $9,50-10,25</div>
+    </div>
+    <div class="voices-conv">
+      <div class="label">Konvergenz</div>
+      <div class="val">✅ EINSTIMMIG</div>
+      <div class="sub" style="margin-top:1mm;">Kein Kauf zum Live-Kurs, alle 3 unabhängig</div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>DNA-Check (SaaS-Override, K-BASIS 5) — Cross-Check-Ergebnis</h3>
+    <table class="verify-table">
+      <tr><th>K-Kriterium</th><th>Jack (Gemini)</th><th>Conan (ChatGPT)</th><th>Jarvis-Einordnung</th></tr>
+      <tr><td>ROIC &gt;20%</td><td>12,0% ❌ [VERIFIED]</td><td>vermutl. &gt;20%, Cash-verzerrt [TRAINING]</td><td>Uneinigkeit selbst benannt — Cash-Overhang verzerrt beide Methoden, echte K-Lücke</td></tr>
+      <tr><td>FCF-Marge real (SBC-ber.)</td><td>28% ✅ (Headline)</td><td>≈17% ❌ (SBC-bereinigt)</td><td><b>Conans strengere SBC-Bereinigung ist methodisch korrekter</b> → K-Fail</td></tr>
+      <tr><td>Op. Leverage</td><td>Ja ✅</td><td>Ja ✅ (Umsatz +17,5% &lt; Adj.EBITDA +21%)</td><td>Einig — bestätigt</td></tr>
+      <tr><td>EPS-CAGR 5J ≥12%</td><td>20% ✅ [VERIFIED]</td><td>plausibel &gt;12%, nicht primär verifiziert [TRAINING]</td><td>Beide TRAINING-lastig, Richtung übereinstimmend</td></tr>
+      <tr><td>NRR (K, SaaS-Override)</td><td>112% 🟡 halber Punkt</td><td><b>117% (20-F/Earnings-Release, primärquellennah)</b></td><td>Divergenz 5pp — Conans Zahl hat bessere Quellenlage, beide unter 120%-Vollpunkt</td></tr>
+    </table>
+    <p style="margin-top:1.4mm;">K-Score Jack: 4/5 (ROIC-Fail) · K-Score Conan: 3,5/5 (ROIC+FCF-Fail, NRR halber Punkt) — <b>beide im Grenzfall-Band (K-BASIS−1/−2), kein Terminal-Abbruch, aber übereinstimmend kein sauberer 5/5-Compounder.</b> Divergenz selbst ist der Mehrwert des 3-fach-Checks: Jack übernahm die Headline-FCF-Marge, Conan grub bis zur SBC-bereinigten Realzahl — genau diese Differenz ist unten als "Der unterschätzte Punkt" ausgeführt.</p>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="box" style="flex:1;">
+        <h3>Moat-Verifikation (Konsens)</h3>
+        <p>Preissetzungsmacht <b style="color:var(--yellow);">MODERAT-STARK</b> (Bruttomarge 82-86%, aber Guidance-Cut zeigt nicht friktionsfreie Preisdurchsetzung bei Großkunden) · Switching Costs <b style="color:var(--green);">STARK</b> (Chain-of-Custody/forensische Zertifizierung/Behörden-Workflows, beide KIs übereinstimmend) · Marktanteil <b style="color:var(--yellow);">MODERAT</b> (führend, aber nicht exakt quantifizierbar).</p>
+        <p style="margin-top:1.2mm;"><b>Konsens: Moat STARK bei Switching Costs, insgesamt solide, kein Ausnahme-Fall.</b></p>
+      </div>
+      <div class="box" style="flex:1;">
+        <h3>Going-Concern-Precheck</h3>
+        <p>Jack: "N/V nicht geprüft" (Sekundärquellen unauffällig). <b>Conan (mit Primärquellen-Zugriff auf den 20-F): uneingeschränktes EY-Prüfungsurteil bestätigt, kein Going-Concern-Vermerk.</b> Jarvis übernimmt Conans primärquellennahen Befund als maßgeblich.</p>
+        <p style="margin-top:1.2mm;"><b>URTEIL: ✅ Unauffällig, primärquellenbestätigt.</b></p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="box" style="flex:1;">
+        <h3>SBC-Infection-/Verwässerungs-Check</h3>
+        <p>Beide KIs unabhängig: <b style="color:var(--red);">🔴 FLAG AKTIV</b>. Jack: Verwässerung 2,16% p.a. Conan: Aktienzahl +9,33% YoY (stockanalysis.com), SBC TTM ≈$57-67 Mio (11-13% Umsatz). Konsequenz (Methodik, beide gleich angewendet): Konfidenz-Deckel max 🟡, Score-Malus -2, Sizing-Deckel max Tier 3.</p>
+      </div>
+      <div class="box" style="flex:1;">
+        <h3>Reaper-Reality-Flags (Konsens)</h3>
+        <p>Kundenkonzentration <b style="color:var(--green);">🟢 kein Flag</b> (Top-25-Kunden ≈25% Umsatz, kein Einzelkunde &gt;5%) · Beta-Risk <b style="color:var(--green);">🟢 kein Flag</b> (1,15 &lt; 1,5) · Litigation-Drain <b style="color:var(--yellow);">🟡 beobachten</b> (Anwalts-Investigations ohne bezifferte Klage) · Grant-Inflation/GAAP-Lücke <b style="color:var(--red);">🔴 Flag</b> (GAAP Op.-Marge 5,3% vs. Non-GAAP 22,7%, Conan-Fund).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/3</div>
+  </div>
+
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">REAPER <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Chartmuster · DCF · Score-Aufschlüsselung</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">7. September 2026 — Seite 2</div>
+      <div>CLBT Cellebrite DI Ltd</div>
+    </div>
+  </div>
+
+  <div class="section-label">Chartmuster (Twelve Data, 150 Handelstage) — inkl. RSI(14)/MACD-Subplots (neu seit 2026-09-08)</div>
+  <div class="chart-frame">
+    <img src="CLBT-chart-2026-09-07.png" alt="CLBT Chart mit RSI/MACD">
+  </div>
+  <p style="font-size:6.6pt; color:var(--text-faint); margin-top:-1mm;">Candlesticks + EMA20/50 · Volumen · MACD(12,26,9) · RSI(14). Klar sichtbarer Gap-Down am 13.08. (Guidance-Cut/CEO-Wechsel, Volumen 36,75 Mio. — mit Abstand höchstes Tagesvolumen im Betrachtungszeitraum), seitdem Seitwärtskonsolidierung $10,32-$12,43. RSI zuletzt ≈45-50 (neutral, keine Extremzone), MACD nahe Nulllinie ohne klaren Trend — technisch weder überkauft noch überverkauft, Chart bestätigt die fundamentale "Beobachten"-Einschätzung, liefert kein eigenständiges Kauf- oder Verkaufssignal.</p>
+
+  <div class="section-label">Full DCF (Python, Rule 20) — Bear/Base/Bull, WACC 10,58% (Cost of Equity, praktisch netto-cash)</div>
+  <div class="bbb-frame">
+    <img src="CLBT-bearbasebull-2026-09-07.png" alt="Bear Base Bull Fair Value">
+  </div>
+  <div class="box">
+    <table class="scenario-table">
+      <tr><th>Szenario</th><th>FCF-Wachstum J1→J5</th><th>Terminal-g</th><th>FV/Aktie</th><th>Δ vs. Live $11,45</th><th>TV-Anteil EV</th></tr>
+      <tr><td>Bear</td><td>10%→4%</td><td>2,5%</td><td>$10,53</td><td class="neg">-8,0%</td><td>69,7%</td></tr>
+      <tr><td>Base</td><td>17%→8%</td><td>3,0%</td><td>$13,32</td><td class="pos">+16,3%</td><td>73,0%</td></tr>
+      <tr><td>Bull</td><td>22%→12%</td><td>3,5%</td><td>$16,35</td><td class="pos">+42,8%</td><td>75,8%</td></tr>
+    </table>
+    <div class="warn-strip">⚠ TV-Anteil in allen 3 Szenarien &gt;69% → DCF strukturell sensitiv auf WACC/Terminal-g-Annahmen, nicht auf die nahe Cashflow-Prognose. Anders als beim DISCO-Präzedenzfall (alle Szenarien negativ) liegt hier nur der Bear-Case unter dem Live-Kurs — Base/Bull zeigen moderates bis deutliches Upside, DECKT sich grob mit dem Analysten-Konsens-Kursziel $15,36 (zwischen Base und Bull). Kein Widerspruch zur Multiples-Sicht (Conan: EV/Sales 4,6x, "nicht teuer, aber kein Geschenkpreis").</div>
+  </div>
+
+  <div class="box">
+    <h3>Reaper-Score-Aufschlüsselung (Transparenz-Tabelle, neu seit 2026-09-08)</h3>
+    <table class="score-table">
+      <tr><th>Bewertungsfeld</th><th>Jack</th><th>Conan</th><th>Kommentar</th></tr>
+      <tr><td>Anker-Wert (Rohscore vor Mali)</td><td class="num">7,5</td><td class="num">7,0</td><td>Beide sehen solide Grundqualität (Moat, Bilanz, Bruttomarge)</td></tr>
+      <tr><td>SBC-/Verwässerungs-Malus</td><td class="num">-2,0</td><td class="num">-2,0</td><td>Identisch angewendet (Methodik-Pflicht bei aktivem Flag)</td></tr>
+      <tr><td>ROIC-/Execution-Malus</td><td class="num">-0,5</td><td class="num">-0,5 bis -1,0</td><td>Guidance-Cut + CEO-Wechsel als zusätzlicher Unsicherheits-Malus</td></tr>
+      <tr><td>Sonstige Mali (Unsicherheit/Timing)</td><td class="num">-1,0</td><td class="num">–</td><td>Jack fasst CEO-Wechsel/Investigations separat, Conan bereits oben verrechnet</td></tr>
+      <tr><td><b>Endscore</b></td><td class="num"><b>4,0/10</b></td><td class="num"><b>5,5/10</b></td><td>Deckel: Konfidenz 🟡/🔴 → beide max. 6/10 ohnehin gedeckelt</td></tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    <div>Reaper Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/3</div>
+  </div>
+
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">REAPER <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Trigger · Devil's Advocate · Verdict · Quellen</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">7. September 2026 — Seite 3</div>
+      <div>CLBT Cellebrite DI Ltd</div>
+    </div>
+  </div>
+
+  <div class="underrated-box">
+    <h3>💡 Der unterschätzte Punkt</h3>
+    <p>Die Headline-Kennzahlen (FCF-Marge 28%, ARR-Wachstum 21%, Bruttomarge 86%) sehen auf den ersten Blick nach einem sauberen SaaS-Compounder aus — <b>und genau das ist die Falle, in die Jacks erster Durchlauf beinahe getappt wäre.</b> Erst Conans SBC-bereinigte Nachrechnung deckt auf: die reale, aktionärsseitige FCF-Marge liegt eher bei ≈17%, nicht 28% — die Differenz wird durch stock-based compensation (≈11-13% des Umsatzes) und eine Aktienzahl-Zunahme von 9,33% p.a. aufgezehrt. Dieselbe Lücke zeigt sich bei der operativen Marge: GAAP 5,3% vs. Non-GAAP 22,7% — ein Faktor-4-Unterschied. Für ein Unternehmen, dessen Investment-These stark auf "hochmargige, kapitalleichte Software" aufbaut, ist das keine Fußnote, sondern der zentrale Belastungstest der These: <b>ein spürbarer Teil des scheinbaren Wachstums wird über Aktionärs-Verwässerung statt über echten Cashflow finanziert.</b> Genau diese Art von Differenz ist der Grund, warum der 3-fach-Cross-Check hier einen echten Mehrwert lieferte, statt nur dieselbe Zahl dreimal zu bestätigen.</p>
+  </div>
+
+  <div class="trigger-row">
+    <div class="trigger-box bull">
+      <h3>📈 Nachkauf-Aufstufungs-Trigger</h3>
+      <ul>
+        <li>1. ARR-Wachstum stabilisiert sich wieder &gt;17% YoY (Q3/Q4 2026)</li>
+        <li>2. NRR steigt zurück Richtung ≥120% (aktuell 112-117%)</li>
+        <li>3. Verwässerung normalisiert auf &lt;2-3% p.a. (aktuell ≈9,3% YoY Aktienzahl)</li>
+        <li>4. SBC-bereinigte FCF-Marge steigt wieder ≥20% (aktuell ≈17%)</li>
+      </ul>
+      <p style="font-size:6.6pt; color:var(--text-dim); margin-top:1.4mm;">Mind. 2 von 4 nötig, Technik nur Bestätigung, nie eigenständiger Auslöser (Playbook-Regel).</p>
+    </div>
+    <div class="trigger-box bear">
+      <h3>📉 Abstauber-/Stop-These-Trigger</h3>
+      <ul>
+        <li>1. NRR fällt unter 110% (Churn-Alarm-Schwelle der Methodik)</li>
+        <li>2. FY2026/FY2027-ARR-Guidance wird erneut gesenkt (3. Kürzung in Folge)</li>
+        <li>3. SBC/Verwässerung eskaliert weiter statt sich zu normalisieren</li>
+        <li>4. Anwaltskanzlei-Investigations münden in bezifferte, materielle Klage</li>
+      </ul>
+      <p style="font-size:6.6pt; color:var(--text-dim); margin-top:1.4mm;">Abstauber-Kaufzone (falls Kurs dorthin fällt, NICHT Verkaufszone): $9,00-10,25.</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>😈 Devil's Advocate (Konsens aus Jack + Conan)</h3>
+    <p><b>1.</b> Kursrutsch (-30% um Earnings) hat Bewertungsluft geschaffen — Forward-KGV 18,7x ist für ein 15-20%-Wachstums-Softwareunternehmen mit Netto-Cash-Bilanz nicht per se teuer. <b>2.</b> Guidance-Kürzung wurde explizit mit Timing (verzögerte Großaufträge), nicht mit strukturellem Nachfrageverlust begründet — Adj.-EBITDA-Guidance wurde parallel sogar ANGEHOBEN, was gegen eine grundlegende Geschäftskrise spricht. <b>3.</b> Analysten-Konsens (8 Analysten) bleibt trotz allem "Strong Buy" mit $15,36 Kursziel (+34%) — der Markt scheint den Reset differenzierter zu lesen als eine reine Verwässerungs-/Execution-Warnung nahelegen würde.</p>
+  </div>
+
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">BEOBACHTEN</div>
+      <div class="sub">Einstimmig, alle 3 KIs unabhängig</div>
+    </div>
+    <div class="fazit-grid">
+      <div class="fazit-item"><div class="label">Reaper Score</div><div class="value">≈4,5-5,0/10</div></div>
+      <div class="fazit-item"><div class="label">Konfidenz</div><div class="value" style="color:var(--yellow);">🟡 MITTEL (Deckel)</div></div>
+      <div class="fazit-item"><div class="label">Sizing</div><div class="value">Tier 3 (max. 2%)</div></div>
+      <div class="fazit-item"><div class="label">Abstauber-Zone</div><div class="value">$9,00-10,25</div></div>
+      <div class="fazit-item"><div class="label">Re-Check</div><div class="value">Q3 2026 · Investor-Event 14.09.</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">Quellen, Annahmen und Hinweise</div>
+  <div class="box">
+    <p class="sources-list">
+      <span class="n">1.</span>Twelve Data API — Kurs/Zeitreihe/Company-News CLBT, abgerufen 2026-09-07<br>
+      <span class="n">2.</span>stockanalysis.com/stocks/clbt/ + /financials/balance-sheet/ — Marktkap., Beta, P/E, Bilanz, abgerufen 2026-09-07<br>
+      <span class="n">3.</span>SEC EDGAR / Cellebrite 20-F (FY2025) — Going-Concern-/Audit-Bestätigung, NRR, Kundenkonzentration, RPO (via Conan/ChatGPT Live-Suche)<br>
+      <span class="n">4.</span>Cellebrite Q2-2026-Earnings-Release + Call-Transkript (Yahoo Finance, Fool.com, Seeking Alpha, stocktitan.net 6-K) — ARR/Umsatz/Guidance<br>
+      <span class="n">5.</span>theglobeandmail.com, prnewswire.com — CEO-Transition-Pressemitteilung (13.08.2026)<br>
+      <span class="n">6.</span>Google Search Grounding (Jack/Gemini) + OpenAI web_search (Conan/ChatGPT) — ergänzende Live-Recherche während der jeweiligen Analyse
+    </p>
+    <p style="margin-top:2mm; font-size:6.6pt; color:var(--text-faint);"><b>Modellannahmen DCF:</b> WACC/Cost-of-Equity 10,58% (Rf 4,1% [TRAINING] + Beta 1,15 [VERIFIED] × ERP 5,2% [TRAINING] + 0,5% Israel-/Public-Sector-Aufschlag [TRAINING]), da Gesellschaft praktisch schuldenfrei ist (WACC ≈ Cost of Equity). 5-Jahres-Fade-Modell, Terminal-Wachstum 2,5-3,5% je Szenario. TV-Anteil &gt;69% in allen Fällen — Ergebnis als Bandbreite, nicht als Punktschätzung zu lesen.<br><b>Hinweis:</b> ROIC- und NRR-Werte weichen zwischen Jack (Gemini) und Conan (ChatGPT) ab (12,0% vs. TRAINING-Schätzung &gt;20% bzw. 112% vs. 117%) — beide Werte im Bericht transparent nebeneinander stehen gelassen statt künstlich geglättet, siehe DNA-Check-Tabelle Seite 1.</p>
+  </div>
+
+  <div class="warn-strip" style="margin-top:0;">⚠ <b>Keine Anlageberatung.</b> Diese Analyse ist eine automatisierte Entscheidungsgrundlage für Brians eigene Investmententscheidung, kein Kauf-/Verkaufsauftrag und keine individuelle Finanzberatung.</div>
+
+  <div class="footer">
+    <div>Reaper Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/3</div>
+  </div>
+
+</div>
+
+</body>
+</html>
