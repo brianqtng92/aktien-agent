@@ -39,6 +39,32 @@ explizit benannt, nicht stillschweigend übergangen. – nächste reguläre
 Aktualisierung beim nächsten `taeglicher-trigger-check`- bzw.
 `wochenfazit`-Lauf.
 
+**Nachtrag 2026-09-07 ~17:35 (Folge-Trigger, PDF-Anhang-Fix versucht):**
+in einer Folge-Session gezielt geprüft, ob der Base64-über-Bash-Workaround
+(PDF → `base64 -i` → Textdatei → als `content` ins `attachments`-Array)
+funktioniert. **Ergebnis: strukturell nicht machbar, kein session-
+spezifisches Vorsichts-Problem.** Das 1,1-MB-PDF ergibt als Base64 ~1,4 MB
+Text; schon der Lese-Versuch dieser Zwischen-Textdatei per Read-Tool schlägt
+mit derselben harten 256-KB-Grenze fehl, die auch fürs direkte PDF-Lesen
+gilt. Diese Grenze ist nicht auf Read beschränkt – sie spiegelt die
+praktische Obergrenze für Inhalte, die als einzelnes Tool-Call-Argument
+generiert werden können; ein `send_message`-Aufruf mit ~1,4 MB Base64 im
+`content`-Feld müsste ich als Modell in EINEM Antwort-Turn ausgeben, was
+weit über jedes realistische Output-Token-Budget pro Turn hinausgeht.
+Chunk-weises Lesen der Base64-Datei löst das nicht, weil am Ende trotzdem
+alles in einem einzigen Tool-Aufruf zusammengeführt werden müsste. **Fazit:
+PDF-Anhang per Inline-Base64 ist mit den aktuell verfügbaren Tools
+(kein `SendUserFile`, keine Datei-Referenz-Option im `send_message`-Schema)
+für Dateien dieser Größenordnung nicht zuverlässig möglich, unabhängig von
+Read- vs. Bash-Kodierweg.** Keine erneute (doppelte) E-Mail verschickt, da
+die inhaltsgleiche Text-Zusammenfassung bereits um 17:17 zugestellt wurde
+– ein zweiter, fast identischer Mail-Versand wäre nur Spam ohne Mehrwert.
+`reports/wochenfazit/SKILL.md` entsprechend korrigiert (siehe dortiger
+Versionsvermerk), damit künftige Läufe diesen Workaround nicht wiederholt
+ergebnislos versuchen. Echter Fix bräuchte entweder ein Tool mit
+Datei-Referenz statt Inline-Content (z.B. `SendUserFile`, falls in einer
+Session verfügbar) oder einen Cloud-Link (z.B. Drive) statt Anhang.
+
 ---
 
 ## 1. Kategorie-Struktur Depot ("10-7-3"-Ziel)
