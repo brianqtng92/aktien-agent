@@ -60,3 +60,9 @@ These statt nur abstrakten Wachstumsraten).
 ## Empfehlung an Brian
 
 CRV-Einstufung wird von 🟠 "Kein Nachkauf (teuer)" auf **🔴 "Kein Nachkauf – überbewertet, Position kritisch prüfen"** verschärft (siehe depot/kategorisierung.md). Kein automatischer Verkauf (Conans primärquellenbasierte Gegenposition + fehlender Going-Concern-Zweifel + Netto-Cash-Polster sprechen dagegen), aber ausdrückliche Bitte, die Position vor jeder weiteren Aufstockung kritisch zu hinterfragen und die Q3-2026-Zahlen (Nov.) als nächsten harten Prüfpunkt abzuwarten.
+
+## Siebte Anpassung (2026-09-08): DNA-Check-Tags als Farb-Badges statt Klammer-Text
+
+Gleiche Anpassung wie bei CLBT: Klammer-Tags in der DNA-Check-Tabelle
+durch kompakte Farb-Badges (V/T/E/N) mit Legende ersetzt, Tag-Disziplin
+selbst unverändert.

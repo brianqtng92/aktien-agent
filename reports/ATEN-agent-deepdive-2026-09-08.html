@@ -130,6 +130,13 @@
   .catalyst-desc { flex: 1; font-size: 9pt; color: var(--text-dim); line-height: 1.32; }
   .catalyst-desc b { color: var(--text); }
 
+  .dqtag { display: inline-block; font-size: 6.1pt; font-weight: 700; padding: 0.2mm 1.4mm; border-radius: 5px; margin-left: 1mm; letter-spacing: 0.02em; vertical-align: 1px; }
+  .dqtag-v { background: var(--green-bg); color: var(--green); }
+  .dqtag-t { background: var(--yellow-bg); color: var(--yellow); }
+  .dqtag-e { background: var(--blue-bg); color: var(--blue); }
+  .dqtag-n { background: var(--red-bg); color: var(--red); }
+  .dqtag-legend { font-size: 7.4pt; color: var(--text-faint); margin-top: 1mm; }
+  .dqtag-legend .dqtag { margin-left: 0; margin-right: 1mm; }
   .verify-table, .compare-table, .scenario-table, .score-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
   .verify-table th, .verify-table td, .compare-table th, .compare-table td,
   .scenario-table th, .scenario-table td, .score-table th, .score-table td {
@@ -375,12 +382,13 @@
     <h3>DNA-Check (Standard, K-BASIS 5, kein SaaS-Override) — Cross-Check-Ergebnis</h3>
     <table class="verify-table">
       <tr><th>K-Kriterium</th><th>Jack (Gemini)</th><th>Conan (ChatGPT, SEC-primärquellenbasiert)</th><th>Jarvis-Einordnung</th></tr>
-      <tr><td>ROIC &gt;20%</td><td>6,27% ❌ [VERIFIED]</td><td>&gt;20% ✅ (NOPAT/gering geb. Kapital) [TRAINING]</td><td>Massive Divergenz bei GLEICHER Kennzahl — Methodik-/Kapitalbasis-Unterschied, siehe Seite 10</td></tr>
-      <tr><td>FCF-Marge real</td><td>6,75% ❌ [VERIFIED]</td><td>19,65% TTM / 22,3% FY25 ⚠️ knapp [VERIFIED, SEC]</td><td><b>Conans SEC-Quelle wirkt belastbarer</b> — Jacks Zahl vermutlich fehlerhaft/anders definiert</td></tr>
+      <tr><td>ROIC &gt;20%</td><td>6,27% ❌ <span class="dqtag dqtag-v">V</span></td><td>&gt;20% ✅ (NOPAT/gering geb. Kapital) <span class="dqtag dqtag-t">T</span></td><td>Massive Divergenz bei GLEICHER Kennzahl — Methodik-/Kapitalbasis-Unterschied, siehe Seite 10</td></tr>
+      <tr><td>FCF-Marge real</td><td>6,75% ❌ <span class="dqtag dqtag-v">V</span></td><td>19,65% TTM / 22,3% FY25 ⚠️ knapp <span class="dqtag dqtag-v">V</span></td><td><b>Conans SEC-Quelle wirkt belastbarer</b> — Jacks Zahl vermutlich fehlerhaft/anders definiert</td></tr>
       <tr><td>Op. Leverage</td><td>Nein ❌</td><td>H1 gemischt, Q2 GAAP rückläufig ⚠️</td><td>Beide sehen Schwäche, Nuance unterschiedlich</td></tr>
-      <tr><td>Piotroski F-Score</td><td>5/9 ❌ [TRAINING]</td><td>4-5/9 ❌ [TRAINING/ESTIMATE]</td><td>Einig — beide unter 7/9-Schwelle</td></tr>
-      <tr><td>EPS-CAGR 5J ≥12%</td><td>-0,99% ❌ [VERIFIED]</td><td>&gt;20% nominal, aber steuer-/einmaleffekt-verzerrt ⚠️ [VERIFIED/TRAINING]</td><td>Auch hier deutliche Divergenz — Conan mit Qualitätsabschlag-Hinweis</td></tr>
+      <tr><td>Piotroski F-Score</td><td>5/9 ❌ <span class="dqtag dqtag-t">T</span></td><td>4-5/9 ❌ <span class="dqtag dqtag-t">T</span><span class="dqtag dqtag-e">E</span></td><td>Einig — beide unter 7/9-Schwelle</td></tr>
+      <tr><td>EPS-CAGR 5J ≥12%</td><td>-0,99% ❌ <span class="dqtag dqtag-v">V</span></td><td>&gt;20% nominal, aber steuer-/einmaleffekt-verzerrt ⚠️ <span class="dqtag dqtag-v">V</span><span class="dqtag dqtag-t">T</span></td><td>Auch hier deutliche Divergenz — Conan mit Qualitätsabschlag-Hinweis</td></tr>
     </table>
+    <div class="dqtag-legend"><span class="dqtag dqtag-v">V</span>Verified/Live · <span class="dqtag dqtag-t">T</span>Training (Einzelquelle) · <span class="dqtag dqtag-e">E</span>Estimate · <span class="dqtag dqtag-n">N</span>Nicht verfügbar</div>
     <p style="margin-top:1.4mm;">K-Score Jack: <b>0/5</b> (kompletter DNA-Abbruch nach Punktzahl, aber unterhalb der Terminal-Schwelle da kein [N/V]) · K-Score Conan: <b>2,5-3/5</b> (Grenzfall). <b>Diese Divergenz ist deutlich größer als bei jedem bisherigen Full Deep Dive (CLBT: 4 vs. 3,5/5).</b> Wahrscheinlichste Erklärung: Jacks ROIC-/FCF-Marge-Berechnung nutzt vermutlich eine andere Kapitalbasis oder ältere/andere Datenquelle als Conans direkt aus SEC-10-Q/10-K abgeleitete Zahlen — Jarvis gewichtet Conans primärquellenbasierte Herleitung als belastbarer, OHNE Jacks Einschätzung zu verwerfen (siehe Score-Synthese Seite 10).</p>
   </div>
 

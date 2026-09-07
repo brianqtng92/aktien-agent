@@ -4028,6 +4028,25 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     nur der abstrakten Wachstumsrate dahinter. Macht die DCF-Szenarien
     nachvollziehbar mit der übrigen Analyse (Offene Schwächen, Katalysator-
     Ausblick, Bear-Case-Katalog) verknüpft, statt isoliert dazustehen.
+21. **Datentyp-Tags in der DNA-Check-Tabelle als kompakte Farb-Badges statt
+    Klammer-Text (neu, 2026-09-08, von Brian gefordert: "kann man das
+    Klammer-Geschreibsel nicht weglassen").** Die zugrunde liegende
+    Tag-Disziplin selbst ([LIVE]/[VERIFIED]/[TRAINING]/[ESTIMATE]/[N/V],
+    Klasse-A-Regel aus dem Datenintegritäts-System) bleibt UNVERÄNDERT –
+    sie bestimmt weiterhin Daten-Konfidenz, Score-Deckel und Sizing-Limits
+    und wird in den textlichen Divergenz-Einordnungen (z.B. "Jacks Zahl
+    [VERIFIED] vs. Conans [TRAINING]") weiterhin ausgeschrieben, wo sie
+    argumentativ gebraucht wird. Nur die WIEDERHOLTE Anzeige in jeder
+    einzelnen Tabellenzelle wird visuell verschlankt: statt
+    "12,0% ❌ [VERIFIED]" steht jetzt "12,0% ❌ Ⓥ" – ein kleines farbiges
+    Badge (Ⓥ grün = Verified/Live, Ⓣ gelb = Training, Ⓔ blau = Estimate,
+    Ⓝ rot = Nicht verfügbar), mit einer einzeiligen Legende direkt unter
+    der Tabelle. Gilt NUR für die DNA-Check-Tabelle selbst – Prosa-Stellen
+    (z.B. im Modellannahmen-DCF-Absatz auf der Quellen-Seite, "Rf 4,1%
+    [TRAINING]") behalten die ausgeschriebene Klammer-Form, da dort keine
+    repetitive Tabellen-Unruhe entsteht. CSS-Referenzimplementierung:
+    `.dqtag`/`.dqtag-v`/`.dqtag-t`/`.dqtag-e`/`.dqtag-n`/`.dqtag-legend` in
+    den bestehenden Full-Deep-Dive-HTML-Dateien.
 
 **Was AUSDRÜCKLICH NICHT übernommen wird:** die Serien-Aufteilung in 5
 separate Veröffentlichungen (unser Full Deep Dive bleibt EIN

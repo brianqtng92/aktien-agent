@@ -121,3 +121,12 @@ Median berechnet, da nur ein direkt vergleichbarer börsennotierter Peer
 vorliegt (Rigor-Standard verlangt mind. 3). Zusätzlich: explizite
 qualitative Kernannahmen je Bear/Base/Bull-Szenario (nicht nur
 Wachstumsraten) direkt unter der DCF-Tabelle ergänzt.
+
+## Sechste Anpassung (2026-09-08): DNA-Check-Tags als Farb-Badges statt Klammer-Text
+
+Auf Brians Wunsch ("kann man das nicht weglassen?") wurden die
+Klammer-Tags ([VERIFIED]/[TRAINING] usw.) in der DNA-Check-Tabelle durch
+kompakte farbige Badges (V/T/E/N) mit einer einzeiligen Legende ersetzt —
+die zugrunde liegende Tag-Disziplin und ihre Auswirkung auf Konfidenz/
+Score/Sizing bleibt unverändert, nur die wiederholte Textanzeige pro
+Tabellenzelle wurde visuell verschlankt.

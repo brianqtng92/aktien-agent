@@ -130,6 +130,13 @@
   .catalyst-desc { flex: 1; font-size: 9pt; color: var(--text-dim); line-height: 1.32; }
   .catalyst-desc b { color: var(--text); }
 
+  .dqtag { display: inline-block; font-size: 6.1pt; font-weight: 700; padding: 0.2mm 1.4mm; border-radius: 5px; margin-left: 1mm; letter-spacing: 0.02em; vertical-align: 1px; }
+  .dqtag-v { background: var(--green-bg); color: var(--green); }
+  .dqtag-t { background: var(--yellow-bg); color: var(--yellow); }
+  .dqtag-e { background: var(--blue-bg); color: var(--blue); }
+  .dqtag-n { background: var(--red-bg); color: var(--red); }
+  .dqtag-legend { font-size: 7.4pt; color: var(--text-faint); margin-top: 1mm; }
+  .dqtag-legend .dqtag { margin-left: 0; margin-right: 1mm; }
   .verify-table, .compare-table, .scenario-table, .score-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
   .verify-table th, .verify-table td, .compare-table th, .compare-table td,
   .scenario-table th, .scenario-table td, .score-table th, .score-table td {
@@ -376,12 +383,13 @@
     <h3>DNA-Check (SaaS-Override, K-BASIS 5) — Cross-Check-Ergebnis</h3>
     <table class="verify-table">
       <tr><th>K-Kriterium</th><th>Jack (Gemini)</th><th>Conan (ChatGPT)</th><th>Jarvis-Einordnung</th></tr>
-      <tr><td>ROIC &gt;20%</td><td>12,0% ❌ [VERIFIED]</td><td>vermutl. &gt;20%, Cash-verzerrt [TRAINING]</td><td>Uneinigkeit selbst benannt — Cash-Overhang verzerrt beide Methoden, echte K-Lücke</td></tr>
+      <tr><td>ROIC &gt;20%</td><td>12,0% ❌ <span class="dqtag dqtag-v">V</span></td><td>vermutl. &gt;20%, Cash-verzerrt <span class="dqtag dqtag-t">T</span></td><td>Uneinigkeit selbst benannt — Cash-Overhang verzerrt beide Methoden, echte K-Lücke</td></tr>
       <tr><td>FCF-Marge real (SBC-ber.)</td><td>28% ✅ (Headline)</td><td>≈17% ❌ (SBC-bereinigt)</td><td><b>Conans strengere SBC-Bereinigung ist methodisch korrekter</b> → K-Fail</td></tr>
       <tr><td>Op. Leverage</td><td>Ja ✅</td><td>Ja ✅ (Umsatz +17,5% &lt; Adj.EBITDA +21%)</td><td>Einig — bestätigt</td></tr>
-      <tr><td>EPS-CAGR 5J ≥12%</td><td>20% ✅ [VERIFIED]</td><td>plausibel &gt;12%, nicht primär verifiziert [TRAINING]</td><td>Beide TRAINING-lastig, Richtung übereinstimmend</td></tr>
+      <tr><td>EPS-CAGR 5J ≥12%</td><td>20% ✅ <span class="dqtag dqtag-v">V</span></td><td>plausibel &gt;12%, nicht primär verifiziert <span class="dqtag dqtag-t">T</span></td><td>Beide TRAINING-lastig, Richtung übereinstimmend</td></tr>
       <tr><td>NRR (K, SaaS-Override)</td><td>112% 🟡 halber Punkt</td><td><b>117% (20-F/Earnings-Release, primärquellennah)</b></td><td>Divergenz 5pp — Conans Zahl hat bessere Quellenlage, beide unter 120%-Vollpunkt</td></tr>
     </table>
+    <div class="dqtag-legend"><span class="dqtag dqtag-v">V</span>Verified/Live · <span class="dqtag dqtag-t">T</span>Training (Einzelquelle) · <span class="dqtag dqtag-e">E</span>Estimate · <span class="dqtag dqtag-n">N</span>Nicht verfügbar</div>
     <p style="margin-top:1.4mm;">K-Score Jack: 4/5 (ROIC-Fail) · K-Score Conan: 3,5/5 (ROIC+FCF-Fail, NRR halber Punkt) — <b>beide im Grenzfall-Band (K-BASIS−1/−2), kein Terminal-Abbruch, aber übereinstimmend kein sauberer 5/5-Compounder.</b> Divergenz selbst ist der Mehrwert des 3-fach-Checks: Jack übernahm die Headline-FCF-Marge, Conan grub bis zur SBC-bereinigten Realzahl — genau diese Differenz ist auf Seite 9 als "Der unterschätzte Punkt" ausgeführt.</p>
   </div>
 
