@@ -504,6 +504,22 @@ unübersichtlich wachsen, statt sauber zu bleiben. Ab jetzt gilt:
    Wildwuchs verhindern, nicht dazu führen, dass echte, von Brian explizit
    geforderte Regeln verzögert oder abgelehnt werden – im Zweifel wird die
    Regel trotzdem angelegt, aber mit der ehrlichen Einordnung aus Punkt 2.
+5. **Kein spontanes Regelbiegen für einen gerade gewünschten Kauf
+   (2026-09-08, ebenfalls von Raketentoni übernommen: "Regeln dürfen
+   weiterentwickelt werden, aber nicht spontan, um einen gerade gewünschten
+   Kauf passend zu machen"):** eine Regeländerung (egal ob Schwellenwert,
+   Kategorisierungs-Kriterium, Gate-Bedingung) darf NIE in unmittelbarem
+   zeitlichem/inhaltlichem Zusammenhang mit einem konkreten, bereits
+   ins Auge gefassten Kaufkandidaten motiviert oder begründet werden – das
+   wäre die Regel der Entscheidung anzupassen, statt die Entscheidung an
+   der Regel zu messen. Eine echte Regeländerung braucht eine von der
+   aktuellen Kaufentscheidung UNABHÄNGIGE Begründung (z.B. ein
+   systematischer Fehler, der bei mehreren, unterschiedlichen Fällen
+   auffiel – siehe Punkt 2 oben, "Muster statt Einzelfall"). Erkennungs-
+   Frage vor jeder Regeländerung: "Würde ich diese Änderung genauso
+   vorschlagen, wenn gerade KEIN konkreter Kandidat davon profitieren
+   würde?" – bei "nein" oder Unsicherheit: Änderung zurückstellen, mit
+   Brian offen ansprechen statt sie einfach umzusetzen.
 
 **Konsolidierter Master-Status (2026-09-04, dritter von Raketentoni
 übernommener Punkt):** neue Datei `depot/master_status.md` – EIN
@@ -3727,6 +3743,20 @@ künftige Portfolio-Aufnahme** sind.
   - 🟠 **VORSICHT/TEUER** – spürbar teuer ggü. Historie/Peers, aber kein hartes Warnsignal (spekulativ, nicht fundamental gebrochen).
   - 🔴 **MEIDEN/ÜBERBEWERTET** – deutlich überbewertet und/oder mehrere gleichzeitige Warnsignale
     (z.B. Bewertung läuft der Ertragsentwicklung erkennbar davon).
+  **Kursverlust-Nachkauf-Bias-Schutz (2026-09-08, angeregt durch einen
+  Vergleich mit Raketentonis System, dort explizit formuliert: "Ein
+  Kursverlust ist allein kein Argument für einen Nachkauf"):** ein
+  gefallener Kurs allein rechtfertigt NIE eine 🟢-Hochstufung – die
+  CRV-Ampel bleibt ausschließlich an der tatsächlichen Bewertung
+  (KGV/KBV vs. Historie/Peers) und der Unternehmensqualität festgemacht,
+  nicht am Ausmaß des Rückgangs selbst. Ein -30%-Kursrückgang bei einer
+  Position, die vorher bereits teuer war, landet bestenfalls bei fair
+  bewertet (🟡), nicht automatisch bei 🟢 – "ist stark gefallen" und "ist
+  jetzt günstig" sind zwei unterschiedliche Aussagen, die nicht verwechselt
+  werden dürfen (bewusste Ergänzung zur bereits bestehenden Trennung von
+  Geschäftsqualität und Einstiegszeitpunkt, siehe oben – hier zusätzlich:
+  auch INNERHALB der Einstiegszeitpunkt-Bewertung selbst nicht den
+  Kursverlauf mit dem Bewertungsniveau verwechseln).
   **Bei Depot-Positionen ausdrücklich kein automatisches Verkaufssignal**
   – 🔴/🟠 heißt "kein Nachkauf jetzt", nicht "verkaufen"; dafür gelten
   weiterhin ausschließlich die dokumentierten Abstauber-/Stop-These-
@@ -4108,6 +4138,24 @@ künftige Portfolio-Aufnahme** sind.
      kein passender Kandidat gefunden trotz gezielter Suche, weiter
      beobachten") statt die Lücke stillschweigend fallen zu lassen – dieselbe
      Ehrlichkeits-Pflicht wie bei "kein Verstoß" im Portfolio-Regel-Check.
+  3b. **Proaktive Suche ist keine Kaufpflicht – Watchlist-Aufnahme ≠
+     Depot-Kauf (2026-09-08, Brian nach einem Vergleich mit Raketentonis
+     Prinzip "kein Zwang, freie Plätze sofort zu besetzen" – bei uns
+     angepasst, weil wir bewusst AKTIV suchen, siehe Punkt 1-2b oben,
+     Brian: "die Werte die wir suchen kommen ja trotzdem erstmal auf die
+     Watchlist, danach wird trotzdem sondiert welche Werte es wirklich ins
+     Portfolio schaffen").** Die Pflicht zur aktiven Suche (Punkt 1-2b oben)
+     bleibt unverändert – KEIN Widerspruch dazu. Aber: ein gefundener,
+     erfolgreich durch den 3-fach-Check gelaufener Kandidat landet zunächst
+     NUR in `watchlist.md`, nicht automatisch im Depot. Eine offene
+     Kategorie-/Regionen-Lücke erzeugt KEINEN Zeitdruck, einen
+     Watchlist-Kandidaten zeitnah tatsächlich zu kaufen – das bleibt
+     Brians eigene, in Ruhe getroffene manuelle Entscheidung, unabhängig
+     davon, wie lange ein Slot schon offen ist. Die Suchpflicht sorgt dafür,
+     dass IMMER geeignete Kandidaten bereitstehen, wenn Brian kaufen
+     möchte – sie ist keine Kauf-Empfehlung mit Dringlichkeit. Sizing-/
+     Kauf-Empfehlungen bleiben an die üblichen Kriterien gebunden (CRV-Ampel,
+     eigene Einstiegsüberlegung Brians), nicht an die Slot-Lücke selbst.
   4. **Kein Dauerlauf ohne Ende:** eine erfolglose gezielte Suche muss nicht
      bei jedem einzelnen Lauf wiederholt werden (das wäre reine
      Rechenverschwendung ohne neue Information) – sie wird erneut
