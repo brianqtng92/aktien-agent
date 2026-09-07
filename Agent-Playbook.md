@@ -2159,6 +2159,33 @@ Für jede bestehende Depot-/Watchlist-Position, in regelmäßigem Rhythmus:
        Wirtschaftskalender-Blick oben nur vorab angekündigt), oder ein
        gravierendes geopolitisches Ereignis mit unmittelbar erkennbarer
        Marktreaktion.
+     → **Portfolio-Sensitivitäts-Analyse bei Material Shift (2026-09-08, von
+       Brian angeregt nach einem Beispiel aus Raketentonis System – ein
+       Discord-Screenshot zeigte dessen Agent bei einem drohenden
+       US-Regierungsstillstand eine Ampel-Liste ALLER Depot-Positionen mit
+       individueller Sensitivitäts-Einschätzung zu genau diesem Ereignis):**
+       löst Schritt oben ("Material-Shift-Kriterien") tatsächlich aus, wird
+       ZUSÄTZLICH zur reinen Einordnung eine vollständige Sensitivitäts-Liste
+       über ALLE Depot-Positionen (alle 4 Broker, siehe `depot/*.md`)
+       erstellt – für jede Position individuell, NICHT ein pauschaler
+       Beta-/Volatilitäts-Wert, sondern eine Einschätzung, wie stark GENAU
+       DIESES Ereignis (nicht Marktrisiko allgemein) über welchen
+       Übertragungskanal auf diese konkrete Position wirkt (z.B. bei einem
+       US-Shutdown: direkte US-Staatsabhängigkeit/Regulatorik-Verzögerung
+       vs. nur indirekt über allgemeines Risk-off-Sentiment vs. praktisch
+       unberührt). Format je Position: Ampel (🔴 hoch / 🟠 erhöht / 🟡 mittel
+       / 🟢 niedrig) + Positionsname + EIN Satz Begründung mit dem konkreten
+       Übertragungskanal, nicht nur "ist riskant". Kein Score, keine
+       automatische Handlungsempfehlung (siehe "Einordnung, KEINE
+       Handlungsanweisung" unten – gilt hier genauso) – reine
+       Einordnungshilfe, damit Brian selbst sieht, welche Positionen bei
+       DIESEM konkreten Ereignis am empfindlichsten wären. Wird Teil der
+       Material-Shift-Eskalationsmail/-WhatsApp-Nachricht (siehe
+       Tages-Sichtbarkeit unten), nicht eine separate Datei/Routine. Bei
+       einem sehr generischen Shift ohne klaren thematischen Bezug (z.B.
+       reine Sentiment-Schwankung ohne erkennbaren Auslöser) reicht ein
+       kurzer Hinweis, dass keine differenzierte Positions-Zuordnung
+       sinnvoll möglich ist, statt eine erzwungene Liste ohne echten Bezug.
      → **Einordnung, KEINE Handlungsanweisung:** aus der Momentaufnahme
        wird eine grobe Investitionsklima-Einordnung abgeleitet (eher
        günstig für Zukäufe / neutral / eher Vorsicht-Cash-halten) – das
