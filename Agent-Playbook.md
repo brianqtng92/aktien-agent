@@ -3796,6 +3796,49 @@ Agent-Optik, nicht 1:1):**
    hier nur als saubere Tabellen-Visualisierung übernommen statt reinem
    Fließtext-Widerspruch.
 
+**Erweiterung 2026-09-07 (von Brian gefordert: "noch ausführlicher, noch
+informativer, 5 oder mehr Seiten"):**
+
+10. **Mindestlänge 5 Seiten, mehr wenn die Informationslage es hergibt.**
+    Die bisherigen 3 Seiten waren ein Startpunkt, keine Obergrenze – bei
+    einem Full Deep Dive mit guter Datenlage (Primärquellen verfügbar,
+    3-fach-Cross-Check mit echten Funden) ist ein 3-Seiten-Report zu knapp.
+    Kein künstliches Aufblähen mit Füllstoff, aber jeder der Punkte unten
+    verdient echten Raum statt einer Kurzzeile.
+11. **Neue Pflicht-Eröffnungsseite: narrative Burggraben-/Unternehmens-
+    Einführung**, direkt nach dem Masthead, VOR der 3-Stimmen-Leiste. Analog
+    zu Raketentonis Positionierungs-Aufhängern (z.B. "Das X der Y mit
+    Monopolstellung bei Z") eine prägnante, eigene Kern-Aussage voranstellen,
+    die die Investment-These in einem Satz einfängt – dann in mehreren
+    vollständigen Absätzen (nicht Stichpunkte) erzählen: Unternehmens-
+    geschichte/Entstehung, wie der Burggraben konkret entstanden ist (nicht
+    nur DASS er existiert – siehe Moat-Verifikation weiter unten, die bleibt
+    als kompakte Ampel-Box erhalten), Marktstellung mit konkreten Zahlen
+    (Lizenzen/Kunden/Länder o.ä., wo verfügbar), und warum ein Nachbau durch
+    Wettbewerber strukturell schwer ist. Diese Seite ist Erzählung/Kontext,
+    keine Wiederholung der später folgenden Kennzahlen-Tabellen.
+12. **Neue Pflicht-Sektion: Management.** Kurzporträt der Schlüsselpersonen
+    (CEO immer, CFO/CTO wo strategisch relevant) mit vorherigem Werdegang,
+    warum ihre Berufung ein Signal ist (z.B. Produkt- statt Vertriebsfokus,
+    Turnaround-Erfahrung, Kapitaldisziplin-Historie), plus Grossaktionärs-/
+    Insider-Struktur (wer hält wie viel, Governance-Implikation) und, sofern
+    recherchierbar, eine Einschätzung des bisherigen Kapitalallokations-
+    Track-Records. Ergänzt, ersetzt NICHT die bestehende kompakte
+    "Management-Score (0-7)"-Tabelle aus dem älteren Reaper-Kompakt-Layout –
+    hier geht es um die erzählerische Einordnung dahinter.
+13. **Katalysator-Ausblick statt nur genereller Trigger-Bedingungen.** Die
+    bestehenden Aufstufungs-/Abstauber-Trigger-Kästen (Punkt 6 oben) bleiben,
+    werden aber um einen eigenen Abschnitt "Was als Nächstes passiert"
+    ergänzt: die konkret terminierten nächsten Ereignisse (Earnings-Termin,
+    Investor-Events, Shareholder-Meetings, bekannte regulatorische/
+    Produkt-Termine), jeweils mit einem Satz, warum das Ereignis
+    kursrelevant sein könnte.
+14. **Durchgehend ausführlicherer Sprachstil.** Nicht nur die vier
+    Ampel-Boxen (Moat/Going-Concern/SBC/Reality-Check, siehe 2026-09-07-
+    Vorgabe) bekommen Fließtext in 3-4 Sätzen – dieselbe Prosa-statt-
+    Stichpunkt-Regel gilt jetzt für den gesamten Full-Deep-Dive-Report,
+    wo immer eine Einordnung mehr ist als eine reine Zahl.
+
 **Was AUSDRÜCKLICH NICHT übernommen wird:** Raketentonis Navy-Corporate-
 Farbwelt, Kapitel-Nummerierung/-Titel, Formulierungen und die reine
 Multiples-/DCF-Bewertungslogik (unsere TMR-/Scout-Fair-Value-Herleitung

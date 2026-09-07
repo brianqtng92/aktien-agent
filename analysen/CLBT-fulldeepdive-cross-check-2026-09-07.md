@@ -60,4 +60,15 @@ Kernfunde (mit eigener Live-Recherche inkl. SEC-20-F-Primärquelle): NRR 117% (p
 
 ## PDF
 
-Vollformat-Report: `reports/CLBT-reaper-deepdive-2026-09-07.pdf` (3 Seiten, neues "Reaper Deep Dive Report"-Format seit 2026-09-08: RSI/MACD-Chart-Subplots, Bear/Base/Bull-Balkendiagramm, "Der unterschätzte Punkt"-Box, Aufstufungs-/Abstauber-Trigger-Kästen, Score-Aufschlüsselungstabelle, formale Quellen-/Annahmen-Seite).
+Vollformat-Report: `reports/CLBT-reaper-deepdive-2026-09-07.pdf` (7 Seiten,
+"Agent Deep Dive Report"-Format, zuletzt am 2026-09-07 auf Brians Wunsch
+erweitert: narrative Burggraben-Einführungsseite [Unternehmensgeschichte
+seit 1999, Sun-Corporation-Übernahme 2007, warum der Burggraben aus
+Gerichtsverwertbarkeit statt Patenten besteht], eigene Management-Sektion
+[CEO Ramji/CFO Barter/CTO Wade, Großaktionärsstruktur, Kapitalallokation],
+"Katalysator-Ausblick" mit datierten Terminen, RSI/MACD-Chart-Subplots,
+Bear/Base/Bull-Balkendiagramm, ausformulierte Fließtext-Boxen bei Moat/
+Going-Concern/SBC-Check/Reality-Check, "Der unterschätzte Punkt"-Box,
+Aufstufungs-/Abstauber-Trigger-Kästen, Score-Aufschlüsselungstabelle,
+formale Quellen-/Annahmen-Seite). Rebrand von "Reaper" zu "Agent"
+zeitgleich umgesetzt, siehe Agent-Playbook.md.
