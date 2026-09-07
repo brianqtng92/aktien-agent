@@ -3988,6 +3988,36 @@ Datenintegritäts-/Tagging-Disziplin (LIVE/VERIFIED/TRAINING/ESTIMATE/N/V)
 bleibt die eigene, bereits etablierte Methode, um Quellenqualität
 transparent zu machen.
 
+**Prozess-Pflicht: Rigor-Standard-Inhalte werden an Jack/Conan
+zurückgespielt (2026-09-08, von Brian gefordert, ausgelöst durch einen
+echten Fund):** Beim ersten CLBT- und ATEN-Full-Deep-Dive wurden die 15
+Rigor-Techniken oben (5-Jahres-Historie, Guidance-Track-Record,
+Produktlinien-Tabelle, Peer-Multiples, Management-Porträts,
+Kapitalrückführungs-Historie usw.) ausschließlich von Jarvis SOLO
+recherchiert, NACHDEM Jack und Conan bereits mit dem ursprünglichen
+(schlankeren) Fact-Pack fertig geantwortet hatten – diese Inhalte
+durchliefen also nie den eigentlichen 3-fach-Cross-Check. Genau das führte
+bei A10 zu einem realen, unbemerkten Widerspruch (zwei unterschiedliche
+Gesamtschulden-Zahlen aus zwei Quellen in zwei Report-Abschnitten, nie
+gegeneinander geprüft) – von Brian entdeckt, nicht vom System selbst.
+
+**Ab sofort verbindlich:** Full Deep Dive läuft zweistufig statt
+einstufig. **Runde 1** (wie bisher): schlankes Fact-Pack → Jack + Conan →
+DNA-Check/Moat/Score/Reality-Flags/Devil's-Advocate. **Runde 2 (neu,
+Pflicht):** Jarvis recherchiert die Rigor-Standard-Inhalte (die 15 Punkte
+oben), fasst sie in einem zweiten, kompakten Zusatz-Fact-Pack zusammen und
+schickt dieses ERNEUT an Jack und Conan, mit der expliziten Bitte, die
+neuen Zahlen (5-Jahres-Historie, Guidance-Zahlen, Konzentrations-/
+Bilanzangaben, Peer-Multiples) per eigener Live-Suche gegenzuprüfen und
+Abweichungen zu benennen – genau wie in Runde 1 bei DNA-Check-Kennzahlen
+bereits etabliert. Erst nach dieser zweiten Rückkopplung gilt der Rigor-
+Teil des Reports als vollständig cross-gecheckt, nicht nur Jarvis-solo-
+recherchiert. Gefundene Abweichungen werden wie bei Runde 1 transparent
+im Report benannt (siehe z.B. CLBT NRR 112%/117%-Divergenz), nicht
+stillschweigend geglättet. Diese zweite Runde kostet zusätzliche Zeit/
+Tokens pro Report – das ist ein bewusster Tausch für echte statt nur
+behauptete Cross-Check-Tiefe.
+
 ### Watchlist-System (2026-08-28, von Brian gefordert)
 
 Zusätzlich zum eigentlichen Depot führt der Agent eine eigenständige

@@ -597,21 +597,21 @@
   <div class="box">
     <table class="scenario-table">
       <tr><th>Szenario</th><th>FCF-Wachstum J1→J5</th><th>Terminal-g</th><th>FV/Aktie</th><th>Δ vs. Live $24,59</th></tr>
-      <tr><td>Bear</td><td>5%→2%</td><td>2,0%</td><td>$13,37</td><td class="neg">-45,6%</td></tr>
-      <tr><td>Base</td><td>12%→6%</td><td>2,5%</td><td>$17,11</td><td class="neg">-30,4%</td></tr>
-      <tr><td>Bull</td><td>18%→10%</td><td>3,0%</td><td>$21,61</td><td class="neg">-12,1%</td></tr>
+      <tr><td>Bear</td><td>5%→2%</td><td>2,0%</td><td>$13,46</td><td class="neg">-45,3%</td></tr>
+      <tr><td>Base</td><td>12%→6%</td><td>2,5%</td><td>$17,20</td><td class="neg">-30,0%</td></tr>
+      <tr><td>Bull</td><td>18%→10%</td><td>3,0%</td><td>$21,70</td><td class="neg">-11,7%</td></tr>
     </table>
     <div class="warn-strip">⚠ <b>Bemerkenswert: SELBST DAS BULL-SZENARIO liegt unter dem aktuellen Kurs.</b> Anders als bei Cellebrite (dort lagen Base und Bull über dem Live-Kurs) zeigt das DCF bei A10 in allen drei Szenarien Überbewertung — konsistent mit der bestehenden Depot-Einstufung "🟠 Kein Nachkauf (teuer)".</div>
   </div>
 
   <div class="box">
     <h3>DCF-Cross-Check per Reverse-Engineering</h3>
-    <p>Rückwärts aus dem aktuellen Kurs $24,59 gerechnet ergibt sich ein implizites konstantes FCF-Wachstum von <b>≈19,2% p.a.</b> — das liegt sogar ÜBER der eigenen (bereits optimistischen) Bull-Case-Annahme (18%→10% fadend). Der Markt preist damit ein Wachstumstempo ein, das selbst im eigenen Bull-Szenario nicht erreicht wird. Das ist ein deutlich klareres Warnsignal als bei Cellebrite (dort lag die implizite Markterwartung UNTER dem Base-Case) — hier liegt sie über allem, was die eigene Analyse für plausibel hält.</p>
+    <p>Rückwärts aus dem aktuellen Kurs $24,59 gerechnet ergibt sich ein implizites konstantes FCF-Wachstum von <b>≈19,1% p.a.</b> — das liegt sogar ÜBER der eigenen (bereits optimistischen) Bull-Case-Annahme (18%→10% fadend). Der Markt preist damit ein Wachstumstempo ein, das selbst im eigenen Bull-Szenario nicht erreicht wird. Das ist ein deutlich klareres Warnsignal als bei Cellebrite (dort lag die implizite Markterwartung UNTER dem Base-Case) — hier liegt sie über allem, was die eigene Analyse für plausibel hält.</p>
   </div>
 
   <div class="box">
-    <h3>Downside-Boden: Netto-Cash pro Aktie</h3>
-    <p>Netto-Cash von $131,26 Mio entspricht <b>$1,81 pro Aktie</b> — nur rund 7,4% des aktuellen Kurses, ein noch dünnerer Puffer als bei Cellebrite (14,6%). Die Investment-These bei A10 hat praktisch keine bilanzielle Sicherheitsmarge und hängt vollständig von der operativen/Bewertungs-Entwicklung ab.</p>
+    <h3>Downside-Boden: Netto-Cash pro Aktie (korrigiert, siehe Quellen-Hinweis Seite 10)</h3>
+    <p>Netto-Cash von $137,85 Mio (Cash $357,35 Mio abzüglich $219,5 Mio Schulden — SEC-10-Q-Primärquelle statt des ursprünglich verwendeten stockanalysis.com-Aggregats $226,08 Mio, siehe Korrektur-Hinweis Seite 10) entspricht <b>$1,90 pro Aktie</b> — nur rund 7,7% des aktuellen Kurses, ein noch dünnerer Puffer als bei Cellebrite (14,6%). Die Investment-These bei A10 hat praktisch keine bilanzielle Sicherheitsmarge und hängt vollständig von der operativen/Bewertungs-Entwicklung ab.</p>
   </div>
 
   <div class="footer">
@@ -749,6 +749,7 @@
       <span class="n">8.</span>Google Search Grounding (Jack/Gemini) + OpenAI web_search (Conan/ChatGPT) — ergänzende Live-Recherche
     </p>
     <p style="margin-top:2mm; font-size:8.4pt; color:var(--text-faint);"><b>Modellannahmen DCF:</b> WACC/Cost-of-Equity 9,92% (Rf 4,1% [TRAINING] + Beta 1,12 [VERIFIED] × ERP 5,2% [TRAINING]), da Gesellschaft netto-cash-positiv ist. FCF-TTM-Basis ≈$60,9 Mio abgeleitet aus Conans SEC-FCF-Marge (19,65% TTM) × Umsatz TTM. <b>Wichtigster methodischer Hinweis dieser Analyse:</b> Jack und Conan weichen bei ROIC/FCF-Marge/EPS-CAGR massiv voneinander ab — deutlich stärker als bei jedem bisherigen Full Deep Dive. Diese Divergenz wird bewusst NICHT geglättet, sondern transparent stehen gelassen (siehe Seite 3 und 9), weil sie selbst eine wichtige Information ist: die Datenlage bei A10 ist uneindeutiger, als eine einzelne KI-Stimme vermuten ließe.</p>
+    <p style="margin-top:1.6mm; font-size:8.4pt; color:var(--text-faint);"><b>Korrektur (nachträglich, 2026-09-08):</b> Die erste Fassung dieses Reports nutzte für die DCF-/Downside-Rechnung stockanalysis.com's Aggregat-Gesamtschulden ($226,08 Mio), während Seite 6 parallel Conans SEC-10-Q-Zahl für die Convertible Notes ($219,5 Mio) zitierte — ein unaufgelöster Widerspruch zwischen Sekundär- und Primärquelle (~$6,6 Mio Differenz, vermutlich weil stockanalysis.com zusätzliche Posten wie Leasingverbindlichkeiten mitzählt). Auf Brians Nachfrage korrigiert: DCF und Downside-Boden (Seite 8) nutzen jetzt durchgängig die primärquellenbasierte SEC-Zahl ($219,5 Mio) gemäß Datenintegritäts-Hierarchie (Primärquelle vor Sekundäraggregator). Auswirkung auf die Kernaussagen: keine (Verschiebung &lt;$0.10/Aktie in allen drei DCF-Szenarien).</p>
   </div>
 
   <div class="footer">

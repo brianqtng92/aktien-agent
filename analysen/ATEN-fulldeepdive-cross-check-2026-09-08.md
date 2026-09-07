@@ -2,6 +2,8 @@
 
 **Zweiter Full Deep Dive mit dem 10-Seiten-Rigor-Standard** (nach CLBT am 2026-09-07), auf Brians Wunsch ("versuchen wir mit der nächsten deep dive a10 networks"). Bereits gehaltene Depot-Position (Kategorie Profi), bisherige CRV-Einstufung 🟠 Kein Nachkauf (teuer).
 
+**Nachträgliche Korrektur (2026-09-08, von Brian angestoßen):** Brian fragte gezielt nach, ob die Rigor-Standard-Inhalte (5-Jahres-Historie, Guidance-Track-Record usw.) mit Jack/Conans Daten übereinstimmen. Selbstprüfung ergab: diese Inhalte waren NIE an Jack/Conan zurückgespielt worden, sondern reine Jarvis-Solo-Recherche NACH deren Antworten. Dabei ein echter, unbemerkter Widerspruch gefunden: stockanalysis.com-Gesamtschulden ($226,08 Mio, für DCF genutzt) vs. Conans SEC-10-Q-Zahl für Convertible Notes ($219,5 Mio, in der Going-Concern-Box zitiert) — nie gegeneinander geprüft. Korrigiert: DCF/Downside-Boden nutzen jetzt durchgängig die SEC-Primärquelle (Netto-Cash $137,85 Mio statt $131,26 Mio, Auswirkung auf FV/Aktie <$0,10 in allen Szenarien, Kernaussagen unverändert). **Prozess-Konsequenz:** Agent-Playbook.md um eine neue Pflicht-Regel ergänzt — Rigor-Standard-Inhalte müssen ab sofort in einer zweiten Runde an Jack/Conan zur echten Cross-Prüfung zurückgespielt werden, nicht mehr nur Jarvis-solo bleiben.
+
 ## Wichtigster Fund dieser Sitzung
 
 **Microsoft ist mit 38% der Q2-2026-Umsätze (SEC-10-Q: "Customer A") der mit Abstand größte Einzelkunde von A10** — verbunden mit einem ungewöhnlichen Optionsschein-Deal (bis zu 800.000 Aktien zu $0,01, vesting nach Microsofts Einkaufsvolumen bis 2027/2028). Historisch lag die Konzentration der TOP-10-Kunden bei 35-41% — dass jetzt EIN Kunde allein diese Größenordnung erreicht, ist eine deutliche Eskalation.
