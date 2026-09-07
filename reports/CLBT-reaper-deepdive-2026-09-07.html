@@ -34,7 +34,7 @@
     background: var(--bg);
     color: var(--text);
     font-family: "Carlito", "DejaVu Sans", Arial, sans-serif;
-    font-size: 9pt;
+    font-size: 11pt;
     line-height: 1.36;
   }
 
@@ -60,81 +60,81 @@
     border-bottom: 2px solid var(--gold); padding-bottom: 2.6mm;
   }
   .brand-block { display: flex; flex-direction: column; }
-  .brand { font-size: 21pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand { font-size: 23pt; letter-spacing: 0.06em; color: var(--text); }
   .brand .accent { color: var(--gold-bright); }
-  .brand-sub { font-size: 7.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .brand-sub { font-size: 9.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
   .edition-tag {
-    font-size: 7pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim);
+    font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim);
     border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm;
     display: inline-block; width: fit-content;
   }
-  .meta-block { text-align: right; font-size: 7.6pt; color: var(--text-dim); }
-  .meta-block .date { color: var(--text); font-size: 8.6pt; }
+  .meta-block { text-align: right; font-size: 9.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 10.6pt; }
 
   .position-header {
     display: flex; justify-content: space-between; align-items: center;
     background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold);
     border-radius: 3px; padding: 2.6mm 4mm;
   }
-  .position-name .ticker { font-size: 15pt; letter-spacing: 0.04em; }
-  .position-name .company { font-size: 8pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-name .ticker { font-size: 17pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 10pt; color: var(--text-dim); margin-top: 0.3mm; }
   .position-stats { display: flex; gap: 5mm; }
   .stat { text-align: right; }
-  .stat .label { font-size: 6.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); }
-  .stat .value { font-size: 10pt; color: var(--text); margin-top: 0.4mm; }
+  .stat .label { font-size: 8.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); white-space: nowrap; }
+  .stat .value { font-size: 12pt; color: var(--text); margin-top: 0.4mm; white-space: nowrap; }
 
   .hook-box {
     background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim);
     border-radius: 3px; padding: 3.4mm 4.2mm;
   }
-  .hook-title { font-size: 14.5pt; line-height: 1.28; color: var(--text); font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .hook-title { font-size: 16.5pt; line-height: 1.28; color: var(--text); font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
   .hook-title .accent { color: var(--gold-bright); }
-  .hook-sub { font-size: 7.6pt; color: var(--text-dim); line-height: 1.4; margin-top: 1.8mm; }
+  .hook-sub { font-size: 9.6pt; color: var(--text-dim); line-height: 1.4; margin-top: 1.8mm; }
 
   .narrative-box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 3mm 4mm; flex: 1; display: flex; flex-direction: column; gap: 2.4mm; }
-  .narrative-box p { font-size: 7.6pt; color: var(--text-dim); line-height: 1.48; }
+  .narrative-box p { font-size: 9.6pt; color: var(--text-dim); line-height: 1.48; }
   .narrative-box p b { color: var(--text); }
   .narrative-box p .lead { color: var(--gold-bright); font-weight: bold; }
 
   .section-label {
-    font-size: 7.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+    font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
     display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0;
   }
   .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
 
   .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
   .box h3 {
-    font-size: 7.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm;
+    font-size: 9.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm;
     font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700;
   }
-  .box p { font-size: 7.2pt; color: var(--text-dim); line-height: 1.32; }
+  .box p { font-size: 9.2pt; color: var(--text-dim); line-height: 1.32; overflow-wrap: break-word; }
   .box p b { color: var(--text); }
 
   .mgmt-grid { display: flex; gap: 2.6mm; }
   .mgmt-card { flex: 1; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.6mm 3.4mm; display: flex; flex-direction: column; gap: 1mm; }
-  .mgmt-card .role { font-size: 6.2pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
-  .mgmt-card h4 { font-size: 8.4pt; color: var(--gold-bright); font-family: "DejaVu Sans Condensed", sans-serif; }
-  .mgmt-card p { font-size: 7.1pt; color: var(--text-dim); line-height: 1.4; }
+  .mgmt-card .role { font-size: 8.2pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+  .mgmt-card h4 { font-size: 10.4pt; color: var(--gold-bright); font-family: "DejaVu Sans Condensed", sans-serif; }
+  .mgmt-card p { font-size: 9.1pt; color: var(--text-dim); line-height: 1.4; }
   .mgmt-card p b { color: var(--text); }
 
   .highlight-strip { display: flex; gap: 2.4mm; }
   .highlight-item { flex: 1; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm 2.6mm; text-align: center; }
-  .highlight-item .val { font-size: 11pt; color: var(--gold-bright); }
-  .highlight-item .lbl { font-size: 6pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5mm; }
+  .highlight-item .val { font-size: 13pt; color: var(--gold-bright); }
+  .highlight-item .lbl { font-size: 8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5mm; }
 
   .catalyst-item { display: flex; gap: 3mm; padding: 1.4mm 0; border-bottom: 1px solid var(--border-soft); align-items: flex-start; }
   .catalyst-item:last-child { border-bottom: none; }
-  .catalyst-date { flex: 0 0 auto; width: 26mm; font-size: 7pt; color: var(--gold-bright); font-weight: bold; }
-  .catalyst-desc { flex: 1; font-size: 7pt; color: var(--text-dim); line-height: 1.32; }
+  .catalyst-date { flex: 0 0 auto; width: 26mm; font-size: 9pt; color: var(--gold-bright); font-weight: bold; }
+  .catalyst-desc { flex: 1; font-size: 9pt; color: var(--text-dim); line-height: 1.32; }
   .catalyst-desc b { color: var(--text); }
 
   .verify-table, .compare-table, .scenario-table, .score-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
   .verify-table th, .verify-table td, .compare-table th, .compare-table td,
   .scenario-table th, .scenario-table td, .score-table th, .score-table td {
-    font-size: 6.7pt; padding: 1mm 1.5mm; text-align: left; border-bottom: 1px solid var(--border-soft);
+    font-size: 8.7pt; padding: 1mm 1.5mm; text-align: left; border-bottom: 1px solid var(--border-soft);
   }
   .verify-table th, .compare-table th, .scenario-table th, .score-table th {
-    color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; font-weight: normal; font-size: 6.1pt;
+    color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; font-weight: normal; font-size: 8.1pt;
   }
   .verify-table td, .compare-table td, .score-table td { color: var(--text); }
   .scenario-table th, .scenario-table td { text-align: right; }
@@ -149,12 +149,12 @@
   .chart-frame {
     background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm;
     display: flex; align-items: center; justify-content: center;
-    height: 92mm; flex: 0 0 auto;
+    height: 78mm; flex: 0 0 auto;
   }
   .chart-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; border-radius: 2px; }
   .bbb-frame {
     background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm;
-    display: flex; align-items: center; justify-content: center; height: 34mm; flex: 0 0 auto;
+    display: flex; align-items: center; justify-content: center; height: 28mm; flex: 0 0 auto;
   }
   .bbb-frame img { max-width: 100%; max-height: 100%; }
 
@@ -162,23 +162,23 @@
     background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--blue);
     border-radius: 3px; padding: 2.6mm 3.6mm;
   }
-  .underrated-box h3 { color: var(--blue); font-size: 7.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
-  .underrated-box p { font-size: 7.4pt; color: var(--text); line-height: 1.35; }
+  .underrated-box h3 { color: var(--blue); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
+  .underrated-box p { font-size: 9.4pt; color: var(--text); line-height: 1.35; }
 
   .trigger-row { display: flex; gap: 3mm; }
   .trigger-box { flex: 1; border-radius: 3px; padding: 2.4mm 3.4mm; }
   .trigger-box.bull { background: var(--green-bg); border: 1px solid var(--green); }
   .trigger-box.bear { background: var(--red-bg); border: 1px solid var(--red); }
-  .trigger-box h3 { font-size: 7.4pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2mm; }
+  .trigger-box h3 { font-size: 9.4pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2mm; }
   .trigger-box.bull h3 { color: var(--green); }
   .trigger-box.bear h3 { color: var(--red); }
   .trigger-box ul { list-style: none; }
-  .trigger-box li { font-size: 6.9pt; color: var(--text); padding: 0.6mm 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .trigger-box li { font-size: 8.9pt; color: var(--text); padding: 0.6mm 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
   .trigger-box li:last-child { border-bottom: none; }
 
   .warn-strip {
     background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.7mm 3mm;
-    font-size: 6.8pt; color: var(--yellow); margin-top: 1mm;
+    font-size: 8.8pt; color: var(--yellow); margin-top: 1mm;
   }
   .warn-strip b { color: var(--text); }
 
@@ -187,20 +187,20 @@
     border-radius: 3px; padding: 2.8mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0;
   }
   .fazit-verdict { flex: 0 0 auto; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
-  .fazit-verdict .rating { font-size: 12.5pt; color: var(--yellow); letter-spacing: 0.02em; }
-  .fazit-verdict .sub { font-size: 6.2pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.6mm; }
+  .fazit-verdict .rating { font-size: 14.5pt; color: var(--yellow); letter-spacing: 0.02em; }
+  .fazit-verdict .sub { font-size: 8.2pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.6mm; }
   .fazit-grid { flex: 1; display: flex; justify-content: space-between; }
   .fazit-item { text-align: center; }
-  .fazit-item .label { font-size: 6.2pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
-  .fazit-item .value { font-size: 9.2pt; color: var(--text); margin-top: 0.5mm; }
+  .fazit-item .label { font-size: 8.2pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .fazit-item .value { font-size: 11.2pt; color: var(--text); margin-top: 0.5mm; }
 
-  .sources-list { font-size: 7pt; color: var(--text-dim); line-height: 1.55; }
+  .sources-list { font-size: 9pt; color: var(--text-dim); line-height: 1.55; }
   .sources-list .n { color: var(--gold); margin-right: 1.5mm; }
   .sources-list a { color: var(--blue); text-decoration: none; }
 
   .footer {
     display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft);
-    padding-top: 1.5mm; font-size: 6.1pt; color: var(--text-faint); flex-shrink: 0;
+    padding-top: 1.5mm; font-size: 8.1pt; color: var(--text-faint); flex-shrink: 0;
   }
   .footer .gold-dot { color: var(--gold); }
 </style>
@@ -290,7 +290,7 @@
     <div class="highlight-item"><div class="val">$442,5 Mio</div><div class="lbl">Cash + kurzfr. Wertpapiere</div></div>
     <div class="highlight-item"><div class="val">$23,2 Mio</div><div class="lbl">Gesamtschulden (netto-cash)</div></div>
   </div>
-  <p style="font-size:6.8pt; color:var(--text-faint);">Cellebrite arbeitet mit strukturell hohen Margen bei minimaler Verschuldung — der Guidance-Cut vom 13.08.2026 betraf das Wachstumstempo (Timing verzögerter Großaufträge), nicht die operative Profitabilität, die im gleichen Atemzug sogar nach oben korrigiert wurde.</p>
+  <p style="font-size:8.8pt; color:var(--text-faint);">Cellebrite arbeitet mit strukturell hohen Margen bei minimaler Verschuldung — der Guidance-Cut vom 13.08.2026 betraf das Wachstumstempo (Timing verzögerter Großaufträge), nicht die operative Profitabilität, die im gleichen Atemzug sogar nach oben korrigiert wurde.</p>
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
@@ -315,7 +315,7 @@
 
   <div class="position-header">
     <div class="position-name">
-      <div class="ticker display">CLBT <span style="color:var(--text-dim); font-size:9.5pt;">· NASDAQ</span></div>
+      <div class="ticker display">CLBT <span style="color:var(--text-dim); font-size:11.5pt;">· NASDAQ</span></div>
       <div class="company">Cellebrite DI Ltd — Digital Forensics / Investigative Intelligence Software (ARR/SaaS)</div>
     </div>
     <div class="position-stats">
@@ -329,23 +329,23 @@
   <div class="voices-strip" style="display:flex; gap:2.4mm;">
     <div class="box" style="flex:1;">
       <h3>Jarvis · Claude (Synthese)</h3>
-      <p style="font-size:10.5pt; color:var(--yellow);">BEOBACHTEN</p>
-      <p style="font-size:6.6pt;">Score-Konsens ~5/10 · Tier 3 · Abstauber $9,00-10,25</p>
+      <p style="font-size:12.5pt; color:var(--yellow);">BEOBACHTEN</p>
+      <p style="font-size:8.6pt;">Score-Konsens ~5/10 · Tier 3 · Abstauber $9,00-10,25</p>
     </div>
     <div class="box" style="flex:1;">
       <h3>Jack · Gemini (TMR)</h3>
-      <p style="font-size:10.5pt; color:var(--yellow);">BEOBACHTEN</p>
-      <p style="font-size:6.6pt;">Score 4/10 · Konfidenz 🟡 · Abstauber $9,00-9,50</p>
+      <p style="font-size:12.5pt; color:var(--yellow);">BEOBACHTEN</p>
+      <p style="font-size:8.6pt;">Score 4/10 · Konfidenz 🟡 · Abstauber $9,00-9,50</p>
     </div>
     <div class="box" style="flex:1;">
       <h3>Conan · ChatGPT (Scout)</h3>
-      <p style="font-size:10.5pt; color:var(--yellow);">HALTEN/BEOBACHTEN</p>
-      <p style="font-size:6.6pt;">Score 5,5/10 · Konfidenz 🔴/🟡 · Abstauber $9,50-10,25</p>
+      <p style="font-size:12.5pt; color:var(--yellow);">HALTEN/BEOBACHTEN</p>
+      <p style="font-size:8.6pt;">Score 5,5/10 · Konfidenz 🔴/🟡 · Abstauber $9,50-10,25</p>
     </div>
     <div class="box" style="flex:0 0 34mm; text-align:center; background:linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border-color:var(--gold-dim);">
-      <div style="font-size:6.2pt; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-faint);">Konvergenz</div>
-      <div style="font-size:9pt; color:var(--gold-bright); margin-top:0.8mm;">✅ EINSTIMMIG</div>
-      <div style="font-size:6.4pt; color:var(--text-dim); margin-top:1mm;">Kein Kauf zum Live-Kurs, alle 3 unabhängig</div>
+      <div style="font-size:8.2pt; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-faint);">Konvergenz</div>
+      <div style="font-size:11pt; color:var(--gold-bright); margin-top:0.8mm;">✅ EINSTIMMIG</div>
+      <div style="font-size:8.4pt; color:var(--text-dim); margin-top:1mm;">Kein Kauf zum Live-Kurs, alle 3 unabhängig</div>
     </div>
   </div>
 
@@ -437,7 +437,7 @@
   <div class="chart-frame">
     <img src="CLBT-chart-2026-09-07.png" alt="CLBT Chart mit RSI/MACD">
   </div>
-  <p style="font-size:6.6pt; color:var(--text-faint); margin-top:-1mm;">Candlesticks + EMA20/50 · Volumen · MACD(12,26,9) · RSI(14). Klar sichtbarer Gap-Down am 13.08. (Guidance-Cut/CEO-Wechsel, Volumen 36,75 Mio. — mit Abstand höchstes Tagesvolumen im Betrachtungszeitraum), seitdem Seitwärtskonsolidierung $10,32-$12,43. RSI zuletzt ≈45-50 (neutral, keine Extremzone), MACD nahe Nulllinie ohne klaren Trend — technisch weder überkauft noch überverkauft, Chart bestätigt die fundamentale "Beobachten"-Einschätzung, liefert kein eigenständiges Kauf- oder Verkaufssignal.</p>
+  <p style="font-size:8.6pt; color:var(--text-faint); margin-top:-1mm;">Candlesticks + EMA20/50 · Volumen · MACD(12,26,9) · RSI(14). Klar sichtbarer Gap-Down am 13.08. (Guidance-Cut/CEO-Wechsel, Volumen 36,75 Mio. — mit Abstand höchstes Tagesvolumen im Betrachtungszeitraum), seitdem Seitwärtskonsolidierung $10,32-$12,43. RSI zuletzt ≈45-50 (neutral, keine Extremzone), MACD nahe Nulllinie ohne klaren Trend — technisch weder überkauft noch überverkauft, Chart bestätigt die fundamentale "Beobachten"-Einschätzung, liefert kein eigenständiges Kauf- oder Verkaufssignal.</p>
 
   <div class="section-label">Full DCF (Python, Rule 20) — Bear/Base/Bull, WACC 10,58% (Cost of Equity, praktisch netto-cash)</div>
   <div class="bbb-frame">
@@ -516,7 +516,7 @@
         <li>3. Verwässerung normalisiert auf &lt;2-3% p.a. (aktuell ≈9,3% YoY Aktienzahl)</li>
         <li>4. SBC-bereinigte FCF-Marge steigt wieder ≥20% (aktuell ≈17%)</li>
       </ul>
-      <p style="font-size:6.6pt; color:var(--text-dim); margin-top:1.4mm;">Mind. 2 von 4 nötig, Technik nur Bestätigung, nie eigenständiger Auslöser (Playbook-Regel).</p>
+      <p style="font-size:8.6pt; color:var(--text-dim); margin-top:1.4mm;">Mind. 2 von 4 nötig, Technik nur Bestätigung, nie eigenständiger Auslöser (Playbook-Regel).</p>
     </div>
     <div class="trigger-box bear">
       <h3>📉 Abstauber-/Stop-These-Trigger</h3>
@@ -526,7 +526,7 @@
         <li>3. SBC/Verwässerung eskaliert weiter statt sich zu normalisieren</li>
         <li>4. Anwaltskanzlei-Investigations münden in bezifferte, materielle Klage</li>
       </ul>
-      <p style="font-size:6.6pt; color:var(--text-dim); margin-top:1.4mm;">Abstauber-Kaufzone (falls Kurs dorthin fällt, NICHT Verkaufszone): $9,00-10,25.</p>
+      <p style="font-size:8.6pt; color:var(--text-dim); margin-top:1.4mm;">Abstauber-Kaufzone (falls Kurs dorthin fällt, NICHT Verkaufszone): $9,00-10,25.</p>
     </div>
   </div>
 
@@ -581,7 +581,7 @@
       <span class="n">6.</span>en.wikipedia.org/wiki/Cellebrite, businessmodelcanvastemplate.com — Unternehmensgeschichte (Gründung 1999, Sun-Corporation-Übernahme 2007, UFED-Launch)<br>
       <span class="n">7.</span>Google Search Grounding (Jack/Gemini) + OpenAI web_search (Conan/ChatGPT) — ergänzende Live-Recherche während der jeweiligen Analyse
     </p>
-    <p style="margin-top:2mm; font-size:6.6pt; color:var(--text-faint);"><b>Modellannahmen DCF:</b> WACC/Cost-of-Equity 10,58% (Rf 4,1% [TRAINING] + Beta 1,15 [VERIFIED] × ERP 5,2% [TRAINING] + 0,5% Israel-/Public-Sector-Aufschlag [TRAINING]), da Gesellschaft praktisch schuldenfrei ist (WACC ≈ Cost of Equity). 5-Jahres-Fade-Modell, Terminal-Wachstum 2,5-3,5% je Szenario. TV-Anteil &gt;69% in allen Fällen — Ergebnis als Bandbreite, nicht als Punktschätzung zu lesen.<br><b>Hinweis:</b> ROIC- und NRR-Werte weichen zwischen Jack (Gemini) und Conan (ChatGPT) ab (12,0% vs. TRAINING-Schätzung &gt;20% bzw. 112% vs. 117%) — beide Werte im Bericht transparent nebeneinander stehen gelassen statt künstlich geglättet, siehe DNA-Check-Tabelle Seite 3. Das Q3-2026-Earnings-Datum auf Seite 6 ist eine Schätzung basierend auf dem üblichen Berichtsrhythmus, kein offiziell bestätigter Termin.</p>
+    <p style="margin-top:2mm; font-size:8.6pt; color:var(--text-faint);"><b>Modellannahmen DCF:</b> WACC/Cost-of-Equity 10,58% (Rf 4,1% [TRAINING] + Beta 1,15 [VERIFIED] × ERP 5,2% [TRAINING] + 0,5% Israel-/Public-Sector-Aufschlag [TRAINING]), da Gesellschaft praktisch schuldenfrei ist (WACC ≈ Cost of Equity). 5-Jahres-Fade-Modell, Terminal-Wachstum 2,5-3,5% je Szenario. TV-Anteil &gt;69% in allen Fällen — Ergebnis als Bandbreite, nicht als Punktschätzung zu lesen.<br><b>Hinweis:</b> ROIC- und NRR-Werte weichen zwischen Jack (Gemini) und Conan (ChatGPT) ab (12,0% vs. TRAINING-Schätzung &gt;20% bzw. 112% vs. 117%) — beide Werte im Bericht transparent nebeneinander stehen gelassen statt künstlich geglättet, siehe DNA-Check-Tabelle Seite 3. Das Q3-2026-Earnings-Datum auf Seite 6 ist eine Schätzung basierend auf dem üblichen Berichtsrhythmus, kein offiziell bestätigter Termin.</p>
   </div>
 
   <div class="warn-strip" style="margin-top:0;">⚠ <b>Keine Anlageberatung.</b> Diese Analyse ist eine automatisierte Entscheidungsgrundlage für Brians eigene Investmententscheidung, kein Kauf-/Verkaufsauftrag und keine individuelle Finanzberatung.</div>
