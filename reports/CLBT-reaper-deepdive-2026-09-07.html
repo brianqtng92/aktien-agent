@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Reaper Deep Dive – CLBT</title>
+<title>Agent Deep Dive – CLBT</title>
 <style>
   @page { size: A4; margin: 0; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -190,7 +190,7 @@
 
   <div class="masthead">
     <div class="brand-block">
-      <div class="brand display">REAPER <span class="accent">DEEP DIVE</span></div>
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
       <div class="brand-sub">3-fach TMR-Cross-Check · Jarvis · Jack · Conan</div>
       <div class="edition-tag">Depot-Position · Kategorie Profi · Full Deep Dive</div>
     </div>
@@ -254,29 +254,28 @@
     <div class="col">
       <div class="box" style="flex:1;">
         <h3>Moat-Verifikation (Konsens)</h3>
-        <p>Preissetzungsmacht <b style="color:var(--yellow);">MODERAT-STARK</b> (Bruttomarge 82-86%, aber Guidance-Cut zeigt nicht friktionsfreie Preisdurchsetzung bei Großkunden) · Switching Costs <b style="color:var(--green);">STARK</b> (Chain-of-Custody/forensische Zertifizierung/Behörden-Workflows, beide KIs übereinstimmend) · Marktanteil <b style="color:var(--yellow);">MODERAT</b> (führend, aber nicht exakt quantifizierbar).</p>
-        <p style="margin-top:1.2mm;"><b>Konsens: Moat STARK bei Switching Costs, insgesamt solide, kein Ausnahme-Fall.</b></p>
+        <p>Die Preissetzungsmacht fällt <b style="color:var(--yellow);">moderat bis stark</b> aus: Die Bruttomarge bewegt sich je nach Quartal zwischen 82 und 86%, was grundsätzlich für eine starke Preisdurchsetzung im spezialisierten Digital-Forensics-Markt spricht. Der jüngste Guidance-Cut relativiert dieses Bild allerdings etwas, da er unter anderem mit verzögerten Großaufträgen und längeren Verhandlungszyklen bei Behördenkunden begründet wurde — ein Hinweis darauf, dass die Preisdurchsetzung bei Großkunden nicht ganz friktionslos verläuft. Bei den Wechselkosten sind sich Jack und Conan unabhängig voneinander einig, dass hier ein wirklich <b style="color:var(--green);">starker</b> Burggraben besteht: Behörden sind über Schulungen, Zertifizierungen und die gerichtsfeste Chain-of-Custody-Dokumentation tief in Cellebrites Workflows eingebunden, was einen Anbieterwechsel operativ und rechtlich riskant macht. Der Marktanteil gilt als führend, lässt sich mangels belastbarer externer Zahlen aber nicht exakt quantifizieren, weshalb der Gesamtmoat als solide, aber nicht als Ausnahme-Fall eingestuft wird.</p>
       </div>
       <div class="box" style="flex:1;">
         <h3>Going-Concern-Precheck</h3>
-        <p>Jack: "N/V nicht geprüft" (Sekundärquellen unauffällig). <b>Conan (mit Primärquellen-Zugriff auf den 20-F): uneingeschränktes EY-Prüfungsurteil bestätigt, kein Going-Concern-Vermerk.</b> Jarvis übernimmt Conans primärquellennahen Befund als maßgeblich.</p>
+        <p>Jack konnte den 20-F-Geschäftsbericht in seiner Sitzung nicht im Volltext einsehen und stufte den Punkt deshalb vorsichtig als "nicht geprüft" ein, wobei die ihm verfügbaren Sekundärquellen keinerlei Hinweise auf eine Bestandsgefährdung zeigten. Conan hatte dagegen über seine eigene Live-Recherche direkten Zugriff auf die SEC-Primärquelle und konnte darin ein <b>uneingeschränktes Prüfungsurteil von EY</b> feststellen, das ausdrücklich keinen Going-Concern-Vermerk enthält. Da eine Primärquelle grundsätzlich eine Sekundärquelleneinschätzung übertrumpft, übernimmt Jarvis für die finale Bewertung Conans belastbareren, primärquellenbestätigten Befund. Insgesamt gibt es damit keinerlei Anzeichen für eine Bestandsgefährdung — ein Ergebnis, das angesichts der sehr soliden Netto-Cash-Position des Unternehmens auch plausibel ist.</p>
         <p style="margin-top:1.2mm;"><b>URTEIL: ✅ Unauffällig, primärquellenbestätigt.</b></p>
       </div>
     </div>
     <div class="col">
       <div class="box" style="flex:1;">
         <h3>SBC-Infection-/Verwässerungs-Check</h3>
-        <p>Beide KIs unabhängig: <b style="color:var(--red);">🔴 FLAG AKTIV</b>. Jack: Verwässerung 2,16% p.a. Conan: Aktienzahl +9,33% YoY (stockanalysis.com), SBC TTM ≈$57-67 Mio (11-13% Umsatz). Konsequenz (Methodik, beide gleich angewendet): Konfidenz-Deckel max 🟡, Score-Malus -2, Sizing-Deckel max Tier 3.</p>
+        <p>Beide KIs sind hier völlig unabhängig voneinander, über unterschiedliche Rechenwege, zum selben Ergebnis gekommen: <b style="color:var(--red);">🔴 FLAG AKTIV</b> — ein methodisch bestätigter, robuster Befund statt eines Einzelfunds. Jack berechnete eine Verwässerung von 2,16% im vergangenen Jahr, während Conan über stockanalysis.com sogar eine Zunahme der ausstehenden Aktienzahl von 9,33% gegenüber dem Vorjahr fand und die aktienbasierte Vergütung auf etwa $57-67 Mio bzw. 11-13% des Umsatzes bezifferte. Da beide Werte deutlich über der methodisch festgelegten 2%-Schwelle für die jährliche Verwässerung liegen, greift die Regel unabhängig davon, welcher der beiden Werte exakt zutrifft. Die Konsequenz ist in der Methodik klar vorgegeben und wurde bei beiden KIs identisch angewendet: Konfidenz-Deckel max. 🟡, Score-Malus -2, Sizing-Deckel max. Tier 3.</p>
       </div>
       <div class="box" style="flex:1;">
-        <h3>Reaper-Reality-Flags (Konsens)</h3>
-        <p>Kundenkonzentration <b style="color:var(--green);">🟢 kein Flag</b> (Top-25-Kunden ≈25% Umsatz, kein Einzelkunde &gt;5%) · Beta-Risk <b style="color:var(--green);">🟢 kein Flag</b> (1,15 &lt; 1,5) · Litigation-Drain <b style="color:var(--yellow);">🟡 beobachten</b> (Anwalts-Investigations ohne bezifferte Klage) · Grant-Inflation/GAAP-Lücke <b style="color:var(--red);">🔴 Flag</b> (GAAP Op.-Marge 5,3% vs. Non-GAAP 22,7%, Conan-Fund).</p>
+        <h3>Reality-Check-Flags (Konsens)</h3>
+        <p>Bei der Kundenkonzentration gibt es keinerlei Anlass zur Sorge <b style="color:var(--green);">🟢 kein Flag</b>: Die 25 größten Kunden zusammen stehen für rund 25% des Umsatzes, und kein einzelner Kunde überschreitet die kritische 5%-Marke, was das Umsatzrisiko breit über viele Behörden und Organisationen streut. Auch beim Beta-Risiko gibt es <b style="color:var(--green);">🟢 kein Flag</b>, da der Wert von 1,15 klar unterhalb der Schwelle von 1,5 liegt, ab der die Methodik eine gesonderte Hochrisiko-Einstufung vorsieht. Bei Rechtsstreitigkeiten ist etwas mehr Vorsicht geboten <b style="color:var(--yellow);">🟡 beobachten</b>: Die im August bekanntgewordenen anwaltlichen "Investigations" rund um die Guidance-Kürzung haben bislang zu keiner bezifferten Klage geführt, weshalb hier vorerst nur ein Beobachtungs- statt eines echten Flag-Status vergeben wird. Ein tatsächliches rotes Flag liefert dagegen die von Conan aufgedeckte Lücke zwischen GAAP- und Non-GAAP-Kennzahlen <b style="color:var(--red);">🔴 Flag</b>: Die operative GAAP-Marge liegt bei nur 5,3%, während die bereinigte Non-GAAP-Marge mit 22,7% mehr als viermal so hoch ausgewiesen wird — ein Unterschied, der zeigt, wie stark aktienbasierte Vergütung das operative Ergebnis optisch verbessert.</p>
       </div>
     </div>
   </div>
 
   <div class="footer">
-    <div>Reaper Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
     <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/3</div>
   </div>
 
@@ -287,7 +286,7 @@
 
   <div class="masthead">
     <div class="brand-block">
-      <div class="brand display">REAPER <span class="accent">DEEP DIVE</span></div>
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
       <div class="brand-sub">Chartmuster · DCF · Score-Aufschlüsselung</div>
     </div>
     <div class="meta-block">
@@ -317,7 +316,7 @@
   </div>
 
   <div class="box">
-    <h3>Reaper-Score-Aufschlüsselung (Transparenz-Tabelle, neu seit 2026-09-08)</h3>
+    <h3>Agent-Score-Aufschlüsselung (Transparenz-Tabelle, neu seit 2026-09-08)</h3>
     <table class="score-table">
       <tr><th>Bewertungsfeld</th><th>Jack</th><th>Conan</th><th>Kommentar</th></tr>
       <tr><td>Anker-Wert (Rohscore vor Mali)</td><td class="num">7,5</td><td class="num">7,0</td><td>Beide sehen solide Grundqualität (Moat, Bilanz, Bruttomarge)</td></tr>
@@ -329,7 +328,7 @@
   </div>
 
   <div class="footer">
-    <div>Reaper Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
     <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/3</div>
   </div>
 
@@ -340,7 +339,7 @@
 
   <div class="masthead">
     <div class="brand-block">
-      <div class="brand display">REAPER <span class="accent">DEEP DIVE</span></div>
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
       <div class="brand-sub">Trigger · Devil's Advocate · Verdict · Quellen</div>
     </div>
     <div class="meta-block">
@@ -388,7 +387,7 @@
       <div class="sub">Einstimmig, alle 3 KIs unabhängig</div>
     </div>
     <div class="fazit-grid">
-      <div class="fazit-item"><div class="label">Reaper Score</div><div class="value">≈4,5-5,0/10</div></div>
+      <div class="fazit-item"><div class="label">Agent Score</div><div class="value">≈4,5-5,0/10</div></div>
       <div class="fazit-item"><div class="label">Konfidenz</div><div class="value" style="color:var(--yellow);">🟡 MITTEL (Deckel)</div></div>
       <div class="fazit-item"><div class="label">Sizing</div><div class="value">Tier 3 (max. 2%)</div></div>
       <div class="fazit-item"><div class="label">Abstauber-Zone</div><div class="value">$9,00-10,25</div></div>
@@ -412,7 +411,7 @@
   <div class="warn-strip" style="margin-top:0;">⚠ <b>Keine Anlageberatung.</b> Diese Analyse ist eine automatisierte Entscheidungsgrundlage für Brians eigene Investmententscheidung, kein Kauf-/Verkaufsauftrag und keine individuelle Finanzberatung.</div>
 
   <div class="footer">
-    <div>Reaper Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
     <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/3</div>
   </div>
 

@@ -131,7 +131,7 @@ Leitplanken wird aufgehoben):
    Position dagegen rein PASSIV durch Kursanstieg über dieses Gewicht
    hinaus, gilt eine gestufte Logik statt eines automatischen
    Zwangs-Verkaufs: bis **15%** normal toleriert (kein Eingriff), **15-18%**
-   löst eine verpflichtende Reaper-Review aus (These noch intakt? Bewertung
+   löst eine verpflichtende Agent-Review aus (These noch intakt? Bewertung
    stark entkoppelt? weiterhin Top-3-/Top-5-Kapitalallokation im Depot?
    gestiegenes Risiko eines permanenten Kapitalverlusts? würden wir diese
    Position heute neu mit diesem Gewicht eröffnen? – überwiegend positiv
@@ -652,10 +652,10 @@ korrekte finale Synthese bei beiden Bridges).
 
 Drei eigenständige Prompts, gespeichert unter `prompts/`:
 
-1. **TMR – "Jack, The Moat Reaper" (v11.8, 2026-09-03: Korrelierte-Mali-Regel
-   gegen Reaper-Score-Double-Counting ergänzt, siehe Abschnitt 4 [3b])**:
+1. **TMR – "Jack, The Moat Agent" (v11.8, 2026-09-03: Korrelierte-Mali-Regel
+   gegen Agent-Score-Double-Counting ergänzt, siehe Abschnitt 4 [3b])**:
    Fundamentalanalyse etablierter Firmen.
-   DNA-Check (K-/E-Kriterien), Data-Integrity-Tagging, DCF/Reverse-DCF, Reaper Score
+   DNA-Check (K-/E-Kriterien), Data-Integrity-Tagging, DCF/Reverse-DCF, Agent Score
    1-10, Sizing-Tiers 1-4, Rating KAUFEN/BEOBACHTEN/SCHROTT, Exit-Strategie mit
    fundamentalen Stop-These-Triggern (kein starrer Kurs-Stop).
 2. **Scout – "Conan the Scout" (v1.12)**: Frühphasen-/Spekulations-Screening für
@@ -1070,7 +1070,7 @@ Herleitung an der jeweils verlinkten Stelle, nicht diese Tabelle.
        (Champions/Profi/Talent) die Position mit der geringsten aktuellen
        fundamentalen Überzeugungskraft bestimmen – nicht zwingend die mit der
        schlechtesten Kursperformance, sondern die mit dem niedrigsten zuletzt
-       dokumentierten Rating/Reaper-Score, einem bereits ausgelösten
+       dokumentierten Rating/Agent-Score, einem bereits ausgelösten
        Downgrade-/Stop-These-Trigger, oder (bei mehreren ähnlich schwachen
        Positionen) die mit dem am wenigsten überzeugenden aktuellen
        Investment-Case – transparent benennen, welche Position das ist und
@@ -1864,7 +1864,7 @@ unbegrenzt fortgeschrieben zu werden.
      → Ergebnis der Diskussionsrunde wird protokolliert als:
          - Konvergenz "stark": alle drei einig (nach Runde 2 oder 3)
          - Konvergenz "moderat": Tendenz gleich, Details unterschiedlich (z.B.
-           unterschiedliche Reaper Scores, gleiches Rating)
+           unterschiedliche Agent Scores, gleiches Rating)
          - Konvergenz "widerspruch": Ratings bleiben nach Ausschöpfung des
            Runden-Caps unterschiedlich – das ist der Fall, der Brian im
            Kurz-Fazit (Schritt 5) am deutlichsten hervorgehoben werden muss,
@@ -1874,8 +1874,8 @@ unbegrenzt fortgeschrieben zu werden.
        parallele Einzelmeinungen und eine einmalige Stellungnahme, sondern ein
        echter (aber budgetiert begrenzter) Hin-und-her-Austausch bis Konvergenz
        oder bis der Rundencap erreicht ist
-     → **Double-Counting-Prüfung beim Reaper Score (2026-09-03, Conans
-       Warnung aus dem 3-KI-System-Audit):** der Reaper Score fasst mehrere
+     → **Double-Counting-Prüfung beim Agent Score (2026-09-03, Conans
+       Warnung aus dem 3-KI-System-Audit):** der Agent Score fasst mehrere
        Negativsignale zusammen (u.a. Kursverlust, Momentumbruch,
        Analystenrevisionen, Guidance-Cut) – diese Signale sind oft NICHT
        unabhängig voneinander, sondern Symptome desselben zugrunde
@@ -1941,7 +1941,7 @@ unbegrenzt fortgeschrieben zu werden.
        - **Methodik-/Bewertungslogik-Ebene (die drei Prompt-Dateien unter
          `prompts/`: TMR/jack-moat-reaper, Scout/conan-the-scout,
          TA/jack-technical-analyst):** Brians eigene Bewertungs-Systeme
-         (DNA-Check-Kriterien, Reaper-Score, Kill-Gates, K-Kriterien-
+         (DNA-Check-Kriterien, Agent-Score, Kill-Gates, K-Kriterien-
          Schwellen usw.). Gemäß Abschnitt 2 **darf Jarvis diese
          eigenständig modifizieren/ergänzen/abändern, wenn das dem
          Nordstern (Abschnitt 1) besser dient – OHNE vorherige
@@ -1957,7 +1957,7 @@ unbegrenzt fortgeschrieben zu werden.
          Streitfall entstehen (Konvergenz "widerspruch", wiederholter
          Fehlertyp) – dort lohnt sich die strukturierte
          Mehrfach-Perspektive VOR der Umsetzung. Bei einer klar
-         erkannten, unstrittigen Methodik-Lücke (wie dem Reaper-Score-
+         erkannten, unstrittigen Methodik-Lücke (wie dem Agent-Score-
          Double-Counting-Risiko oben) kann Jarvis auch direkt
          korrigieren und Brian danach im laufenden Gespräch informieren,
          statt einen eigenen Freigabe-Zyklus abzuwarten.
@@ -1997,14 +1997,14 @@ unbegrenzt fortgeschrieben zu werden.
        Die volle Analyse-Datei bleibt abrufbar (SendUserFile), wird aber nur
        auf Nachfrage nachgereicht, nicht automatisch mitgeschickt.
      → **WICHTIG (2026-08-27, von Brian gefordert): PDF-Ausgabe auch für
-       Einzelanalysen.** Bisher war das "Reaper Wochenreport"-Ein-Seiten-Layout
+       Einzelanalysen.** Bisher war das "Agent Wochenreport"-Ein-Seiten-Layout
        (siehe Abschnitt 5 "PDF-Report-Design") nur für den gebündelten
        Wochenfazit-Report verdrahtet. Ab jetzt gilt: JEDE abgeschlossene
        3-fach-Cross-Check-Analyse einer einzelnen Position – egal ob von Brian
        manuell angestoßen ("analysiere mir XY") oder vom täglichen Trigger-Check
        automatisch ausgelöst – erzeugt zusätzlich zur Markdown-Datei in
-       `analysen/` sofort eine Ein-Seiten-PDF im Reaper-Kompakt-Layout (3-Stimmen-
-       Leiste, Reaper-Score-Gauge, DNA-Check-Strang, Chancen/Risiken, Fazit) für
+       `analysen/` sofort eine Ein-Seiten-PDF im Agent-Kompakt-Layout (3-Stimmen-
+       Leiste, Agent-Score-Gauge, DNA-Check-Strang, Chancen/Risiken, Fazit) für
        genau diese eine Position und liefert sie per SendUserFile aus. Das
        Wochenfazit bündelt weiterhin ALLE Positionen in einem PDF (plus die
        Report-weiten Seiten Gesamtübersicht/Methodik/Quellen) – die Einzel-PDF
@@ -2012,7 +2012,7 @@ unbegrenzt fortgeschrieben zu werden.
        beim kurzen Kurz-Fazit (siehe oben) – das PDF liefert die Detailtiefe,
        nicht ein längerer Chat-Text.
        **Technische Umsetzung (validiert 2026-08-27 am Live-Testlauf SKWD):**
-       Ein-Seiten-HTML (eigenes CSS, Reaper-Kompakt-Design gemäß Abschnitt 5)
+       Ein-Seiten-HTML (eigenes CSS, Agent-Kompakt-Design gemäß Abschnitt 5)
        wird lokal via Playwright/Chromium (headless) zu PDF gerendert (A4,
        `print_background=True`) – kein reportlab-Canvas, damit Gauge-Grafiken
        (SVG-Halbkreis-Arcs), DNA-Strang-Segmente und Farbverläufe frei gestaltbar
@@ -2033,7 +2033,7 @@ unbegrenzt fortgeschrieben zu werden.
        Eskalations-Meldung aus dem täglichen Trigger-Check (siehe Abschnitt
        5): in jedem dieser Fälle wird zusätzlich zur kurzen Chat-Antwort
        eine PDF-Datei erzeugt und per SendUserFile ausgeliefert – Layout je
-       nach Inhalt (Reaper-Kompakt-Layout für eine einzelne Position,
+       nach Inhalt (Agent-Kompakt-Layout für eine einzelne Position,
        angelehnt an das Wochenfazit-Layout für Portfolio-/Mehrfach-
        Positionen-Übersichten). Ausnahme bleibt eine rein konversationelle
        Antwort ohne eigenständigen inhaltlichen Ergebniswert (z.B. eine
@@ -2051,7 +2051,7 @@ unbegrenzt fortgeschrieben zu werden.
        einer Screening-Liste) – NICHT als Ersatz für den vollen 3-fach-
        Cross-Check, sondern als schnellere, einstimmige Vorstufe davor –
        kommt ein eigenes, kompakteres Layout zum Einsatz, im Aufbau an
-       Brians Vorlage angelehnt, aber in unserer Reaper-Optik (dunkler
+       Brians Vorlage angelehnt, aber in unserer Agent-Optik (dunkler
        Hintergrund, Gold-Akzente, DejaVu Sans Condensed/Carlito) statt im
        Original-Navy/Weiß-Stil:
        - **Deckblatt:** Titel, Sektor-gruppierte Kandidaten-Übersicht (Tabelle),
@@ -2071,7 +2071,7 @@ unbegrenzt fortgeschrieben zu werden.
          interessant) · 🟡 GELB (gut, aber Preis/Risiko beachten) · 🟠 ORANGE
          (problematisch/spekulativ) · 🔴 ROT (fundamental schwach/sehr hohes
          Risiko). Das ist ein SCHNELLCHECK-System, kein Ersatz für die K-
-         Kriterien-DNA/Reaper Score – vor einer echten KAUFEN-Entscheidung
+         Kriterien-DNA/Agent Score – vor einer echten KAUFEN-Entscheidung
          oder Watchlist-Aufnahme bleibt der volle TMR-/Scout-Pfad (ggf.
          3-fach-Cross-Check) Pflicht, siehe Pipeline Abschnitt 4.
        - **3-fach-Format, KEIN Ein-KI-Format (2026-08-29, von Brian korrigiert
@@ -2087,7 +2087,7 @@ unbegrenzt fortgeschrieben zu werden.
          Kandidat im Batch laufen Jarvis, Jack und Conan (je in der für den
          Batch festgelegten Tiefe, siehe unten), danach eine kurze Konvergenz-/
          Dissens-Einordnung wie beim regulären 3-fach-Cross-Check – nur eben
-         kompakter im Ampel-Batch-Layout statt im vollen Reaper-Kompakt-Report
+         kompakter im Ampel-Batch-Layout statt im vollen Agent-Kompakt-Report
          pro Einzelwert. Praktische Konsequenz: ein Batch mit mehreren Werten
          braucht entsprechend mehr Zeit/Aufwand (3x Browser-Automation bzw.
          API-Calls pro Kandidat) – das ist von Brian bewusst in Kauf genommen.
@@ -2431,8 +2431,8 @@ DASS eine solche Sektion existieren soll (Trend-/Zonen-Ampel + konkrete
 Unterstützungs-/Widerstandszonen + Verknüpfung mit der fundamentalen
 Bewertung) – KEIN 1:1-Layout- oder Struktur-Klon. Aufbau, Tabellen-
 Formulierungen, Bezeichnungen und Optik dieser Sektion bleiben unser
-eigenes, im Rest dieses Regelwerks etabliertes Reaper-Vokabular (Ampel-
-Farbwelt, Beobachten-Protokoll-Sprache, Reaper-Score-Logik usw.), nicht die
+eigenes, im Rest dieses Regelwerks etabliertes Agent-Vokabular (Ampel-
+Farbwelt, Beobachten-Protokoll-Sprache, Agent-Score-Logik usw.), nicht die
 Gliederung/Wortwahl der fremden Vorlage.
 
 **Ab sofort gilt (gilt für Quick-Filter GENAUSO wie für Full Deep Dive –
@@ -2451,10 +2451,10 @@ anders als DCF/Vollformat-Zusatzmodule ist dieser Schritt NICHT
    entfällt dieser Schritt – dann aber explizit als Lücke vermerkt, nicht
    stillschweigend ausgelassen.
 2. **Eigene Sektion "Chart- und Einstiegslage"** in jeder Einzelanalyse
-   (Markdown-Datei UND Reaper-Kompakt-PDF) – der Name der Sektion und die
+   (Markdown-Datei UND Agent-Kompakt-PDF) – der Name der Sektion und die
    Grundidee (Trend-Ampeln + Zonen-Tabelle) sind von der fremden Vorlage
    inspiriert, die konkrete Umsetzung ist aber komplett eigenständig in
-   unserer bereits etablierten Reaper-Optik/-Terminologie zu halten (gleiche
+   unserer bereits etablierten Agent-Optik/-Terminologie zu halten (gleiche
    Vorgehensweise wie beim Wochenreport-Layout ggü. Raketentoni, siehe
    "PDF-Report-Design" unten – dort ebenfalls "nur lose Inspiration, kein
    1:1-Klon"): Ampel-Zeilen für Langfrist-/Mittelfristtrend,
@@ -2469,9 +2469,9 @@ anders als DCF/Vollformat-Zusatzmodule ist dieser Schritt NICHT
    `python3 reports/render_chart.py --json <Datei> --out reports/<TICKER>_chart.png
    --ema 20,50 --zone "<Kurs>:<Label>" --title "<TICKER> -- <Börse>"`
    ausführen (Details/Format im Skript-Docstring). Ersetzt die bisher reine
-   Tabellen-Optik durch ein echtes Bild, im Reaper-Design statt
+   Tabellen-Optik durch ein echtes Bild, im Agent-Design statt
    Fremd-Screenshot.
-   **Bei Full Deep Dive zusätzlich Pflicht (seit 2026-09-08, siehe "Reaper
+   **Bei Full Deep Dive zusätzlich Pflicht (seit 2026-09-08, siehe "Agent
    Deep Dive Report" unten):** denselben Befehl um `--rsi --macd` ergänzen
    → rendert zwei zusätzliche RSI(14)-/MACD(12,26,9)-Subplots unter dem
    Hauptchart. Bei Quick Filter/Ampel-Batch-Scan entfallen beide Flags
@@ -2531,7 +2531,7 @@ Cross-Check-Gegenüberstellung inkl. PDF-Vergleich:
 `VNC-cross-check-fazit-2026-08-31.md`). Wie schon bei der Alimentation-
 Couche-Tard-PDF gilt: die fremde PDF dient AUSSCHLIESSLICH als Anstoß/lose
 Inspiration, nicht als 1:1-Vorlage — Wortwahl, Tabellenformate und
-Score-Logik bleiben unser eigenes Reaper-Vokabular.
+Score-Logik bleiben unser eigenes Agent-Vokabular.
 
 Vincorion (IPO 20.03.2026, <6 Monate Handelshistorie zum Analysezeitpunkt,
 STAR Capital hält 48,63% mit auslaufendem 180-Tage-Lock-up) hat zwei
@@ -2596,7 +2596,7 @@ Bias, der eine feste Regel braucht, keine Einzelfall-Disziplin.
    existieren, wurden aber nicht offengelegt/gefunden — ein
    Beschaffungs-/Transparenzproblem). Beide Fälle führen weiterhin zum
    GLEICHEN mechanischen Konfidenz-Deckel (🔴 NIEDRIG bei Überschreiten der
-   üblichen N/V-Schwelle → Tier ≤3, Reaper Score ≤6, EDGE-Deckel ≤🟡 —
+   üblichen N/V-Schwelle → Tier ≤3, Agent Score ≤6, EDGE-Deckel ≤🟡 —
    unverändert ggü. bestehender Regel), aber der Tag macht in der Analyse
    selbst transparent, DASS der Deckel eine Reifegrad-Frage ist, kein
    Warnsignal über die Unternehmensqualität — wichtig für die spätere
@@ -2669,7 +2669,7 @@ Zahlen-Schein-Präzision.
 die erste Fassung dieses Eintrags zu sehr nach Stilfrage klang):** Es geht
 NICHT darum, dass die Zusammenfassung "netter klingt" oder wie Raketentonis
 Agent tönt. Es geht darum, dass Brian beim Lesen die eigentliche Analyse
-dahinter wirklich VERSTEHT — warum genau dieser Reaper Score, warum genau
+dahinter wirklich VERSTEHT — warum genau dieser Agent Score, warum genau
 diese Ampel-Farbe, warum genau diese Einstiegszone — statt nur auf ein PDF
 oder eine Tabellenzeile zu starren und nachfragen zu müssen, was damit
 gemeint ist. Die Formulierungsregeln unten (direkte Ansprache, nummerierte
@@ -2696,10 +2696,10 @@ Blitz-Scan-Voreinschätzung):**
    mit Position X"), wird das in einen an Brian gerichteten Satz übersetzt
    ("Das würde bei dir mit [Position X] ins gleiche Sektor-Töpfchen fallen,
    ..."). Betrifft NUR den verbindenden Fließtext, nicht die Pflicht-
-   Tabellen selbst (Ampelcheck, DNA-Strang, Reaper-Score-Gauge,
+   Tabellen selbst (Ampelcheck, DNA-Strang, Agent-Score-Gauge,
    Einstiegszonen-Tabelle) — die bleiben tabellarisch wie bisher.
 3. **Kurze, in sich abgeschlossene Gedankenschritte statt Stakkato-
-   Stichpunkte**, vor allem im PDF-Fazit-Element bzw. der Reaper-Kompakt-
+   Stichpunkte**, vor allem im PDF-Fazit-Element bzw. der Agent-Kompakt-
    Einzelseite, wo Platz dafür ist ("Das ist wichtig, weil...", "Genau
    daraus entsteht..."). Im knappen Chat-Kurz-Fazit (weiterhin 5-8 Sätze,
    siehe Pipeline-Schritt 5) reicht ein durchgehender Fließtext-Absatz in
@@ -2712,7 +2712,7 @@ Blitz-Scan-Voreinschätzung):**
 5. **Abschließende Status-Zeile mit Ampel + Ein-Satz-Begründung**, getrennt
    nach kurz- und mittelfristiger Einschätzung, falls diese auseinander-
    fallen (z.B. "kurzfristig 🟠, mittelfristig eher 🟢") — Ampel-Farben und
-   -Bedeutung bleiben unser etabliertes Reaper-Vokabular (siehe die
+   -Bedeutung bleiben unser etabliertes Agent-Vokabular (siehe die
    verschiedenen Ampel-Skalen oben), nicht Raketentonis eigene Ampel-Achse.
 6. **Keine Einschränkung der Pflichtinhalte.** Alle bisher vorgeschriebenen
    Bestandteile des Kurz-Fazits (Pipeline-Schritt 5: Rating+Timing-Ampel,
@@ -2721,8 +2721,8 @@ Blitz-Scan-Voreinschätzung):**
    werden, nicht WAS gesagt werden muss.
 7. **Keine unerklärte Zahl, keine unerklärte Fachvokabel.** Jede
    Score-/Ampel-/Kennzahlen-Erwähnung im Fließtext bekommt eine kurze
-   Einordnung mitgeliefert (Beispiel: "Reaper Score 7/10 — das heißt: solide
-   Substanz, aber kein Ausnahmewert" statt nackt "Reaper Score: 7/10").
+   Einordnung mitgeliefert (Beispiel: "Agent Score 7/10 — das heißt: solide
+   Substanz, aber kein Ausnahmewert" statt nackt "Agent Score: 7/10").
    Gleiches gilt für Fachbegriffe (EBITDA-Marge, Free Float, Lock-up,
    Overhang, EDGE-Deckel usw.) bei der ersten Erwähnung in einer
    Zusammenfassung: ein Halbsatz Erklärung, was der Begriff hier konkret
@@ -2732,7 +2732,7 @@ Blitz-Scan-Voreinschätzung):**
    fehlt eine Einordnung, und der Absatz muss nachgebessert werden.
 
 Diese Regel gilt sowohl für den Chat-Kurz-Fazit (Pipeline-Schritt 5) als
-auch für das Fazit-/Verdict-Element im Reaper-Kompakt-PDF sowie im
+auch für das Fazit-/Verdict-Element im Agent-Kompakt-PDF sowie im
 Wochenfazit/Monatsrecap — überall dort, wo der Agent Brian gegenüber eine
 eigene, wertende Schlussfolgerung formuliert. Reine Fakten-/Kennzahlen-
 Tabellen (Fact-Pack, Ampelcheck, DNA-Strang, Bilanz-Kennzahlen) sind von
@@ -3611,7 +3611,7 @@ PDF ("kein Monatsende heute, kein Recap"). Das stellt sicher, dass der
 Monatsrecap in jedem Monat exakt einmal kommt, unabhängig von dessen Länge.
 
 **Ausgabeformat:** Wie Wochenfazit als eigenständige PDF-Datei
-(`Monatsrecap-YYYY-MM.pdf`) per SendUserFile ausgeliefert (Reaper-Optik,
+(`Monatsrecap-YYYY-MM.pdf`) per SendUserFile ausgeliefert (Agent-Optik,
 eigenes Layout in Anlehnung an den Wochenreport, mit eigener Makro-Seite
 für Punkte 7-8 sowie einer zusätzlichen Seite/Sektion für die
 Ergänzungspunkte 9-15), plus eine sehr kurze Chat-Zusammenfassung
@@ -3623,7 +3623,7 @@ fehlendem Inhalt ist hier bewusst richtig. Technisch als eigener, vom
 Wochenfazit unabhängiger Scheduled Task umgesetzt (siehe Technische
 Bausteine).
 
-### PDF-Report-Design: "Reaper Wochenreport" (2026-08-27, eigenständiges Layout)
+### PDF-Report-Design: "Agent Wochenreport" (2026-08-27, eigenständiges Layout)
 
 Brian hat eine Beispiel-PDF eines Bekannten ("Raketentoni", ebenfalls 3-KI-
 Agent) geteilt. Nach seiner ausdrücklichen Klarstellung (2026-08-27) dient
@@ -3633,13 +3633,13 @@ Raketentoni übernommen wurde, ist ausschließlich die Grundidee "eine
 kompakte Seite pro Position mit klarer Ampel-Logik" – Struktur, Optik und
 Reihenfolge sind bewusst eigenständig gestaltet.
 
-**Eigene Marke/Identität:** Der Report heißt "REAPER WOCHENREPORT" (Bezug zum
-Jack-Moat-Reaper-Regelwerk, nicht Raketentonis generischer Titel), Untertitel
+**Eigene Marke/Identität:** Der Report heißt "AGENT WOCHENREPORT" (Bezug zum
+Jack-Moat-Agent-Regelwerk, nicht Raketentonis generischer Titel), Untertitel
 "3-KI Cross-Check · Jarvis · Conan · Jack".
 
 **Farbwelt (bewusst abgesetzt von Raketentonis Navy-Corporate-Look):**
 Basis dunkles Anthrazit/Kohle statt Navy für Kopfzeilen/Masthead; ein
-scharfer Bernstein-/Gold-Ton als Signatur-Akzent (Reaper-Score-Gauge,
+scharfer Bernstein-/Gold-Ton als Signatur-Akzent (Agent-Score-Gauge,
 Masthead-Linie, Hervorhebungen) – kein Grün/Gelb/Rot, das bleibt exklusiv
 für die Ampel-Semantik reserviert, aber in eigenen, satteren Tönen
 (Tannengrün / warmes Bernstein / sattes Karmesinrot statt Raketentonis
@@ -3647,7 +3647,7 @@ flacherem Grün/Orange/Rot). Neutrale Textfarbe warmes Dunkelgrau statt
 reinem Schwarz.
 
 **Typografie:** Kräftige, kondensierte Display-Schrift für Positionsnamen/
-Masthead (industriell-scharfer Charakter, passend zum "Reaper"-Thema),
+Masthead (industriell-scharfer Charakter, passend zum "Agent"-Thema),
 kombiniert mit einer klaren, gut lesbaren serifenlosen Fließtext-Schrift.
 
 **Strukturelle Alleinstellungsmerkmale (bewusst andere Reihenfolge/Optik als
@@ -3659,7 +3659,7 @@ Raketentoni, nicht nur andere Farben):**
   "MODERAT" / "WIDERSPRUCH") – Raketentonis Report zeigt nur ein stilles
   synthetisiertes Endergebnis, wir zeigen bewusst die Kontroverse/den
   Konsens zwischen den drei KIs als erstes.
-- **Reaper-Score-Gauge**: der Score (0-10) als grafischer Halbkreis-Zeiger
+- **Agent-Score-Gauge**: der Score (0-10) als grafischer Halbkreis-Zeiger
   statt einer stillen Tabellenzeile, daneben das Sizing-Tier als
   "Clip"-Symbol (1-4 gefüllte Segmente) – ein optisches, kein rein
   tabellarisches Element.
@@ -3711,27 +3711,27 @@ dort (Depotstatus-Ampel, Kategorie-Füllstand, Auffälligkeiten, Cash-Disziplin-
 Zeile) bleiben Pflichtbestandteil, werden aber jetzt in diesem saubereren
 Layout statt als reiner Fließtext präsentiert.
 
-### PDF-Report-Design: "Reaper Deep Dive Report" (Full Deep Dive, 2026-09-08)
+### PDF-Report-Design: "Agent Deep Dive Report" (Full Deep Dive, 2026-09-08)
 
 Brian hat eine weitere, deutlich ausgereiftere Beispiel-PDF von Raketentonis
 System geteilt ("MP Materials – Große Aktienanalyse", 13 Seiten, mehrstufiger
 Report statt Kompakt-Layout) und ausdrücklich als Inspiration für einen
 eigenen "Full Deep Dive"-PDF-Standard gewünscht – **gleiche Regel wie beim
-Reaper Wochenreport oben: lose strukturelle Inspiration, KEIN 1:1-Klon.**
-Aufbau/Reihenfolge/Sprache bleiben unser eigenes Reaper-Vokabular (Ampel-
+Agent Wochenreport oben: lose strukturelle Inspiration, KEIN 1:1-Klon.**
+Aufbau/Reihenfolge/Sprache bleiben unser eigenes Agent-Vokabular (Ampel-
 Farbwelt, Score-Gauge, 3-Stimmen-Leiste, DNA-Check-Strang), NICHT
 Raketentonis Kapitel-Nummerierung oder Formulierungen. Gilt NUR für Full
-Deep Dive (Quick Filter bleibt beim bestehenden Reaper-Kompakt-Einseiter,
-siehe "PDF-Report-Design: Reaper Kompakt" – ein 13-Seiten-Report für jeden
+Deep Dive (Quick Filter bleibt beim bestehenden Agent-Kompakt-Einseiter,
+siehe "PDF-Report-Design: Agent Kompakt" – ein 13-Seiten-Report für jeden
 Quick-Filter-Kandidaten wäre nicht mit dem Aufwand-/Realismus-Prinzip
 vereinbar, siehe Abschnitt 6).
 
 **Was aus der Vorlage strukturell übernommen wird (jeweils in eigener
-Reaper-Optik, nicht 1:1):**
+Agent-Optik, nicht 1:1):**
 
 1. **Mehrseitiges Format statt Einseiter** – Full Deep Dive bekommt ab
    sofort ein eigenständiges PDF (`reports/<TICKER>-deep-dive-<Datum>.pdf`,
-   Reaper-Deep-Dive-Layout), NICHT mehr das Reaper-Kompakt-Layout gequetscht
+   Agent-Deep-Dive-Layout), NICHT mehr das Agent-Kompakt-Layout gequetscht
    – der Kompakt-Einseiter bleibt für Quick Filter/Blitz-Scan-Treffer.
 2. **Multi-Panel-Chart statt reiner Kurs+EMA-Grafik (technische Erweiterung
    von `reports/render_chart.py`):** zusätzlich zum bestehenden
@@ -3772,8 +3772,8 @@ Reaper-Optik, nicht 1:1):**
    konsequent als zwei nebeneinanderstehende Kästen dargestellt statt nur
    im Fließtext verstreut – macht auf einen Blick sichtbar, was für UND was
    gegen die These sprechen würde.
-7. **Score-Aufschlüsselungs-Tabelle:** die bereits bestehende Reaper-Score-
-   Stapel-Logik (siehe "REAPER-SCORE-STAPEL-LOGIK") wird bei Full Deep Dive
+7. **Score-Aufschlüsselungs-Tabelle:** die bereits bestehende Agent-Score-
+   Stapel-Logik (siehe "AGENT-SCORE-STAPEL-LOGIK") wird bei Full Deep Dive
    zusätzlich als Tabelle mit den Einzeldimensionen (z.B. Moat/Burggraben,
    Wachstum, Bilanz/Finanzierung, Profitabilität/Cashflow, Bewertung,
    Ausführungsrisiko, Chart/Timing – Dimensionen je nach TMR/Scout-Pfad
@@ -3801,7 +3801,7 @@ Farbwelt, Kapitel-Nummerierung/-Titel, Formulierungen und die reine
 Multiples-/DCF-Bewertungslogik (unsere TMR-/Scout-Fair-Value-Herleitung
 bleibt methodisch unverändert die eigene, siehe jeweilige Methodik-Datei) –
 nur die strukturellen/visuellen Elemente oben, in unserer bereits
-etablierten Reaper-Optik (dunkles Anthrazit/Gold, kondensierte
+etablierten Agent-Optik (dunkles Anthrazit/Gold, kondensierte
 Display-Schrift, 3-Stimmen-Leiste ganz oben).
 
 ### Watchlist-System (2026-08-28, von Brian gefordert)
@@ -4497,7 +4497,7 @@ Risiko-Gegenpol, klare Schlusslinie) und der direkte, verständliche
 Erzählstil (siehe "Verständlichkeit der Kurz-Fazits", oben). NICHT
 übernommen: erfundene Konsens-Zahlen ohne Quelle, eine neue eigenständige
 Rating-Skala (Raketentonis "🟢🔥🔥🔥") — Ampel-Farben und Rating-Begriffe
-bleiben unser etabliertes Reaper-/TMR-/Scout-Vokabular.
+bleiben unser etabliertes Agent-/TMR-/Scout-Vokabular.
 
 **Technische Einschränkung:** Twelve Data führt `get_earnings` (Termine UND
 historische EPS-Daten) nur ab "grow"-Plan aufwärts — auf dem aktuellen Plan
@@ -4566,7 +4566,7 @@ Finanzportale), nicht über eine API abgefragt.
 
 **Abgrenzung zu bestehenden Formaten:** Ersetzt NICHT die volle
 Fundamentalanalyse (TMR/Scout) — ein Earnings-Kompakt-Fazit ist reine,
-schnelle Zahlen-Einordnung, keine neue DNA-Check-/Reaper-Score-Bewertung.
+schnelle Zahlen-Einordnung, keine neue DNA-Check-/Agent-Score-Bewertung.
 Länger etablierte Positionen mit bereits hinterlegten Triggern profitieren
 am meisten (die Zahlen werden direkt gegen die eigene Beobachtungsbasis
 gehalten, nicht isoliert kommentiert).
@@ -4842,7 +4842,7 @@ via yfinance"-Vorgehen funktioniert hier also nicht. Stattdessen:
   SendUserFile ausgeliefert? Falls nein, das explizit als Fehler behandeln,
   nicht als leises Ende.").
 - **NEU (2026-08-28): Praxis-Scope-Entscheidung fürs Wochenfazit-PDF.** Die in
-  Abschnitt 5 beschriebene volle "Reaper-Kompakt"-Einzelseite (3-Stimmen-Leiste,
+  Abschnitt 5 beschriebene volle "Agent-Kompakt"-Einzelseite (3-Stimmen-Leiste,
   Score-Gauge, DNA-Strang) bleibt der Standard für Ad-hoc-/Trigger-Analysen
   einzelner Positionen (siehe SKWD-Präzedenz), ist aber für alle 28
   Depot-Positionen JEDE Woche zu aufwendig (~30 Seiten Vollgrafik wöchentlich).
@@ -4850,7 +4850,7 @@ via yfinance"-Vorgehen funktioniert hier also nicht. Stattdessen:
   kompakteres Karten-Raster (6 Positionen/Seite: Ticker, Kategorie, Rating,
   Score, Tier, Konfidenz, Kurzthese, Abstauber-Trigger) statt 28 Vollseiten;
   die Gesamtübersicht (Ranggruppen A-E), Auffälligkeiten, Methodik und Quellen
-  bleiben volle Reaper-Wochenreport-Seiten. Das volle Einzelblatt-Layout bleibt
+  bleiben volle Agent-Wochenreport-Seiten. Das volle Einzelblatt-Layout bleibt
   auf Anfrage bzw. automatisch bei echten Anlässen (Kauf-/Verkaufsentscheidung)
   verfügbar.
 - **NEU (2026-08-28): Auffälliger Fall für die META-RETRO-RUNDE [3c] – RKLB-
@@ -4941,7 +4941,7 @@ falls das später relevant wird):**
   später ein Score wird, bleibt offen und liegt bei Brian.
 - **Struktur der Bewertung selbst:** unterschiedliche Präferenzen, ob es bei
   drei getrennten Scores (heutiger Zustand) bleibt oder stärker auf einen
-  gemeinsamen Reaper-Score konsolidiert werden sollte – nicht entschieden,
+  gemeinsamen Agent-Score konsolidiert werden sollte – nicht entschieden,
   niedrige Priorität.
 
 **Weitere Einzelpunkte aus der Retrospektive (noch nicht in Phasen
@@ -5133,7 +5133,7 @@ bilden:
 - Passives, organisches Wachstum durch Kursanstieg: bis 15% normal
   toleriert, keine automatische Zwangs-Reduzierung.
 - 15-18%: keine automatische Aktion, aber eine verpflichtende
-  Reaper-Review (These noch intakt? Bewertung entkoppelt? weiterhin
+  Agent-Review (These noch intakt? Bewertung entkoppelt? weiterhin
   Top-3-/Top-5-Kapitalallokation? gestiegenes Risiko eines permanenten
   Kapitalverlusts? würden wir diese Position heute neu mit diesem Gewicht
   eröffnen?).
@@ -5420,7 +5420,7 @@ analysen: `VNC-TMR-quickfilter-jarvis-claude-2026-08-31.md`,
 `-jack-gemini-2026-08-31.md`, `-conan-chatgpt-2026-08-31.md`).
 
 **Ergebnis-Konvergenz:** Alle drei KIs landeten unabhängig voneinander bei
-**BEOBACHTEN + Sizing-Tier 3** (Reaper Score 6/10 bei Jarvis,
+**BEOBACHTEN + Sizing-Tier 3** (Agent Score 6/10 bei Jarvis,
 konfidenz-gedeckelt; 7,2/10 bei Jack; 7,0/10 bei Conan) — die bislang
 stärkste Rating-Konvergenz aller in diesem Projekt durchgeführten
 Cross-Checks. Uneinig waren sich die drei dagegen deutlich bei der

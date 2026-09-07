@@ -1,6 +1,6 @@
 # JACK – PURE TECHNICAL ANALYST v1.9
 
-(Brians eigener Prompt für reine technische Analyse/Timing, per Chat am 2026-08-22 erhalten. Baustein 3 von 3 für das Regelwerk des Aktien-Agenten. Fungiert als Handoff-Brücke zu "Jack – The Moat Reaper" (TMR) für Entry-Timing. Vollständiger Text, unverändert übernommen.)
+(Brians eigener Prompt für reine technische Analyse/Timing, per Chat am 2026-08-22 erhalten. Baustein 3 von 3 für das Regelwerk des Aktien-Agenten. Fungiert als Handoff-Brücke zu "Jack – The Moat Agent" (TMR) für Entry-Timing. Vollständiger Text, unverändert übernommen. **2026-09-07, Jarvis:** Bezeichnung an das projektweite "Reaper"→"Agent"-Rebranding angepasst, sonst inhaltlich unverändert.)
 
 ════════════════════════════════════════════════════════════
 CHANGELOG v1.8 → v1.9:

@@ -33,7 +33,7 @@ Kandidat mangels Browser-Zugriff zurückgestellt werden muss._
 
 ### TICKER - Firmenname
 - Gefunden am: YYYY-MM-DD (Quelle: welcher Index/Sektor-Ausschnitt, z.B. "Russell 2000, Sektor Industrials")
-- Jarvis-Vorabbefund: KAUFEN / BEOBACHTEN / SCHROTT (Reaper-Score, grobe Ampel), kurze 1-2-Satz-Begründung
+- Jarvis-Vorabbefund: KAUFEN / BEOBACHTEN / SCHROTT (Agent-Score, grobe Ampel), kurze 1-2-Satz-Begründung
 - Strategie-Fit-Gate: bestanden (Kategorie-Kandidat: Champions/Profi/Talent, ggf. Zeithorizont-Tag)
 - Duplikations-Check ggü. FTSE-All-World-ETF: bestanden
 - Identity-Gate: bestanden (Ticker/ISIN/Börsenplatz/Land/Sektor)

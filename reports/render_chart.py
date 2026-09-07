@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Reaper Candlestick-Chart-Renderer (Charttechnik-Ergaenzung, 2026-09-01).
+"""Agent Candlestick-Chart-Renderer (Charttechnik-Ergaenzung, 2026-09-01).
 
 Rendert einen echten Candlestick-Chart (+ Volumen, optional EMA-Overlays und
-Zonen-Linien) aus Twelve-Data-Zeitreihen-JSON, im Reaper-Dunkel/Gold-Design.
+Zonen-Linien) aus Twelve-Data-Zeitreihen-JSON, im Agent-Dunkel/Gold-Design.
 Ersetzt die bisherigen reinen Tabellen-Sektionen in "Chart- und Einstiegslage"
 durch ein echtes Chart-Bild, analog zu Raketentonis Referenz-PDFs, aber im
 eigenen Design statt 1:1-Screenshot-Uebernahme.
 
-Seit 2026-09-08 (Full-Deep-Dive-Erweiterung, "Reaper Deep Dive Report"):
+Seit 2026-09-08 (Full-Deep-Dive-Erweiterung, "Agent Deep Dive Report"):
 optionale RSI(14)- und MACD(12,26,9)-Subplots unter dem Hauptchart (--rsi /
 --macd), fuer Full Deep Dive gedacht -- Quick Filter nutzt weiterhin nur den
 einfachen Haupt-Chart ohne Indikator-Subplots, um Renderzeit klein zu halten.

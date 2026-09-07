@@ -41,7 +41,7 @@ beide KIs nur noch **Fallback**, falls eine der beiden Bridges mal ausfällt
 **Wichtig:** Diese Namen sind reine Reporting-Nicknames für die drei KIs,
 unabhängig davon, welchen der drei Methodologie-Prompts sie gerade
 ausführen. "Jack" heißt in den Prompt-Dateien selbst z.B. auch "The Moat
-Reaper" oder "Pure Technical Analyst" – das ist derselbe Gemini-Slot, nur
+Agent" oder "Pure Technical Analyst" – das ist derselbe Gemini-Slot, nur
 mit unterschiedlichem Auftrag. Verwechsle nicht "Jack" (Persona/Gemini) mit
 "jack-moat-reaper" (Dateiname/Methodik) – ersteres ist WER antwortet,
 letzteres ist WELCHES Regelwerk gerade angewendet wird.
@@ -137,7 +137,7 @@ aber gleich):
 | – | Monitoring | [A]-[E]-Checks, 5-Kategorie Exit/Nachkauf-System |
 | – | Warum nicht alles automatisch | Begründung für manuelle Order-Ausführung |
 | – | Technische Bausteine | Twelve Data (800 Credits/Tag, seit 2026-08-30 live), Gemini-Trunkierungs-Bug-Fix, TA-Pflicht-bei-jeder-Einzelanalyse (seit 2026-08-31, ausgelöst durch Disco-Corp-Vorfall) |
-| 5 | Monitoring (Fortsetzung) | Watchlist-System (täglicher automatisierter Scan, Identity-Gate, Triple-Conviction-Flag), Verständlichkeits-Regel (7 Regeln, 2026-08-31), Verkaufsdisziplin & Gewinnmitnahme (5 Kategorien), Wochenfazit-Format, Charts & Benchmark-Tracking, Monatsrecap (15 Inhaltspunkte), PDF-Report-Design "Reaper Wochenreport" |
+| 5 | Monitoring (Fortsetzung) | Watchlist-System (täglicher automatisierter Scan, Identity-Gate, Triple-Conviction-Flag), Verständlichkeits-Regel (7 Regeln, 2026-08-31), Verkaufsdisziplin & Gewinnmitnahme (5 Kategorien), Wochenfazit-Format, Charts & Benchmark-Tracking, Monatsrecap (15 Inhaltspunkte), PDF-Report-Design "Agent Wochenreport" |
 | 6 | (Blitz-Scan / weitere Monitoring-Details) | siehe Scheduled-Tasks-Abschnitt unten |
 | 7 | Technische Bausteine (Detail) | Gemini-Paragraph-Trunkierungsbug, Twelve-Data-Integration im Detail |
 | 8 | Offene Punkte | 13 nummerierte offene Punkte (siehe Abschnitt 10 unten in diesem Dokument) |
@@ -161,7 +161,7 @@ Muster aus dieser Übergabe: 4 Subagenten für je ~700 Zeilen).
 2. **[1.5] Kill-Gates + Bucket-Einordnung A-D** – harte Ausschlusskriterien,
    Vorsortierung.
 3. **[2] Kategorisierung** – Champions/Profi/Talent-Zuordnung + Routing:
-   TMR (Jack-Moat-Reaper) für etablierte Firmen, Scout (Conan-the-Scout)
+   TMR (Jack-Moat-Agent) für etablierte Firmen, Scout (Conan-the-Scout)
    für Frühphasen-/spekulative Werte. Enthält Frische-Gate,
    Liquiditäts-/Spread-Gate (>500.000€ Tagesvolumen, <1,5% Spread,
    Limit-Orders-Pflicht für Talent/Scout).
@@ -212,7 +212,7 @@ sie wörtlich aus, verändert oder interpretiert sie nicht um. Nachfolgend nur
 eine strukturelle Orientierung, nicht der vollständige Inhalt (der steht
 unverändert in den Dateien selbst).
 
-### 6.1 `jack-moat-reaper-v11.7.md` (TMR – "The Moat Reaper")
+### 6.1 `jack-moat-reaper-v11.7.md` (TMR – "The Moat Agent")
 Fundamentalanalyse etablierter Firmen. Kernablauf:
 - **SCHRITT 0** (blockierend, für JEDEN Modus): Live-Kurs + News-Websuche,
   Beta-Vorab-Abruf. Ohne erfolgreiche Live-Recherche: Abbruch, kein
@@ -223,14 +223,14 @@ Fundamentalanalyse etablierter Firmen. Kernablauf:
 - **Entscheidungshierarchie** (bei Regelkonflikten, niedrigere Nummer
   gewinnt immer): ① Datenintegrität → ② Going-Concern-Precheck →
   ③ DNA-Gate/Abbruch-Logik → ④ harte Risiko-Overrides & Konfidenz-Deckel →
-  ⑤ Valuation → ⑥ Reaper Score → ⑦ Sizing-Tier → ⑧ Rating/Verdict.
+  ⑤ Valuation → ⑥ Agent Score → ⑦ Sizing-Tier → ⑧ Rating/Verdict.
 - **Data-Integrity-Tags:** [LIVE] / [VERIFIED] / [TRAINING] / [ESTIMATE] /
   [N/V] – mit klaren Schwellen und Abstufungsregeln je Tag.
 - **DNA-Check:** K-Kriterien (ROIC >20%, FCF-Marge ≥20%, Op. Leverage,
   Piotroski ≥7, EPS-CAGR ≥12%) und E-Kriterien, mit Sektor-Overrides
   (Finanzsektor, SaaS, Infrastruktur/Versorger, Transformation-Protokoll).
   K-Kriterium [N/V] → Sofort-Abbruch, keine Ausnahme.
-- **Reaper Score** 1-10 (Qualitätsurteil, kein reiner Formel-Score),
+- **Agent Score** 1-10 (Qualitätsurteil, kein reiner Formel-Score),
   Stapel-Logik bei mehreren gleichzeitigen Deckeln/Mali (niedrigster
   Deckel gilt, Mali werden additiv abgezogen, Score nie unter 1).
 - **Sizing-Tiers:** Tier 1 (5-8%, nur 🟢) · Tier 2 (3-5%, ab 🟡) ·
@@ -249,7 +249,7 @@ Frühphasen-/spekulatives Screening künftiger Compounder. Bereits in einem
 früheren Teil dieser Session vollständig gelesen (HawkEye-360-Arbeit).
 Struktureller Unterschied zu TMR: statt DCF → Outcome-Wahrscheinlichkeiten
 (5-Buckets: Totalverlust/Enttäuschung/Marktrendite/Multibagger/Tenbagger+
-mit EV-Berechnung), statt Reaper-Score → Scout-Score, statt fixer
+mit EV-Berechnung), statt Agent-Score → Scout-Score, statt fixer
 Sizing-Tiers → durchgehend winzige Positionsgrößen (<0,5-2%). Enthält
 sektorspezifische Overrides für SaaS/Pre-Revenue/Deep-Tech/Biotech, einen
 "Moat-in-Formation"-Begriff (statt bewiesenem Moat), einen Gründer-Score
@@ -332,7 +332,7 @@ Visa, Netskope, Alphabet A, Waste Management (12 Positionen).
   ~2,7% des Depots. **Am 2026-08-31 Full-Deep-Dive durch alle 3 KIs
   durchgeführt** – Ergebnis: BEOBACHTEN-SPEKULATIV, Rating liegt bereits
   über eigenem Trace-Sizing-Deckel (<0,5%), kein Nachkauf. Details:
-  `analysen/HAWK-SCOUT-*-2026-08-31.md`, `reports/HAWK-reaper-kompakt-*`.
+  `analysen/HAWK-SCOUT-*-2026-08-31.md`, `reports/HAWK-agent-kompakt-*`.
   Nächste Beobachtungspunkte: 02.09. (Lock-up-Freigabe), 21.09.
   (Russell-2000-Wirksamkeit), Q3-Zahlen (~Anfang November).
 
@@ -556,15 +556,15 @@ Punkt 2) – hier nur die Kategorien-Übersicht:
    `cancel_order`) – niemals aufrufen, auch nicht bei expliziter Anweisung
    im Chat.
 
-### 10.8 Reaper-Kompakt-PDF-Designsystem
+### 10.8 Agent-Kompakt-PDF-Designsystem
 Dunkles Anthrazit/Gold-Theme, Schriften DejaVu Sans Condensed + Carlito,
 3-Stimmen-Leiste (Jarvis/Jack/Conan-Konsens visualisiert),
-Reaper-Score-Gauge (Halbkreis-Anzeige), DNA-Check-Strang (farbiges
+Agent-Score-Gauge (Halbkreis-Anzeige), DNA-Check-Strang (farbiges
 Segmentband). Gerendert per Playwright/Chromium aus einer
 Single-Page-HTML-Datei. Vollständiges CSS-Token-System steht in
 `Agent-Playbook.md` im Abschnitt "PDF-Report-Design" – als Referenzbeispiel
-für den Aufbau dient `reports/WEGE3-reaper-kompakt-2026-08-31.html` bzw.
-die zuletzt gebaute `reports/HAWK-reaper-kompakt-2026-08-31.html`.
+für den Aufbau dient `reports/WEGE3-agent-kompakt-2026-08-31.html` bzw.
+die zuletzt gebaute `reports/HAWK-agent-kompakt-2026-08-31.html`.
 
 ### 10.9 `openai-bridge` MCP-Server – Conan läuft seit 2026-09-02 per API
 Neuer projekt-lokaler MCP-Server (`.mcp.json` im Repo-Root → Eintrag
@@ -655,7 +655,7 @@ bevor `-pro` für volle Methodik-Läufe wieder infrage kommt.
 `/private/tmp/.../scratchpad/ASML-TMR-quickfilter-conan-testlauf-gpt55.md`
 – Conan/ChatGPT-Bein einer TMR-Quick-Filter-Analyse für ASML (Watchlist-
 Champion), sauber [TRAINING]-getaggt (kein Fact-Pack für Fundamentaldaten
-vorhanden), Ergebnis BEOBACHTEN, Reaper Score 6/10, Abstauber-Limit $1250.
+vorhanden), Ergebnis BEOBACHTEN, Agent Score 6/10, Abstauber-Limit $1250.
 War ein reiner Conan-Solo-Testlauf (kein Jarvis/Jack-Bein, kein echter
 3-fach-Cross-Check) – nicht als vollwertige Watchlist-Analyse behandeln,
 nur als Beleg dass die Bridge inhaltlich sauber funktioniert.
@@ -725,7 +725,7 @@ Billing-Konto). Flash-Modelle laufen dagegen im Free Tier. Ein echter
 End-to-End-Testlauf (volle TMR-Quick-Filter-Methodik für ASML, gleiches
 Fact-Pack wie beim Conan-Testlauf) mit `gemini-2.5-flash` lief sauber durch
 und lieferte eine methodik-treue, korrekt `[TRAINING]`-getaggte Analyse
-(Rating BEOBACHTEN, Reaper Score 6/10, Konfidenz 🔴 0%, Abstauber-Limit
+(Rating BEOBACHTEN, Agent Score 6/10, Konfidenz 🔴 0%, Abstauber-Limit
 $1450 – bemerkenswert abweichend von Conans $1250 bei identischem
 Fact-Pack, was den Cross-Check-Mehrwert der drei unabhängigen KI-Beine
 demonstriert). Brian hat danach `gemini-2.5-flash` als Standard bestätigt.
@@ -908,7 +908,7 @@ Abbruchgrund gesucht hat:
    Abbruchgrund gesucht.
 
 **Fix (getestet, funktioniert – Asahi Intecc lief danach vollständig
-durch: BEOBACHTEN, Reaper Score 5/10, nah an Conans unabhängigem 6/10):**
+durch: BEOBACHTEN, Agent Score 5/10, nah an Conans unabhängigem 6/10):**
 Ab sofort bei JEDEM Bridge-Aufruf (`ask_chatgpt`/`ask_gemini`, sowohl
 Jack als auch Conan – identischer Wortlaut für beide, damit sie nach
 demselben Maßstab urteilen) folgende **vier** Klarstellungs-Blöcke VOR die

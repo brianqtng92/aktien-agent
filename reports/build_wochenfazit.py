@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Reaper Wochenreport generator - 2026-08-28"""
+"""Agent Wochenreport generator - 2026-08-28"""
 
 POSITIONS = [
     # ticker, name, kategorie, pfad, rating, rating_class, score, tier, konf_color, konf_label, abstauber, haupttreiber, rang
@@ -166,7 +166,7 @@ page1 = f"""
 <div class="page">
   <div class="masthead">
     <div>
-      <div class="brand display">REAPER <span class="accent">WOCHENREPORT</span></div>
+      <div class="brand display">AGENT <span class="accent">WOCHENREPORT</span></div>
       <div class="brand-sub">3-KI Cross-Check &middot; Jarvis &middot; Conan &middot; Jack</div>
     </div>
     <div class="meta">
@@ -214,7 +214,7 @@ page1 = f"""
   </div>
 
   <div class="footer">
-    <div>Reaper Wochenreport &middot; Seite 1</div>
+    <div>Agent Wochenreport &middot; Seite 1</div>
     <div>Regelwerk TMR v11.7 / Scout v1.12 &middot; Quick Filter</div>
   </div>
 </div>
@@ -248,7 +248,7 @@ def rank_page(chunk, part, pgnum):
     {rows}
   </table>
   <div class="footer">
-    <div>Reaper Wochenreport &middot; Seite {pgnum}</div>
+    <div>Agent Wochenreport &middot; Seite {pgnum}</div>
     <div>Vollständige Analysen: analysen/*.md</div>
   </div>
 </div>
@@ -289,7 +289,7 @@ page3 = f"""
   </div>
 
   <div class="footer">
-    <div>Reaper Wochenreport &middot; Seite 4</div>
+    <div>Agent Wochenreport &middot; Seite 4</div>
     <div>Keine Anlageberatung</div>
   </div>
 </div>
@@ -306,12 +306,12 @@ for i in range(0, len(SORTED_ALL), CARDS_PER_PAGE):
 <div class="page">
   <div class="masthead">
     <div><div class="brand display" style="font-size:14pt;">POSITIONS-KARTEN <span class="accent">&middot; KOMPAKT</span></div>
-    <div class="brand-sub">Rating &middot; Reaper Score &middot; Sizing-Tier &middot; Konfidenz &middot; Abstauber-Trigger &mdash; je Position</div></div>
+    <div class="brand-sub">Rating &middot; Agent Score &middot; Sizing-Tier &middot; Konfidenz &middot; Abstauber-Trigger &mdash; je Position</div></div>
   </div>
   <div class="card-grid">
     {cards_html}
   </div>
-  <div class="footer"><div>Reaper Wochenreport &middot; Seite {pgnum}</div><div>Vollständiges Reaper-Kompakt-Einzelblatt (3-Stimmen-Leiste, Gauge, DNA-Strang) auf Anfrage je Position &mdash; Standard bei Ad-hoc-/Trigger-Analysen</div></div>
+  <div class="footer"><div>Agent Wochenreport &middot; Seite {pgnum}</div><div>Vollständiges Agent-Kompakt-Einzelblatt (3-Stimmen-Leiste, Gauge, DNA-Strang) auf Anfrage je Position &mdash; Standard bei Ad-hoc-/Trigger-Analysen</div></div>
 </div>
 """)
 
@@ -326,7 +326,7 @@ methodik = f"""
 
   <div class="box">
     <h3>6 Ampelcheck-Dimensionen</h3>
-    <p>Jede Position durchläuft (mind.) eine unabhängige KI-Analyse nach dem TMR- (etablierte/große Titel) oder Scout-Regelwerk (junge/spekulative Titel): <b>DNA-Check</b> (K-Kriterien je Sektor-Override), <b>Moat</b>, <b>Management</b>, <b>Bewertung</b>, <b>Reaper-Reality-Check</b> (Litigation/Kundenkonzentration/Runway/Going-Concern) und eine <b>Daten-Konfidenz-Ampel</b>, die dokumentiert, wie viele Kennzahlen live/verifiziert vs. einzelquellen-/trainingsbasiert sind.</p>
+    <p>Jede Position durchläuft (mind.) eine unabhängige KI-Analyse nach dem TMR- (etablierte/große Titel) oder Scout-Regelwerk (junge/spekulative Titel): <b>DNA-Check</b> (K-Kriterien je Sektor-Override), <b>Moat</b>, <b>Management</b>, <b>Bewertung</b>, <b>Agent-Reality-Check</b> (Litigation/Kundenkonzentration/Runway/Going-Concern) und eine <b>Daten-Konfidenz-Ampel</b>, die dokumentiert, wie viele Kennzahlen live/verifiziert vs. einzelquellen-/trainingsbasiert sind.</p>
   </div>
   <div class="box">
     <h3>Quick Filter vs. Full Deep Dive</h3>
@@ -342,7 +342,7 @@ methodik = f"""
   </div>
 
   <div class="footer">
-    <div>Reaper Wochenreport &middot; Seite {last_pgnum+1}</div>
+    <div>Agent Wochenreport &middot; Seite {last_pgnum+1}</div>
     <div>Kein Ersatz für individuelle Anlageberatung</div>
   </div>
 </div>
@@ -379,14 +379,14 @@ quellen = f"""
   </div>
 
   <div class="footer">
-    <div>Reaper Wochenreport &middot; Seite {last_pgnum+2}</div>
+    <div>Agent Wochenreport &middot; Seite {last_pgnum+2}</div>
     <div>Ende des Reports</div>
   </div>
 </div>
 """
 
 html = f"""<!DOCTYPE html>
-<html lang="de"><head><meta charset="UTF-8"><title>Reaper Wochenreport</title>
+<html lang="de"><head><meta charset="UTF-8"><title>Agent Wochenreport</title>
 <style>@page {{ size:A4; margin:0; }} {CSS}</style></head>
 <body>
 {page1}
