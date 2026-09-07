@@ -109,3 +109,15 @@ Dividendenrendite-Datenpunkt (Cellebrite zahlt keine Dividende, 0,00% —
 explizit geprüft und vermerkt statt stillschweigend angenommen). Diese
 drei Elemente sind jetzt Pflichtbestandteil des Rigor-Standards für alle
 künftigen Full Deep Dives, siehe Agent-Playbook.md.
+
+## Vierte Erweiterung (2026-09-08): Operating-Margin in Peer-Tabelle + Kernannahmen je DCF-Szenario
+
+Auf Brians Hinweis auf die uncoveredjapan.com-Teil-5-Darstellung (Forward-KGV
+vs. Median + Operating Margin, sowie qualitative Bear/Base/Bull-Annahmen)
+wurde die Peer-Multiple-Tabelle um eine Operating-Marge-Spalte ergänzt
+(Cellebrite 22,7% vs. MSAB 14,7% EBIT-Marge — MSAB bleibt trotz schwächerer
+Marge teurer bewertet, verstärkt die bereits dokumentierte Anomalie). Kein
+Median berechnet, da nur ein direkt vergleichbarer börsennotierter Peer
+vorliegt (Rigor-Standard verlangt mind. 3). Zusätzlich: explizite
+qualitative Kernannahmen je Bear/Base/Bull-Szenario (nicht nur
+Wachstumsraten) direkt unter der DCF-Tabelle ergänzt.

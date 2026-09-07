@@ -45,6 +45,18 @@ das Gesamtrating: keine (bescheidene Rendite ändert die zentrale
 Kundenkonzentrations-These nicht). Alle Seiten-Querverweise im Report
 nach Einfügen der neuen Seite konsistent nachgezogen.
 
+## Fünfte Erweiterung (2026-09-08): Operating-Margin/Median in Peer-Tabelle + Kernannahmen je DCF-Szenario
+
+Peer-Multiple-Tabelle um Operating-Margin-Spalte + echte Median-Zeile
+ergänzt (F5/Fortinet/Radware, n=3, damit methodisch zulässig): Median
+Forward-KGV ≈32,3x, Median Op.-Marge ≈34,5%. A10 notiert mit 22,5x deutlich
+unter dem Peer-Median bei einer Marge (25,5%), die nicht dramatisch
+niedriger ist als der Median — A10 und Radware bilden gemeinsam die
+"Value"-Hälfte des Vergleichsfelds. Zusätzlich: explizite qualitative
+Kernannahmen je Bear/Base/Bull-Szenario direkt unter der DCF-Tabelle
+ergänzt (verknüpft die Szenarien konkret mit der Kundenkonzentrations-
+These statt nur abstrakten Wachstumsraten).
+
 ## Empfehlung an Brian
 
 CRV-Einstufung wird von 🟠 "Kein Nachkauf (teuer)" auf **🔴 "Kein Nachkauf – überbewertet, Position kritisch prüfen"** verschärft (siehe depot/kategorisierung.md). Kein automatischer Verkauf (Conans primärquellenbasierte Gegenposition + fehlender Going-Concern-Zweifel + Netto-Cash-Polster sprechen dagegen), aber ausdrückliche Bitte, die Position vor jeder weiteren Aufstockung kritisch zu hinterfragen und die Q3-2026-Zahlen (Nov.) als nächsten harten Prüfpunkt abzuwarten.

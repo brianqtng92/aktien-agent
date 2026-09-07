@@ -4004,6 +4004,30 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     Prüfliste, nicht zu einer Annahme aus dem Bauchgefühl heraus (junge
     Wachstumsfirmen zahlen oft keine Dividende, aber das ist eine zu
     verifizierende Tatsache, keine sichere Vermutung).
+19. **Peer-Multiple-Tabelle bekommt zusätzlich eine Operating-Margin-Spalte
+    UND einen Median-Bezug (neu, 2026-09-08, von Brian gefordert nach
+    Vorbild uncoveredjapan.com Teil 5).** Die bestehende Peer-Multiple-
+    Vergleichstabelle (Punkt 10 oben) zeigte bisher nur Forward-KGV +
+    Größenordnung. Jetzt zusätzlich: Operating-Margin je Peer (Non-GAAP wo
+    das die branchenübliche Vergleichsbasis ist, sonst GAAP/EBIT explizit
+    kennzeichnen) UND eine explizite Median-Zeile/Referenz, sobald
+    mindestens 3 direkt vergleichbare börsennotierte Peers vorliegen (bei
+    weniger Peers: Einzelvergleich statt Median, transparent so benennen,
+    kein künstlicher Median aus 1-2 Werten). Ziel: die "hohe Marge, aber
+    unterdurchschnittliches Multiple"-Anomalie (oder umgekehrt) auf einen
+    Blick erkennbar machen, wie im Digital-Arts-Vorbild (dort: höchste
+    Marge im Sektor bei gleichzeitig niedrigstem Multiple als zentraler
+    Bewertungs-Fund).
+20. **Bear/Base/Bull-DCF-Tabelle bekommt zusätzlich explizite qualitative
+    Kernannahmen je Szenario (neu, gleicher Anlass wie Punkt 19).** Bisher
+    zeigte die Tabelle nur Wachstumsraten/Terminal-g als Zahlen. Direkt
+    darunter (als kurze Stichpunkt-Liste, nicht als zusätzliche
+    Tabellenspalte, um die Tabellenbreite nicht zu sprengen) je 1 Satz pro
+    Szenario, WAS konkret passieren müsste – z.B. "Bear: Kundenkonzen-
+    trations-Risiko materialisiert sich, Guidance wird erneut gekürzt" statt
+    nur der abstrakten Wachstumsrate dahinter. Macht die DCF-Szenarien
+    nachvollziehbar mit der übrigen Analyse (Offene Schwächen, Katalysator-
+    Ausblick, Bear-Case-Katalog) verknüpft, statt isoliert dazustehen.
 
 **Was AUSDRÜCKLICH NICHT übernommen wird:** die Serien-Aufteilung in 5
 separate Veröffentlichungen (unser Full Deep Dive bleibt EIN
