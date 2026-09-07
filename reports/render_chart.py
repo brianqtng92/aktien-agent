@@ -44,21 +44,21 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import pandas as pd
 
-BG = "#1A1C1F"
-PANEL = "#232629"
-BORDER = "#3A3E43"
-TEXT = "#EDE8DF"
-TEXT_DIM = "#A39B8E"
-GOLD = "#C6922C"
-GOLD_BRIGHT = "#E0B24E"
-GREEN = "#5C9A5F"
-RED = "#BC4F41"
-EMA_COLORS = ["#5B8FC7", "#C97BC9", "#D9A441"]
-RSI_LINE = "#D9A441"
-RSI_OVERBOUGHT = "#BC4F41"
-RSI_OVERSOLD = "#5C9A5F"
-MACD_LINE = "#5B8FC7"
-MACD_SIGNAL = "#C97BC9"
+BG = "#FFFFFF"
+PANEL = "#F7F6F2"
+BORDER = "#D9D4C8"
+TEXT = "#262420"
+TEXT_DIM = "#5C564A"
+GOLD = "#9C7A2E"
+GOLD_BRIGHT = "#8A6A22"
+GREEN = "#3F7D44"
+RED = "#B03A2E"
+EMA_COLORS = ["#2E6690", "#8A3F7A", "#9C7A2E"]
+RSI_LINE = "#9C7A2E"
+RSI_OVERBOUGHT = "#B03A2E"
+RSI_OVERSOLD = "#3F7D44"
+MACD_LINE = "#2E6690"
+MACD_SIGNAL = "#8A3F7A"
 
 
 def load_series(path: str) -> pd.DataFrame:

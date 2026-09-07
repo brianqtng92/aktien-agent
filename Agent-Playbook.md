@@ -3844,8 +3844,23 @@ Farbwelt, Kapitel-Nummerierung/-Titel, Formulierungen und die reine
 Multiples-/DCF-Bewertungslogik (unsere TMR-/Scout-Fair-Value-Herleitung
 bleibt methodisch unverändert die eigene, siehe jeweilige Methodik-Datei) –
 nur die strukturellen/visuellen Elemente oben, in unserer bereits
-etablierten Agent-Optik (dunkles Anthrazit/Gold, kondensierte
-Display-Schrift, 3-Stimmen-Leiste ganz oben).
+etablierten Agent-Optik (kondensierte Display-Schrift, 3-Stimmen-Leiste
+ganz oben).
+
+**Farbwelt-Korrektur (2026-09-07, von Brian gefordert: "zu dunkel und
+schwer zu lesen"):** Das ursprüngliche dunkle Anthrazit/Gold-Farbschema
+(siehe "Agent Wochenreport" oben, dort weiterhin unverändert) gilt für
+den Agent Deep Dive Report NICHT mehr. Stattdessen **heller, weißer
+Hintergrund** mit denselben Bernstein-/Gold-Akzenten, nur in dunkleren,
+auf Weiß kontraststarken Tönen (kein reines Neongold, das auf Hellgrund
+verwaschen wirkt). Konkrete Token (siehe `reports/CLBT-reaper-deepdive-
+2026-09-07.html` als Referenzimplementierung): `--bg:#FFFFFF`,
+`--bg-panel:#F7F6F2`, `--text:#262420`, `--gold:#9C7A2E`,
+`--green:#3F7D44`, `--red:#B03A2E`, `--blue:#2E6690` – alle Panel-/
+Box-Hintergründe bleiben sehr helle Warmgrau-Töne, nie reines Weiß auf
+reinem Weiß, damit Boxen weiterhin sichtbar abgegrenzt bleiben. Gilt für
+`render_chart.py` identisch mit (Chart-PNGs müssen zum hellen PDF-
+Hintergrund passen, kein dunkler Chart-Kasten auf hellem Report mehr).
 
 ### Watchlist-System (2026-08-28, von Brian gefordert)
 
