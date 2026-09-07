@@ -11,11 +11,11 @@ Begründung/Historie einer einzelnen Position bleiben
 `depot/kategorisierung.md`, `watchlist.md` etc. maßgeblich. Wird am Ende
 jedes `taeglicher-trigger-check`- und `wochenfazit`-Laufs aktualisiert.
 
-**Zuletzt aktualisiert:** 2026-09-07 (Ergänzung um Kategorisierungs-Kriterien
-+ Watchlist-Kompaktübersicht, damit Jack/Conan bei Bridge-Aufrufen ohne
-vollen Zugriff auf Agent-Playbook.md/watchlist.md dennoch die Ziel-Struktur
-kennen) – nächste reguläre Aktualisierung beim nächsten
-`taeglicher-trigger-check`-Lauf.
+**Zuletzt aktualisiert:** 2026-09-07 (automatisierte Portfolio-Lücken-
+Kandidatensuche: Talent-Slot-Trigger ausgelöst, Jack+Conan gezielt befragt,
+BONESUPPORT Holding AB nach vollem 3-fach-Quick-Filter in die Watchlist
+aufgenommen, ersetzt Rorze – siehe Abschnitt 4 + 8) – nächste reguläre
+Aktualisierung beim nächsten `taeglicher-trigger-check`-Lauf.
 
 ---
 
@@ -118,7 +118,7 @@ belastbare Aussage). Volle Thesen/Begründungen bleiben in `watchlist.md`.
 | Skyward Specialty (SKWD) | Profi | 🟡 | Diszipliniertes Spezialversicherungs-Underwriting, kurze Börsenhistorie |
 | Palantir (PLTR) | Talent | 🔴 | KI-Datenplattform, extreme Bewertung, These noch unbewiesen |
 | Innodata (INOD) | Talent | 🟡 | Kleiner KI-Daten-Annotationsdienstleister, Kundenkonzentrationsrisiko |
-| Rorze (6323) | Talent | 🔴 | Wafer-Handling-Robotik, Bewertung läuft Ertrag klar davon |
+| BONESUPPORT (BONEX) | Talent | 🟡 | Schwedischer MedTech, CERAMENT-Plattform mit FDA-De-Novo-Moat, Bewertung nicht günstig |
 
 ## 5. Offene Prüfpunkte / Checkpoints (chronologisch, wo bekannt)
 
@@ -132,8 +132,8 @@ belastbare Aussage). Volle Thesen/Begründungen bleiben in `watchlist.md`.
 | MercadoLibre | Depot, Champions (Beobachtungspunkt) | operative Marge | Q4 2026/Q1 2027 – sollte sich Richtung zweistellig erholen |
 | Münchener Rück | Depot, Champions (Beobachtungspunkt) | Rückversicherungs-Preiszyklus | Januar-2027-Erneuerungen + FY2026-Combined-Ratio vs. ~80%-Guidance |
 | Bank Central Asia | Depot, Champions (Beobachtungspunkt) | NIM-Erholung | nächste 2-3 Quartale, sollte sich mit BI-Zinsstabilisierung erholen |
-| Rorze (6323) | Watchlist, Talent (durchgefallen 04.09.) | Neubewertung möglich | Quartalszahlen 08.10.2026 – bei zweistelligem Wachstum + gehaltener Marge |
 | Watsco (WSO) | Depot, Profi (Beobachtungspunkt) | Margen-Normalisierung | nächste 1-2 Quartale beobachten |
+| BONESUPPORT (BONEX) | Watchlist, Talent (neu 07.09., ersetzt Rorze) | CERAMENT-V-FDA-Entscheidung | Datenpaket fällig spätestens 31.10.2026, danach FDA-Antwort – De-Risking-Trigger für mögliche Aufstufung |
 
 ## 6. Offene Kauf-/Verkauf-Empfehlungen
 
@@ -192,7 +192,8 @@ Japan/Asien, Gesundheitswesen oder Europa/UK bevorzugen.
 
 | Lücke | Zuletzt geprüfter Kandidat | Ergebnis | Nächster Schritt |
 |---|---|---|---|
-| Talent-Slot + Japan/Asien-Region | Rorze (6323) | Durchgefallen (3-fach Scout-Check, 04.09.2026) – Moat 2/4, Wachstum eingebrochen | Vollständige Nikkei225/TOPIX-Durchsuchung weiterhin ausstehend – Lauf 2026-09-05 hat wegen Bridge-Ausfall (siehe bridge_status.md) und Zeitpriorität auf die Pflicht-Tagesschritte (Depot-/Watchlist-Ampel, Makro, Transaktionen) nur eine oberflächliche Sondierung gemacht (keine belastbaren Einzelkandidaten gefunden), noch kein systematischer Indexdurchlauf begonnen – nächster Lauf mit funktionierender Bridge sollte einen echten Abschnitt (z.B. Nikkei225 Top 50 nach Marktkap) vollständig durchgehen |
+| Talent-Slot (Watchlist) + Europa/UK + Gesundheitswesen | BONESUPPORT Holding AB (BONEX) | **Aufgenommen 07.09.2026** (3-fach-Quick-Filter einstimmig BEOBACHTEN-STARK, ersetzt Rorze) | Erledigt für diesen Slot – Beobachtungspunkt: CERAMENT-V-FDA-Entscheidung (Datenpaket fällig 31.10.2026) |
+| Japan/Asien-Region (weiterhin unterbesetzt, 9,79% vs. 10-15%) | Rorze (6323) | Durchgefallen (3-fach Scout-Check, 04.09.2026) – Moat 2/4, Wachstum eingebrochen | Vollständige Nikkei225/TOPIX-Durchsuchung weiterhin ausstehend – bisherige Läufe (05.09., 07.09.) fanden über Jack/Conan primär Europa/Gesundheitswesen-Kandidaten (BONESUPPORT, PeptiDream als Rückstellung), noch kein systematischer Nikkei225/TOPIX-Indexdurchlauf – nächster Lauf sollte gezielt einen echten Japan/Asien-Abschnitt (z.B. Nikkei225 Top 50 nach Marktkap) vollständig durchgehen, da BONESUPPORT die Region-Lücke nicht schließt (Schweden = Europa) |
 
 ## 9. Letzte Scheduled-Task-Läufe
 

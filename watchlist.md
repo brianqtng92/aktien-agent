@@ -15,7 +15,7 @@ Kategorie-Logik wie das Depot selbst (siehe `Agent-Playbook.md`, Abschnitt 3) �
 in welche Depot-Kategorie er bei einer Aufnahme fallen würde bzw. welche Art von
 Depot-Position er ersetzen könnte. Alle drei Kategorien sind bewusst gefüllt.
 
-**Aktueller Stand:** 30 Werte gesamt – **Champions: 17 · Profi: 10 · Talent: 3** (Stand 2026-09-04, kompletter "geschärfter Blick"-Review aller 30 Werte abgeschlossen – Hochstufungen: Lasertec, Asahi Intecc, ANET, USLM, Vertiv, Fortinet, Exponent, Skyward Specialty; Abstufungen: Copart, Rollins (echte Marge-/Wachstums-Erosion, nicht nur Kursschwäche); NVDA und FICO mit neuen Beobachtungspunkten versehen, Kategorie vorerst unverändert – siehe jeweilige Zeilen)
+**Aktueller Stand:** 30 Werte gesamt – **Champions: 17 · Profi: 10 · Talent: 3** (Stand 2026-09-04, kompletter "geschärfter Blick"-Review aller 30 Werte abgeschlossen – Hochstufungen: Lasertec, Asahi Intecc, ANET, USLM, Vertiv, Fortinet, Exponent, Skyward Specialty; Abstufungen: Copart, Rollins (echte Marge-/Wachstums-Erosion, nicht nur Kursschwäche); NVDA und FICO mit neuen Beobachtungspunkten versehen, Kategorie vorerst unverändert – siehe jeweilige Zeilen). **Update 2026-09-07 (automatisierte Portfolio-Lücken-Kandidatensuche):** Rorze (Talent) durch BONESUPPORT Holding AB (Talent) ersetzt – Gesamtzahl (30) und Kategorie-Verteilung unverändert, siehe Ausschluss-Archiv + Talent-Tabelle.
 (21 von Brian vorgegeben, 9 systematisch von Jarvis ergänzt, um die Liste
 sektoral/geografisch breiter aufzustellen und alle drei Kategorien sauber zu
 füllen; zuletzt Exponent (EXPO) am 2026-08-29 aus einer gezielten
@@ -135,14 +135,17 @@ schlechtes Unternehmen, sondern ein gutes Unternehmen zum falschen Preis.
 |---|---|---|---|---|---|
 | 🏆 Champions (17) | NVDA, V, MA, SPGI, TSM, FICO, USLM (7) | SYK, Keyence, Brookfield, Lasertec, Vertiv, Fortinet (6) | ASML, Hoya, ANET, Exponent (4) | – | – |
 | ⚙️ Profi (10) | WSO, Copart, Rollins (3) | MPWR, AIT, Disco Corp, Asahi Intecc, Skyward Specialty (5) | – | nVent Electric (1) | CrowdStrike (1) |
-| 🚀 Talent (3) | – | Innodata (1) | – | Palantir, Rorze (2) | – |
+| 🚀 Talent (3) | – | Innodata, BONESUPPORT (2) | – | Palantir (1) | – |
 
 **Lesehilfe:** Die 7 Champions+Grün-Werte sind aktuell die "Goldenen
 Kaufgelegenheiten" der Liste – hohe Qualität UND günstiger Einstiegspunkt.
 nVent Electric ist die einzige Profi+Rot-Kombination (gutes Geschäft,
-aktuell klar zu teuer). Bei Talent+Rot (Palantir, Rorze) kommen
+aktuell klar zu teuer). Bei Talent+Rot (Palantir) kommen
 spekulatives Risiko UND Überbewertung zusammen – hier ist auch bei
-Interesse an der These aktuell kein guter Einstiegszeitpunkt.
+Interesse an der These aktuell kein guter Einstiegszeitpunkt. **Update
+2026-09-07:** Rorze wurde durch BONESUPPORT ersetzt (siehe Talent-Tabelle
+unten + Ausschluss-Archiv) – Talent+Rot ist damit auf Palantir allein
+geschrumpft.
 
 ## 🏆 Champions (17) – etablierte Weltklasse-Compounder
 
@@ -187,7 +190,7 @@ Interesse an der These aktuell kein guter Einstiegszeitpunkt.
 |---|---|---|---|---|---|---|---|---|
 | PLTR (NASDAQ) | US69608A1088 | Palantir Technologies | USA | Software (Daten-/KI-Plattform) | BRIAN | 🆕 | 🔴 MEIDEN/ÜBERBEWERTET – Forward-KGV ~98-176x, "much of future growth already reflected in price". **MoS-Hinweis:** -85% Max-Drawdown 2021-2022 trotz seither operativ deutlich verbesserter Story – bei aktuell erneut extremer Bewertung ist ein ähnlich scharfer Rücksetzer nicht auszuschließen. | Trotz riesiger Marktkap ein echter Talent-Fall: extreme Bewertung, These noch nicht über einen vollen Zyklus bewiesen – Größe schützt hier nicht vor Risiko. |
 | INOD (NASDAQ) | US4576422053 | Innodata Inc. | USA | Daten-/KI-Trainingsdienstleistungen | BRIAN | 🆕 | 🟡 BEOBACHTEN – KGV 52,5x vs. Branchen-Ø 23,3x, aber starkes Momentum (+86% YTD). **MoS-Hinweis:** kleine, illiquide AI-Nebenwert-Aktie ohne belastbare eigene Drawdown-Historie – Vergleichsgruppe (kleine AI-Profiteure) historisch extrem volatil, Positionsgröße entsprechend vorsichtig wählen trotz Momentum. | Kleiner, spekulativer Profiteur des KI-Booms (Daten-Annotation für große KI-Modelle), Kundenkonzentrationsrisiko. |
-| 6323 (Tokyo) | JP3982200002 | Rorze Corp. | Japan | Halbleiterausrüstung (Wafer-Handling-Robotik) | BRIAN | ⚠️ RISIKO | 🔴 MEIDEN/ÜBERBEWERTET – Marktkap +137% bei Nettogewinn -19% – eigene Einordnung: Bewertung läuft der Ertragsentwicklung erkennbar davon. **MoS-Hinweis:** Kombination aus kleiner Marktkap, Zyklik und Bewertungs-Ertrags-Schere ist ein klassisches Setup für eine scharfe Korrektur – praktisch keine Sicherheitsmarge vorhanden. | Kleiner Nischenzulieferer für Wafer-Transport-Robotik – hohe Relevanz für den Fab-Ausbau, aber kleine, zyklische Firma. **News-Ampel 2026-09-03:** 🟡 Erdbeben (Kumamoto) legte Kyushu-Werk zeitweise lahm (Betrieb inzwischen wieder hochgefahren), Jahresgewinn -19% – temporärer externer Schock zusätzlich zur bereits bestehenden Bewertungs-Warnung. |
+| BONEX (Stockholm) | SE0009858152 | BONESUPPORT Holding AB | Schweden | MedTech (Knochentransplantat-Plattform CERAMENT) | JARVIS | 🆕 | 🟡 BEOBACHTEN – EV/Sales LTM grob 9-11x je nach Berechnungsbasis (Fact-Pack-Zahl 6,8x war laut Conans Live-Recherche zu niedrig), kein Schnäppchen trotz starker operativer Kennzahlen. **MoS-Hinweis:** Marktkapitalisierung ~15 Mrd. SEK (Mid-Cap), moderates Handelsvolumen (~600k Aktien/Tag) – FY2026-Guidance bereits einmal von "über 35%" auf 33-36% CER gekürzt (Q2 2026), CERAMENT-V-FDA-Entscheidung auf Oktober 2026 verschoben (zusätzliche Biokompatibilitätsdaten angefordert) – bei weiterer Enttäuschung sind zweistellige Kursreaktionen realistisch. | **Aufgenommen 2026-09-07 aus der automatisierten Portfolio-Lücken-Kandidatensuche** (Talent-Slot im Depot 1/3, Region Europa/UK UND Sektor Gesundheitswesen laut Portfolio-Regel-Check unterbesetzt, siehe `depot/master_status.md` Abschnitt 7-8). Kandidat kam aus Conans eigener gezielter Vorfilter-Suche (`mcp__openai-bridge__ask_chatgpt`), bestand Identity-/Strategie-Fit-/Duplikations-Gate klar und danach den vollen 3-fach-Quick-Filter einstimmig mit **BEOBACHTEN-STARK** (Jarvis Jarvis-Fact-Pack + eigenes Urteil, Jack/Gemini Scout-Score 7/10 Moat 4/4, Conan/ChatGPT Scout-Score 7,7/10 Moat 4/4 – Details siehe `analysen/BONESUPPORT-Scout-quickfilter-jarvis-claude-2026-09-07.md`). CERAMENT G ist über den FDA-De-Novo-Pathway das erste und einzige antibiotika-eluierende Knochentransplantat mit US-Marktzulassung (neue Geräteklasse, kein reines 510(k)-Nachziehen), Bruttomarge seit über 2 Jahren stabil 90%+, Umsatzwachstum 30%+ CER jedes Quartal, operativer Cashflow durchgehend positiv (kein klassisches Talent-Cash-Runway-Risiko) – deutlich stärkeres Profil als der bisher schwächste Talent-Wert. **Ersetzt Rorze (6323)** als Talent-Eintrag, da die Watchlist bei ihrer festen Obergrenze (30) steht und Rorze am 04.09.2026 bereits einen vollen 3-fach-Scout-Check nicht bestand (Moat nur 2/4, Nettogewinn -19%, siehe Ausschluss-Archiv) – Regel "Automatische Aufnahme" aus Agent-Playbook.md, Ersatz statt reine Ergänzung bei voller Liste. |
 
 ---
 
@@ -271,7 +274,22 @@ dass die Historie mit jeder Watchlist-Bearbeitung verloren geht.
 
 ## Ausschluss-Archiv
 
-_Noch keine archivierten Ausschlüsse._
+### 6323 (Tokyo) - Rorze Corp. (Ausschluss: 2026-09-07)
+- Kategorie zum Ausschlusszeitpunkt: Talent
+- Ausschlussgrund: Ersetzt durch BONESUPPORT Holding AB im Rahmen der
+  automatisierten Portfolio-Lücken-Kandidatensuche (Watchlist an fester
+  Obergrenze von 30, "Automatische Aufnahme"-Regel aus Agent-Playbook.md
+  verlangt bei voller Liste Ersatz des schwächsten Werts der Zielkategorie
+  statt reiner Ergänzung). Rorze war der klar schwächste Talent-Wert: fiel
+  am 04.09.2026 bereits durch einen vollen 3-fach-Scout-Quick-Filter
+  (Moat-in-Formation nur 2/4, Jahresgewinn -19% bei Marktkap +137% –
+  Bewertung lief der Ertragsentwicklung erkennbar davon, siehe
+  `analysen/RORZE-Scout-quickfilter-jack-gemini-2026-09-04.md` und
+  `analysen/RORZE-Scout-quickfilter-conan-chatgpt-2026-09-04.md`), plus
+  temporärer externer Schock durch das Kumamoto-Erdbeben. Keine
+  Fraud-/Bilanz-Red-Flags, kein Delisting – reiner Qualitäts-/
+  Struktur-Ersatz, kein Notfall-Ausschluss.
+- Letzter CRV-Stand vor Ausschluss: 🔴 MEIDEN/ÜBERBEWERTET
 
 <!-- Format je archiviertem Eintrag:
 

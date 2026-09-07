@@ -80,3 +80,19 @@ Fact-Pack-Tag-Fixes (Piotroski F-Score/FCF-Marge korrekt als [TRAINING] statt
 [N/V] getaggt, siehe HANDOVER.md 10.13 Block 7 und
 `analysen/HOYA-7741-cross-check-fazit-2026-09-06.md`). n=1, aber starkes
 positives Signal.
+
+**2026-09-07 (Portfolio-Lücken-Kandidatensuche, Talent-Slot + Europa/
+Gesundheitswesen):** Beide Bridges OK (`enable_search=True`). Gezielter
+Rechercheauftrag an Jack + Conan lieferte 9 Kandidaten (Jack: PeptiDream,
+Innovent Biologics, Abingdon Health, Evotec; Conan: PeptiDream, M3 Inc.,
+Samsung Biologics, Oxford Nanopore, Zealand Pharma). Voller 3-fach-Quick-
+Filter (Scout-Methodik) für BONESUPPORT Holding AB (bereits aus einem
+vorherigen, nicht committeten Lauf am selben Tag mit Jarvis-Vorabbefund
+BEOBACHTEN-STARK) durchgeführt: Jack Scout-Score 7/10, Conan Scout-Score
+7,7/10, beide unabhängig BEOBACHTEN-STARK, Moat 4/4 – einstimmig, in
+Watchlist aufgenommen (ersetzt Rorze). PeptiDream (Jarvis-Vorabbefund
+BEOBACHTEN-SPEKULATIV, siehe
+`analysen/PEPTIDREAM-Scout-quickfilter-jarvis-claude-2026-09-07.md`) sowie
+die übrigen 7 Kandidaten NICHT durch den vollen 3-fach-Check gelaufen
+(Zeit-/Kostenpriorität auf den stärksten Kandidaten) – bleiben als Backlog
+für einen künftigen Lauf, kein Abschluss-Urteil.
