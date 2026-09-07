@@ -2476,6 +2476,23 @@ anders als DCF/Vollformat-Zusatzmodule ist dieser Schritt NICHT
    → rendert zwei zusätzliche RSI(14)-/MACD(12,26,9)-Subplots unter dem
    Hauptchart. Bei Quick Filter/Ampel-Batch-Scan entfallen beide Flags
    weiterhin (einfacher Haupt-Chart reicht dort, Renderzeit klein halten).
+   **ADR-Fallback bei Twelve-Data-Plan-Sperre (2026-09-08, am echten
+   Testfall DISCO Corp/6146 gefunden):** liefert `get_time_series` für die
+   native Notierung die Meldung "requires upgrading to Pro/Venture plan"
+   (typischerweise bei Tokyo/TSE- und anderen nicht-US-Börsenplätzen), NICHT
+   aufgeben oder auf synthetische/erfundene Daten ausweichen. Stattdessen:
+   `search_symbol` mit dem Firmennamen bzw. Ticker + Zusatz "ADR" aufrufen,
+   um eine im Standard-Plan verfügbare ADR-Notierung zu finden (z.B. DISCO
+   Corp/6146 → **DSCSY**, OTC, USD). Chart/Kurszahlen dann auf Basis der
+   ADR erzeugen, mit **explizitem Hinweis im Titel/Label** ("6146 /
+   DSCSY-ADR"), damit klar bleibt, dass die Datenquelle die ADR und nicht
+   die native TSE-Notierung ist (ADR-Kurse können minimal von der nativen
+   Notierung abweichen: Zeitzonenversatz, ADR-Ratio, ADR-Gebühren). Gilt
+   nur als Chart-/Zeitreihen-Fallback – Fundamentaldaten (Bilanz,
+   Geschäftsbericht) weiterhin bevorzugt aus Primärquellen der Heimatbörse
+   recherchieren, siehe Datenintegritäts-System. Findet sich auch keine
+   ADR/Cross-Listing, entfällt das Chart-Bild für diese Analyse ersatzlos
+   mit Vermerk "kein Zeitreihen-Zugang verfügbar" – kein Platzhalter-Chart.
 3. **Kombinierte Einstiegszonen-Empfehlung (technisch + fundamental):** Nicht
    nur die reine Charttechnik nennen, sondern explizit verknüpfen mit der
    TMR-/Scout-Fair-Value-Einschätzung (Bear/Base/Bull) bzw. der Margin-of-
