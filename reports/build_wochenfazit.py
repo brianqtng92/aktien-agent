@@ -38,13 +38,13 @@ CROSS_CHECK = {"CLBT", "NOW"}  # positions with full 3-way voice data (kept as n
 
 CSS = """
 :root {
-  --bg: #1A1C1F; --bg-panel: #232629; --bg-panel-2: #2A2D31;
-  --border: #3A3E43; --border-soft: #303337;
-  --text: #EDE8DF; --text-dim: #A39B8E; --text-faint: #6E6860;
-  --gold: #C6922C; --gold-bright: #E0B24E; --gold-dim: #7A5F24;
-  --green: #5C9A5F; --green-bg: rgba(92,154,95,0.14);
-  --yellow: #DDB13B; --yellow-bg: rgba(221,177,59,0.14);
-  --red: #BC4F41; --red-bg: rgba(188,79,65,0.16);
+  --bg: #FFFFFF; --bg-panel: #F7F6F2; --bg-panel-2: #EFEDE6;
+  --border: #D9D4C8; --border-soft: #E6E2D9;
+  --text: #262420; --text-dim: #5C564A; --text-faint: #837C6C;
+  --gold: #9C7A2E; --gold-bright: #8A6A22; --gold-dim: #C9AD6E;
+  --green: #3F7D44; --green-bg: rgba(63,125,68,0.10);
+  --yellow: #A6790A; --yellow-bg: rgba(166,121,10,0.10);
+  --red: #B03A2E; --red-bg: rgba(176,58,46,0.09);
 }
 * { box-sizing: border-box; margin:0; padding:0; }
 html, body { background: var(--bg); color: var(--text); font-family:"Carlito","DejaVu Sans",Arial,sans-serif; font-size:9.6pt; line-height:1.4; }
@@ -113,7 +113,7 @@ def score_color(c):
     return {"green":"var(--green)","yellow":"var(--yellow)","red":"var(--red)"}[c]
 
 def rang_color(r):
-    return {"A":"var(--green)","B":"#7DAE86","C":"var(--yellow)","D":"#C98A4A","E":"var(--red)"}[r]
+    return {"A":"var(--green)","B":"#727B27","C":"var(--yellow)","D":"#AB591C","E":"var(--red)"}[r]
 
 def rating_pill(cls, label):
     return f'<span class="pill {cls}">{label}</span>'
@@ -230,9 +230,9 @@ def rank_page(chunk, part, pgnum):
     legend = """
   <div class="cat-grid" style="font-size:7.2pt;">
     <div class="cat-card"><span class="rang-pill" style="background:var(--green)">A</span> Kaufattraktiv jetzt</div>
-    <div class="cat-card"><span class="rang-pill" style="background:#7DAE86">B</span> Qualitäts-Kern, Konfidenz/Preis bremst</div>
+    <div class="cat-card"><span class="rang-pill" style="background:#727B27">B</span> Qualitäts-Kern, Konfidenz/Preis bremst</div>
     <div class="cat-card"><span class="rang-pill" style="background:var(--yellow)">C</span> Grenzfall/DNA-Lücken</div>
-    <div class="cat-card"><span class="rang-pill" style="background:#C98A4A">D</span> Spekulativ/früh (Talent)</div>
+    <div class="cat-card"><span class="rang-pill" style="background:#AB591C">D</span> Spekulativ/früh (Talent)</div>
     <div class="cat-card"><span class="rang-pill" style="background:var(--red)">E</span> Problemfall/Exit-Kandidat</div>
   </div>""" if part == 1 else ""
     return f"""

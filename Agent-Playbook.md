@@ -3638,13 +3638,24 @@ Jack-Moat-Agent-Regelwerk, nicht Raketentonis generischer Titel), Untertitel
 "3-KI Cross-Check · Jarvis · Conan · Jack".
 
 **Farbwelt (bewusst abgesetzt von Raketentonis Navy-Corporate-Look):**
-Basis dunkles Anthrazit/Kohle statt Navy für Kopfzeilen/Masthead; ein
-scharfer Bernstein-/Gold-Ton als Signatur-Akzent (Agent-Score-Gauge,
-Masthead-Linie, Hervorhebungen) – kein Grün/Gelb/Rot, das bleibt exklusiv
-für die Ampel-Semantik reserviert, aber in eigenen, satteren Tönen
-(Tannengrün / warmes Bernstein / sattes Karmesinrot statt Raketentonis
-flacherem Grün/Orange/Rot). Neutrale Textfarbe warmes Dunkelgrau statt
-reinem Schwarz.
+**Korrigiert 2026-09-07 (von Brian gefordert: "zu dunkel und schwer zu
+lesen", gilt seitdem für ALLE Report-Formate, nicht nur Deep Dive):**
+Basis heller, weißer Hintergrund statt dunklem Anthrazit – Kopfzeilen/
+Masthead auf Weiß mit Gold-/Bernstein-Signaturlinie, statt hellem Text auf
+dunklem Grund. Ein scharfer, aber auf Weiß kontraststarker Bernstein-/
+Gold-Ton bleibt Signatur-Akzent (Agent-Score-Gauge, Masthead-Linie,
+Hervorhebungen) – kein Grün/Gelb/Rot, das bleibt exklusiv für die
+Ampel-Semantik reserviert, aber in eigenen, satteren Tönen (Tannengrün /
+warmes Bernstein / sattes Karmesinrot statt Raketentonis flacherem
+Grün/Orange/Rot), jeweils dunkel genug für Lesbarkeit auf hellem Grund.
+Neutrale Textfarbe warmes Dunkelgrau statt reinem Schwarz. Konkrete Token
+(Referenzimplementierung: `reports/render_chart.py`, `reports/
+build_wochenfazit.py`, `reports/templates/ampel-batch-scan-template.html`,
+`reports/CLBT-reaper-deepdive-2026-09-07.html`): `--bg:#FFFFFF`,
+`--bg-panel:#F7F6F2`, `--text:#262420`, `--gold:#9C7A2E`,
+`--green:#3F7D44`, `--red:#B03A2E`, `--yellow:#A6790A`. Alte, bereits
+fertige Reports (vor 2026-09-07) bleiben unverändert im dunklen Schema als
+Archiv – nur neu erzeugte Reports nutzen ab sofort die helle Variante.
 
 **Typografie:** Kräftige, kondensierte Display-Schrift für Positionsnamen/
 Masthead (industriell-scharfer Charakter, passend zum "Agent"-Thema),
@@ -3847,20 +3858,13 @@ nur die strukturellen/visuellen Elemente oben, in unserer bereits
 etablierten Agent-Optik (kondensierte Display-Schrift, 3-Stimmen-Leiste
 ganz oben).
 
-**Farbwelt-Korrektur (2026-09-07, von Brian gefordert: "zu dunkel und
-schwer zu lesen"):** Das ursprüngliche dunkle Anthrazit/Gold-Farbschema
-(siehe "Agent Wochenreport" oben, dort weiterhin unverändert) gilt für
-den Agent Deep Dive Report NICHT mehr. Stattdessen **heller, weißer
-Hintergrund** mit denselben Bernstein-/Gold-Akzenten, nur in dunkleren,
-auf Weiß kontraststarken Tönen (kein reines Neongold, das auf Hellgrund
-verwaschen wirkt). Konkrete Token (siehe `reports/CLBT-reaper-deepdive-
-2026-09-07.html` als Referenzimplementierung): `--bg:#FFFFFF`,
-`--bg-panel:#F7F6F2`, `--text:#262420`, `--gold:#9C7A2E`,
-`--green:#3F7D44`, `--red:#B03A2E`, `--blue:#2E6690` – alle Panel-/
-Box-Hintergründe bleiben sehr helle Warmgrau-Töne, nie reines Weiß auf
-reinem Weiß, damit Boxen weiterhin sichtbar abgegrenzt bleiben. Gilt für
-`render_chart.py` identisch mit (Chart-PNGs müssen zum hellen PDF-
-Hintergrund passen, kein dunkler Chart-Kasten auf hellem Report mehr).
+**Farbwelt:** heller, weißer Hintergrund statt dunklem Anthrazit – siehe
+"Agent Wochenreport" oben für die vollständige Token-Liste, gilt seit
+2026-09-07 identisch für ALLE Report-Formate (Deep Dive, Wochenreport,
+Kompakt, Batch-Scan), nicht nur diesen. `render_chart.py` ist als
+einziges eigenständiges Skript mit identischer Token-Liste separat
+mitgezogen (Chart-PNGs müssen zum hellen PDF-Hintergrund passen, kein
+dunkler Chart-Kasten mehr auf hellem Report).
 
 ### Watchlist-System (2026-08-28, von Brian gefordert)
 
