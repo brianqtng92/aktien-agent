@@ -27,6 +27,8 @@
     --red-bg: rgba(176,58,46,0.09);
     --blue: #2E6690;
     --blue-bg: rgba(46,102,144,0.09);
+    --orange: #AB591C;
+    --orange-bg: rgba(171,89,28,0.09);
   }
 
   html, body {
@@ -149,12 +151,12 @@
   .chart-frame {
     background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm;
     display: flex; align-items: center; justify-content: center;
-    height: 78mm; flex: 0 0 auto;
+    height: 76mm; flex: 0 0 auto;
   }
   .chart-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; border-radius: 2px; }
   .bbb-frame {
     background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm;
-    display: flex; align-items: center; justify-content: center; height: 28mm; flex: 0 0 auto;
+    display: flex; align-items: center; justify-content: center; height: 26mm; flex: 0 0 auto;
   }
   .bbb-frame img { max-width: 100%; max-height: 100%; }
 
@@ -164,6 +166,21 @@
   }
   .underrated-box h3 { color: var(--blue); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
   .underrated-box p { font-size: 9.4pt; color: var(--text); line-height: 1.35; }
+
+  .weakness-box {
+    background: var(--orange-bg); border: 1px solid var(--orange); border-radius: 3px; padding: 2.6mm 3.6mm;
+  }
+  .weakness-box h3 { color: var(--orange); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
+  .weakness-box ul { list-style: none; }
+  .weakness-box li { font-size: 9pt; color: var(--text); padding: 1mm 0; border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.36; }
+  .weakness-box li:last-child { border-bottom: none; }
+  .weakness-box li b { color: var(--orange); }
+
+  .quote-block {
+    background: var(--bg-panel-2); border-left: 3px solid var(--gold); border-radius: 2px;
+    padding: 2mm 3.4mm; margin: 1.4mm 0; font-style: italic; font-size: 8.9pt; color: var(--text-dim);
+  }
+  .quote-block .who { display: block; margin-top: 1mm; font-style: normal; font-size: 7.8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.04em; }
 
   .trigger-row { display: flex; gap: 3mm; }
   .trigger-box { flex: 1; border-radius: 3px; padding: 2.4mm 3.4mm; }
@@ -238,12 +255,12 @@
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/7</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/10</div>
   </div>
 
 </div>
 
-<!-- PAGE 2: Management -->
+<!-- PAGE 2: Management + Kapitalallokation + Glaubwuerdigkeits-Matrix -->
 <div class="page">
 
   <div class="masthead">
@@ -262,7 +279,7 @@
     <div class="mgmt-card">
       <div class="role">CEO, seit 13.08.2026</div>
       <h4>Shiven Ramji</h4>
-      <p>Über 25 Jahre Produkt-/Technologie-Führungserfahrung, zuletzt <b>President von Auth0 bei Okta</b> (Identitätsplattform), davor Führungspositionen bei DigitalOcean und LiveIntent sowie beim Aufbau von Amazons Werbegeschäft und bei Nielsen. Seit Mai 2026 bereits President Products & Technology bei Cellebrite, bevor er zum CEO aufstieg. Seine Berufung signalisiert einen klaren Strategiewechsel: weg vom eher vertriebsgetriebenen Fokus des Vorgängers Thomas Hogan, hin zu einer produktgetriebenen Wachstumsstrategie mit Schwerpunkt Cloud-native Plattformen und KI.</p>
+      <p>Über 25 Jahre Produkt-/Technologie-Führungserfahrung, zuletzt <b>President von Auth0 bei Okta</b> (Identitätsplattform), davor Führungspositionen bei DigitalOcean und LiveIntent sowie beim Aufbau von Amazons Werbegeschäft und bei Nielsen. Seit Mai 2026 bereits President Products & Technology bei Cellebrite, bevor er zum CEO aufstieg. Signalisiert Strategiewechsel: weg vom vertriebsgetriebenen Fokus des Vorgängers Thomas Hogan, hin zu produktgetriebenem Wachstum.</p>
     </div>
     <div class="mgmt-card">
       <div class="role">CFO, seit Juli 2025</div>
@@ -276,25 +293,31 @@
     </div>
   </div>
 
-  <div class="section-label">Großaktionärs-Struktur & Kapitalallokation</div>
-  <div class="narrative-box" style="flex:0 0 auto;">
-    <p><span class="lead">Ankeraktionär.</span> Die japanische Sun Corporation, die Cellebrite bereits 2007 übernahm und später an die Börse brachte, hält laut jüngsten Angaben weiterhin rund <b>42,5% der Anteile</b> (Stand 23.02.2026) — ein struktureller Ankeraktionär, der einerseits Stabilität und langfristige Ausrichtung signalisiert, andererseits auch bedeutet, dass Minderheitsaktionäre bei strategischen Grundsatzentscheidungen effektiv nur eine begrenzte Stimme haben.</p>
-    <p><span class="lead">Kapitalrückfluss vs. Verwässerung.</span> Cellebrite zahlt keine Dividende und hat kein aktives Aktienrückkaufprogramm bekannt gegeben — bei gleichzeitig hoher aktienbasierter Vergütung (rund 11-13% des Umsatzes, siehe SBC-Infection-Check weiter unten) bedeutet das in der Nettobetrachtung eine fortlaufende Verwässerung der bestehenden Aktionäre statt eines aktiven Kapitalrückflusses. Das ist ein bemerkenswerter Kontrastpunkt zu der eher konservativen, aktionärsfreundlichen Kapitaldisziplin, die man von einem CFO mit Barters Werdegang eigentlich erwarten würde — und ein Punkt, den es in den kommenden Quartalen unter der neuen Führung explizit zu beobachten gilt, nicht zuletzt weil die Vergütung von Ramjis eigenem CEO-Paket bei der AGM am 24.09.2026 zur Abstimmung steht.</p>
+  <div class="section-label">Großaktionärs-Struktur</div>
+  <div class="box">
+    <p><span style="color:var(--text);"><b>Ankeraktionär.</b></span> Die japanische Sun Corporation, die Cellebrite bereits 2007 übernahm und später an die Börse brachte, hält laut jüngsten Angaben weiterhin rund <b>42,5% der Anteile</b> (Stand 23.02.2026) — ein struktureller Ankeraktionär, der einerseits Stabilität und langfristige Ausrichtung signalisiert, andererseits auch bedeutet, dass Minderheitsaktionäre bei strategischen Grundsatzentscheidungen effektiv nur eine begrenzte Stimme haben. Anders als bei Digital Arts (Gründer-geführt mit ~22% Kontrolle) ist der Ankeraktionär hier kein operativ tätiger Gründer mehr, sondern ein externer Konzern-Investor.</p>
   </div>
 
-  <div class="section-label">Die Zahlen dahinter (Q2 2026 / TTM)</div>
-  <div class="highlight-strip">
-    <div class="highlight-item"><div class="val">$508 Mio</div><div class="lbl">ARR (+21% YoY)</div></div>
-    <div class="highlight-item"><div class="val">86%</div><div class="lbl">Bruttomarge Q2</div></div>
-    <div class="highlight-item"><div class="val">$144,2 Mio</div><div class="lbl">FCF TTM (28% Marge)</div></div>
-    <div class="highlight-item"><div class="val">$442,5 Mio</div><div class="lbl">Cash + kurzfr. Wertpapiere</div></div>
-    <div class="highlight-item"><div class="val">$23,2 Mio</div><div class="lbl">Gesamtschulden (netto-cash)</div></div>
+  <div class="section-label">Kapitalrückführungs-Historie (neu, Full-Deep-Dive-Standard) — statt nur aktuellem Status</div>
+  <div class="box">
+    <p>Cellebrite ist seit dem Börsengang per SPAC-Fusion im August 2021 durchgehend ohne Dividende und ohne aktives Aktienrückkaufprogramm geblieben — anders als etablierte Compounder mit mehrjähriger Ausschüttungs-Historie gibt es hier schlicht <b>keinen Track Record zu bewerten</b>, weder positiv noch negativ, sondern eine bewusste Wachstumsphase ohne Kapitalrückfluss. Bei gleichzeitig hoher aktienbasierter Vergütung (rund 11-13% des Umsatzes, siehe SBC-Infection-Check Seite 6) bedeutet das in der Nettobetrachtung eine fortlaufende Verwässerung der bestehenden Aktionäre, ohne den Ausgleich durch Dividenden oder Rückkäufe, den ein reiferes Software-Unternehmen typischerweise bieten würde. Das ist kein Fehlverhalten, sondern die erwartbare Kapitalallokations-Logik einer noch skalierenden Wachstumsfirma — sollte aber bei jeder Neubewertung explizit mitgedacht werden, nicht stillschweigend vorausgesetzt.</p>
   </div>
-  <p style="font-size:8.8pt; color:var(--text-faint);">Cellebrite arbeitet mit strukturell hohen Margen bei minimaler Verschuldung — der Guidance-Cut vom 13.08.2026 betraf das Wachstumstempo (Timing verzögerter Großaufträge), nicht die operative Profitabilität, die im gleichen Atemzug sogar nach oben korrigiert wurde.</p>
+
+  <div class="section-label">Management-Glaubwürdigkeits-Matrix (neu, getrennte Achsen statt einer Note)</div>
+  <div class="box">
+    <table class="score-table">
+      <tr><th>Dimension</th><th>Befund</th><th>Einordnung</th></tr>
+      <tr><td>Guidance-Treffsicherheit</td><td>3 Jahre in Folge Beat (2023-2025), dann erste Kürzung 2026 (siehe Seite 4)</td><td>🟡 Bisher stark, aktueller Bruch noch nicht final beurteilbar</td></tr>
+      <tr><td>Aktionärsrückgabe-Konsistenz</td><td>Kein Dividenden-/Buyback-Track-Record seit Börsengang 2021</td><td>⚪ Kein Urteil möglich (junge Historie, Wachstumsphase)</td></tr>
+      <tr><td>Transparenz</td><td>ARR/Bookings/Backlog werden offengelegt, Non-GAAP-Überleitung vorhanden</td><td>🟢 Solide, vergleichbar mit Branchenstandard</td></tr>
+      <tr><td>Selbstreflexion</td><td>CEO benannte Ursache des Q2-Fehltritts direkt und konkret (siehe Zitat Seite 7)</td><td>🟢 Transparent, aber Nachhaltigkeit erst über weitere Quartale zu bestätigen</td></tr>
+    </table>
+    <p style="margin-top:1.4mm;">Vier unterschiedliche Ergebnisse auf vier Achsen statt einer verschmolzenen "Management ist gut/schlecht"-Note — Cellebrite ist bei Transparenz und (bisheriger) Prognosetreue stark, hat aber schlicht keine Historie bei Kapitalrückführung, weil das Unternehmen dafür noch zu jung an der Börse ist.</p>
+  </div>
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/7</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/10</div>
   </div>
 
 </div>
@@ -315,7 +338,7 @@
 
   <div class="position-header">
     <div class="position-name">
-      <div class="ticker display">CLBT <span style="color:var(--text-dim); font-size:11.5pt;">· NASDAQ</span></div>
+      <div class="ticker display">CLBT <span style="color:var(--text-dim); font-size:9.5pt;">· NASDAQ</span></div>
       <div class="company">Cellebrite DI Ltd — Digital Forensics / Investigative Intelligence Software (ARR/SaaS)</div>
     </div>
     <div class="position-stats">
@@ -339,10 +362,10 @@
     </div>
     <div class="box" style="flex:1;">
       <h3>Conan · ChatGPT (Scout)</h3>
-      <p style="font-size:12.5pt; color:var(--yellow);">HALTEN/BEOBACHTEN</p>
+      <p style="font-size:12.5pt; color:var(--yellow); overflow-wrap:break-word;">HALTEN / BEOBACHTEN</p>
       <p style="font-size:8.6pt;">Score 5,5/10 · Konfidenz 🔴/🟡 · Abstauber $9,50-10,25</p>
     </div>
-    <div class="box" style="flex:0 0 34mm; text-align:center; background:linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border-color:var(--gold-dim);">
+    <div class="box" style="flex:0 0 36mm; text-align:center; background:linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border-color:var(--gold-dim);">
       <div style="font-size:8.2pt; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-faint);">Konvergenz</div>
       <div style="font-size:11pt; color:var(--gold-bright); margin-top:0.8mm;">✅ EINSTIMMIG</div>
       <div style="font-size:8.4pt; color:var(--text-dim); margin-top:1mm;">Kein Kauf zum Live-Kurs, alle 3 unabhängig</div>
@@ -359,7 +382,7 @@
       <tr><td>EPS-CAGR 5J ≥12%</td><td>20% ✅ [VERIFIED]</td><td>plausibel &gt;12%, nicht primär verifiziert [TRAINING]</td><td>Beide TRAINING-lastig, Richtung übereinstimmend</td></tr>
       <tr><td>NRR (K, SaaS-Override)</td><td>112% 🟡 halber Punkt</td><td><b>117% (20-F/Earnings-Release, primärquellennah)</b></td><td>Divergenz 5pp — Conans Zahl hat bessere Quellenlage, beide unter 120%-Vollpunkt</td></tr>
     </table>
-    <p style="margin-top:1.4mm;">K-Score Jack: 4/5 (ROIC-Fail) · K-Score Conan: 3,5/5 (ROIC+FCF-Fail, NRR halber Punkt) — <b>beide im Grenzfall-Band (K-BASIS−1/−2), kein Terminal-Abbruch, aber übereinstimmend kein sauberer 5/5-Compounder.</b> Divergenz selbst ist der Mehrwert des 3-fach-Checks: Jack übernahm die Headline-FCF-Marge, Conan grub bis zur SBC-bereinigten Realzahl — genau diese Differenz ist auf Seite 6 als "Der unterschätzte Punkt" ausgeführt.</p>
+    <p style="margin-top:1.4mm;">K-Score Jack: 4/5 (ROIC-Fail) · K-Score Conan: 3,5/5 (ROIC+FCF-Fail, NRR halber Punkt) — <b>beide im Grenzfall-Band (K-BASIS−1/−2), kein Terminal-Abbruch, aber übereinstimmend kein sauberer 5/5-Compounder.</b> Divergenz selbst ist der Mehrwert des 3-fach-Checks: Jack übernahm die Headline-FCF-Marge, Conan grub bis zur SBC-bereinigten Realzahl — genau diese Differenz ist auf Seite 9 als "Der unterschätzte Punkt" ausgeführt.</p>
   </div>
 
   <div class="box" style="flex:1;">
@@ -369,12 +392,108 @@
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/7</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/10</div>
   </div>
 
 </div>
 
-<!-- PAGE 4: Vier elaborierte Boxen -->
+<!-- PAGE 4: 5-Jahres-Finanzhistorie + Guidance-Track-Record (NEU) -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">5-Jahres-Finanzhistorie · Guidance-Track-Record</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">7. September 2026 — Seite 4</div>
+      <div>CLBT Cellebrite DI Ltd</div>
+    </div>
+  </div>
+
+  <div class="section-label">5-Jahres-Umsatzhistorie (neu, statt nur TTM-Snapshot)</div>
+  <div class="box">
+    <table class="scenario-table">
+      <tr><th>Geschäftsjahr</th><th>Umsatz</th><th>YoY-Wachstum</th><th>Kommentar</th></tr>
+      <tr><td>2022</td><td>$270,65 Mio</td><td>—</td><td>Basisjahr dieser Historie</td></tr>
+      <tr><td>2023</td><td>$325,11 Mio</td><td class="pos">+20,1%</td><td></td></tr>
+      <tr><td>2024</td><td>$401,20 Mio</td><td class="pos">+23,4%</td><td>Wachstums-Höhepunkt dieser Historie</td></tr>
+      <tr><td>2025</td><td>$475,68 Mio</td><td class="pos">+18,6%</td><td>Erste sichtbare Verlangsamung</td></tr>
+      <tr><td>2026E</td><td>$555-561 Mio (Guidance)</td><td class="pos">≈+17%</td><td>Nach Kürzung vom 13.08.2026</td></tr>
+    </table>
+    <div class="warn-strip">⚠ <b>Wachstums-Dezeleration ist kein neues Phänomen von 2026</b> — sie war bereits von 2024 (+23,4%) auf 2025 (+18,6%) sichtbar, also VOR dem Q2-Guidance-Cut. Der aktuelle Rückschlag verschärft einen bereits laufenden Trend, statt ihn allein auszulösen — wichtige Nuance für die Bull/Bear-Einordnung.</div>
+  </div>
+
+  <div class="box">
+    <h3>GAAP-Nettoergebnis-Fallstrick 2024 (Finanzmechanik-Erklärung)</h3>
+    <p>2024 wies Cellebrite einen GAAP-Nettoverlust von <b>-$283,0 Mio</b> aus — bei oberflächlicher Betrachtung ein Alarmsignal. Tatsächlich war das operative Geschäft in diesem Jahr solide profitabel: das Non-GAAP-Nettoergebnis lag bei <b>+$97,8 Mio</b>. Die Differenz stammt fast vollständig aus einem einmaligen, nicht-operativen Bilanzierungseffekt: der Neubewertung von Restricted-Sponsor-Shares-, Price-Adjustment-Shares- und Optionsschein-Verbindlichkeiten im Zuge der vollständigen Optionsschein-Rücknahme (Nachwirkung der SPAC-Fusion von 2021). Ein Leser, der nur die GAAP-Schlagzeile sieht, würde 2024 fälschlich als Krisenjahr einordnen — genau die Art von Reporting-Verzerrung, die eine saubere Deep-Dive-Analyse aufdecken muss, statt sie unkommentiert stehen zu lassen.</p>
+  </div>
+
+  <div class="section-label">Guidance-Track-Record (neu, Managementglaubwürdigkeits-Signal)</div>
+  <div class="box">
+    <table class="scenario-table">
+      <tr><th>FY</th><th>Umsatz-Guidance</th><th>Ist-Umsatz</th><th>Ergebnis</th></tr>
+      <tr><td>2023</td><td>$305-315 Mio</td><td>$325,1 Mio</td><td class="pos">✅ BEAT (+4,8% über Mittelwert)</td></tr>
+      <tr><td>2024</td><td>im Jahresverlauf mehrfach angehoben</td><td>$401,2 Mio</td><td class="pos">✅ BEAT (Original-Ziele übertroffen)</td></tr>
+      <tr><td>2025</td><td>$465-475 Mio</td><td>$475,68 Mio</td><td class="pos">✅ BEAT (am oberen Rand der Spanne)</td></tr>
+      <tr><td>2026</td><td>$565-571 Mio → gesenkt auf $555-561 Mio (13.08.)</td><td>laufend, Q3 noch offen</td><td class="neg">⚠ ERSTE KÜRZUNG in diesem Fenster</td></tr>
+    </table>
+    <p style="margin-top:1.4mm;">Zusatzbefund (Quartalsebene, alle Updates zusammengenommen): Zwischen August 2022 und Mai 2026 gab es <b>26 Guidance-Updates, davon 8 Anhebungen und 11 Senkungen</b> — häufige unterjährige Nachjustierung ist bei Cellebrite eher Normalität als Ausnahme. Auf Jahresebene betrachtet ergibt sich aber ein klareres Muster: <b>drei aufeinanderfolgende Jahres-Beats (2023-2025), dann der erste echte Bruch 2026</b> — zeitlich exakt zusammenfallend mit dem CEO-Wechsel. Das spricht eher für einen Einzelfall/Reset als für einen langjährig verschlechternden Trend wie im Digital-Arts-Vorbild — muss sich aber erst mit den Q3-2026-Zahlen bestätigen.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 4/10</div>
+  </div>
+
+</div>
+
+<!-- PAGE 5: Produktlinien + Peer-Multiples (NEU) -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Produktportfolio · Peer-Vergleich</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">7. September 2026 — Seite 5</div>
+      <div>CLBT Cellebrite DI Ltd</div>
+    </div>
+  </div>
+
+  <div class="section-label">Produktportfolio mit benannten Wettbewerbern (neu, statt aggregierter Moat-Aussage)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Produkt</th><th>Zweck</th><th>Namentlich genannte Wettbewerber</th></tr>
+      <tr><td><b>Inseyets</b> (UFED + Physical Analyzer + Cloud + Commander)</td><td>Mobile Forensik-Extraktion im Feld und Labor — das historische Kernprodukt</td><td>Magnet Forensics/Grayshift (GrayKey), MSAB (XRY), Oxygen Forensics</td></tr>
+      <tr><td><b>Pathfinder</b></td><td>KI-gestützte Investigations-Analytics-Plattform, fallübergreifende Muster-Erkennung</td><td>Magnet AXIOM, Nuix</td></tr>
+      <tr><td><b>Guardian</b></td><td>Cloud-Beweismittelmanagement, Chain-of-Custody von Beschlagnahme bis Anklage</td><td>OpenText EnCase/Forensic, Axon Evidence</td></tr>
+      <tr><td><b>Corellium</b> (seit 2025)</td><td>ARM-basierte virtuelle Geräte-Emulation für Sicherheitsforschung/Testing</td><td>Kein direkter Forensik-Wettbewerber, eigenständige Nische</td></tr>
+    </table>
+    <p style="margin-top:1.4mm;">Bemerkenswert: Die beiden größten unmittelbaren Konkurrenten im Kerngeschäft — Magnet Forensics und Grayshift — sind seit der Übernahme durch Thoma Bravo (2023) und anschließender Fusion (2024) <b>nicht mehr börsennotiert</b>. Das ist selbst ein Datenpunkt: Private-Equity-Kapital stuft den Digital-Forensics-Sektor als konsolidierungsreif und attraktiv genug für einen Leveraged-Buyout ein, was strukturell für die Branchenattraktivität spricht, gleichzeitig aber die Zahl direkt vergleichbarer börsennotierter Peers für die eigene Bewertungseinordnung reduziert.</p>
+  </div>
+
+  <div class="section-label">Peer-Multiple-Vergleichstabelle (neu, mit benannten Wettbewerbern)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Unternehmen</th><th>Land</th><th>Fokus</th><th>Forward P/E</th><th>Marktkap.</th></tr>
+      <tr><td><b>Cellebrite (CLBT)</b></td><td>Israel/USA</td><td>Mobile Forensik, Marktführer</td><td>18,7x</td><td>$2,87 Mrd</td></tr>
+      <tr><td>MSAB / Micro Systemation (STO:MSAB.B)</td><td>Schweden</td><td>Mobile Forensik (XRY), Nischenanbieter</td><td>25,7x</td><td>≈SEK 1,65 Mrd (≈$155-165 Mio)</td></tr>
+      <tr><td>Magnet Forensics / Grayshift</td><td>Kanada/USA</td><td>End-to-End DFIR</td><td>n/a — privat seit 2023/2024 (Thoma Bravo)</td><td>n/a</td></tr>
+      <tr><td>Oxygen Forensics</td><td>USA</td><td>Mobile Forensik</td><td>n/a — privat</td><td>n/a</td></tr>
+    </table>
+    <div class="warn-strip">⚠ <b>Bewertungs-Anomalie:</b> MSAB ist der einzige direkt vergleichbare BÖRSENNOTIERTE Peer — trotz eines Bruchteils der Größe von Cellebrite (~1/18 der Marktkapitalisierung) wird MSAB mit einem HÖHEREN Forward-KGV gehandelt (25,7x vs. 18,7x). Der Marktführer mit der größeren installierten Basis, breiterem Produktportfolio und stärkerer Bruttomarge ist damit im schmalen verbliebenen Vergleichsfeld der GÜNSTIGER bewertete Titel — eine auffällige Spannung, die entweder auf eine echte Unterbewertung von CLBT oder auf einen vom Markt eingepreisten Bewertungsabschlag wegen der jüngsten Guidance-Kürzung und Governance-Konzentration hindeutet.</div>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/10</div>
+  </div>
+
+</div>
+
+<!-- PAGE 6: Vier elaborierte Boxen -->
 <div class="page">
 
   <div class="masthead">
@@ -383,7 +502,7 @@
       <div class="brand-sub">Moat · Going-Concern · Verwässerung · Reality-Check</div>
     </div>
     <div class="meta-block">
-      <div class="date">7. September 2026 — Seite 4</div>
+      <div class="date">7. September 2026 — Seite 6</div>
       <div>CLBT Cellebrite DI Ltd</div>
     </div>
   </div>
@@ -392,7 +511,7 @@
     <div class="col">
       <div class="box" style="flex:1;">
         <h3>Moat-Verifikation (Konsens)</h3>
-        <p>Die Preissetzungsmacht fällt <b style="color:var(--yellow);">moderat bis stark</b> aus: Die Bruttomarge bewegt sich je nach Quartal zwischen 82 und 86%, was grundsätzlich für eine starke Preisdurchsetzung im spezialisierten Digital-Forensics-Markt spricht. Der jüngste Guidance-Cut relativiert dieses Bild allerdings etwas, da er unter anderem mit verzögerten Großaufträgen und längeren Verhandlungszyklen bei Behördenkunden begründet wurde — ein Hinweis darauf, dass die Preisdurchsetzung bei Großkunden nicht ganz friktionslos verläuft. Bei den Wechselkosten sind sich Jack und Conan unabhängig voneinander einig, dass hier ein wirklich <b style="color:var(--green);">starker</b> Burggraben besteht: Behörden sind über Schulungen, Zertifizierungen und die gerichtsfeste Chain-of-Custody-Dokumentation tief in Cellebrites Workflows eingebunden, was einen Anbieterwechsel operativ und rechtlich riskant macht (siehe Seite 1 für die ausführliche Herleitung). Der Marktanteil gilt als führend, lässt sich mangels belastbarer externer Zahlen aber nicht exakt quantifizieren, weshalb der Gesamtmoat als solide, aber nicht als Ausnahme-Fall eingestuft wird.</p>
+        <p>Die Preissetzungsmacht fällt <b style="color:var(--yellow);">moderat bis stark</b> aus: Die Bruttomarge bewegt sich je nach Quartal zwischen 82 und 86%, was grundsätzlich für eine starke Preisdurchsetzung im spezialisierten Digital-Forensics-Markt spricht. Der jüngste Guidance-Cut relativiert dieses Bild allerdings etwas, da er unter anderem mit verzögerten Großaufträgen und längeren Verhandlungszyklen bei Behördenkunden begründet wurde — ein Hinweis darauf, dass die Preisdurchsetzung bei Großkunden nicht ganz friktionslos verläuft. Bei den Wechselkosten sind sich Jack und Conan unabhängig voneinander einig, dass hier ein wirklich <b style="color:var(--green);">starker</b> Burggraben besteht: Behörden sind über Schulungen, Zertifizierungen und die gerichtsfeste Chain-of-Custody-Dokumentation tief in Cellebrites Workflows eingebunden, was einen Anbieterwechsel operativ und rechtlich riskant macht (siehe Seite 1 für die ausführliche Herleitung, Seite 5 für die Produktlinien-/Wettbewerber-Aufschlüsselung). Der Marktanteil gilt als führend, lässt sich mangels belastbarer externer Zahlen aber nicht exakt quantifizieren, weshalb der Gesamtmoat als solide, aber nicht als Ausnahme-Fall eingestuft wird.</p>
       </div>
       <div class="box" style="flex:1;">
         <h3>Going-Concern-Precheck</h3>
@@ -407,28 +526,70 @@
       </div>
       <div class="box" style="flex:1;">
         <h3>Reality-Check-Flags (Konsens)</h3>
-        <p>Bei der Kundenkonzentration gibt es keinerlei Anlass zur Sorge <b style="color:var(--green);">🟢 kein Flag</b>: Die 25 größten Kunden zusammen stehen für rund 25% des Umsatzes, und kein einzelner Kunde überschreitet die kritische 5%-Marke, was das Umsatzrisiko breit über viele Behörden und Organisationen streut. Auch beim Beta-Risiko gibt es <b style="color:var(--green);">🟢 kein Flag</b>, da der Wert von 1,15 klar unterhalb der Schwelle von 1,5 liegt, ab der die Methodik eine gesonderte Hochrisiko-Einstufung vorsieht. Bei Rechtsstreitigkeiten ist etwas mehr Vorsicht geboten <b style="color:var(--yellow);">🟡 beobachten</b>: Die im August bekanntgewordenen anwaltlichen "Investigations" rund um die Guidance-Kürzung haben bislang zu keiner bezifferten Klage geführt, weshalb hier vorerst nur ein Beobachtungs- statt eines echten Flag-Status vergeben wird. Ein tatsächliches rotes Flag liefert dagegen die von Conan aufgedeckte Lücke zwischen GAAP- und Non-GAAP-Kennzahlen <b style="color:var(--red);">🔴 Flag</b>: Die operative GAAP-Marge liegt bei nur 5,3%, während die bereinigte Non-GAAP-Marge mit 22,7% mehr als viermal so hoch ausgewiesen wird — ein Unterschied, der zeigt, wie stark aktienbasierte Vergütung das operative Ergebnis optisch verbessert.</p>
+        <p>Bei der Kundenkonzentration gibt es keinerlei Anlass zur Sorge <b style="color:var(--green);">🟢 kein Flag</b>: Die 25 größten Kunden zusammen stehen für rund 25% des Umsatzes, und kein einzelner Kunde überschreitet die kritische 5%-Marke. Eine namentliche Vertriebspartner-/Distributor-Konzentration wie bei Digital Arts (dort konkret benannte Partner mit Umsatzanteil) konnte für Cellebrite in dieser Sitzung NICHT recherchiert werden — Cellebrite verkauft überwiegend direkt an Behörden statt über ein Distributoren-Netzwerk, weshalb dieses spezifische Konzentrationsrisiko strukturell wahrscheinlich geringer ausfällt, aber explizit als offene Recherchelücke vermerkt statt stillschweigend übergangen wird. Beim Beta-Risiko gibt es <b style="color:var(--green);">🟢 kein Flag</b> (1,15 &lt; 1,5-Schwelle). Bei Rechtsstreitigkeiten <b style="color:var(--yellow);">🟡 beobachten</b>: bekanntgewordene Anwalts-Investigations ohne bezifferte Klage. Ein tatsächliches rotes Flag liefert die Lücke zwischen GAAP- und Non-GAAP-Kennzahlen <b style="color:var(--red);">🔴 Flag</b>: GAAP-Op.-Marge nur 5,3% vs. Non-GAAP 22,7%.</p>
       </div>
     </div>
   </div>
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 4/7</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/10</div>
   </div>
 
 </div>
 
-<!-- PAGE 5: Chart + DCF + Score -->
+<!-- PAGE 7: Offene Schwaechen + Root-Cause (NEU) -->
 <div class="page">
 
   <div class="masthead">
     <div class="brand-block">
       <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
-      <div class="brand-sub">Chartmuster · DCF · Score-Aufschlüsselung</div>
+      <div class="brand-sub">Offene Schwächen · Root-Cause-Analyse</div>
     </div>
     <div class="meta-block">
-      <div class="date">7. September 2026 — Seite 5</div>
+      <div class="date">7. September 2026 — Seite 7</div>
+      <div>CLBT Cellebrite DI Ltd</div>
+    </div>
+  </div>
+
+  <div class="weakness-box">
+    <h3>⚠ Offene Schwächen (neu, proaktiv — gleichrangig zu den Stärken, nicht versteckt)</h3>
+    <ul>
+      <li><b>1. Guidance-Verlässlichkeit erstmals gebrochen.</b> Nach drei aufeinanderfolgenden Jahres-Beats (2023-2025, siehe Seite 4) die erste echte Kürzung 2026 — CEO Ramji äußerte sich dazu direkt und selbstkritisch (Zitat unten), statt die Ursache zu beschönigen.</li>
+      <li><b>2. Wachstumsverlangsamung ist strukturell, nicht nur ein Einzelquartal.</b> +23,4% (2024) → +18,6% (2025) → ≈+17% (2026 guided) — der Trend war bereits vor dem Q2-Cut sichtbar.</li>
+      <li><b>3. Aktionärs-Verwässerung ohne Kapitalrückfluss-Ausgleich.</b> Hohe SBC (11-13% Umsatz) trifft auf eine noch nicht existierende Dividenden-/Buyback-Historie (siehe Seite 2) — für bestehende Aktionäre eine reine Einbahnstraße bislang.</li>
+      <li><b>4. GAAP-Ergebniskennzahlen sind irreführungsanfällig.</b> Der SPAC-Nachwirkungs-bedingte $283-Mio-Verlust 2024 (siehe Seite 4) zeigt, dass die Headline-GAAP-Zahl ohne Kontext ein falsches Bild zeichnet — erfordert bei jeder Analyse eine Non-GAAP-Gegenprobe.</li>
+      <li><b>5. Konzentrationsrisiko bei Vertriebskanälen nicht abschließend recherchierbar.</b> Anders als bei Digital Arts (dort konkret benannte Distributoren) konnte für Cellebrite keine namentliche Kanal-Konzentration verifiziert werden — echte Datenlücke, kein Freispruch.</li>
+    </ul>
+  </div>
+
+  <div class="section-label">Root-Cause-Analyse: Guidance-Kürzung — Nachfrage- oder Ausführungsproblem?</div>
+  <div class="box">
+    <p>Die entscheidende Frage für die Bull/Bear-Einordnung ist nicht DASS die Guidance gekürzt wurde, sondern WARUM. CEO Ramji hat die Ursache im Q2-2026-Earnings-Call selbst konkret benannt:</p>
+    <div class="quote-block">
+      "The immediate shortfall was concentrated in a limited number of large transactions that we expected to close in the quarter, but ultimately moved beyond our anticipated timeline."
+      <span class="who">— Shiven Ramji, CEO, Q2-2026-Earnings-Call (20.08.2026)</span>
+    </div>
+    <p>Diese Aussage beschreibt explizit ein <b>Timing-/Ausführungsproblem</b> (verzögerte Vertragsabschlüsse durch neue Beschaffungs-/Verwaltungsanforderungen bei US-Federal- und Europa-Regierungskunden), nicht einen strukturellen Nachfrage-Einbruch. Drei Indizien stützen diese Lesart: Erstens wuchs die ARR trotz der Kürzung weiterhin um 21% YoY. Zweitens wurde die Adj.-EBITDA-Guidance im selben Atemzug ANGEHOBEN — bei einem echten Nachfrage-Kollaps wäre das kaum plausibel. Drittens betrifft die Verzögerung explizit "eine begrenzte Zahl" von Großtransaktionen, nicht die Breite des Kundenstamms. Einordnung: eher Execution-/Timing- als Nachfrage-Problem — aber das ist Managements EIGENE Erzählung, die sich erst mit den Q3-2026-Zahlen (voraussichtlich Anfang-Mitte November) wirklich verifizieren lässt, nicht vorher als gesichert gelten sollte.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/10</div>
+  </div>
+
+</div>
+
+<!-- PAGE 8: Chart + DCF + Reverse-Engineering -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Chartmuster · DCF · Reverse-Engineering</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">7. September 2026 — Seite 8</div>
       <div>CLBT Cellebrite DI Ltd</div>
     </div>
   </div>
@@ -437,20 +598,126 @@
   <div class="chart-frame">
     <img src="CLBT-chart-2026-09-07.png" alt="CLBT Chart mit RSI/MACD">
   </div>
-  <p style="font-size:8.6pt; color:var(--text-faint); margin-top:-1mm;">Candlesticks + EMA20/50 · Volumen · MACD(12,26,9) · RSI(14). Klar sichtbarer Gap-Down am 13.08. (Guidance-Cut/CEO-Wechsel, Volumen 36,75 Mio. — mit Abstand höchstes Tagesvolumen im Betrachtungszeitraum), seitdem Seitwärtskonsolidierung $10,32-$12,43. RSI zuletzt ≈45-50 (neutral, keine Extremzone), MACD nahe Nulllinie ohne klaren Trend — technisch weder überkauft noch überverkauft, Chart bestätigt die fundamentale "Beobachten"-Einschätzung, liefert kein eigenständiges Kauf- oder Verkaufssignal.</p>
+  <p style="font-size:8.6pt; color:var(--text-faint); margin-top:-1mm;">Candlesticks + EMA20/50 · Volumen · MACD(12,26,9) · RSI(14). Klar sichtbarer Gap-Down am 13.08. (Guidance-Cut/CEO-Wechsel, Volumen 36,75 Mio. — mit Abstand höchstes Tagesvolumen im Betrachtungszeitraum), seitdem Seitwärtskonsolidierung $10,32-$12,43. RSI zuletzt ≈45-50 (neutral), MACD nahe Nulllinie — technisch weder überkauft noch überverkauft, kein eigenständiges Kauf-/Verkaufssignal.</p>
 
-  <div class="section-label">Full DCF (Python, Rule 20) — Bear/Base/Bull, WACC 10,58% (Cost of Equity, praktisch netto-cash)</div>
+  <div class="section-label">Full DCF (Python, Rule 20) — Bear/Base/Bull, WACC 10,58%</div>
   <div class="bbb-frame">
     <img src="CLBT-bearbasebull-2026-09-07.png" alt="Bear Base Bull Fair Value">
   </div>
   <div class="box">
     <table class="scenario-table">
-      <tr><th>Szenario</th><th>FCF-Wachstum J1→J5</th><th>Terminal-g</th><th>FV/Aktie</th><th>Δ vs. Live $11,45</th><th>TV-Anteil EV</th></tr>
-      <tr><td>Bear</td><td>10%→4%</td><td>2,5%</td><td>$10,53</td><td class="neg">-8,0%</td><td>69,7%</td></tr>
-      <tr><td>Base</td><td>17%→8%</td><td>3,0%</td><td>$13,32</td><td class="pos">+16,3%</td><td>73,0%</td></tr>
-      <tr><td>Bull</td><td>22%→12%</td><td>3,5%</td><td>$16,35</td><td class="pos">+42,8%</td><td>75,8%</td></tr>
+      <tr><th>Szenario</th><th>FCF-Wachstum J1→J5</th><th>Terminal-g</th><th>FV/Aktie</th><th>Δ vs. Live $11,45</th></tr>
+      <tr><td>Bear</td><td>10%→4%</td><td>2,5%</td><td>$10,53</td><td class="neg">-8,0%</td></tr>
+      <tr><td>Base</td><td>17%→8%</td><td>3,0%</td><td>$13,32</td><td class="pos">+16,3%</td></tr>
+      <tr><td>Bull</td><td>22%→12%</td><td>3,5%</td><td>$16,35</td><td class="pos">+42,8%</td></tr>
     </table>
-    <div class="warn-strip">⚠ TV-Anteil in allen 3 Szenarien &gt;69% → DCF strukturell sensitiv auf WACC/Terminal-g-Annahmen, nicht auf die nahe Cashflow-Prognose. Anders als beim DISCO-Präzedenzfall (alle Szenarien negativ) liegt hier nur der Bear-Case unter dem Live-Kurs — Base/Bull zeigen moderates bis deutliches Upside, DECKT sich grob mit dem Analysten-Konsens-Kursziel $15,36 (zwischen Base und Bull). Kein Widerspruch zur Multiples-Sicht (Conan: EV/Sales 4,6x, "nicht teuer, aber kein Geschenkpreis").</div>
+  </div>
+
+  <div class="box">
+    <h3>DCF-Cross-Check per Reverse-Engineering (neu)</h3>
+    <p>Zusätzlich zum Bear/Base/Bull-DCF: Rückwärts aus dem AKTUELLEN Kurs $11,45 gerechnet (gleicher WACC 10,58%, Terminal-g 2,5%), ergibt sich ein implizites konstantes FCF-Wachstum von nur <b>≈9,6% p.a.</b> — deutlich UNTER der eigenen Base-Case-Annahme (17%→8% fadend) und sogar leicht unter dem Bear-Case-Pfad (10%→4%). Der Markt preist den aktuellen Kurs also bereits nahe am eigenen Bear-Szenario ein, nicht am Base-Case — trotz des "Strong Buy"-Analystenkonsens (siehe Seite 9). Das ist entweder ein Zeichen echter Unterbewertung (Analysten sehen mehr als der Markt aktuell einpreist) oder ein Hinweis, dass der Markt den Root-Cause der Guidance-Kürzung skeptischer liest als das Management selbst (siehe Seite 7) — eine offene Spannung, kein eindeutiges Signal in eine Richtung.</p>
+  </div>
+
+  <div class="box">
+    <h3>Downside-Boden: Netto-Cash pro Aktie (neu, explizit quantifiziert)</h3>
+    <p>Netto-Cash von $419,3 Mio entspricht <b>$1,67 pro Aktie</b> — das sind nur rund 14,6% des aktuellen Kurses. Anders als beim Digital-Arts-Vorbild (dort deckte die Netto-Cash-Position rund 43% des Kurses als "effektiver Bewertungsboden") bietet die Bilanz hier nur einen dünnen, nicht sehr wirksamen Puffer gegen weiteren Kursrückgang — die Investment-These stützt sich bei Cellebrite überwiegend auf operative Substanz, nicht auf eine bilanzielle Sicherheitsmarge.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 8/10</div>
+  </div>
+
+</div>
+
+<!-- PAGE 9: Unterschaetzter Punkt + Katalysator + Bear-Case-Katalog + Trigger -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Unterschätzter Punkt · Katalysatoren · Bear-Case · Trigger</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">7. September 2026 — Seite 9</div>
+      <div>CLBT Cellebrite DI Ltd</div>
+    </div>
+  </div>
+
+  <div class="underrated-box">
+    <h3>💡 Der unterschätzte Punkt</h3>
+    <p>Die Headline-Kennzahlen (FCF-Marge 28%, ARR-Wachstum 21%, Bruttomarge 86%) sehen auf den ersten Blick nach einem sauberen SaaS-Compounder aus — <b>und genau das ist die Falle, in die Jacks erster Durchlauf beinahe getappt wäre.</b> Erst Conans SBC-bereinigte Nachrechnung deckt auf: die reale, aktionärsseitige FCF-Marge liegt eher bei ≈17%, nicht 28%. Für ein Unternehmen, dessen Investment-These stark auf "hochmargige, kapitalleichte Software" aufbaut, ist das der zentrale Belastungstest der These: <b>ein spürbarer Teil des scheinbaren Wachstums wird über Aktionärs-Verwässerung statt über echten Cashflow finanziert.</b></p>
+  </div>
+
+  <div class="section-label">Katalysator-Ausblick — was als Nächstes passiert</div>
+  <div class="box">
+    <div class="catalyst-item">
+      <div class="catalyst-date">14.09.2026</div>
+      <div class="catalyst-desc"><b>Investor Fireside Chat</b> (CEO Ramji, CFO Barter, CTO Wade) — erste Gelegenheit, die AI-/Cloud-Strategie unter neuer Führung zu erläutern.</div>
+    </div>
+    <div class="catalyst-item">
+      <div class="catalyst-date">24.09.2026</div>
+      <div class="catalyst-desc"><b>Annual General Meeting</b> (Israel) — Abstimmung über Ramjis Vergütungspaket, indirekter Stimmungstest der Aktionäre.</div>
+    </div>
+    <div class="catalyst-item">
+      <div class="catalyst-date">Anfang-Mitte Nov. 2026</div>
+      <div class="catalyst-desc"><b>Q3-2026-Earnings</b> (Guidance: Umsatz $145-148 Mio) — wichtigster Einzeltermin: bestätigt oder widerlegt die Root-Cause-These von Seite 7.</div>
+    </div>
+  </div>
+
+  <div class="section-label">Bear-Case als Wahrscheinlichkeits-Katalog (neu, statt Fließtext-Liste)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Risiko</th><th>Eintrittswahrscheinlichkeit</th></tr>
+      <tr><td>Weitere Guidance-Kürzung bei Q3-2026 (dritte in Folge)</td><td>🟡 Mittel</td></tr>
+      <tr><td>NRR fällt weiter unter 110% (Churn beschleunigt)</td><td>🟢 Niedrig-Mittel</td></tr>
+      <tr><td>SBC/Verwässerung eskaliert statt sich zu normalisieren</td><td>🟠 Mittel-Hoch (bereits laufender Trend)</td></tr>
+      <tr><td>Government-Procurement-Verzögerungen werden strukturell statt einmalig</td><td>🟡 Mittel</td></tr>
+      <tr><td>Anwaltskanzlei-Investigations münden in bezifferte, materielle Klage</td><td>🟢 Niedrig</td></tr>
+    </table>
+  </div>
+
+  <div class="trigger-row">
+    <div class="trigger-box bull">
+      <h3>📈 Nachkauf-Aufstufungs-Trigger</h3>
+      <ul>
+        <li>1. ARR-Wachstum stabilisiert sich wieder &gt;17% YoY (Q3/Q4 2026)</li>
+        <li>2. NRR steigt zurück Richtung ≥120% (aktuell 112-117%)</li>
+        <li>3. Verwässerung normalisiert auf &lt;2-3% p.a. (aktuell ≈9,3% YoY Aktienzahl)</li>
+        <li>4. SBC-bereinigte FCF-Marge steigt wieder ≥20% (aktuell ≈17%)</li>
+      </ul>
+    </div>
+    <div class="trigger-box bear">
+      <h3>📉 Abstauber-/Stop-These-Trigger</h3>
+      <ul>
+        <li>1. NRR fällt unter 110% (Churn-Alarm-Schwelle der Methodik)</li>
+        <li>2. FY2026/FY2027-ARR-Guidance wird erneut gesenkt (3. Kürzung in Folge)</li>
+        <li>3. SBC/Verwässerung eskaliert weiter statt sich zu normalisieren</li>
+        <li>4. Anwaltskanzlei-Investigations münden in bezifferte, materielle Klage</li>
+      </ul>
+      <p style="font-size:8.4pt; color:var(--text-dim); margin-top:1.4mm;">Abstauber-Kaufzone (falls Kurs dorthin fällt, NICHT Verkaufszone): $9,00-10,25.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 9/10</div>
+  </div>
+
+</div>
+
+<!-- PAGE 10: Score + Devil's Advocate + Fazit + Quellen -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Score · Devil's Advocate · Verdict · Quellen</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">7. September 2026 — Seite 10</div>
+      <div>CLBT Cellebrite DI Ltd</div>
+    </div>
   </div>
 
   <div class="box">
@@ -465,95 +732,9 @@
     </table>
   </div>
 
-  <div class="footer">
-    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/7</div>
-  </div>
-
-</div>
-
-<!-- PAGE 6: Unterschaetzter Punkt + Katalysator-Ausblick + Trigger -->
-<div class="page">
-
-  <div class="masthead">
-    <div class="brand-block">
-      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
-      <div class="brand-sub">Unterschätzter Punkt · Katalysatoren · Trigger</div>
-    </div>
-    <div class="meta-block">
-      <div class="date">7. September 2026 — Seite 6</div>
-      <div>CLBT Cellebrite DI Ltd</div>
-    </div>
-  </div>
-
-  <div class="underrated-box">
-    <h3>💡 Der unterschätzte Punkt</h3>
-    <p>Die Headline-Kennzahlen (FCF-Marge 28%, ARR-Wachstum 21%, Bruttomarge 86%) sehen auf den ersten Blick nach einem sauberen SaaS-Compounder aus — <b>und genau das ist die Falle, in die Jacks erster Durchlauf beinahe getappt wäre.</b> Erst Conans SBC-bereinigte Nachrechnung deckt auf: die reale, aktionärsseitige FCF-Marge liegt eher bei ≈17%, nicht 28% — die Differenz wird durch stock-based compensation (≈11-13% des Umsatzes) und eine Aktienzahl-Zunahme von 9,33% p.a. aufgezehrt. Dieselbe Lücke zeigt sich bei der operativen Marge: GAAP 5,3% vs. Non-GAAP 22,7% — ein Faktor-4-Unterschied. Für ein Unternehmen, dessen Investment-These stark auf "hochmargige, kapitalleichte Software" aufbaut, ist das keine Fußnote, sondern der zentrale Belastungstest der These: <b>ein spürbarer Teil des scheinbaren Wachstums wird über Aktionärs-Verwässerung statt über echten Cashflow finanziert.</b> Genau diese Art von Differenz ist der Grund, warum der 3-fach-Cross-Check hier einen echten Mehrwert lieferte, statt nur dieselbe Zahl dreimal zu bestätigen.</p>
-  </div>
-
-  <div class="section-label">Katalysator-Ausblick — was als Nächstes passiert</div>
-  <div class="box">
-    <div class="catalyst-item">
-      <div class="catalyst-date">14.09.2026</div>
-      <div class="catalyst-desc"><b>Investor Fireside Chat</b> (CEO Ramji, CFO Barter, CTO Wade) — erste öffentliche Gelegenheit, die AI-/Cloud-Strategie unter der neuen Führung im Detail zu erläutern. Ton und Konkretheit dieses Auftritts dürften ein früher Gradmesser dafür sein, ob der Markt der neuen Mannschaft Vertrauen schenkt.</div>
-    </div>
-    <div class="catalyst-item">
-      <div class="catalyst-date">24.09.2026</div>
-      <div class="catalyst-desc"><b>Annual General Meeting</b> (Israel) — Abstimmung u.a. über Shiven Ramjis Vergütungspaket als CEO. Auch ein indirekter Stimmungstest der Aktionäre zur neuen Führung und zur laufenden Verwässerungsdiskussion.</div>
-    </div>
-    <div class="catalyst-item">
-      <div class="catalyst-date">Anfang-Mitte Nov. 2026</div>
-      <div class="catalyst-desc"><b>Q3-2026-Earnings</b> (Guidance: Umsatz $145-148 Mio, Adj. EBITDA $42-45 Mio) — der wichtigste Einzeltermin für die These: erster echter Beleg, ob der Guidance-Cut vom August ein einmaliger Reset war oder sich fortsetzt. Datum noch nicht offiziell bestätigt, Schätzung basierend auf üblichem Berichtsrhythmus.</div>
-    </div>
-  </div>
-
-  <div class="trigger-row">
-    <div class="trigger-box bull">
-      <h3>📈 Nachkauf-Aufstufungs-Trigger</h3>
-      <ul>
-        <li>1. ARR-Wachstum stabilisiert sich wieder &gt;17% YoY (Q3/Q4 2026)</li>
-        <li>2. NRR steigt zurück Richtung ≥120% (aktuell 112-117%)</li>
-        <li>3. Verwässerung normalisiert auf &lt;2-3% p.a. (aktuell ≈9,3% YoY Aktienzahl)</li>
-        <li>4. SBC-bereinigte FCF-Marge steigt wieder ≥20% (aktuell ≈17%)</li>
-      </ul>
-      <p style="font-size:8.6pt; color:var(--text-dim); margin-top:1.4mm;">Mind. 2 von 4 nötig, Technik nur Bestätigung, nie eigenständiger Auslöser (Playbook-Regel).</p>
-    </div>
-    <div class="trigger-box bear">
-      <h3>📉 Abstauber-/Stop-These-Trigger</h3>
-      <ul>
-        <li>1. NRR fällt unter 110% (Churn-Alarm-Schwelle der Methodik)</li>
-        <li>2. FY2026/FY2027-ARR-Guidance wird erneut gesenkt (3. Kürzung in Folge)</li>
-        <li>3. SBC/Verwässerung eskaliert weiter statt sich zu normalisieren</li>
-        <li>4. Anwaltskanzlei-Investigations münden in bezifferte, materielle Klage</li>
-      </ul>
-      <p style="font-size:8.6pt; color:var(--text-dim); margin-top:1.4mm;">Abstauber-Kaufzone (falls Kurs dorthin fällt, NICHT Verkaufszone): $9,00-10,25.</p>
-    </div>
-  </div>
-
-  <div class="footer">
-    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/7</div>
-  </div>
-
-</div>
-
-<!-- PAGE 7: Devil's Advocate + Fazit + Quellen -->
-<div class="page">
-
-  <div class="masthead">
-    <div class="brand-block">
-      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
-      <div class="brand-sub">Devil's Advocate · Verdict · Quellen</div>
-    </div>
-    <div class="meta-block">
-      <div class="date">7. September 2026 — Seite 7</div>
-      <div>CLBT Cellebrite DI Ltd</div>
-    </div>
-  </div>
-
   <div class="box">
     <h3>😈 Devil's Advocate (Konsens aus Jack + Conan)</h3>
-    <p><b>1.</b> Kursrutsch (-30% um Earnings) hat Bewertungsluft geschaffen — Forward-KGV 18,7x ist für ein 15-20%-Wachstums-Softwareunternehmen mit Netto-Cash-Bilanz nicht per se teuer. <b>2.</b> Guidance-Kürzung wurde explizit mit Timing (verzögerte Großaufträge), nicht mit strukturellem Nachfrageverlust begründet — Adj.-EBITDA-Guidance wurde parallel sogar ANGEHOBEN, was gegen eine grundlegende Geschäftskrise spricht. <b>3.</b> Analysten-Konsens (8 Analysten) bleibt trotz allem "Strong Buy" mit $15,36 Kursziel (+34%) — der Markt scheint den Reset differenzierter zu lesen als eine reine Verwässerungs-/Execution-Warnung nahelegen würde.</p>
+    <p><b>1.</b> Kursrutsch (-30% um Earnings) hat Bewertungsluft geschaffen — Forward-KGV 18,7x ist für ein 15-20%-Wachstums-Softwareunternehmen mit Netto-Cash-Bilanz nicht per se teuer, und laut Peer-Vergleich (Seite 5) sogar günstiger als der einzige direkt vergleichbare börsennotierte Peer MSAB. <b>2.</b> Guidance-Kürzung wurde von Ramji explizit mit Timing begründet (siehe Root-Cause-Analyse Seite 7), nicht mit strukturellem Nachfrageverlust — Adj.-EBITDA-Guidance wurde parallel sogar ANGEHOBEN. <b>3.</b> Analysten-Konsens (8 Analysten) bleibt trotz allem "Strong Buy" mit $15,36 Kursziel (+34%) — deutlich über dem, was die Reverse-Engineering-Rechnung (Seite 8) als Markterwartung zeigt.</p>
   </div>
 
   <div class="fazit">
@@ -563,10 +744,10 @@
     </div>
     <div class="fazit-grid">
       <div class="fazit-item"><div class="label">Agent Score</div><div class="value">≈4,5-5,0/10</div></div>
-      <div class="fazit-item"><div class="label">Konfidenz</div><div class="value" style="color:var(--yellow);">🟡 MITTEL (Deckel)</div></div>
+      <div class="fazit-item"><div class="label">Konfidenz</div><div class="value" style="color:var(--yellow);">🟡 MITTEL</div></div>
       <div class="fazit-item"><div class="label">Sizing</div><div class="value">Tier 3 (max. 2%)</div></div>
       <div class="fazit-item"><div class="label">Abstauber-Zone</div><div class="value">$9,00-10,25</div></div>
-      <div class="fazit-item"><div class="label">Re-Check</div><div class="value">Q3 2026 · Investor-Event 14.09.</div></div>
+      <div class="fazit-item"><div class="label">Re-Check</div><div class="value">Q3 2026 · 14.09.</div></div>
     </div>
   </div>
 
@@ -574,21 +755,24 @@
   <div class="box">
     <p class="sources-list">
       <span class="n">1.</span>Twelve Data API — Kurs/Zeitreihe/Company-News CLBT, abgerufen 2026-09-07<br>
-      <span class="n">2.</span>stockanalysis.com/stocks/clbt/ + /financials/balance-sheet/ — Marktkap., Beta, P/E, Bilanz, abgerufen 2026-09-07<br>
-      <span class="n">3.</span>SEC EDGAR / Cellebrite 20-F (FY2025) — Going-Concern-/Audit-Bestätigung, NRR, Kundenkonzentration, RPO (via Conan/ChatGPT Live-Suche)<br>
-      <span class="n">4.</span>Cellebrite Q2-2026-Earnings-Release + Call-Transkript (Yahoo Finance, Fool.com, Seeking Alpha, stocktitan.net 6-K) — ARR/Umsatz/Guidance<br>
-      <span class="n">5.</span>theglobeandmail.com, prnewswire.com, investors.cellebrite.com — CEO-/CFO-/CTO-Pressemitteilungen und Werdegänge<br>
-      <span class="n">6.</span>en.wikipedia.org/wiki/Cellebrite, businessmodelcanvastemplate.com — Unternehmensgeschichte (Gründung 1999, Sun-Corporation-Übernahme 2007, UFED-Launch)<br>
-      <span class="n">7.</span>Google Search Grounding (Jack/Gemini) + OpenAI web_search (Conan/ChatGPT) — ergänzende Live-Recherche während der jeweiligen Analyse
+      <span class="n">2.</span>stockanalysis.com/stocks/clbt/ (+revenue/, +financials/balance-sheet/) — Marktkap., Beta, P/E, Bilanz, 5J-Umsatzhistorie<br>
+      <span class="n">3.</span>SEC EDGAR / Cellebrite 20-F (FY2025) — Going-Concern-/Audit-Bestätigung, NRR, Kundenkonzentration, RPO<br>
+      <span class="n">4.</span>Cellebrite Q2-2026-Earnings-Release + Call-Transkript (Fool.com, investing.com Transkript) — CEO-Zitat, ARR/Umsatz/Guidance<br>
+      <span class="n">5.</span>Cellebrite FY2024/2025-Ergebnismitteilungen (globenewswire.com, investors.cellebrite.com) — Guidance-Historie, GAAP/Non-GAAP-Überleitung 2024<br>
+      <span class="n">6.</span>theglobeandmail.com, prnewswire.com, investors.cellebrite.com — CEO-/CFO-/CTO-Pressemitteilungen und Werdegänge<br>
+      <span class="n">7.</span>stockanalysis.com/quote/sto/MSAB.B/ — Peer-Vergleichsdaten MSAB (Micro Systemation)<br>
+      <span class="n">8.</span>marketsandmarkets.com, cbinsights.com — Wettbewerbslandschaft Digital Forensics (Magnet Forensics/Grayshift, Oxygen Forensics)<br>
+      <span class="n">9.</span>en.wikipedia.org/wiki/Cellebrite, businessmodelcanvastemplate.com — Unternehmensgeschichte (Gründung 1999, Sun-Corporation-Übernahme 2007, UFED-Launch)<br>
+      <span class="n">10.</span>Google Search Grounding (Jack/Gemini) + OpenAI web_search (Conan/ChatGPT) — ergänzende Live-Recherche
     </p>
-    <p style="margin-top:2mm; font-size:8.6pt; color:var(--text-faint);"><b>Modellannahmen DCF:</b> WACC/Cost-of-Equity 10,58% (Rf 4,1% [TRAINING] + Beta 1,15 [VERIFIED] × ERP 5,2% [TRAINING] + 0,5% Israel-/Public-Sector-Aufschlag [TRAINING]), da Gesellschaft praktisch schuldenfrei ist (WACC ≈ Cost of Equity). 5-Jahres-Fade-Modell, Terminal-Wachstum 2,5-3,5% je Szenario. TV-Anteil &gt;69% in allen Fällen — Ergebnis als Bandbreite, nicht als Punktschätzung zu lesen.<br><b>Hinweis:</b> ROIC- und NRR-Werte weichen zwischen Jack (Gemini) und Conan (ChatGPT) ab (12,0% vs. TRAINING-Schätzung &gt;20% bzw. 112% vs. 117%) — beide Werte im Bericht transparent nebeneinander stehen gelassen statt künstlich geglättet, siehe DNA-Check-Tabelle Seite 3. Das Q3-2026-Earnings-Datum auf Seite 6 ist eine Schätzung basierend auf dem üblichen Berichtsrhythmus, kein offiziell bestätigter Termin.</p>
+    <p style="margin-top:2mm; font-size:8.4pt; color:var(--text-faint);"><b>Modellannahmen DCF:</b> WACC/Cost-of-Equity 10,58% (Rf 4,1% [TRAINING] + Beta 1,15 [VERIFIED] × ERP 5,2% [TRAINING] + 0,5% Israel-/Public-Sector-Aufschlag [TRAINING]). Reverse-Engineering nutzt denselben WACC/Terminal-g. <b>Hinweis:</b> Distributor-/Vertriebspartner-Konzentration mit Namen (Rigor-Punkt 6 des uncoveredjapan.com-Vorbilds) war für Cellebrite in dieser Sitzung nicht recherchierbar — als offene Lücke vermerkt statt stillschweigend weggelassen. Diese Analyse folgt dem 2026-09-07 dokumentierten Full-Deep-Dive-Rigor-Standard (lose Inspiration durch die Digital-Arts-2326-Serie von uncoveredjapan.com, kein 1:1-Klon).</p>
   </div>
 
   <div class="warn-strip" style="margin-top:0;">⚠ <b>Keine Anlageberatung.</b> Diese Analyse ist eine automatisierte Entscheidungsgrundlage für Brians eigene Investmententscheidung, kein Kauf-/Verkaufsauftrag und keine individuelle Finanzberatung.</div>
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CLBT-fulldeepdive-cross-check-2026-09-07.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/7</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 10/10</div>
   </div>
 
 </div>

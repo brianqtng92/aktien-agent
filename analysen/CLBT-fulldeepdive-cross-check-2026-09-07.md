@@ -60,15 +60,40 @@ Kernfunde (mit eigener Live-Recherche inkl. SEC-20-F-Primärquelle): NRR 117% (p
 
 ## PDF
 
-Vollformat-Report: `reports/CLBT-reaper-deepdive-2026-09-07.pdf` (7 Seiten,
-"Agent Deep Dive Report"-Format, zuletzt am 2026-09-07 auf Brians Wunsch
-erweitert: narrative Burggraben-Einführungsseite [Unternehmensgeschichte
-seit 1999, Sun-Corporation-Übernahme 2007, warum der Burggraben aus
-Gerichtsverwertbarkeit statt Patenten besteht], eigene Management-Sektion
-[CEO Ramji/CFO Barter/CTO Wade, Großaktionärsstruktur, Kapitalallokation],
-"Katalysator-Ausblick" mit datierten Terminen, RSI/MACD-Chart-Subplots,
-Bear/Base/Bull-Balkendiagramm, ausformulierte Fließtext-Boxen bei Moat/
-Going-Concern/SBC-Check/Reality-Check, "Der unterschätzte Punkt"-Box,
-Aufstufungs-/Abstauber-Trigger-Kästen, Score-Aufschlüsselungstabelle,
-formale Quellen-/Annahmen-Seite). Rebrand von "Reaper" zu "Agent"
-zeitgleich umgesetzt, siehe Agent-Playbook.md.
+Vollformat-Report: `reports/CLBT-reaper-deepdive-2026-09-07.pdf` (10 Seiten,
+"Agent Deep Dive Report"-Format). Zweite große Erweiterung am 2026-09-07
+(nach der ersten 3→7-Seiten-Erweiterung): Rigor-Standard nach
+uncoveredjapan.com-Digital-Arts-(2326)-Vorbild eingearbeitet (lose
+Inspiration, unser eigener Stil, siehe Agent-Playbook.md "Full-Deep-Dive-
+Tiefe: Rigor-Standard"). Neu hinzugekommen:
+- **5-Jahres-Umsatzhistorie** (2022-2026E) statt nur TTM, inkl. GAAP-
+  Nettoergebnis-Fallstrick-Erklärung 2024 (-$283M GAAP-Verlust war ein
+  reiner SPAC-Warrant-Bilanzierungseffekt, Non-GAAP +$97,8M)
+- **Guidance-Track-Record-Tabelle** (2023-2026): 3 Jahres-Beats in Folge,
+  dann erste Kürzung 2026 — zeitlich exakt mit CEO-Wechsel zusammenfallend
+- **Produktlinien-Tabelle mit benannten Wettbewerbern** (Inseyets/Pathfinder/
+  Guardian/Corellium vs. Magnet Forensics-Grayshift, MSAB, Oxygen Forensics,
+  Nuix, OpenText, Axon)
+- **Peer-Multiple-Vergleichstabelle** (MSAB als einziger direkt
+  vergleichbarer börsennotierter Peer, mit aufgedeckter Bewertungs-Anomalie:
+  MSAB teurer bewertet trotz Bruchteil der Größe)
+- **Eigenständige "Offene Schwächen"-Sektion** mit direktem CEO-Zitat
+  (Ramji, Q2-2026-Call) zur Guidance-Kürzung
+- **Root-Cause-Analyse** Guidance-Cut: Timing-/Ausführungs- statt
+  Nachfrageproblem, mit 3 stützenden Indizien
+- **Management-Glaubwürdigkeits-Matrix** (4 getrennte Achsen statt einer Note)
+- **Kapitalrückführungs-Historie** (explizit: keine Dividende/Buyback seit
+  Börsengang 2021, kein Track Record vorhanden statt stillschweigend
+  übergangen)
+- **DCF-Reverse-Engineering**: impliziertes Marktwachstum ≈9,6% p.a. liegt
+  UNTER dem eigenen Bear-Case — Markt preist pessimistischer als Base-Case
+- **Downside-Boden explizit quantifiziert**: Netto-Cash/Aktie $1,67 = nur
+  14,6% des Kurses (deutlich dünnerer Puffer als im Digital-Arts-Vorbild)
+- **Bear-Case als Wahrscheinlichkeits-Katalog** (5 benannte Risiken mit
+  Eintrittswahrscheinlichkeit statt Fließtext)
+- Offen und transparent vermerkt: keine namentliche Distributor-/
+  Vertriebspartner-Konzentration für CLBT recherchierbar (anders als beim
+  Digital-Arts-Vorbild) — als echte Lücke ausgewiesen, nicht verschwiegen.
+
+Rebrand von "Reaper" zu "Agent" bereits zuvor umgesetzt, siehe
+Agent-Playbook.md.
