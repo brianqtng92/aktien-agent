@@ -3978,6 +3978,32 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     Schwächen, Katalysator-Ausblick) bereits genug Substanz für alle vier
     Felder liefern – kein Pflichtelement, aber eine sinnvolle Ein-Blick-
     Zusammenfassung bei komplexen Fällen mit vielen beweglichen Teilen.
+16. **Umsatz-Historie als echte Balkengrafik, nicht nur Tabelle (neu,
+    2026-09-08, von Brian gefordert nach Vorbild uncoveredjapan.com).** Die
+    5-Jahres-Umsatztabelle (Punkt 1 oben) bekommt zusätzlich eine visuelle
+    Balkengrafik (ein Balken je Jahr, Guidance-/Schätzjahr optisch abgesetzt
+    in hellerem Gold statt vollem Akzentton) – macht Wachstum/Dezeleration
+    auf einen Blick sichtbar, wo eine reine Zahlenspalte es nicht tut.
+17. **Operating-Cashflow-Historie als eigene Pflicht-Grafik + Tabelle (neu).**
+    Bisher wurde nur FCF (Free Cashflow) gezeigt – OCF (Operating Cashflow,
+    vor Capex) fehlte komplett. Mehrjährige OCF-Balkengrafik analog zur
+    Umsatzgrafik ergänzen, da OCF-Trend (z.B. "OCF verdreifacht sich in 4
+    Jahren" oder "OCF fällt trotz Umsatzwachstum") oft aussagekräftiger ist
+    als die bereits vorhandene FCF-Marge-Diskussion allein.
+18. **Dividendenrendite als expliziter Pflicht-Datenpunkt (neu), auch wenn
+    NICHT zutreffend.** Jede Full-Deep-Dive-Analyse zeigt explizit: zahlt
+    das Unternehmen eine Dividende (Ja/Nein), aktuelle Rendite, Historie
+    (seit wann, Wachstumsrate der Ausschüttung), oder bei Nichtzutreffen
+    einen expliziten Vermerk "keine Dividende" statt stillschweigendem
+    Weglassen. **Wichtige Lektion aus dem ersten Praxis-Fall (A10
+    Networks, 2026-09-08):** ein erster Report hatte fälschlich "zahlt
+    keine Dividende" behauptet, obwohl A10 tatsächlich seit ~2023 eine
+    wachsende Quartalsdividende zahlt (Rendite ≈1,4%) – der Fehler wurde
+    erst durch Brians Nachfrage nach genau diesem Datenpunkt aufgedeckt.
+    Das unterstreicht: Dividendenrendite gehört ab jetzt zur festen
+    Prüfliste, nicht zu einer Annahme aus dem Bauchgefühl heraus (junge
+    Wachstumsfirmen zahlen oft keine Dividende, aber das ist eine zu
+    verifizierende Tatsache, keine sichere Vermutung).
 
 **Was AUSDRÜCKLICH NICHT übernommen wird:** die Serien-Aufteilung in 5
 separate Veröffentlichungen (unser Full Deep Dive bleibt EIN

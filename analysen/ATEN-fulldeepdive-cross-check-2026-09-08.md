@@ -28,6 +28,23 @@ Jack (Gemini) bewertet **SCHROTT, Score 3/10, Sizing 0%, empfiehlt Verkauf** der
 
 Vollformat-Report: `reports/ATEN-agent-deepdive-2026-09-08.pdf` (10 Seiten, "Agent Deep Dive Report"-Format, uncoveredjapan.com-Rigor-Standard). Enthält: ehrlich kalibrierten Einführungs-Hook (kein übertriebener Burggraben-Aufhänger), Management-Sektion inkl. Gründer-Porträt (Lee Chen/Foundry Networks) und Governance-Warnsignal, 6-Jahres-Finanzhistorie mit Segment-Aufschlüsselung, Produktlinien-Tabelle mit benannten Wettbewerbern (F5, Fortinet, Radware, Palo Alto Networks, Juniper, Citrix/NetScaler), Peer-Vergleich, eigenständige "Offene Schwächen"-Sektion mit GAAP/Non-GAAP-Fallstrick-Erklärung, DCF mit Reverse-Engineering-Cross-Check, transparent ausgewiesene Score-Divergenz-Synthese, Bear-Case-Wahrscheinlichkeits-Katalog.
 
+## Vierte Korrektur (2026-09-08): Umsatz-/OCF-Grafiken + Dividendenrendite-Fehler behoben
+
+Auf Brians Nachfrage nach Umsatz-/OCF-Grafiken und Dividendenrendite wurde
+eine neue Seite 5 ergänzt (Report jetzt 11 Seiten): Umsatzhistorie als
+Grafik, Operating-Cashflow-Historie (volatiler als der Umsatz, Peak 2024
+bei $90,49 Mio trotz nur moderatem Umsatzwachstum jenes Jahres — Hinweis
+auf Working-Capital-Effekte). **Dabei ein zweiter echter Fehler in der
+ersten Reportfassung gefunden und korrigiert:** A10 zahlt entgegen der
+ursprünglichen Behauptung TATSÄCHLICH eine Dividende (Quartalsdividende
+$0,06/$0,24 p.a., gewachsen von $0,20 seit 2022, ≈1,0% Rendite bei
+aktuellem Kurs) — ein Beispiel dafür, warum Dividendenrendite jetzt als
+expliziter Pflicht-Datenpunkt gilt statt einer Bauchgefühl-Annahme
+("junge Wachstumsfirma zahlt vermutlich keine Dividende"). Auswirkung auf
+das Gesamtrating: keine (bescheidene Rendite ändert die zentrale
+Kundenkonzentrations-These nicht). Alle Seiten-Querverweise im Report
+nach Einfügen der neuen Seite konsistent nachgezogen.
+
 ## Empfehlung an Brian
 
 CRV-Einstufung wird von 🟠 "Kein Nachkauf (teuer)" auf **🔴 "Kein Nachkauf – überbewertet, Position kritisch prüfen"** verschärft (siehe depot/kategorisierung.md). Kein automatischer Verkauf (Conans primärquellenbasierte Gegenposition + fehlender Going-Concern-Zweifel + Netto-Cash-Polster sprechen dagegen), aber ausdrückliche Bitte, die Position vor jeder weiteren Aufstockung kritisch zu hinterfragen und die Q3-2026-Zahlen (Nov.) als nächsten harten Prüfpunkt abzuwarten.

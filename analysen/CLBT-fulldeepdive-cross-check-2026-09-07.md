@@ -97,3 +97,15 @@ Tiefe: Rigor-Standard"). Neu hinzugekommen:
 
 Rebrand von "Reaper" zu "Agent" bereits zuvor umgesetzt, siehe
 Agent-Playbook.md.
+
+## Dritte Erweiterung (2026-09-08): Umsatz-/OCF-Grafiken + Dividendenrendite
+
+Auf Brians Nachfrage ("mir fehlt auch ein paar Darstellung... wie operating
+cash flow, revenue oder dividendenrendite") wurde eine neue Seite 5
+ergänzt (Report jetzt 11 Seiten): Umsatzhistorie als Balkengrafik (nicht
+nur Tabelle), erstmals eine Operating-Cashflow-Historie (OCF fast
+verfünffacht 2021→2025, $36,05 Mio → $173,54 Mio), und ein expliziter
+Dividendenrendite-Datenpunkt (Cellebrite zahlt keine Dividende, 0,00% —
+explizit geprüft und vermerkt statt stillschweigend angenommen). Diese
+drei Elemente sind jetzt Pflichtbestandteil des Rigor-Standards für alle
+künftigen Full Deep Dives, siehe Agent-Playbook.md.
