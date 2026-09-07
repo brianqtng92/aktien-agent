@@ -2471,6 +2471,11 @@ anders als DCF/Vollformat-Zusatzmodule ist dieser Schritt NICHT
    ausführen (Details/Format im Skript-Docstring). Ersetzt die bisher reine
    Tabellen-Optik durch ein echtes Bild, im Reaper-Design statt
    Fremd-Screenshot.
+   **Bei Full Deep Dive zusätzlich Pflicht (seit 2026-09-08, siehe "Reaper
+   Deep Dive Report" unten):** denselben Befehl um `--rsi --macd` ergänzen
+   → rendert zwei zusätzliche RSI(14)-/MACD(12,26,9)-Subplots unter dem
+   Hauptchart. Bei Quick Filter/Ampel-Batch-Scan entfallen beide Flags
+   weiterhin (einfacher Haupt-Chart reicht dort, Renderzeit klein halten).
 3. **Kombinierte Einstiegszonen-Empfehlung (technisch + fundamental):** Nicht
    nur die reine Charttechnik nennen, sondern explizit verknüpfen mit der
    TMR-/Scout-Fair-Value-Einschätzung (Bear/Base/Bull) bzw. der Margin-of-
