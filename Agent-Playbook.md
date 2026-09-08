@@ -776,7 +776,7 @@ Herleitung an der jeweils verlinkten Stelle, nicht diese Tabelle.
 | Champions-Kapitalgewicht | 35-45% | Aktienanteil (ohne ETF/Gold/Cash) | unten "Kapitalgewichts-Zielkorridor" |
 | Profi-Kapitalgewicht | 20-30% | Aktienanteil | unten "Kapitalgewichts-Zielkorridor" |
 | Talent-Kapitalgewicht | 25-40% | Aktienanteil | unten "Kapitalgewichts-Zielkorridor" |
-| Watchlist-Kapazität | 20-30 Werte | Stückzahl | "Watchlist-System" |
+| Watchlist-Kapazität | 50 Werte (seit 2026-09-08, vormals 20-30) | Stückzahl | "Watchlist-System" |
 | Sperrlisten-Recheck | 90 Tage (Standard) | Zeitraum | "Watchlist-System", Vorfilter-Schritt |
 | Offene-Empfehlung-Erinnerung | 5 Werktage | Zeitraum | "Täglicher Trigger-Check" Schritt 3C |
 
@@ -4359,8 +4359,24 @@ Positionen** dienen könnten, oder die einfach **interessant für eine
 künftige Portfolio-Aufnahme** sind.
 
 **Kern-Eigenschaften:**
-- **Feste Obergrenze: max. 20-30 Werte gesamt.** Bewusst begrenzt, damit Brian
-  nicht den Überblick verliert – kein unbegrenztes Sammelbecken.
+- **Feste Obergrenze: max. 50 Werte gesamt** (2026-09-08 von Brian ausdrücklich
+  auf 50 angehoben, vormals 20-30: "obergrenze aufheben und auf 50 Plätze
+  hochschrauben"). Bewusst begrenzt, damit Brian nicht den Überblick
+  verliert – kein unbegrenztes Sammelbecken.
+
+**Direkte Brian-Vorgaben ohne vollen 3-fach-Cross-Check (2026-09-08,
+neuer Präzedenzfall).** Brian bat direkt um Aufnahme von vier konkret
+benannten Firmen (Ligand Pharmaceuticals, UCB SA, Itochu, Qnity
+Electronics) – anders als beim automatisierten Kandidaten-Scan (dort
+Pflicht: Identity-/Strategie-Fit-/Duplikations-Gate + 3-fach-Quick-Filter
+vor Aufnahme) wurden diese vier NUR mit Jarvis-Solo-Recherche kategorisiert
+und mit CRV versehen, kein Bridge-Aufruf an Jack/Conan. Das ist bewusst so
+gehandhabt worden (Zeitaufwand vs. Direktvorgabe des Nutzers), aber jeder
+Eintrag ist im Kurzthese-Feld explizit als "kein voller 3-fach-Cross-Check
+gelaufen" markiert – falls Brian vor einer echten Kaufentscheidung die
+volle Absicherung will, muss das noch nachgeholt werden. Gleichzeitig
+wurde die Obergrenze auf 50 angehoben, damit direkte Brian-Vorgaben nicht
+automatisch einen Ersatz eines bestehenden Werts erzwingen.
 - **Gleiche Kategorie-Logik wie das Depot** (siehe Abschnitt 3): Jeder
   Watchlist-Wert wird **Champions / Profi / Talent** zugeordnet, je nachdem,
   in welche Depot-Kategorie er bei einer Aufnahme fallen würde. Brian möchte
