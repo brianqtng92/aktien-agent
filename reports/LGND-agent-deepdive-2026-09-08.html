@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Agent Deep Dive – LGND</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FFFFFF;
+    --bg-panel: #F7F6F2;
+    --bg-panel-2: #EFEDE6;
+    --border: #D9D4C8;
+    --border-soft: #E6E2D9;
+    --text: #262420;
+    --text-dim: #5C564A;
+    --text-faint: #837C6C;
+    --gold: #9C7A2E;
+    --gold-bright: #8A6A22;
+    --gold-dim: #C9AD6E;
+    --green: #3F7D44;
+    --green-bg: rgba(63,125,68,0.10);
+    --yellow: #A6790A;
+    --yellow-bg: rgba(166,121,10,0.10);
+    --red: #B03A2E;
+    --red-bg: rgba(176,58,46,0.09);
+    --blue: #2E6690;
+    --blue-bg: rgba(46,102,144,0.09);
+    --orange: #AB591C;
+    --orange-bg: rgba(171,89,28,0.09);
+  }
+
+  html, body {
+    width: 210mm;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Carlito", "DejaVu Sans", Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.36;
+  }
+
+  .display {
+    font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif;
+    font-weight: 700;
+    font-stretch: condensed;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 8mm 12mm 5mm 12mm;
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .masthead {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    border-bottom: 2px solid var(--gold); padding-bottom: 2.6mm;
+  }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 23pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 9.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag {
+    font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim);
+    border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm;
+    display: inline-block; width: fit-content;
+  }
+  .meta-block { text-align: right; font-size: 9.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 10.6pt; }
+
+  .position-header {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold);
+    border-radius: 3px; padding: 2.6mm 4mm;
+  }
+  .position-name .ticker { font-size: 17pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 10pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 5mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 8.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); white-space: nowrap; }
+  .stat .value { font-size: 12pt; color: var(--text); margin-top: 0.4mm; white-space: nowrap; }
+
+  .hook-box {
+    background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim);
+    border-radius: 3px; padding: 3.4mm 4.2mm;
+  }
+  .hook-title { font-size: 16.5pt; line-height: 1.28; color: var(--text); font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .hook-title .accent { color: var(--gold-bright); }
+  .hook-title .accent-red { color: var(--red); }
+  .hook-sub { font-size: 9.6pt; color: var(--text-dim); line-height: 1.4; margin-top: 1.8mm; }
+
+  .narrative-box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 3mm 4mm; flex: 1; display: flex; flex-direction: column; gap: 2.4mm; }
+  .narrative-box p { font-size: 9.6pt; color: var(--text-dim); line-height: 1.48; }
+  .narrative-box p b { color: var(--text); }
+  .narrative-box p .lead { color: var(--gold-bright); font-weight: bold; }
+
+  .section-label {
+    font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0;
+  }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
+  .box h3 {
+    font-size: 9.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm;
+    font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700;
+  }
+  .box p { font-size: 9.2pt; color: var(--text-dim); line-height: 1.32; overflow-wrap: break-word; }
+  .box p b { color: var(--text); }
+
+  .highlight-strip { display: flex; gap: 2.4mm; }
+  .highlight-item { flex: 1; background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm 2.6mm; text-align: center; }
+  .highlight-item .val { font-size: 13pt; color: var(--gold-bright); }
+  .highlight-item .lbl { font-size: 8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5mm; }
+
+  .dqtag { display: inline-block; font-size: 6.1pt; font-weight: 700; padding: 0.2mm 1.4mm; border-radius: 5px; margin-left: 1mm; letter-spacing: 0.02em; vertical-align: 1px; }
+  .dqtag-v { background: var(--green-bg); color: var(--green); }
+  .dqtag-t { background: var(--yellow-bg); color: var(--yellow); }
+  .dqtag-e { background: var(--blue-bg); color: var(--blue); }
+  .dqtag-n { background: var(--red-bg); color: var(--red); }
+  .dqtag-legend { font-size: 7.4pt; color: var(--text-faint); margin-top: 1mm; }
+  .dqtag-legend .dqtag { margin-left: 0; margin-right: 1mm; }
+  .verify-table, .compare-table, .scenario-table, .score-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .verify-table th, .verify-table td, .compare-table th, .compare-table td,
+  .scenario-table th, .scenario-table td, .score-table th, .score-table td {
+    font-size: 8.7pt; padding: 1mm 1.5mm; text-align: left; border-bottom: 1px solid var(--border-soft);
+  }
+  .verify-table th, .compare-table th, .scenario-table th, .score-table th {
+    color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; font-weight: normal; font-size: 8.1pt;
+  }
+  .verify-table td, .compare-table td, .score-table td { color: var(--text); }
+  .scenario-table th, .scenario-table td { text-align: right; }
+  .scenario-table th:first-child, .scenario-table td:first-child { text-align: left; color: var(--text-dim); }
+  .scenario-table td.pos { color: var(--green); }
+  .scenario-table td.neg { color: var(--red); }
+  .score-table td.num { text-align: right; color: var(--gold-bright); }
+  .verify-table td.fail { color: var(--red); font-weight: bold; }
+  .verify-table td.pass { color: var(--green); font-weight: bold; }
+
+  .two-col { display: flex; gap: 3mm; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+
+  .chart-frame {
+    background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm;
+    display: flex; align-items: center; justify-content: center;
+    height: 76mm; flex: 0 0 auto;
+  }
+  .chart-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; border-radius: 2px; }
+  .bbb-frame {
+    background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm;
+    display: flex; align-items: center; justify-content: center; height: 68mm; flex: 0 0 auto;
+  }
+  .bbb-frame img { max-width: 100%; max-height: 100%; }
+
+  .weakness-box {
+    background: var(--orange-bg); border: 1px solid var(--orange); border-radius: 3px; padding: 2.6mm 3.6mm;
+  }
+  .weakness-box h3 { color: var(--orange); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
+  .weakness-box ul { list-style: none; }
+  .weakness-box li { font-size: 9pt; color: var(--text); padding: 1mm 0; border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.36; }
+  .weakness-box li:last-child { border-bottom: none; }
+  .weakness-box li b { color: var(--orange); }
+
+  .integrity-box {
+    background: var(--blue-bg); border: 1px solid var(--blue); border-radius: 3px; padding: 2.6mm 3.6mm;
+  }
+  .integrity-box h3 { color: var(--blue); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
+  .integrity-box p { font-size: 9pt; color: var(--text); line-height: 1.4; }
+
+  .trigger-row { display: flex; gap: 3mm; }
+  .trigger-box { flex: 1; border-radius: 3px; padding: 2.4mm 3.4mm; }
+  .trigger-box.bull { background: var(--green-bg); border: 1px solid var(--green); }
+  .trigger-box.bear { background: var(--red-bg); border: 1px solid var(--red); }
+  .trigger-box h3 { font-size: 9.4pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2mm; }
+  .trigger-box.bull h3 { color: var(--green); }
+  .trigger-box.bear h3 { color: var(--red); }
+  .trigger-box ul { list-style: none; }
+  .trigger-box li { font-size: 8.9pt; color: var(--text); padding: 0.6mm 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .trigger-box li:last-child { border-bottom: none; }
+
+  .warn-strip {
+    background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.7mm 3mm;
+    font-size: 8.8pt; color: var(--yellow); margin-top: 1mm;
+  }
+  .warn-strip b { color: var(--text); }
+
+  .fazit {
+    background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--red);
+    border-radius: 3px; padding: 2.8mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0;
+  }
+  .fazit-verdict { flex: 0 0 auto; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 14.5pt; color: var(--red); letter-spacing: 0.02em; }
+  .fazit-verdict .sub { font-size: 8.2pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.6mm; }
+  .fazit-grid { flex: 1; display: flex; justify-content: space-between; }
+  .fazit-item { text-align: center; }
+  .fazit-item .label { font-size: 8.2pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .fazit-item .value { font-size: 11.2pt; color: var(--text); margin-top: 0.5mm; }
+
+  .sources-list { font-size: 9pt; color: var(--text-dim); line-height: 1.55; }
+  .sources-list .n { color: var(--gold); margin-right: 1.5mm; }
+
+  .footer {
+    display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft);
+    padding-top: 1.5mm; font-size: 8.1pt; color: var(--text-faint); flex-shrink: 0;
+  }
+  .footer .gold-dot { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hook -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">3-fach TMR-Cross-Check · Jarvis (Aegis) · Jack · Conan</div>
+      <div class="edition-tag">Watchlist-Kandidat · Kategorie Profi · Full Deep Dive</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">8. September 2026</div>
+      <div>TMR-Pfad (Bucket A/C) · Modus A</div>
+      <div>DCF Python-verifiziert (Rule 20)</div>
+    </div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-title">💊 LGND — ein margenstarkes Royalty-Modell, aber ein Kurs, der <span class="accent-red">mehr Wachstum verlangt, als selbst der eigene Bull Case hergibt</span></div>
+    <div class="hook-sub">Ligand Pharmaceuticals (NASDAQ: LGND) · Kurs $281,25 (08.09.2026, -1,5%) · 52W-Range $161,82–$326,63 · Sektor Biopharma-Royalty-Aggregator · Watchlist-relevant: Ja, "Profi" (noch ohne vollen 3-fach-Cross-Check bis heute)</div>
+  </div>
+
+  <div class="section-label">Das Geschäftsmodell — und warum die aktuelle Bewertung das eigentliche Thema ist</div>
+  <div class="narrative-box">
+    <p><span class="lead">Was LGND macht.</span> Ligand Pharmaceuticals ist kein operatives Pharma-Unternehmen im klassischen Sinn, sondern ein Biopharma-Royalty-Aggregator — Geschäftsmodell analog zu Royalty Pharma (RPRX), deutlich kleiner. Ligand erwirbt/finanziert Lizenz-, Meilenstein- und Royalty-Ansprüche an Medikamenten Dritter, ohne selbst F&E oder Vertrieb zu betreiben. Das Modell ist strukturell margenstark: kein eigener Produktions- oder Vertriebsapparat für die lizenzierten Produkte, dafür hohe, wiederkehrende Lizenzeinnahmen mit Bruttomargen im hohen 90%-Bereich.</p>
+    <p><span class="lead">Der Wendepunkt 2026.</span> Die Übernahme der XOMA Royalty Corporation (Closing 25.06.2026) verdoppelt das Royalty-Portfolio auf 200+ Assets — die mit Abstand wichtigste strukturelle Veränderung des Geschäftsjahres. Finanziert wurde der Deal über $700 Mio. Convertible Senior Notes (Basis $625 Mio. + voll ausgeübte Über-Zuteilungsoption $75 Mio., Netto-Erlös ca. $678,2 Mio.) — die Bilanz sieht danach strukturell anders aus als vorher.</p>
+    <p><span class="lead">Warum trotzdem SCHROTT/DURCHGEFALLEN.</span> Alle drei unabhängigen Analysen dieses Cross-Checks — Jacks harte DNA-Kriterien, Conans Asymmetrie-/Outcome-Modell und Aegis' eigene Python-DCF — kommen unabhängig voneinander zum selben Grundbefund: der aktuelle Kurs preist mehr Wachstum ein, als das Unternehmen nach eigener, methodisch sauberer Herleitung realistisch liefern kann. Das ist kein Urteil über die Qualität des Geschäftsmodells (die ist ordentlich), sondern über den <b>Preis, den der Markt heute dafür verlangt</b>.</p>
+    <p><span class="lead">Der zentrale Fund.</span> Aegis' Reverse-DCF zeigt: der Markt preist ein implizites Wachstum von <b>25,7% p.a.</b> ein — das liegt SELBST über dem eigenen, bereits gedeckelten Bull-Case-Wachstum von 20% p.a. Selbst im optimistischsten Szenario, das die Methodik überhaupt zulässt, wäre der faire Wert noch unter dem aktuellen Kurs. Diese Erwartungslücke ist der rote Faden, der sich durch alle drei unabhängigen Analysen zieht.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/LGND-fulldeepdive-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/6</div>
+  </div>
+
+</div>
+
+<!-- PAGE 2: 3-Stimmen-Leiste + Jacks DNA-Check -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">3-Stimmen-Leiste · Jacks DNA-Check (TMR-Pfad)</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">8. September 2026 — Seite 2</div>
+      <div>LGND Ligand Pharmaceuticals</div>
+    </div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">LGND <span style="color:var(--text-dim); font-size:9.5pt;">· NASDAQ</span></div>
+      <div class="company">Ligand Pharmaceuticals — Biopharma-Royalty-Aggregator</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs (08.09.)</div><div class="value">$281,25</div></div>
+      <div class="stat"><div class="label">52W-Range</div><div class="value">$161,82–$326,63</div></div>
+      <div class="stat"><div class="label">Beta</div><div class="value" style="color:var(--text);">~0,94–0,95</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">3-Stimmen-Leiste — einstimmige Ablehnung, drei unabhängige Methoden</div>
+  <div class="voices-strip" style="display:flex; gap:2.4mm;">
+    <div class="box" style="flex:1;">
+      <h3>Jarvis · Claude (Synthese/Aegis)</h3>
+      <p style="font-size:12.5pt; color:var(--red);">NICHT KAUFEN</p>
+      <p style="font-size:8.6pt;">DCF Base -21,0% · Bull noch -5,1% unter Kurs · Reverse-DCF-g über Bull-Deckel</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>Jack · Gemini (TMR)</h3>
+      <p style="font-size:12.5pt; color:var(--red);">SCHROTT</p>
+      <p style="font-size:8.6pt;">Agent Score 2/10 · DNA-Abbruch: nur 2/5 K-Kriterien erfüllt</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>Conan · ChatGPT (Scout)</h3>
+      <p style="font-size:12.5pt; color:var(--red);">DURCHGEFALLEN</p>
+      <p style="font-size:8.6pt;">Scout Score 4/10 · EV-Multiple 1,07x RED · kein Scout-Setup</p>
+    </div>
+  </div>
+
+  <div class="section-label">Jacks DNA-Gatekeeper (K-BASIS 5, Royalty-Aggregator-angepasst)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>K-Kriterium</th><th>Schwelle</th><th>Ist-Wert</th><th>Tag</th><th>Status</th></tr>
+      <tr><td>ROIC</td><td>&gt;20%</td><td>~10,5%</td><td><span class="dqtag dqtag-t">T</span></td><td class="fail">❌ Nicht erfüllt</td></tr>
+      <tr><td>FCF-Marge (real)</td><td>≥20%</td><td>~98,3%</td><td><span class="dqtag dqtag-t">T</span></td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>EPS-CAGR (5J)</td><td>≥12%</td><td>-15,2%</td><td><span class="dqtag dqtag-t">T</span></td><td class="fail">❌ Nicht erfüllt</td></tr>
+      <tr><td>Net Debt/EBITDA</td><td>&lt;2,0x</td><td>~2,59x</td><td><span class="dqtag dqtag-t">T</span></td><td class="fail">❌ Nicht erfüllt</td></tr>
+      <tr><td>Bruttomarge</td><td>≥60%</td><td>~98,7%</td><td><span class="dqtag dqtag-t">T</span></td><td class="pass">✅ Erfüllt</td></tr>
+    </table>
+    <p style="margin-top:1.6mm;"><b>DNA-Urteil: 2/5 K-Kriterien erfüllt.</b> Abbruch-Logik (FULL DEEP DIVE: K ≤ K-BASIS-2 → Abbruch): 2 ≤ 3 → <b>Sofort-Abbruch ausgelöst</b>. Zusätzliche Flags: SBC-Intensity ~19,7% des Umsatzes (über der 15%-Infection-Schwelle) → Verwässerungswarnung. Moat-Einschätzung trotz Abbruch: SOLIDE, Trend STRENGTHENING (XOMA-Portfolioverdopplung verbessert Diversifikation strukturell) — das Geschäftsmodell selbst ist also nicht das Problem.</p>
+    <p style="margin-top:1mm; font-size:8.3pt; color:var(--text-faint);">⚠ Einordnung: Jacks ROIC-/EPS-CAGR-Werte sind eigene [TRAINING]-Herleitungen aus der Bridge-Analyse, nicht von Aegis unabhängig primärquellen-verifiziert (siehe Datenintegritäts-Hinweis Seite 4). Das Gesamtbild bleibt aber robust, da Conans und Aegis' Valuation-Urteile über einen völlig anderen Rechenweg zum selben "nicht attraktiv"-Ergebnis kommen.</p>
+  </div>
+
+  <div class="dqtag-legend"><span class="dqtag dqtag-v">V</span>VERIFIED <span class="dqtag dqtag-t">T</span>TRAINING <span class="dqtag dqtag-e">E</span>ESTIMATE <span class="dqtag dqtag-n">N</span>N/V — Tags gemäß Datenintegritäts-System der jeweiligen Methodik-Datei.</div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/LGND-fulldeepdive-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/6</div>
+  </div>
+
+</div>
+
+<!-- PAGE 3: Conans Scout-Cross-Check -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Conans Scout-Cross-Check</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">8. September 2026 — Seite 3</div>
+      <div>LGND Ligand Pharmaceuticals</div>
+    </div>
+  </div>
+
+  <div class="section-label">Methodik-Passung — Conans eigene, ehrliche Einordnung</div>
+  <div class="box">
+    <p>Conans erster Befund war methodisch, nicht inhaltlich: LGND ist <b>kein klassischer Frühphasen-Scout-Kandidat</b> — kein SaaS/ARR, kein Pre-Revenue, kein Deep-Tech-Hardware, kein klinisches Pre-Revenue-Biotech. Keiner der vier Sektor-Overrides passt sauber. Conan wählte trotzdem "NONE_APPLICABLE" als expliziten Override und führte die Analyse als ehrlichen Zweit-Check durch, statt sich eine unpassende Kategorie zu erzwingen — genau das macht den negativen Befund aussagekräftiger: Conan wollte LGND eigentlich gar nicht ablehnen müssen, kam aber trotzdem zum selben Ergebnis wie Jack.</p>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="section-label">Zukunfts-Moat-Check</div>
+      <div class="box">
+        <table class="score-table">
+          <tr><td>① Struktureller Vorsprung</td><td class="num">0,5/1</td></tr>
+          <tr><td>② Early-Adopter-Qualität</td><td class="num">0,5/1</td></tr>
+          <tr><td>③ Skalierungslogik</td><td class="num">1/1</td></tr>
+          <tr><td>④ Wettbewerbsfenster</td><td class="num">0/1</td></tr>
+        </table>
+        <p style="margin-top:1.4mm;"><b>Moat-in-Formation: 2/4 — 🟠 SCHWACH.</b> Royalty-Finanzierung ist kein geschütztes Monopol; gute Assets werden auktioniert, Kapitalkosten sind der Kernwettbewerbsfaktor. Reicht nicht für Kandidaten-Status im Scout-Sinn.</p>
+      </div>
+      <div class="section-label">Führungs-Score</div>
+      <div class="box">
+        <p><b>3/5.</b> CEO Todd Davis — solider Profi-Operator, kein außergewöhnlicher Founder-Compounding-Beweis. XOMA-Übernahme strategisch kohärent, erhöht aber Leverage/Integrationsrisiko. Q1-2026-Miss zeigt: Erwartungsmanagement nicht risikofrei.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="section-label">Outcome-Wahrscheinlichkeiten (🎲-Modul)</div>
+      <div class="box">
+        <table class="scenario-table">
+          <tr><th>Bucket</th><th>Wahrsch.</th><th>Multipl.</th></tr>
+          <tr><td>Totalverlust</td><td>2%</td><td>0,00x</td></tr>
+          <tr><td>Enttäuschung</td><td>63%</td><td>0,65x</td></tr>
+          <tr><td>Marktrendite</td><td>32%</td><td>1,50x</td></tr>
+          <tr><td>Multibagger</td><td>3%</td><td>6,00x</td></tr>
+          <tr><td>Tenbagger+</td><td>0%</td><td>15,00x</td></tr>
+        </table>
+        <p style="margin-top:1.4mm;"><b>EV-Multiple: 1,07x → 🔴 RED.</b> Nominal knapp über 1x, aber weit unter dem, was ein Scout-Setup rechtfertigen müsste. Downside-Summe (Totalverlust+Enttäuschung) 65% — deutlich über der Base-Rate-Floor-Regel (40-50%).</p>
+      </div>
+      <div class="section-label">Fraud-/Red-Flags-Check</div>
+      <div class="box">
+        <p><b>🟢 CLEAN</b> — kein Betrugs-/Promotion-Case. Aktive Flags stattdessen ökonomisch: Supply-Overhang ($700 Mio. Convertible Notes als potenzieller Verwässerungs-/Bewertungs-Overhang) und Klumpenrisiko (Top-Produkt-Konzentration pre-XOMA nicht sauber quantifiziert).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn-strip"><b>Nullhypothese (Conan):</b> LGND ist solide, aber verlangt zum aktuellen Kurs bereits erfolgreiche XOMA-Integration, starkes Royalty-Wachstum und dauerhaft hohe Kapitalallokationsqualität — die Beweislast für "außergewöhnlich" ist nicht erfüllt. Trichter-Stufe: bereits 2 (etablierter Profi), nicht Stufe 1 — ein weiterer Hinweis, dass der Fall strukturell außerhalb von Conans Kernmandat liegt.</div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/LGND-fulldeepdive-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/6</div>
+  </div>
+
+</div>
+
+<!-- PAGE 4: DCF + Datenintegritaet -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Aegis-DCF (Python) · Datenintegritäts-Hinweis</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">8. September 2026 — Seite 4</div>
+      <div>LGND Ligand Pharmaceuticals</div>
+    </div>
+  </div>
+
+  <div class="section-label">DCF-Szenarien vs. aktueller Kurs</div>
+  <div class="bbb-frame">
+    <img src="LGND-bearbasebull-2026-09-08.png" alt="Bear/Base/Bull DCF">
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="section-label">Rechenweg (WACC 9,15%)</div>
+      <div class="box">
+        <table class="scenario-table">
+          <tr><th>Szenario</th><th>Fair Value</th><th>Δ vs. Kurs</th></tr>
+          <tr><td>Bear</td><td>$92,29</td><td class="neg">-67,2%</td></tr>
+          <tr><td>Base</td><td>$222,24</td><td class="neg">-21,0%</td></tr>
+          <tr><td>Bull</td><td>$266,96</td><td class="neg">-5,1%</td></tr>
+        </table>
+        <p style="margin-top:1.4mm;">g gecappt bei 20% (Deckel erreicht, FCF-CAGR-Basis). <b>Reverse-DCF impliziertes Wachstum: 25,7% p.a.</b> — liegt SELBST über dem Bull-Case-Wachstumsdeckel. Downside-Boden (nur begrenzt belastbar): $57,54.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="integrity-box">
+        <h3>⚠ Datenintegritäts-Hinweis (Pflicht-Weitergabe)</h3>
+        <p>Diese DCF kombiniert eine <b>PRE-XOMA</b> Cash-/FCF-Basis (Stand 31.12.2025: Cash $733,5 Mio., Real FCF FY2025 $142,1 Mio.) mit einer <b>POST-XOMA</b> Schuldenlast (~$1.160 Mio. Total Debt nach Notes-Closing 25.06.2026) — ein zeitlicher Snapshot-Mismatch, da vollständige Post-Merger-Quartalszahlen (Q3 2026) erst im November 2026 vorliegen. <b>Netto-Effekt: eher konservativ als optimistisch</b> — die Rechnung nutzt einen alten (niedrigeren) Cashflow-Basiswert mit einer neuen (höheren) Schuldenlast, was den Fair Value tendenziell nach unten drückt, nicht nach oben. Selbst mit diesem konservativen Bias bleibt der aktuelle Kurs oberhalb aller drei Szenarien.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Weitere Datenpunkte mit offener Diskrepanz</div>
+  <div class="box">
+    <p><b>Beta-Diskrepanz:</b> Motley Fool ≈1,06 vs. TradingView ≈0,83, Jacks eigene Live-Abfrage (Yahoo Finance) ≈0,94 — nahe am von Aegis genutzten Mittel (0,95). Keine der Quellen ist eindeutig autoritativ; Konsens liegt im Bereich 0,9-1,0 (marktkorreliert, leicht defensiv).</p>
+    <p style="margin-top:1mm;"><b>Top-Produkt-Konzentration:</b> Hinweise auf relevante Konzentration pre-XOMA vorhanden, genaue Prozentzahl nicht verlässlich recherchierbar [N/V]/[TRAINING]. Nach der Portfolioverdopplung strukturell voraussichtlich verbessert, aber noch nicht durch Post-Merger-Zahlen bestätigt — ein echter, offener Prüfpunkt für Q3/Q4 2026.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/LGND-fulldeepdive-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 4/6</div>
+  </div>
+
+</div>
+
+<!-- PAGE 5: Chart + Risiken -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Kursverlauf · Risiko-Block</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">8. September 2026 — Seite 5</div>
+      <div>LGND Ligand Pharmaceuticals</div>
+    </div>
+  </div>
+
+  <div class="section-label">Kursverlauf 12 Monate (EMA20/50, RSI, MACD)</div>
+  <div class="chart-frame">
+    <img src="LGND-chart-2026-09-08.png" alt="LGND Kursverlauf">
+  </div>
+
+  <div class="trigger-row">
+    <div class="trigger-box bear">
+      <h3>Downside-Risiken</h3>
+      <ul>
+        <li>Post-XOMA-Integration enttäuscht (Wachstum, Synergien) — Trigger für alle drei Analysen</li>
+        <li>$700 Mio. Convertible Notes als Bewertungs-/Verwässerungs-Overhang</li>
+        <li>Top-Produkt-Konzentration bleibt hoch trotz Portfolioverdopplung</li>
+        <li>Short Interest ~14,72% deutet auf aktive, gut informierte Bären-These hin</li>
+        <li>Weiterer Guidance-Miss (nach Q1 2026) würde Multiple-Kompression beschleunigen</li>
+      </ul>
+    </div>
+    <div class="trigger-box bull">
+      <h3>Was die Nullhypothese brechen würde</h3>
+      <ul>
+        <li>Q3/Q4 2026: klarer Post-XOMA-FCF-Step-up sichtbar</li>
+        <li>Netto-Verschuldung sinkt schneller als Markt erwartet</li>
+        <li>Top-5-Royalty-Konzentration fällt deutlich (Diversifikationsbeweis)</li>
+        <li>Mehrere hochwertige, nicht überteuerte Folge-Deals</li>
+        <li>Kurs fällt in Richtung Aegis-Base-FV-Zone ($222) ohne fundamentale Verschlechterung</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn-strip"><b>Einordnung Short Interest:</b> ~14,72% des Free Float ist für ein Unternehmen dieser Größenordnung ungewöhnlich hoch und deutet auf eine aktive, kapitalgedeckte Bären-These hin — kein Beweis gegen LGND, aber ein Signal, dass die hier gefundene Erwartungslücke auch vom Markt selbst wahrgenommen wird, nicht nur von diesem Cross-Check.</div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/LGND-fulldeepdive-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/6</div>
+  </div>
+
+</div>
+
+<!-- PAGE 6: Fazit + Quellen -->
+<div class="page">
+
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Finales Fazit · Watchlist-Konsequenz · Quellen</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">8. September 2026 — Seite 6</div>
+      <div>LGND Ligand Pharmaceuticals</div>
+    </div>
+  </div>
+
+  <div class="section-label">Finales Fazit</div>
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">SCHROTT /<br>NICHT KAUFEN</div>
+      <div class="sub">Einstimmig, 3 unabhängige Methoden</div>
+    </div>
+    <div class="fazit-grid">
+      <div class="fazit-item"><div class="label">Jack (TMR)</div><div class="value">2/10 · SCHROTT</div></div>
+      <div class="fazit-item"><div class="label">Conan (Scout)</div><div class="value">4/10 · DURCHGEFALLEN</div></div>
+      <div class="fazit-item"><div class="label">Aegis-DCF Base</div><div class="value">-21,0%</div></div>
+      <div class="fazit-item"><div class="label">Konfidenz</div><div class="value">🟡 MITTEL</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">Konsequenz für watchlist.md</div>
+  <div class="box">
+    <p>LGND bleibt als "Profi"-Watchlist-Eintrag erhalten (Geschäftsmodell ordentlich, Moat SOLIDE/STRENGTHENING laut Jack), die CRV-Ampel wird aber von der vorläufigen Jarvis-Solo-Einschätzung auf <b>🟠 Vorsicht/Teuer</b> aktualisiert — nicht 🔴 Meiden, da kein strukturelles Geschäftsmodell-Problem vorliegt, sondern eine reine Bewertungsfrage zum aktuellen Kurs. Neuer Vertiefungs-Trigger: erste vollständige Post-XOMA-Quartalszahlen (Q3 2026, erwartet November 2026) — dann DNA-Check und DCF mit sauberer, nicht-gemischter Datenbasis wiederholen.</p>
+  </div>
+
+  <div class="section-label">Warum dieser Full Deep Dive trotz Ablehnung wertvoll war</div>
+  <div class="box">
+    <p>Drei strukturell unabhängige Methoden — harte K-Kriterien-Gatekeeper (Jack), Asymmetrie-/Outcome-Wahrscheinlichkeits-Modell (Conan) und eine eigenständige Python-DCF mit Reverse-DCF-Sanity-Check (Aegis) — kamen unabhängig voneinander zum selben Grundbefund, obwohl keine der drei Methoden auf die anderen beiden Bezug nahm. Das ist ein deutlich robusteres Signal als eine einzelne Analyse mit demselben Ergebnis, und rechtfertigt die vorsichtige CRV-Herabstufung trotz eines grundsätzlich soliden Geschäftsmodells.</p>
+  </div>
+
+  <div class="section-label">Quellen (Auswahl)</div>
+  <div class="box">
+    <div class="sources-list">
+      <div><span class="n">1</span>Twelve Data — Live-Kurs, Kurshistorie (get_quote, get_time_series)</div>
+      <div><span class="n">2</span>SEC 10-K (FY2025, eingereicht 07.03.2026) — Cash-Position, Auditor-Report (PwC), kein Going-Concern-Vermerk</div>
+      <div><span class="n">3</span>Unternehmens-IR/Pressemeldungen — XOMA-Royalty-Akquisition, Convertible-Notes-Finanzierung ($700 Mio.)</div>
+      <div><span class="n">4</span>Mehrere Finanzmedien — Q1-2026-Earnings-Miss-Coverage, Short-Interest-Daten (~14,72%)</div>
+      <div><span class="n">5</span>Yahoo Finance / Motley Fool / TradingView — Beta-Werte (Diskrepanz dokumentiert, siehe Seite 4)</div>
+      <div><span class="n">6</span>Jack (Gemini 2.5 Flash) und Conan (GPT-5.5) — eigene Bridge-Analysen, vollständig im Volltext-Markdown dokumentiert</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/LGND-fulldeepdive-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/6</div>
+  </div>
+
+</div>
+
+</body>
+</html>
