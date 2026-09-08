@@ -399,15 +399,20 @@
     </div>
   </div>
 
-  <div class="section-label">DCF-Szenario-Tabelle</div>
+  <div class="section-label">DCF-Szenario-Tabelle (aktualisiert 09.09.2026 — Margen-korrigiert)</div>
   <div class="box">
     <table class="scenario-table">
-      <tr><th>Szenario</th><th>Fair Value</th><th>Δ vs. Kurs</th></tr>
-      <tr><td>Bear</td><td>$23,71</td><td class="neg">-47,6%</td></tr>
-      <tr><td>Base</td><td>$36,34</td><td class="neg">-19,7%</td></tr>
-      <tr><td>Bull</td><td>$44,54</td><td class="neg">-1,5% (selbst Bull knapp unter Kurs)</td></tr>
+      <tr><th>Szenario</th><th>Fair Value (Runde 1, vor Margen-Fund)</th><th>Korrigiert (Δ Marge zur Hälfte strukturell)</th><th>Korrigiert (Δ Marge voll strukturell)</th></tr>
+      <tr><td>Bear</td><td>$23,71</td><td>$23,00</td><td class="neg">$22,29</td></tr>
+      <tr><td>Base</td><td>$36,34</td><td>$35,25</td><td class="neg">$34,16</td></tr>
+      <tr><td>Bull</td><td>$44,54</td><td>$43,20</td><td class="neg">$41,86 (-1,5% Ausgangswert wird zu -7,4%)</td></tr>
     </table>
-    <p style="margin-top:1.4mm; font-size:8.3pt; color:var(--text-faint);">⚠ Diese DCF wurde VOR der Bruttomargen-Korrektur aus Runde 2 gerechnet — mit der erosiven Marge eingepreist läge der faire Wert in allen drei Szenarien tendenziell niedriger. Jacks eigener Text-DCF (Runde 1, konservativer) kam bereits vorher auf $30,39.</p>
+    <p style="margin-top:1mm; font-size:7.6pt; color:var(--text-faint); line-height:1.25;"><b>Methodik (09.09.2026, nach Gemini-Zweitprüfung):</b> Bruttomarge fiel von ~83,2% auf 78,2% (-6,0% relativ). Kein neu erfundener Bottom-up-Wert (Python-Modell dieser Sitzung nicht mehr rekonstruierbar) — stattdessen proportionale Bandbreite: "voll strukturell" = Marge bleibt dauerhaft niedrig, "zur Hälfte strukturell" = konsistent mit der eigenen Einordnung ("Mix aus strukturell + einmalig"). Reale Zahl vermutlich dazwischen, Klarheit erst nach CMD 21.09. Jacks Text-DCF (Runde 1) kam bereits auf $30,39.</p>
+  </div>
+
+  <div class="section-label">WACC-Sensitivitätsmatrix (Rigor-Punkt 24 — war bereits berechnet, bisher nicht im PDF)</div>
+  <div class="box">
+    <p style="font-size:8.6pt;">3×3-Matrix (WACC ±0,5pp × Wachstumsannahme) für das Reverse-DCF: Fair-Value-Spanne <b>$32,41 – $41,04</b> (Basis: WACC 8,70%/Terminal-g 3,0%, implizites Wachstum +9,60% p.a.). Selbst am unteren Ende der Zinssensitivität liegt der Bull-Bereich klar unter dem Kurs $45,235 — Unsicherheit liegt in der Marge, nicht im Diskontsatz.</p>
   </div>
 
   <div class="footer">
@@ -495,6 +500,7 @@
       <tr><td>2026 (bis 28.08.)</td><td>3,75 (Interim)</td><td>8.708 von max. 15.000 (58% des Programms)</td></tr>
     </table>
     <p style="margin-top:1.4mm;">Dividende wächst weiter durch die Krise, wenn auch verlangsamt. Buyback wurde 2025 drastisch gedrosselt (DKK 20,2 Mrd. → 1,4 Mrd.), 2026 aber wieder aktiv fortgesetzt — kein vollständiger Kapitalrückführungs-Stopp, aber sichtbare Vorsicht während der akuten Krisenphase.</p>
+    <p style="margin-top:1.4mm; font-size:8pt; color:var(--text-dim);"><b>SBC-vs-Buyback-Netting (Rigor-Punkt 23, nachgetragen 09.09.2026):</b> Novo benennt den Rückkaufzweck selbst doppelt — Kapitalreduktion UND Ausgleich der Verwässerung aus Mitarbeiter-Aktienprogrammen. Historischer SBC-Aufwand 2023: DKK 2.149 Mio.; eine primärquellen-saubere 2025er-Zahl war mit vertretbarem Aufwand nicht extrahierbar, daher hier bewusst KEINE erfundene Netto-Quote. Bei SBC in der Größenordnung 2-3 Mrd./Jahr und einem 2026er-Buyback von 8.708 Mio. bleibt ein signifikanter Netto-Rückkaufeffekt jenseits reiner SBC-Kompensation plausibel, aber nicht auf die Dezimalstelle belegt.</p>
   </div>
 
   <div class="section-label">Offene Schwächen (eigenständig, gleichrangig zu den Stärken)</div>

@@ -4580,6 +4580,30 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     und die andere erreichbar, läuft der reguläre Zwei-KI-Cross-Check
     (Jack/Conan, je nach Bucket) normal weiter, nur Aegis' Ersatzrolle
     entfällt dann.
+33. **Rigor-Standard-Checklist-Verifikation vor Report-Abschluss (neu,
+    2026-09-09, ausgelöst durch einen echten Compliance-Fund beim
+    NVO-Report).** Auslöser: Brian zeigte Gemini den fertigen NVO-PDF-
+    Report zur Zweitmeinung – Gemini fand 3 Lücken, von denen sich ZWEI
+    (SBC-vs-Buyback-Netting, WACC-Sensitivitätsmatrix) als
+    Wiederentdeckungen bereits bestehender Rigor-Standard-Punkte
+    (23 bzw. 24) herausstellten, die am selben Tag beschlossen, aber beim
+    NVO-Report-Bau schlicht nicht angewendet wurden – kein Methodik-Fund,
+    sondern ein Compliance-Fund. **Ab sofort Pflicht:** vor Fertigstellung
+    jedes Full-Deep-Dive-Reports einmal explizit die Liste der
+    Rigor-Standard-Punkte 1-32 durchgehen und für jeden anwendbaren Punkt
+    kurz bestätigen "umgesetzt" oder "nicht anwendbar, weil..." – nicht
+    nur beim ERSTELLEN neuer Punkte an die Anwendung denken, sondern auch
+    bei JEDEM folgenden Report erneut. Kein separates Dokument nötig, ein
+    kurzer interner Check reicht (ähnlich der bereits bestehenden
+    "Prozess-Pflicht: Rigor-Standard-Inhalte werden an Jack/Conan
+    zurückgespielt" unten) – Zweck ist, dass ein bereits beschlossener
+    Standard nicht wegen reiner Report-Bau-Hektik unter den Tisch fällt.
+    Fällt bei einem späteren Review trotzdem eine Lücke auf: wie beim
+    NVO-Fall selbst behandeln – nachtragen, Herkunft transparent als
+    "Compliance-Fund, nicht neue Idee" kennzeichnen, kein Vorwand für
+    stillschweigendes Weglassen. Direkt ein 🟢-sicherer KVP-Fall (siehe
+    "Kontinuierlicher Verbesserungsprozess" oben) – keine Rating-Logik
+    ändert sich dadurch, nur die Vollständigkeit der Ausgabe.
 
 **Herkunft Punkte 22-28:** Brian hat den CLBT-Full-Deep-Dive-Report
 unabhängig sowohl ChatGPT als auch Gemini zur Bewertung vorgelegt (außerhalb

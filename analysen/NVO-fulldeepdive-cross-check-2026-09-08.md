@@ -26,6 +26,15 @@ WACC 8,70% (Rf 4,1% + Beta 1,00 × ERP 4,6%).
 
 Reverse-DCF (konstantes 5J-Wachstum + 3% Terminal-g): **+9,60% p.a.** — liegt zwischen Base-Durchschnitt (5,0%) und Bull-Durchschnitt (7,6%), plausibel, kein Extremwert. Sensitivitätsmatrix (3×3 WACC×Y1-g) zeigt FV-Spanne $32,41-$41,04. ⚠ Diese DCF wurde vor der in Runde 2 gefundenen Bruttomargen-Erosion gerechnet — mit korrigierter Marge läge der faire Wert in allen Szenarien tendenziell niedriger.
 
+**Nachtrag 2026-09-09 (Brian zeigte Gemini den fertigen PDF-Report zur Zweitmeinung):** Gemini bestätigte den Report als methodisch sehr stark, fand aber 3 konkrete Lücken — alle drei gegen den tatsächlichen Report-Inhalt verifiziert, echt:
+1. **DCF-Timing-Dilemma:** die obige Warnung stand zwar im Text, wurde aber nie in eine tatsächliche Korrektur umgesetzt. Da das genaue Python-Modell dieser Sitzung nicht mehr vollständig rekonstruierbar war, wurde bewusst KEIN neu erfundener Einzelwert nachgerechnet (Scheingenauigkeit), sondern eine proportionale Bandbreite ergänzt (Bruttomarge -6,0% relativ → FV bei "voll strukturell" vs. "zur Hälfte strukturell", siehe PDF Seite 6): Bear $22,29-$23,00 / Base $34,16-$35,25 / Bull $41,86-$43,20.
+2. **SBC-vs-Buyback-Netting fehlte** — war bereits seit demselben Tag (2026-09-08) Rigor-Standard-Punkt 23 (Gemini-Cross-Review des CLBT-Reports), aber beim NVO-Report nicht angewendet. Nachgetragen auf PDF Seite 8 (qualitativ, da eine saubere primärquellen-belegte 2025er-SBC-Zahl nicht mit vertretbarem Aufwand extrahierbar war — historischer SBC-Wert 2023: DKK 2.149 Mio. als Größenordnungs-Anker).
+3. **WACC-Sensitivitätsmatrix fehlte im PDF** — war bereits berechnet (siehe Zeile oben, $32,41-$41,04), aber nie in den Report übernommen. Nachgetragen auf PDF Seite 6.
+
+**Wichtige Einordnung:** Punkte 2+3 waren KEINE neuen Ideen von Gemini, sondern Wiederentdeckungen bereits bestehender Rigor-Standard-Regeln (23+24), die beim Report-Bau schlicht nicht konsequent angewendet wurden — ein Compliance-Fund, kein Methodik-Fund. Siehe Agent-Playbook.md für die daraus abgeleitete neue Präventiv-Regel (Rigor-Standard-Checklist-Verifikation vor Report-Abschluss).
+
+**Ungelöste Datenlücke, transparent stehen gelassen statt verschwiegen:** bei der Recherche für Punkt 1 fiel eine echte Quellendivergenz auf: das ursprüngliche Fact-Pack nennt FCF FY2025 $8,93 Mrd., Novos eigener Annual Report 2025 (Primärquelle) nennt DKK 28,3 Mrd. (≈$4,1 Mrd. bei aktuellem Kurs) — beide Zahlen passen nicht zusammen, auch nicht über einen einfachen FX-Umrechnungsfehler erklärbar. Nicht in dieser Runde aufgelöst (würde einen vollständigen Cashflow-Statement-Abgleich erfordern) — bei einer künftigen NVO-Neubewertung (spätestens nach dem CMD 21.09.) zuerst klären, welche der beiden Zahlen (oder ob keine) korrekt ist.
+
 ---
 
 ## Jack (Gemini) — Runde 1
