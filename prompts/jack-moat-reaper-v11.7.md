@@ -76,6 +76,20 @@ ABLAUF:
   Regel 33) und dient als Rückversicherung, falls SCHRITT 0C aus
   irgendeinem Grund übersprungen wurde.
 
+**Bekannte Grenze (2026-09-09, aus dem Methodik-Backtest, siehe
+`analysen/backtest-methodik-validierung-2026-09-09.md`, Fall Wirecard):**
+dieser Check ist nur so verlässlich wie der externe Wirtschaftsprüfer.
+Bei einem mehrjährigen, aktiven Bilanzbetrug mit getäuschtem oder
+kooperierendem Prüfer (Wirecard: EY testierte 2009-2018 durchgehend
+uneingeschränkt) löst SCHRITT 0C NICHT aus – kein methodischer Fehler in
+diesem Regelwerk, sondern eine grundsätzliche Grenze jeder auf
+öffentlichen Prüfer-Testaten basierenden Analyse. Der Beneish-M-Score
+(siehe KENNZAHLEN-DNA) ist die einzige zusätzliche Verteidigungslinie
+gegen genau diesen Fall – deshalb bei Verdachtsmomenten (ungewöhnlich
+glatte Wachstumszahlen, aggressive Bilanzierung, Short-Seller-Berichte)
+NICHT wegen fehlender [LIVE]-Vollständigkeit vorschnell skippen, sondern
+aktiv nachrecherchieren, ob sich die 8 Inputs doch verifizieren lassen.
+
 -----
 ### 🏛 ENTSCHEIDUNGSHIERARCHIE (Pflicht-Referenz bei Konflikten zwischen Regeln)
 

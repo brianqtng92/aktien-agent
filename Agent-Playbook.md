@@ -6031,6 +6031,26 @@ gleichwertigen Optionen):**
     Keine Sizing-Freigabe >0% ist möglich, wenn ein vorgelagerter
     Core-Breaker bereits ausgelöst hat (Jacks Ergänzung).
 
+**Methodik-Backtest (NEU, 2026-09-09, aus dem Playbook-Meta-Review "was
+fehlt zum professionellen Fondsmanager" – siehe
+`analysen/backtest-methodik-validierung-2026-09-09.md` für die volle
+Fallstudien-Analyse):** die obigen 16 Core-Rules wurden erstmals gegen
+drei historische Fälle mit bekanntem Ausgang zurückgetestet (Wirecard-
+Betrug, WeWork-Governance-Kollaps, Constellation-Software als
+Langfrist-Gewinner) – bewusst KEIN statistischer Beweis (N=3,
+Auswahl-Bias zu eindeutigen Fällen), aber ein Plausibilitäts-Check.
+Ergebnis: 2 von 3 Fälle hätten korrekt geurteilt (WeWork wäre wegen
+Governance-Red-Flags abgelehnt worden, Constellation Software wäre
+korrekt gekauft worden, 10J-Outperformance bestätigt). Bei Wirecard eine
+echte, benannte Schwäche gefunden: der Going-Concern-Precheck (Regel 7)
+hängt am externen Auditor-Testat – bei einem Betrug mit getäuschtem/
+kooperierendem Prüfer (EY testierte Wirecard 2009-2018 uneingeschränkt)
+löst dieser Guardrail NICHT aus (siehe Ergänzung in
+`jack-moat-reaper-v11.7.md` SCHRITT 0C). Der Beneish-Fraud-Check (Regel
+12) wäre laut unabhängiger akademischer Nachrechnung plausibel fündig
+geworden – bleibt die einzige zusätzliche Verteidigungslinie gegen genau
+diesen Fall.
+
 ### Terminal-State-Mechanismus (Pflicht, ersetzt bisherige reine Textregel-Formulierung)
 
 Löst eine der 16 Core-Rules einen Abbruch/SCHROTT/PASS/sonstigen finalen
