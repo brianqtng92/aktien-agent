@@ -4126,6 +4126,84 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     `.dqtag`/`.dqtag-v`/`.dqtag-t`/`.dqtag-e`/`.dqtag-n`/`.dqtag-legend` in
     den bestehenden Full-Deep-Dive-HTML-Dateien.
 
+22. **Eigene historische Bewertungs-Bandbreite statt nur Einzel-Peer-
+    Vergleich (neu, 2026-09-08, ausgelöst durch ChatGPTs Cross-Review des
+    CLBT-Reports).** Zusätzlich zur Peer-Multiple-Tabelle (Punkt 10): das
+    eigene Forward-/Trailing-KGV (oder branchenübliches Multiple) über die
+    letzten 3-5 Jahre als Band/Median darstellen und den aktuellen Wert
+    dagegen einordnen (z.B. "KGV 18,7x liegt X% unter eigenem 3J-Median").
+    Anders als ein Einzel-Peer-Vergleich (der bei nur 1-2 vergleichbaren
+    Börsentiteln schwach aussagekräftig ist, siehe CLBT/MSAB) ist das ohne
+    Datenverfügbarkeits-Risiko umsetzbar – eigene Kurs-/EPS-Historie ist
+    über Twelve Data direkt abrufbar. Wird bereits an einzelnen watchlist.md-
+    Einträgen informell so gemacht (z.B. Copart, Rollins), ab jetzt fester
+    Full-Deep-Dive-Bestandteil.
+23. **SBC-Trendverlauf über 3 Jahre statt nur Ist-Wert (neu, 2026-09-08,
+    Gemini-Cross-Review).** Der bestehende SBC-Infection-Check (Ist-Wert,
+    z.B. "11-13% vom Umsatz") bekommt eine Trendkomponente: SBC/Umsatz-Quote
+    der letzten 3 Geschäftsjahre nebeneinander, um zu unterscheiden, ob die
+    Quote sinkt (Skalierungseffekt – SBC wächst langsamer als Umsatz, Signal
+    für sich normalisierende Kapitalallokation) oder steigt (eskalierendes
+    Verwässerungsrisiko für Altaktionäre). Ein einzelner Ist-Wert kann beide
+    sehr unterschiedlichen Situationen nicht unterscheiden.
+24. **Sensitivitätsmatrix (3×3 WACC × FCF-Wachstum) für das DCF-Reverse-
+    Engineering (neu, 2026-09-08, Gemini-Cross-Review).** Das bestehende
+    Reverse-DCF (Punkt 11) liefert bisher nur einen Einzelwert (implizites
+    Wachstum bei EINEM WACC). Ergänzend: kleine Matrix mit 3 WACC-Stufen
+    (z.B. -0,5pp/Basis/+0,5pp) × 3 Wachstumsannahmen, um zu zeigen, wie
+    empfindlich der implizierte Fair Value auf Zinsänderungen reagiert –
+    reiner Python-Rechenschritt, keine neue Datenquelle nötig, daher ohne
+    Ausnahme umsetzbar.
+25. **Konzentrations-Check wird um einen expliziten 10-K-Risikoabschnitts-
+    Suchschritt ergänzt (Schärfung von Punkt 6, 2026-09-08, Gemini-Cross-
+    Review).** Statt nur allgemein nach benannten Distributoren/Großkunden
+    zu suchen: gezielt den "Risk Factors"-Abschnitt des aktuellen 10-K/20-F
+    nach einer expliziten &gt;10%-Konzentrationsangabe durchsuchen (Unternehmen
+    sind SEC-meldepflichtig, sobald ein einzelner Kunde/Partner diese
+    Schwelle überschreitet) – ein gezielter Suchschritt statt einer
+    allgemeinen Recherche, bevor der Datenpunkt als "nicht auffindbar"
+    vermerkt wird (siehe Datenintegritäts-Philosophie: fehlender Nachweis
+    ist kein positiver Befund, aber ein gezielter Suchschritt schöpft die
+    verfügbare Quelle wenigstens aus).
+26. **"Kill-Sheet" als eigenständig benannte, konsolidierte Sektion statt
+    verteilter Trigger-Listen (neu, 2026-09-08, ChatGPT-Cross-Review).** Die
+    bereits bestehenden Nachkauf-/Abstauber-Trigger-Boxen (siehe
+    "Bei KAUFEN/BEOBACHTEN"-Pflichtabschnitte in den Methodik-Dateien) werden
+    im PDF-Report zusätzlich unter einer eigenen, klar benannten Überschrift
+    "🔪 Thesis-Kill-Sheet" gebündelt UND mit dem konkreten nächsten
+    Prüfpunkt-Datum (nächste 1-2 Earnings-Termine) direkt verknüpft. Inhalt
+    bereits vorhanden (4 Aufstufungs- + 4 Abstauber-Trigger mit Ist-Werten
+    im CLBT-Report), reine Konsolidierungs-/Auffindbarkeits-Verbesserung,
+    kein neues Analyse-Element.
+27. **ARR-/Umsatzwachstums-Qualitätszerlegung als Best-Effort-Zusatz (neu,
+    2026-09-08, ChatGPT-Cross-Review) – NUR wo offengelegt.** Wo ein
+    Unternehmen New-Logo- vs. Expansion-/Cross-Sell-Anteil am ARR-Wachstum
+    offenlegt (z.B. Investor-Deck, nicht bei allen Firmen der Fall): diese
+    Zerlegung ergänzen, um "gesundes" (Neukunden-getriebenes) von
+    "verlangsamtem, aber durch Bestandskunden kaschiertem" Wachstum zu
+    unterscheiden. Ebenso: bei einer Guidance-Kürzung nach Möglichkeit
+    Region/Kundensegment/Vertragsgröße der betroffenen Deals recherchieren
+    (Earnings-Call-Transkript/Analysten-Q&A, nicht 10-Q-Fließtext). **Explizit
+    als Best-Effort markiert, kein Pflichtelement:** beide Datenpunkte sind
+    bei den meisten Unternehmen aus wettbewerblichen Gründen nicht öffentlich
+    granular verfügbar – wo nicht auffindbar, gilt wie bisher: explizit als
+    Lücke vermerken (Punkt 6/25-Prinzip), nicht stillschweigend weglassen
+    oder rückwirkend erzwingen. Realistischster Zeitpunkt für einen Fund:
+    Analysten-Q&A im nächsten Earnings-Call, nicht rückwirkende Recherche.
+
+**Herkunft Punkte 22-27:** Brian hat den CLBT-Full-Deep-Dive-Report
+unabhängig sowohl ChatGPT als auch Gemini zur Bewertung vorgelegt (außerhalb
+dieses Systems, als externe Zweitmeinung zur eigenen Methodik). Beide
+Rückmeldungen wurden von Jarvis gegen den tatsächlichen Report-Inhalt
+verifiziert (keine der genannten Zahlen/Lücken war erfunden) und
+unabhängig voneinander bewertet – bemerkenswert: die sechs konkreten
+Verbesserungsvorschläge beider KIs überschneiden sich praktisch nicht
+(ChatGPT: Guidance-Cut-Forensik, ARR-Qualitätszerlegung, eigene
+historische Bewertung, Kill-Sheet-Konsolidierung; Gemini: Distributoren-
+Konzentration im 10-K, SBC-3-Jahres-Trend, Reverse-DCF-Sensitivität) – ein
+Muster, das dem Grundprinzip des eigenen 3-fach-Cross-Checks entspricht:
+unterschiedliche Perspektiven finden unterschiedliche blinde Flecken.
+
 **Was AUSDRÜCKLICH NICHT übernommen wird:** die Serien-Aufteilung in 5
 separate Veröffentlichungen (unser Full Deep Dive bleibt EIN
 zusammenhängender Report, auch wenn er dadurch länger wird), die englische
