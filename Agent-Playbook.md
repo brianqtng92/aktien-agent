@@ -695,6 +695,40 @@ Broker-Anbindung (siehe Abschnitt 8, "Geplante Broker-Anbindung"). Der
 Spielraum betrifft ausschließlich die Analyse-/Bewertungs-/Exit-Logik in den
 Prompts, nicht die Ausführungsbefugnis.
 
+**Hermes-Gedächtnis-Synchronisations-Pflicht (2026-09-08, von Brian
+gefordert: "hermes cron job (gedächtnis) bitte auch die aktuellen
+veränderungen im prompt oder analyse tools immer auf den aktuellen stand
+bringen"):** Die vier Hermes-Cron-Jobs laufen als `claude -p`-Headless-
+Aufrufe OHNE Erinnerung an diese oder frühere Chat-Sessions – ihr einziges
+"Gedächtnis" sind die SKILL.md-Dateien unter
+`~/.claude/scheduled-tasks/<job>/SKILL.md` plus die Repo-Dateien selbst.
+Ändert sich künftig eine der drei Methodik-Dateien unter `prompts/`
+(Versionsbump, umbenannte Konzepte wie zuletzt "Master-Agent" → "Aegis",
+neue Pflicht-Abschnitte wie SCHRITT 8/PFLICHT-JSON-SUMMARY) oder eines der
+Analyse-Tools (`reports/render_chart.py`, `reports/render_pdf.py` etc.),
+ist die Prüfung/Aktualisierung der betroffenen SKILL.md-Dateien PFLICHT-
+BESTANDTEIL DERSELBEN Änderung, kein späterer Aufräum-Schritt:
+1. Betroffene SKILL.md-Dateien identifizieren: `grep -rn "<alter Begriff/
+   alte Versionsnummer>" ~/.claude/scheduled-tasks/*/SKILL.md` (aktuell
+   referenzieren `taeglicher-trigger-check` UND `blitz-scan` alle drei
+   Methodik-Dateien samt interner Versionsnummer; `wochenfazit`/
+   `monatsrecap` referenzieren sie nicht direkt).
+2. Stale Versionsnummern-Kommentare (z.B. "v11.8 intern") auf den
+   tatsächlichen aktuellen Stand korrigieren.
+3. Neue Pflicht-Verhaltensweisen (wie das JSON-Summary-Parsing seit
+   Jack v11.10/Conan v1.13, siehe "Jack-Prompt-Redesign-Anfrage
+   abgewogen"-Abschnitt) in JEDEN SKILL.md-Job übernehmen, der volle
+   3-fach-Cross-Checks fährt (aktuell: `taeglicher-trigger-check` UND
+   `blitz-scan`), nicht nur in den zuerst bearbeiteten.
+4. Neue Terminologie (z.B. "Aegis") dort ergänzen, wo sie für das
+   Verständnis der Prompts relevant ist, auch wenn die SKILL.md selbst
+   den Begriff nicht wörtlich braucht.
+Diese SKILL.md-Dateien liegen AUSSERHALB des Git-Repos (`~/.claude/
+scheduled-tasks/`, nicht `~/Downloads/aktien-agent/`) und werden daher
+NICHT von `git pull` in den Hermes-Läufen aktualisiert – sie müssen direkt
+bearbeitet werden, jede Session (auch künftige, die diesen Absatz hier
+liest) prüft das aktiv, statt sich auf einen Git-Sync zu verlassen.
+
 **Namensgebung der drei KI-Stimmen im Cross-Check (2026-08-22, von Brian festgelegt):**
 Im Report/Vergleich (Pipeline-Schritt 3+4) werden die drei Anbieter nicht mit ihrem
 Firmennamen, sondern mit diesen Spitznamen ausgewiesen:
@@ -711,6 +745,15 @@ Namen Jack/Conan stammen zwar aus den Personas der TMR/TA- bzw. Scout-Prompts se
 werden hier aber als feste Anbieter-Kürzel verwendet, unabhängig davon, welcher der
 drei Prompts gerade läuft (z.B. auch wenn Gemini den Scout-Prompt durchrechnet, heißt
 seine Stimme im Vergleich trotzdem "Jack", nicht "Conan").
+
+**Vierter Name, andere Rolle – Aegis (2026-09-08):** Die Tabelle oben listet
+die drei PARALLELEN Analyse-Stimmen. **Aegis** ist kein vierter Anbieter in
+dieser Tabelle, sondern der Name für Jarvis' orchestrierende Rolle
+DANACH – Cross-Check-Synthese, Depot-Regel-Prüfung, finale Sizing-/Rating-
+Entscheidung (siehe "Jack-Prompt-Redesign-Anfrage abgewogen"-Abschnitt).
+Jarvis bleibt also unter zwei Namen im Umlauf, je nach Funktion: als
+gleichberechtigte dritte Analyse-Stimme heißt es weiterhin "Jarvis", in der
+zusammenführenden Rolle danach heißt dieselbe Funktion "Aegis".
 
 ## 3. Depot-Ziel-Struktur (Portfolio-Konstruktion)
 
