@@ -25,6 +25,8 @@ weiter anwachsen lassen.
 - Playbook-Härtung Prio 4: dieses CHANGELOG.md angelegt (aus git log rekonstruiert) + monatlicher Redundanz-Check-Prozess dokumentiert
 - Over-Engineering-Kürzung 1: nicht-bindende Methodik-Datei nicht mehr an Jack/Conan mitgeschickt (~204 KB → ~130 KB pro Bridge-Aufruf, -35-40%)
 - Over-Engineering-Kürzung 2: HANDOVER.md-10.13-Blöcke 1-3 (SCHRITT-0/eigene Recherche/WACC-Schätzung/TRAINING-vs-N/V) zu einem konsolidierten Block 1 zusammengefasst (inhaltlich unverändert, weniger redundante Formulierung)
+- Over-Engineering-Kürzung 3: Blitz-Scan löst den vollen 3-fach-Cross-Check nur noch bei "hartem" Auslöser (Fraud/Delisting/Rücktritt/Going-Concern/M&A/Limit-Bruch) sofort aus - reiner Kurssprung ohne strukturelles Ereignis bekommt zuerst nur eine Jarvis-Only-Einschätzung, voller Check folgt beim nächsten Trigger-Check
+- Over-Engineering-Kürzung 4: Rigor-Standard-Punkte 29+30 (DNA-Check-Tabelle + Primärquellen-Pflicht) zu einem konsolidierten Punkt 29 zusammengelegt (inhaltlich unverändert, Punkt 30 entfällt als eigene Nummer)
 
 ## 2026-09-08
 

@@ -615,7 +615,7 @@ State-Pflicht (Block 4, 2026-09-02/03), Gründliche-These-Prüfung (Block 5,
 2026-09-06), Fact-Pack-Tags-sind-nicht-bindend (Block 7, 2026-09-06) und
 Selbstwiderspruch-Check über alle Kennzahlen (Block 8, 2026-09-09,
 Priorität 3 aus dem Playbook-Meta-Review, verallgemeinert den bereits in
-Punkt 30/KENNZAHLEN-PRIMÄRQUELLEN-STANDARD verankerten Check auf JEDE
+Punkt 29/KENNZAHLEN-PRIMÄRQUELLEN-STANDARD verankerten Check auf JEDE
 Kennzahl, nicht nur die dort genannten fünf).
 
 ### 🛠 Wartung & Redundanz-Check (NEU, 2026-09-09, Priorität 4 aus dem
@@ -4397,10 +4397,14 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     unvalidierten Zahlen gefüllt zu werden. Bei CLBT selbst (TMR-Pfad, kein
     Scout-Kandidat) bisher nicht einschlägig, da Conans TAM-Modul primär für
     Bucket B/D-Kandidaten (Scout-Pfad) läuft.
-29. **Vollständige DNA-Check-Tabelle im Report – ALLE K- UND E-Kriterien,
-    nicht nur die 5 K-Kriterien (neu, 2026-09-08, von Brian nach dem NVO-
-    Deep-Dive gefordert).** Auslöser: der erste NVO-Report zeigte den
-    DNA-Check nur als Fließtext-Zusammenfassung (Score/Rating), keine
+29. **Vollständige, primärquellen-treue DNA-Check-Tabelle im Report – ALLE
+    K- UND E-Kriterien, nicht nur die 5 K-Kriterien (neu, 2026-09-08, von
+    Brian nach dem NVO-Deep-Dive gefordert; konsolidiert 2026-09-09 mit dem
+    ehemals separaten Punkt 30, Over-Engineering-Kürzung aus dem Playbook-
+    Meta-Review – beide behandelten dasselbe Grundthema "verlässliche
+    DNA-Check-Ausgabe", nur aus zwei verschiedenen Anlässen entstanden).**
+    Auslöser Teil 1 (Tabellen-Vollständigkeit): der erste NVO-Report zeigte
+    den DNA-Check nur als Fließtext-Zusammenfassung (Score/Rating), keine
     tatsächliche Tabelle – weil Jack selbst die Kennzahlen in Prosa statt im
     eigenen Tabellenformat lieferte, unbemerkt beim Report-Bau übernommen.
     **Ab sofort Pflicht:** jeder Full-Deep-Dive-Report zeigt die komplette
@@ -4410,6 +4414,22 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     Compounder-DNA-Check des aktiven Sektor-Overrides – siehe
     conan-the-scout-v1.12.md), nicht nur eine Teilmenge/Kurzfassung. Jede
     Zeile mit Ist-Wert, Tag ([LIVE]/[VERIFIED]/[TRAINING]/[N/V]) und Status.
+
+    Auslöser Teil 2 (Primärquellen-Treue): über dieselbe NVO-Session verteilt
+    schwankten Beta-Werte für dieselbe Aktie zwischen 0,3 und 2,7 je nach
+    zufällig gezogener Quelle, und Op.-Margin/Capex-Werte enthielten
+    unbemerkt Non-GAAP- bzw. M&A-verzerrte Zahlen. **Ab sofort Pflicht bei
+    Full Deep Dive:** für die 4-5 am häufigsten strittigen Kennzahlen (Beta,
+    Op.-Margin, Bruttomarge, ROIC, Capex/Umsatz) gilt die feste
+    Primärquellen-Definition aus dem KENNZAHLEN-PRIMÄRQUELLEN-STANDARD in
+    jack-moat-reaper-v11.7.md bzw. conan-the-scout-v1.12.md (z.B. Beta immer
+    Yahoo Finance 5Y-monatlich, Op.-Margin immer GAAP TTM) — nicht mehr die
+    erste gefundene Aggregator-Zahl. SEC-Filing/IR geht bei Widerspruch vor
+    Aggregator. Diese Definition steht direkt in der an Jack/Conan
+    gesendeten Methodik-Datei (wirkt also am Ort der Entstehung), Jarvis
+    prüft beim Report-Bau zusätzlich stichprobenhaft gegen, ob der
+    gelieferte Wert zur festgelegten Quelle/Definition passt.
+
     **Qualitätssicherungs-Pflicht (ebenfalls aus dem NVO-Fall gelernt):**
     liefert die Bridge-KI die Tabelle nicht im vorgesehenen Format oder mit
     erkennbar widersprüchlichen/unplausiblen Werten (z.B. zwei
@@ -4427,24 +4447,6 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     Ist-Ergebnis ausgewiesen (kein stillschweigendes Wegdiskutieren), aber
     mit einer kurzen Einordnung versehen, warum die Schwelle hier evtl.
     weniger aussagekräftig ist als bei einem asset-leichten Geschäftsmodell.
-30. **Pflicht-Primärquelle für die Top-K-Kriterien bei Full Deep Dive (neu,
-    2026-09-09, aus Brians Playbook-Meta-Review — "wackliges Datenfundament
-    fester verankern", Priorität 1).** Auslöser: über die Session verteilt
-    schwankten Beta-Werte für dieselbe Aktie zwischen 0,3 und 2,7 je nach
-    zufällig gezogener Quelle, und Op.-Margin/Capex-Werte enthielten
-    unbemerkt Non-GAAP- bzw. M&A-verzerrte Zahlen (siehe Punkt 29, NVO-Fall).
-    **Ab sofort Pflicht bei Full Deep Dive:** für die 4-5 am häufigsten
-    strittigen Kennzahlen (Beta, Op.-Margin, Bruttomarge, ROIC, Capex/Umsatz)
-    gilt die feste Primärquellen-Definition aus dem
-    KENNZAHLEN-PRIMÄRQUELLEN-STANDARD in jack-moat-reaper-v11.7.md bzw.
-    conan-the-scout-v1.12.md (z.B. Beta immer Yahoo Finance 5Y-monatlich,
-    Op.-Margin immer GAAP TTM) — nicht mehr die erste gefundene
-    Aggregator-Zahl. SEC-Filing/IR geht bei Widerspruch vor Aggregator.
-    Diese Definition steht direkt in der an Jack/Conan gesendeten
-    Methodik-Datei (wirkt also am Ort der Entstehung), Jarvis prüft beim
-    Report-Bau zusätzlich stichprobenhaft gegen, ob der gelieferte Wert zur
-    festgelegten Quelle/Definition passt, bevor er in die DNA-Check-Tabelle
-    übernommen wird.
 31. **Health-Check vor jedem größeren Bridge-Dispatch (neu, 2026-09-09,
     Priorität 2 aus dem Meta-Review).** Auslöser: der Conan/ChatGPT-Bridge-
     Totalausfall nach der RMBS-Schnellanalyse wurde erst nach mehreren
@@ -5533,16 +5535,36 @@ Check oder das Wochenfazit, sondern eine schnelle Zwischen-Absicherung:
    vorbehalten, ein stündlicher Vollmarkt-Scan wäre nicht finanzierbar.
 2. Nur bei einem wirklich akuten Treffer (nicht bei gewöhnlicher Tages-
    volatilität ohne klaren Auslöser): sofortige, kurze Chat-Nachricht + Push/
-   E-Mail. Ist Brians Chrome-Browser in diesem Moment zufällig verbunden
-   (z.B. weil der Rechner nur gesperrt, nicht ausgeschaltet ist), wird direkt
-   der volle 3-fach-Cross-Check versucht wie im 19-Uhr-Trigger; ist der
-   Browser nicht verbunden, liefert der Blitz-Scan eine klar markierte
-   vorläufige Jarvis-Only-Einschätzung mit dem Hinweis "volle 3-fach-
-   Bestätigung folgt automatisch beim nächsten Blitz-Scan mit Browser-Zugriff
-   oder spätestens beim 19-Uhr-Check" – der reguläre 19-Uhr-Trigger deckt
-   dasselbe Ereignis über seinen eigenen 24-48h-Scan ohnehin erneut ab, ein
-   gesonderter Warteschlangen-Eintrag ist dafür nicht nötig (anders als beim
-   täglichen Kandidaten-Scan, wo neue Kandidaten sonst verlorengingen).
+   E-Mail. **Gedrosselter Cross-Check-Einsatz (2026-09-09, Over-Engineering-
+   Kürzung 3 aus dem Playbook-Meta-Review – ersetzt die veraltete
+   "Browser verbunden?"-Unterscheidung unten, die noch aus der Zeit vor der
+   API-Bridge-Umstellung vom 2026-09-02 stammt):** ob der volle 3-fach-
+   Cross-Check SOFORT läuft, hängt jetzt vom Auslöser-Typ ab, nicht mehr von
+   Zufälligkeiten der Erreichbarkeit. **Harter Auslöser** (Fraud-Vorwurf,
+   Delisting, Management-Rücktritt, Going-Concern-Signal, M&A-Meldung, ein
+   gerissenes Abstauber-/Stop-These-Limit – Fälle mit sofort fälliger
+   Handlungsentscheidung): voller 3-fach-Cross-Check sofort, wie bisher.
+   **Reiner Kurssprung/Earnings-Überraschung/Guidance-Änderung ohne eines
+   der obigen harten Kriterien:** NUR eine kurze Jarvis-Only-Einschätzung
+   sofort (WebSearch, kein Bridge-Aufruf), der volle Cross-Check läuft
+   bewusst erst regulär beim nächsten 19-Uhr/21-Uhr-Trigger-Check nach –
+   Begründung: das Depot ist explizit langfristig angelegt (10-12% p.a. über
+   5-7 Jahre, siehe Abschnitt 1), ein reiner Kurssprung ohne strukturelles
+   Ereignis rechtfertigt keinen sofortigen ~130-KB-Doppel-Bridge-Aufruf
+   binnen der Stunde, wenn eine fundierte Einschätzung ohnehin binnen des
+   Tages folgt. Reagiert die Bridge bei einem harten Auslöser NICHT (statt
+   der alten "Browser nicht verbunden"-Formulierung, seit der API-Bridge-
+   Umstellung): liefert der Blitz-Scan eine klar markierte vorläufige
+   Jarvis-Only-Einschätzung mit dem Hinweis "volle 3-fach-Bestätigung folgt
+   automatisch beim nächsten Blitz-Scan mit Bridge-Zugriff oder spätestens
+   beim 19-Uhr-Check" – der reguläre 19-Uhr-Trigger deckt dasselbe Ereignis
+   über seinen eigenen 24-48h-Scan ohnehin erneut ab, ein gesonderter
+   Warteschlangen-Eintrag ist dafür nicht nötig (anders als beim täglichen
+   Kandidaten-Scan, wo neue Kandidaten sonst verlorengingen). **On-Demand-
+   Trigger (Watchlist-Zusatz/E-Mail-Anfrage, siehe unten) sind von dieser
+   Drosselung ausgenommen** – dort hat Brian explizit eine Analyse
+   angefordert, kein passiver Marktmove ausgelöst, der volle Cross-Check
+   läuft dort immer sofort.
 3. Ohne akuten Treffer: keine Nachricht, keine PDF, kein Log – bewusst
    still, damit an ruhigen Stunden keine unnötigen Benachrichtigungen
    entstehen (gleiches Prinzip wie beim täglichen Trigger-Check).
