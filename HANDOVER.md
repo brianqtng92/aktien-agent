@@ -147,6 +147,12 @@ aber gleich):
 | 12 | (Strukturelle Ergänzungen) | 4 implementierte strukturelle Lücken-Schließungen |
 | 13 | Cross-KI-Diskussion (4 Unterabschnitte) | Vincorion-Fall, IPO-Overhang-Check-Modul, N/V-wegen-kurzer-Handelshistorie-Konfidenzkategorie, No-False-Precision-Regel |
 
+**Hinweis (2026-09-08):** Abschnitte 9-13 stehen inzwischen in einer
+eigenen Datei `Agent-Playbook-Archiv-Diskussionen.md` (ausgelagert zur
+Verschlankung von `Agent-Playbook.md`), Nummerierung dort unverändert
+übernommen. Abschnitt 14 (Core-vs-Advisory-Rules-Trennung, nicht in dieser
+Tabelle) bleibt in `Agent-Playbook.md` selbst.
+
 **Praktischer Tipp für neue Agenten:** Die Datei ist zu groß für einen
 einzelnen `Read`-Aufruf. Nutze `grep -n "^#\{1,4\} "` für die Section-Köpfe,
 dann gezielt mit `offset`/`limit` lesen, oder bei Bedarf mehrere
