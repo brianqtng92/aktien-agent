@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Agent Deep Dive – NVO</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FFFFFF;
+    --bg-panel: #F7F6F2;
+    --bg-panel-2: #EFEDE6;
+    --border: #D9D4C8;
+    --border-soft: #E6E2D9;
+    --text: #262420;
+    --text-dim: #5C564A;
+    --text-faint: #837C6C;
+    --gold: #9C7A2E;
+    --gold-bright: #8A6A22;
+    --gold-dim: #C9AD6E;
+    --green: #3F7D44;
+    --green-bg: rgba(63,125,68,0.10);
+    --yellow: #A6790A;
+    --yellow-bg: rgba(166,121,10,0.10);
+    --red: #B03A2E;
+    --red-bg: rgba(176,58,46,0.09);
+    --blue: #2E6690;
+    --blue-bg: rgba(46,102,144,0.09);
+    --orange: #AB591C;
+    --orange-bg: rgba(171,89,28,0.09);
+  }
+
+  html, body {
+    width: 210mm;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Carlito", "DejaVu Sans", Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.36;
+  }
+  .display { font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif; font-weight: 700; font-stretch: condensed; }
+  .page { width: 210mm; height: 297mm; padding: 8mm 12mm 5mm 12mm; display: flex; flex-direction: column; gap: 2mm; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 2.6mm; }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 23pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 9.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag { font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim); border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm; display: inline-block; width: fit-content; }
+  .meta-block { text-align: right; font-size: 9.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 10.6pt; }
+
+  .position-header { display: flex; justify-content: space-between; align-items: center; background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold); border-radius: 3px; padding: 2.6mm 4mm; }
+  .position-name .ticker { font-size: 17pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 10pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 5mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 8.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); white-space: nowrap; }
+  .stat .value { font-size: 12pt; color: var(--text); margin-top: 0.4mm; white-space: nowrap; }
+
+  .hook-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 3.4mm 4.2mm; }
+  .hook-title { font-size: 16pt; line-height: 1.28; color: var(--text); font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .hook-title .accent { color: var(--gold-bright); }
+  .hook-title .accent-red { color: var(--red); }
+  .hook-sub { font-size: 9.6pt; color: var(--text-dim); line-height: 1.4; margin-top: 1.8mm; }
+
+  .narrative-box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 3mm 4mm; flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .narrative-box p { font-size: 9.4pt; color: var(--text-dim); line-height: 1.46; }
+  .narrative-box p b { color: var(--text); }
+  .narrative-box p .lead { color: var(--gold-bright); font-weight: bold; }
+
+  .section-label { font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0; }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
+  .box h3 { font-size: 9.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .box p { font-size: 9.1pt; color: var(--text-dim); line-height: 1.32; overflow-wrap: break-word; }
+  .box p b { color: var(--text); }
+
+  .verify-table, .compare-table, .scenario-table, .score-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .verify-table th, .verify-table td, .compare-table th, .compare-table td, .scenario-table th, .scenario-table td, .score-table th, .score-table td { font-size: 8.5pt; padding: 0.9mm 1.4mm; text-align: left; border-bottom: 1px solid var(--border-soft); }
+  .verify-table th, .compare-table th, .scenario-table th, .score-table th { color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; font-weight: normal; font-size: 7.9pt; }
+  .verify-table td, .compare-table td, .score-table td { color: var(--text); }
+  .scenario-table th, .scenario-table td { text-align: right; }
+  .scenario-table th:first-child, .scenario-table td:first-child { text-align: left; color: var(--text-dim); }
+  .scenario-table td.pos { color: var(--green); }
+  .scenario-table td.neg { color: var(--red); }
+
+  .two-col { display: flex; gap: 3mm; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+
+  .chart-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 74mm; flex: 0 0 auto; }
+  .chart-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; border-radius: 2px; }
+  .bbb-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 60mm; flex: 0 0 auto; }
+  .bbb-frame img { max-width: 100%; max-height: 100%; }
+
+  .divergence-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--orange); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .divergence-box h3 { color: var(--orange); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.4mm; }
+  .divergence-box p { font-size: 9.2pt; color: var(--text); line-height: 1.42; }
+
+  .integrity-box { background: var(--blue-bg); border: 1px solid var(--blue); border-radius: 3px; padding: 2.6mm 3.6mm; }
+  .integrity-box h3 { color: var(--blue); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
+  .integrity-box p { font-size: 9pt; color: var(--text); line-height: 1.4; }
+
+  .trigger-row { display: flex; gap: 3mm; }
+  .trigger-box { flex: 1; border-radius: 3px; padding: 2.4mm 3.4mm; }
+  .trigger-box.bull { background: var(--green-bg); border: 1px solid var(--green); }
+  .trigger-box.bear { background: var(--red-bg); border: 1px solid var(--red); }
+  .trigger-box h3 { font-size: 9.4pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2mm; }
+  .trigger-box.bull h3 { color: var(--green); }
+  .trigger-box.bear h3 { color: var(--red); }
+  .trigger-box ul { list-style: none; }
+  .trigger-box li { font-size: 8.8pt; color: var(--text); padding: 0.6mm 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .trigger-box li:last-child { border-bottom: none; }
+
+  .killsheet-box { background: var(--gold-dim); background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .killsheet-box h3 { color: var(--gold-bright); font-size: 10.4pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.6mm; }
+  .catalyst-item { display: flex; gap: 3mm; padding: 1.3mm 0; border-bottom: 1px solid var(--border-soft); align-items: flex-start; }
+  .catalyst-item:last-child { border-bottom: none; }
+  .catalyst-date { flex: 0 0 auto; width: 30mm; font-size: 8.8pt; color: var(--gold-bright); font-weight: bold; }
+  .catalyst-desc { flex: 1; font-size: 8.8pt; color: var(--text-dim); line-height: 1.32; }
+  .catalyst-desc b { color: var(--text); }
+
+  .warn-strip { background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.7mm 3mm; font-size: 8.7pt; color: var(--yellow); margin-top: 1mm; }
+  .warn-strip b { color: var(--text); }
+
+  .fazit { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 2.8mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0; }
+  .fazit-verdict { flex: 0 0 auto; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 13pt; color: var(--yellow); letter-spacing: 0.02em; }
+  .fazit-verdict .sub { font-size: 8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.6mm; }
+  .fazit-grid { flex: 1; display: flex; justify-content: space-between; }
+  .fazit-item { text-align: center; }
+  .fazit-item .label { font-size: 8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .fazit-item .value { font-size: 10.6pt; color: var(--text); margin-top: 0.5mm; }
+
+  .sources-list { font-size: 8.8pt; color: var(--text-dim); line-height: 1.5; }
+  .sources-list .n { color: var(--gold); margin-right: 1.5mm; }
+
+  .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 1.5mm; font-size: 8.1pt; color: var(--text-faint); flex-shrink: 0; }
+  .footer .gold-dot { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hook -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">3-fach TMR-Cross-Check · Jarvis (Aegis) · Jack · Conan</div>
+      <div class="edition-tag">Watchlist-Kandidat · Neuaufnahme · Full Deep Dive</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">8. September 2026</div>
+      <div>TMR-Pfad (Bucket A/C) · Modus A</div>
+      <div>DCF Python-verifiziert · 2-Runden-Cross-Check</div>
+    </div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-title">💉 NVO — vom unangefochtenen GLP-1-König zum <span class="accent-red">-69%-Fallen-Giant</span>: drei Studien-Fehlschläge, ein Marktführerwechsel, und ein Katalysator in zwei Wochen</div>
+    <div class="hook-sub">Novo Nordisk A/S (NYSE: NVO) · Kurs $45,24 (08.09.2026, -2,9%) · 52W-Range $35,12–$64,16 · ATH (Jun. 2024) $148,15 · Marktkap. ~$200 Mrd. · Sektor Big Pharma (GLP-1/Diabetes/Adipositas) · Watchlist-relevant: Neukandidat, kein Depot-Wert</div>
+  </div>
+
+  <div class="section-label">Die Geschichte eines beispiellosen Absturzes</div>
+  <div class="narrative-box">
+    <p><span class="lead">Der Aufstieg.</span> Novo Nordisk war bis Mitte 2024 das wertvollste Unternehmen Europas — Marktkapitalisierung am Allzeithoch (Juni 2024) rund $635,7 Mrd., getragen von Ozempic und Wegovy, den beiden dominanten GLP-1-Präparaten gegen Diabetes und Adipositas. Zusammen mit Eli Lilly bildete Novo ein faktisches Duopol im margenstärksten Pharma-Wachstumssegment der letzten Dekade.</p>
+    <p><span class="lead">Der Fall.</span> Seit dem ATH hat die Aktie ~69% ihres Wertes verloren — eine Kette von fünf separaten negativen Ereignissen binnen 18 Monaten: zwei enttäuschende CagriSema-Studien (März 2025, Februar 2026 — letztere verfehlte sogar die Nicht-Unterlegenheit gegenüber Lillys Tirzepatide), ein Guidance-Cut samt Sammelklagen wegen mutmaßlich beschönigter Compounding-Risiken (Juli 2025), ein CEO-Rücktritt (August 2025), und zuletzt ein gescheiterter Herz-/Nieren-Wirkstoff (Ziltivekimab, Juli 2026) — der die Diversifikations-Hoffnung jenseits von GLP-1 dämpft.</p>
+    <p><span class="lead">Die Gegenbewegung.</span> Parallel dazu läuft eine dokumentierte, dreistufige Beat-and-Raise-Sequenz unter dem neuen CEO Mike Doustdar: die 2026er-Guidance wurde von ursprünglich -5% bis -13% (CER) über -4% bis -12% auf zuletzt 0% bis -6% angehoben — Q2 2026 übertraf den Analysten-Konsens deutlich. Das ist kein sterbendes Unternehmen, sondern ein Konzern im Reset.</p>
+    <p><span class="lead">Der Cross-Check-Befund.</span> Jack (TMR) und Conan (Scout) kommen — trotz identischer Zusatzdaten in Runde 2 — zu spürbar unterschiedlichen Schlussfolgerungen (Details Seite 2). Das ist selbst der bemerkenswerteste Fund dieses Deep Dives: eine echte, unaufgelöste Meinungsverschiedenheit zwischen zwei unabhängigen Methoden, kein künstlicher Konsens.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/NVO-fulldeepdive-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/8</div>
+  </div>
+</div>
+
+<!-- PAGE 2: 3-Stimmen-Leiste + Divergenz -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">3-Stimmen-Leiste · Die Divergenz</div>
+    </div>
+    <div class="meta-block"><div class="date">8. September 2026 — Seite 2</div><div>NVO Novo Nordisk A/S</div></div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">NVO <span style="color:var(--text-dim); font-size:9.5pt;">· NYSE</span></div>
+      <div class="company">Novo Nordisk A/S — Diabetes-/Adipositas-Pharma (GLP-1-Duopol mit Eli Lilly)</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs (08.09.)</div><div class="value">$45,24</div></div>
+      <div class="stat"><div class="label">Vom ATH</div><div class="value">-69%</div></div>
+      <div class="stat"><div class="label">Marktkap.</div><div class="value" style="color:var(--text);">~$200 Mrd.</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">3-Stimmen-Leiste (nach Runde 2)</div>
+  <div style="display:flex; gap:2.4mm;">
+    <div class="box" style="flex:1;">
+      <h3>Jarvis · Claude (Synthese/Aegis)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">BEOBACHTEN</p>
+      <p style="font-size:8.4pt;">Kein Kauf am aktuellen Kurs · CMD 21.09. als Schlüssel-Trigger · Zone $35-38</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>Jack · Gemini (TMR)</h3>
+      <p style="font-size:12pt; color:var(--red);">SELL (Runde 2)</p>
+      <p style="font-size:8.4pt;">Score 6→3/10 nach Margen-Fund · Konfidenz Hoch</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>Conan · ChatGPT (Scout)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">WATCHLIST_PLUS</p>
+      <p style="font-size:8.4pt;">Leicht konstruktiver trotz gleicher Daten · Zone $35-38</p>
+    </div>
+  </div>
+
+  <div class="section-label">Die zentrale Divergenz — derselbe Fund, zwei entgegengesetzte Reaktionen</div>
+  <div class="divergence-box">
+    <h3>⚠ Jack (SELL, 3/10) vs. Conan (WATCHLIST_PLUS) — auf Basis IDENTISCHER Zusatzdaten</h3>
+    <p>Beiden KIs wurde in Runde 2 derselbe Fund vorgelegt: Novos Bruttomarge ist nicht stabil bei ~83%, sondern erosiv — FY2025 nur noch 81,0%, Q2-2026-adjusted sogar nur 78,2% (von 82,7% im Vorjahresquartal). <b>Jack wertete das als "Game-Changer"</b> und stufte sein Rating von HOLD (6/10) auf SELL (3/10) herab. <b>Conan wertete denselben Fund als bereits bekanntes, teilweise erklärbares Risiko</b> (Preisdruck, Einmalkosten für Kapazitäts-Right-Sizing, FX) und blieb bei WATCHLIST, sogar mit leicht positiverer Tendenz wegen der verifizierten Guidance-Erholung. Keine der beiden Reaktionen ist "falsch" — sie spiegeln unterschiedliche Methodik-Philosophien: Jack reagiert hart auf harte Finanzkennzahlen-Verschlechterungen (SCHRITT-4-Pflicht), Conan gewichtet den Gesamttrend (Guidance-Erholung, Kapitalrückführung, Katalysator-Nähe) stärker. Aegis' eigene Einordnung: der Fund ist real und ernst zu nehmen, aber teilweise durch nicht-strukturelle Einmaleffekte erklärt — Jacks Reaktion ist ein legitimes, hartes Warnsignal, aber der Capital Markets Day am 21.09. (in 2 Wochen) sollte abgewartet werden, bevor man sich hier definitiv festlegt.</p>
+  </div>
+
+  <div class="section-label">Jacks DNA-Gatekeeper (K-BASIS 5, Standard — kein Sektor-Override gewählt)</div>
+  <div class="box">
+    <p>Jack bewertete NVO mit Standard-K-BASIS=5 und vergab am Ende einen Agent Score von 6/10 (Runde 1, HOLD) bzw. 3/10 (Runde 2, SELL, nach Einpreisung der Margen-Erosion). Eigener Text-DCF (Runde 1, konservativerer Wachstumspfad als Aegis): Fair Value <b>$30,39</b> (-32,8% vs. Kurs) — noch VOR der Margen-Korrektur, würde mit erosiver Marge weiter sinken. Moat-Einschätzung: stark, aber "von Dominanz-Moat zu umkämpftem Qualitäts-Moat" (Formulierung, die Conan unabhängig fast wortgleich verwendete — starkes Konvergenz-Signal für DIESEN Punkt, auch wenn das Rating selbst divergiert).</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/NVO-fulldeepdive-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/8</div>
+  </div>
+</div>
+
+<!-- PAGE 3: 5J-Historie + Guidance-Track-Record -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">5-Jahres-Historie · Guidance-Track-Record</div>
+    </div>
+    <div class="meta-block"><div class="date">8. September 2026 — Seite 3</div><div>NVO Novo Nordisk A/S</div></div>
+  </div>
+
+  <div class="section-label">Umsatzhistorie 2021-2025 (DKK Mio., offiziell)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Jahr</th><th>Umsatz (DKK Mio.)</th><th>YoY-Wachstum</th><th>Kommentar</th></tr>
+      <tr><td>2021</td><td>140.800</td><td>—</td><td>Basisjahr</td></tr>
+      <tr><td>2022</td><td>176.954</td><td>+25,7%</td><td>Beginn GLP-1-Supercycle</td></tr>
+      <tr><td>2023</td><td>232.261</td><td>+31,3%</td><td>Wegovy-Hochlauf</td></tr>
+      <tr><td>2024</td><td>290.403</td><td>+25,0%</td><td>Höhepunkt, Kurs erreicht ATH Juni 2024</td></tr>
+      <tr><td>2025</td><td>309.064</td><td>+6,4%</td><td>Deutliche Verlangsamung — erste Krisensignale</td></tr>
+    </table>
+    <p style="margin-top:1.4mm;">5J-CAGR (2021→2025): <b>~21,7% p.a.</b> — extrem hohes historisches Wachstum. 2026er-Guidance impliziert erstmals einen möglichen NOMINALEN Rückgang (0% bis -6% CER) — ein historisch beispielloser Bruch in der Wachstumstrajektorie für dieses Unternehmen.</p>
+  </div>
+
+  <div class="section-label">Guidance-Track-Record 2026 — 3 Revisionen in 8 Monaten</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Datum</th><th>Guidance (Sales & Op.Profit, CER)</th><th>Richtung</th></tr>
+      <tr><td>03.02.2026 (Initial, mit FY2025-Zahlen)</td><td>-5% bis -13%</td><td>🔴 Erste Krisen-Guidance</td></tr>
+      <tr><td>06.05.2026 (Q1-Update)</td><td>-4% bis -12%</td><td>🟡 Leichte Anhebung</td></tr>
+      <tr><td>04.08.2026 (Q2-Update)</td><td>0% bis -6%</td><td>🟢 Deutliche Anhebung</td></tr>
+    </table>
+    <p style="margin-top:1.4mm;">Diese dokumentierte "Beat-and-Raise-aus-der-Krise"-Sequenz ist ein objektiv positives Managementglaubwürdigkeits-Signal für die aktuelle Führung unter CEO Doustdar (seit 07.08.2025) — auch wenn die ursprüngliche Kürzung (Juli 2025) noch unter dem Vorgänger Jørgensen erfolgte und Gegenstand laufender Sammelklagen ist (Details Seite 4).</p>
+  </div>
+
+  <div class="section-label">Management-Glaubwürdigkeits-Matrix (statt einzelnem Management-Score)</div>
+  <div class="box">
+    <table class="score-table">
+      <tr><th>Dimension</th><th>Befund</th><th>Einordnung</th></tr>
+      <tr><td>Guidance-Treffsicherheit</td><td>Scharfe Kürzung Juli 2025 (alter CEO), dann 2 Anhebungen 2026 (neuer CEO)</td><td>🟡 Trend verbessernd</td></tr>
+      <tr><td>Aktionärsrückgabe-Konsistenz</td><td>Dividende wachsend (9,40→11,40→11,70 DKK 2023-25), Buyback trotz Krise fortgesetzt (58% des 2026er-Programms bereits ausgeführt)</td><td>🟢 Stark, auch in der Krise</td></tr>
+      <tr><td>Transparenz</td><td>Jeder Studien-Fehlschlag (CagriSema x2, Ziltivekimab) am selben Tag kommuniziert, keine verzögerte Offenlegung erkennbar</td><td>🟢 Hoch</td></tr>
+      <tr><td>Selbstreflexion/Konsequenz</td><td>Board zog Konsequenz (CEO-Austausch), aber Sammelklagen werfen Frage nach vorherigem Beschönigen auf (unbewiesen)</td><td>🟡 Konsequent, aber unter rechtlicher Prüfung</td></tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/NVO-fulldeepdive-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/8</div>
+  </div>
+</div>
+
+<!-- PAGE 4: Moat/Wettbewerb/Konzentration -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Moat-Erosion · Wettbewerb Lilly · Produktkonzentration</div>
+    </div>
+    <div class="meta-block"><div class="date">8. September 2026 — Seite 4</div><div>NVO Novo Nordisk A/S</div></div>
+  </div>
+
+  <div class="section-label">Peer-Vergleich: Eli Lilly (einziger direkt vergleichbarer Duopol-Partner)</div>
+  <div class="box">
+    <table class="compare-table">
+      <tr><th>Kennzahl</th><th>Novo Nordisk (NVO)</th><th>Eli Lilly (LLY)</th></tr>
+      <tr><td>Forward KGV</td><td>~11-13x</td><td>~30-32x</td></tr>
+      <tr><td>Bruttomarge (Q2 2026)</td><td>78,2% (adjusted, erosiv von 82,7%)</td><td>85,8% (reported) / 86,3% (non-GAAP)</td></tr>
+      <tr><td>Marktkap.</td><td>~$200 Mrd.</td><td>~$1,00-1,08 Bio. (~5,0x Novo)</td></tr>
+      <tr><td>2026-Umsatzguidance-Trend</td><td>Angehoben, aber noch 0% bis -6%</td><td>Angehoben auf $85-87 Mrd. (Wachstum)</td></tr>
+      <tr><td>GLP-1-Marktführerschaft</td><td>Verloren (ex-US, Mai 2026)</td><td>Gewonnen</td></tr>
+    </table>
+    <p style="margin-top:1.4mm;">⚠ <b>Anders als bei CLBT/MSAB ist dies KEINE Bewertungsanomalie</b>: Lilly ist nicht nur teurer bewertet, sondern hat aktuell auch die höhere Marge UND das höhere Wachstum UND das bessere Guidance-Momentum. Die Prämie spiegelt echte, aktuelle operative Überlegenheit wider — die Frage ist, ob 13x vs. 30x diesen Unterschied fair oder übertrieben abbildet.</p>
+  </div>
+
+  <div class="section-label">Eigene historische Bewertungs-Bandbreite (statt nur Peer-Vergleich)</div>
+  <div class="box">
+    <table class="scenario-table">
+      <tr><th>Zeitraum</th><th>Forward-KGV</th></tr>
+      <tr><td>2021</td><td>33,7x</td></tr>
+      <tr><td>2022</td><td>38,8x</td></tr>
+      <tr><td>2023</td><td>37,5x</td></tr>
+      <tr><td>2024 (Jahresende)</td><td>26,1x</td></tr>
+      <tr><td>2024 (Intraday-Hoch Q2)</td><td>49,33x</td></tr>
+      <tr><td>10-Jahres-Durchschnitt</td><td>25,71x</td></tr>
+      <tr><td>Aktuell (Sept. 2026)</td><td class="neg">~11-13x</td></tr>
+    </table>
+    <p style="margin-top:1.4mm;">Aktuelles KGV liegt bei weniger als der Hälfte des 10-Jahres-Schnitts — ein dramatischerer historischer Abschlag als bei CLBT/ATEN/LGND. Conans Einordnung dazu: <i>"Der historische Durchschnitt ist jetzt eher ein verdientes Ziel-Multiple, kein automatisches Fair-Value-Ankermaß mehr — NVO darf wieder 24-28x verdienen, muss es aber neu beweisen."</i></p>
+  </div>
+
+  <div class="section-label">Produktkonzentration — direkt aus Segmentberichterstattung, kein Recherche-Zwischenschritt nötig</div>
+  <div class="box">
+    <p>Ozempic (DKK 127.089 Mio.) + Wegovy (DKK 79.106 Mio.) = <b>DKK 206.195 Mio. von DKK 309.064 Mio. Gesamtumsatz 2025 = 66,7%</b> des Konzernumsatzes aus einem einzigen Wirkstoff (Semaglutide) über zwei Marken — mit Rybelsus (ebenfalls Semaglutide) sogar noch höher. Für ein Unternehmen dieser Größe ein außergewöhnlich hohes Klumpenrisiko in einem einzigen Molekül.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/NVO-fulldeepdive-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 4/8</div>
+  </div>
+</div>
+
+<!-- PAGE 5: DCF -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Aegis-DCF (Python) · Bruttomargen-Erosion</div>
+    </div>
+    <div class="meta-block"><div class="date">8. September 2026 — Seite 5</div><div>NVO Novo Nordisk A/S</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="section-label">DCF-Szenarien</div>
+      <div class="bbb-frame"><img src="NVO-bearbasebull-2026-09-08.png" alt="Bear/Base/Bull DCF"></div>
+      <div class="box">
+        <p>WACC 8,70% (Rf 4,1% + Beta 1,00 × ERP 4,6%). Reverse-DCF (konstantes 5J-Wachstum + 3% Terminal-g): <b>+9,60% p.a.</b> — liegt zwischen Base-Durchschnitt (5,0%) und Bull-Durchschnitt (7,6%), plausibel bei vollständiger Erholung. Anders als bei LGND/CLBT ist dies KEIN Extremwert über allen Szenarien — eine ehrliche Bewertungsfrage, kein eindeutiges Alarmsignal.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="section-label">Bruttomargen-Erosion (Rigor-Punkt 23)</div>
+      <div class="bbb-frame"><img src="NVO-margin-trend-2026-09-08.png" alt="Bruttomargen-Trend"></div>
+      <div class="integrity-box">
+        <h3>⚠ Datenintegritäts-Korrektur (Runde 2)</h3>
+        <p>Ursprünglicher Fact-Pack-Wert "Bruttomarge ~83,2%" war ein STATISCHER Snapshot, keine Trendaussage. Conans Live-Recherche in Runde 2 deckte auf: FY2025 nur 81,0% (von 84,7%), Q2 2026 adjusted nur 78,2% (von 82,7% Vorjahr). Gründe laut Unternehmen: niedrigere realisierte Preise, ~DKK 3 Mrd. Einmalkosten Kapazitäts-Right-Sizing, FX. Mix aus strukturellen (Preisdruck) und einmaligen (Rightsizing) Faktoren — Capital Markets Day am 21.09. sollte eine Bruttomargen-Brücke liefern.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">DCF-Szenario-Tabelle</div>
+  <div class="box">
+    <table class="scenario-table">
+      <tr><th>Szenario</th><th>Fair Value</th><th>Δ vs. Kurs</th></tr>
+      <tr><td>Bear</td><td>$23,71</td><td class="neg">-47,6%</td></tr>
+      <tr><td>Base</td><td>$36,34</td><td class="neg">-19,7%</td></tr>
+      <tr><td>Bull</td><td>$44,54</td><td class="neg">-1,5% (selbst Bull knapp unter Kurs)</td></tr>
+    </table>
+    <p style="margin-top:1.4mm; font-size:8.3pt; color:var(--text-faint);">⚠ Diese DCF wurde VOR der Bruttomargen-Korrektur aus Runde 2 gerechnet — mit der erosiven Marge eingepreist läge der faire Wert in allen drei Szenarien tendenziell niedriger. Jacks eigener Text-DCF (Runde 1, konservativer) kam bereits vorher auf $30,39.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/NVO-fulldeepdive-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/8</div>
+  </div>
+</div>
+
+<!-- PAGE 6: Kill-Sheet + Chart -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">🔪 Thesis-Kill-Sheet · Kursverlauf</div>
+    </div>
+    <div class="meta-block"><div class="date">8. September 2026 — Seite 6</div><div>NVO Novo Nordisk A/S</div></div>
+  </div>
+
+  <div class="section-label">🔪 Thesis-Kill-Sheet (konsolidiert, Rigor-Standard Punkt 26)</div>
+  <div class="killsheet-box">
+    <h3>Nächste Prüfpunkte, in dieser Reihenfolge</h3>
+    <div class="catalyst-item"><div class="catalyst-date">21.09.2026</div><div class="catalyst-desc"><b>Capital Markets Day, London</b> — wichtigster kurzfristiger Katalysator (in ~2 Wochen). Muss laut Conan liefern: glaubwürdige 2027-2030-Wachstumsziele, Bruttomargen-Brücke zurück Richtung &gt;80%, konkrete US-Preis-/Access-Strategie, Wegovy-Pille-Ökonomie, CagriSema-Positionierung, Zenagamtide-Roadmap.</div></div>
+    <div class="catalyst-item"><div class="catalyst-date">Ende 2026</div><div class="catalyst-desc"><b>CagriSema-FDA-Entscheidung</b> (NDA eingereicht 18.12.2025, Standard-Review 10-12 Monate, kein bestätigtes PDUFA-Datum).</div></div>
+    <div class="catalyst-item"><div class="catalyst-date">04.11.2026</div><div class="catalyst-desc"><b>Q3-2026-Zahlen</b> (von Novo bestätigtes Datum) — nächster Test der Beat-and-Raise-Sequenz.</div></div>
+    <div class="catalyst-item"><div class="catalyst-date">Laufend</div><div class="catalyst-desc"><b>Eli-Lilly-Wettbewerbsdynamik</b> — Marktanteilsverschiebungen ex-US, insbesondere US-Commercial-Channel.</div></div>
+  </div>
+
+  <div class="trigger-row">
+    <div class="trigger-box bull">
+      <h3>📈 Aufstufungs-Trigger</h3>
+      <ul>
+        <li>1. CMD liefert konkrete, glaubwürdige 2027-2030-Ziele</li>
+        <li>2. Bruttomargen-Brücke zurück Richtung &gt;80% überzeugend dargelegt</li>
+        <li>3. CagriSema erhält Zulassung mit klarer Positionierung</li>
+        <li>4. Marktanteilsverlust gegenüber Lilly stabilisiert sich</li>
+      </ul>
+    </div>
+    <div class="trigger-box bear">
+      <h3>📉 Abstufungs-Trigger</h3>
+      <ul>
+        <li>1. CMD liefert nur Storytelling ohne harte Ziele</li>
+        <li>2. Weitere Bruttomargen-Verschlechterung unter aktuelle 78,2%</li>
+        <li>3. CagriSema-Verzögerung oder schwaches Label</li>
+        <li>4. Lilly baut Vorsprung weiter aus (US-Channel)</li>
+      </ul>
+      <p style="font-size:8.2pt; color:var(--text-dim); margin-top:1.2mm;">Bevorzugte Einstiegszone (beide KIs unabhängig ähnlich): $35-38. Vorsicht über $48-50 ohne neue positive Daten.</p>
+    </div>
+  </div>
+
+  <div class="section-label">Kursverlauf 12 Monate (EMA20/50, RSI, MACD)</div>
+  <div class="chart-frame"><img src="NVO-chart-2026-09-08.png" alt="NVO Kursverlauf"></div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/NVO-fulldeepdive-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/8</div>
+  </div>
+</div>
+
+<!-- PAGE 7: Kapitalrueckfuehrung + Risiken -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Kapitalrückführung · Offene Schwächen</div>
+    </div>
+    <div class="meta-block"><div class="date">8. September 2026 — Seite 7</div><div>NVO Novo Nordisk A/S</div></div>
+  </div>
+
+  <div class="section-label">Kapitalrückführungs-Historie</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Jahr</th><th>Dividende/Aktie (DKK)</th><th>Buyback (DKK Mio.)</th></tr>
+      <tr><td>2023</td><td>9,40</td><td>—</td></tr>
+      <tr><td>2024</td><td>11,40 (+21,3%)</td><td>20.181</td></tr>
+      <tr><td>2025</td><td>11,70 (+2,6%)</td><td>1.388 (starke Drosselung)</td></tr>
+      <tr><td>2026 (bis 28.08.)</td><td>3,75 (Interim)</td><td>8.708 von max. 15.000 (58% des Programms)</td></tr>
+    </table>
+    <p style="margin-top:1.4mm;">Dividende wächst weiter durch die Krise, wenn auch verlangsamt. Buyback wurde 2025 drastisch gedrosselt (DKK 20,2 Mrd. → 1,4 Mrd.), 2026 aber wieder aktiv fortgesetzt — kein vollständiger Kapitalrückführungs-Stopp, aber sichtbare Vorsicht während der akuten Krisenphase.</p>
+  </div>
+
+  <div class="section-label">Offene Schwächen (eigenständig, gleichrangig zu den Stärken)</div>
+  <div class="box">
+    <p><b>1. Bruttomargen-Erosion ungeklärter Dauerhaftigkeit.</b> Mix aus strukturellem Preisdruck und Einmaleffekten — CMD muss Klarheit liefern.</p>
+    <p style="margin-top:1mm;"><b>2. Zwei aufeinanderfolgende Pipeline-Enttäuschungen (CagriSema) plus ein dritter Fehlschlag (Ziltivekimab)</b> außerhalb des Kern-Segments — R&D-Produktivität in Frage gestellt.</p>
+    <p style="margin-top:1mm;"><b>3. Kategorie-Führerschaft an Lilly verloren</b> (ex-US, Mai 2026) — nicht nur Bewertungs-, sondern operative Realität.</p>
+    <p style="margin-top:1mm;"><b>4. Sammelklagen wegen mutmaßlich beschönigter Compounding-Risiken</b> — unbewiesen, aber laufendes Rechts-/Reputationsrisiko.</p>
+    <p style="margin-top:1mm;"><b>5. Extreme Ein-Wirkstoff-Konzentration (66,7%)</b> — strukturelles Klumpenrisiko unabhängig vom aktuellen Krisenzustand.</p>
+  </div>
+
+  <div class="warn-strip"><b>Datenintegritäts-Hinweis Beta/ROIC/ROE:</b> Alle drei Kennzahlen zeigten in dieser Recherche erhebliche Quellenstreuung (Beta 0,34-1,92, ROIC 18,6-42,6%, ROE 52,6-71,4%). Jacks eigene Live-Verifikation in Runde 1 bestätigte die niedrigeren Beta-Cluster (0,34-0,74) als wahrscheinlicher, hielt aber konservativ am höheren Aegis-Referenzwert (1,00) fest, um die erhöhte ereignisgetriebene Volatilität der letzten 18 Monate nicht zu unterschätzen.</div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/NVO-fulldeepdive-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/8</div>
+  </div>
+</div>
+
+<!-- PAGE 8: Fazit + Quellen -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Finales Fazit · Watchlist-Konsequenz · Quellen</div>
+    </div>
+    <div class="meta-block"><div class="date">8. September 2026 — Seite 8</div><div>NVO Novo Nordisk A/S</div></div>
+  </div>
+
+  <div class="section-label">Finales Fazit (Aegis-Synthese)</div>
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">BEOBACHTEN</div>
+      <div class="sub">Kein Kauf vor CMD · echte KI-Divergenz dokumentiert</div>
+    </div>
+    <div class="fazit-grid">
+      <div class="fazit-item"><div class="label">Jack (Runde 2)</div><div class="value">SELL · 3/10</div></div>
+      <div class="fazit-item"><div class="label">Conan (Runde 2)</div><div class="value">WATCHLIST_PLUS</div></div>
+      <div class="fazit-item"><div class="label">Aegis-DCF Bull</div><div class="value">-1,5%</div></div>
+      <div class="fazit-item"><div class="label">Nächster Trigger</div><div class="value">21.09. CMD</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">Konsequenz für watchlist.md</div>
+  <div class="box">
+    <p>NVO wird als "Champions"-Watchlist-Neuaufnahme eingetragen (Geschäftsmodell/Historie eindeutig Weltklasse-Niveau trotz aktueller Krise — Kategorisierung nach Marge/Moat-Historie/Wachstumsverlässlichkeit-vor-der-Krise, nicht nach aktuellem Kurszustand), CRV-Ampel <b>🟡 BEOBACHTEN</b> mit explizitem Verweis auf den Capital Markets Day (21.09.2026) als nächsten Prüfpunkt. Passt strukturell in zwei unterbesetzte Portfolio-Lücken (Gesundheitswesen 8,38% vs. Zielband 10-15%, Europa/UK 14,73% knapp unterbesetzt) — aber KEIN Kauf-Zeitpunkt vor dem CMD, gemäß beiden KI-Einschätzungen.</p>
+  </div>
+
+  <div class="section-label">Warum die Divergenz selbst der wichtigste Fund ist</div>
+  <div class="box">
+    <p>Anders als bei CLBT (einstimmig BEOBACHTEN), LGND (einstimmig SCHROTT) oder ATEN liefert dieser Deep Dive erstmals eine echte, unaufgelöste Meinungsverschiedenheit zwischen Jack und Conan auf Basis identischer Daten. Das ist kein Methodik-Fehler, sondern zeigt den Cross-Check bei der Arbeit: zwei unterschiedliche, in sich konsistente Bewertungsphilosophien (harte Kennzahlen-Reaktion vs. Gesamttrend-Gewichtung) kommen zu unterschiedlichen Schlüssen bei echter Unsicherheit. Genau in solchen Fällen ist Aegis' Synthese-Rolle am wertvollsten: nicht mechanisch mitteln, sondern die Meinungsverschiedenheit selbst als Signal für "hier ist echte Unsicherheit, kein klares Bild" transparent machen — und den nächsten konkreten Datenpunkt (CMD) benennen, der sie auflösen kann.</p>
+  </div>
+
+  <div class="section-label">Quellen (Auswahl)</div>
+  <div class="box">
+    <div class="sources-list">
+      <div><span class="n">1</span>Twelve Data — Live-Kurs, Kurshistorie</div>
+      <div><span class="n">2</span>Novo Nordisk Annual Report 2025, SEC 6-K/20-F-Filings, Q1/Q2-2026-Investor-Präsentationen</div>
+      <div><span class="n">3</span>CNBC, Bloomberg, STAT News, FierceBiotech, BioPharma Dive — CagriSema/Ziltivekimab-Trial-Coverage</div>
+      <div><span class="n">4</span>Eli Lilly Investor Relations — Q1/Q2-2026-Ergebnisse, Guidance</div>
+      <div><span class="n">5</span>Mehrere Sammelklagen-Kanzlei-Pressemeldungen (Pomerantz, Levi & Korsinsky, Gross Law Firm, Glancy Prongay) — unbewiesene Allegationen, als solche gekennzeichnet</div>
+      <div><span class="n">6</span>Jack (Gemini 2.5 Flash) und Conan (GPT-5.5) — eigene 2-Runden-Bridge-Analysen, vollständig im Volltext-Markdown dokumentiert</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/NVO-fulldeepdive-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 8/8</div>
+  </div>
+</div>
+
+</body>
+</html>
