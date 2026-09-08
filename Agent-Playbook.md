@@ -3708,6 +3708,22 @@ Makro-/Marktteil, den das Wochenfazit bewusst nicht in dieser Tiefe hat.
     Vergleich Anfangs- vs. End-Gewichtung des Monats. Zeigt an, ob sich
     unbeabsichtigt Klumpenrisiken aufbauen (z.B. durch überproportionales
     Wachstum eines Sektors), unabhängig von bewussten Entscheidungen.
+12b. **Faktor-/Korrelations-Cluster-Update (NEU, 2026-09-09, aus dem
+    Playbook-Meta-Review "was fehlt zum professionellen Fondsmanager" –
+    siehe `depot/faktor_korrelations_analyse.md`).** Auslöser: die
+    Sektor-/Regionen-Drift (Punkt 12) gruppiert nach klassischen GICS-
+    artigen Etiketten – das übersieht Cluster, die quer über diese
+    Etiketten laufen, aber vom selben zugrunde liegenden Faktor abhängen
+    (z.B. Regierungs-/Verteidigungsbudget-Abhängigkeit verteilt über
+    "Industriewerte"/"Rest", obwohl vier Positionen an derselben Variable
+    hängen – Erstfund 2026-09-09: 14,7% des Depots). Monatlich die in
+    `faktor_korrelations_analyse.md` dokumentierten Cluster mit aktuellen
+    Positionsgrößen neu berechnen, neue Positionen seit dem letzten Update
+    gegen die bestehenden Cluster prüfen, Ergebnis dort als neue
+    Tabellenzeile eintragen. Kein Handlungszwang bei reiner
+    Prozentverschiebung ohne Grenzwertverletzung – Zweck ist Sichtbarkeit
+    einer Risikodimension, die das bestehende Positions-/Kategorie-Raster
+    nicht abdeckt, nicht eine neue harte Regel.
 13. **Gebühren-/Kosten-Übersicht**: im Monat angefallene Orderkosten
     (Käufe/Verkäufe) und, soweit ermittelbar, Spread-Kosten – ehrlicher
     Blick auf die Kostenseite der Strategie, nicht nur auf die

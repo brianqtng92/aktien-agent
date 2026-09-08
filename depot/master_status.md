@@ -261,6 +261,15 @@ ausgeschlossen (siehe `scalable-capital.md`). Portfolio-Gesamtwert
 | Industriewerte | 11,86% | 10-15% | im Zielband |
 | Rest | 16,88% | 5-10% | über dem Zielband |
 
+**Faktor-/Korrelations-Cluster (NEU, 2026-09-09, ergänzt die obige
+GICS-artige Sektor-Sicht um quer laufende Faktoren – siehe
+`depot/faktor_korrelations_analyse.md` für die volle Analyse):**
+Regierungs-/Verteidigungsbudget-Abhängigkeit 14,7% (Cellebrite, HawkEye
+360, Kraken Robotics, Rocket Lab – über 3 verschiedene Sektor-Etiketten
+verteilt, daher oben unsichtbar), Hochbeta-Kleinkapitalisierer 11,3%
+(22,8% inkl. SoFi), zinssensitive Finanzwerte 10,3%. Kein Handlungszwang,
+monatlich im Monatsrecap aktualisiert.
+
 **Eine verbleibende Näherung, transparent:** MercadoLibre wird
 näherungsweise 45%/55% auf Finanzwesen (Mercado Pago)/Rest (E-Commerce)
 gesplittet, keine exakte Segment-Umsatzzahl verwendet.
