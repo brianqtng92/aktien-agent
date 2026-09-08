@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Agent Schnellanalyse – RMBS</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FFFFFF; --bg-panel: #F7F6F2; --bg-panel-2: #EFEDE6;
+    --border: #D9D4C8; --border-soft: #E6E2D9;
+    --text: #262420; --text-dim: #5C564A; --text-faint: #837C6C;
+    --gold: #9C7A2E; --gold-bright: #8A6A22; --gold-dim: #C9AD6E;
+    --green: #3F7D44; --green-bg: rgba(63,125,68,0.10);
+    --yellow: #A6790A; --yellow-bg: rgba(166,121,10,0.10);
+    --red: #B03A2E; --red-bg: rgba(176,58,46,0.09);
+    --blue: #2E6690; --blue-bg: rgba(46,102,144,0.09);
+    --orange: #AB591C; --orange-bg: rgba(171,89,28,0.09);
+  }
+  html, body { width: 210mm; background: var(--bg); color: var(--text); font-family: "Carlito", "DejaVu Sans", Arial, sans-serif; font-size: 11pt; line-height: 1.36; }
+  .display { font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif; font-weight: 700; font-stretch: condensed; }
+  .page { width: 210mm; height: 297mm; padding: 8mm 12mm 5mm 12mm; display: flex; flex-direction: column; gap: 2mm; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 2.6mm; }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 21pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag { font-size: 8.6pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim); border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.7mm 1.8mm; margin-top: 1.4mm; display: inline-block; width: fit-content; }
+  .meta-block { text-align: right; font-size: 9.4pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 10.2pt; }
+  .position-header { display: flex; justify-content: space-between; align-items: center; background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold); border-radius: 3px; padding: 2.4mm 4mm; }
+  .position-name .ticker { font-size: 16pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 9.6pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 5mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 8pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); white-space: nowrap; }
+  .stat .value { font-size: 11.5pt; color: var(--text); margin-top: 0.4mm; white-space: nowrap; }
+  .hook-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .hook-title { font-size: 13.5pt; line-height: 1.28; color: var(--text); font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .hook-title .accent { color: var(--gold-bright); }
+  .hook-sub { font-size: 9pt; color: var(--text-dim); line-height: 1.38; margin-top: 1.4mm; }
+  .section-label { font-size: 8.8pt; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0; }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm 3mm; overflow: hidden; flex-shrink: 0; }
+  .box h3 { font-size: 9.2pt; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold); margin-bottom: 1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .box p { font-size: 8.9pt; color: var(--text-dim); line-height: 1.3; overflow-wrap: break-word; }
+  .box p b { color: var(--text); }
+  .box ul { list-style: none; padding-left: 0; }
+  .box li { font-size: 8.9pt; color: var(--text-dim); padding: 0.5mm 0; line-height: 1.3; }
+  .box li b { color: var(--text); }
+  .verify-table, .compare-table, .scenario-table { width: 100%; border-collapse: collapse; margin-top: 0.8mm; }
+  .verify-table th, .verify-table td, .compare-table th, .compare-table td, .scenario-table th, .scenario-table td { font-size: 8.3pt; padding: 0.8mm 1.3mm; text-align: left; border-bottom: 1px solid var(--border-soft); }
+  .verify-table th, .compare-table th, .scenario-table th { color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; font-weight: normal; font-size: 7.6pt; }
+  .verify-table td, .compare-table td { color: var(--text); }
+  .scenario-table th, .scenario-table td { text-align: right; }
+  .scenario-table th:first-child, .scenario-table td:first-child { text-align: left; color: var(--text-dim); }
+  .pass { color: var(--green); } .fail { color: var(--red); }
+  .two-col { display: flex; gap: 3mm; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2mm; }
+  .chart-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 68mm; flex: 0 0 auto; }
+  .chart-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; border-radius: 2px; }
+  .warn-strip { background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.6mm 2.8mm; font-size: 8.4pt; color: var(--yellow); }
+  .warn-strip b { color: var(--text); }
+  .outage-strip { background: var(--blue-bg); border: 1px solid var(--blue); border-radius: 3px; padding: 1.6mm 2.8mm; font-size: 8.4pt; color: var(--blue); }
+  .outage-strip b { color: var(--text); }
+  .fazit { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 2.4mm 3.6mm; display: flex; align-items: center; gap: 4mm; flex-shrink: 0; }
+  .fazit-verdict { flex: 0 0 auto; text-align: center; padding-right: 3.4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 12.5pt; color: var(--yellow); letter-spacing: 0.02em; }
+  .fazit-verdict .sub { font-size: 7.6pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5mm; }
+  .fazit-grid { flex: 1; display: flex; justify-content: space-between; }
+  .fazit-item { text-align: center; }
+  .fazit-item .label { font-size: 7.6pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .fazit-item .value { font-size: 10pt; color: var(--text); margin-top: 0.4mm; }
+  .sources-list { font-size: 8.3pt; color: var(--text-dim); line-height: 1.45; }
+  .sources-list .n { color: var(--gold); margin-right: 1.4mm; }
+  .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 1.3mm; font-size: 7.8pt; color: var(--text-faint); flex-shrink: 0; }
+  .footer .gold-dot { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">SCHNELLANALYSE</span></div>
+      <div class="brand-sub">QUICK FILTER · Jack + Aegis · Jarvis</div>
+      <div class="edition-tag">Depot-Position · Kategorie Profi</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">8. September 2026</div>
+      <div>TMR-Pfad (Bucket A/C) · K-BASIS 5</div>
+    </div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">RMBS <span style="color:var(--text-dim); font-size:9pt;">· NASDAQ</span></div>
+      <div class="company">Rambus Inc. — Halbleiter-IP-Lizenzgeber (DDR/HBM-Interface) + Memory-Interconnect-Chips</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs (08.09.)</div><div class="value">$86,90</div></div>
+      <div class="stat"><div class="label">52W-Range</div><div class="value">$72,45–$174,10</div></div>
+      <div class="stat"><div class="label">Depot-Kosten</div><div class="value">88,94€</div></div>
+    </div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-title">Starkes Quartal, schwacher Kurs: <span class="accent">-50% vom ATH trotz Rekordumsatz und Hyperscaler-Design-Win</span></div>
+    <div class="hook-sub">Rambus ist seit dem Juni-Hoch ($174,10) um rund die Hälfte eingebrochen — trotz eines Q2'26-Rekordquartals (+20% YoY, neuer HBM-Design-Win bei einem Tier-1-Hyperscaler). Grund: Sorge um Lageraufbau (+69% YoY), rückläufigen operativen Cashflow und anhaltende Insider-Nettoverkäufe. Fundamental bleibt das Bild stark (ROIC 30%, Netto-Cash, PEG 1,0), aber der Piotroski-F-Score hat sich seit der letzten Prüfung (23.08.) von 6 auf 5 verschlechtert.</div>
+  </div>
+
+  <div class="outage-strip"><b>Hinweis zur Cross-Check-Vollständigkeit:</b> Conan/ChatGPT-Bridge war in dieser Sitzung nicht erreichbar (mehrfacher Verbindungsfehlschlag, auch bei minimalem Test) — diese Schnellanalyse basiert auf Jack (Gemini) + Aegis (Jarvis), kein vollständiger 3-fach-Cross-Check. Wird bei nächster Gelegenheit nachgeholt, sofern die Bridge dann verfügbar ist.</div>
+
+  <div class="section-label">2-Stimmen-Leiste</div>
+  <div style="display:flex; gap:2.2mm;">
+    <div class="box" style="flex:1;">
+      <h3>Jarvis · Claude (Aegis)</h3>
+      <p style="font-size:11pt; color:var(--yellow);">BEOBACHTEN / HALTEN</p>
+      <p style="font-size:8pt;">Kein Nachkauf vor $75 · Checkpoint Q3-Earnings 02.11.</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>Jack · Gemini (TMR)</h3>
+      <p style="font-size:11pt; color:var(--yellow);">BEOBACHTEN</p>
+      <p style="font-size:8pt;">Konfidenz 🔴 60% (von 64% leicht gefallen) · Tier 3</p>
+    </div>
+  </div>
+
+  <div class="section-label">Vollständiger DNA-Check (K- & E-Kriterien)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Kriterium</th><th>Schwelle</th><th>Ist-Wert</th><th>Status</th></tr>
+      <tr><td colspan="4" style="color:var(--gold); font-size:7.3pt; text-transform:uppercase; letter-spacing:0.05em; padding-top:1.4mm;">K-Kriterien (Gatekeeper)</td></tr>
+      <tr><td>ROIC</td><td>&gt;20%</td><td>30,05% TTM</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>FCF-Marge (real)</td><td>≥20%</td><td>Uneinheitlich: Q2'26 ~23,6% / FY2025 ~47,4% — je nach Zeitraum stark schwankend</td><td>⚠ Grenzfall</td></tr>
+      <tr><td>Op. Leverage</td><td>Ja</td><td>Ja — Marge 9,79%→35,95% (FY21→TTM, GAAP)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Piotroski F-Score</td><td>≥7</td><td><b>5</b> (verschlechtert von ~6 am 23.08.)</td><td class="fail">❌ Verfehlt</td></tr>
+      <tr><td>EPS-CAGR (5J)</td><td>≥12%</td><td>44,5% (Headline methodisch unsauber: FY22-Verlustjahr, FY23-Einmaleffekt)</td><td class="pass">✅ Erfüllt, mit Vorbehalt</td></tr>
+      <tr><td colspan="4" style="color:var(--gold); font-size:7.3pt; text-transform:uppercase; letter-spacing:0.05em; padding-top:1.4mm;">E-Kriterien</td></tr>
+      <tr><td>Bruttomarge</td><td>≥60%</td><td>80,36% TTM (leicht rückläufig von 82,2%)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Op. Margin</td><td>≥20%</td><td>35,95% TTM GAAP (Non-GAAP ~45% — Diskrepanz geklärt)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Revenue-CAGR (5J)</td><td>≥8-10%</td><td>~22,2%</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Net Debt/EBITDA</td><td>&lt;2,0x</td><td>Netto-Cash ($825 Mio.)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Capex/Umsatz</td><td>≤5%</td><td><b>5,88%</b> (Q2'26, leicht über Schwelle — vorher 4,39%)</td><td class="fail">❌ Knapp verfehlt</td></tr>
+      <tr><td>CCC</td><td>&lt;30 Tage</td><td>Nicht quantifizierbar (Hybrid-Lizenz-/Produktmodell)</td><td>N/V</td></tr>
+    </table>
+    <p style="margin-top:1.2mm; font-size:8.4pt;"><b>DNA-Urteil: K 3,5/5 · E 4/6.</b> Verschlechterung ggü. 23.08. (damals E 5/6) — Piotroski-Fail bestätigt sich, Capex/Umsatz ist neu leicht über Schwelle gerutscht. Kein Abbruch (K-BASIS-Schwelle bei Quick Filter: K≤2 → Abbruch, 3,5&gt;2).</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Schnellanalyse <span class="gold-dot">·</span> Volltext: analysen/RMBS-quickfilter-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/2</div>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">SCHNELLANALYSE</span></div>
+      <div class="brand-sub">Bewertung · Moat · These-Prüfung · Fazit</div>
+    </div>
+    <div class="meta-block"><div class="date">8. September 2026 — Seite 2</div><div>RMBS Rambus Inc.</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="section-label">Bewertungs-Schnellcheck (kein DCF-Zwang bei Quick Filter)</div>
+      <div class="box">
+        <table class="scenario-table">
+          <tr><th>Kennzahl</th><th>Wert</th></tr>
+          <tr><td>Forward KGV</td><td>25,1</td></tr>
+          <tr><td>PEG</td><td>1,04 (fair)</td></tr>
+          <tr><td>EV/FCF</td><td>~30x</td></tr>
+          <tr><td>Analysten-Konsens</td><td>Buy/Strong Buy</td></tr>
+          <tr><td>Ø-Kursziel</td><td>$145-153</td></tr>
+        </table>
+        <p style="margin-top:1.2mm;">PEG &lt;1,5 signalisiert "nicht überteuert", nicht "günstig einkaufen" — Analystenziele reagieren typischerweise mit Verzögerung auf einen -50%-Drawdown, keine automatische Kaufbestätigung.</p>
+      </div>
+      <div class="section-label">Moat & Management (Stichpunkte)</div>
+      <div class="box">
+        <ul>
+          <li>🏰 <b>Moat 🟡 SOLIDE (~2-3/4):</b> Switching Costs hoch (DDR/HBM-IP tief ins Silizium-Design integriert), aber kein Monopol — JEDEC-Standards grundsätzlich mehreren Anbietern zugänglich.</li>
+          <li>👔 <b>Kapitalallokation:</b> $100 Mio. Accelerated-Share-Repurchase (Mizuho, seit 05.08., läuft) — positives Signal.</li>
+          <li>⚠ <b>Insider:</b> Anhaltende Nettoverkäufe (14 Verkäufe/101.730 Aktien in 6M, keine Käufe), teils 10b5-1-Pläne — Warnsignal, aber teils vorab geplant.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <div class="section-label">Gründliche-These-Prüfung (Pflicht bei Depot-Position)</div>
+      <div class="box">
+        <p><b>Timing vs. Struktur:</b> Der -50%-Einbruch erfolgt trotz starkem Q2'26 und solider Q3-Guidance — eher Sektor-/Sentiment-getriebenes Timing-Problem (hohes Beta) als struktureller Thesenbruch. Kein Fraud-, Going-Concern- oder Moat-Verlust-Signal.</p>
+        <p style="margin-top:1mm;"><b>Checkpoint respektiert:</b> Q3'26-Earnings (02.11.2026, Guidance bereits bekannt: $210-216 Mio. Umsatz, $0,75-0,82 EPS) liegt noch in der Zukunft → <b>HALTEN + Checkpoint statt Verkauf-Erwägen.</b></p>
+      </div>
+      <div class="section-label">🔪 Kill-Sheet (kompakt)</div>
+      <div class="box">
+        <p><b>Abstauber-Limit unverändert: $75.</b> Upgrade (mind. 2/3): Q3-Zahlen bestätigen Ramp-These · Piotroski verbessert sich Richtung ≥7 · Insider-Verkäufe stoppen. Downgrade: Lagerbestand+OCF verschlechtern sich weiter (2Q) · ROIC unter WACC (2Q) · Insider-Nettoverkäufe &gt;20%/6M. <b>Stand 08.09.: 0/3 Upgrade-Trigger erfüllt.</b></p>
+      </div>
+      <div class="warn-strip"><b>Beta-Diskrepanz:</b> 1,89 (23.08., LIVE) vs. 2,70 (eine neuere Quelle) — Streuung nicht abschließend aufgelöst. Sizing-Deckel Tier 3 bleibt in jedem Fall bestehen (Konfidenz 🔴 + hohes Beta doppelt gedeckelt).</div>
+    </div>
+  </div>
+
+  <div class="section-label">Kursverlauf 6 Monate</div>
+  <div class="chart-frame"><img src="RMBS-chart-2026-09-08.png" alt="RMBS Kursverlauf"></div>
+
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">BEOBACHTEN</div>
+      <div class="sub">Kein Nachkauf vor $75</div>
+    </div>
+    <div class="fazit-grid">
+      <div class="fazit-item"><div class="label">Jack Konfidenz</div><div class="value">🔴 60%</div></div>
+      <div class="fazit-item"><div class="label">Abstauber-Limit</div><div class="value">$75</div></div>
+      <div class="fazit-item"><div class="label">Sizing-Deckel</div><div class="value">Tier 3</div></div>
+      <div class="fazit-item"><div class="label">Nächster Checkpoint</div><div class="value">02.11. Q3-Earnings</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">Quellen (Auswahl)</div>
+  <div class="box">
+    <div class="sources-list">
+      <div><span class="n">1</span>Twelve Data — Live-Kurs, Kurshistorie</div>
+      <div><span class="n">2</span>Jarvis-Vorab-Analyse 2026-08-23 (analysen/RMBS-TMR-quickfilter-jarvis-claude-2026-08-23.md) + Update 09-01</div>
+      <div><span class="n">3</span>Jack (Gemini 2.5 Flash) — Live-Verifikation dieser Schnellanalyse, 2026-09-08</div>
+      <div><span class="n">4</span>GuruFocus, StockAnalysis, SEC-Filings (10-Q), TipRanks (Insider-Trades), StreetInsider (Buyback)</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Agent Schnellanalyse <span class="gold-dot">·</span> Volltext: analysen/RMBS-quickfilter-cross-check-2026-09-08.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/2</div>
+  </div>
+</div>
+
+</body>
+</html>
