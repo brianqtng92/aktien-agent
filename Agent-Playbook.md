@@ -5126,6 +5126,38 @@ Check oder das Wochenfazit, sondern eine schnelle Zwischen-Absicherung:
    still, damit an ruhigen Stunden keine unnötigen Benachrichtigungen
    entstehen (gleiches Prinzip wie beim täglichen Trigger-Check).
 
+**On-Demand-Trigger (2026-09-08, von Brian gefordert: automatisierte
+Analyse-Auslösung ohne Chat-Session, "wenn ich eine Aktie in die Analyse
+schicken möchte").** Ergänzung zum bisherigen reaktiven Scan, im selben
+stündlichen Blitz-Scan-Job (kein neuer Job — dieselbe Begründung wie beim
+"kein neuer Master-Agent-Hermes-Job"-Punkt oben: die 3-fach-Cross-Check-
+Infrastruktur ist hier schon vorhanden, ein zweiter, paralleler Job hätte
+sie nur dupliziert). Zwei Auslöse-Wege, beide von Brian ausdrücklich
+gewünscht ("beides"):
+
+- **Watchlist-Trigger:** Ticker direkt in der Scalable-Capital-App zur
+  Watchlist hinzufügen (2 Taps am Handy). `list_watchlist_items` gegen
+  `watchlist.md` abgeglichen — jeder Eintrag, der in Scalable, aber noch
+  nicht in `watchlist.md` steht, ist ein neuer Auftrag. Ergänzt den
+  bestehenden umgekehrten Spiegel-Mechanismus (watchlist.md → Scalable)
+  aus `taeglicher-trigger-check`, ohne ihn zu ersetzen.
+- **E-Mail-Trigger:** E-Mail an `brianqtng@outlook.de` mit Betreff
+  `Analysiere: <Ticker/Firmenname>` (Standardtiefe Quick Filter) oder
+  `Deep-Dive: <Ticker/Firmenname>` (erzwingt Full Deep Dive). Gmail-
+  `search_threads` nach ungelesenen Treffern, Ticker aus dem Betreff
+  extrahiert, verarbeitete Mail wird gelabelt (nicht gelöscht), um
+  Doppel-Verarbeitung zu verhindern.
+
+Beide Wege münden in denselben vollen 3-fach-Cross-Check wie ein regulärer
+akuter Treffer (TMR-/Scout-Routing über die bestehende Bucket-/Fallback-
+Regel, TA-Pflicht, PDF-Pflicht, Prediction-Ledger bei Kauf-Empfehlung,
+Aufnahme in `watchlist.md` bei bestandenem Ergebnis oder dokumentierter
+Ablehnungs-Vermerk bei Abbruch — verhindert wiederholtes Neu-Triggern
+desselben abgelehnten Tickers). Sicherheitsgrenze unverändert: ausschließ-
+lich read-only Analyse, keine Order/Watchlist-Löschung/Kontoänderung.
+Vollständig in `~/.claude/scheduled-tasks/blitz-scan/SKILL.md` (Abschnitt
+"On-Demand-Trigger" + neuer Ablauf-Schritt 0) umgesetzt.
+
 ## 6. Warum nicht alles täglich voll automatisch?
 
 Ehrliche Einschränkung, mit Brian abgestimmt: Schritt 1 (quantitatives Screening)
