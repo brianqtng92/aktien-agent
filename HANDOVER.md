@@ -1006,11 +1006,13 @@ Ergebnis entscheidet, sondern die Faktenlage.
 Fix) gelten als durch einen Prompt-Klarheits-Mangel verzerrt, nicht als
 belastbares Urteil über die Firmen – bei Bedarf mit dieser Standard-
 Instruktion neu laufen lassen. Ab sofort MUSS jeder neue Bridge-Aufruf
-für TMR/Scout-Analysen alle sieben Blöcke enthalten (auch im Täglichen
+für TMR/Scout-Analysen alle acht Blöcke enthalten (auch im Täglichen
 Trigger-Check und im Blitz-Scan, siehe dortige SKILL.md-Dateien) – Block 5
 (Gründliche-These-Prüfung) ist bei jeder Analyse einer bestehenden
 Depot-Position Pflicht, Block 6 (Master-Status/Vorrang-Hierarchie) nur bei
-agentischem Depot-Tool-Zugriff (siehe unten für beide).
+agentischem Depot-Tool-Zugriff, Block 7 (Fact-Pack-Tags-nicht-bindend) und
+Block 8 (Selbstwiderspruch-Check, 2026-09-09 ergänzt) gelten immer (siehe
+unten für alle Details).
 
 **Block 4 ergänzt (2026-09-03, aus dem 3-KI-System-Audit):** Brian ließ
 Jarvis, Jack und Conan das gesamte Regelwerk gemeinsam durchgehen. Beide
@@ -1118,6 +1120,27 @@ Begruendung, statt das [N/V]-Tag unkritisch zu uebernehmen. Reserviere die
 Weitergabe von [N/V] nur fuer den Fall, dass auch DEINE eigene Einschaetzung
 zu keiner plausiblen Groessenordnung kommt - nicht schon deshalb, weil das
 Fact-Pack selbst [N/V] sagt.
+```
+
+**Block 8 ergänzt (2026-09-09, Priorität 3 aus dem Playbook-Meta-Review vom selben Tag):** Der neue KENNZAHLEN-PRIMÄRQUELLEN-STANDARD in `jack-moat-reaper-v11.7.md`/`conan-the-scout-v1.12.md` (siehe Agent-Playbook.md Rigor-Standard-Punkt 30) enthält bereits einen Selbstwiderspruch-Check, aber NUR für die dort explizit genannten 5 Kennzahlen (Beta, Op.-Margin, Bruttomarge, ROIC, Capex). Der NVO-Fall (Op.-Margin 37,23%/42,24%-Widerspruch, Capex/Umsatz-M&A-Verzerrung, siehe Punkt 29) zeigte aber, dass Selbstwidersprüche grundsätzlich bei JEDER Kennzahl auftreten können, nicht nur bei den fünf häufigsten. Block 8 verallgemeinert die Pflicht auf die gesamte Antwort, direkt vor der finalen Rating-Abgabe – dieselbe Stelle, an der Block 4 den Terminal-State-Check verlangt:
+
+```
+WICHTIG: SELBSTWIDERSPRUCH-CHECK VOR DER FINALEN DNA-CHECK-TABELLE (gilt fuer
+dich genauso wie fuer Jarvis und die andere KI im selben Cross-Check). Ausloeser:
+beim Novo-Nordisk-Full-Deep-Dive (2026-09-08) enthielt eine Bridge-Antwort fuer
+dieselbe Kennzahl (Operating Margin) in derselben Antwort zwei verschiedene
+Werte (37,23% und 42,24%), und eine andere Kennzahl (Capex/Umsatz) war durch
+versehentlich mit eingerechnete Akquisitionskosten aufgeblaeht - beides wurde
+erst durch Jarvis' nachtraegliche Gegenpruefung gefunden, nicht von dir selbst.
+PRUEFE VOR DER AUSGABE DER FINALEN DNA-CHECK-TABELLE EINMAL SELBST: hast du fuer
+IRGENDEINE Kennzahl in dieser Antwort mehr als einen Wert genannt (z.B. einmal
+aus dem Fact-Pack, einmal aus deiner eigenen Live-Suche, einmal aus einer
+anderen Berechnungsbasis wie GAAP vs. Non-GAAP oder mit vs. ohne
+Akquisitions-Sondereffekte)? Falls ja: reconciliere das EXPLIZIT im Output
+(welcher Wert ist der aktuellere/verlaesslichere, warum) und uebernimm NUR den
+reconciliierten Wert in die finale Tabelle - nie zwei widersprueckliche Werte
+fuer dieselbe Zeile stehen lassen oder den Widerspruch stillschweigend durch
+Auswahl des zuletzt genannten Werts aufloesen.
 ```
 
 **Bewusst NICHT in die Bridge-Blöcke übernommen (2026-09-04, Abwägung

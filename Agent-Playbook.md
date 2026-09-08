@@ -603,11 +603,45 @@ die bleibt Jarvis-only) explizit prüfen, ob sie auch Jack/Conan erreichen
 muss – wenn ja, als neuen Klarstellungs-Block in HANDOVER.md 10.13
 ergänzen UND die Blockzahl in `taeglicher-trigger-check`/`blitz-scan`
 SKILL.md aktualisieren. Diese Prüfung ist explizit Teil der Regel-
-Aufnahme-Disziplin oben, nicht optional. Aktuell sieben Standard-Blöcke
+Aufnahme-Disziplin oben, nicht optional. Aktuell acht Standard-Blöcke
 (siehe HANDOVER.md 10.13): SCHRITT-0/WACC/TRAINING-vs-N/V/Terminal-State
 (Blöcke 1-4, 2026-09-02/03), Gründliche-These-Prüfung (Block 5, 2026-09-04),
-Master-Status mit Volltext-Einbettung (Block 6, erweitert 2026-09-06) und
-Fact-Pack-Tags-sind-nicht-bindend (Block 7, 2026-09-06).
+Master-Status mit Volltext-Einbettung (Block 6, erweitert 2026-09-06),
+Fact-Pack-Tags-sind-nicht-bindend (Block 7, 2026-09-06) und
+Selbstwiderspruch-Check über alle Kennzahlen (Block 8, 2026-09-09,
+Priorität 3 aus dem Playbook-Meta-Review, verallgemeinert den bereits in
+Punkt 30/KENNZAHLEN-PRIMÄRQUELLEN-STANDARD verankerten Check auf JEDE
+Kennzahl, nicht nur die dort genannten fünf).
+
+### 🛠 Wartung & Redundanz-Check (NEU, 2026-09-09, Priorität 4 aus dem
+Playbook-Meta-Review)
+
+Auslöser: Agent-Playbook.md ist auf über 6.000 Zeilen gewachsen, mit
+Änderungshistorie fast ausschließlich inline im jeweiligen Regeltext
+dokumentiert (Herkunft/Begründung direkt neben der Regel, siehe z.B. Punkt
+29 oben). Das ist gut für den "warum gilt diese Regel"-Kontext, aber
+schlecht für die reine "was hat sich wann geändert"-Übersicht – und macht
+schleichende Redundanz schwer erkennbar, bis sie zufällig auffällt (siehe
+den Conan-Prompt-Fund vom 2026-09-08, wo Regeln 19-42 sich über Monate zu
+Zweitformulierungen bereits bestehender Mechaniken entwickelt hatten, ohne
+dass das jemandem auffiel, bis Brian gezielt danach fragen ließ).
+
+**Ab sofort zwei feste Gewohnheiten:**
+1. **`CHANGELOG.md` (neu angelegt, aus der bestehenden git-Historie
+   rekonstruiert):** jede substantielle Änderung an Agent-Playbook.md, den
+   Methodik-Dateien (`prompts/*.md`) oder den Hermes-`SKILL.md`-Dateien
+   bekommt dort zusätzlich zur inline-Dokumentation einen Ein-Satz-Eintrag
+   mit Datum. Ersetzt NICHT die ausführlichen Herkunfts-Notizen hier – nur
+   eine schnell scannbare Zeitleiste obendrauf.
+2. **Monatlicher Redundanz-Check:** beim ersten Playbook-editierenden Chat
+   jedes Kalendermonats einmal kurz prüfen, ob sich seit dem letzten Check
+   echte Redundanz angesammelt hat – mehrfach fast wortgleiche Regeln,
+   veraltete "offene Punkte", die längst gelöst sind, oder Abschnitte, die
+   sich besser in eine Archiv-Datei auslagern lassen (Vorbild: die
+   Auslagerung der Abschnitte 9-13 vom 2026-09-08). Kein aufwendiger
+   Vollaudit, nur ein kurzer bewusster Blick – Fund: verschlanken, kein
+   Fund: `CHANGELOG.md`-Zeile "Redundanz-Check <Monat>: kein Fund" reicht
+   als Beleg, dass der Check tatsächlich stattfand.
 
 **Jack/Conan haben jetzt eigene Live-Web-Recherche (2026-09-04, von Brian
 gefordert: "Jack und Conan sollen die Freiheit haben, selbst zu
