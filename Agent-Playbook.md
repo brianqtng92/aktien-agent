@@ -4145,7 +4145,15 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     Quote sinkt (Skalierungseffekt – SBC wächst langsamer als Umsatz, Signal
     für sich normalisierende Kapitalallokation) oder steigt (eskalierendes
     Verwässerungsrisiko für Altaktionäre). Ein einzelner Ist-Wert kann beide
-    sehr unterschiedlichen Situationen nicht unterscheiden.
+    sehr unterschiedlichen Situationen nicht unterscheiden. **Ergänzung
+    (2026-09-08, Geminis Nachfassrunde):** wo ein aktives Buyback-Programm
+    existiert, SBC der Vergütungs-Verwässerung den tatsächlichen Rückkäufen
+    gegenüberstellen (Netto-Effekt auf Shares Outstanding, nicht nur SBC
+    isoliert betrachten) – zeigt, ob Management die Verwässerung aktiv
+    neutralisiert oder nicht. Bei Firmen ohne Buyback-Programm (wie CLBT,
+    siehe Kapitalrückführungs-Historie Seite 2) entfällt dieser Netting-
+    Schritt schlicht mangels Gegenposition – kein Zusatzaufwand nötig, die
+    reine SBC-Trendlinie bleibt dann bereits die vollständige Aussage.
 24. **Sensitivitätsmatrix (3×3 WACC × FCF-Wachstum) für das DCF-Reverse-
     Engineering (neu, 2026-09-08, Gemini-Cross-Review).** Das bestehende
     Reverse-DCF (Punkt 11) liefert bisher nur einen Einzelwert (implizites
@@ -4190,8 +4198,30 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     Lücke vermerken (Punkt 6/25-Prinzip), nicht stillschweigend weglassen
     oder rückwirkend erzwingen. Realistischster Zeitpunkt für einen Fund:
     Analysten-Q&A im nächsten Earnings-Call, nicht rückwirkende Recherche.
+    **Ergänzung (2026-09-08, Geminis Nachfassrunde, "Kohorten-/NRR-Matrix"):**
+    ist dieselbe Zerlegung wie oben, nur als visuelle Matrix statt Tabelle
+    gefordert – keine eigenständige neue Regel, derselbe Best-Effort-/
+    Offenlegungs-Vorbehalt gilt unverändert (bei CLBT selbst nicht verfügbar,
+    nur ein aggregierter NRR-Wert offengelegt, keine Kohorten-Aufschlüsselung).
+28. **TAM/SAM/SOM-Penetrations-Visualisierung – NUR als Darstellung bereits
+    validierter TAM-Sanity-Check-Daten, nie als eigenständiger neuer Datenpunkt
+    (neu, 2026-09-08, Geminis Nachfassrunde).** Wichtige Einschränkung, die in
+    Geminis Vorschlag selbst fehlte: TAM/SAM/SOM-Trichter sind in der Praxis
+    oft genau die Art von beeindruckend aussehender, aber weich fundierter
+    Grafik, vor der Conans TAM-SANITY-CHECK (Top-Down- UND Bottom-Up-Schätzung,
+    Gegenprobe bei &gt;2x-Abweichung, explizite "nur theoretisch groß"-Warnung)
+    bewusst schützen soll. Diese Visualisierung wird daher NUR dann ergänzt,
+    wenn der TAM-Sanity-Check für den jeweiligen Kandidaten bereits vollständig
+    durchlaufen wurde (Top-Down + Bottom-Up + Gegenprobe bestanden) – sie ist
+    dann eine reine Darstellungsform der bereits geprüften Zahlen (TAM →
+    adressierbarer Teilmarkt SAM → aktuell erschlossener Anteil SOM), kein
+    zusätzlicher Rechercheschritt und kein Ersatz für die Gegenprobe. Ohne
+    vollständigen TAM-Sanity-Check entfällt die Grafik ersatzlos, statt mit
+    unvalidierten Zahlen gefüllt zu werden. Bei CLBT selbst (TMR-Pfad, kein
+    Scout-Kandidat) bisher nicht einschlägig, da Conans TAM-Modul primär für
+    Bucket B/D-Kandidaten (Scout-Pfad) läuft.
 
-**Herkunft Punkte 22-27:** Brian hat den CLBT-Full-Deep-Dive-Report
+**Herkunft Punkte 22-28:** Brian hat den CLBT-Full-Deep-Dive-Report
 unabhängig sowohl ChatGPT als auch Gemini zur Bewertung vorgelegt (außerhalb
 dieses Systems, als externe Zweitmeinung zur eigenen Methodik). Beide
 Rückmeldungen wurden von Jarvis gegen den tatsächlichen Report-Inhalt
@@ -4203,6 +4233,17 @@ historische Bewertung, Kill-Sheet-Konsolidierung; Gemini: Distributoren-
 Konzentration im 10-K, SBC-3-Jahres-Trend, Reverse-DCF-Sensitivität) – ein
 Muster, das dem Grundprinzip des eigenen 3-fach-Cross-Checks entspricht:
 unterschiedliche Perspektiven finden unterschiedliche blinde Flecken.
+**Punkt 28 stammt aus einer zweiten Nachfassrunde** ("welche Darstellungen
+fehlen noch"), in der Gemini vier Visualisierungsvorschläge nannte – zwei
+davon (DCF-Sensitivitätsmatrix, SBC-Verwässerung) waren bereits Punkte 24/23
+aus der ersten Runde bzw. reine Verfeinerungen davon, einer (NRR-Kohorten-
+Matrix) überschneidet sich mit ChatGPTs bereits erfasstem Punkt 27, nur der
+TAM/SAM/SOM-Vorschlag war tatsächlich neu – und wurde bewusst NICHT
+unverändert übernommen, sondern an die bestehende TAM-Sanity-Check-Disziplin
+gekoppelt, da eine ungeprüfte TAM/SAM/SOM-Grafik der eigenen
+Datenintegritäts-Philosophie (keine Scheingenauigkeit) sonst widersprochen
+hätte. Externe KI-Vorschläge werden grundsätzlich gegen die eigene Methodik
+geprüft, nicht 1:1 übernommen – siehe auch "Externe Quellen nie Benchmark".
 
 **Was AUSDRÜCKLICH NICHT übernommen wird:** die Serien-Aufteilung in 5
 separate Veröffentlichungen (unser Full Deep Dive bleibt EIN
