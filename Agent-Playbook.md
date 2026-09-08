@@ -4367,6 +4367,50 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     Ist-Ergebnis ausgewiesen (kein stillschweigendes Wegdiskutieren), aber
     mit einer kurzen Einordnung versehen, warum die Schwelle hier evtl.
     weniger aussagekräftig ist als bei einem asset-leichten Geschäftsmodell.
+30. **Pflicht-Primärquelle für die Top-K-Kriterien bei Full Deep Dive (neu,
+    2026-09-09, aus Brians Playbook-Meta-Review — "wackliges Datenfundament
+    fester verankern", Priorität 1).** Auslöser: über die Session verteilt
+    schwankten Beta-Werte für dieselbe Aktie zwischen 0,3 und 2,7 je nach
+    zufällig gezogener Quelle, und Op.-Margin/Capex-Werte enthielten
+    unbemerkt Non-GAAP- bzw. M&A-verzerrte Zahlen (siehe Punkt 29, NVO-Fall).
+    **Ab sofort Pflicht bei Full Deep Dive:** für die 4-5 am häufigsten
+    strittigen Kennzahlen (Beta, Op.-Margin, Bruttomarge, ROIC, Capex/Umsatz)
+    gilt die feste Primärquellen-Definition aus dem
+    KENNZAHLEN-PRIMÄRQUELLEN-STANDARD in jack-moat-reaper-v11.7.md bzw.
+    conan-the-scout-v1.12.md (z.B. Beta immer Yahoo Finance 5Y-monatlich,
+    Op.-Margin immer GAAP TTM) — nicht mehr die erste gefundene
+    Aggregator-Zahl. SEC-Filing/IR geht bei Widerspruch vor Aggregator.
+    Diese Definition steht direkt in der an Jack/Conan gesendeten
+    Methodik-Datei (wirkt also am Ort der Entstehung), Jarvis prüft beim
+    Report-Bau zusätzlich stichprobenhaft gegen, ob der gelieferte Wert zur
+    festgelegten Quelle/Definition passt, bevor er in die DNA-Check-Tabelle
+    übernommen wird.
+31. **Health-Check vor jedem größeren Bridge-Dispatch (neu, 2026-09-09,
+    Priorität 2 aus dem Meta-Review).** Auslöser: der Conan/ChatGPT-Bridge-
+    Totalausfall nach der RMBS-Schnellanalyse wurde erst nach mehreren
+    fehlgeschlagenen Versuchen mit einem bereits fertig ausformulierten,
+    langen Analyse-Prompt entdeckt – vermeidbare Zeit- und Kontextverschwendung.
+    **Ab sofort Pflicht:** vor dem Versand eines langen/komplexen Full-Deep-
+    Dive- oder Schnellanalyse-Dispatch-Prompts an Jack (`ask_gemini`) oder
+    Conan (`ask_chatgpt`) wird zuerst EIN minimaler Verbindungstest
+    geschickt (z.B. ein Ein-Wort-Prompt oder `list_gemini_models`/
+    `list_openai_models`). Nur bei erfolgreichem Health-Check wird der volle
+    Dispatch-Prompt gesendet. Bei Kompakt-Analysen/kurzen Einzelfragen ist
+    der Health-Check nicht nötig (Aufwand unverhältnismäßig zum Risiko).
+32. **Fallback-Mechanismus bei Bridge-Ausfall (neu, 2026-09-09, Priorität 2
+    aus dem Meta-Review, ergänzt Punkt 31).** Schlägt eine Bridge nach 2-3
+    Versuchen (inkl. Health-Check und ggf. einer kürzer formulierten
+    Retry-Variante, siehe die dokumentierten Gemini-Timeout-Fälle) weiterhin
+    fehl, übernimmt Aegis (Jarvis) beide Rollen für diese eine Analyse
+    selbst – NICHT ersatzlos auf den Cross-Check verzichten, sondern explizit
+    als Ersatz kennzeichnen. Der Report/die Analysen-Datei weist diesen
+    Zustand transparent aus (siehe RMBS-Schnellanalyse als bereits gelebtes
+    Vorbild: "2-Stimmen-Leiste statt 3, Conan-Ausfall transparent vermerkt"
+    plus ein offener Punkt, den vollständigen 3-fach-Cross-Check nachzuholen,
+    sobald die Bridge wieder erreichbar ist). Ist NUR eine Bridge ausgefallen
+    und die andere erreichbar, läuft der reguläre Zwei-KI-Cross-Check
+    (Jack/Conan, je nach Bucket) normal weiter, nur Aegis' Ersatzrolle
+    entfällt dann.
 
 **Herkunft Punkte 22-28:** Brian hat den CLBT-Full-Deep-Dive-Report
 unabhängig sowohl ChatGPT als auch Gemini zur Bewertung vorgelegt (außerhalb
