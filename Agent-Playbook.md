@@ -603,11 +603,16 @@ die bleibt Jarvis-only) explizit prüfen, ob sie auch Jack/Conan erreichen
 muss – wenn ja, als neuen Klarstellungs-Block in HANDOVER.md 10.13
 ergänzen UND die Blockzahl in `taeglicher-trigger-check`/`blitz-scan`
 SKILL.md aktualisieren. Diese Prüfung ist explizit Teil der Regel-
-Aufnahme-Disziplin oben, nicht optional. Aktuell acht Standard-Blöcke
-(siehe HANDOVER.md 10.13): SCHRITT-0/WACC/TRAINING-vs-N/V/Terminal-State
-(Blöcke 1-4, 2026-09-02/03), Gründliche-These-Prüfung (Block 5, 2026-09-04),
-Master-Status mit Volltext-Einbettung (Block 6, erweitert 2026-09-06),
-Fact-Pack-Tags-sind-nicht-bindend (Block 7, 2026-09-06) und
+Aufnahme-Disziplin oben, nicht optional. Aktuell sechs Standard-Blöcke
+(siehe HANDOVER.md 10.13, Blocknummern bewusst nicht lückenlos seit der
+Konsolidierung vom 2026-09-09 unten): Block 1 (konsolidiert 2026-09-09,
+Priorität 2 aus dem Playbook-Meta-Review – fasst die früheren, thematisch
+verwandten Einzelblöcke SCHRITT-0-bereits-erledigt/eigene-Recherche/
+WACC-Schätzung/TRAINING-vs-N/V-Schwelle zu einem Text zusammen, inhaltlich
+unverändert, nur weniger redundante "WICHTIG:"-Wiederholungen), Terminal-
+State-Pflicht (Block 4, 2026-09-02/03), Gründliche-These-Prüfung (Block 5,
+2026-09-04), Master-Status mit Volltext-Einbettung (Block 6, erweitert
+2026-09-06), Fact-Pack-Tags-sind-nicht-bindend (Block 7, 2026-09-06) und
 Selbstwiderspruch-Check über alle Kennzahlen (Block 8, 2026-09-09,
 Priorität 3 aus dem Playbook-Meta-Review, verallgemeinert den bereits in
 Punkt 30/KENNZAHLEN-PRIMÄRQUELLEN-STANDARD verankerten Check auf JEDE
@@ -1800,6 +1805,27 @@ unbegrenzt fortgeschrieben zu werden.
        ist `enable_search` bei diesem kombinierten Mega-Prompt IMMER auf
        `False` zu setzen (bekanntes Kontextlängen-/Abbruch-Problem, siehe
        dort), bei Conan/ChatGPT ist das nicht nötig.
+     → **Kürzung (2026-09-09, Priorität 1 aus dem Playbook-Meta-Review):
+       die jeweils NICHT-bindende Methodik-Datei (TMR ODER Scout, je nach
+       Bucket) wird nicht mehr mitgeschickt.** Auslöser: die drei
+       Methodik-Dateien zusammen sind ~204 KB (TMR 80 KB + Scout 72 KB + TA
+       52 KB) – bei einem eindeutigen Bucket-Fall trägt aber nur EINE davon
+       je zum Rating bei, die andere lief seit 2026-09-05 ausschließlich als
+       "Kontext für zusätzliche Perspektiven" mit, ohne dass ihr Mehrwert je
+       belegt wurde. Brian selbst hat die eigentliche Cross-Check-Substanz
+       bereits am 2026-09-08 auf Modellunterschiede (Gemini vs. ChatGPT)
+       zurückgeführt, nicht auf Methodik-Vielfalt (siehe Korrektur oben) –
+       das entzieht dem Mitschicken der zweiten Methodik-Datei die
+       ursprüngliche Begründung. **Ab sofort:** nur die per Bucket
+       bindende EINE Methodik-Datei (TMR ODER Scout) PLUS
+       `jack-technical-analyst-v1.9.md`/TA gehen an Jack UND Conan – nicht
+       mehr alle drei. Reduziert den Prompt um ~35-40% (von ~204 KB auf
+       ~124-132 KB), senkt Kosten/Latenz und das dokumentierte
+       Lost-in-the-Middle-Risiko bei Gemini (HANDOVER.md 10.10), ohne eine
+       einzige DNA-Check-/Rigor-Standard-Regel zu verändern. `enable_search`
+       bei Gemini/Jack bleibt trotzdem auf `False` (Vorsichtsmaßnahme,
+       Kombi-Prompt ist mit ~130 KB immer noch groß) – bei erneuter,
+       gezielter Prüfung ggf. später revidierbar.
      → zusätzlich: Kategorie-Zuordnung nach Depot-Ziel-Struktur (siehe Abschnitt 3):
        Champions / Profi / Talent – inkl. Platz-Check pro Kategorie
      → **AUTOMATISCHE Kategorie-Zuordnung bei KAUFEN-Ergebnis (2026-08-29,

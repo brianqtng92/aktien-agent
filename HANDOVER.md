@@ -922,8 +922,14 @@ Methodik-Datei setzen, zusätzlich zum bisherigen Fact-Pack-Hinweis (Block
 4 seit 2026-09-03, siehe Ergänzung unten):
 
 ```
-WICHTIG: SCHRITT-0-LIVE-CHECK GILT ALS BEREITS DURCHGEFUEHRT UND ABGESCHLOSSEN.
-Jarvis (der Orchestrator) hat SCHRITT 0 bereits SELBST per echter Web-Recherche
+WICHTIG: SCHRITT-0/EIGENE RECHERCHE/WACC-SCHAETZUNG (konsolidiert 2026-09-09
+aus den fruegeren Bloecken 1-3, Prioritaet 2 aus dem Playbook-Meta-Review -
+inhaltlich unveraendert, nur zusammengefasst, da alle drei denselben
+Grundgedanken behandeln: dir fehlt ein bestimmter Tool-Zugriff bzw. es wurde
+bereits vorab recherchiert - schaetze plausibel statt abzubrechen).
+
+SCHRITT-0-LIVE-CHECK GILT ALS BEREITS DURCHGEFUEHRT UND ABGESCHLOSSEN. Jarvis
+(der Orchestrator) hat SCHRITT 0 bereits SELBST per echter Web-Recherche
 erledigt, BEVOR dieser Prompt an dich ging - das Ergebnis steht im FACT-PACK
 unten. Wo SCHRITT 0/Global-Regeln von "Live-Check", "Web-Search ausfuehren"
 oder "pausieren bis Live-Daten bestaetigt sind" sprechen: das bezieht sich auf
@@ -931,20 +937,20 @@ den Fall, dass GAR KEINE Live-Recherche stattgefunden hat. Hier hat sie
 stattgefunden (durch Jarvis) - behandle das FACT-PACK als soliden Ausgangspunkt,
 nicht als von dir nochmal komplett neu zu recherchierende Leerstelle.
 
-WICHTIG, ERGAENZT 2026-09-04: DU HAST JETZT SELBST LIVE-WEB-SUCHE (Google Search
-Grounding). Das FACT-PACK ersetzt NICHT deine eigene Recherche, es ist die
-Ausgangsbasis. Nutze deine eigene Suche gezielt fuer: (a) jedes [TRAINING]- oder
-[N/V]-getaggte K-Kriterium im Fact-Pack, das sich per Suche zu [VERIFIED]
-aufwerten liesse, (b) Zahlen im Fact-Pack, die dir veraltet oder unplausibel
-vorkommen, (c) News/Ereignisse NACH dem im Fact-Pack genannten Recherche-Datum.
-Wenn deine eigene Recherche vom Fact-Pack abweicht: das explizit benennen (nicht
+DU HAST JETZT SELBST LIVE-WEB-SUCHE (Google Search Grounding). Das FACT-PACK
+ersetzt NICHT deine eigene Recherche, es ist die Ausgangsbasis. Nutze deine
+eigene Suche gezielt fuer: (a) jedes [TRAINING]- oder [N/V]-getaggte
+K-Kriterium im Fact-Pack, das sich per Suche zu [VERIFIED] aufwerten liesse,
+(b) Zahlen im Fact-Pack, die dir veraltet oder unplausibel vorkommen, (c)
+News/Ereignisse NACH dem im Fact-Pack genannten Recherche-Datum. Wenn deine
+eigene Recherche vom Fact-Pack abweicht: das explizit benennen (nicht
 stillschweigend uebernehmen oder stillschweigend ersetzen) - genau diese
 Divergenz macht den 3-fach-Cross-Check wertvoller, nicht ungenauer. Bei
 widerspruechlichen Quellen gilt weiterhin die aktuelle Zahl vor der aelteren,
 und eine erst waehrend deiner Suche gefundene Primaerquelle (Geschaeftsbericht,
 Ad-hoc-Meldung) vor einer sekundaeren (Analysten-Kommentar, Forum).
 
-WICHTIG: WACC-KOMPONENTEN (Beta, Rf, ERP, CRP) UND DCF-BERECHNUNGEN OHNE
+WACC-KOMPONENTEN (Beta, Rf, ERP, CRP) UND DCF-BERECHNUNGEN OHNE
 PYTHON-TOOL-CALL. Du hast in dieser Sitzung keinen Python-Tool-Call zur
 Verfuegung (technische Einschraenkung der API-Bridge, nicht deine
 Entscheidung). Fuer QUICK FILTER ist ohnehin KEIN Full-DCF vorgesehen - die
@@ -952,9 +958,9 @@ Tool-Call-Pflicht (Regel 20) bezieht sich auf FULL-DEEP-DIVE-DCF-Berechnungen.
 Schaetze WACC-Komponenten mit [TRAINING]-Tag statt die gesamte Analyse
 deswegen abzubrechen.
 
-WICHTIGE KLARSTELLUNG ZUR [TRAINING]-VS-[N/V]-ENTSCHEIDUNG BEI K-KRITERIEN
-(gilt gleichermassen fuer dich wie fuer die andere KI im selben Cross-Check):
-QUICK FILTER ist laut Methodik selbst ausdruecklich "geeignet fuer... datenarme
+KLARSTELLUNG ZUR [TRAINING]-VS-[N/V]-ENTSCHEIDUNG BEI K-KRITERIEN (gilt
+gleichermassen fuer dich wie fuer die andere KI im selben Cross-Check): QUICK
+FILTER ist laut Methodik selbst ausdruecklich "geeignet fuer... datenarme
 Firmen". Ein sofortiger Abbruch bei jeder einzelnen fehlenden Zahl wuerde
 diesen erklaerten Zweck systematisch unterlaufen. Nutze [TRAINING] IMMER DANN,
 wenn du zu einer Kennzahl eine halbwegs plausible, aus deinem allgemeinen
@@ -1006,13 +1012,19 @@ Ergebnis entscheidet, sondern die Faktenlage.
 Fix) gelten als durch einen Prompt-Klarheits-Mangel verzerrt, nicht als
 belastbares Urteil über die Firmen – bei Bedarf mit dieser Standard-
 Instruktion neu laufen lassen. Ab sofort MUSS jeder neue Bridge-Aufruf
-für TMR/Scout-Analysen alle acht Blöcke enthalten (auch im Täglichen
-Trigger-Check und im Blitz-Scan, siehe dortige SKILL.md-Dateien) – Block 5
-(Gründliche-These-Prüfung) ist bei jeder Analyse einer bestehenden
-Depot-Position Pflicht, Block 6 (Master-Status/Vorrang-Hierarchie) nur bei
-agentischem Depot-Tool-Zugriff, Block 7 (Fact-Pack-Tags-nicht-bindend) und
-Block 8 (Selbstwiderspruch-Check, 2026-09-09 ergänzt) gelten immer (siehe
-unten für alle Details).
+für TMR/Scout-Analysen alle sechs Blöcke enthalten (auch im Täglichen
+Trigger-Check und im Blitz-Scan, siehe dortige SKILL.md-Dateien) –
+**Blocknummerierung seit 2026-09-09 (Priorität 2 aus dem Playbook-Meta-
+Review, Redundanz-Konsolidierung):** Block 1 fasst die früheren, thematisch
+verwandten Blöcke 1-3 (SCHRITT-0-bereits-erledigt/eigene-Recherche/
+WACC-Schätzung/TRAINING-vs-N/V-Schwelle) zu einem einzigen zusammenhängenden
+Text zusammen (inhaltlich unverändert), Blocknummern 4-8 bleiben unverändert
+bestehen (dadurch die Lücke 2-3) – Block 5 (Gründliche-These-Prüfung) ist
+bei jeder Analyse einer bestehenden Depot-Position Pflicht, Block 6
+(Master-Status/Vorrang-Hierarchie) nur bei agentischem Depot-Tool-Zugriff,
+Block 4 (Terminal-State), Block 7 (Fact-Pack-Tags-nicht-bindend) und Block 8
+(Selbstwiderspruch-Check, 2026-09-09 ergänzt) gelten immer (siehe unten für
+alle Details).
 
 **Block 4 ergänzt (2026-09-03, aus dem 3-KI-System-Audit):** Brian ließ
 Jarvis, Jack und Conan das gesamte Regelwerk gemeinsam durchgehen. Beide

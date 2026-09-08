@@ -23,6 +23,8 @@ weiter anwachsen lassen.
 - Playbook-Härtung Prio 1+2: feste Primärquellen + Bridge-Health-Check/Fallback
 - Playbook-Härtung Prio 3: Selbstwiderspruch-Check als achter Standard-Klarstellungsblock (HANDOVER.md 10.13) — gilt jetzt für ALLE Kennzahlen bei jedem Bridge-Aufruf, nicht nur die 5 Kennzahlen aus dem Primärquellen-Standard
 - Playbook-Härtung Prio 4: dieses CHANGELOG.md angelegt (aus git log rekonstruiert) + monatlicher Redundanz-Check-Prozess dokumentiert
+- Over-Engineering-Kürzung 1: nicht-bindende Methodik-Datei nicht mehr an Jack/Conan mitgeschickt (~204 KB → ~130 KB pro Bridge-Aufruf, -35-40%)
+- Over-Engineering-Kürzung 2: HANDOVER.md-10.13-Blöcke 1-3 (SCHRITT-0/eigene Recherche/WACC-Schätzung/TRAINING-vs-N/V) zu einem konsolidierten Block 1 zusammengefasst (inhaltlich unverändert, weniger redundante Formulierung)
 
 ## 2026-09-08
 
