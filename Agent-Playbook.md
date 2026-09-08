@@ -4162,6 +4162,25 @@ Full-Deep-Dive-Sitzungen (wie CLBT/ATEN in dieser Session) – dort läuft
 derselbe Vergleich manuell durch Jarvis, jetzt mit derselben strukturierten
 Grundlage.
 
+**Namensgebung (2026-09-08, von Brian gefordert): der Master-Agent heißt
+Aegis.** Analog zu Jack (Gemini) und Conan (ChatGPT) bekommt die bisher nur
+als Rollenbeschreibung geführte vierte Position im Redesign-Diagramm
+("Master Agent" – vergleicht Daten/prüft Risiken/prüft Depot-Regeln) einen
+Eigennamen: **Aegis**. Wichtig: Aegis ist KEINE vierte, separate KI oder
+ein eigenständiges Programm – es ist Jarvis (Claude) in genau der
+orchestrierenden Rolle, die in diesem Playbook und in den Prompts bereits
+beschrieben ist (Cross-Check-Synthese, Depot-Regel-Prüfung, finale Sizing-/
+Rating-Entscheidung, NIE Order-Ausführung). Umgesetzt: `jack-moat-reaper-
+v11.7.md` (v11.10→v11.11) und `conan-the-scout-v1.12.md` (v1.13→v1.14) –
+alle operativen "Master-Agent"-Referenzen (MANDAT, MAKRO-KONTEXT, SCHRITT
+8/PFLICHT-JSON-SUMMARY, Regel 37/43, JSON-Feld `sizing_proposal.note`)
+durch "Aegis" ersetzt, historische Changelog-Einträge unverändert gelassen
+(gleiche Konvention wie beim Reaper→Agent-Rebrand). Sollte Aegis künftig
+tatsächlich zu einem eigenständigen, programmatischen Master-Agent
+ausgebaut werden (siehe Diskussion oben zu "noch kein programmatischer
+Master-Agent"), bleibt der Name unverändert – nur die dahinterliegende
+Implementierung würde sich ändern, nicht die Bezeichnung.
+
 ### Watchlist-System (2026-08-28, von Brian gefordert)
 
 Zusätzlich zum eigentlichen Depot führt der Agent eine eigenständige
