@@ -3979,6 +3979,60 @@ strukturell andere), kein Rating "KAUFEN" (Scout vergibt bewusst nur
 WATCHLIST-ELITE/BEOBACHTEN-*/ZU FRÜH/DURCHGEFALLEN, nie eine vollständige
 Kauffreigabe — das bleibt im Fazit-Text erklärt, nicht verwässert).
 
+### Schnellanalyse-Format: dritte Report-Stufe zwischen Kompakt und Deep Dive (neu, 2026-09-08)
+
+Brian brauchte ein Format für "wenn ich eine Schnellanalyse haben möchte" –
+bisher gab es nur zwei PDF-Stufen: **Agent-Kompakt** (1 Seite, dunkles
+Design, für Hermes-Treffer/QUICK-FILTER-Chat-Antworten) und **Agent Deep
+Dive Report** (7-9 Seiten, helles Design, FULL DEEP DIVE + 2-Runden-Rigor-
+Standard). Dazwischen fehlte eine Stufe für "echter 3-fach-Cross-Check,
+aber ohne den vollen Zeit-/Seitenaufwand".
+
+**Methodik-Tiefe: QUICK FILTER, nicht FULL DEEP DIVE.** Beide Bridge-KIs
+(Jack/Gemini + Conan/ChatGPT) laufen im QUICK-FILTER-Modus ihrer jeweils
+bindenden Methodik-Datei (Bucket-Klassifizierung entscheidet wie beim Full
+Deep Dive, siehe "[2] KATEGORISIERUNG" – nur EINE Runde Dispatch, kein
+zweiter Rigor-Standard-Nachschlag). QUICK FILTER bedeutet laut den
+Prompts selbst: DNA-Check + Konfidenz + Verdict Pflicht, WACC vereinfacht,
+**kein Python-DCF-Zwang** (KGV/PEG/EV-FCF-Schnellcheck statt DCF), Beneish
+SKIP, Zyklus-Overlay/Moat-Verifikation/Management-Score nur als
+Stichpunkte statt Vollformat.
+
+**PDF-Format: 2-3 Seiten, helles Agent-Deep-Dive-Farbsystem (wiederverwendet,
+kein drittes eigenständiges Design).** Seitengerüst (Richtwert, an den
+Einzelfall anpassen):
+- **Seite 1:** Masthead + Hook-Box (kompakte These, 1 Satz + 2-3 Sätze
+  Kontext statt der ausführlichen Burggraben-Origin-Story) + 3-Stimmen-
+  Leiste + vollständige DNA-Check-Tabelle (alle K+E-Kriterien, siehe
+  Rigor-Standard-Punkt 29 – gilt hier genauso, DNA-Check wird NIE gekürzt,
+  nur der Rest drumherum).
+- **Seite 2:** Bewertungs-Schnellcheck (KGV/PEG/EV-FCF-Tabelle statt DCF-
+  Chart – kein Python-DCF-Zwang im QUICK-FILTER-Modus, siehe oben) +
+  Moat/Risiko in Stichpunkten + kompakter Kill-Sheet-Absatz (2-3 Trigger
+  statt der vollen 4+4-Box vom Deep Dive).
+- **Seite 3 (optional, nur falls Inhalt es füllt statt zu strecken):**
+  Kursverlauf-Chart + Fazit-Box + Quellen. Passt der Inhalt auf 2 Seiten,
+  wird keine dritte erzwungen – "2-3 Seiten" ist eine Obergrenze, kein
+  Pflicht-Minimum.
+- **Was ENTFÄLLT ggü. Full Deep Dive:** 5-Jahres-Finanzhistorie-Tabelle,
+  Guidance-Track-Record, Management-Glaubwürdigkeits-Matrix,
+  Kapitalrückführungs-Historie, Peer-Multiple-Tabelle, eigene historische
+  Bewertungs-Bandbreite als Chart, SBC-/Bruttomargen-Trend-Grafik,
+  Sensitivitätsmatrix, TAM/SAM/SOM – kurz: die Rigor-Standard-Punkte 1-29
+  sind explizit Full-Deep-Dive-only, nicht Teil der Schnellanalyse.
+- **Was NIE entfällt, auch nicht in der Schnellanalyse:** SCHRITT-0-Live-
+  Check (Kurs+News+Beta), Going-Concern-Precheck, vollständige DNA-Check-
+  Tabelle (K+E, ohne Tag-/Typ-Spalten, siehe Punkt 21-Korrektur), Rating +
+  Score + Konfidenz, Exit-Strategie bei KAUFEN bzw. Abstauber-Limit+Trigger
+  bei BEOBACHTEN.
+
+Dateiname-Konvention: `reports/<Ticker>-agent-schnellanalyse-<YYYY-MM-DD>.html/.pdf`.
+Cross-Check-Markdown weiterhin unter `analysen/<Ticker>-fulldeepdive-...`
+NUR bei echtem Full Deep Dive – bei einer Schnellanalyse reicht ein
+kürzerer `analysen/<Ticker>-quickfilter-cross-check-<Datum>.md` analog zu
+den bereits bestehenden `*-TMR-quickfilter-*.md`/`*-Scout-quickfilter-*.md`-
+Dateien (jetzt erstmals mit einem dazugehörigen PDF statt nur Chat-Text).
+
 ### Full-Deep-Dive-Tiefe: Rigor-Standard nach uncoveredjapan.com-Vorbild (2026-09-07)
 
 Brian hat die 5-teilige Digital-Arts-(2326)-Deep-Dive-Serie von
