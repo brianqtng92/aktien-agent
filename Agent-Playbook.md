@@ -4224,6 +4224,44 @@ ausgebaut werden (siehe Diskussion oben zu "noch kein programmatischer
 Master-Agent"), bleibt der Name unverändert – nur die dahinterliegende
 Implementierung würde sich ändern, nicht die Bezeichnung.
 
+**Zweiter Nachtrag (2026-09-08): Conan-Redesign-Diskussion mit ChatGPT —
+kein Neubau, sondern gezielte Redundanz-Kürzung.** Brian ließ dieselbe
+Frage (Komplett-Neubau vs. Anpassung) parallel noch für Conan von ChatGPT
+prüfen. ChatGPT schlug zunächst eine "CONAN SCOUT ENGINE v2.0" vor (7-18
+Module, 300-500 statt 824 Zeilen), zog das aber nach Prüfung der
+tatsächlichen v1.12-Datei selbst zurück: praktisch jedes vorgeschlagene
+"neue" Modul existierte bereits (Future-Moat-4-Achsen = `🚀 ZUKUNFTS-MOAT-
+CHECK`, "was muss für 10x wahr sein" = `🔍 TAM-REALITY-CHECK FÜR DEN
+TENBAGGER-FALL`, Base-Rate/Referenzklasse = `🎲`-Modul +
+`REFERENZKLASSEN-VERGLEICH`, Kill-Switch = `🕵 FRAUD-/PROMOTION-RED-FLAGS-
+CHECK` — sogar umfangreicher als ChatGPTs Vorschlag, u.a. VIE-Struktur-
+Check —, IPO-Modul = `🚨 NEGATIV-CATALYST-CHECK`, Gründer-Score bereits
+5-faktorig statt "Founder-CEO = automatischer Punkt"). Jarvis' eigene
+Gegenprüfung (volle 824 Zeilen zeilenweise gelesen) kam zum selben
+Ergebnis, fand aber einen echten, bis dahin übersehenen Punkt: die 24
+zuletzt ergänzten Regeln (19-42) im Abschnitt GLOBALE REGELN waren fast
+wortgleiche ZWEITFORMULIERUNGEN von Mechaniken, die im Fließtext bereits
+vollständig ausformuliert stehen — anders als Jacks Prompt, wo der
+Regelabschnitt am Dokumentende schon immer nur als Kurzverweis auf die
+einzige verbindliche Formulierung diente ("Diese Sektion klassifiziert
+NUR..."), nicht als Zweitformulierung.
+
+**Umgesetzt** (`conan-the-scout-v1.12.md`, v1.14→v1.15): Regeln 19-42 von
+voller Wiederholung auf kompakte "siehe [Abschnitt] oben"-Verweise
+gekürzt, exakt nach Jacks eigener GLOBALE-REGELN-Konvention. Keine
+einzige Schwelle, Formel, Override-Tabelle oder Konsequenz wurde entfernt
+oder verändert — nur die doppelte Formulierung, ~50 Zeilen (~6%)
+eingespart. Alle Selbstverweise im Fließtext auf Regelnummern (Zeile
+197→Regel 26 Moat-Deckel, Zeile 231→Regel 32 Minimale-Annahme, Zeile
+619→Regel 31 Vorrang-Prinzip) bleiben gültig, da Regelnummerierung und
+-reihenfolge unverändert blieben. Persona/Ton, Sektor-Overrides,
+EV-Multiplikatoren-Disclaimer und die N/V-Abbruch-Logik (bereits über die
+vier Sektor-Overrides abgefedert, siehe Gegenprüfung oben) blieben
+bewusst unangetastet — kein Rewrite, keine neue Architektur, reine
+Verschlankung. Die Hermes-SKILL.md-Dateien (`taeglicher-trigger-check`,
+`blitz-scan`) wurden im selben Schritt auf "v1.15 intern" nachgezogen
+(siehe Hermes-Gedächtnis-Synchronisations-Pflicht oben).
+
 ### Watchlist-System (2026-08-28, von Brian gefordert)
 
 Zusätzlich zum eigentlichen Depot führt der Agent eine eigenständige
