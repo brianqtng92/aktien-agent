@@ -4087,6 +4087,55 @@ stillschweigend geglättet. Diese zweite Runde kostet zusätzliche Zeit/
 Tokens pro Report – das ist ein bewusster Tausch für echte statt nur
 behauptete Cross-Check-Tiefe.
 
+### Jack-Prompt-Redesign-Anfrage abgewogen, additiv statt Komplett-Rewrite umgesetzt (2026-09-08, ausgelöst durch Brians externes Gespräch mit Jack/Conan)
+
+Brian hatte am Vorabend mit Jack (Gemini) und Conan (ChatGPT) außerhalb
+dieser Session über eine mögliche Komplett-Neufassung von Jacks
+72.000-Zeichen-Systemprompt diskutiert. Conans Vorschlag ("TMR COMPACT
+ENGINE v13.0"): Persona/Sarkasmus raus, Sizing-Tiers/Portfolio-Logik
+komplett aus Jack raus und zentral in einem "Master-Agent" bündeln,
+einheitliches JSON-Output-Schema für alle 3 KIs, Makro/Prediction-
+Tracking/Exit-Mechanik zentralisieren. Brian bat Jarvis um eine
+Einschätzung, ob man den kompletten Prompt so neu aufsetzen soll.
+
+**Jarvis' Bewertung:** Ein Komplett-Rewrite wurde abgelehnt. Die
+Detailtiefe des aktuellen Prompts (Sektor-Override-Tabellen, DNA-Check-
+Schwellen, Entscheidungshierarchie, Debt-Maturity-Check, CRP-Sourcing-
+Kaskade, die 36 Klasse-A-Regeln) ist genau die Mechanik, die in dieser
+Session reale Fehler gefangen hat (Kundenkonzentration 37%→38% bei ATEN,
+GAAP/Non-GAAP-Verwechslung, Schulden-Diskrepanz $226M vs. $219,5M,
+A10-Dividenden-Fehler bei CLBT/ATEN-Deep-Dives) – eine generischere,
+kürzere Version hätte diese vermutlich nicht gefangen. Außerdem: es
+existiert noch kein programmatischer Master-Agent, der JSON mechanisch
+verarbeitet – Jarvis liest aktuell die volle Prosa-Antwort und wertet
+qualitativ aus; ein reines JSON ohne die begründende Prosa (Devil's-
+Advocate-Argumentation, benannte Quellen, Management-Zitate) würde genau
+die Nachvollziehbarkeit nehmen, die für Cross-Checks gebraucht wird.
+
+**Umgesetzt wurden stattdessen additiv drei Ideen mit echtem Mehrwert**
+(in `prompts/jack-moat-reaper-v11.7.md`, v11.9 → v11.10):
+1. **Persona/Sarkasmus-Pflicht entfernt** (MANDAT-Sektion gekürzt) – das
+   System wird primär von einer anderen KI ausgewertet, nicht von einem
+   Menschen gelesen, Ton-Overhead kostet nur Tokens ohne Analysewert.
+2. **Makro-Radar zentralisiert** – lief zuvor redundant bei allen 3 KIs
+   einzeln, läuft jetzt zentral bei Jarvis, Jack referenziert nur noch
+   mitgelieferten Kontext statt eigenen Web-Search-Aufwand zu betreiben.
+3. **Neuer SCHRITT 8 – PFLICHT-JSON-SUMMARY** ergänzt (Regel 37): ein
+   strukturierter JSON-Block am Ende von MODUS A/EARNINGS-PREP, der die
+   bereits ausgewiesenen Prosa-Werte (Agent Score, Moat, Valuation,
+   Rating, Sizing-Vorschlag, aktive Flags) zusammenfasst – erleichtert
+   künftige Cross-Checks, ERSETZT aber nicht die Prosa-Herleitung.
+   Sizing-Vorschlag im JSON ist explizit als "Vorschlag, keine
+   Portfolioentscheidung" gekennzeichnet – die finale Gewichtung bleibt
+   bei Jarvis als Master im Cross-Check mit Conan/Claude, unabhängig
+   davon, was Jack selbst vorschlägt (dessen unabhängige Sizing-Meinung
+   bleibt als Cross-Check-Signal erhalten, siehe z.B. die informative
+   Divergenz Jack SCHROTT/0% vs. Conan BEOBACHTEN/1-1,5% bei ATEN).
+
+Analyse-Substanz (DNA-Check, alle Sektor-Overrides, Entscheidungs-
+hierarchie, Stapel-Logik, Klasse-A-Regeln 1-36) bewusst unverändert
+gelassen. Conans Kompakt-Entwurf selbst wurde nicht übernommen.
+
 ### Watchlist-System (2026-08-28, von Brian gefordert)
 
 Zusätzlich zum eigentlichen Depot führt der Agent eine eigenständige
