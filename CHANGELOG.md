@@ -29,6 +29,7 @@ weiter anwachsen lassen.
 - Over-Engineering-Kürzung 4: Rigor-Standard-Punkte 29+30 (DNA-Check-Tabelle + Primärquellen-Pflicht) zu einem konsolidierten Punkt 29 zusammengelegt (inhaltlich unverändert, Punkt 30 entfällt als eigene Nummer)
 - Neue Faktor-/Korrelations-Analyse (`depot/faktor_korrelations_analyse.md`): deckt 3 versteckte Cluster auf, die quer über die bestehende Sektor-Tabelle laufen - Regierungs-/Verteidigungsbudget-Abhängigkeit 14,7%, Hochbeta-Kleinkapitalisierer 11,3%/22,8%, zinssensitive Finanzwerte 10,3%. Monatlich im Monatsrecap aktualisiert (neuer Punkt 12b)
 - Erster Methodik-Backtest (`analysen/backtest-methodik-validierung-2026-09-09.md`): 3 historische Fallstudien (Wirecard/WeWork/Constellation Software) gegen die 16 Core-Rules getestet - 2/3 korrekt, bei Wirecard eine echte Schwäche im Going-Concern-Precheck gefunden (hängt am Auditor-Testat) und in jack-moat-reaper-v11.7.md dokumentiert
+- Neuer "🔄 Kontinuierlicher Verbesserungsprozess (KVP)": auf Brians Wunsch institutionalisiert - laufend/monatlich (Monatsrecap Punkt 16)/vierteljährlich (Punkt 16b, Jack+Conan-Bridge-Check) sucht das System aktiv nach Mehrwert-Verbesserungen. Zwei-Stufen-Klassifizierung: 🟢 sicher+autonom umsetzbar (Effizienz/Redundanz/Doku, nie Rating-Logik) vs. 🟡 nur Vorschlag, braucht Brians Zustimmung (jede Rating-/Schwellen-/Risiko-Änderung). FIXE GRENZEN (Order-Ausführung manuell) bleiben unberührt
 
 ## 2026-09-08
 

@@ -618,35 +618,126 @@ Priorität 3 aus dem Playbook-Meta-Review, verallgemeinert den bereits in
 Punkt 29/KENNZAHLEN-PRIMÄRQUELLEN-STANDARD verankerten Check auf JEDE
 Kennzahl, nicht nur die dort genannten fünf).
 
-### 🛠 Wartung & Redundanz-Check (NEU, 2026-09-09, Priorität 4 aus dem
-Playbook-Meta-Review)
+### 🔄 Kontinuierlicher Verbesserungsprozess (KVP) — erweitert 2026-09-09
+auf Brians ausdrücklichen Wunsch ("die Agenten sollen systematisiert und
+automatisiert über die Zeit, Schritt für Schritt, das Fundament/System
+weiter verbessern, festigen, ausbauen, modifizieren, effektiver/
+effizienter gestalten, auch mit kleinen Schritten")
 
-Auslöser: Agent-Playbook.md ist auf über 6.000 Zeilen gewachsen, mit
-Änderungshistorie fast ausschließlich inline im jeweiligen Regeltext
-dokumentiert (Herkunft/Begründung direkt neben der Regel, siehe z.B. Punkt
-29 oben). Das ist gut für den "warum gilt diese Regel"-Kontext, aber
-schlecht für die reine "was hat sich wann geändert"-Übersicht – und macht
-schleichende Redundanz schwer erkennbar, bis sie zufällig auffällt (siehe
-den Conan-Prompt-Fund vom 2026-09-08, wo Regeln 19-42 sich über Monate zu
-Zweitformulierungen bereits bestehender Mechaniken entwickelt hatten, ohne
-dass das jemandem auffiel, bis Brian gezielt danach fragen ließ).
+**Herkunft:** entstanden aus der 🛠 Wartung & Redundanz-Check-Ergänzung
+vom selben Tag (Priorität 4 des Playbook-Meta-Reviews), auf Brians Bitte
+zu einem dauerhaften, wiederkehrenden Prozess ausgebaut, statt eine
+einmalige Aufräumaktion zu bleiben. Grundproblem: Agent-Playbook.md ist
+auf über 6.000 Zeilen gewachsen, Verbesserungen (wie der gesamte
+2026-09-09-Meta-Review) fanden bisher nur statt, wenn Brian explizit
+danach fragte – nicht von sich aus, in kleinen, laufenden Schritten.
 
-**Ab sofort zwei feste Gewohnheiten:**
-1. **`CHANGELOG.md` (neu angelegt, aus der bestehenden git-Historie
-   rekonstruiert):** jede substantielle Änderung an Agent-Playbook.md, den
-   Methodik-Dateien (`prompts/*.md`) oder den Hermes-`SKILL.md`-Dateien
-   bekommt dort zusätzlich zur inline-Dokumentation einen Ein-Satz-Eintrag
-   mit Datum. Ersetzt NICHT die ausführlichen Herkunfts-Notizen hier – nur
-   eine schnell scannbare Zeitleiste obendrauf.
+**🚧 Feste Grenze, die dieser Prozess NIEMALS überschreitet:** der KVP
+gilt für das SYSTEM (Playbook-Regeln, Methodik-Prompts, Prozess-Effizienz,
+Datenqualität, Dokumentation) – NIEMALS für einzelne Kauf-/Verkaufs-
+Entscheidungen (die laufen weiterhin über die normale Analyse-Pipeline)
+und NIEMALS für eine eigenständige Lockerung eines Core-Rules/Guardrails
+(Going-Concern-Abbruch, Fraud-Check, K-Kriterium-[N/V]-Abbruch, 10%-
+Positions-Deckel usw.) ohne Brians ausdrückliche Zustimmung. Die FIXEN
+GRENZEN (Order-Ausführung immer manuell) bleiben davon komplett
+unberührt – der KVP bekommt unter keinen Umständen mehr Autonomie als
+das explizit hier Beschriebene.
+
+**Zwei-Stufen-Klassifizierung für jede identifizierte Verbesserung:**
+- **🟢 SICHER, autonom umsetzbar (kein Rating-/Risiko-Effekt):**
+  Redundanz-Konsolidierung (Regeln zusammenlegen, ohne Schwellen zu
+  ändern – Vorbild: die Block-1-Konsolidierung und der Rigor-Punkte-29/
+  30-Merge vom 2026-09-09), Kosten-/Effizienz-Optimierungen (Vorbild:
+  die Methodik-Datei-Kürzung, die Blitz-Scan-Drosselung), Dokumentations-
+  Klarheit, veraltete Formulierungen korrigieren (Vorbild: das übersehene
+  "3-Datei-Mega-Prompt"-Relikt), CHANGELOG-Pflege. Wird direkt umgesetzt
+  UND in `CHANGELOG.md` protokolliert – kein Zustimmungs-Vorlauf nötig,
+  aber NIE stillschweigend (immer sichtbar dokumentiert).
+- **🟡 VORSCHLAG, braucht Brians Entscheidung:** alles, was eine
+  tatsächliche Rating-/Schwellen-/Risiko-Logik ändert (neue/geänderte
+  K-Kriterien-Schwellen, neue Primärquellen-Standards, geänderte
+  Kategorisierungs-Kriterien, neue Guardrails). Wird NIEMALS automatisch
+  umgesetzt, auch nicht in einem unbeaufsichtigten Cron-Lauf – nur als
+  klar markierter Vorschlag im nächsten Monatsrecap (oder sofort im Chat,
+  falls der Fund währenddessen auffällt) mit kurzer Begründung
+  festgehalten, Umsetzung erst nach Brians "ja".
+
+**Aktive Mehrwert-Suche, nicht nur passives Fehler-Sammeln (Ergänzung
+2026-09-09, Brian: "die Agenten sollen automatisiert mit der Zeit
+entscheiden, welche Optionen/Ergänzungen/Verbesserungen einen großen
+Mehrwert bieten").** Der KVP ist kein reiner Fehlerbericht ("was ist
+kaputt/redundant") – Jack, Conan und Jarvis bewerten bei jedem Zyklus
+aktiv, WELCHE der denkbaren Verbesserungen den größten Mehrwert für
+möglichst wenig Aufwand/Risiko bringen würde, nach demselben Muster wie
+der 2026-09-09-Meta-Review selbst (dort: erst messen/quantifizieren –
+Zeilenzahlen, KB pro Bridge-Aufruf, Cluster-Prozentanteile –, dann nach
+Aufwand/Risiko/Nutzen priorisieren, dann erst umsetzen). Konkret pro
+Zyklus:
+1. **Bestandsaufnahme mit echten Zahlen**, nicht nur Bauchgefühl (Vorbild:
+   "Agent-Playbook.md 6.063 Zeilen", "204 KB pro Bridge-Aufruf", "14,7%
+   Gov/Defense-Cluster").
+2. **Optionen sammeln** – sowohl "was fehlt" (neue Fähigkeit, Lücke) als
+   auch "was kostet unnötig" (Redundanz, Ineffizienz) gehören dazu, nicht
+   nur eine der beiden Richtungen.
+3. **Nach Mehrwert/Aufwand/Risiko einordnen** (informell reicht:
+   🔴 hoher Mehrwert + sicher umsetzbar, 🟠 mittel, 🟢 gering/Kosmetik) –
+   NIEMALS eine erfundene Kennzahl (z.B. "+2,3% erwartete Rendite") als
+   Rechtfertigung nutzen, das wäre ein Verstoß gegen die No-False-
+   Precision-Regel. Der Mehrwert-Maßstab ist qualitativ + die bereits
+   vorhandenen echten Kennzahlen, keine neu erfundene Scheingenauigkeit.
+4. **Die höchste Mehrwert/Aufwand-Kombination zuerst angehen**, nicht
+   einfach die Liste von oben nach unten abarbeiten oder nur das
+   bequemste Item wählen.
+5. Ergebnis bleibt der Zwei-Stufen-Klassifizierung oben unterworfen – ein
+   hoher Mehrwert rechtfertigt NIE, die 🟡-Zustimmungspflicht für
+   Rating-/Risiko-Logik-Änderungen zu überspringen. "Autonom entscheiden,
+   was Mehrwert hat" heißt autonome PRIORISIERUNG und autonome UMSETZUNG
+   der 🟢-sicheren Items – nicht autonome Freigabe für alles.
+
+**Kadenz (drei Ebenen, bewusst nicht öfter – Kürzung 3 vom selben Tag
+gilt sinngemäß: nicht jede Kleinigkeit rechtfertigt einen großen
+Prüf-Aufwand):**
+1. **Laufend/opportunistisch:** fällt Jarvis während einer regulären
+   Analyse/eines Chats eine 🟢-sichere Verbesserung auf (wie das
+   übersehene "3-Datei-Mega-Prompt"-Relikt am selben Tag), wird sie direkt
+   mit umgesetzt, nicht auf den nächsten Monatsrecap verschoben.
+2. **Monatlich (Monatsrecap, Jarvis-solo, siehe `monatsrecap/SKILL.md`
+   Punkt 16 "Ruleset-Hygiene" + Punkt 12b "Faktor-Cluster-Update"):**
+   die bereits bestehende monatliche Redundanz-/Cluster-Prüfung wird um
+   einen dritten Blick ergänzt – gibt es seit dem letzten Monat 🟢-sichere
+   Effizienz-/Redundanz-Verbesserungen, die noch nicht umgesetzt wurden?
+   Direkt umsetzen + im PDF als kurzer Absatz "Systemverbesserungen
+   diesen Monat" vermerken (auch wenn keine gefunden wurden – dann so
+   vermerken, siehe unten).
+3. **Vierteljährlich (an jedem Quartals-Monatsrecap – März/Juni/
+   September/Dezember):** ein verkleinerter Nachbau des
+   2026-09-09-Meta-Reviews – Jarvis holt bei Jack UND Conan per Bridge
+   eine kurze (nicht die volle Session-Länge) Einschätzung ein: "gibt es
+   aus eurer Sicht Schwächen im aktuellen Regelwerk, die in den letzten
+   3 Monaten aufgefallen sind?" Ergebnis als eigener kurzer Abschnitt im
+   Quartals-Monatsrecap, 🟢-Funde direkt umgesetzt, 🟡-Funde als
+   Vorschlag für Brian. Bewusst NICHT monatlich (Kosten-/Aufwands-Grund,
+   identisch zur Begründung der Blitz-Scan-Drosselung) – ein Vierteljahr
+   ist genug Abstand, um echte Muster von Einzelfällen zu unterscheiden.
+
+**Ab sofort feste Gewohnheiten (Basis, unverändert seit der ersten
+Fassung dieses Abschnitts):**
+1. **`CHANGELOG.md`:** jede substantielle Änderung an Agent-Playbook.md,
+   den Methodik-Dateien (`prompts/*.md`) oder den Hermes-`SKILL.md`-
+   Dateien bekommt dort zusätzlich zur inline-Dokumentation einen
+   Ein-Satz-Eintrag mit Datum. Ersetzt NICHT die ausführlichen
+   Herkunfts-Notizen hier – nur eine schnell scannbare Zeitleiste
+   obendrauf.
 2. **Monatlicher Redundanz-Check:** beim ersten Playbook-editierenden Chat
-   jedes Kalendermonats einmal kurz prüfen, ob sich seit dem letzten Check
-   echte Redundanz angesammelt hat – mehrfach fast wortgleiche Regeln,
-   veraltete "offene Punkte", die längst gelöst sind, oder Abschnitte, die
-   sich besser in eine Archiv-Datei auslagern lassen (Vorbild: die
-   Auslagerung der Abschnitte 9-13 vom 2026-09-08). Kein aufwendiger
-   Vollaudit, nur ein kurzer bewusster Blick – Fund: verschlanken, kein
-   Fund: `CHANGELOG.md`-Zeile "Redundanz-Check <Monat>: kein Fund" reicht
-   als Beleg, dass der Check tatsächlich stattfand.
+   jedes Kalendermonats (bzw. automatisch im Monatsrecap) einmal kurz
+   prüfen, ob sich seit dem letzten Check echte Redundanz angesammelt
+   hat – mehrfach fast wortgleiche Regeln, veraltete "offene Punkte", die
+   längst gelöst sind, oder Abschnitte, die sich besser in eine
+   Archiv-Datei auslagern lassen (Vorbild: die Auslagerung der
+   Abschnitte 9-13 vom 2026-09-08). Kein aufwendiger Vollaudit, nur ein
+   kurzer bewusster Blick – Fund: verschlanken, kein Fund:
+   `CHANGELOG.md`-Zeile "Redundanz-Check <Monat>: kein Fund" reicht als
+   Beleg, dass der Check tatsächlich stattfand.
 
 **Jack/Conan haben jetzt eigene Live-Web-Recherche (2026-09-04, von Brian
 gefordert: "Jack und Conan sollen die Freiheit haben, selbst zu
