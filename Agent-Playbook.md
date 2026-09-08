@@ -3909,6 +3909,41 @@ einziges eigenständiges Skript mit identischer Token-Liste separat
 mitgezogen (Chart-PNGs müssen zum hellen PDF-Hintergrund passen, kein
 dunkler Chart-Kasten mehr auf hellem Report).
 
+**Scout-Pfad-Mapping (2026-09-08, von Brian gefordert: CLBT/ATEN liefen
+beide über den TMR-Pfad — Conan/Scout-Analysen sollen dieselbe 11-Seiten-
+Struktur/Tiefe bekommen, mit Scout-eigenem Inhalt statt 1:1 TMR-Vokabular
+reinzupressen).** Das Seitengerüst bleibt identisch (11 Seiten, gleiche
+Agent-Optik, gleiche Prosa-statt-Stichpunkt-Regel, gleiche Pflicht-
+Elemente Punkt 1-14 oben), nur die INHALTLICHE Füllung je Seite wechselt
+auf Conans eigenes Vokabular (siehe `conan-the-scout-v1.12.md`, aktuell
+v1.16) statt TMR-Konzepte künstlich auf eine junge/spekulative Firma zu
+pressen:
+
+| Seite (TMR-Fassung, CLBT/ATEN) | Scout-Fassung (Conan-Pfad) |
+|---|---|
+| 1: Hook + Burggraben-Einführung | Hook + Unternehmensgeschichte, Aufhänger ist die Scout-These ("warum könnte das der nächste Compounder sein"), nicht ein bereits bewiesener Burggraben |
+| 2: Management + Kapitalallokation + Glaubwürdigkeits-Matrix (0-7) | Gründer-/Führungs-Score (0-5) + Insider-Ownership/-Nachkäufe stärker gewichtet als Track-Record, der bei jungen Firmen oft fehlt |
+| 3: 3-Stimmen-Leiste + DNA-Check (Badges) | 3-Stimmen-Leiste + Compounder-DNA-Check (aktiver Sektor-Override im Header: SaaS-Default/Pre-Revenue-SaaS/Deep-Tech/Biotech), gleiche Badge-Optik |
+| 4: 5-Jahres-Finanzhistorie + Guidance-Track-Record | Wachstumshistorie (oft nur 2-3 Jahre, explizit als kurze Historie kennzeichnen statt künstlich 5 Jahre zu erzwingen) + Guidance-Track-Record NUR falls vorhanden, sonst "noch keine belastbare Guidance-Historie" |
+| 5: Umsatz-/OCF-Grafik + Dividendenrendite | Umsatz-Grafik + Cash-Runway-/Burn-Multiple-Historie (relevanter als OCF bei unprofitablen Firmen) + Dividendenrendite (fast immer 0%, bleibt Pflichtpunkt) |
+| 6: Produktlinien + Peer-Multiple-Tabelle (Op-Margin+Median) | Zukunfts-Moat-Check (4 Dimensionen: Tech-Vorsprung/Early-Adopter/Skalierung/Wettbewerbsfenster) + Referenzklassen-Vergleichstabelle (3-5 Peers gleicher Reifephase statt etablierter Multiples) |
+| 7: Vier Boxen Moat/Going-Concern/SBC/Reality-Check | Vier Boxen Moat-in-Formation/Fraud-Promotion-Check/Dilution/TAM-Reality-Check |
+| 8: Offene Schwächen + Root-Cause-Analyse | Killer-Thesis-Check (tragende Kernannahme) + Hype-Bias-Check (Referenzklassen-Frage) |
+| 9: Chart + DCF Bear/Base/Bull + Reverse-Engineering + Downside-Boden | Chart + Outcome-Wahrscheinlichkeiten (Payoff-Verteilung, EV-Multiple) + TAM-Reality-Check-für-Tenbagger + Cash-Runway-vs-Catalyst-Guardrail |
+| 10: Unterschätzter Punkt + Katalysator + Bear-Case-Katalog + Trigger | Trichter-Einordnung (Stufe 1/2/3, kein TMR-Äquivalent, prominent) + Catalyst-Check + Base-Rate-Floor-Kontext + Beobachten-Protokoll-Trigger |
+| 11: Score-Aufschlüsselung + Devil's Advocate + Fazit + Quellen | Scout-Score-Aufschlüsselung + Nullhypothese-Ergebnis + Scout Conviction (10-Jahres-10x-Satz) + Fazit + Quellen |
+
+**Was unverändert bleibt:** DQ-Badge-System (Ⓥ/Ⓣ/Ⓔ/Ⓝ), Farbwelt/Typo,
+Zwei-Runden-Cross-Check-Pflicht (Rigor-Inhalte gehen in Runde 2 zurück an
+Jack/Conan), PFLICHT-JSON-SUMMARY am Ende (Conans eigenes Schema, siehe
+Regel 43), Quellen-Seite mit Korrektur-Historie-Konvention. **Was NICHT
+1:1 übernommen wird:** kein DCF/WACC/Reverse-DCF (Scout arbeitet mit
+EV/Sales+TAM-Sanity-Check statt DCF, siehe Conan-Prompt "BEWERTUNG – KEIN
+DCF-ZWANG"), kein Piotroski/ROIC-DNA-Check (Compounder-DNA-Kriterien sind
+strukturell andere), kein Rating "KAUFEN" (Scout vergibt bewusst nur
+WATCHLIST-ELITE/BEOBACHTEN-*/ZU FRÜH/DURCHGEFALLEN, nie eine vollständige
+Kauffreigabe — das bleibt im Fazit-Text erklärt, nicht verwässert).
+
 ### Full-Deep-Dive-Tiefe: Rigor-Standard nach uncoveredjapan.com-Vorbild (2026-09-07)
 
 Brian hat die 5-teilige Digital-Arts-(2326)-Deep-Dive-Serie von
