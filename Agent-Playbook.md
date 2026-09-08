@@ -1722,6 +1722,41 @@ unbegrenzt fortgeschrieben zu werden.
        Conan bringt bei einem TMR-Fall trotzdem einen Wachstumsqualitäts-
        Einwand ein, oder Jack/TMR bemerkt bei einem Scout-Fall eine bereits
        messbare Preissetzungsmacht) – das macht die Cross-Check-Vielfalt
+
+     → **Korrektur/Verschärfung (2026-09-08, von Brian nach dem NVO-Deep-
+       Dive gefordert): beide KIs bekommen ab sofort dieselbe, EINE
+       Methodik-Datei als eigene primäre/bindende Analyse-Grundlage –
+       nicht mehr Jack fix TMR und Conan fix Scout unabhängig vom Bucket.**
+       Auslöser: beim NVO-Full-Deep-Dive (eindeutig Bucket A/C, TMR-Pfad)
+       lief Conan trotzdem als Scout ("NONE_APPLICABLE"-Sonderfall mit
+       eigenem Multiple-Rahmen statt DNA-Check/Score), was zwei strukturell
+       verschiedene Ausgabeformate erzeugte (SELL/3-von-10 vs.
+       WATCHLIST_PLUS) – Brians Punkt: das erschwert den eigentlichen
+       Cross-Check-Zweck (direkt vergleichbare Urteile derselben Methodik,
+       ausgeführt von zwei verschiedenen Modellen), selbst wenn die
+       Divergenz inhaltlich aufschlussreich war. Brian weist zusätzlich
+       explizit darauf hin: selbst bei identischem Prompt können Gemini und
+       ChatGPT unterschiedliche Ergebnisse liefern (reines Modell-
+       Rauschen/unterschiedliche Trainingsdaten/Sampling) – das bleibt der
+       eigentliche, saubere Cross-Check-Mehrwert, nicht die Methodik-
+       Vielfalt.
+       **Ab sofort verbindlich:** Vor dem Dispatch wird EINMAL die
+       Bucket-Klassifizierung ([2] KATEGORISIERUNG oben) entschieden (TMR-
+       Pfad bei Bucket A/C, Scout-Pfad bei Bucket B/D, manuelle Klärung bei
+       Grenzfällen wie bisher) – und GENAU DIESE EINE Methodik-Datei wird
+       dann an BEIDE Bridges (Jack/Gemini UND Conan/ChatGPT) als jeweils
+       eigene, bindende Analyse-Grundlage geschickt (die dritte Datei plus
+       die TA-Datei bleiben als Kontext/Zusatzperspektive weiterhin
+       mitgeliefert, siehe oben – nur die BINDENDE Rolle ändert sich).
+       Beide KIs durchlaufen damit denselben DNA-Check/Score/Rating-Prozess
+       (bei TMR-Pfad) bzw. dieselbe Compounder-DNA/Scout-Urteil-Logik (bei
+       Scout-Pfad) – Divergenzen im Ergebnis sind dann eindeutig auf
+       Modellunterschiede zurückzuführen, nicht auf unterschiedliche
+       Bewertungsraster. Die Namen "Jack" und "Conan" bleiben als Label für
+       "Gemini-Bridge" bzw. "ChatGPT-Bridge" bestehen, unabhängig davon,
+       welche der drei Dateien im Einzelfall die bindende ist – bei einem
+       TMR-Pfad-Kandidaten liefert dann auch "Conan" ein TMR-artiges
+       Rating/Score/Verdict, nicht sein eigenes Scout-Urteilsformat.
        größer, ohne die Bucket-Logik selbst aufzuweichen. TA bleibt wie
        bisher bei jeder Einzelanalyse Pflicht (war schon immer Teil aller
        drei Dateien für jede Analyse, jetzt nur explizit auch an Jack/Conan
