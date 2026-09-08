@@ -4136,6 +4136,32 @@ Analyse-Substanz (DNA-Check, alle Sektor-Overrides, Entscheidungs-
 hierarchie, Stapel-Logik, Klasse-A-Regeln 1-36) bewusst unverändert
 gelassen. Conans Kompakt-Entwurf selbst wurde nicht übernommen.
 
+**Nachtrag (2026-09-08): kein neuer "Master-Agent"-Hermes-Job — bestehenden
+Cross-Check-Schritt stattdessen um JSON-Parsing erweitert.** Brian hatte
+gefragt, ob der im Redesign-Diagramm gezeigte "Master Agent" (vergleicht
+Daten/prüft Risiken/prüft Depot-Regeln) von Hermes übernommen werden
+könnte, als eigener neuer Cron-Job. Beim Blick in
+`~/.claude/scheduled-tasks/taeglicher-trigger-check/SKILL.md` zeigte sich:
+diese Rolle existiert dort bereits (Schritt 5 – voller 3-fach-Cross-Check
+mit Jack/Conan-Bridge-Aufruf, Depot-Regel-Prüfung, UND die "Order-
+Ausführung ist IMMER manuell"-Grenze ist dort schon hart eincodiert, siehe
+Abschnitt "FIXE GRENZEN"). Ein zweiter, paralleler Hermes-Job hätte diese
+Logik nur dupliziert/auseinandergerissen statt sie zu verbessern.
+
+Stattdessen wurde die eigentliche Lücke geschlossen: der bestehende
+Cross-Check-Schritt hat Jack/Conan bisher nur als Prosa gelesen, nicht
+über die neuen JSON-Summary-Blöcke (SCHRITT 8 bei Jack v11.10 /
+PFLICHT-JSON-SUMMARY bei Conan v1.13). Ergänzt in
+`~/.claude/scheduled-tasks/taeglicher-trigger-check/SKILL.md` (Abschnitt
+"Jack (Gemini) / Conan (ChatGPT) per API-Bridge"): nach jedem Bridge-Call
+wird jetzt zusätzlich der JSON-Block aus der Antwort geparst und im
+Cross-Check-Vergleich (Schritt 5) explizit gegenübergestellt (Rating,
+Score, Sizing-Vorschlag, aktive Flags), statt nur die Prosa zu lesen und
+den Vergleich implizit im Fließtext zu ziehen. Gilt auch für interaktive
+Full-Deep-Dive-Sitzungen (wie CLBT/ATEN in dieser Session) – dort läuft
+derselbe Vergleich manuell durch Jarvis, jetzt mit derselben strukturierten
+Grundlage.
+
 ### Watchlist-System (2026-08-28, von Brian gefordert)
 
 Zusätzlich zum eigentlichen Depot führt der Agent eine eigenständige
