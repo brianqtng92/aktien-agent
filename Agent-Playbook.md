@@ -4262,6 +4262,59 @@ Verschlankung. Die Hermes-SKILL.md-Dateien (`taeglicher-trigger-check`,
 `blitz-scan`) wurden im selben Schritt auf "v1.15 intern" nachgezogen
 (siehe Hermes-Gedächtnis-Synchronisations-Pflicht oben).
 
+**Dritter Nachtrag (2026-09-08): erneute ChatGPT-Prüfung der tatsächlichen
+v1.15-Datei — 9 von 10 Punkten bereits erledigt, ein echter Fund
+umgesetzt (v1.16).** Brian gab ChatGPT die reale v1.15-Datei zur Prüfung.
+Ergebnis: ChatGPT bestätigt erneut "kein Neubau", listet aber 10
+Verbesserungspunkte. Jarvis' Bewertung je Punkt:
+
+- **Bereits erledigt/kein Handlungsbedarf** (6 von 10): Outcome-
+  Wahrscheinlichkeiten sind bereits im PFLICHT-DISCLAIMER explizit als
+  "KEIN statistisches Modell" deklariert (ChatGPT bestätigt das selbst im
+  eigenen Text); Conan hat keinen eigenen Makro-Radar-Block, nur die
+  Kontext-Zeile MAKRO-RÜCKENWIND (schon so); Jack/Conan haben bereits
+  unterschiedliche Score-Vokabulare (Scout Score ≠ Agent Score); die
+  Cross-Check-JSON-Felder sind bereits vergleichbar strukturiert; die
+  große Redundanz-Fundstelle (Regeln 19-42) ist bereits behoben (siehe
+  zweiter Nachtrag oben); ein konkreter JSON-Optimierungsvorschlag fehlte.
+- **Abgelehnt** (2 von 10): Sizing komplett auf reine Konvictions-Label
+  ohne %-Spanne reduzieren — Conan gibt bereits Spannen statt Punktwerten
+  aus, explizit als "kein Beschluss" markiert; eine Spanne ist
+  informativer als ein Label ohne Zahl, kein Erkenntnisgewinn durch
+  weiteres Entfernen. Persona "massiv" kürzen — bei genauer Prüfung ist
+  der Abschnitt zu ~80% Substanz (Skepsis-Grundhaltung als echte
+  Anti-Hype-Instruktion), nur ~2 Zeilen sind reine Ausschmückung.
+- **Echter, neuer Fund, umgesetzt** (1 von 10): das K-Kriterium-[N/V]-
+  Sofort-Abbruch (Klasse A, bis dahin "keine Ausnahme") benachteiligt
+  systematisch schwer recherchierbare, aber nicht per se schwächere
+  Märkte (ChatGPTs Beispiel: ein japanisches Small Cap mit dünner/nicht-
+  englischer Offenlegung) gegenüber gut abgedeckten US-Werten. Das ist
+  ein ANDERER Einwand als der ursprünglich abgewiesene (der betraf
+  konzeptionelle Nicht-Anwendbarkeit von Kriterien, längst über die vier
+  Sektor-Overrides gelöst) — hier geht es um echte Auffindbarkeits-Lücken
+  bei konzeptionell anwendbaren Kriterien. Direkt relevant für dieses
+  Projekt: im Repo liegen bereits reale Analysen zu japanischen Werten
+  (HOYA, RORZE, Disco Corp, Lasertec), und der tägliche Kandidaten-Scan
+  durchsucht explizit Nikkei/TOPIX vollständig bei Portfolio-Lücken.
+
+**Umgesetzt** (`conan-the-scout-v1.12.md`, v1.15→v1.16): neuer Tag
+`[N/V-RECHERCHIERT]` im DATA-INTEGRITY-SYSTEM + entsprechend ergänzte
+ABBRUCH-LOGIK + neue Regel 44. Bewusst eng geschnitten, kein Freifahrt-
+schein: Ausnahme vom Sofort-Abbruch gilt NUR wenn alle drei Bedingungen
+erfüllt sind — (1) Kriterium ist für den aktiven Sektor-Override
+konzeptionell anwendbar (keine Override-Mischung mit Punkt 1), (2) eine
+dokumentierte, im Output konkret benannte Recherche liegt vor (welche
+Quellen geprüft wurden), (3) höchstens EIN K-Kriterium pro Analyse trägt
+diesen Tag — ein zweites fällt zurück auf den normalen Sofort-Abbruch,
+keine Kumulierung. Konsequenz: Status zählt als ⚠ (Grenzfall) in die
+bestehende K-BASIS−1/−2-Logik ein statt Sofort-Disqualifikation,
+Konfidenz-Deckel max. 🟡 (nie 🟢). PFLICHT-JSON-SUMMARY um
+`data_gap_exception_used` (Boolean) ergänzt, damit Aegis sieht, wann die
+Ausnahme gezogen wurde. Die Beweislast-Doktrin ("unbelegte Story = K.O.")
+bleibt unangetastet — nur eine NACHGEWIESENE Recherche mit Negativ-
+Ergebnis qualifiziert, keine pauschale Aufweichung. Hermes-SKILL.md-
+Dateien im selben Schritt auf "v1.16 intern" nachgezogen.
+
 ### Watchlist-System (2026-08-28, von Brian gefordert)
 
 Zusätzlich zum eigentlichen Depot führt der Agent eine eigenständige
