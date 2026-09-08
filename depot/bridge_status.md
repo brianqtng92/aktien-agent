@@ -104,3 +104,21 @@ Jack n.a. - kein Einsatz nötig, Conan n.a. - kein Einsatz nötig (kein
 Bridge-Einsatz in diesem Lauf, nur WebSearch für die tägliche
 Watchlist-News-Ampel). Zweiter Lauf desselben Tages nach dem ~17:00-UTC-
 Lauf (abab2f3) - kein neuer Anlass, Bestätigungsmail verschickt.
+
+**2026-09-08 (taeglicher-trigger-check, ~19:10 UTC):** Jack OK
+(`ask_gemini`, `enable_search=True`, gezielter Japan/Asien-Lücken-
+Rechercheauftrag - 5 Kandidaten: Sansan, Smaregi, VRAIN Solution,
+Shin-Etsu Chemical, Park Systems). Conan OK (`ask_chatgpt`,
+`enable_search=True`, gleicher Auftrag - 5 Kandidaten: OBIC, GMO Payment
+Gateway, eGuarantee, SMC Corp, AirTAC International). Kein voller 3-fach-
+Quick-Filter in diesem Lauf durchgeführt (Zeit-/Kostenpriorität, wie schon
+07.09. gehandhabt) - alle 10 Namen bleiben Backlog für einen künftigen
+Lauf mit Fokus auf Strategie-Fit-/Duplikations-/Identity-Gate + Quick-
+Filter der stärksten 1-2 Kandidaten (auf den ersten Blick am ehesten
+Champions-Fit: Shin-Etsu Chemical und SMC Corp, beide quasi-monopolistisch
+mit hoher Marge - aber beide große, bekannte Standardwerte, was der
+"unterm-Radar"-Präferenz eher widerspricht; OBIC/GMO Payment Gateway/
+eGuarantee wirken auf Kennzahlenbasis am nischigsten). Kein Anlass für
+vollen Cross-Check heute (Depot-/Watchlist-News-Scan ohne 🔴/🟡-Neufunde,
+kein Material Shift im Markt-/Makro-Kontext, keine neue Transaktion).
+Bridge-Status insgesamt: beide OK, kein Fallback nötig.

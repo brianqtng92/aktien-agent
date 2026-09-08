@@ -9,6 +9,12 @@ Trigger-Check" → "Depot-Transaktions-Erkennung").
 
 Zuletzt gesehene Transaktion (lastEventAt, ISO-8601 UTC): 2026-09-07T10:55:33.757Z
 
+Lauf 2026-09-08 (regulärer taeglicher Lauf, ca. 19:10 UTC): keine neuen
+Security-Transaktionen seit letztem Checkpoint (list_portfolio_transactions
+fromTime=2026-09-07T10:55:33.757Z → 1 Treffer, aber identisch mit der
+bereits verarbeiteten Sparplanrate vom 07.09., kein neues Event). Checkpoint
+unverändert gelassen (kein neuerer lastEventAt-Wert vorhanden).
+
 Lauf 2026-09-05 (regulärer taeglicher Lauf, ca. 20:14 UTC): keine neuen
 Security-Transaktionen seit letztem Checkpoint (list_portfolio_transactions
 fromTime=2026-09-04T20:35:00.000Z → 0 Treffer). Checkpoint auf aktuellen

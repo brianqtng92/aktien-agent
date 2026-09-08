@@ -1,3 +1,30 @@
+**Nachtrag 2026-09-08 ~19:15 UTC (taeglicher-trigger-check):** ruhiger Tag,
+kein Anlass. Scalable live abgefragt (`ping` OK), Holdings/Cash/Transaktionen
+geprüft - **Cash-Verrechnungskonto zeigt live 0,00 € statt der zuletzt
+gemeldeten 460,33 € (07.09.)**, keine erklärende Transaktion in
+`list_portfolio_transactions` gefunden (einziger Treffer seit Checkpoint ist
+weiterhin die bereits verarbeitete Sparplanrate) - transparent als
+unerklärte Abweichung vermerkt statt stillschweigend übernommen, kein
+Anlass für eine Eskalation (keine Order-relevante Handlung möglich/nötig,
+reines Beobachtungsfeld für den nächsten Lauf). Depot-/Watchlist-News-Scan
+(alle 18 Depot- + 30 Watchlist-Werte, gebündelte WebSearches) ohne neue
+🔴/🟡-Funde - bestehende Flags (MPWR/WSO/SYK) unverändert. Markt-/Makro-
+Kontext: kein Material Shift (VIX 15,64 (+2,23%), F&G weiter Fear-Zone ~42,
+S&P -0,15%/NQ100 -0,48%, SPY weiter klar über 50D/200D-SMA, 200D-SMA
+weiter steigend). **Kalender-Hinweis:** EZB-Ratssitzung bereits morgen/
+übermorgen (09./10.09.2026) - Erinnerung in die Tages-Mail aufgenommen.
+Kuchendiagramm aktualisiert (`reports/portfolio_pie_2026-09-08.png`,
+Gesamtwert 34.523,35 € statt 34.992,90 € am 07.09. - Rückgang primär durch
+den o.g. Cash-Rückgang auf 0€, keine Kategorie-/Regel-Schwelle verletzt).
+Gezielter Japan/Asien-Lücken-Rechercheauftrag an Jack+Conan (siehe
+`depot/bridge_status.md`) lieferte 10 neue Kandidatennamen (Sansan,
+Smaregi, VRAIN Solution, Shin-Etsu Chemical, Park Systems, OBIC, GMO
+Payment Gateway, eGuarantee, SMC Corp, AirTAC International) - als Backlog
+vermerkt (Abschnitt 8), noch KEIN Strategie-Fit-/Duplikations-/Identity-
+Gate oder 3-fach-Quick-Filter in diesem Lauf durchlaufen (Zeitpriorität).
+Keine offene Empfehlung fällig zur Erinnerung (Kraken/Rambus zuletzt erst
+07.09. erinnert). Bestätigungsmail verschickt (siehe Verifikation unten).
+
 # Master-Status – Aktien-Agent (Brian)
 
 **Zweck (2026-09-04, von Raketentonis "Master-Status"-Konzept übernommen,
@@ -256,7 +283,7 @@ am 04.09.).
 | Lücke | Zuletzt geprüfter Kandidat | Ergebnis | Nächster Schritt |
 |---|---|---|---|
 | Talent-Slot (Watchlist) + Europa/UK + Gesundheitswesen | BONESUPPORT Holding AB (BONEX) | **Aufgenommen 07.09.2026** (3-fach-Quick-Filter einstimmig BEOBACHTEN-STARK, ersetzt Rorze) | Erledigt für diesen Slot – Beobachtungspunkt: CERAMENT-V-FDA-Entscheidung (Datenpaket fällig 31.10.2026) |
-| Japan/Asien-Region (weiterhin unterbesetzt, 9,79% vs. 10-15%) | Rorze (6323) | Durchgefallen (3-fach Scout-Check, 04.09.2026) – Moat 2/4, Wachstum eingebrochen | Vollständige Nikkei225/TOPIX-Durchsuchung weiterhin ausstehend – bisherige Läufe (05.09., 07.09.) fanden über Jack/Conan primär Europa/Gesundheitswesen-Kandidaten (BONESUPPORT, PeptiDream als Rückstellung), noch kein systematischer Nikkei225/TOPIX-Indexdurchlauf – nächster Lauf sollte gezielt einen echten Japan/Asien-Abschnitt (z.B. Nikkei225 Top 50 nach Marktkap) vollständig durchgehen, da BONESUPPORT die Region-Lücke nicht schließt (Schweden = Europa) |
+| Japan/Asien-Region (weiterhin unterbesetzt, 9,49% vs. 10-15%) | Rorze (6323) | Durchgefallen (3-fach Scout-Check, 04.09.2026) – Moat 2/4, Wachstum eingebrochen | **08.09.2026:** gezielter Jack+Conan-Rechercheauftrag (kein Index-Volldurchlauf, siehe `depot/bridge_status.md`) lieferte 10 neue Namen: Sansan, Smaregi, VRAIN Solution, Shin-Etsu Chemical, Park Systems (Jack); OBIC, GMO Payment Gateway, eGuarantee, SMC Corp, AirTAC International (Conan). Noch KEIN Gate-Check/Quick-Filter durchlaufen – nächster Lauf: Strategie-Fit-/Duplikations-/Identity-Gate für alle 10, dann Quick-Filter für die 1-2 stärksten (Shin-Etsu Chemical/SMC Corp fachlich am stärksten, aber große Standardwerte; OBIC/eGuarantee am nischigsten). Vollständiger Nikkei225/TOPIX-Indexdurchlauf weiterhin separat ausstehend. |
 
 ## 9. Letzte Scheduled-Task-Läufe
 
@@ -264,18 +291,19 @@ Quelle: `depot/bridge_status.md` (Log) + `list_scheduled_tasks` (Live-Stand).
 
 | Task | Letzter Lauf | Nächster Lauf |
 |---|---|---|
-| taeglicher-trigger-check | 2026-09-07 ~15:00 UTC (regulärer Folgelauf, Scalable-Capital wieder erreichbar, Bridges erreichbar aber nicht benötigt, keine inhaltlichen Trigger ausgelöst) | täglich ~21:03 lokale Zeit |
+| taeglicher-trigger-check | 2026-09-08 ~19:10 UTC (regulärer Lauf, ruhiger Tag, kein Trigger, Bridges für Japan/Asien-Rechercheauftrag genutzt) | täglich ~21:03 lokale Zeit |
 | blitz-scan | 2026-09-04 ~16:15 UTC (Bridges FAIL, Jarvis-Only) | stündlich |
 | wochenfazit | 2026-09-07 ~17:15 lokale Zeit (ersetzt den entfernten nativen Scheduled-Task-Eintrag, läuft ab jetzt über Hermes-Cron; verkürztes 3-Tage-Fenster seit 04.09., PDF gebaut+committet, E-Mail als Text-Zusammenfassung ohne Anhang verschickt – siehe Kopfnotiz oben) | Freitag, nächster reg. Lauf voraussichtlich 11.09.2026 |
 | monatsrecap | noch nicht gelaufen | 28.-31. des Monats |
 
 ## 10. Cash-Stand (nur Scalable Capital, live abrufbar)
 
-Stand 2026-09-07 ~15:00 UTC (live verifiziert): verfügbare Kaufkraft/
-Cash-Bestand 460,33 € (Rückgang ggü. 05.09. durch Ausführung der
-monatlichen 600-€-ETF-Sparplanrate am 07.09.). Für die drei manuellen
-Broker (finanzen.net zero, Trade Republic, Smartbroker+) kein Live-Zugriff
-– siehe jeweilige `depot/*.md`-Datei für den zuletzt gemeldeten Stand.
-Gesamtportfoliowert (alle 4 Broker inkl. Cash+Gold, Scalable-Anteil live,
-übrige Broker Stand 05.09., siehe `reports/portfolio_pie_2026-09-07.png`):
-~34.993 €.
+Stand 2026-09-08 ~19:10 UTC (live verifiziert): verfügbare Kaufkraft/
+Cash-Bestand **0,00 €** (Rückgang ggü. 07.09. von 460,33 € - KEINE
+erklärende Transaktion gefunden, siehe Nachtrag oben, als unerklärte
+Abweichung vermerkt statt automatisch interpretiert). Für die drei
+manuellen Broker (finanzen.net zero, Trade Republic, Smartbroker+) kein
+Live-Zugriff – siehe jeweilige `depot/*.md`-Datei für den zuletzt gemeldeten
+Stand. Gesamtportfoliowert (alle 4 Broker inkl. Cash+Gold, Scalable-Anteil
+live, übrige Broker Stand 05.09., siehe
+`reports/portfolio_pie_2026-09-08.png`): ~34.523 €.
