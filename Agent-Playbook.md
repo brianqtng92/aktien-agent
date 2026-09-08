@@ -5209,6 +5209,19 @@ lich read-only Analyse, keine Order/Watchlist-Löschung/Kontoänderung.
 Vollständig in `~/.claude/scheduled-tasks/blitz-scan/SKILL.md` (Abschnitt
 "On-Demand-Trigger" + neuer Ablauf-Schritt 0) umgesetzt.
 
+**Weg C ergänzt (2026-09-08): Rücksync watchlist.md → Scalable.** Fund
+desselben Tages: als Brian vier Werte (Ligand/UCB/Itochu/Qnity) direkt im
+Chat in `watchlist.md` aufnehmen ließ, blieb die Scalable-App-Watchlist
+unsynchronisiert — der bestehende Spiegel-Mechanismus lief bisher nur als
+Nebeneffekt des täglichen Kandidaten-Scans (`taeglicher-trigger-check`),
+nicht bei Chat-Session-Aufnahmen. Lösung: `blitz-scan` gleicht jetzt bei
+JEDEM stündlichen Lauf zusätzlich alle `watchlist.md`-Einträge gegen
+Scalable ab und trägt Fehlende per `add_watchlist_item` nach — reine
+Synchronisation ohne Cross-Check-Trigger (der Wert ist in `watchlist.md`
+bereits bewertet). Damit ist der Watchlist-Scalable-Abgleich jetzt in
+BEIDE Richtungen automatisiert, unabhängig davon, wo ein Wert zuerst
+auftaucht (App, Chat-Session oder automatisierter Scan).
+
 ## 6. Warum nicht alles täglich voll automatisch?
 
 Ehrliche Einschränkung, mit Brian abgestimmt: Schritt 1 (quantitatives Screening)
