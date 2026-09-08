@@ -251,18 +251,20 @@
   <div class="section-label">DNA-CHECK: NVO — K-BASIS 5 (Standard, kein Sektor-Override)</div>
   <div class="box">
     <table class="verify-table">
-      <tr><th>Kriterium</th><th>Typ</th><th>Schwelle</th><th>Ist-Wert</th><th>Tag</th><th>Status</th></tr>
-      <tr><td>ROIC</td><td>K</td><td>&gt;20%</td><td>~40% (TTM)</td><td><span class="dqtag dqtag-t">T</span></td><td class="pass">✅ Erfüllt</td></tr>
-      <tr><td>FCF-Marge (real)</td><td>K</td><td>≥20%</td><td>19,1% ($8,93 Mrd. / $46,79 Mrd.)</td><td><span class="dqtag dqtag-v">V</span></td><td class="fail">❌ Knapp verfehlt</td></tr>
-      <tr><td>Op. Leverage</td><td>K</td><td>Ja/Nein</td><td>Fraglich — Op.-Ergebnis wuchs FY2025 langsamer (+3,9%) als Umsatz (+6,4%)</td><td><span class="dqtag dqtag-t">T</span></td><td>⚠ Eher Nein</td></tr>
-      <tr><td>EPS-CAGR (5J)</td><td>K</td><td>≥12%</td><td>~20,7%</td><td><span class="dqtag dqtag-t">T</span></td><td class="pass">✅ Erfüllt</td></tr>
-      <tr><td>Bruttomarge</td><td>E</td><td>≥60%</td><td>81,0% FY2025 (erosiv, Q2-2026-adj. nur 78,2% — siehe Seite 6)</td><td><span class="dqtag dqtag-v">V</span></td><td class="pass">✅ Erfüllt, Trend ⚠</td></tr>
-      <tr><td>Op. Margin</td><td>E</td><td>≥20%</td><td>41,3% FY2025 (korrigiert — nicht 37,23% oder 42,24%, beide falsch/veraltet)</td><td><span class="dqtag dqtag-v">V</span></td><td class="pass">✅ Erfüllt</td></tr>
-      <tr><td>Revenue-CAGR (5J)</td><td>E</td><td>≥8-10%</td><td>~21,7%</td><td><span class="dqtag dqtag-v">V</span></td><td class="pass">✅ Erfüllt</td></tr>
-      <tr><td>Net Debt/EBITDA</td><td>E</td><td>&lt;2,0x</td><td>0,57x (~$13 Mrd. / ~$22,7 Mrd.)</td><td><span class="dqtag dqtag-t">T</span></td><td class="pass">✅ Erfüllt</td></tr>
-      <tr><td>Capex/Umsatz</td><td>E</td><td>≤5%</td><td>19,4% (DKK 60,1 Mrd. PP&amp;E-Capex / DKK 309,1 Mrd. Umsatz — korrigiert, ohne Akero-Akquisitionskosten)</td><td><span class="dqtag dqtag-v">V</span></td><td class="fail">❌ Deutlich verfehlt</td></tr>
-      <tr><td>CCC</td><td>E</td><td>&lt;30 Tage</td><td>264 Tage</td><td><span class="dqtag dqtag-t">T</span></td><td class="fail">❌ Deutlich verfehlt</td></tr>
-      <tr><td>Beneish M-Score</td><td>OPT</td><td>&lt;-1,78</td><td>Nicht alle 8 Komponenten LIVE verfügbar</td><td><span class="dqtag dqtag-n">N</span></td><td>SKIP</td></tr>
+      <tr><th>Kriterium</th><th>Schwelle</th><th>Ist-Wert</th><th>Status</th></tr>
+      <tr><td colspan="4" style="color:var(--gold); font-size:7.6pt; text-transform:uppercase; letter-spacing:0.05em; padding-top:1.8mm;">K-Kriterien (Gatekeeper)</td></tr>
+      <tr><td>ROIC</td><td>&gt;20%</td><td>~40% (TTM)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>FCF-Marge (real)</td><td>≥20%</td><td>19,1% ($8,93 Mrd. / $46,79 Mrd.)</td><td class="fail">❌ Knapp verfehlt</td></tr>
+      <tr><td>Op. Leverage</td><td>Ja/Nein</td><td>Fraglich — Op.-Ergebnis wuchs FY2025 langsamer (+3,9%) als Umsatz (+6,4%)</td><td>⚠ Eher Nein</td></tr>
+      <tr><td>EPS-CAGR (5J)</td><td>≥12%</td><td>~20,7%</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td colspan="4" style="color:var(--gold); font-size:7.6pt; text-transform:uppercase; letter-spacing:0.05em; padding-top:1.8mm;">E-Kriterien</td></tr>
+      <tr><td>Bruttomarge</td><td>≥60%</td><td>81,0% FY2025 (erosiv, Q2-2026-adj. nur 78,2% — siehe Seite 6)</td><td class="pass">✅ Erfüllt, Trend ⚠</td></tr>
+      <tr><td>Op. Margin</td><td>≥20%</td><td>41,3% FY2025 (korrigiert — nicht 37,23% oder 42,24%, beide falsch/veraltet)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Revenue-CAGR (5J)</td><td>≥8-10%</td><td>~21,7%</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Net Debt/EBITDA</td><td>&lt;2,0x</td><td>0,57x (~$13 Mrd. / ~$22,7 Mrd.)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Capex/Umsatz</td><td>≤5%</td><td>19,4% (DKK 60,1 Mrd. PP&amp;E-Capex / DKK 309,1 Mrd. Umsatz — korrigiert, ohne Akero-Akquisitionskosten)</td><td class="fail">❌ Deutlich verfehlt</td></tr>
+      <tr><td>CCC</td><td>&lt;30 Tage</td><td>264 Tage</td><td class="fail">❌ Deutlich verfehlt</td></tr>
+      <tr><td>Beneish M-Score (optional)</td><td>&lt;-1,78</td><td>Nicht alle 8 Komponenten LIVE verfügbar</td><td>SKIP</td></tr>
     </table>
     <p style="margin-top:1.6mm;"><b>DNA-Urteil: K 2-3/4 (Op.-Leverage-Grenzfall) · E 4/6 (Capex-Intensität + CCC verfehlt).</b> Kein sauberer 5/5- oder 0/5-Fall, sondern ein echtes Grenzfall-Bild — konsistent mit der Divergenz zwischen Jack (SELL) und Conan (WATCHLIST_PLUS) auf Seite 2: harte Gatekeeper-Kriterien sind gemischt erfüllt, nicht eindeutig gut oder schlecht.</p>
   </div>

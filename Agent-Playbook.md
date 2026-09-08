@@ -4160,6 +4160,17 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     repetitive Tabellen-Unruhe entsteht. CSS-Referenzimplementierung:
     `.dqtag`/`.dqtag-v`/`.dqtag-t`/`.dqtag-e`/`.dqtag-n`/`.dqtag-legend` in
     den bestehenden Full-Deep-Dive-HTML-Dateien.
+    **Weitere Verschlankung (2026-09-08, NVO-Report, von Brian gefordert:
+    "Tag und Typ im PDF weglassen"):** sowohl die Tag-Spalte (die Badges aus
+    diesem Punkt) als auch die Typ-Spalte (K/E-Kennzeichnung je Zeile)
+    fallen aus der PDF-Tabelle komplett weg – nicht nur verschlankt, sondern
+    entfernt. Tabelle zeigt nur noch Kriterium/Schwelle/Ist-Wert/Status (4
+    statt 6 Spalten). Die K/E-Zugehörigkeit bleibt sichtbar, aber als
+    Gruppen-Zwischenüberschrift ("K-Kriterien (Gatekeeper)" / "E-Kriterien")
+    statt als eigene Spalte. Die zugrunde liegende Tag-Disziplin selbst
+    bleibt weiterhin unverändert bestehen und wird intern (Konfidenz-/Score-
+    Deckel) sowie in Prosa-Divergenz-Einordnungen weiter verwendet – nur die
+    Tabellen-Spalten-Anzeige entfällt.
 
 22. **Eigene historische Bewertungs-Bandbreite statt nur Einzel-Peer-
     Vergleich (neu, 2026-09-08, ausgelöst durch ChatGPTs Cross-Review des
