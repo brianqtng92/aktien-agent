@@ -4172,7 +4172,24 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     Datenverfügbarkeits-Risiko umsetzbar – eigene Kurs-/EPS-Historie ist
     über Twelve Data direkt abrufbar. Wird bereits an einzelnen watchlist.md-
     Einträgen informell so gemacht (z.B. Copart, Rollins), ab jetzt fester
-    Full-Deep-Dive-Bestandteil.
+    Full-Deep-Dive-Bestandteil. **Korrektur (2026-09-08, NVO-Deep-Dive):**
+    die "über Twelve Data direkt abrufbar"-Annahme oben war zu optimistisch
+    – die dafür nötigen Endpunkte (`statistics`/`financials`, historische
+    EPS-Reihen) sind auf dem aktuellen API-Plan gesperrt (siehe bekanntes
+    Datenintegritäts-Problem seit LGND). Reine Jahres-Tabelle ist außerdem
+    schwächer als eine echte Grafik (Brians Vorbild: onvista-YouTube-Format
+    mit Kurs-Panel + KGV-Verlauf-Panel + Mittelwert-Linie statt Tabelle).
+    **Ab sofort Pflicht statt Tabelle:** ein Zwei-Panel-Chart (Kursverlauf
+    oben, KGV-Verlauf unten mit 10J-/3J-Durchschnittslinie) wird aus (a) der
+    über Twelve Data verfügbaren Kurs-Zeitreihe und (b) den im Rahmen des
+    Deep Dives ohnehin per WebSearch recherchierten Jahres-/Quartals-KGV-
+    Werten (Rigor-Punkt 1 + gezielte KGV-Suche) gebaut – Auflösung ist damit
+    Jahres-/Quartalsebene, nicht täglich, und das MUSS explizit so
+    gekennzeichnet werden (kein NTM-KGV-Feed vorgetäuscht, trailing-KGV
+    explizit benennen). PEG-Ratio nur darstellen, wenn das Wachstum positiv
+    und die Kennzahl damit aussagekräftig ist – bei negativem/nahe-Null-
+    Wachstum (wie NVO 2026) explizit weglassen und begründen, statt eine
+    bedeutungslose Zahl zu zeigen.
 23. **SBC-Trendverlauf über 3 Jahre statt nur Ist-Wert (neu, 2026-09-08,
     Gemini-Cross-Review).** Der bestehende SBC-Infection-Check (Ist-Wert,
     z.B. "11-13% vom Umsatz") bekommt eine Trendkomponente: SBC/Umsatz-Quote
