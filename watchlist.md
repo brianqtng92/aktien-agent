@@ -301,6 +301,20 @@ dass die Historie mit jeder Watchlist-Bearbeitung verloren geht.
 -->
 
 ## Offene Punkte
+- **Vietnam Enterprise Investments Ltd. (VEIL, LSE, ISIN KYG9361H1092) – On-Demand-Watchlist-Trigger 2026-09-08:**
+  In Brians Scalable-Watchlist gefunden, aber noch nicht hier erfasst. Bewusst
+  NICHT durch den vollen 3-fach-TMR/Scout-Cross-Check gejagt (Jarvis-Aegis-
+  Entscheidung): VEIL ist ein geschlossener Länder-Fonds (Closed-end Fund,
+  Dragon-Capital-Management, Vietnam-Aktienexposure), kein operatives
+  Einzelunternehmen – Moat-/Marge-/Wachstums-Methodik von Jack/Conan passt
+  strukturell nicht (Kategorie-Mismatch, kein Reifegrad-Fall). Kurzcheck:
+  Handelt aktuell mit spürbarem Abschlag zum NAV (~11% per Juni 2026 laut
+  Kepler Trust Intelligence), Board fährt aktive Discount-Management-Strategie
+  (laufende Tender-Angebote/Buybacks). Kein akutes Ereignis, keine Dringlichkeit.
+  Offen für Brian: bewusste Watchlist-Aufnahme als Sondertyp "Fonds" (außerhalb
+  Champions/Profi/Talent) gewünscht, oder war der Scalable-Watchlist-Eintrag
+  unabhängig vom Aktien-Agent-System? Dieser Eintrag verhindert ab sofort ein
+  erneutes Re-Triggern des On-Demand-Mechanismus bei künftigen Blitz-Scans.
 - Lateinamerika-Slot bewusst leer gelassen (siehe oben) – Alicorp (Peru) als
   möglicher erster Talent-Kandidat steht zur Diskussion mit Brian an.
 - Kategorisierung (Champions 13 / Profi 9 / Talent 7) ist eine erste,
