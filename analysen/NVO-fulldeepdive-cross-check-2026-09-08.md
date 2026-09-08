@@ -62,4 +62,24 @@ Verifizierte und korrigierte mehrere Fact-Pack-Werte per Live-Suche: 2024-Umsatz
 
 ## PDF
 
-Vollformat-Report: `reports/NVO-agent-deepdive-2026-09-08.pdf` (8 Seiten, "Agent Deep Dive Report"-Format). Erster Full Deep Dive mit dem am 2026-09-08 erweiterten 28-Punkte-Rigor-Standard (siehe Agent-Playbook.md Punkte 22-28): eigene historische Bewertungs-Bandbreite (Seite 4), Bruttomargen-Trend-Grafik statt reinem Ist-Wert (Seite 5, Punkt 23-Analogie — SBC bei Big Pharma strukturell unbedeutend, daher Bruttomarge als das relevantere Trend-Element gewählt), konsolidiertes 🔪 Thesis-Kill-Sheet mit konkreten Terminen (Seite 6, Punkt 26), Management-Glaubwürdigkeits-Matrix (Seite 3), Peer-Vergleich mit expliziter Anomalie-Einordnung (Seite 4, hier: KEINE Anomalie, echte operative Überlegenheit von Lilly). Besonderheit dieses Reports: erstmals wird eine echte, unaufgelöste Cross-Check-Divergenz zwischen Jack und Conan als eigenständiger, prominent platzierter Befund behandelt (Seite 2) statt zu einem künstlichen Konsens geglättet.
+Vollformat-Report: `reports/NVO-agent-deepdive-2026-09-08.pdf` (9 Seiten nach mehreren Nachträgen, "Agent Deep Dive Report"-Format). Erster Full Deep Dive mit dem am 2026-09-08 erweiterten Rigor-Standard (siehe Agent-Playbook.md Punkte 22-29). Besonderheit dieses Reports: erstmals wird eine echte, unaufgelöste Cross-Check-Divergenz zwischen Jack und Conan als eigenständiger, prominent platzierter Befund behandelt (Seite 2) statt zu einem künstlichen Konsens geglättet.
+
+## Nachtrag 1 (2026-09-08): Kurs+KGV-Verlaufs-Chart statt Jahres-Tabelle
+
+Auf Brians Vorbild (onvista-YouTube-Format: Kurs-Panel + KGV-Verlauf-Panel + Mittelwert-Linie) wurde die ursprüngliche reine KGV-Jahres-Tabelle durch eine echte Grafik ersetzt (neu Agent-Playbook.md Punkt 22, präzisiert). Datenquelle: Twelve-Data-Kurshistorie + per WebSearch recherchierte Jahres-/Quartals-KGV-Werte (2021-2023 Jahresdurchschnitt, 2024-2026 Quartalswerte — kein täglicher NTM-KGV-Feed verfügbar, Twelve-Data-Statistics-Endpunkte gesperrt). PEG-Ratio bewusst nicht dargestellt (bei 2026er-Guidance nahe Null/negativ nicht aussagekräftig).
+
+## Nachtrag 2 (2026-09-08): Seiten zusammengelegt (Kursverlauf-Redundanz)
+
+Brian wies darauf hin, dass die neue KGV-Chart-Seite und die bestehende technische Kursverlauf-Seite (Candlestick+EMA+RSI+MACD) beide einen Kursverlauf zeigten. Zusammengelegt auf eine gemeinsame Seite (KGV-Chart auf einpaneliges Format ohne redundante Preislinie verschlankt) — Report dadurch kurzzeitig auf 8 Seiten reduziert.
+
+## Nachtrag 3 (2026-09-08): Vollständige DNA-Check-Tabelle nachgeholt
+
+Brian stellte fest, dass der DNA-Check im Report komplett fehlte (nur Fließtext-Score-Zusammenfassung, keine Tabelle) und forderte zusätzlich, dass DNA-Check-Tabellen künftig ALLE K- und E-Kriterien zeigen, nicht nur die 5 K-Kriterien (neu Agent-Playbook.md Punkt 29). Ursache: Jack lieferte die NVO-Kennzahlen in beiden Runden nur als Fließtext statt im eigenen Tabellenformat — unbemerkt beim Report-Bau übernommen.
+
+Nachgeholt per gezieltem Gemini-Follow-up (vollständige K+E-DNA-Check-Tabelle angefordert). Die Antwort enthielt selbst zwei Qualitätsprobleme, die vor Übernahme gegengeprüft und korrigiert wurden:
+- **Op.-Margin-Widerspruch:** Jacks Nachtrag nannte sowohl 37,23% (Fact-Pack-Altwert) als auch 42,24% (neue Live-Suche) im selben Beitrag. Per eigener WebSearch verifiziert: **41,3%** (mehrere Quellen, u.a. Investing.com FY2025-Review) — beide vorherigen Werte waren falsch/veraltet.
+- **Capex/Umsatz aufgebläht:** Jacks Wert (29,55%, $13,8 Mrd.) vermischte organisches PP&E-Capex mit den Akquisitionskosten für Akero Therapeutics (Dez. 2025). Korrigiert auf reines PP&E-Capex: DKK 60,1 Mrd. / DKK 309,1 Mrd. Umsatz = **19,4%** — weiterhin deutlich über der 5%-Schwelle, aber ohne die M&A-Verzerrung.
+
+**Ergebnis der vollständigen Tabelle:** DNA-Urteil K 2-3/4 (ROIC✅, FCF-Marge❌ knapp bei 19,1%, Op.-Leverage⚠ fraglich, EPS-CAGR✅), E 4/6 (Bruttomarge✅, Op.-Margin✅, Revenue-CAGR✅, Net-Debt/EBITDA✅, Capex/Umsatz❌, CCC❌ 264 Tage). Ein echtes Grenzfall-Bild, kein sauberer Pass oder Fail — konsistent mit und erklärend für die Jack/Conan-Divergenz aus Runde 2. Capex-Verfehlung wird als investitionsgetrieben (Kapazitätsausbau, ⚡ CAPEX-AUSNAHME-Logik) eingeordnet, nicht als reine Ineffizienz. CCC-Verfehlung wird als für globale Pharma-Distribution strukturell branchentypisch eingeordnet (30-Tage-Schwelle ist für asset-leichte Geschäftsmodelle kalibriert), aber transparent als hartes ❌ ausgewiesen statt stillschweigend wegdiskutiert.
+
+Report jetzt 9 Seiten (neue Seite 3: vollständiger DNA-Check). Finales Rating bleibt **BEOBACHTEN** — die vollständige Tabelle bestätigt eher die Nuance der bestehenden Divergenz als dass sie eindeutig eine Seite (SELL oder HOLD) bestätigt.

@@ -4272,6 +4272,36 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     unvalidierten Zahlen gefüllt zu werden. Bei CLBT selbst (TMR-Pfad, kein
     Scout-Kandidat) bisher nicht einschlägig, da Conans TAM-Modul primär für
     Bucket B/D-Kandidaten (Scout-Pfad) läuft.
+29. **Vollständige DNA-Check-Tabelle im Report – ALLE K- UND E-Kriterien,
+    nicht nur die 5 K-Kriterien (neu, 2026-09-08, von Brian nach dem NVO-
+    Deep-Dive gefordert).** Auslöser: der erste NVO-Report zeigte den
+    DNA-Check nur als Fließtext-Zusammenfassung (Score/Rating), keine
+    tatsächliche Tabelle – weil Jack selbst die Kennzahlen in Prosa statt im
+    eigenen Tabellenformat lieferte, unbemerkt beim Report-Bau übernommen.
+    **Ab sofort Pflicht:** jeder Full-Deep-Dive-Report zeigt die komplette
+    DNA-CHECK-Tabelle aus der jeweils bindenden Methodik-Datei (TMR: 4-5
+    K-Kriterien + 5-6 E-Kriterien + optional Beneish, je nach Sektor-
+    Override – siehe KENNZAHLEN-DNA in jack-moat-reaper-v11.7.md; Scout:
+    Compounder-DNA-Check des aktiven Sektor-Overrides – siehe
+    conan-the-scout-v1.12.md), nicht nur eine Teilmenge/Kurzfassung. Jede
+    Zeile mit Ist-Wert, Tag ([LIVE]/[VERIFIED]/[TRAINING]/[N/V]) und Status.
+    **Qualitätssicherungs-Pflicht (ebenfalls aus dem NVO-Fall gelernt):**
+    liefert die Bridge-KI die Tabelle nicht im vorgesehenen Format oder mit
+    erkennbar widersprüchlichen/unplausiblen Werten (z.B. zwei
+    unterschiedliche Werte für dieselbe Kennzahl in derselben Antwort, ein
+    Wert, der offensichtlich andere Kennzahlen einer Akquisition/eines
+    Sondereffekts mit einrechnet statt der eigentlich gemeinten Kennzahl),
+    NICHT ungeprüft übernehmen – gezielt nachfragen bzw. per eigener
+    WebSearch gegenchecken und die Korrektur im Report transparent
+    dokumentieren (siehe NVO: Op.-Margin-Widerspruch 37,23%/42,24% zu
+    verifizierten 41,3% aufgelöst; Capex/Umsatz-Wert war durch
+    Akquisitionskosten aufgebläht, auf reines PP&E-Capex korrigiert). Ein
+    Kennzahlen-Grenzwert, der für das jeweilige Geschäftsmodell strukturell
+    nicht passt (z.B. die 30-Tage-CCC-Schwelle bei einem globalen Pharma-
+    Konzern mit langen Payer-Zahlungszyklen), wird trotzdem als hartes
+    Ist-Ergebnis ausgewiesen (kein stillschweigendes Wegdiskutieren), aber
+    mit einer kurzen Einordnung versehen, warum die Schwelle hier evtl.
+    weniger aussagekräftig ist als bei einem asset-leichten Geschäftsmodell.
 
 **Herkunft Punkte 22-28:** Brian hat den CLBT-Full-Deep-Dive-Report
 unabhängig sowohl ChatGPT als auch Gemini zur Bewertung vorgelegt (außerhalb
