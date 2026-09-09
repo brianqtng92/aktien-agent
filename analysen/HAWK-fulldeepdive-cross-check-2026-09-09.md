@@ -72,4 +72,4 @@ Ticker HAWK (NYSE), IPO Mai 2026 ($416 Mio., $26/Aktie). Kurs ~$16,99 (08.09., W
 
 ## PDF
 
-`reports/HAWK-agent-deepdive-2026-09-09.pdf` — vollständiger 10-Seiten Full Deep Dive nach kanonischem Seitengerüst (NVO-Referenz), inkl. Pipeline-Ausblick/Struktur-Risiko/Insider-Vertiefung (Punkte 34-36), ohne Kursverlauf-Chart (Twelve-Data-Verbindung in dieser Sitzung ausgefallen, transparent vermerkt statt mit unbelegten Daten gefüllt).
+`reports/HAWK-agent-deepdive-2026-09-09.pdf` — vollständiger 10-Seiten Full Deep Dive nach kanonischem Seitengerüst (NVO-Referenz), inkl. Pipeline-Ausblick/Struktur-Risiko/Insider-Vertiefung (Punkte 34-36) und Kursverlauf-Chart seit IPO (Seite 6, am 10.09.2026 nachträglich ergänzt, nachdem die Twelve-Data-Verbindung wiederhergestellt war).

@@ -46,6 +46,8 @@
   .narrative-box p b { color: var(--text); }
   .narrative-box p .lead { color: var(--gold-bright); font-weight: bold; }
   .section-label { font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0; }
+  .chart-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 74mm; flex: 0 0 auto; }
+  .chart-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; border-radius: 2px; }
   .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
   .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
   .box h3 { font-size: 9.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
@@ -86,7 +88,7 @@
   .warn-strip { background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.7mm 3mm; font-size: 8.7pt; color: var(--yellow); margin-top: 1mm; }
   .warn-strip b { color: var(--text); }
   .fazit { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 2.8mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0; }
-  .fazit-verdict { flex: 0 0 auto; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict { flex: 0 0 auto; max-width: 42mm; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
   .fazit-verdict .rating { font-size: 13pt; color: var(--yellow); letter-spacing: 0.02em; }
   .fazit-verdict .sub { font-size: 8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.6mm; }
   .sources-list { font-size: 8.8pt; color: var(--text-dim); line-height: 1.5; }
@@ -132,7 +134,7 @@
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-09.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/9</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/10</div>
   </div>
 </div>
 
@@ -190,7 +192,7 @@
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-09.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/9</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/10</div>
   </div>
 </div>
 
@@ -227,7 +229,7 @@
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-09.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/9</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/10</div>
   </div>
 </div>
 
@@ -267,7 +269,7 @@
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-09.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 4/9</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 4/10</div>
   </div>
 </div>
 
@@ -310,18 +312,39 @@
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-09.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/9</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/10</div>
   </div>
 </div>
 
-<!-- PAGE 6: Kill-Sheet -->
+<!-- PAGE 6 (NEU, 2026-09-10): Kursverlauf -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Kursverlauf</div>
+    </div>
+    <div class="meta-block"><div class="date">10. September 2026 — Seite 6</div><div>RMBS Rambus Inc.</div></div>
+  </div>
+
+  <div class="section-label">Kursverlauf mit DCF-Fair-Value-Zonen (200 Handelstage)</div>
+  <div class="chart-frame" style="height:150mm; width:100%;"><img src="RMBS_chart.png" alt="RMBS Kursverlauf"></div>
+
+  <p style="font-size:8pt; color:var(--text-faint); line-height:1.35;">Kursdaten: Twelve Data, Tagesbasis, 20.11.2025-09.09.2026. EMA20/EMA50 zur Trendeinordnung. Horizontale Linien markieren Conans DCF-Szenarien (Seite 5): Bear $31, Base $43,5, Bull $68,5 — der Kurs notiert seit Monaten deutlich über allen drei Zonen. Diese Chart-Seite konnte am 09.09.2026 wegen einer Twelve-Data-Verbindungsstörung nicht erstellt werden und wurde am 10.09.2026 nachträglich ergänzt.</p>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-09.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/10</div>
+  </div>
+</div>
+
+<!-- PAGE 7: Kill-Sheet -->
 <div class="page">
   <div class="masthead">
     <div class="brand-block">
       <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
       <div class="brand-sub">🔪 Thesis-Kill-Sheet</div>
     </div>
-    <div class="meta-block"><div class="date">9. September 2026 — Seite 6</div><div>RMBS Rambus Inc.</div></div>
+    <div class="meta-block"><div class="date">9. September 2026 — Seite 7</div><div>RMBS Rambus Inc.</div></div>
   </div>
 
   <div class="section-label">🔪 Thesis-Kill-Sheet</div>
@@ -354,18 +377,18 @@
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-09.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/9</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/10</div>
   </div>
 </div>
 
-<!-- PAGE 7: Moat + Management -->
+<!-- PAGE 8: Moat + Management -->
 <div class="page">
   <div class="masthead">
     <div class="brand-block">
       <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
       <div class="brand-sub">Moat-Verifikation · Management-Score</div>
     </div>
-    <div class="meta-block"><div class="date">9. September 2026 — Seite 7</div><div>RMBS Rambus Inc.</div></div>
+    <div class="meta-block"><div class="date">9. September 2026 — Seite 8</div><div>RMBS Rambus Inc.</div></div>
   </div>
 
   <div class="two-col">
@@ -394,18 +417,18 @@
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-09.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/9</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 8/10</div>
   </div>
 </div>
 
-<!-- PAGE 8: Pipeline + Struktur-Risiko + Insider -->
+<!-- PAGE 9: Pipeline + Struktur-Risiko + Insider -->
 <div class="page">
   <div class="masthead">
     <div class="brand-block">
       <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
       <div class="brand-sub">Pipeline-Ausblick · Struktur-Risiko · Insider-Signale</div>
     </div>
-    <div class="meta-block"><div class="date">9. September 2026 — Seite 8</div><div>RMBS Rambus Inc.</div></div>
+    <div class="meta-block"><div class="date">9. September 2026 — Seite 9</div><div>RMBS Rambus Inc.</div></div>
   </div>
 
   <div class="section-label">Pipeline-/Katalysator-Ausblick (Rigor-Punkt 34)</div>
@@ -425,18 +448,18 @@
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-09.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 8/9</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 9/10</div>
   </div>
 </div>
 
-<!-- PAGE 9: Fazit + Quellen -->
+<!-- PAGE 10: Fazit + Quellen -->
 <div class="page">
   <div class="masthead">
     <div class="brand-block">
       <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
       <div class="brand-sub">Finales Fazit · Depot-Konsequenz · Quellen</div>
     </div>
-    <div class="meta-block"><div class="date">9. September 2026 — Seite 9</div><div>RMBS Rambus Inc.</div></div>
+    <div class="meta-block"><div class="date">9. September 2026 — Seite 10</div><div>RMBS Rambus Inc.</div></div>
   </div>
 
   <div class="section-label">Finales Fazit (Aegis-Synthese)</div>
@@ -484,11 +507,11 @@
     </div>
   </div>
 
-  <div class="warn-strip"><b>Datenlücken-Hinweis:</b> Twelve-Data-Verbindung war in dieser Sitzung nicht verfügbar — Kursangaben stammen aus WebSearch/dedizierten Finance-Tools der KIs. Kein Kursverlauf-Chart in diesem Report, transparent weggelassen statt mit unbelegten Daten gefüllt.</div>
+  <div class="warn-strip"><b>Datenlücken-Hinweis:</b> Twelve-Data-Verbindung war am 09.09.2026 nicht verfügbar — Kursangaben stammten daher aus WebSearch/dedizierten Finance-Tools der KIs. Die Verbindung wurde am 10.09.2026 wiederhergestellt; der Kursverlauf-Chart wurde nachträglich als Seite 6 ergänzt.</div>
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-09.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 9/9</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 10/10</div>
   </div>
 </div>
 
