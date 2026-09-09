@@ -1,3 +1,24 @@
+**Nachtrag 2026-09-09 ~Nachmittag (ad-hoc-chat, Depot-Update auf Brians
+Anfrage):** Alle 4 Broker frisch abgefragt (Scalable live via MCP,
+finanzen.net zero/Trade Republic/Smartbroker+ via WebSearch, da keine
+Live-Anbindung existiert). **Gesamtdepot: 34.207,03 €** (-0,92% ggü. 08.09.
+[34.523,35 €], -2,25% ggü. Wochenfazit-Baseline 07.09. [34.992,90 €]) –
+kein Material-Shift, Rückgang primär durch den weiterhin ungeklärten
+Scalable-Cash-Rückgang auf 0€ (siehe scalable-capital.md), nicht durch
+breite Kursverluste. Größte Einzelbewegungen seit 04.09.: A10 Networks
++54% (echte Q2-Beat-and-Raise-Reaktion + Analysten-Kurszielanhebung,
+bestätigt), SoFi weiterhin stärkste Position (+47,9% ggü. Investsumme),
+Hermès schwächste (-17,4%). Cash-Position praktisch bei Null (Scalable
+0€, kein Nachkauf-Pulver aktuell außer der laufenden 800€/Monat-
+Daueraufträge) – kein aktiver Cash-vs-Invest-Entscheidungsbedarf. Beide
+offenen Empfehlungen (Kraken Robotics ≤2,80 CAD, Rambus ≤65€/$75) bleiben
+weit von ihrer Nachkauf-Zone entfernt (Kraken 5,14 CAD, Rambus 104,69$) –
+keine Aktion fällig. EZB-Ratssitzung 09./10.09.2026 nächster relevanter
+Katalysator (Allianz/Münchener Rück/Hermès-Exposure). Details siehe
+`depot/finanzen-net-zero.md`, `depot/trade-republic.md`,
+`depot/smartbroker-plus.md`, `depot/scalable-capital.md` (je Update
+2026-09-09).
+
 **Nachtrag 2026-09-08 ~19:15 UTC (taeglicher-trigger-check):** ruhiger Tag,
 kein Anlass. Scalable live abgefragt (`ping` OK), Holdings/Cash/Transaktionen
 geprüft - **Cash-Verrechnungskonto zeigt live 0,00 € statt der zuletzt

@@ -39,6 +39,12 @@ Allianz-SE-Kursniveau.
 449,60 €/Aktie. Investiert (Summe aller Sparraten oben): 504,43 €. Aktueller
 Wert: 1,151396 × 449,60 € = **517,67 €** (+2,6%).
 
+**Update 2026-09-09 (Depot-Update, WebSearch, Stand 08.09.):** Live-Kurs
+444,76 €/Aktie (leicht rückläufig ggü. 04.09., -1,1%). Aktueller Wert:
+1,151396 × 444,76 € = **512,09 €** (+1,5% ggü. Investsumme 504,43 €).
+EZB-Ratssitzung 09./10.09.2026 ist der nächste relevante Katalysator für
+diese Position (Zinsentscheid-Exposure Finanzsektor).
+
 ## Position 2 – WM (vermutlich Waste Management Inc.) — **VERKAUFT 27.08.2026 @ 187,35€, vollständiger Exit**
 
 **Letzte Aktualisierung laut App:** 12.08., 21:16 Uhr

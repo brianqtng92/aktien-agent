@@ -36,6 +36,24 @@ letzten Stand durch die am 07.09. ausgeführte Sparplanrate.
 **Gesamtwert Scalable Capital (live, Stand 07.09.2026): 11.149,13 €**
 (Wertpapiere 10.688,80 € + Cash 460,33 €).
 
+**Update 2026-09-09 (Depot-Update, live über Scalable-MCP):**
+
+| Position | Wert aktuell | Kaufwert | Gewinn/Verlust | Kurs/Stück |
+|---|---|---|---|---|
+| Boerse Stuttgart EUWAX Gold II | 496,59 € | 532,58 € | -35,99 € (-6,8%) | 124,15 € |
+| Bank Central Asia | 1.984,99 € | 1.999,94 € | -14,95 € (-0,7%) | 0,321 € |
+| Vanguard FTSE All-World (Acc) | 8.103,88 € | 6.753,40 € | +1.350,48 € (+20,0%) | 166,11 € |
+
+**Cash/Verrechnungskonto: 0,00 €** (weiterhin die bereits am 08.09. vermerkte
+unerklärte Abweichung von den zuvor gemeldeten 460,33 € – `list_portfolio_transactions`
+zeigt keine erklärende Buchung seit dem letzten Checkpoint, bleibt offenes
+Beobachtungsfeld, kein Anlass für eine Eskalation).
+
+**Gesamtwert Scalable Capital (live, Stand 09.09.2026): 10.585,46 €**
+(nur Wertpapiere, kein Cash) – Rückgang ggü. 07.09. (11.149,13 €) primär
+durch den ungeklärten Cash-Rückgang, nicht durch Kursverluste (BCA/Vanguard
+zusammen fast stabil, Gold-ETC leicht schwächer).
+
 **NEU entdeckt über die Live-Anbindung: Boerse Stuttgart EUWAX Gold II**
 (physisches Gold-ETC, 4 Stück, Kauf 30.01.2026 @ 138,21€). War in keiner
 bisherigen Erfassung/keinem Screenshot enthalten. **Einordnung (2026-08-30,
