@@ -79,6 +79,34 @@ Brian meldete den aktuellen Kurs mit ¥3.261. Verifizierungs-WebSearch ("Asahi I
 
 ---
 
+## Nachtrag 2 2026-09-09: Wiederholungslauf nach Einführung der Kennzahlen-Recherche-Pflicht
+
+Brian bat darum, die Analyse mit der neu eingeführten KENNZAHLEN-RECHERCHE-PFLICHT (siehe `prompts/jack-moat-reaper-v11.7.md` v11.12, ausgelöst durch genau diesen Asahi-Fall) zu wiederholen — ein echter Funktionstest, ob die neue Suchpflicht pro Kennzahl tatsächlich bessere Daten liefert. ChatGPT/Conan-Bridge blieb weiterhin komplett ausgefallen (3 Versuche, verschiedene Modelle, dritter Tag in Folge) — erneuter Aegis-Fallback. Gemini/Jack schlug beim ersten Versuch mit dem langen, suchaktivierten Prompt fehl (bekanntes Muster bei Gemini 2.5 Flash + langer Prompt + Search, siehe Lasertec-Fall 05.09.), gelang aber im zweiten Versuch mit leicht gekürztem Prompt.
+
+**Ergebnis: die neue Suchpflicht zeigt einen klaren, messbaren Unterschied.** Jack benannte für praktisch jede Kennzahl eine konkrete Quelle (Investing.com, GuruFocus, Simply Wall St, BigGo Finance) statt anonymer Schätzungen, und klärte die explizit gestellte Frage zur alten ROIC-Zahl aktiv auf.
+
+**Neue DNA-Check-Tabelle (ersetzt die alte vom Erstlauf):**
+
+| Kennzahl | Schwelle | Alter Wert (Erstlauf) | Neuer Wert (nach Recherche-Pflicht) | Neue Quelle | Status |
+|---|---|---|---|---|---|
+| ROIC | >20% | 23,21% (ungeprüfte "ältere Session-Recherche") | **19,7%** | Investing.com [TRAINING] | ❌ Verfehlt (vorher ✅ — Korrektur) |
+| FCF-Marge | ≥20% | ~18% (Schätzung) | **21,43%** | GuruFocus [VERIFIED] | ✅ Erfüllt (vorher ❌ — Korrektur) |
+| Piotroski F-Score | ≥7 | 8/9 (Schätzung) | 9/9 | GuruFocus [VERIFIED] | ✅ Erfüllt (unverändert) |
+| EPS-CAGR (5J) | ≥12% | ~20% (Schätzung "plausibel") | **5,99%**, Konsens nächstes FY impliziert leichten Rückgang | Investing.com [TRAINING] | ❌ Verfehlt (vorher ✅ — Korrektur) |
+| Capex/Umsatz | ≤5% | ~4% (Schätzung) | **8,07%** | BigGo Finance/tasty.note [TRAINING] | ❌ Verfehlt (vorher ✅ — Korrektur) |
+
+**K-Score dadurch von 4/5 auf 3/5 gesunken** (K-BASIS-2, "Grenzfall verschärft" statt "Grenzfall") — drei der fünf ursprünglichen K-Bewertungen kippten nach echter Recherche, zwei davon negativ (ROIC, EPS-CAGR), eine positiv (FCF-Marge). Konfidenz bleibt 🔴 NIEDRIG (jetzt 54,5% VERIFIED/LIVE-Anteil, nicht mehr 30% — anderer Berechnungsweg, aber weiterhin klar unter der 60%-Schwelle).
+
+**Bewertung ebenfalls deutlich revidiert:** Bear/Base/Bull-FV jetzt ¥2.700 / ¥3.616 / ¥4.520 (vorher ¥3.220 / ¥4.746 / ¥5.983 — alle drei Szenarien niedriger, da auf einer schwächeren EPS-Wachstumsannahme basierend). **Zonen-Neueinstufung bei Kurs ¥3.261:** Zone-2-Obergrenze (Base FV × 0,9) liegt jetzt bei ¥3.254 — der Kurs liegt damit knapp DARÜBER und fällt aus Zone 2 (ATTRAKTIV) heraus in **Zone 3 (FAIR)**. MoS ggü. dem neuen (niedrigeren) Bear-FV: -20,8% (vorher -1,3% ggü. dem alten Bear-FV) — deutlich schlechter.
+
+**Rating bleibt BEOBACHTEN, Sizing Tier 3** — die Endkategorie ändert sich nicht, aber auf einer spürbar ehrlicheren, besser belegten und tatsächlich vorsichtigeren Grundlage. Devil's-Advocate-Punkte kamen neu hinzu: EPS-Wachstum schwächer/rückläufig statt stark, Capex-Intensität höher als angenommen.
+
+**Restliche Schwäche der neuen Pflicht:** einige Zeilen wurden trotz nur einer klar benannten Quelle als [VERIFIED] statt [TRAINING] getaggt ("Mehrere Quellen" ohne konkrete Zweitnennung) — die Tagging-Disziplin ist besser, aber noch nicht vollständig stringent. Als Beobachtungspunkt vermerkt, kein Grund für eine weitere sofortige Prompt-Änderung.
+
+**Konsequenz:** CRV-Ampel wird von 🟢 auf 🟡 korrigiert (Bewertung ist nicht mehr eindeutig attraktiv, sondern fair), Abstauber-Zone von ¥3.200-3.300 auf ¥2.700-2.900 gesenkt (nahe am neuen, niedrigeren Bear-FV). `watchlist.md` und `reports/ASAHI-agent-schnellanalyse-2026-09-09.html/.pdf` entsprechend aktualisiert.
+
+---
+
 ## PDF
 
 `reports/ASAHI-agent-schnellanalyse-2026-09-09.pdf` — 2-Stimmen-Leiste (Conan-Ausfall transparent vermerkt), vollständige DNA-Check-Tabelle, Bewertungs-Schnellcheck ohne DCF, Kill-Sheet, Kursverlauf-Kontext, Fazit-Box, Quellen.
