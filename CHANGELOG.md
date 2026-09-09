@@ -2,6 +2,8 @@
 
 Chronologisches Änderungsprotokoll für Agent-Playbook.md, die Methodik-Dateien (Jack/Conan/TA), Report-Formate und die Automatisierungs-Infrastruktur. Ergänzt (ersetzt nicht) die ausführlichen Herkunfts-/Begründungs-Notizen direkt in Agent-Playbook.md und HANDOVER.md — hier geht es um schnelle Scanbarkeit "was änderte sich wann", ohne das ganze Regelwerk lesen zu müssen. Neueste Einträge oben.
 
+**2026-09-10, Full-Deep-Dive-Vollständigkeits-Härtung (Brian, nach HAWK/RMBS-Nachbesserung):** "Kein Zwang zur vollen Länge" im kanonischen Seitengerüst darf nicht mehr pauschal aus Bucket/Pfad abgeleitet werden ("Scout braucht kein DCF" ≠ "Scout braucht keine Bewertungs-Charts") — jede Auslassung jetzt einzeln pro Zeile begründet. Zwei Referenz-PDFs statt einer: NVO (TMR-Pfad) und HAWK-Fassung vom 10.09.2026 (Scout-Pfad). Betrifft Agent-Playbook.md, Abschnitt "Kanonisches Seitengerüst für Full Deep Dive".
+
 **Pflege (neu, 2026-09-09, Priorität 4 aus dem Playbook-Meta-Review):** Jede
 künftige substantielle Änderung an Agent-Playbook.md, den Methodik-Dateien
 (`prompts/*.md`) oder den Hermes-`SKILL.md`-Dateien bekommt zusätzlich zur

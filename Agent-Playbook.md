@@ -4740,6 +4740,44 @@ den Regelfall, kein künstlich aufgeblähtes Pflicht-Minimum (gleiches
 Prinzip wie bei der Schnellanalyse oben, "2-3 Seiten ist eine Obergrenze,
 kein Pflicht-Minimum").
 
+**Härtung 2026-09-10 (Brian, nach HAWK/RMBS-Nachbesserung: "bitte bei
+den nächsten Analysen beachten, dass nichts fehlen darf"):** Beim
+ersten HAWK- und RMBS-Full-Deep-Dive wurden mehrere eigentlich
+universelle Zeilen (Guidance-Track-Record, Management-Glaubwürdigkeits-
+Matrix als Chart/Tabelle, Bruttomargen-Verlauf als CHART statt nur
+Text, WACC/DCF-Szenarien als CHART statt nur Tabelle, KGV-Verlauf)
+übersprungen – nicht weil sie einzeln geprüft und für nicht anwendbar
+befunden wurden, sondern weil die Bucket-Pfad-Entscheidung ("Scout
+braucht kein DCF") pauschal auf benachbarte, tatsächlich sehr wohl
+anwendbare Zeilen übertragen wurde. **Ab sofort gilt: "entfällt
+ersatzlos" muss PRO ZEILE einzeln begründet werden, nie pauschal aus
+dem Bucket/Pfad abgeleitet.** Insbesondere gilt für den Scout-Pfad
+(Bucket B, kein DCF-Zwang): das befreit NUR die DCF-Szenarien-Zeile
+selbst, nicht die Nachbar-Zeilen – Bruttomargen-Verlauf bleibt Pflicht
+(als Chart), Guidance-Track-Record bleibt Pflicht (auch wenn "noch kein
+Vergleich möglich" die einzig ehrliche Aussage ist), und statt
+KGV-Verlauf/WACC-Sensitivitätsmatrix tritt ein methodisch passender
+Ersatz (EV/Revenue-Verlauf + Peer-Multiple, siehe HAWK-Referenz unten)
+– nicht ersatzlose Streichung.
+
+**Zwei konkrete Referenz-Implementierungen statt nur einer:**
+- **TMR-Pfad (Bucket A/C, etablierte/profitable Werte):**
+  `reports/NVO-agent-deepdive-2026-09-08.pdf` bleibt die Referenz –
+  DCF-Bear/Base/Bull als Chart, Bruttomargen-Erosion als Chart,
+  DCF-Szenario-Tabelle, WACC-Sensitivitätsmatrix, KGV-Verlauf (Seite 5+7).
+- **Scout-Pfad (Bucket B, jung/GAAP-unprofitabel):**
+  `reports/HAWK-agent-deepdive-2026-09-09.pdf` (Fassung vom 10.09.2026)
+  ist ab jetzt die Referenz – gleiche Elemente, aber DCF/WACC ersetzt
+  durch EV/Revenue-Verlauf + Peer-Multiple-Vergleich, Bruttomargen-Chart
+  bleibt, Guidance-Track-Record mit explizitem "noch kein Track Record"
+  statt Auslassung, KGV-Verlauf entfällt einzeln begründet (negativer/
+  nahe-Null-EPS macht KGV nicht aussagekräftig) – nicht weil "Scout"
+  generell keine Bewertungs-Charts bekommt.
+- **Vor Abschluss jeder Full-Deep-Dive-Analyse:** beide PDFs (oder das
+  passende je Pfad) kurz gegen den fertigen eigenen Report durchgehen –
+  jede Zeile, die dort als Chart/Tabelle existiert und im eigenen Report
+  fehlt oder nur als Fließtext auftaucht, ist ein Fund, kein Stilunterschied.
+
 **Herkunft Punkte 22-28:** Brian hat den CLBT-Full-Deep-Dive-Report
 unabhängig sowohl ChatGPT als auch Gemini zur Bewertung vorgelegt (außerhalb
 dieses Systems, als externe Zweitmeinung zur eigenen Methodik). Beide
