@@ -4193,6 +4193,24 @@ Einzelfall anpassen):
   Score + Konfidenz, Exit-Strategie bei KAUFEN bzw. Abstauber-Limit+Trigger
   bei BEOBACHTEN.
 
+  **Präzisierung 2026-09-09 (Brian, nach dem Asahi-Wiederholungslauf):**
+  die Punkt-21-Korrektur ("ohne Tag-/Typ-Spalten") galt bisher nur für
+  eigene TABELLENSPALTEN — im Asahi/AUPH-Schnellanalyse-Praxistest wurden
+  die [LIVE]/[VERIFIED]/[TRAINING]-Tags stattdessen INLINE in die
+  "Ist-Wert"-Zelle geschrieben (z.B. "[TRAINING] 19,7% (Investing.com)"),
+  was optisch denselben Zweck unterläuft, den Punkt 21 verhindern wollte.
+  **Ab sofort in JEDER Schnellanalyse-Tabelle (Full Deep Dive unverändert):**
+  die Ist-Wert-Zelle zeigt nur noch Wert + Quelle in Klammern (z.B. "19,7%
+  (Investing.com)"), OHNE das Tag-Wort davor. [N/V] bleibt als Wort stehen,
+  wenn eine Kennzahl trotz Suchversuch nicht auffindbar war — das ist kein
+  Konfidenz-Label auf einem gefundenen Wert, sondern die Aussage selbst
+  ("kein Wert gefunden"). Die zugrundeliegende KENNZAHLEN-RECHERCHE-PFLICHT
+  (Suchversuch vor jedem Tag) und die interne Tag-Vergabe durch Jack/Conan
+  bleiben unverändert – nur die Report-DARSTELLUNG wird schlanker. Der
+  aggregierte Konfidenz-Wert (🟢/🟡/🔴 + %) bleibt sichtbar und trägt
+  weiterhin das Gesamtbild der Datenqualität, ohne dass jede einzelne
+  Zelle das Tag-Wort wiederholen muss.
+
 Dateiname-Konvention: `reports/<Ticker>-agent-schnellanalyse-<YYYY-MM-DD>.html/.pdf`.
 Cross-Check-Markdown weiterhin unter `analysen/<Ticker>-fulldeepdive-...`
 NUR bei echtem Full Deep Dive – bei einer Schnellanalyse reicht ein
