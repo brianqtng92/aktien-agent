@@ -48,6 +48,8 @@
   .section-label { font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0; }
   .chart-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 74mm; flex: 0 0 auto; }
   .chart-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; border-radius: 2px; }
+  .bbb-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 60mm; flex: 0 0 auto; }
+  .bbb-frame img { max-width: 100%; max-height: 100%; }
   .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
   .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
   .box h3 { font-size: 9.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
@@ -251,7 +253,7 @@
   <div class="masthead">
     <div class="brand-block">
       <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
-      <div class="brand-sub">Umsatz-/Backlog-Historie · Management-Score</div>
+      <div class="brand-sub">Umsatz-/Backlog-Historie · Guidance · Management-Score</div>
     </div>
     <div class="meta-block"><div class="date">9. September 2026 — Seite 4</div><div>HAWK HawkEye 360</div></div>
   </div>
@@ -265,6 +267,16 @@
       <tr><td>30.06.2026 (Q2)</td><td>$49,8 Mio.</td><td>+87%</td><td>$292,2 Mio.</td><td>+2,5%</td></tr>
     </table>
     <p style="margin-top:1.4mm;">Backlog liegt per 30.06.2026 <b>weiterhin unter dem Stand zum Jahresende 2025</b>, trotz durchgehend starkem Umsatzwachstum. Beide KIs werten dies primär als Timing-Effekt (schnellere Umsatzrealisierung + NRO-Vertrag vom 19.08. noch nicht im Q2-Backlog erfasst), fordern aber übereinstimmend eine Stabilisierung/Erholung in Q3/Q4 als Beweis — Conan nennt explizit eine Zielgröße von &gt;$320-350 Mio.</p>
+  </div>
+
+  <div class="section-label">Guidance-Track-Record (neu, 10.09.2026 — beide KIs recherchiert)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Datum</th><th>Guidance</th><th>Status</th></tr>
+      <tr><td>Mai 2026 (424B4-IPO-Prospekt)</td><td>FY2026 Umsatz $215-220 Mio., Adj.-EBITDA $30-36 Mio.</td><td>Erste Guidance überhaupt</td></tr>
+      <tr><td>20.08.2026 (Q2-2026-Call, erster reguläre Call als Public Company)</td><td>unverändert</td><td>🟡 Bestätigt, nicht angehoben</td></tr>
+    </table>
+    <p style="margin-top:1.2mm; font-size:8pt;">Kein Ist-vs-Guidance-Vergleich möglich — die einzige bisherige Guidance bezieht sich auf das noch laufende Geschäftsjahr 2026. Kein Track Record im eigentlichen Sinn vorhanden (frisch gelistetes Unternehmen, IPO Mai 2026), explizit als solches vermerkt statt interpoliert.</p>
   </div>
 
   <div class="section-label">Management-/Gründer-Score (synthetisiert)</div>
@@ -307,8 +319,9 @@
           <tr><td>Equity Value (SEC-Basis)</td><td>~$1,61 Mrd.</td></tr>
           <tr><td>EV ex Cash (SEC-Basis)</td><td>~$1,11 Mrd.</td></tr>
           <tr><td>EV/Sales (FY26-Guidance-Mid)</td><td>~5,1x</td></tr>
+          <tr><td>EV/Revenue TTM (10.09., beide KIs)</td><td>~6,7x (IPO-Tag: ~20,4x)</td></tr>
         </table>
-        <p style="margin-top:1.2mm;">Für ein +80%-Wachstumsunternehmen mit gerade erreichter FCF-Wende nicht absurd, aber auch nicht "No-brainer billig". Analysten-Konsens ($33,78 Ø-Kursziel) deutlich über dem Kurs — mit der üblichen Vorsicht ggü. frischen Post-IPO-Zielen zu behandeln, nicht als Kaufargument zu nutzen.</p>
+        <p style="margin-top:1.2mm;">Für ein +80%-Wachstumsunternehmen mit gerade erreichter FCF-Wende nicht absurd, aber auch nicht "No-brainer billig". Analysten-Konsens ($33,78 Ø-Kursziel) deutlich über dem Kurs — mit der üblichen Vorsicht ggü. frischen Post-IPO-Zielen zu behandeln, nicht als Kaufargument zu nutzen. Multiple seit IPO stark komprimiert (Chart Seite 6) — primär Kursverfall, nicht Umsatzrückgang.</p>
       </div>
       <div class="integrity-box">
         <h3>⚠ Datenintegritäts-Fund (Conan)</h3>
@@ -316,13 +329,19 @@
       </div>
     </div>
     <div class="col">
-      <div class="section-label">Moat-in-Formation (Ø-Score 7,0/10)</div>
+      <div class="section-label">Bruttomargen-Verlauf (neu, 10.09.2026)</div>
+      <div class="bbb-frame" style="height:52mm;"><img src="HAWK-margin-trend-2026-09-10.png" alt="HAWK Bruttomargen-Trend" style="max-width:100%; max-height:100%;"></div>
       <div class="box">
-        <p><b>Positiv:</b> proprietäres RF-Datenarchiv (&gt;1 Mrd. Datenpunkte, Netzwerkeffekt-Potenzial), vertikale Integration (Collection→Analytics komplett selbst), NRO-Operationalisierung als starkes Switching-Cost-Indiz, First-Mover als einzige börsennotierte kommerzielle RF-SIGINT-Konstellation.</p>
-        <p style="margin-top:1mm;"><b>Schwächen:</b> kein Monopol (Unseenlabs, BAE Azalea real), Regierungskunden können bewusst Multi-Vendor-Architekturen bevorzugen (NRO evaluierte historisch mehrere RF-Anbieter parallel), Switching-Costs noch nicht auf SaaS-Niveau bewiesen, Nischenrisiko real (Kleos-Insolvenz 2023).</p>
-        <p style="margin-top:1mm; font-size:8.4pt; color:var(--text-faint);">Beide KIs: "Moat in Formation, nicht voll bewiesen" — Kernfrage für 2027: wird HawkEye bei Kunden zum Standard, oder bleibt es eine getestete Option unter mehreren?</p>
+        <p style="font-size:8pt;">Echter, bisher nicht abgebildeter Befund: Marge fiel von 81,6% (FY2025) auf 67,7-70,2% (2026, ohne D&amp;A-Zuordnung) — je nach Methode sogar auf 59-61% (mit D&amp;A). Beide KIs führen dies auf die ISA-Akquisition (Dez. 2025) zurück, die margenschwächeres Systemgeschäft einbringt. HawkEye weist keine explizite GAAP-"Gross Profit"-Zeile aus — jede Bruttomarge hier ist abgeleitet, kein offizieller Konzernwert.</p>
       </div>
     </div>
+  </div>
+
+  <div class="section-label">Moat-in-Formation (Ø-Score 7,0/10)</div>
+  <div class="box">
+    <p><b>Positiv:</b> proprietäres RF-Datenarchiv (&gt;1 Mrd. Datenpunkte, Netzwerkeffekt-Potenzial), vertikale Integration (Collection→Analytics komplett selbst), NRO-Operationalisierung als starkes Switching-Cost-Indiz, First-Mover als einzige börsennotierte kommerzielle RF-SIGINT-Konstellation.</p>
+    <p style="margin-top:1mm;"><b>Schwächen:</b> kein Monopol (Unseenlabs, BAE Azalea real), Regierungskunden können bewusst Multi-Vendor-Architekturen bevorzugen (NRO evaluierte historisch mehrere RF-Anbieter parallel), Switching-Costs noch nicht auf SaaS-Niveau bewiesen, Nischenrisiko real (Kleos-Insolvenz 2023).</p>
+    <p style="margin-top:1mm; font-size:8.4pt; color:var(--text-faint);">Beide KIs: "Moat in Formation, nicht voll bewiesen" — Kernfrage für 2027: wird HawkEye bei Kunden zum Standard, oder bleibt es eine getestete Option unter mehreren?</p>
   </div>
 
   <div class="footer">
@@ -336,15 +355,18 @@
   <div class="masthead">
     <div class="brand-block">
       <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
-      <div class="brand-sub">Kursverlauf</div>
+      <div class="brand-sub">Kursverlauf & Bewertungs-Historie</div>
     </div>
     <div class="meta-block"><div class="date">10. September 2026 — Seite 6</div><div>HAWK HawkEye 360</div></div>
   </div>
 
   <div class="section-label">Kursverlauf seit IPO (86 Handelstage)</div>
-  <div class="chart-frame" style="height:150mm; width:100%;"><img src="HAWK_chart.png" alt="HAWK Kursverlauf"></div>
+  <div class="chart-frame" style="height:112mm; width:100%;"><img src="HAWK_chart.png" alt="HAWK Kursverlauf"></div>
 
-  <p style="font-size:8pt; color:var(--text-faint); line-height:1.35;">Kursdaten: Twelve Data, Tagesbasis, 07.05.2026-09.09.2026 (gesamte bisherige Handelshistorie seit IPO). EMA20/EMA50 zur Trendeinordnung. Keine Bewertungs-Zonen eingezeichnet, da die Scout-Methodik (Bucket B, Quality in Formation) keine DCF-Szenarien liefert. Der Chart zeigt den scharfen Abwärtstrend von $34,66 (12.05.) auf $16,45 (09.09.) — nahe am 52-Wochen-Tief. Diese Chart-Seite konnte am 09.09.2026 wegen einer Twelve-Data-Verbindungsstörung nicht erstellt werden und wurde am 10.09.2026 nachträglich ergänzt.</p>
+  <div class="section-label">EV/Revenue-Verlauf seit IPO</div>
+  <div class="chart-frame" style="height:80mm; width:100%;"><img src="HAWK-evsales-trend-2026-09-10.png" alt="HAWK EV/Revenue-Verlauf"></div>
+
+  <p style="font-size:7.6pt; color:var(--text-faint); line-height:1.3;">Kursdaten: Twelve Data, Tagesbasis, 07.05.2026-09.09.2026 (gesamte bisherige Handelshistorie seit IPO). EMA20/EMA50 zur Trendeinordnung. Keine Bewertungs-Zonen eingezeichnet, da die Scout-Methodik (Bucket B, Quality in Formation) keine DCF-Szenarien liefert. Der Chart zeigt den scharfen Abwärtstrend von $34,66 (12.05.) auf $16,45 (09.09.) — nahe am 52-Wochen-Tief. EV/Revenue-Verlauf (Jack+Conan, primärquellenbasiert): Kompression von ~20,4x (IPO) auf ~6,7x (aktuell) — primär Kursverfall, nicht Umsatzrückgang. Peer Spire Global aktuell ~9,1x (GuruFocus). Beide Chart-Seiten konnten am 09.09.2026 wegen einer Twelve-Data-Verbindungsstörung nicht erstellt werden und wurden am 10.09.2026 nachträglich ergänzt.</p>
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-09.md</div>

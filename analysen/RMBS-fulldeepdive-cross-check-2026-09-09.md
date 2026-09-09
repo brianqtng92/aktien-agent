@@ -62,4 +62,4 @@ RMBS (NASDAQ), Rambus Inc. — Halbleiter-IP-Lizenzgeber + Memory-Interconnect-C
 
 ## PDF
 
-`reports/RMBS-agent-deepdive-2026-09-09.pdf` — vollständiger Full Deep Dive nach kanonischem Seitengerüst (jetzt 10 Seiten), inkl. Kundenkonzentrations-Vertiefung, Piotroski-Divergenz-Box, Bear/Base/Bull-DCF und Kursverlauf-Chart mit DCF-Fair-Value-Zonen (Seite 6, am 10.09.2026 nachträglich ergänzt, nachdem die Twelve-Data-Verbindung wiederhergestellt war).
+`reports/RMBS-agent-deepdive-2026-09-09.pdf` — vollständiger Full Deep Dive nach kanonischem Seitengerüst (10 Seiten), inkl. Kundenkonzentrations-Vertiefung, Piotroski-Divergenz-Box. Am 10.09.2026 vollständig auf NVO-Referenzniveau nachgezogen: DCF-Bear/Base/Bull jetzt auch als Balkenchart (Seite 5), Bruttomargen-Verlauf 2021-TTM als neue Chart (Seite 5, Jack+Conan-recherchiert, Kernbefund: keine Erosion, Stabilisierung ~80% seit 2024), WACC-Sensitivitätsmatrix (Seite 5), Kursverlauf mit DCF-Fair-Value-Zonen + KGV-Verlauf-Chart (Seite 6), Kapitalrückführung nach Seite 8 verschoben.

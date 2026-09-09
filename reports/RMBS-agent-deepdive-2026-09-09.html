@@ -48,6 +48,8 @@
   .section-label { font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0; }
   .chart-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 74mm; flex: 0 0 auto; }
   .chart-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; border-radius: 2px; }
+  .bbb-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 60mm; flex: 0 0 auto; }
+  .bbb-frame img { max-width: 100%; max-height: 100%; }
   .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
   .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
   .box h3 { font-size: 9.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
@@ -278,7 +280,7 @@
   <div class="masthead">
     <div class="brand-block">
       <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
-      <div class="brand-sub">DCF-Szenarien · Kapitalrückführung</div>
+      <div class="brand-sub">DCF-Szenarien · Bruttomargen · WACC</div>
     </div>
     <div class="meta-block"><div class="date">9. September 2026 — Seite 5</div><div>RMBS Rambus Inc.</div></div>
   </div>
@@ -286,28 +288,39 @@
   <div class="two-col">
     <div class="col">
       <div class="section-label">DCF-Szenarien (Conan, Python-FCF-Modell)</div>
+      <div class="bbb-frame" style="height:52mm;"><img src="RMBS-bearbasebull-2026-09-10.png" alt="RMBS Bear/Base/Bull DCF" style="max-width:100%; max-height:100%;"></div>
       <div class="box">
-        <table class="scenario-table">
-          <tr><th>Szenario</th><th>Fair Value</th><th>Δ vs. Kurs $87,65</th></tr>
-          <tr><td>Bear</td><td>$31</td><td class="neg">-64,6%</td></tr>
-          <tr><td>Base</td><td>$43,5</td><td class="neg">-50,4%</td></tr>
-          <tr><td>Bull</td><td>$68,5</td><td class="neg">-21,9%</td></tr>
-        </table>
-        <p style="margin-top:1.2mm;">Annahmen: TTM-FCF $299,5 Mio., Beta ~1,87, WACC 11-14% je Szenario, Terminal-Growth 2-3,5%. Selbst im Bull-Szenario liegt der Fair Value unter dem aktuellen Kurs. Jacks zitierter GuruFocus-Wert ($39,97) liegt fast exakt zwischen Bear und Base — unabhängige Konvergenz.</p>
+        <p style="font-size:8pt;">Annahmen: TTM-FCF $299,5 Mio., Beta ~1,87, WACC 11-14% je Szenario, Terminal-Growth 2-3,5%. Selbst im Bull-Szenario liegt der Fair Value unter dem aktuellen Kurs. Jacks zitierter GuruFocus-Wert ($39,97) liegt fast exakt zwischen Bear und Base — unabhängige Konvergenz.</p>
       </div>
     </div>
     <div class="col">
-      <div class="section-label">Kapitalrückführung</div>
+      <div class="section-label">Bruttomargen-Verlauf</div>
+      <div class="bbb-frame" style="height:52mm;"><img src="RMBS-margin-trend-2026-09-10.png" alt="RMBS Bruttomargen-Trend" style="max-width:100%; max-height:100%;"></div>
       <div class="box">
-        <p>Keine Dividende. $100-Mio.-Accelerated-Share-Repurchase (Mizuho) seit 05.08.2026. Historische Buybacks: ~$100 Mio./Jahr (2021-2023), $113 Mio. (2024), nur ~$7 Mio. (2025 vor dem neuen ASR) — deutliche Drosselung 2025, jetzt wieder aktiviert.</p>
-        <p style="margin-top:1mm;"><b>Score (Conan): 7/10.</b> Netto-Cash-Bilanz erlaubt Rückkäufe, aber SBC-Verwässerung bleibt ein Gegenwind — Buybacks kompensieren teilweise, sind kein Beweis für Unterbewertung.</p>
+        <p style="font-size:8pt;">Kein Erosionsbild, eher Stabilisierung: Tief 76,4% (2022), seither Erholung auf ~79,5-80,2% (2024-TTM). Quelle: rambus.com GAAP-Pressemitteilungen (Conan), kreuzgeprüft mit stockanalysis.com (Jack) — für 2024/2025 exakte Übereinstimmung, für 2021-2023 Abweichung bis 3pp je Klassifizierungsmethode (nicht abschließend geklärt, hier: Company-eigene GAAP-Tabellen).</p>
       </div>
     </div>
   </div>
 
-  <div class="section-label">WACC-Kontext</div>
+  <div class="section-label">DCF-Szenario-Tabelle</div>
   <div class="box">
-    <p style="font-size:8.6pt;">Bei einem Beta von ~1,87 (Yahoo 5Y-monatlich) und einer 10J-US-Rendite um ~4,8% ergibt sich ein hoher Eigenkapitalkostensatz — Conans Reverse-DCF-Lesart: der aktuelle Kurs verlangt entweder dauerhaft zweistelliges FCF-Wachstum über viele Jahre, einen deutlich niedrigeren Diskontsatz, oder einen baldigen, großen HBM/DDR5-Umsatzsprung. Keine dieser Annahmen ist aktuell durch harte Daten belegt — der Markt preist RMBS eher als AI-/HBM-Optionswert als nach strengem CAPM-DCF.</p>
+    <table class="scenario-table">
+      <tr><th>Szenario</th><th>Fair Value</th><th>Δ vs. Kurs $87,65</th></tr>
+      <tr><td>Bear</td><td>$31</td><td class="neg">-64,6%</td></tr>
+      <tr><td>Base</td><td>$43,5</td><td class="neg">-50,4%</td></tr>
+      <tr><td>Bull</td><td>$68,5</td><td class="neg">-21,9%</td></tr>
+    </table>
+  </div>
+
+  <div class="section-label">WACC-Sensitivitätsmatrix (Rf 4,8% + Beta × ERP)</div>
+  <div class="box">
+    <table class="score-table">
+      <tr><th>Beta \ ERP</th><th>4,3%</th><th>4,6%</th><th>4,9%</th></tr>
+      <tr><td>1,67</td><td>11,98%</td><td>12,48%</td><td>12,98%</td></tr>
+      <tr><td>1,87 (Basis)</td><td>12,84%</td><td><b>13,40%</b></td><td>13,96%</td></tr>
+      <tr><td>2,07</td><td>13,70%</td><td>14,32%</td><td>14,94%</td></tr>
+    </table>
+    <p style="margin-top:1.2mm; font-size:8pt;">Bandbreite 11,98-14,94% deckt sich mit dem im DCF verwendeten WACC-Korridor 11-14% je Szenario — Unsicherheit liegt überwiegend in der Beta-Schätzung (Kursvolatilität), nicht im risikofreien Zins. Conans Reverse-DCF-Lesart bleibt gültig: selbst am unteren Ende der Zinssensitivität liegt der Bull-Bereich klar unter dem Kurs — der Markt preist RMBS eher als AI-/HBM-Optionswert als nach strengem CAPM-DCF.</p>
   </div>
 
   <div class="footer">
@@ -321,15 +334,18 @@
   <div class="masthead">
     <div class="brand-block">
       <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
-      <div class="brand-sub">Kursverlauf</div>
+      <div class="brand-sub">Kursverlauf & Bewertungs-Historie</div>
     </div>
     <div class="meta-block"><div class="date">10. September 2026 — Seite 6</div><div>RMBS Rambus Inc.</div></div>
   </div>
 
   <div class="section-label">Kursverlauf mit DCF-Fair-Value-Zonen (200 Handelstage)</div>
-  <div class="chart-frame" style="height:150mm; width:100%;"><img src="RMBS_chart.png" alt="RMBS Kursverlauf"></div>
+  <div class="chart-frame" style="height:118mm; width:100%;"><img src="RMBS_chart.png" alt="RMBS Kursverlauf"></div>
 
-  <p style="font-size:8pt; color:var(--text-faint); line-height:1.35;">Kursdaten: Twelve Data, Tagesbasis, 20.11.2025-09.09.2026. EMA20/EMA50 zur Trendeinordnung. Horizontale Linien markieren Conans DCF-Szenarien (Seite 5): Bear $31, Base $43,5, Bull $68,5 — der Kurs notiert seit Monaten deutlich über allen drei Zonen. Diese Chart-Seite konnte am 09.09.2026 wegen einer Twelve-Data-Verbindungsstörung nicht erstellt werden und wurde am 10.09.2026 nachträglich ergänzt.</p>
+  <div class="section-label">KGV-Verlauf (trailing GAAP)</div>
+  <div class="chart-frame" style="height:80mm; width:100%;"><img src="RMBS-pe-history-2026-09-10.png" alt="RMBS KGV-Verlauf"></div>
+
+  <p style="font-size:7.6pt; color:var(--text-faint); line-height:1.3;">Kursdaten: Twelve Data, Tagesbasis, 20.11.2025-09.09.2026. EMA20/EMA50 zur Trendeinordnung. Horizontale Linien markieren Conans DCF-Szenarien (Seite 5): Bear $31, Base $43,5, Bull $68,5 — der Kurs notiert seit Monaten deutlich über allen drei Zonen. KGV-Verlauf: Jahresschlusskurs ÷ GAAP-EPS je Jahr (Twelve Data + Company-Releases), 2021/2022 ausgelassen (EPS nahe null bzw. Verlustjahr, KGV nicht aussagekräftig). Beide Chart-Seiten konnten am 09.09.2026 wegen einer Twelve-Data-Verbindungsstörung nicht erstellt werden und wurden am 10.09.2026 nachträglich ergänzt.</p>
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-09.md</div>
@@ -413,6 +429,11 @@
         </table>
       </div>
     </div>
+  </div>
+
+  <div class="section-label">Kapitalrückführung</div>
+  <div class="box">
+    <p style="font-size:8.4pt;">Keine Dividende. $100-Mio.-Accelerated-Share-Repurchase (Mizuho) seit 05.08.2026. Historische Buybacks: ~$100 Mio./Jahr (2021-2023), $113 Mio. (2024), nur ~$7 Mio. (2025 vor dem neuen ASR) — deutliche Drosselung 2025, jetzt wieder aktiviert. <b>Score (Conan): 7/10.</b> Netto-Cash-Bilanz erlaubt Rückkäufe, aber SBC-Verwässerung bleibt ein Gegenwind — Buybacks kompensieren teilweise, sind kein Beweis für Unterbewertung.</p>
   </div>
 
   <div class="footer">
