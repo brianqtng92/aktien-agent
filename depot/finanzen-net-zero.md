@@ -155,31 +155,29 @@ Recherche-Auftrag versehentlich ausgelassen) – Werte bleiben auf dem
 Stand vom 29.08./02.09.2026 stehen, nächster Wochenfazit-Lauf holt das
 nach.
 
-## Update 2026-09-09 (Depot-Update auf Brians Anfrage, WebSearch, EUR/USD 1,1647/EUR/CAD 1,6022/EUR/GBP 0,8585)
+## Update 2026-09-09 (Depot-Update auf Brians Anfrage)
 
-Alle 15 Positionen frisch abgerufen (inkl. der zuletzt ausgelassenen Hermès/Münchener Rück).
+**Korrektur (2026-09-09, ~30 Min. nach der ersten Fassung):** Brian wies zurecht zurück, dass A10 Networks um 54% gestiegen sei. Gegenprüfung via Twelve Data (zuverlässige Primärquelle, wird für alle Basic-Plan-fähigen US-Ticker ab jetzt VOR WebSearch verwendet) zeigte: A10 Networks lag tatsächlich bei $24,94, nicht bei ~$38 wie in der ursprünglichen WebSearch-Fassung. **Zweiter, unabhängig gefundener Fehler beim selben Update:** Rambus zeigte per WebSearch $104,69, real (Twelve Data) nur $87,20 – ebenfalls falsch, nur nicht so auffällig wie A10, da kein Warnsignal (keine Größenordnung, die zum Nachfragen zwang). **Lehre:** WebSearch-Ergebnisse für Depot-Kurse sind nicht durchgehend verlässlich (mischen offenbar teils veraltete/falsch zugeordnete Treffer) – ab sofort für jeden Twelve-Data-fähigen Ticker (alle US-Werte dieser Liste) Twelve Data als Primärquelle nutzen, WebSearch nur noch für Ticker ohne Twelve-Data-Basic-Abdeckung (Kanada/TSX, London, Paris, Xetra, TSXV). Tabelle unten korrigiert.
 
-| Position | Anteile | Investsumme | Live-Kurs | **Wert aktuell (EUR)** | Rendite |
-|---|---|---|---|---|---|
-| SoFi Technologies | 250 | 2.612,93 € | 18,01 $ | **3.865,80 €** | +47,9% |
-| A10 Networks Inc | 21 | 506,52 € | ~38,15 $ (2 Quellen 37,92-38,39$) | **687,86 €** | +35,8% |
-| Constellation Software Inc | 1 | 1.380,00 € | 2.870,00 CAD | **1.791,29 €** | +29,8% |
-| ServiceNow Inc | 20 | 1.948,96 € | 133,91 $ | **2.299,48 €** | +18,0% |
-| MercadoLibre Inc | 1 | 1.442,80 € | 1.871,67 $ | **1.607,00 €** | +11,4% |
-| CBOE Holdings Inc | 5 | 1.226,15 € | 298,38 $ | **1.280,93 €** | +4,5% |
-| Rocket Lab USA, Inc. | 10 | 554,00 € | 67,05 $ | **575,68 €** | +3,9% |
-| Broadridge Financial Solutions | 8 | 1.119,68 € | 168,27 $ | **1.155,80 €** | +3,2% |
-| Tristel PLC | 210 | 1.002,67 € | 420p (4,20 GBP) | **1.027,37 €** | +2,5% |
-| Rambus Inc. | 6 | 533,64 € | 104,69 $ | **539,31 €** | +1,1% |
-| Münchener Rückversicherungs-Gesellschaft | 2 | 1.051,00 € | 526,10 € | **1.052,20 €** | +0,1% |
-| Cellebrite DI Ltd | 200 | 2.166,15 € | 11,62 $ (Stand 02.09., keine frischere Quelle gefunden) | **1.995,36 €** | -7,9% |
-| Kraken Robotics Inc. | 300 | 1.050,00 € | 5,14 CAD | **962,43 €** | -8,3% |
-| Intuitive Surgical Inc | 4 | 1.400,50 € | 360,25 $ | **1.237,23 €** | -11,7% |
-| Hermès | 1 | 1.905,09 € | 1.573,00 € | **1.573,00 €** | -17,4% |
+| Position | Anteile | Investsumme | Live-Kurs | Quelle | **Wert aktuell (EUR)** | Rendite |
+|---|---|---|---|---|---|---|
+| SoFi Technologies | 250 | 2.612,93 € | 17,435 $ | Twelve Data | **3.748,59 €** | +43,5% |
+| Constellation Software Inc | 1 | 1.380,00 € | 2.870,00 CAD | WebSearch (Twelve Data blockiert TSX auf Basic-Plan) | **1.791,29 €** | +29,8% |
+| ServiceNow Inc | 20 | 1.948,96 € | 131,88 $ | Twelve Data | **2.268,38 €** | +16,4% |
+| MercadoLibre Inc | 1 | 1.442,80 € | 1.873,83 $ | Twelve Data | **1.611,52 €** | +11,7% |
+| CBOE Holdings Inc | 5 | 1.226,15 € | 296,48 $ | Twelve Data | **1.274,89 €** | +4,0% |
+| Broadridge Financial Solutions | 8 | 1.119,68 € | 167,455 $ | Twelve Data | **1.152,11 €** | +2,9% |
+| Tristel PLC | 210 | 1.002,67 € | 420p (4,20 GBP) | WebSearch (kein Twelve-Data-Basic-Zugriff auf LSE) | **1.027,37 €** | +2,5% |
+| Münchener Rückversicherungs-Gesellschaft | 2 | 1.051,00 € | 526,10 € | WebSearch (Xetra, Stand 03.09.) | **1.052,20 €** | +0,1% |
+| Rocket Lab USA, Inc. | 10 | 554,00 € | 63,94 $ | Twelve Data | **549,89 €** | -0,7% |
+| Kraken Robotics Inc. | 300 | 1.050,00 € | 5,14 CAD | WebSearch (Twelve Data blockiert TSXV auf Basic-Plan) | **962,43 €** | -8,3% |
+| Cellebrite DI Ltd | 200 | 2.166,15 € | 11,43 $ | Twelve Data | **1.965,99 €** | -9,2% |
+| **A10 Networks Inc** | 21 | 506,52 € | **24,94 $ (korrigiert, war fälschlich ~38$)** | Twelve Data | **450,42 €** | **-11,1%** |
+| Intuitive Surgical Inc | 4 | 1.400,50 € | 350,81 $ | Twelve Data | **1.206,81 €** | -13,8% |
+| **Rambus Inc.** | 6 | 533,64 € | **87,20 $ (korrigiert, war fälschlich 104,69$)** | Twelve Data | **449,96 €** | **-15,7%** |
+| Hermès | 1 | 1.905,09 € | 1.573,00 € | WebSearch (Paris, Stand 08.-09.09.) | **1.573,00 €** | -17,4% |
 
-**Summe finanzen.net zero: 21.650,74 € (Invest 19.900,09 €, +8,8%).**
-
-**Auffälligkeiten:** A10 Networks (+35,8% ggü. Investsumme, seit 04.09. von 446,83€ auf 687,86€, +54%) und Constellation Software (+29,8%) zeigen große Wochenbewegungen. A10: durch WebSearch bestätigt – starkes Q2 2026 (Umsatz +15,5%, KI-Nachfrage, TrojAI-Akquisition zur KI-Security), Kursziel-Anhebung eines Analysten von 30$ auf 45$ – echte Bewegung, keine Datenanomalie. Constellation Software: erster Suchtreffer lieferte einen offensichtlich falschen Ausreißer (3.897,60 CAD), durch Zweitsuche auf 2.870,00 CAD korrigiert (Selbstwiderspruch-Check) – das ist sogar ein leichter RÜCKGANG ggü. 04.09. (3.023,96 CAD), nicht der ursprünglich falsch berechnete Anstieg. Cellebrite: keine Kursdaten für heute gefunden, letzter Stand 02.09.2026 übernommen (Alter ~1 Woche, kein aktueller Katalysator bekannt).
+**Summe finanzen.net zero: 21.084,86 € (Invest 19.900,09 €, +6,0%)** — korrigiert von der ursprünglich fehlerhaften 21.650,74 €.
 
 ## Verkäufe & Umschichtungen (ab 2026-08-28, von Brian gemeldet, alle Angaben in €)
 

@@ -26,12 +26,15 @@ Erster Live-Kurs für diese Position: 17,355 $/Aktie. Aktueller Wert:
 100 × 17,355 $ ÷ 1,16132 = **1.494,42 €** (-11,1% ggü. Investsumme
 1.681,70 €).
 
-**Update 2026-09-09 (Depot-Update, WebSearch, Stand 08.09.):** **Ticker-
+**Update 2026-09-09 (Depot-Update, korrigiert per Twelve Data):** **Ticker-
 Korrektur:** Firma handelt inzwischen unter HAWK, nicht mehr HEO (im
 Zuge einer Notierungs-/Symbolumstellung, Datum nicht recherchiert) – für
-künftige Kurs-Abfragen HAWK verwenden. Live-Kurs 16,99 $/Aktie (-2,1%
-ggü. 04.09.). Aktueller Wert: 100 × 16,99 $ ÷ 1,1647 = **1.458,74 €**
-(-13,3% ggü. Investsumme 1.681,70 €) – Position bleibt wie am 02.09.
+künftige Kurs-Abfragen HAWK verwenden. Live-Kurs (Twelve Data) 16,51 $/Aktie
+(erste WebSearch-Fassung zeigte 16,99$, per Twelve Data leicht nach unten
+korrigiert – siehe genereller Korrektur-Hinweis in finanzen-net-zero.md,
+WebSearch war bei zwei anderen Positionen im selben Update deutlicher
+falsch). Aktueller Wert: 100 × 16,51 $ ÷ 1,16277 = **1.419,89 €**
+(-15,5% ggü. Investsumme 1.681,70 €) – Position bleibt wie am 02.09.
 festgelegt "voll", kein Nachkauf-Signal.
 
 Hinweis (2026-08-23, weiterhin gültig): Depot-Erfassung insgesamt abgeschlossen –

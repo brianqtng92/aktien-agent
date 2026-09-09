@@ -1,23 +1,30 @@
-**Nachtrag 2026-09-09 ~Nachmittag (ad-hoc-chat, Depot-Update auf Brians
-Anfrage):** Alle 4 Broker frisch abgefragt (Scalable live via MCP,
-finanzen.net zero/Trade Republic/Smartbroker+ via WebSearch, da keine
-Live-Anbindung existiert). **Gesamtdepot: 34.207,03 €** (-0,92% ggü. 08.09.
-[34.523,35 €], -2,25% ggü. Wochenfazit-Baseline 07.09. [34.992,90 €]) –
-kein Material-Shift, Rückgang primär durch den weiterhin ungeklärten
-Scalable-Cash-Rückgang auf 0€ (siehe scalable-capital.md), nicht durch
-breite Kursverluste. Größte Einzelbewegungen seit 04.09.: A10 Networks
-+54% (echte Q2-Beat-and-Raise-Reaktion + Analysten-Kurszielanhebung,
-bestätigt), SoFi weiterhin stärkste Position (+47,9% ggü. Investsumme),
-Hermès schwächste (-17,4%). Cash-Position praktisch bei Null (Scalable
-0€, kein Nachkauf-Pulver aktuell außer der laufenden 800€/Monat-
-Daueraufträge) – kein aktiver Cash-vs-Invest-Entscheidungsbedarf. Beide
-offenen Empfehlungen (Kraken Robotics ≤2,80 CAD, Rambus ≤65€/$75) bleiben
-weit von ihrer Nachkauf-Zone entfernt (Kraken 5,14 CAD, Rambus 104,69$) –
-keine Aktion fällig. EZB-Ratssitzung 09./10.09.2026 nächster relevanter
-Katalysator (Allianz/Münchener Rück/Hermès-Exposure). Details siehe
-`depot/finanzen-net-zero.md`, `depot/trade-republic.md`,
+**Nachtrag 2026-09-09 ~Nachmittag (ad-hoc-chat, Depot-Update, KORRIGIERTE
+FASSUNG – Brian wies die erste Fassung zurecht als falsch zurück):** Erste
+Fassung dieses Depot-Updates enthielt zwei echte Fehler aus WebSearch-
+Kursabfragen: **A10 Networks wurde fälschlich mit ~38$ statt real 24,94$
+angegeben (behaupteter +54%-Anstieg existierte nicht)**, zusätzlich war
+auch Rambus falsch (104,69$ statt real 87,20$). Beide per Twelve Data
+(zuverlässige Primärquelle) korrigiert – Twelve Data wird ab jetzt für
+jeden Basic-Plan-fähigen Ticker VOR WebSearch verwendet, WebSearch nur noch
+als Fallback für Ticker ohne Twelve-Data-Abdeckung (Kanada/TSX/TSXV,
+London, Paris, teils Xetra). **Korrigiertes Gesamtdepot: 33.602,29 €**
+(-3,98% ggü. Wochenfazit-Baseline 07.09. [34.992,90 €], -2,63% ggü. 08.09.
+[34.523,35 €]) – etwas schwächer als in der fehlerhaften Erstfassung
+berichtet, aber weiterhin kein Material-Shift. Größte reale Bewegungen:
+SoFi weiterhin stärkste Position (+43,5% ggü. Investsumme, Twelve-Data-
+bestätigt), Constellation Software +29,8% (nur WebSearch-basiert, TSX
+nicht über Twelve Data Basic abrufbar, daher geringere Konfidenz als die
+Twelve-Data-Werte), Rambus jetzt schwächste Einzelposition (-15,7%, nicht
+wie ursprünglich berichtet leicht positiv). Cash-Position weiterhin
+praktisch bei Null (Scalable 0€) – kein aktiver Cash-vs-Invest-
+Entscheidungsbedarf. Beide offenen Empfehlungen (Kraken Robotics ≤2,80 CAD,
+Rambus ≤65€/$75) bleiben von ihrer Nachkauf-Zone entfernt, auch nach
+Korrektur (Rambus jetzt $87,20 statt fälschlich $104,69 – aber immer noch
+deutlich über der $75-Marke). EZB-Ratssitzung 09./10.09.2026 nächster
+relevanter Katalysator (Allianz/Münchener Rück/Hermès-Exposure). Details
+siehe `depot/finanzen-net-zero.md`, `depot/trade-republic.md`,
 `depot/smartbroker-plus.md`, `depot/scalable-capital.md` (je Update
-2026-09-09).
+2026-09-09, finanzen-net-zero.md mit vollständiger Fehler-Dokumentation).
 
 **Nachtrag 2026-09-08 ~19:15 UTC (taeglicher-trigger-check):** ruhiger Tag,
 kein Anlass. Scalable live abgefragt (`ping` OK), Holdings/Cash/Transaktionen
