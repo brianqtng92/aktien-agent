@@ -37,6 +37,21 @@ falsch). Aktueller Wert: 100 × 16,51 $ ÷ 1,16277 = **1.419,89 €**
 (-15,5% ggü. Investsumme 1.681,70 €) – Position bleibt wie am 02.09.
 festgelegt "voll", kein Nachkauf-Signal.
 
+**Update 2026-09-09 (Full Deep Dive auf Brians Anfrage):** vollständiger
+3-fach-Cross-Check abgeschlossen (Jack+Conan, Scout-Pfad/Bucket B) —
+Rating **BEOBACHTEN/HALTEN**, beide KIs unabhängig konvergent. Kernbefund:
+Umsatz +87% YoY und sehr starke Bilanz ($503 Mio. Cash, keine Schulden),
+aber Backlog wächst nicht mit (+2,5% QoQ, unter FY2025-Endstand) und
+GAAP-Verlust trotz positivem Adj.-EBITDA/FCF — beide als "eher Timing/
+Non-Cash als Strukturproblem, aber unbewiesen" eingeordnet. Keine
+Insider-Verkäufe seit Lockup-Ende (02.09.) gefunden. Sizing-Deckel Tier 3.
+**Konsequenz für diese Position: HALTEN, weiterhin kein Nachkauf** — die
+aktuellen -15% spiegeln überwiegend die allgemeine Post-IPO-Space-Tech-
+Neubewertung, nicht ein neues unternehmensspezifisches Problem. Nächster
+Pflicht-Prüfpunkt: Q3-2026-Zahlen (~November 2026), insbesondere
+Backlog-Entwicklung. Siehe `analysen/HAWK-fulldeepdive-cross-check-2026-09-09.md`
+und `reports/HAWK-agent-deepdive-2026-09-09.pdf`.
+
 Hinweis (2026-08-23, weiterhin gültig): Depot-Erfassung insgesamt abgeschlossen –
 von Brian bestätigt ("das sind meine ganzen Positionen"). Zusammen mit
 `scalable-capital.md`, `finanzen-net-zero.md` und `trade-republic.md` ist das

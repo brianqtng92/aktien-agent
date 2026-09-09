@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Agent Deep Dive – HAWK</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FFFFFF; --bg-panel: #F7F6F2; --bg-panel-2: #EFEDE6;
+    --border: #D9D4C8; --border-soft: #E6E2D9;
+    --text: #262420; --text-dim: #5C564A; --text-faint: #837C6C;
+    --gold: #9C7A2E; --gold-bright: #8A6A22; --gold-dim: #C9AD6E;
+    --green: #3F7D44; --green-bg: rgba(63,125,68,0.10);
+    --yellow: #A6790A; --yellow-bg: rgba(166,121,10,0.10);
+    --red: #B03A2E; --red-bg: rgba(176,58,46,0.09);
+    --blue: #2E6690; --blue-bg: rgba(46,102,144,0.09);
+    --orange: #AB591C; --orange-bg: rgba(171,89,28,0.09);
+  }
+  html, body { width: 210mm; background: var(--bg); color: var(--text); font-family: "Carlito", "DejaVu Sans", Arial, sans-serif; font-size: 11pt; line-height: 1.36; }
+  .display { font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif; font-weight: 700; font-stretch: condensed; }
+  .page { width: 210mm; height: 297mm; padding: 8mm 12mm 5mm 12mm; display: flex; flex-direction: column; gap: 2mm; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 2.6mm; }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 23pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 9.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag { font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim); border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm; display: inline-block; width: fit-content; }
+  .meta-block { text-align: right; font-size: 9.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 10.6pt; }
+  .position-header { display: flex; justify-content: space-between; align-items: center; background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold); border-radius: 3px; padding: 2.6mm 4mm; }
+  .position-name .ticker { font-size: 17pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 10pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 5mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 8.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); white-space: nowrap; }
+  .stat .value { font-size: 12pt; color: var(--text); margin-top: 0.4mm; white-space: nowrap; }
+  .hook-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 3.4mm 4.2mm; }
+  .hook-title { font-size: 16pt; line-height: 1.28; color: var(--text); font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .hook-title .accent { color: var(--gold-bright); }
+  .hook-title .accent-red { color: var(--red); }
+  .hook-sub { font-size: 9.6pt; color: var(--text-dim); line-height: 1.4; margin-top: 1.8mm; }
+  .narrative-box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 3mm 4mm; flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .narrative-box p { font-size: 9.4pt; color: var(--text-dim); line-height: 1.46; }
+  .narrative-box p b { color: var(--text); }
+  .narrative-box p .lead { color: var(--gold-bright); font-weight: bold; }
+  .section-label { font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0; }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
+  .box h3 { font-size: 9.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .box p { font-size: 9.1pt; color: var(--text-dim); line-height: 1.32; overflow-wrap: break-word; }
+  .box p b { color: var(--text); }
+  .verify-table, .compare-table, .scenario-table, .score-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .verify-table th, .verify-table td, .compare-table th, .compare-table td, .scenario-table th, .scenario-table td, .score-table th, .score-table td { font-size: 8.5pt; padding: 0.9mm 1.4mm; text-align: left; border-bottom: 1px solid var(--border-soft); }
+  .verify-table th, .compare-table th, .scenario-table th, .score-table th { color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; font-weight: normal; font-size: 7.9pt; }
+  .verify-table td, .compare-table td, .score-table td { color: var(--text); }
+  .scenario-table th, .scenario-table td { text-align: right; }
+  .scenario-table th:first-child, .scenario-table td:first-child { text-align: left; color: var(--text-dim); }
+  .pass { color: var(--green); } .fail { color: var(--red); }
+  .two-col { display: flex; gap: 3mm; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .divergence-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--orange); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .divergence-box h3 { color: var(--orange); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.4mm; }
+  .divergence-box p { font-size: 9.2pt; color: var(--text); line-height: 1.42; }
+  .integrity-box { background: var(--blue-bg); border: 1px solid var(--blue); border-radius: 3px; padding: 2.6mm 3.6mm; }
+  .integrity-box h3 { color: var(--blue); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
+  .integrity-box p { font-size: 9pt; color: var(--text); line-height: 1.4; }
+  .trigger-row { display: flex; gap: 3mm; }
+  .trigger-box { flex: 1; border-radius: 3px; padding: 2.4mm 3.4mm; }
+  .trigger-box.bull { background: var(--green-bg); border: 1px solid var(--green); }
+  .trigger-box.bear { background: var(--red-bg); border: 1px solid var(--red); }
+  .trigger-box h3 { font-size: 9.4pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2mm; }
+  .trigger-box.bull h3 { color: var(--green); }
+  .trigger-box.bear h3 { color: var(--red); }
+  .trigger-box ul { list-style: none; }
+  .trigger-box li { font-size: 8.8pt; color: var(--text); padding: 0.6mm 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .trigger-box li:last-child { border-bottom: none; }
+  .killsheet-box { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .killsheet-box h3 { color: var(--gold-bright); font-size: 10.4pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.6mm; }
+  .catalyst-item { display: flex; gap: 3mm; padding: 1.3mm 0; border-bottom: 1px solid var(--border-soft); align-items: flex-start; }
+  .catalyst-item:last-child { border-bottom: none; }
+  .catalyst-date { flex: 0 0 auto; width: 30mm; font-size: 8.8pt; color: var(--gold-bright); font-weight: bold; }
+  .catalyst-desc { flex: 1; font-size: 8.8pt; color: var(--text-dim); line-height: 1.32; }
+  .catalyst-desc b { color: var(--text); }
+  .warn-strip { background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.7mm 3mm; font-size: 8.7pt; color: var(--yellow); margin-top: 1mm; }
+  .warn-strip b { color: var(--text); }
+  .fazit { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 2.8mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0; }
+  .fazit-verdict { flex: 0 0 auto; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 13pt; color: var(--yellow); letter-spacing: 0.02em; }
+  .fazit-verdict .sub { font-size: 8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.6mm; }
+  .fazit-grid { flex: 1; display: flex; justify-content: space-between; }
+  .fazit-item { text-align: center; }
+  .fazit-item .label { font-size: 8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+  .fazit-item .value { font-size: 10.6pt; color: var(--text); margin-top: 0.5mm; }
+  .sources-list { font-size: 8.8pt; color: var(--text-dim); line-height: 1.5; }
+  .sources-list .n { color: var(--gold); margin-right: 1.5mm; }
+  .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 1.5mm; font-size: 8.1pt; color: var(--text-faint); flex-shrink: 0; }
+  .footer .gold-dot { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hook -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">3-fach Scout-Cross-Check · Jarvis (Aegis) · Jack · Conan</div>
+      <div class="edition-tag">Depot-Position · Smartbroker+ · Full Deep Dive</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">9. September 2026</div>
+      <div>Scout-Pfad (Bucket B) · Full Scout</div>
+      <div>Erster echter 3-fach-Check nach OpenAI-Credits-Ausfall</div>
+    </div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-title">📡 HawkEye 360 — Umsatz +87%, Cash $503 Mio., aber der Auftragsbestand <span class="accent-red">wächst nicht mit</span></div>
+    <div class="hook-sub">HawkEye 360, Inc. (NYSE: HAWK) · Kurs ~$16,99 (08.09.2026) bzw. $16,45 (Conans Live-Abfrage) · 52W-Range $16,91–$35,73 (nahe Tief, -33% seit IPO) · Marktkap. ~$1,0-1,6 Mrd. (Diskrepanz, siehe Seite 5) · Sektor Defense-Tech/Space-Data · Depot-relevant: 100 Aktien, Ø-Einstand $16,82, aktuell ca. -15%</div>
+  </div>
+
+  <div class="section-label">Die Geschichte einer jungen, echten Wachstumsstory mit einem offenen Fragezeichen</div>
+  <div class="narrative-box">
+    <p><span class="lead">Der Aufstieg.</span> HawkEye 360 ging im Mai 2026 an die Börse ($416 Mio., $26/Aktie) als einzige börsennotierte kommerzielle Betreiberin einer RF-SIGINT-Satellitenkonstellation (elektronische Signalaufklärung aus dem Orbit, 30+ Satelliten). Q2 2026: Umsatz $49,8 Mio. (+87% YoY), internationales Geschäft wächst mit +134% sogar noch schneller. Am 19.08.2026 der bislang wichtigste Meilenstein: die NRO stufte HawkEye als ersten kommerziellen Anbieter von der Evaluierung in einen operativen Produktionsvertrag hoch (CRFCA).</p>
+    <p><span class="lead">Der Haken.</span> Der bestätigte Auftragsbestand (Backlog) wuchs im selben Quartal nur um 2,5% auf $292,2 Mio. — und liegt damit sogar UNTER dem Stand zum Jahresende 2025 ($302,7 Mio.). Bei +87% Umsatzwachstum ist das eine echte Divergenz: entweder verarbeitet HawkEye seinen Bestand schneller als er neue Aufträge bucht (Timing), oder das Neugeschäft verlangsamt sich bereits (Substanz). Gleichzeitig schwenkte das GAAP-Ergebnis von +$1,6 Mio. Gewinn (Vorjahr) auf -$15,3 Mio. Verlust — bei gleichzeitig positivem Adj.-EBITDA ($7,0 Mio.) und positivem Free Cashflow ($5,4 Mio.).</p>
+    <p><span class="lead">Der Kurs.</span> Seit dem IPO ist die Aktie ca. 33% gefallen, nahe am 52-Wochen-Tief — eine typische Post-IPO-Space-Tech-Neubewertung (das 52W-Hoch direkt nach IPO war erkennbar überhitzt), nicht primär eine unternehmensspezifische Krise. Seit dem 02.09.2026 sind zudem sämtliche Insider-Aktien verkaufsfähig (vorzeitiges Lockup-Ende wegen einer Blackout-Period-Regel) — bislang aber keine bestätigten Insider-Verkäufe gefunden (von BEIDEN KIs unabhängig recherchiert).</p>
+    <p><span class="lead">Der Cross-Check-Befund.</span> Anders als beim NVO-Fall (echte Divergenz zwischen Jack und Conan) konvergieren beide KIs hier auffällig stark: BEOBACHTEN/HALTEN, mit fast identischer Hauptbegründung. Details Seite 2.</p>
+  </div>
+
+  <div class="section-label" style="font-size:8pt;">Wettbewerbslandschaft (kein Monopol)</div>
+  <div class="box" style="padding:1.6mm 2.6mm;">
+    <table class="compare-table" style="font-size:7.6pt;">
+      <tr><th>Anbieter</th><th>Status</th><th>Einordnung</th></tr>
+      <tr><td>Unseenlabs (Frankreich)</td><td>Eigene Konstellation, ~$120 Mio. Funding</td><td>Ernstzunehmender europäischer Wettbewerber, teils skalenmäßig vorn</td></tr>
+      <tr><td>BAE Systems Azalea</td><td>Start Jan. 2026, RF+SAR-Kombination</td><td>Kapitalstarker Prime Contractor — strategisch relevantester neuer Player</td></tr>
+      <tr><td>Spire Global</td><td>RF als ein Payload-Typ unter mehreren</td><td>Nicht primär RF-fokussiert, breiterer Datenanbieter</td></tr>
+      <tr><td>Kleos Space</td><td>Insolvent 2023</td><td>Zeigt reales Geschäftsmodell-/Finanzierungsrisiko der Nische</td></tr>
+    </table>
+    <p style="margin-top:1mm; font-size:7.8pt; line-height:1.25;">Marktgröße RF-Geolocation-via-Satellit: $1,62 Mrd. (2024) → $3,45 Mrd. (2033 geschätzt), ~8,7% CAGR — solides, aber kein explosives TAM-Wachstum. HawkEye ist First Mover mit echter Substanz, aber kein unangefochtenes Monopol.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-09.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/9</div>
+  </div>
+</div>
+
+<!-- PAGE 2: 3-Stimmen-Leiste + Konvergenz -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">3-Stimmen-Leiste · Die Konvergenz</div>
+    </div>
+    <div class="meta-block"><div class="date">9. September 2026 — Seite 2</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">HAWK <span style="color:var(--text-dim); font-size:9.5pt;">· NYSE</span></div>
+      <div class="company">HawkEye 360, Inc. — kommerzielle RF-SIGINT-Satellitenkonstellation</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs</div><div class="value">$16,99 / $16,45</div></div>
+      <div class="stat"><div class="label">Seit IPO</div><div class="value">-33%</div></div>
+      <div class="stat"><div class="label">Depot Ø-Einstand</div><div class="value" style="color:var(--text);">$16,82 (-15%)</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">3-Stimmen-Leiste</div>
+  <div style="display:flex; gap:2.4mm;">
+    <div class="box" style="flex:1;">
+      <h3>Jarvis · Claude (Synthese/Aegis)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">BEOBACHTEN</p>
+      <p style="font-size:8.4pt;">Bestandsposition halten · Tier 3 · Q3-2026 als Prüfpunkt</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>Jack · Gemini (Scout)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">HALTEN</p>
+      <p style="font-size:8.4pt;">Management-Score 7/10 · Base Case 55%</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>Conan · ChatGPT (Scout)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">HALTEN/BEOBACHTEN</p>
+      <p style="font-size:8.4pt;">Konfidenz 0,73 · kein Nachkauf vor Q3-Beweis</p>
+    </div>
+  </div>
+
+  <div class="section-label">Echte Konvergenz — beide KIs unabhängig auf derselben Linie</div>
+  <div class="divergence-box" style="border-color: var(--green);">
+    <h3 style="color: var(--green);">✅ Jack und Conan kommen unabhängig auf dasselbe Urteil, mit fast identischer Kernlogik</h3>
+    <p>Beide KIs identifizierten dieselben zwei zentralen offenen Fragen — die Backlog-Verlangsamung (+2,5% QoQ trotz +87% Umsatzwachstum, sogar unter FY2025-Endstand) und die Divergenz zwischen GAAP-Nettoverlust ($15,3 Mio.) und positivem Adj.-EBITDA/FCF — und ordneten beide unabhängig als "eher Timing/Non-Cash-Effekt als echtes operatives Problem, aber noch nicht abschließend bewiesen" ein. Beide führten außerdem eigenständig eine SEC-EDGAR-Recherche zu Insider-Verkäufen seit dem Lockup-Ende durch (Jack über die allgemeine Filing-Liste, Conan gezielt über data.sec.gov/submissions) — beide fanden unabhängig: keine Form-4-Verkäufe seit dem 02.09.2026. Diese Konvergenz auf einem eigenständig recherchierten Punkt (nicht nur eine im Fact-Pack vorgegebene Zahl) ist ein stärkeres Signal als bloße Übereinstimmung bei den Kernkennzahlen.</p>
+  </div>
+
+  <div class="section-label">Wo Conan über Jack hinausging (Aegis-Einordnung)</div>
+  <div class="box">
+    <p>Conan deckte eine Marktkapitalisierungs-Diskrepanz auf (Live-Tool zeigt ~$1,02 Mrd., SEC-Aktienzahl-basiert ergäben sich ~$1,61 Mrd.) und markierte sie explizit als [LIVE/VERIFIED-MISMATCH], statt sie unkommentiert zu übernehmen — ein echter Selbstwiderspruch-Check in Aktion (Details Seite 5). Conan lieferte außerdem konkretere Management-Historie (CFO erst seit Sept. 2025 im Amt) und strengere Backlog-Forderungen (konkrete Zielgröße &gt;$320-350 Mio. statt nur "wahrscheinlich Timing"). <b>Methodik-Beobachtung:</b> Jack taggte trotz expliziter Anweisung fast jede Fundamentalkennzahl fälschlich als [LIVE] statt [VERIFIED]/[TRAINING] — dieselbe Art Regelverstoß, die die neue Kennzahlen-Recherche-Pflicht verhindern sollte. Zeigt: die Prompt-Regel wirkt nicht bei jeder KI gleich gut — Beobachtungspunkt für den nächsten KVP-Zyklus, kein Grund für eine weitere sofortige Änderung.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-09.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/9</div>
+  </div>
+</div>
+
+<!-- PAGE 3: Compounder-DNA-Check -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Vollständiger Compounder-DNA-Check</div>
+    </div>
+    <div class="meta-block"><div class="date">9. September 2026 — Seite 3</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="warn-strip"><b>Sektor-Override:</b> beide KIs wählten unabhängig einen begründeten Hybrid-Override statt einer Standard-Kategorie (Jack: "Deep-Tech Space/Geospatial-Intelligence-Hybrid", Conan: "Defense-Tech/Space-Data-Infrastructure-Hybrid") — HawkEye hat echten, schnell wachsenden Umsatz UND software-ähnliche Bruttomarge UND ein Hardware-/Satelliten-Geschäft mit Regierungskunden-Konzentration, passt in keine Standard-Schublade. K-BASIS = 5.</div>
+
+  <div class="section-label">COMPOUNDER-DNA-CHECK: HAWK (synthetisiert aus beiden KI-Antworten)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Kriterium</th><th>Schwelle/Erwartung</th><th>Ist-Wert</th><th>Status</th></tr>
+      <tr><td colspan="4" style="color:var(--gold); font-size:7.6pt; text-transform:uppercase; letter-spacing:0.05em; padding-top:1.8mm;">K-Kriterien (Gatekeeper)</td></tr>
+      <tr><td>Umsatzwachstum</td><td>Stark, beschleunigend</td><td>Q2 +87% YoY (49,8 Mio.), international +134%, FY26-Guidance $215-220 Mio. (SEC 10-Q/IR)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Bruttomarge/Unit Economics</td><td>Hoch, software-ähnlich</td><td>~70-82% je nach Berechnungsbasis (SEC Cost-of-Sales)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Operative Profitabilität in Formation</td><td>Adj.EBITDA/FCF Richtung positiv</td><td>Adj.EBITDA $7,0 Mio. (14%), FCF Q2 $5,4 Mio. positiv, H1 gesamt noch leicht negativ (SEC)</td><td>🟡 Grenzfall (positiv, aber jung)</td></tr>
+      <tr><td>Bilanzqualität</td><td>Solide, kapitalisiert</td><td>Cash $503 Mio., keine langfristigen Schulden (SEC Balance Sheet)</td><td class="pass">✅ Erfüllt, stark</td></tr>
+      <tr><td>Backlog/Revenue-Visibility</td><td>Wachsend, mind. stabil</td><td>$292,2 Mio. (30.06.) vs. $285,0 Mio. (31.03.) vs. $302,7 Mio. (FY25-Ende) — Verlangsamung/Rückgang (SEC KPI)</td><td>🟡 Gelbe Flagge</td></tr>
+      <tr><td colspan="4" style="color:var(--gold); font-size:7.6pt; text-transform:uppercase; letter-spacing:0.05em; padding-top:1.8mm;">E-Kriterien</td></tr>
+      <tr><td>GAAP-Profitabilität</td><td>Trend Richtung positiv</td><td>Q2-Nettoverlust $15,3 Mio. (vs. +$1,6 Mio. Vorjahr), primär D&A/SBC/Einmaleffekte (SEC Statement of Operations)</td><td class="fail">❌ Negativ, aber erklärbar</td></tr>
+      <tr><td>Kundenkonzentration</td><td>Diversifizierend/Beobachten</td><td>Mehrere Kunden &gt;10% (Customer A 15%, G 14%, H 15% — SEC Concentration Table)</td><td>🟡 Beobachten</td></tr>
+      <tr><td>Kundenqualität/Missionskritikalität</td><td>Hoch</td><td>US-Regierung + verbündete Nachrichtendienste, NRO CRFCA operativ (SEC/NRO)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Dilution/SBC-Risiko</td><td>Kontrolliert</td><td>SBC Q2 $7,5 Mio. (~15% Umsatz), 13,0 Mio. Optionen ausstehend (SEC SBC-Note)</td><td>🟡 Beobachten</td></tr>
+      <tr><td>Insider-Alignment</td><td>≥10%</td><td>CEO ~3,9%, Directors/Officers-Gruppe ~15,2% post-Offering (S-1)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Marktgröße/TAM</td><td>Belegt, wachsend</td><td>Extern $1,62→$3,45 Mrd. (8,7% CAGR); Management-TAM $24→$34 Mrd. (commissioned study, vorsichtig zu behandeln)</td><td>🟡 Solide, kein Hyper-TAM</td></tr>
+    </table>
+    <p style="margin-top:1.6mm; font-size:8.4pt;"><b>DNA-Urteil: 5/5 K-Kriterien im grünen bis gelben Bereich (kein Abbruch), 4 von 6 E-Kriterien mit Beobachtungs-Flag.</b> Kein sauberer Fall in beide Richtungen — konsistent mit dem BEOBACHTEN-Urteil beider KIs: echtes Wachstum und solide Bilanz, aber mehrere junge, noch unbewiesene Punkte (Backlog, GAAP-Verlust, Kundenkonzentration, SBC).</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-09.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/9</div>
+  </div>
+</div>
+
+<!-- PAGE 4: Historie + Management-Score -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Umsatz-/Backlog-Historie · Management-Score</div>
+    </div>
+    <div class="meta-block"><div class="date">9. September 2026 — Seite 4</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="section-label">Umsatz- vs. Backlog-Entwicklung (die zentrale Spannung dieser Analyse)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Stichtag</th><th>Quartalsumsatz</th><th>YoY-Wachstum</th><th>Backlog</th><th>Backlog-Δ QoQ</th></tr>
+      <tr><td>31.12.2025 (FY25-Ende)</td><td>—</td><td>FY25 gesamt +74% ($117,7 Mio.)</td><td>$302,7 Mio.</td><td>—</td></tr>
+      <tr><td>31.03.2026 (Q1)</td><td>~$49,8 Mio. (H1-Anteil)</td><td>H1 +101%</td><td>$285,0 Mio.</td><td>-5,8%</td></tr>
+      <tr><td>30.06.2026 (Q2)</td><td>$49,8 Mio.</td><td>+87%</td><td>$292,2 Mio.</td><td>+2,5%</td></tr>
+    </table>
+    <p style="margin-top:1.4mm;">Backlog liegt per 30.06.2026 <b>weiterhin unter dem Stand zum Jahresende 2025</b>, trotz durchgehend starkem Umsatzwachstum. Beide KIs werten dies primär als Timing-Effekt (schnellere Umsatzrealisierung + NRO-Vertrag vom 19.08. noch nicht im Q2-Backlog erfasst), fordern aber übereinstimmend eine Stabilisierung/Erholung in Q3/Q4 als Beweis — Conan nennt explizit eine Zielgröße von &gt;$320-350 Mio.</p>
+  </div>
+
+  <div class="section-label">Management-/Gründer-Score (synthetisiert)</div>
+  <div class="box">
+    <table class="score-table">
+      <tr><th>Dimension</th><th>Befund</th><th>Einordnung</th></tr>
+      <tr><td>Founder-Market-Fit</td><td>CEO John Serafini seit 2016 im Unternehmen, Teil des Founding Teams, Army/Harvard-Hintergrund, starkes Defense-Netzwerk</td><td>🟢 Stark</td></tr>
+      <tr><td>Führungsteam-Tiefe</td><td>Relevante Space-/Defense-Erfahrung (Blue Origin, Northrop, CACI, RTX, DigitalGlobe u.a. im Lebenslauf verschiedener Execs)</td><td>🟢 Stark</td></tr>
+      <tr><td>Public-Company-Track-Record</td><td>CFO erst seit September 2025 im Amt, IPO erst Mai 2026 — noch kein langer Track Record als Public Company</td><td>🟡 Jung, unbewiesen</td></tr>
+      <tr><td>Insider-Alignment</td><td>CEO ~3,9%, Directors/Officers-Gruppe ~15,2% (post-Offering)</td><td>🟢 Substanziell</td></tr>
+      <tr><td>Kapitalallokation</td><td>IPO-Erlös genutzt zur Schuldenrückzahlung ($49,5 Mio.), $125-Mio.-Kreditlinie als Reserve ungenutzt gelassen — konservativ, nicht überstürzt reinvestiert</td><td>🟢 Solide</td></tr>
+    </table>
+    <p style="margin-top:1.4mm; font-size:8.4pt;">Management-Score (Ø beider KIs): <b>7,5/10</b> (Jack 7/10, Conan 8/10) — starkes Founder-Market-Fit-Profil und Netzwerk, aber noch kurzer Public-Company-Track-Record als Abzug.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-09.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 4/9</div>
+  </div>
+</div>
+
+<!-- PAGE 5: Bewertung + Moat-in-Formation -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Bewertungscheck · Moat-in-Formation</div>
+    </div>
+    <div class="meta-block"><div class="date">9. September 2026 — Seite 5</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="section-label">Bewertungscheck (kein DCF-Zwang bei Scout)</div>
+      <div class="box">
+        <table class="scenario-table">
+          <tr><th>Kennzahl</th><th>Wert</th></tr>
+          <tr><td>Kurs</td><td>$16,45-16,99</td></tr>
+          <tr><td>Shares Outstanding (SEC, Q2)</td><td>97,96 Mio.</td></tr>
+          <tr><td>Equity Value (SEC-Basis)</td><td>~$1,61 Mrd.</td></tr>
+          <tr><td>EV ex Cash (SEC-Basis)</td><td>~$1,11 Mrd.</td></tr>
+          <tr><td>EV/Sales (FY26-Guidance-Mid)</td><td>~5,1x</td></tr>
+        </table>
+        <p style="margin-top:1.2mm;">Für ein +80%-Wachstumsunternehmen mit gerade erreichter FCF-Wende nicht absurd, aber auch nicht "No-brainer billig". Analysten-Konsens ($33,78 Ø-Kursziel) deutlich über dem Kurs — mit der üblichen Vorsicht ggü. frischen Post-IPO-Zielen zu behandeln, nicht als Kaufargument zu nutzen.</p>
+      </div>
+      <div class="integrity-box">
+        <h3>⚠ Datenintegritäts-Fund (Conan)</h3>
+        <p>Ein Live-Finance-Tool zeigte eine Marktkap. von nur ~$1,02 Mrd. — bei $16,45 Kurs und 97,96 Mio. SEC-Aktien müssten es aber ~$1,61 Mrd. sein. Conan markierte dies explizit als [LIVE/VERIFIED-MISMATCH] und nutzte bewusst die konservative SEC-Basis für die Bewertung, statt die optisch günstigere Zahl unkommentiert zu übernehmen — ein Lehrbuch-Beispiel für den Selbstwiderspruch-Check in Aktion.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="section-label">Moat-in-Formation (Ø-Score 7,0/10)</div>
+      <div class="box">
+        <p><b>Positiv:</b> proprietäres RF-Datenarchiv (&gt;1 Mrd. Datenpunkte, Netzwerkeffekt-Potenzial), vertikale Integration (Collection→Analytics komplett selbst), NRO-Operationalisierung als starkes Switching-Cost-Indiz, First-Mover als einzige börsennotierte kommerzielle RF-SIGINT-Konstellation.</p>
+        <p style="margin-top:1mm;"><b>Schwächen:</b> kein Monopol (Unseenlabs, BAE Azalea real), Regierungskunden können bewusst Multi-Vendor-Architekturen bevorzugen (NRO evaluierte historisch mehrere RF-Anbieter parallel), Switching-Costs noch nicht auf SaaS-Niveau bewiesen, Nischenrisiko real (Kleos-Insolvenz 2023).</p>
+        <p style="margin-top:1mm; font-size:8.4pt; color:var(--text-faint);">Beide KIs: "Moat in Formation, nicht voll bewiesen" — Kernfrage für 2027: wird HawkEye bei Kunden zum Standard, oder bleibt es eine getestete Option unter mehreren?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-09.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/9</div>
+  </div>
+</div>
+
+<!-- PAGE 6: Kill-Sheet -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">🔪 Thesis-Kill-Sheet</div>
+    </div>
+    <div class="meta-block"><div class="date">9. September 2026 — Seite 6</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="section-label">🔪 Thesis-Kill-Sheet</div>
+  <div class="killsheet-box">
+    <h3>Nächste Prüfpunkte, in dieser Reihenfolge</h3>
+    <div class="catalyst-item"><div class="catalyst-date">ca. November 2026</div><div class="catalyst-desc"><b>Q3-2026-Zahlen</b> — wichtigster kurzfristiger Prüfpunkt. Muss liefern: Backlog-Erholung Richtung &gt;$320-350 Mio. ODER klar erklärtes Book-to-Bill-Argument, sinkender SBC-Anteil am Umsatz, anhaltend positives FCF.</div></div>
+    <div class="catalyst-item"><div class="catalyst-date">Laufend</div><div class="catalyst-desc"><b>Insider-Transaktionen nach Lockup-Ende</b> (02.09.2026) — bisher keine Form-4-Verkäufe gefunden, aber der Overhang bleibt real, solange keine Zeit vergangen ist.</div></div>
+    <div class="catalyst-item"><div class="catalyst-date">Laufend</div><div class="catalyst-desc"><b>NRO-CRFCA-Vertragswert</b> — bisher nicht offengelegt. Eine Konkretisierung (auch nur qualitativ über künftige Backlog-Sprünge) würde den wichtigsten Katalysator dieser These erheblich stärken.</div></div>
+    <div class="catalyst-item"><div class="catalyst-date">Laufend</div><div class="catalyst-desc"><b>BAE Systems Azalea / Unseenlabs</b> — Hinweise auf verlorene Ausschreibungen gegen kapitalstärkere Wettbewerber wären ein reales Warnsignal für den Moat.</div></div>
+  </div>
+
+  <div class="trigger-row">
+    <div class="trigger-box bull">
+      <h3>📈 Aufstufungs-Trigger (mind. 2/3)</h3>
+      <ul>
+        <li>1. Backlog stabilisiert sich Richtung &gt;$320 Mio. in Q3/Q4</li>
+        <li>2. Keine neuen Insider-Verkäufe von Management/Direktoren</li>
+        <li>3. SBC-Anteil am Umsatz sinkt sichtbar, internationales Wachstum bleibt &gt;100%</li>
+      </ul>
+    </div>
+    <div class="trigger-box bear">
+      <h3>📉 Abstufungs-Trigger</h3>
+      <ul>
+        <li>1. Backlog fällt weiter UND Insider beginnen zu verkaufen</li>
+        <li>2. NRO- oder anderer Großkunde reduziert/kündigt</li>
+        <li>3. Verlorene Ausschreibung an BAE/Unseenlabs mit Marktanteils-Beleg</li>
+      </ul>
+      <p style="font-size:8.2pt; color:var(--text-dim); margin-top:1.2mm;">Kein methodischer Nachkauf vor dem Q3-Beweis (beide KIs übereinstimmend). Bestehende 100-Aktien-Position als Spezialposition haltbar.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-09.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/9</div>
+  </div>
+</div>
+
+<!-- PAGE 7: Bilanz/SBC + Offene Schwaechen -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Bilanzstruktur · Offene Schwächen</div>
+    </div>
+    <div class="meta-block"><div class="date">9. September 2026 — Seite 7</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="section-label">Bilanzstruktur & Verwässerungsrisiko</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Position</th><th>Wert</th><th>Einordnung</th></tr>
+      <tr><td>Cash &amp; Äquivalente (30.06.)</td><td>$503 Mio.</td><td>Sehr solide, nach $437,5 Mio. Netto-IPO-Erlös</td></tr>
+      <tr><td>Langfristige Schulden</td><td>$0</td><td>$49,5 Mio. Altschulden nach IPO zurückgezahlt</td></tr>
+      <tr><td>Kreditlinie (5J, revolvierend)</td><td>$125 Mio., ungenutzt</td><td>Reserve, nicht in Anspruch genommen</td></tr>
+      <tr><td>SBC (Q2 2026)</td><td>$7,5 Mio. (~15% des Umsatzes)</td><td>Dilutions-Warnsignal, typisch für frische Post-IPO-Unternehmen</td></tr>
+      <tr><td>Optionen/RSUs ausstehend</td><td>13,0 Mio. Optionen + 1,48 Mio. RSUs</td><td>Reale künftige Verwässerung, im Blick behalten</td></tr>
+    </table>
+    <p style="margin-top:1.4mm;">Bilanz ist die unbestrittene Stärke dieser These — kapitalintensives Satellitengeschäft mit $503 Mio. Cash und ohne Schulden hat viel Zeit, die operative Story zu beweisen. SBC-Höhe ist der Preis für den frischen Börsengang, nicht per se ein Alarmsignal, aber eine Zahl, die sinken sollte, wenn die IPO-Effekte auslaufen.</p>
+  </div>
+
+  <div class="section-label">Offene Schwächen (eigenständig, gleichrangig zu den Stärken)</div>
+  <div class="box">
+    <p><b>1. Backlog-Verlangsamung ungeklärter Dauerhaftigkeit.</b> Timing-Erklärung plausibel, aber nicht bewiesen — Q3/Q4 muss liefern.</p>
+    <p style="margin-top:1mm;"><b>2. GAAP-Verlust bei gleichzeitig positivem Adj.EBITDA/FCF.</b> Erklärbar durch D&A/SBC/IPO-Einmaleffekte, aber diese Kosten sind ökonomisch real (Satelliten-Capex, Verwässerung) — Adj.EBITDA darf nicht zu großzügig gelesen werden.</p>
+    <p style="margin-top:1mm;"><b>3. Kein Monopol.</b> BAE Systems (kapitalstarker Prime) und Unseenlabs sind reale Wettbewerber, keine hypothetischen Bedrohungen.</p>
+    <p style="margin-top:1mm;"><b>4. Kurzer Public-Company-Track-Record.</b> IPO erst Mai 2026, CFO erst seit September 2025 im Amt — Management noch nicht durch mehrere Quartale bewiesen.</p>
+    <p style="margin-top:1mm;"><b>5. IPO-Lockup-Overhang.</b> Seit 02.09.2026 theoretisch frei verkäuflich, bisher keine Verkäufe gefunden, aber der Overhang bleibt bis zum Beweis des Gegenteils ein latentes Risiko.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-09.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/9</div>
+  </div>
+</div>
+
+<!-- PAGE 8: Pipeline + Struktur-Risiko + Insider -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Pipeline-Ausblick · Struktur-Risiko · Insider-Signale</div>
+    </div>
+    <div class="meta-block"><div class="date">9. September 2026 — Seite 8</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="section-label">Pipeline-/Katalysator-Ausblick jenseits des Kerngeschäfts (Rigor-Punkt 34)</div>
+  <div class="box">
+    <p><b>Cluster 14</b> (Satelliten-Cluster) wurde im März 2026 gestartet und war laut Unternehmen im Juni 2026 voll operativ — stützt die Kapazitäts-/Latenz-These. <b>Block 3/4-Satelliten</b>-Roadmap verspricht laut Unternehmensangaben ~80% Signalerfassung bei ~75% niedrigeren Kosten (Block 3) sowie höhere Präzision (Block 4) — als noch zu beweisende Effizienz-Roadmap eingeordnet, nicht als bereits realisierte Unit-Economics. <b>ISA-Akquisition</b> (Innovative Signals Analysis, Dezember 2025) erweitert klassifizierte Signalverarbeitungsfähigkeiten, erhöht aber auch Service-/Headcount-Anteil gegenüber reiner Datenlizenz-Ökonomie. <b>Internationales Geschäft</b> wächst schneller als US-Geschäft (+134% vs. Kern) — reduziert langfristig die US-Regierungskunden-Abhängigkeit, ist aber selbst export-/politisch sensibel.</p>
+  </div>
+
+  <div class="section-label">Struktur-Risiko jenseits der aktuellen Lage (Rigor-Punkt 35)</div>
+  <div class="box">
+    <p><b>Regierungskunden-Konzentration:</b> Kernfokus auf US-Regierung (NRO) und verbündete Nachrichtendienste — bringt hohe Kundenqualität, aber echte Budget-/Beschaffungs-/politische Abhängigkeit. <b>Einzelkunden-Konzentration:</b> mehrere Kunden über 10% Umsatzanteil (Customer A 15%, G 14%, H 15%) — besser als ein einzelner 40%-Kunde, aber weiterhin konzentriert. <b>Wettbewerbsverdichtung:</b> BAE Systems als kapitalstarker Prime Contractor ist strategisch der relevanteste neue Wettbewerber — Sovereign-Defense-Budgets könnten andere Beschaffungsvorteile für Primes schaffen als für einen reinen Commercial-Anbieter wie HawkEye. <b>Space-/Execution-Risiko:</b> Launch-Verzögerungen, Satellitenausfälle, Bodeninfrastruktur bleiben hardwaretypische Risiken, auch wenn HawkEye besser kapitalisiert ist als die meisten kleinen Space-Player.</p>
+  </div>
+
+  <div class="section-label">Insider-Transaktionen (Rigor-Punkt 36, universell — beide KIs unabhängig recherchiert)</div>
+  <div class="box">
+    <p>Das IPO-Lockup endete vorzeitig am 02.09.2026 (statt regulär 02.11.2026, wegen einer Blackout-Period-Regel) — seither sind alle Insider-Aktien theoretisch verkaufsfähig. <b>Beide KIs durchsuchten unabhängig SEC EDGAR (CIK 0001750704)</b> nach Form-4-Filings seit diesem Datum: <b>keine Verkäufe gefunden</b>, letzte Form-4-Einträge stammen aus Mai/Juni 2026 (rund um den IPO-Prozess selbst). Insider-Ownership bleibt substanziell (CEO ~3,9%, Directors/Officers-Gruppe ~15,2%). <b>Einordnung:</b> kurzfristig positiv (kein sofortiger Vertrauensverlust erkennbar), aber noch kein starkes Vertrauenssignal — echte Open-Market-KÄUFE von Management nach der Freigabe wären das stärkere Signal, solche wurden nicht gefunden. Der Lockup-Overhang bleibt ein latentes, aber bislang unrealisiertes Risiko.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-09.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 8/9</div>
+  </div>
+</div>
+
+<!-- PAGE 9: Fazit + Quellen -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Finales Fazit · Depot-Konsequenz · Quellen</div>
+    </div>
+    <div class="meta-block"><div class="date">9. September 2026 — Seite 9</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="section-label">Finales Fazit (Aegis-Synthese)</div>
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">BEOBACHTEN</div>
+      <div class="sub">Bestandsposition halten · kein Nachkauf vor Q3-Beweis</div>
+    </div>
+    <table style="flex:1; table-layout:fixed; border-collapse:collapse; min-width:0;">
+      <colgroup><col style="width:25%;"><col style="width:25%;"><col style="width:25%;"><col style="width:25%;"></colgroup>
+      <tr>
+        <td style="text-align:center; font-size:8pt; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.05em; padding-bottom:0.5mm;">Jack</td>
+        <td style="text-align:center; font-size:8pt; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.05em; padding-bottom:0.5mm;">Conan</td>
+        <td style="text-align:center; font-size:8pt; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.05em; padding-bottom:0.5mm;">Sizing-Deckel</td>
+        <td style="text-align:center; font-size:8pt; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.05em; padding-bottom:0.5mm;">Nächster Trigger</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-size:10.6pt; color:var(--text);">HALTEN</td>
+        <td style="text-align:center; font-size:10.6pt; color:var(--text);">BEOBACHTEN</td>
+        <td style="text-align:center; font-size:10.6pt; color:var(--text);">Tier 3</td>
+        <td style="text-align:center; font-size:10.6pt; color:var(--text);">Q3 2026</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section-label">Konsequenz für Depot &amp; Kategorisierung</div>
+  <div class="box">
+    <p>HawkEye 360 bleibt in Kategorie Profi eingeordnet (bereits am 04.09.2026 von Talent hochgestuft, hier durch den vollen Cross-Check bestätigt statt nur qualitativ vermutet). Brians bestehende 100-Aktien-Position (Ø-Einstand $16,82, aktuell ca. -15%) wird gehalten — die -15% spiegeln überwiegend die allgemeine Post-IPO-Space-Tech-Neubewertung (52W-Hoch direkt nach IPO war überhitzt), nicht ein neues, unternehmensspezifisches Problem. Kein Grund für einen überzeugten Nachkauf (Position bleibt "erstmal voll", wie von Brian am 02.09. festgelegt), aber auch kein Grund, die These jetzt zu widerrufen. Nächster Pflicht-Prüfpunkt: Q3-2026-Zahlen (erwartet ca. November 2026) — insbesondere die Backlog-Entwicklung.</p>
+  </div>
+
+  <div class="section-label">Warum die Konvergenz selbst bemerkenswert ist</div>
+  <div class="box">
+    <p>Anders als beim NVO-Fall (dokumentierte echte Divergenz zwischen Jack und Conan) liefert dieser Deep Dive eine seltene, echte Übereinstimmung — inklusive zweier unabhängig durchgeführter Recherchen (Insider-Check über SEC EDGAR), die zum selben Ergebnis kamen. Das ist kein Zufall, sondern spricht für eine tatsächlich klare Faktenlage: das Unternehmen ist weder eindeutig eine Erfolgsgeschichte noch eindeutig gescheitert, sondern in einer nachvollziehbaren, gut dokumentierten Übergangsphase. Genau in solchen Fällen ist ein Cross-Check am wertvollsten als Bestätigung, nicht als Konfliktlöser.</p>
+  </div>
+
+  <div class="section-label">Quellen (Auswahl)</div>
+  <div class="box">
+    <div class="sources-list">
+      <div><span class="n">1</span>SEC 10-Q (30.06.2026), 8-K-Earnings-Release, S-1/424B4-Prospekt (CIK 0001750704)</div>
+      <div><span class="n">2</span>data.sec.gov/submissions — Insider-Transaktions-Check (Form 4)</div>
+      <div><span class="n">3</span>HawkEye-360-IR (investors.he360.com) — Quartalszahlen, Pressemeldungen</div>
+      <div><span class="n">4</span>NRO-Pressemeldung (19.08.2026) — CRFCA-Vertrag</div>
+      <div><span class="n">5</span>SpaceNews, Defense Daily, SpaceWatch.Global — Wettbewerbs-/Kontext-Recherche</div>
+      <div><span class="n">6</span>Jack (Gemini 2.5 Flash) und Conan (GPT-5.5) — eigene Full-Scout-Analysen, vollständig im Volltext-Markdown dokumentiert</div>
+    </div>
+  </div>
+
+  <div class="warn-strip"><b>Datenlücken-Hinweis:</b> Twelve-Data-Verbindung war in dieser Sitzung nicht verfügbar (Connection Timeout) — Kursangaben stammen aus WebSearch (Jarvis) bzw. Conans eigenem Live-Tool, mit geringer, nicht alarmierender Differenz ($16,99 vs. $16,45). Kein Kursverlauf-Chart in diesem Report, transparent weggelassen statt mit unbelegten Daten gefüllt.</div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-09.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 9/9</div>
+  </div>
+</div>
+
+</body>
+</html>
