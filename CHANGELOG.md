@@ -33,6 +33,7 @@ weiter anwachsen lassen.
 - NVO-Report korrigiert nach Geminis Zweitprüfung: DCF-Margen-Korrektur nachgetragen (proportionale Bandbreite statt Scheingenauigkeit), WACC-Sensitivitätsmatrix + SBC-vs-Buyback-Netting ergänzt (Seite 6+8). 2 von 3 Punkten waren Compliance-Funde (Rigor-Punkte 23/24 existierten bereits, wurden aber nicht angewendet) - neuer Rigor-Standard-Punkt 33 (Checklist-Verifikation vor Report-Abschluss) soll das künftig verhindern
 - NVO-Report um neue Seite 9 erweitert (Pipeline-Ausblick/Amycretin, Patent-Klippe/Biosimilar-Risiko, Insider-Transaktionen) nach Jarvis' eigener Zweitmeinung - 3 neue, sektorabhängig ausgeprägte Rigor-Standard-Punkte 34-36, ab sofort Pflicht bei JEDEM künftigen Full Deep Dive, nicht nur NVO-spezifisch
 - NVO-Report finalisiert: FCF-Quellendivergenz aufgelöst (primärquellenbasiert DKK 28,3 Mrd., DNA-Check-FCF-Marge von 19,1% auf korrekte 9,2% korrigiert) + Amycretin-Timing ins Kill-Sheet/Fazit zurückverdrahtet (neuer Langfrist-Katalysator 2027-2030, getrennt vom kurzfristigen CMD-Trigger)
+- Kanonisches 10-Seiten-Full-Deep-Dive-Seitengerüst dokumentiert (NVO-Report als Referenzfassung) - Zielrahmen von 7-9 auf 7-10 Seiten erweitert, neue Sektor-Vertiefungsseite 9 (Pipeline/Struktur-Risiko/Insider) explizit als Vorlage für alle künftigen Full Deep Dives markiert, mit klarer Universell-vs-Sektorabhängig-Kennzeichnung je Seite
 
 ## 2026-09-08
 

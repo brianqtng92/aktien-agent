@@ -4151,7 +4151,7 @@ Kauffreigabe — das bleibt im Fazit-Text erklärt, nicht verwässert).
 Brian brauchte ein Format für "wenn ich eine Schnellanalyse haben möchte" –
 bisher gab es nur zwei PDF-Stufen: **Agent-Kompakt** (1 Seite, dunkles
 Design, für Hermes-Treffer/QUICK-FILTER-Chat-Antworten) und **Agent Deep
-Dive Report** (7-9 Seiten, helles Design, FULL DEEP DIVE + 2-Runden-Rigor-
+Dive Report** (7-10 Seiten, helles Design, FULL DEEP DIVE + 2-Runden-Rigor-
 Standard). Dazwischen fehlte eine Stufe für "echter 3-fach-Cross-Check,
 aber ohne den vollen Zeit-/Seitenaufwand".
 
@@ -4657,6 +4657,47 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     (echtes Signal). Ergebnis "kein klares Signal in beide Richtungen"
     (wie bei NVO) ist ein vollwertiges, meldenswertes Ergebnis – kein
     Fehlschlag der Recherche.
+
+### 📄 Kanonisches Seitengerüst für Full Deep Dive (neu, 2026-09-09,
+Brian: "könnte man mit diesem Report jetzt bei jeder Analyse anwenden?")
+
+Der NVO-Report (`reports/NVO-agent-deepdive-2026-09-08.pdf`, finale
+Fassung 10 Seiten) wird ab sofort als Referenz-Gerüst für JEDEN
+künftigen Full Deep Dive verwendet – analog zum bereits bestehenden
+expliziten Seitengerüst der Schnellanalyse oben. **Zielrahmen jetzt
+7-10 Seiten** (vorher 7-9 – die drei neuen Standard-Punkte 34-36 haben
+die Obergrenze real um eine Seite verschoben, siehe unten).
+
+| # | Seite | Inhalt | Sektor-Status |
+|---|---|---|---|
+| 1 | Cover | Masthead, Hook-These, Kernzahlen | universell |
+| 2 | Cross-Check-Übersicht | 3-Stimmen-Leiste, Jack/Conan-Divergenz-Analyse, Score-/DCF-Zusammenfassung | universell |
+| 3 | DNA-Check | Vollständige K+E-Kriterien-Tabelle (Punkt 29) | universell im Format, Kriterien selbst bereits sektoradaptiv über die bestehenden Sektor-Overrides (Finanz/SaaS/Piotroski/Infrastruktur, siehe jack-moat-reaper-v11.7.md) |
+| 4 | Historie | 5J-Finanzhistorie, Guidance-Track-Record, Management-Glaubwürdigkeits-Matrix | universell |
+| 5 | Chart | Kursverlauf (Technical) | universell |
+| 6 | Bewertung | DCF-Szenarien, Sensitivitätsmatrix (Punkt 24), sektorspezifische Struktur-Risiko-Vertiefung (Punkt 35) falls hier passender als Seite 9 | Bewertungsmethodik universell, Struktur-Risiko-Inhalt sektorabhängig |
+| 7 | Kill-Sheet | Thesis-Kill-Sheet (Punkt 26), Peer-Vergleich, historische Bewertungs-Bandbreite | universell |
+| 8 | Kapitalstruktur | Kapitalrückführungs-Historie, SBC-vs-Buyback-Netting (Punkt 23), Offene Schwächen, Datenintegritäts-Warnstrip | universell (SBC-Netting entfällt mangels Buyback-Programm ersatzlos, siehe Punkt 23 – kein Zusatzaufwand) |
+| **9** | **Sektor-Vertiefung (NEU)** | **Forward-Pipeline-/Katalysator-Ausblick (Punkt 34) + Struktur-Risiko-Check (Punkt 35) + Insider-Transaktionen (Punkt 36)** | **Punkt 34+35 komplett sektorabhängig ausgeprägt (siehe dortige Beispiele je Sektor), Punkt 36 universell** |
+| 10 | Fazit | Finale Synthese, Watchlist-Konsequenz, Quellen | universell |
+
+**Was NICHT automatisch 1:1 übernommen wird:** die KONKRETEN Kennzahlen/
+Fragestellungen auf Seite 9 (und teils Seite 6) – ein Halbleiterwert
+bekommt dort z.B. Node-Transitions-Risiko/Design-Win-Pipeline/Kunden-
+Konzentration statt Pipeline-Phasen/Patentablauf, ein SaaS-Wert bekommt
+Produkt-Roadmap/Plattform-Abhängigkeit statt Biosimilar-Zeitplan (siehe
+Punkt 34/35 für die vollständige Sektor-Beispiel-Liste). Das
+STRUKTURELLE Gerüst (10 Seiten, diese Reihenfolge, dieser
+Detailgrad) ist der wiederverwendbare Teil – die fachliche Substanz je
+Zeile bleibt eine bewusste, sektorspezifische Entscheidung von Jarvis/
+Jack/Conan bei jeder einzelnen Analyse, kein Ausfüll-Formular.
+**Kein Zwang zur vollen Länge:** ist eine Zeile für den konkreten Fall
+nicht sinnvoll anwendbar (z.B. Insider-Daten bei einem sehr jungen
+IPO-Kandidaten nicht auffindbar, kein aktives Buyback-Programm), entfällt
+sie ersatzlos mit kurzer Begründung – "10 Seiten" ist eine Obergrenze für
+den Regelfall, kein künstlich aufgeblähtes Pflicht-Minimum (gleiches
+Prinzip wie bei der Schnellanalyse oben, "2-3 Seiten ist eine Obergrenze,
+kein Pflicht-Minimum").
 
 **Herkunft Punkte 22-28:** Brian hat den CLBT-Full-Deep-Dive-Report
 unabhängig sowohl ChatGPT als auch Gemini zur Bewertung vorgelegt (außerhalb
