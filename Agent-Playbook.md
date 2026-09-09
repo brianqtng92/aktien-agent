@@ -4554,6 +4554,29 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     Ist-Ergebnis ausgewiesen (kein stillschweigendes Wegdiskutieren), aber
     mit einer kurzen Einordnung versehen, warum die Schwelle hier evtl.
     weniger aussagekräftig ist als bei einem asset-leichten Geschäftsmodell.
+
+    **Erweiterung 2026-09-09 (2. Mal am selben Tag, ausgelöst durch den
+    AUPH-Quick-Filter — Brian: "warum ziehen die Prompts nicht immer
+    aktuelle Daten statt oft TRAINING/N/V, kannst du das ändern?"):** bis
+    hierhin war die Primärquellen-Pflicht eine reine "welche Quelle bei
+    Widerspruch gewinnt"-Regel plus Jarvis' eigener stichprobenhafter
+    Gegencheck NACH Erhalt der Antwort (siehe AUPH-Fall: Jarvis fand den
+    Piotroski-7-vs-4-Widerspruch erst nachträglich per eigener WebSearch).
+    Neu in `jack-moat-reaper-v11.7.md` (jetzt intern v11.12) und
+    `conan-the-scout-v1.12.md` (jetzt intern v1.17): ein Abschnitt
+    KENNZAHLEN-RECHERCHE-PFLICHT, der einen benannten Suchversuch VOR der
+    Tag-Vergabe für jede DNA-Check-Kennzahl verlangt – ein [TRAINING]/[N/V]
+    ohne dokumentierten Suchversuch ist jetzt selbst ein Regelverstoß, nicht
+    mehr nur eine ehrliche Falls-nicht-gefunden-Notiz. Zusätzlich wurde ein
+    realer Tagging-Fehler behoben: Jack hatte ROIC/FCF-Marge/Piotroski im
+    AUPH-Fall als [LIVE] getaggt, obwohl [LIVE] laut eigener Definition
+    ausschließlich Echtzeit-Marktdaten (Kurs/Zinsen/FX/News) zusteht, nie
+    Fundamentalkennzahlen mit Berichtsstichtag – beide Methodik-Dateien
+    stellen das jetzt explizit klar. Verschiebt den Qualitätscheck von
+    "Jarvis prüft hinterher nach" zu "Jack/Conan müssen vorher suchen" –
+    senkt die TRAINING/N/V-Rate dort, wo echte Daten recherchierbar wären,
+    ändert aber KEINE Schwelle/Abbruch-Logik. Vollständige Begründung/
+    Diff siehe CHANGELOG.md 2026-09-09.
 31. **Health-Check vor jedem größeren Bridge-Dispatch (neu, 2026-09-09,
     Priorität 2 aus dem Meta-Review).** Auslöser: der Conan/ChatGPT-Bridge-
     Totalausfall nach der RMBS-Schnellanalyse wurde erst nach mehreren
