@@ -35,6 +35,13 @@ Reverse-DCF (konstantes 5J-Wachstum + 3% Terminal-g): **+9,60% p.a.** — liegt 
 
 **Ungelöste Datenlücke, transparent stehen gelassen statt verschwiegen:** bei der Recherche für Punkt 1 fiel eine echte Quellendivergenz auf: das ursprüngliche Fact-Pack nennt FCF FY2025 $8,93 Mrd., Novos eigener Annual Report 2025 (Primärquelle) nennt DKK 28,3 Mrd. (≈$4,1 Mrd. bei aktuellem Kurs) — beide Zahlen passen nicht zusammen, auch nicht über einen einfachen FX-Umrechnungsfehler erklärbar. Nicht in dieser Runde aufgelöst (würde einen vollständigen Cashflow-Statement-Abgleich erfordern) — bei einer künftigen NVO-Neubewertung (spätestens nach dem CMD 21.09.) zuerst klären, welche der beiden Zahlen (oder ob keine) korrekt ist.
 
+**Nachtrag 2 2026-09-09 (Brian: "siehst du noch Verbesserungen? was fehlt deine Meinung nach?"):** Jarvis identifizierte eigenständig 3 weitere, echte inhaltliche Lücken (keine Compliance-Funde wie oben, sondern neue Recherche-Ergänzungen), alle recherchiert und in den Report übernommen (neue Seite 9):
+1. **Pipeline-Ausblick jenseits der Fehlschläge:** Amycretin (GLP-1/Amylin-Dual-Agonist) zeigte in Phase 2 bis zu 22% Gewichtsverlust über 36 Wochen — schlägt Wegovy UND Lillys Zepbound in dieser Metrik, plus starke Glukose-Daten (89,1% HbA1c<7%). Beide Formulierungen (subkutan+oral) starteten Phase 3 in Q1 2026. Monlunabant (CB1-Antagonist) deutlich früher/schwächer (3% Gewichtsreduktion Tag 28). Bewusst mit Vorsicht eingeordnet: Amycretins Phase-2-Erfolg ist kein Freibrief — CagriSemas Fehlschläge kamen genau auf der Phase-3-Stufe.
+2. **Patent-Klippe/Biosimilar-Risiko fehlte komplett:** Basis-Patent bereits April 2026 in China/Indien/Kanada/Brasilien/Türkei abgelaufen (Niedrigmargen-Märkte, kein Kern-Treffer). Wirtschaftlich relevanter: EU-Biosimilars ~2028-2029 erwartet (näher als oft angenommen). USA (Kern-Gewinnpool) länger geschützt: Patent ~2031-2032, realistische Biosimilar-Verfügbarkeit erst 2033-2035.
+3. **Insider-Transaktionen nicht geprüft:** alle sichtbaren 2026er-Transaktionen (CEO Doustdar u.a.) sind reine Grant/Award-Zuteilungen (TipRanks: "uninformativ"), keine Überzeugungskäufe. Kleine Netto-Verkäufe (~kr415.600 über 3 Monate, wahrscheinlich steuerbedingt) — kein klares Signal in beide Richtungen, anders als beim SoFi-Vergleichsfall.
+
+**Wichtig:** diese drei werden ab sofort als STANDARD-Elemente für JEDEN künftigen Full Deep Dive behandelt (sektorabhängig angepasst), nicht als NVO-spezifische Einmal-Ergänzung — siehe Agent-Playbook.md Rigor-Standard-Punkte 34-36.
+
 ---
 
 ## Jack (Gemini) — Runde 1

@@ -4604,6 +4604,59 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     stillschweigendes Weglassen. Direkt ein 🟢-sicherer KVP-Fall (siehe
     "Kontinuierlicher Verbesserungsprozess" oben) – keine Rating-Logik
     ändert sich dadurch, nur die Vollständigkeit der Ausgabe.
+34. **Forward-Pipeline-/Katalysator-Ausblick jenseits bekannter Fehlschläge
+    (neu, 2026-09-09, ausgelöst durch Brians Nachfrage "siehst du noch
+    Verbesserungen?" zum NVO-Report).** Auslöser: der NVO-Report
+    katalogisierte CagriSema (2x) und Ziltivekimab ausführlich als
+    Fehlschläge, hatte aber keinen systematischen Blick auf das, was
+    DANACH noch in der Pipeline steht (Amycretin: 22% Gewichtsverlust in
+    Phase 2, schlägt Wegovy UND Zepbound in dieser Metrik) – eine
+    Bull-These braucht einen Blick auf das Kommende, nicht nur eine
+    Bilanz der Verluste. **Ab sofort Pflicht bei Full Deep Dive, Ausprägung
+    sektorabhängig:** Pharma/Biotech = Pipeline-Kandidaten jenseits
+    bekannter Fehlschläge (Phase, Kernwirksamkeitsdaten, nächster
+    Katalysator-Termin); SaaS/Software = Produkt-Roadmap/neue
+    Markteintritte über das aktuelle Kerngeschäft hinaus; Hardware/
+    Halbleiter = nächste Design-Wins/Produktgeneration in der Pipeline.
+    Prinzip bleibt sektorübergreifend gleich: aktiv nach dem
+    Gegengewicht zu bekannten negativen Katalysatoren suchen, nicht nur
+    Verluste/Rückschläge dokumentieren. **Ausdrücklich KEINE Entwarnung
+    per Automatik:** ein positiver Pipeline-Fund wird mit derselben
+    Skepsis behandelt wie jeder andere Datenpunkt (siehe NVO: "Amycretins
+    Phase-2-Erfolg ist kein Freibrief – CagriSemas Fehlschläge kamen
+    genau auf der Phase-3-Stufe").
+35. **Struktur-Risiko-Check jenseits der aktuellen Krise (neu, 2026-09-09,
+    gleicher Auslöser wie Punkt 34).** Der NVO-Report erwähnte an keiner
+    Stelle die Semaglutid-Patentklippe (Basis-Patent bereits April 2026 in
+    mehreren Märkten abgelaufen, EU-Biosimilars ~2028-2029, US erst
+    2033-2035) – ein reales Mehrjahres-Risiko, das komplett unabhängig
+    von der aktuellen Nachrichtenlage (CagriSema, CMD) existiert und in
+    die Terminal-Value-Annahme jeder DCF einfließen sollte. **Ab sofort
+    Pflicht bei Full Deep Dive, sektorabhängig zu identifizieren:**
+    Pharma/Biotech = Patent-/Exklusivitäts-Ablauf + Generika-/
+    Biosimilar-Zeitplan je Kernmarkt; Tech/Plattform = Regulierungs-/
+    Plattform-Abhängigkeits-Risiko (z.B. App-Store-Regeln, API-Zugriff
+    Dritter); Konsumgüter = Marken-/Patentschutz-Ablauf; Rohstoff-/
+    Zyklik-Werte = strukturelle Nachfrage-Verschiebung (z.B.
+    Substitutionstechnologien). Prinzip: ein struktureller, mehrjähriger
+    Risiko-Faktor, der unabhängig vom aktuellen Krisen-/Hype-Zustand
+    wirkt, gehört immer in die Analyse, auch wenn er (wie bei NVO) heute
+    noch kein akutes Ausschlusskriterium ist.
+36. **Insider-Transaktions-Check (neu, 2026-09-09, gleicher Auslöser wie
+    Punkt 34, universell – NICHT sektorabhängig).** Der NVO-Report prüfte
+    nie, ob Management/Insider während der Krise eigene Aktien gekauft
+    oder verkauft haben – ein Signal, das diese Methodik an anderer
+    Stelle bereits explizit nutzt (SoFi-Fall: "CEO kaufte nach dem
+    Short-Report aktiv zu" als Vertrauens-Indikator). **Ab sofort Pflicht
+    bei Full Deep Dive, für JEDEN Sektor gleich:** über TipRanks/
+    OpenInsider/SEC-Form-4-artige Quellen die jüngsten Insider-
+    Transaktionen prüfen. **Zwingend zu unterscheiden:** routinemäßige
+    Grant/Award-Zuteilungen (Vergütungsbestandteil, kein Sentiment-Signal
+    – TipRanks selbst kennzeichnet diese explizit als "uninformativ")
+    versus echte Open-Market-Käufe/-Verkäufe aus eigener Entscheidung
+    (echtes Signal). Ergebnis "kein klares Signal in beide Richtungen"
+    (wie bei NVO) ist ein vollwertiges, meldenswertes Ergebnis – kein
+    Fehlschlag der Recherche.
 
 **Herkunft Punkte 22-28:** Brian hat den CLBT-Full-Deep-Dive-Report
 unabhängig sowohl ChatGPT als auch Gemini zur Bewertung vorgelegt (außerhalb
