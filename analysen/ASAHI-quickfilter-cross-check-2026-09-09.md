@@ -67,6 +67,18 @@ Eigene, unabhängig hergeleitete Einschätzung, nicht nur eine Wiederholung von 
 
 ---
 
+## Nachtrag 2026-09-09: Kurskorrektur durch Brian (¥3.313 → ¥3.261)
+
+Brian meldete den aktuellen Kurs mit ¥3.261. Verifizierungs-WebSearch ("Asahi Intecc 7747 stock price today") lieferte KEINE Bestätigung, sondern einen dritten, widersprüchlichen Datenpunkt: eine Quelle zeigte weiterhin ¥3.313, eine andere ¥3.804 — keine der beiden traf Brians Wert. Twelve Data bleibt für dieses japanische Symbol auf dem Basic-Plan gesperrt (`get_price` erneut getestet, gleiche Fehlermeldung wie zuvor), also kein unabhängiger Live-Feed verfügbar.
+
+**Entscheidung (Selbstwiderspruch-Check angewendet, nicht einfach einen Wert ausgewählt):** Brians Live-Quelle wird als maßgeblich übernommen — sie ist mutmaßlich sein Broker/Live-Ticker und damit verlässlicher als aggregierte WebSearch-Treffer, die bei diesem Symbol bereits zweimal in dieser Session widersprüchliche/veraltete Werte lieferten.
+
+**Auswirkung auf die Analyse:** keine Änderung der Zonen-Einstufung. Bei ¥3.261 bleibt der Kurs in Zone 2 – ATTRAKTIV (Bear-FV ¥3.220 bis Zone-2-Obergrenze ¥4.271). MoS ggü. Bear-FV: (3.220−3.261)/3.220 = **-1,3%**, weiterhin 🔴 KEINER (marginal über, nicht unter, dem Bear-Fair-Value). Der Kurs liegt damit praktisch am unteren Rand der bereits dokumentierten Abstauber-Zone ¥3.200-3.300 — kein neuer Trigger, aber die Beobachtungsposition ist jetzt enger relevant. Rating bleibt **BEOBACHTEN**, Sizing Tier 3, keine Änderung der übrigen Schlussfolgerungen.
+
+`watchlist.md` und `reports/ASAHI-agent-schnellanalyse-2026-09-09.html/.pdf` entsprechend aktualisiert.
+
+---
+
 ## PDF
 
 `reports/ASAHI-agent-schnellanalyse-2026-09-09.pdf` — 2-Stimmen-Leiste (Conan-Ausfall transparent vermerkt), vollständige DNA-Check-Tabelle, Bewertungs-Schnellcheck ohne DCF, Kill-Sheet, Kursverlauf-Kontext, Fazit-Box, Quellen.
