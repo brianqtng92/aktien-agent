@@ -32,6 +32,7 @@ weiter anwachsen lassen.
 - Neuer "🔄 Kontinuierlicher Verbesserungsprozess (KVP)": auf Brians Wunsch institutionalisiert - laufend/monatlich (Monatsrecap Punkt 16)/vierteljährlich (Punkt 16b, Jack+Conan-Bridge-Check) sucht das System aktiv nach Mehrwert-Verbesserungen. Zwei-Stufen-Klassifizierung: 🟢 sicher+autonom umsetzbar (Effizienz/Redundanz/Doku, nie Rating-Logik) vs. 🟡 nur Vorschlag, braucht Brians Zustimmung (jede Rating-/Schwellen-/Risiko-Änderung). FIXE GRENZEN (Order-Ausführung manuell) bleiben unberührt
 - NVO-Report korrigiert nach Geminis Zweitprüfung: DCF-Margen-Korrektur nachgetragen (proportionale Bandbreite statt Scheingenauigkeit), WACC-Sensitivitätsmatrix + SBC-vs-Buyback-Netting ergänzt (Seite 6+8). 2 von 3 Punkten waren Compliance-Funde (Rigor-Punkte 23/24 existierten bereits, wurden aber nicht angewendet) - neuer Rigor-Standard-Punkt 33 (Checklist-Verifikation vor Report-Abschluss) soll das künftig verhindern
 - NVO-Report um neue Seite 9 erweitert (Pipeline-Ausblick/Amycretin, Patent-Klippe/Biosimilar-Risiko, Insider-Transaktionen) nach Jarvis' eigener Zweitmeinung - 3 neue, sektorabhängig ausgeprägte Rigor-Standard-Punkte 34-36, ab sofort Pflicht bei JEDEM künftigen Full Deep Dive, nicht nur NVO-spezifisch
+- NVO-Report finalisiert: FCF-Quellendivergenz aufgelöst (primärquellenbasiert DKK 28,3 Mrd., DNA-Check-FCF-Marge von 19,1% auf korrekte 9,2% korrigiert) + Amycretin-Timing ins Kill-Sheet/Fazit zurückverdrahtet (neuer Langfrist-Katalysator 2027-2030, getrennt vom kurzfristigen CMD-Trigger)
 
 ## 2026-09-08
 
