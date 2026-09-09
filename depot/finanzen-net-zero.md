@@ -179,6 +179,15 @@ nach.
 
 **Summe finanzen.net zero: 21.084,86 € (Invest 19.900,09 €, +6,0%)** — korrigiert von der ursprünglich fehlerhaften 21.650,74 €.
 
+**Update 2026-09-09 (Full Deep Dive Rambus auf Brians Anfrage):** vollständiger
+3-fach-Cross-Check abgeschlossen (Jack+Conan, TMR-Pfad). Rating bestätigt
+**BEOBACHTEN**, kein Nachkauf beim aktuellen Kurs (~$87). Beide KIs kommen
+per DCF auf einen Fair Value von $32-44 (Bear/Base), deutlich unter dem
+Kurs. Abstauber-Zone präzisiert auf $68-75. Echte, ungelöste Divergenz
+beim Piotroski F-Score (Jack 4/9, Conan 7/9) — siehe
+`analysen/RMBS-fulldeepdive-cross-check-2026-09-09.md` und
+`reports/RMBS-agent-deepdive-2026-09-09.pdf`.
+
 ## Verkäufe & Umschichtungen (ab 2026-08-28, von Brian gemeldet, alle Angaben in €)
 
 Im Zuge der Depot-Restrukturierung (siehe Agent-Playbook.md, "Depot-Restrukturierung

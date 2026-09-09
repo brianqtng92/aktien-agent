@@ -12,7 +12,7 @@ Empfehlungen").
 | Position | ISIN | Empfehlung | Zone/Preis | Quelle | Datum | Zuletzt erinnert |
 |---|---|---|---|---|---|---|
 | Kraken Robotics | CA50077N1024 | Nachkauf-Zone (Preisalarm) | ≤2,80 (Downside-Alert aktiv) | E-Mail "Zwei Zonen im Blick", 2026-09-01 | 2026-09-01 | 2026-09-07 |
-| Rambus | US7509171069 | Nachkauf-Zone (Preisalarm) | ≤65€/$75 (Downside-Alert aktiv, unverändert) | RMBS-Schnellanalyse, 2026-09-08 | 2026-09-01 | 2026-09-08 |
+| Rambus | US7509171069 | Nachkauf-Zone (Preisalarm) | ≤$68-75 (Zone präzisiert nach Full Deep Dive, vorher pauschal $75) | RMBS-Full-Deep-Dive, 2026-09-09 | 2026-09-01 | 2026-09-09 |
 
 ## Format bei neuem Eintrag
 `| Position | ISIN | Empfehlung (KAUFEN/NACHKAUFEN/VERKAUFEN/TEILVERKAUF) | Zone/Preis | Quelle (Analyse-Datei oder Report) | Datum | Zuletzt erinnert (– falls noch nie) |`
