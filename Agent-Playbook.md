@@ -2593,24 +2593,102 @@ Backtest-Vorbehalt unten.
 | 2 (×2) | CBOE-SKEW-Index (v.a. in Kombi mit niedrigem VIX = "gefährliche Divergenz") | <120 | 120-140 | 140-150 | >150 UND VIX <16 gleichzeitig |
 | 2 (×2) | Sektorrotation (XLU/XLY-Ratio, Trend) | fallend/stabil | – | steigend (defensive Rotation) | stark steigend |
 | 2 (×2) | Kupfer/Gold-Verhältnis (Trend) | steigend/stabil | – | fallend (Wachstumssorge) | stark fallend |
-| 2 (×2) | Kreditstress (HYG/LQD-Ratio, Trend) | steigend/stabil | – | fallend | stark fallend |
-| 2 (×2) | Zentralbank-Event-Risiko (7 Tage) | kein Meeting | Konsens >70% | Coin-Flip (40-60%) | Überraschungs-Wahrsch. >65% |
-| 2 (×2) | Chicago-Fed-NFCI | <0 (locker) | 0-0,3 | 0,3-0,5 | >0,5 (restriktiv) |
+| 2 (×2) | Zentralbank-Event-Risiko (7 Tage) — **Ausnahme-Regel:** bei ≥2 zeitgleichen Meetings mit echtem Coin-Flip/Überraschungspotenzial (wie Fed+BoJ 09/2026) darf dieser Lauf dokumentiert wie Tier 3 (×3) statt ×2 behandelt werden, mit explizitem Vermerk im Output – kein permanenter Tier-Wechsel (siehe Audit-Divergenz unten) | kein Meeting | Konsens >70% | Coin-Flip (40-60%) | Überraschungs-Wahrsch. >65% |
+| 1 (×1) | Chicago-Fed-NFCI (auf Tier 1 abgestuft, siehe Redundanz-Fix unten) | <0 (locker) | 0-0,3 | 0,3-0,5 | >0,5 (restriktiv) |
 | 2 (×2) | Sahm-Regel | <0,25 | 0,25-0,35 | 0,35-0,50 | ≥0,50 (Trigger) |
 | 1 (×1) | S&P vs. 200D-SMA + Richtung | über SMA, steigend | über SMA, flach | unter SMA, SMA steigend | unter SMA, SMA flach/fallend |
-| 1 (×1) | Fear & Greed | 25-75 ODER <25 | – | >75 (Extreme Greed) | – |
-| 1 (×1) | Geopolitischer Schock-Flag | keiner | bekannt, keine Eskalation | – | neue Eskalation |
-| 1 (×1) | Öl-Preis-Regime vs. 3M-Baseline | normal | +15% | +30% | – |
-| 1 (×1) | Bewertungsbreite (Depot+Watchlist 🟠/🔴-Anteil) | <20% | 20-40% | >40% | – |
-| 1 (×1) | Michigan-Verbrauchervertrauen (Malus wegen bekannter Unzuverlässigkeit seit 2022/"Vibecession" – max. 1 Pkt statt 3) | ≥65 | <65 | – | – |
+| 1 (×1) | Fear & Greed — **Design-Klarstellung (nicht Bug, siehe Audit unten):** Neutral UND Extreme Fear bekommen bewusst gleich 0 Punkte, weil Extreme Fear historisch eher kontrarisch (Erholungssignal) als korrekturverstärkend wirkt – nur Extreme Greed erhöht das Risiko | 25-75 ODER <25 | – | >75 (Extreme Greed) | – |
+| 1 (×1) | Geopolitischer Schock-Flag (bewusst qualitativ/Jarvis-Einschätzung, wie andere Advisory-Einordnungen in diesem System – siehe Core-vs-Advisory-Split) | keiner | bekannt, keine Eskalation | – | neue Eskalation |
+| 1 (×1) | Öl-Preis-Regime vs. 3M-Baseline | normal | +15-30% | – | >30% |
+| 1 (×1) | US-Dollar-Index (DXY, Trend) — **neu, Audit-Fund: bereits in macro_context.md "Weitere Dimensionen" getrackt, bisher nicht in den Score eingebunden** | stabil (<3%/30T) | +3-6%/30T | – | >6%/30T (schnelle USD-Stärke = globaler Liquiditätsentzug) |
+| 1 (×1) | Michigan-Verbrauchervertrauen (Malus wegen bekannter Unzuverlässigkeit seit 2022/"Vibecession" – max. 1 Pkt statt 3, bewusst NICHT gestrichen, siehe Audit-Divergenz unten) | ≥65 | <65 | – | – |
 | 1 (×1) | 10J-Realzins (TIPS) | <1% | 1-2% | 2-3% | >3% |
-| 1 (×1) | Erstanträge Arbeitslosenhilfe (4W-Schnitt, Trend vs. Zyklustief) | stabil | +10-20% | +20-30% | >30% |
+| 1 (×1) | Erstanträge Arbeitslosenhilfe (4W-Schnitt, Trend vs. Zyklustief – Korrelation zur Sahm-Regel bewusst in Kauf genommen, siehe Audit-Divergenz unten) | stabil | +10-20% | +20-30% | >30% |
 | 1 (×1) | Shiller-KGV / CAPE-Ratio (S&P 500) — **bewusst niedriges Gewicht: strukturelles Langfrist-Signal, KEIN Timing-Indikator** (kann jahrelang "hoch" bleiben, siehe justETF-Quelle) | <28 | 28-35 | 35-40 | >40 (nahe historischem Extrem, nur 1999/2000 höher) |
 | 1 (×1) | Buffett-Indikator (Gesamtmarktkap./BIP) — **gleiche Einschränkung wie CAPE (kein Timing-Signal), zusätzlich drei strukturelle Verzerrungen (justETF, 10.09.2026): (1) Globalisierung — Auslandsumsatz-Anteil ~40% macht "inländische Marktkap. vs. inländisches BIP" ungenauer als früher; (2) externe Faktoren wie Geldpolitik/internationale Kapitalströme können das Verhältnis unabhängig von echter Überbewertung verzerren; (3) sektorblind — ein tech-/wachstumsschwerer Markt (wie der US-Markt aktuell) zeigt strukturell höhere Werte als traditionellere Volkswirtschaften, ohne dass das automatisch Überbewertung bedeutet** | <100% | 100-150% | 150-200% | >200% |
 
 **Summe → Bucket, als % vom aktuellen Maximum (steigt mit Anzahl aktiver
 Indikatoren, daher relativ statt absolut):** 0-20% 🟢 NIEDRIG · 20-40% 🟡
 ERHÖHT · 40-65% 🟠 HOCH · 65-100% 🔴 SEHR HOCH.
+
+**Bewertungsbreite (Depot+Watchlist 🟠/🔴-Anteil) — aus dem Score
+ENTFERNT, siehe Audit unten.** Läuft ab jetzt als separater
+"Portfolio-Overlay"-Wert neben dem Score, nicht mehr in die Summe
+eingerechnet: der Korrektur-Risiko-Score bewertet den MARKT, nicht
+dieses spezifische Depot – beides zu vermischen war ein Kategorienfehler.
+
+### Audit v4 (2026-09-10, gleicher Tag, auf Brians Wunsch: "die Agenten
+sollen das intensiv durchgehen und Anpassungen vornehmen") — Jack (echt)
++ Jarvis-Ersatzrolle für Conan (Bridge nach 4 Versuchen weiterhin down,
+transparent als Aegis-Fallback gekennzeichnet, siehe Rigor-Standard-Punkt
+32)
+
+**Übernommene Funde (beide/Jack, nach eigener Prüfung bestätigt):**
+1. **HYG/LQD-Ratio ersatzlos gestrichen** — misst laut beiden Prüfungen
+   dasselbe Phänomen wie US-HY-Credit-Spread (OAS), nur mit einem
+   ungenaueren Marktpreis-Proxy statt der direkt berechneten Spread-Zahl.
+   Klarster, sauberster Redundanz-Fund des Audits.
+2. **Chicago-Fed-NFCI von Tier 2 auf Tier 1 abgestuft** (nicht gestrichen
+   — Jarvis' eigene Abwägung: NFCI ist breiter/langsamer als OAS, verdient
+   noch einen Platz, aber nicht dasselbe Gewicht wie das direktere
+   HY-OAS-Signal, sonst Double-Counting des Kreditrisikofaktors).
+3. **Bewertungsbreite (Depot+Watchlist) aus dem Score entfernt** — Jacks
+   stärkster methodischer Fund: ein Score, der den MARKT bewerten soll,
+   darf keine depot-spezifische, nicht-marktweite Eingabe enthalten. Läuft
+   jetzt als eigener Portfolio-Overlay-Wert.
+4. **Öl-Preis-Regime: fehlende 3-Punkte-Stufe ergänzt** (war zuvor bei
+   +30% gedeckelt, jetzt echte Eskalationsstufe möglich).
+5. **US-Dollar-Index (DXY) neu aufgenommen** — echter Lücken-Fund: wurde
+   in `depot/macro_context.md` "Weitere Dimensionen" bereits wöchentlich
+   getrackt, aber nie in den Score eingebunden.
+
+**Abgelehnte Funde (Jarvis-Gegenposition, dokumentierte Divergenz statt
+stille Übernahme):**
+1. **Michigan-Verbrauchervertrauen NICHT gestrichen** (Jack: streichen,
+   da selbst als unzuverlässig gekennzeichnet). Jarvis-Gegenposition: die
+   1-Punkt-Deckelung (statt 3) IST bereits die Antwort auf die
+   Unzuverlässigkeit – ein bekannt unpräziser, aber weiterhin breit
+   beachteter Indikator komplett zu streichen verliert mehr Information,
+   als der verbleibende Malus-Fehler kostet.
+2. **Buffett-Indikator NICHT gestrichen** (Jack: streichen, da "kein
+   Timing-Indikator"). Jarvis-Gegenposition: das ist bereits durch
+   Tier-1-Gewichtung eingepreist (siehe eigene Einschränkung im
+   Tabellentext) – die Kritik beschreibt korrekt, WARUM das Gewicht
+   niedrig sein muss, ist aber kein Argument für Streichung, wenn das
+   Gewicht schon niedrig ist.
+3. **Sahm-Regel/Erstanträge-Redundanz akzeptiert, aber NICHT eines von
+   beiden gestrichen.** Jarvis-Gegenposition: Erstanträge sind wöchentlich/
+   leading, Sahm-Regel ist bewusst nachlaufend/bestätigend (3-Monats-
+   Durchschnitt) – professionelle Makro-Dashboards führen beide genau
+   deswegen parallel. Korrelation ja, vollständige Redundanz nein.
+4. **Zentralbank-Event-Risiko NICHT dauerhaft auf Tier 3 hochgestuft**
+   (Jack: dauerhaft ×3). Jarvis-Gegenposition: der Indikator ist episodisch
+   (0 an den meisten Tagen ohne Meeting) – eine dauerhafte Tier-3-Gewichtung
+   würde ihn an ruhigen Tagen nicht mehr treffen, aber an Meeting-Tagen
+   überproportional. Stattdessen: dokumentierte Ausnahme-Regel für echte
+   Mehrfach-Meeting-Wochen (siehe Tabellenzeile), kein permanenter
+   Tier-Wechsel.
+5. **Fear&Greed-"Inkonsistenz" als Design-Entscheidung erklärt, nicht
+   korrigiert** (Jack hielt Gleichbehandlung von Neutral/Extreme-Fear für
+   einen Fehler). War eine bewusste Entscheidung (Extreme Fear wirkt
+   historisch kontrarisch, nicht korrekturverstärkend) – jetzt im
+   Tabellentext explizit dokumentiert, damit der nächste Prüfer denselben
+   Punkt nicht wieder als Bug einstuft.
+
+**Nicht umgesetzt, aber vorgemerkt (Jacks Vorschläge für fehlende
+Indikatoren – Wachstumserwartungs-Revisionen, Cross-Asset-Vola,
+CFTC-Positionierungsdaten):** legitime professionelle Ergänzungen, aber
+zusätzlicher laufender Rechercheaufwand – Jacks eigenes Gesamturteil
+("zu komplex für ein tägliches System") spricht GEGEN weiteres Hinzufügen
+in dieser Runde. Bei Bedarf später einzeln nachrüsten, nicht alle drei auf
+einmal.
+
+**Neuer Beispielwert nach Audit-Fixes (2026-09-10):** 28/96 (29,2%) →
+weiterhin 🟡 ERHÖHT, leicht höher als vor dem Audit (27,6%), da der
+Nenner durch die Streichungen/Verschiebungen kleiner wurde als die
+Zähler-Reduktion – der Score ist jetzt schlanker (19 statt 21 Indikatoren
+in der Summe, Bewertungsbreite separat) UND laut Audit weniger
+redundanzbelastet.
 
 **Neu instrumentierte Ratio-Indikatoren ohne eigene Historie (Marktbreite,
 Sektorrotation, Kupfer/Gold, Kreditstress):** werden ab 2026-09-10 täglich
