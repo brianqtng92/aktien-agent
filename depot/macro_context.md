@@ -14,6 +14,14 @@ Wahrscheinlichkeiten (No-False-Precision-Regel) - Einordnungen immer
 qualitativ + quellenbasiert.
 ---
 
+## Korrektur-Risiko-Score (neu, 2026-09-10, siehe Agent-Playbook.md "Korrektur-Risiko-Score" für die Methodik — additiver Score, KEIN Prozentwert, Core-Rule 13)
+
+| Datum | Summe | Bucket | Einzelwerte |
+|---|---|---|---|
+| 2026-09-10 | 8/24 | 🟡 ERHÖHT | VIX 15,64 (1) · VIX-Mom ~+9% (0, unter 10%-Schwelle) · S&P/SMA über SMA, SMA steigend (0) · F&G 42/Fear-Zone (0) · HY-OAS ~265Bps stabil (0) · Kurve flach/spätzyklisch, 3m10y knapp invers (1) · CB-Event Fed-Coinflip 58,7% UND BoJ-Hike-Signal gleichzeitig (3) · Geopolitik Hormuz bekannt+Kanada-Zolldrohung neu, keine bestätigte Eskalation (1) · Öl WTI ~91, erhöht aber im Rahmen (1) · Bewertungsbreite Watchlist/Depot geschätzt ~20-30% 🟠/🔴 (1). **Auffälligster Treiber:** gleichzeitiges Fed+BoJ-Event-Risiko in derselben Woche (Punkt 7, volle 3 Punkte). |
+
+<!-- Format: Datum | Summe/24 | Bucket (🟢 NIEDRIG 0-5 / 🟡 ERHÖHT 6-11 / 🟠 HOCH 12-17 / 🔴 SEHR HOCH 18-24) | Einzelwerte mit Punktzahl je Indikator + 1 Satz zum auffälligsten Treiber. Noch NICHT historisch zurückgetestet, siehe Playbook-Einschränkung. -->
+
 ## Tagesprotokoll
 
 | Datum | Fear&Greed (Zone) | VIX | S&P 500 (Stand, Tagesänd.) | S&P vs. 50D/200D-SMA | Nasdaq 100 Tagesänd. | US-10J-Rendite | Kurve | EUR/USD | Gold | Investitionsklima | Auffälligkeit |

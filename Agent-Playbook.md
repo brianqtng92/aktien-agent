@@ -2508,6 +2508,72 @@ musst du vollziehen"):**
   niedriger als oberhalb – das allein ist aber kein Timing-Signal für
   einen bestimmten Tag. Diese Einordnung immer mit Quellenangabe/
   Recherche-Beleg versehen, nie als eigene Vorhersage ausgeben.
+
+### Korrektur-Risiko-Score (neu, 2026-09-10, Brian: "ich möchte, dass mein
+Agent mir eine Korrekturwahrscheinlichkeit berechnet")
+
+**Warum kein Prozentwert:** Core-Rule 13 (No-False-Precision-Regel, siehe
+Abschnitt 4) verbietet erfundene exakte Wahrscheinlichkeiten – daran ändert
+auch ein expliziter Brian-Wunsch nichts, das ist eine der 16 Core-Rules
+("nie brechen"), keine Advisory-Regel. Eine einzelne %-Zahl für "wie
+wahrscheinlich ist eine Korrektur" wäre entweder komplett erfunden oder
+würde eine Scheingenauigkeit suggerieren, die kein Modell dieser Art
+seriös liefern kann. **Was stattdessen gebaut wird:** ein transparenter,
+additiver **Score** (kein %-Wert) aus ausschließlich bereits recherchierten,
+quellenbelegten Einzelindikatoren – dieselbe Machart wie der CNN Fear &
+Greed Index selbst (auch dort: mehrere Einzelindikatoren, additiv zu EINER
+Kennzahl verdichtet, nie als Wahrscheinlichkeit deklariert). Bucket-Namen
+sind bewusst qualitativ (NIEDRIG/ERHÖHT/HOCH/SEHR HOCH), nicht numerisch.
+
+**Berechnung (täglich, als Erweiterung des bestehenden `depot/macro_context.md`-Trackings, keine neuen Datenquellen nötig):**
+
+| # | Indikator | 0 Punkte | 1 Punkt | 2 Punkte | 3 Punkte |
+|---|---|---|---|---|---|
+| 1 | VIX-Niveau | <15 | 15-20 | 20-25 | 25-30 (4 Pkt. bei >30) |
+| 2 | VIX-5-Tage-Momentum | stabil/fallend/<10% | +10-25% | >25% | – |
+| 3 | S&P vs. 200D-SMA + SMA-Richtung (nutzt die Heuristik oben) | über SMA, SMA steigend | über SMA, SMA flach ODER unter SMA bei weiter steigender SMA (Whipsaw-Muster) | – | unter SMA, SMA flach/fallend |
+| 4 | Fear & Greed | 25-75 (Neutral) ODER <25 (Extreme Fear, kontrarisch, kein Add) | – | Extreme Greed >75 | – |
+| 5 | US-High-Yield-Spread (HY OAS) | <300 Bps, stabil | 300-500 Bps oder >15%/Woche ausweitend | – | >500 Bps oder schnell ausweitend |
+| 6 | Zinskurve (2s10s/3m10y) | normal | flach/spätzyklisch | invertiert | – |
+| 7 | Zentralbank-Event-Risiko (nächste 7 Tage) | kein Meeting | Meeting, Konsens-Richtung >70% | echter Coin-Flip (marktimplizit 40-60%) ODER ≥2 Meetings gleichzeitig | hohe Wahrscheinlichkeit (>65%) einer Überraschung ggü. vorherigem Konsens |
+| 8 | Geopolitischer Schock-Flag | kein aktives Ereignis | bekanntes, eingepreistes Risiko ohne neue Eskalation | – | aktive neue Eskalation/Frontöffnung |
+| 9 | Öl-Preis-Regime (WTI/Brent vs. 3M-Baseline) | im normalen Band | erhöht durch geopolitisches Risiko (>15% über Baseline) | stark erhöht (>30%) | – |
+| 10 | Bewertungsbreite (Anteil 🟠/🔴-markierter Werte in Depot+Watchlist) | <20% | 20-40% | >40% | – |
+
+**Summe → Bucket:** 0-5 🟢 NIEDRIG · 6-11 🟡 ERHÖHT · 12-17 🟠 HOCH · 18-24 🔴 SEHR HOCH.
+
+**Pflicht-Output-Format:**
+```
+📊 KORREKTUR-RISIKO-SCORE: [Datum]
+Summe: X/24 → [Bucket]
+Einzelwerte: VIX X (Xpkt) · VIX-Mom X% (Xpkt) · S&P/SMA [Text] (Xpkt) ·
+F&G X (Xpkt) · HY-OAS X Bps (Xpkt) · Kurve [Text] (Xpkt) ·
+CB-Event [Text] (Xpkt) · Geopolitik [Text] (Xpkt) · Öl [Text] (Xpkt) ·
+Bewertungsbreite X% (Xpkt)
+Auffälligster Einzeltreiber: [1 Satz]
+```
+
+**Wichtige Einschränkung, immer mitgeben:** Dieser Score ist bisher NICHT
+gegen echte historische Korrektur-Häufigkeiten zurückgetestet – er ist eine
+transparente Verdichtung von Marktweisheit/bereits bestehenden Heuristiken
+dieses Regelwerks, keine statistisch validierte Vorhersage. Ein möglicher
+Ausbauschritt (analog zum bestehenden `analysen/backtest-methodik-
+validierung-2026-09-09.md`-Projekt): den Score über mehrere historische
+Perioden rückwirkend berechnen und beobachten, wie oft ein bestimmtes
+Bucket tatsächlich von einer Korrektur (~10%+ binnen 3 Monaten) gefolgt
+wurde – erst DANN dürfte man dem Bucket vorsichtig eine empirische
+Bandbreite ("in X von Y historisch ähnlichen Fällen") zuordnen, und selbst
+das wäre eine beobachtete Rückschau-Häufigkeit, keine Zukunfts-
+Wahrscheinlichkeit. Bis ein solcher Backtest vorliegt, bleibt der Score ein
+Risiko-Ampel-Ersatz, kein Prognose-Modell.
+
+**Einbindung:** täglich im Trigger-Check zusammen mit der bestehenden
+Makro-Momentaufnahme berechnet, als zusätzliche Spalte/Zeile in
+`depot/macro_context.md` mitgeführt. Löst bei Bucket-Wechsel (z.B.
+NIEDRIG→ERHÖHT) einen Hinweis in der Tages-Mail aus, aber KEINE
+automatische Handlungsempfehlung (gleiche Einordnung-nicht-Handlungs-
+anweisung-Logik wie beim übrigen Makro-Kontext oben).
+
 - **Politischer/Wahlkalender (langfristiger Horizont, nicht täglich neu
   recherchiert – Pflege im Wochenfazit, nur Erinnerungs-Hinweis im
   Trigger-Check ab ca. 14 Tage vorher):** US-Midterms (2026-11-03) als
