@@ -2606,7 +2606,7 @@ Backtest-Vorbehalt unten.
 | 1 (×1) | 10J-Realzins (TIPS) | <1% | 1-2% | 2-3% | >3% |
 | 1 (×1) | Erstanträge Arbeitslosenhilfe (4W-Schnitt, Trend vs. Zyklustief) | stabil | +10-20% | +20-30% | >30% |
 | 1 (×1) | Shiller-KGV / CAPE-Ratio (S&P 500) — **bewusst niedriges Gewicht: strukturelles Langfrist-Signal, KEIN Timing-Indikator** (kann jahrelang "hoch" bleiben, siehe justETF-Quelle) | <28 | 28-35 | 35-40 | >40 (nahe historischem Extrem, nur 1999/2000 höher) |
-| 1 (×1) | Buffett-Indikator (Gesamtmarktkap./BIP) — **gleiche Einschränkung wie CAPE, zusätzlich strukturell nach oben verzerrt durch ~40% Auslandsumsatz-Anteil US-Firmen** | <100% | 100-150% | 150-200% | >200% |
+| 1 (×1) | Buffett-Indikator (Gesamtmarktkap./BIP) — **gleiche Einschränkung wie CAPE (kein Timing-Signal), zusätzlich drei strukturelle Verzerrungen (justETF, 10.09.2026): (1) Globalisierung — Auslandsumsatz-Anteil ~40% macht "inländische Marktkap. vs. inländisches BIP" ungenauer als früher; (2) externe Faktoren wie Geldpolitik/internationale Kapitalströme können das Verhältnis unabhängig von echter Überbewertung verzerren; (3) sektorblind — ein tech-/wachstumsschwerer Markt (wie der US-Markt aktuell) zeigt strukturell höhere Werte als traditionellere Volkswirtschaften, ohne dass das automatisch Überbewertung bedeutet** | <100% | 100-150% | 150-200% | >200% |
 
 **Summe → Bucket, als % vom aktuellen Maximum (steigt mit Anzahl aktiver
 Indikatoren, daher relativ statt absolut):** 0-20% 🟢 NIEDRIG · 20-40% 🟡
