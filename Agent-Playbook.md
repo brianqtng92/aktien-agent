@@ -2589,6 +2589,7 @@ Backtest-Vorbehalt unten.
 | 3 (×3) | Zinskurve (2s10s/3m10y) | normal | flach/spätzyklisch | – | invertiert |
 | 3 (×3) | US-HY-Credit-Spread (OAS) | <300 Bps stabil | 300-500 Bps/ausweitend | – | >500 Bps/schnell ausweitend |
 | 3 (×3) | Marktbreite-Divergenz (RSP/SPY-Ratio, Trend) | stabil/steigend | – | fallend | stark fallend (enge Marktführung) |
+| 3 (×3) | Yen-Carry-Trade-Risiko (neu, 2026-09-10, Brian: "Yen Carry Trade und alles was dazugehört" — USD/JPY-Trend + BoJ-Hike-Wahrscheinlichkeit + JGB-Renditeanstieg zusammen, NICHT redundant zu Zentralbank-Event-Risiko: dort geht es um die Entscheidungs-Überraschung selbst, hier um den nachgelagerten Leverage-/Unwind-Mechanismus – siehe August-2024-Präzedenzfall, echter globaler Ausverkauf) | USD/JPY stabil in üblicher Bandbreite, keine Carry-Unwind-Signale in Marktberichten | USD/JPY-Stärkung moderat/geordnet | USD/JPY bricht unter etablierte Stabilitätszone (z.B. <155) UND BoJ-Hike >70% gepreist | aktiver, in Finanzpresse dokumentierter Unwind ("unwinding faster than expected") UND Hike quasi sicher gepreist |
 | 2 (×2) | VIX-Niveau | <15 | 15-20 | 20-25 | >25 |
 | 2 (×2) | CBOE-SKEW-Index (v.a. in Kombi mit niedrigem VIX = "gefährliche Divergenz") | <120 | 120-140 | 140-150 | >150 UND VIX <16 gleichzeitig |
 | 2 (×2) | Sektorrotation (XLU/XLY-Ratio, Trend) | fallend/stabil | – | steigend (defensive Rotation) | stark steigend |
@@ -2596,6 +2597,8 @@ Backtest-Vorbehalt unten.
 | 2 (×2) | Zentralbank-Event-Risiko (7 Tage) — **Ausnahme-Regel:** bei ≥2 zeitgleichen Meetings mit echtem Coin-Flip/Überraschungspotenzial (wie Fed+BoJ 09/2026) darf dieser Lauf dokumentiert wie Tier 3 (×3) statt ×2 behandelt werden, mit explizitem Vermerk im Output – kein permanenter Tier-Wechsel (siehe Audit-Divergenz unten) | kein Meeting | Konsens >70% | Coin-Flip (40-60%) | Überraschungs-Wahrsch. >65% |
 | 1 (×1) | Chicago-Fed-NFCI (auf Tier 1 abgestuft, siehe Redundanz-Fix unten) | <0 (locker) | 0-0,3 | 0,3-0,5 | >0,5 (restriktiv) |
 | 2 (×2) | Sahm-Regel | <0,25 | 0,25-0,35 | 0,35-0,50 | ≥0,50 (Trigger) |
+| 2 (×2) | MOVE-Index (Anleihe-Markt-Volatilität, "Bond-VIX", ICE BofA) — Pendant zu VIX, aber für Staatsanleihen statt Aktien | <80 (Komplazenz-Ende der Skala) | 80-100 | 100-120 | >120 (Extreme Fear-Ende) |
+| 2 (×2) | Globale Staatsanleihen-Renditen (US10Y + Bund10Y + JGB10Y, synchroner Trend) — neu, 2026-09-10, Brian: "die verschiedenen Staatsanleihen mit reinnehmen"; NICHT redundant zu Zinskurve (misst dort NUR die US-Kurvenform) oder TIPS-Realzins (dort NUR US-real) — hier geht es um synchrones GLOBALES Renditeniveau über mehrere Länder | alle 3 stabil/fallend | 1-2 von 3 steigend | alle 3 gleichzeitig steigend | alle 3 gleichzeitig nahe mehrjährigen Extremen |
 | 1 (×1) | S&P vs. 200D-SMA + Richtung | über SMA, steigend | über SMA, flach | unter SMA, SMA steigend | unter SMA, SMA flach/fallend |
 | 1 (×1) | Fear & Greed — **Design-Klarstellung (nicht Bug, siehe Audit unten):** Neutral UND Extreme Fear bekommen bewusst gleich 0 Punkte, weil Extreme Fear historisch eher kontrarisch (Erholungssignal) als korrekturverstärkend wirkt – nur Extreme Greed erhöht das Risiko | 25-75 ODER <25 | – | >75 (Extreme Greed) | – |
 | 1 (×1) | Geopolitischer Schock-Flag (bewusst qualitativ/Jarvis-Einschätzung, wie andere Advisory-Einordnungen in diesem System – siehe Core-vs-Advisory-Split) | keiner | bekannt, keine Eskalation | – | neue Eskalation |
@@ -2689,6 +2692,40 @@ Nenner durch die Streichungen/Verschiebungen kleiner wurde als die
 Zähler-Reduktion – der Score ist jetzt schlanker (19 statt 21 Indikatoren
 in der Summe, Bewertungsbreite separat) UND laut Audit weniger
 redundanzbelastet.
+
+**v5-Erweiterung (2026-09-10, gleicher Tag, Brian: "Staatsanleihen und
+Yen Carry Trade mit reinnehmen"):** Drei neue Indikatoren, real
+recherchiert (WebSearch, 10.09.2026):
+- **Yen-Carry-Trade-Risiko (Tier 3):** USD/JPY 154,35 (Twelve Data, live)
+  — bereits UNTER der von einer Quelle genannten 155-160-Stabilitätszone
+  für einen geordneten Unwind. BoJ-Hike auf 1,25% (höchster Stand seit
+  ~31 Jahren) für die Sitzung 17./18.09. laut Marktberichten "almost
+  fully priced". Mehrere Finanzpresse-Quellen (FXStreet, exchangerates.org.uk,
+  08.-10.09.2026) beschreiben den Unwind bereits als aktiv laufend
+  ("unwinding faster than expected"). **Score: 3/3 (Maximum)** — kein
+  hypothetisches Risiko, sondern ein laut Quellenlage bereits laufender
+  Prozess.
+- **MOVE-Index (Tier 2):** 77,88 (01.09.2026) — knapp unter der
+  80er-Komplazenz-Schwelle, nahe 10-Jahres-Durchschnitt. **Score: 0/3**
+  (ruhig, im Gegensatz zum Aktienmarkt-Pendant SKEW/VIX).
+- **Globale Staatsanleihen-Renditen (Tier 2):** JGB-10J 2,92% (10.09.,
+  +0,11 im Monat, Kontext: höchster BoJ-Leitzins seit ~31 Jahren erwartet),
+  Bund-10J 3,44% (10.09., **höchster Stand seit April 2011**), US-10J
+  weiterhin bei ~4,79% (etabliert). Alle drei gleichzeitig nahe
+  mehrjährigen/historischen Hochs, laut Quellen mitgetrieben durch
+  Öl-Preis-Anstieg wegen eskalierendem US-Iran-Konflikt (**Geopolitik-Flag
+  ggf. bei nächster Prüfung von "bekannt, keine Eskalation" auf "neue
+  Eskalation" hochzustufen — als offener Prüfpunkt vermerkt, nicht in
+  diesem Lauf bereits geändert, um keine unbelegte Eskalationsstufe ohne
+  Zweitquelle zu setzen**). **Score: 3/3.**
+
+**Neuer Beispielwert nach v5 (2026-09-10):** 43/117 (36,8%) → weiterhin 🟡
+ERHÖHT, aber jetzt nahe an der 40%-Schwelle zu 🟠 HOCH. Der Anstieg
+gegenüber v4 (29,2%) ist durch echte, neu recherchierte Fakten getrieben
+(aktiver Yen-Carry-Unwind, synchron historische Anleiherenditen-Hochs),
+nicht durch Methodik-Änderungen — genau das Verhalten, das ein
+seriöser Score zeigen soll, wenn sich die Faktenlage tatsächlich
+verschärft.
 
 **Neu instrumentierte Ratio-Indikatoren ohne eigene Historie (Marktbreite,
 Sektorrotation, Kupfer/Gold, Kreditstress):** werden ab 2026-09-10 täglich
