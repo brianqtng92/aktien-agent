@@ -60,6 +60,20 @@ RMBS (NASDAQ), Rambus Inc. — Halbleiter-IP-Lizenzgeber + Memory-Interconnect-C
 
 ---
 
+## Nachtrag 10.09.2026: SBC-Infection-Check + CFO-Wechsel (nach externem Gemini-Review)
+
+Ein externer Gemini-Review des Reports schlug einen SBC-Infection-Check vor (der bereits als Pflichtcheck in `jack-moat-reaper-v11.7.md` existiert, aber im ursprünglichen Report nicht mit echten Zahlen belegt war) und wies auf einen bisher nicht erfassten CFO-Wechsel hin. Gemini's eigene erste Rechnung war fehlerhaft (falsche TTM-Umsatzbasis, unbelegter SBC-Schätzwert) — Jack und Conan wurden daher unabhängig zur Nachrecherche gebeten.
+
+**Ergebnis, per WebFetch-Gegenprobe an der SEC-Primärquelle verifiziert (Conans Zahlen bestätigt, Jacks Zahlen falsifiziert):**
+- SBC-Quote FY2025: 7,67% (SBC $54,3 Mio. / Umsatz $707,6 Mio.), TTM Q2'26: 7,40% (SBC $56,0 Mio. / Umsatz $756,3 Mio.) — beide klar unter der 15%-Schwelle.
+- Verwässerung (Diluted Shares Q2'26 vs. Q2'25 YoY): +1,34% — unter der 2%-Schwelle.
+- **☢ SBC-INFECTION-Flag: nicht aktiv.**
+- CFO-Wechsel: Sumeet Gagneja (SVP & CFO) seit 29.04.2026, Nachfolger von Interim-CFO John Allen (zuvor permanenter CFO Desmond Lynch, Rücktritt 04.02.2026/wirksam 27.02.2026).
+
+**Datenintegritäts-Fund:** Jack (Gemini, mit aktivierter Suche) lieferte bei beiden Punkten falsche, unbelegte Werte — CFO-Wechseldatum "1.4.2026" mit Vorgänger "Rohit Kumar" (frei erfunden, existiert im echten 8-K nicht) sowie FY2025-SBC $76,2 Mio. statt real $54,3 Mio. Conans Zahlen stimmten exakt mit der per WebFetch direkt geprüften SEC-Quelle überein (10-Q/8-K). Kein Grund, Jack künftig grundsätzlich zu misstrauen, aber ein konkreter Beleg dafür, dass Live-Suche alleine keine Primärquellen-Verifikation ersetzt — besonders bei spezifischen Namen/Daten. In `reports/RMBS-agent-deepdive-2026-09-09.html` Seite 8 als Datenintegritäts-Warnstrip dokumentiert.
+
+---
+
 ## PDF
 
-`reports/RMBS-agent-deepdive-2026-09-09.pdf` — vollständiger Full Deep Dive nach kanonischem Seitengerüst (10 Seiten), inkl. Kundenkonzentrations-Vertiefung, Piotroski-Divergenz-Box. Am 10.09.2026 vollständig auf NVO-Referenzniveau nachgezogen: DCF-Bear/Base/Bull jetzt auch als Balkenchart (Seite 5), Bruttomargen-Verlauf 2021-TTM als neue Chart (Seite 5, Jack+Conan-recherchiert, Kernbefund: keine Erosion, Stabilisierung ~80% seit 2024), WACC-Sensitivitätsmatrix (Seite 5), Kursverlauf mit DCF-Fair-Value-Zonen + KGV-Verlauf-Chart (Seite 6), Kapitalrückführung nach Seite 8 verschoben.
+`reports/RMBS-agent-deepdive-2026-09-09.pdf` — vollständiger Full Deep Dive nach kanonischem Seitengerüst (10 Seiten), inkl. Kundenkonzentrations-Vertiefung, Piotroski-Divergenz-Box. Am 10.09.2026 vollständig auf NVO-Referenzniveau nachgezogen: DCF-Bear/Base/Bull jetzt auch als Balkenchart (Seite 5), Bruttomargen-Verlauf 2021-TTM als neue Chart (Seite 5, Jack+Conan-recherchiert, Kernbefund: keine Erosion, Stabilisierung ~80% seit 2024), WACC-Sensitivitätsmatrix (Seite 5), Kursverlauf mit DCF-Fair-Value-Zonen + KGV-Verlauf-Chart (Seite 6), Kapitalrückführung nach Seite 8 verschoben. Zusätzlich am 10.09.2026 (nach externem Gemini-Review, siehe Nachtrag unten): SBC-Infection-Check mit echten Zahlen (Flag nicht aktiv) und CFO-Wechsel/M&A-Risiko-Box auf Seite 8 ergänzt.
