@@ -2574,6 +2574,60 @@ NIEDRIG→ERHÖHT) einen Hinweis in der Tages-Mail aus, aber KEINE
 automatische Handlungsempfehlung (gleiche Einordnung-nicht-Handlungs-
 anweisung-Logik wie beim übrigen Makro-Kontext oben).
 
+**v2-Erweiterung (2026-09-10, gleicher Tag, nach Vorlage von Brians
+externem Referenzsystem "Quantical" – Tier-Gewichtung + mehr Indikatoren,
+Screenshots verglichen und übernommen wo methodisch sauber möglich):**
+Quantical gewichtet Indikatoren nach Vorhersagekraft (×1/×2/×3) statt sie
+alle gleich zu behandeln – das übernehmen wir, weil es strenger ist als
+die v1-Flachskala. **Weiterhin gilt Core-Rule 13 unverändert** – auch
+Quanticals eigene "Fällt weiter?"-Prozentzahlen (55%/45%/40%/30% je
+Drawdown-Tiefe) werden NICHT ungeprüft übernommen, siehe eigener
+Backtest-Vorbehalt unten.
+
+| Tier (Gewicht) | Indikator | 0 Pkt | 1 Pkt | 2 Pkt | 3 Pkt |
+|---|---|---|---|---|---|
+| 3 (×3) | Zinskurve (2s10s/3m10y) | normal | flach/spätzyklisch | – | invertiert |
+| 3 (×3) | US-HY-Credit-Spread (OAS) | <300 Bps stabil | 300-500 Bps/ausweitend | – | >500 Bps/schnell ausweitend |
+| 3 (×3) | Marktbreite-Divergenz (RSP/SPY-Ratio, Trend) | stabil/steigend | – | fallend | stark fallend (enge Marktführung) |
+| 2 (×2) | VIX-Niveau | <15 | 15-20 | 20-25 | >25 |
+| 2 (×2) | CBOE-SKEW-Index (v.a. in Kombi mit niedrigem VIX = "gefährliche Divergenz") | <120 | 120-140 | 140-150 | >150 UND VIX <16 gleichzeitig |
+| 2 (×2) | Sektorrotation (XLU/XLY-Ratio, Trend) | fallend/stabil | – | steigend (defensive Rotation) | stark steigend |
+| 2 (×2) | Kupfer/Gold-Verhältnis (Trend) | steigend/stabil | – | fallend (Wachstumssorge) | stark fallend |
+| 2 (×2) | Kreditstress (HYG/LQD-Ratio, Trend) | steigend/stabil | – | fallend | stark fallend |
+| 2 (×2) | Zentralbank-Event-Risiko (7 Tage) | kein Meeting | Konsens >70% | Coin-Flip (40-60%) | Überraschungs-Wahrsch. >65% |
+| 2 (×2) | Chicago-Fed-NFCI | <0 (locker) | 0-0,3 | 0,3-0,5 | >0,5 (restriktiv) |
+| 2 (×2) | Sahm-Regel | <0,25 | 0,25-0,35 | 0,35-0,50 | ≥0,50 (Trigger) |
+| 1 (×1) | S&P vs. 200D-SMA + Richtung | über SMA, steigend | über SMA, flach | unter SMA, SMA steigend | unter SMA, SMA flach/fallend |
+| 1 (×1) | Fear & Greed | 25-75 ODER <25 | – | >75 (Extreme Greed) | – |
+| 1 (×1) | Geopolitischer Schock-Flag | keiner | bekannt, keine Eskalation | – | neue Eskalation |
+| 1 (×1) | Öl-Preis-Regime vs. 3M-Baseline | normal | +15% | +30% | – |
+| 1 (×1) | Bewertungsbreite (Depot+Watchlist 🟠/🔴-Anteil) | <20% | 20-40% | >40% | – |
+| 1 (×1) | Michigan-Verbrauchervertrauen (Malus wegen bekannter Unzuverlässigkeit seit 2022/"Vibecession" – max. 1 Pkt statt 3) | ≥65 | <65 | – | – |
+| 1 (×1) | 10J-Realzins (TIPS) | <1% | 1-2% | 2-3% | >3% |
+| 1 (×1) | Erstanträge Arbeitslosenhilfe (4W-Schnitt, Trend vs. Zyklustief) | stabil | +10-20% | +20-30% | >30% |
+
+**Summe → Bucket, als % vom aktuellen Maximum (steigt mit Anzahl aktiver
+Indikatoren, daher relativ statt absolut):** 0-20% 🟢 NIEDRIG · 20-40% 🟡
+ERHÖHT · 40-65% 🟠 HOCH · 65-100% 🔴 SEHR HOCH.
+
+**Neu instrumentierte Ratio-Indikatoren ohne eigene Historie (Marktbreite,
+Sektorrotation, Kupfer/Gold, Kreditstress):** werden ab 2026-09-10 täglich
+mitgeloggt, aber ERST NACH ca. 20-30 Handelstagen eigener Baseline
+gepunktet (0 Punkte in der Übergangsphase, explizit als "Baseline im
+Aufbau" markiert) – ein Trend-/Schwellenwert ohne eigene Historie wäre
+selbst wieder Scheingenauigkeit.
+
+**Backtest-Vorbehalt (unverändert, jetzt auch für Quanticals
+Drawdown-Tabelle):** Die auf dem Screenshot gezeigte Tabelle
+("-10%/-15%/-20%/-25% → Ø-Folgerendite, Perzentil-Spanne, 'Fällt
+weiter?'-Quote") ist grundsätzlich der RICHTIGE Ansatz – eine echte,
+aus historischen Daten abgeleitete Rückschau-Häufigkeit statt einer
+erfundenen Zahl. Das wird als eigenständiges Backtest-Projekt mit echten
+S&P-500-Kursdaten (Twelve Data, mehrjährige Historie) nachgebaut, sobald
+Zeit dafür eingeplant ist – nicht die Zahlen von Quanticals Screenshot
+übernehmen, da deren genaue Methodik (Zeitraum, Datenbasis) nicht
+einsehbar ist.
+
 - **Politischer/Wahlkalender (langfristiger Horizont, nicht täglich neu
   recherchiert – Pflege im Wochenfazit, nur Erinnerungs-Hinweis im
   Trigger-Check ab ca. 14 Tage vorher):** US-Midterms (2026-11-03) als
