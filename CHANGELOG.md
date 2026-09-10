@@ -4,6 +4,8 @@ Chronologisches Änderungsprotokoll für Agent-Playbook.md, die Methodik-Dateien
 
 **2026-09-10, Full-Deep-Dive-Vollständigkeits-Härtung (Brian, nach HAWK/RMBS-Nachbesserung):** "Kein Zwang zur vollen Länge" im kanonischen Seitengerüst darf nicht mehr pauschal aus Bucket/Pfad abgeleitet werden ("Scout braucht kein DCF" ≠ "Scout braucht keine Bewertungs-Charts") — jede Auslassung jetzt einzeln pro Zeile begründet. Zwei Referenz-PDFs statt einer: NVO (TMR-Pfad) und HAWK-Fassung vom 10.09.2026 (Scout-Pfad). Betrifft Agent-Playbook.md, Abschnitt "Kanonisches Seitengerüst für Full Deep Dive".
 
+**2026-09-10, zwei neue Rigor-Punkte 37/38 (Gemini-Vorschlag, gemeinsam mit Gemini verfeinert):** Die von Gemini vorgeschlagene sequenzielle Jack→Conan-"Zahnrad"-Verkettung wurde verworfen (Ankereffekt-Risiko, zerstört die Unabhängigkeit hinter echten Divergenzen wie RMBS' Piotroski 4/9 vs. 7/9). Zwei ihrer Zusatzmodule waren aber ein echter Mehrwert und wurden übernommen: Punkt 37 Portfolio-Fit/Klumpenrisiko-Check (reine Aegis-Synthese, Seite 10, nutzt nur bestehende Depot-/Cluster-Daten) und Punkt 38 Management-Tonalität über 2-4 Earnings-Call-Transkripte (Tone-Shift/Promises-vs-Reality/Dodge-Factor, Teil von Jacks und Conans eigener Recherche). Betrifft Agent-Playbook.md (Punkte 37/38 + Seitengerüst-Tabelle), `prompts/jack-moat-reaper-v11.7.md` (v11.12→v11.13) und `prompts/conan-the-scout-v1.12.md` (v1.17→v1.18).
+
 **Pflege (neu, 2026-09-09, Priorität 4 aus dem Playbook-Meta-Review):** Jede
 künftige substantielle Änderung an Agent-Playbook.md, den Methodik-Dateien
 (`prompts/*.md`) oder den Hermes-`SKILL.md`-Dateien bekommt zusätzlich zur

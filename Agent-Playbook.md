@@ -4698,6 +4698,51 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     (echtes Signal). Ergebnis "kein klares Signal in beide Richtungen"
     (wie bei NVO) ist ein vollwertiges, meldenswertes Ergebnis – kein
     Fehlschlag der Recherche.
+37. **Portfolio-Fit & Klumpenrisiko-Check (neu, 2026-09-10, Gemini-Vorschlag
+    für einen "Zahnrad"-Workflow – die sequenzielle Umbau-Idee selbst wurde
+    verworfen, siehe Diskussion unten, aber zwei ihrer Zusatzmodule waren
+    ein echter Mehrwert).** Eine Position kann isoliert exzellent sein und
+    trotzdem das Depot übermäßig in einem Cluster exponieren. **Ab sofort
+    Pflicht bei Full Deep Dive, Teil der Aegis-Synthese (Seite 10), universell:**
+    Kandidat gegen die bestehende monatliche Faktor-/Korrelations-Analyse
+    (siehe [[project_faktor_korrelations_analyse]] – Gov/Defense-, Hochbeta-,
+    Zinssensitiv-Cluster) und `depot/kategorisierung.md` prüfen: passt der
+    Wert in ein bereits konzentriertes Cluster? Korreliert er sichtbar mit
+    bestehenden Positionen? Ergebnis ist eine konkrete Positionsgrößen-
+    Einordnung ("Cluster X bereits bei Y% – empfohlene Start-Tranche
+    reduziert" oder "unkorreliert, Standard-Tranche unproblematisch"), keine
+    neue Datenerhebung – nutzt ausschließlich bereits vorhandene Depot-Daten.
+38. **Management-Tonalität über mehrere Earnings Calls (neu, 2026-09-10,
+    gleicher Auslöser wie Punkt 37).** Ergänzt die bestehende Management-
+    Glaubwürdigkeits-Matrix (Seite 4) um eine Sprach-Dimension neben der
+    reinen Fakten-Transparenz. **Ab sofort Pflicht bei Full Deep Dive, von
+    Jack UND Conan als Teil ihrer Recherche mit abgedeckt (keine
+    Zusatzrunde):** über die letzten 2-4 Earnings-Call-Transkripte prüfen:
+    Tone-Shift (Optimismus → vage Phrasen wie "Headwinds"/"Macro
+    Environment"), Promises-vs-Reality (wurden Vorquartals-Ansagen
+    eingehalten), Dodge-Factor (weicht Management konkreten Analysten-Fragen
+    zu Margen/Churn/Konzentration erkennbar aus). **Kein Zwang bei zu
+    wenigen Calls** (junge IPOs mit erst 1-2 Calls, siehe HAWK) – dann
+    explizit "noch nicht genug Calls für einen Tonalitäts-Trend" vermerken,
+    nicht erzwingen oder aus einem einzelnen Call hochrechnen.
+
+**Warum die "Zahnrad"-Idee selbst NICHT übernommen wurde (2026-09-10):**
+Gemini schlug vor, Jack (quantitativ) und Conan (qualitativ/Devil's
+Advocate) sequenziell zu verketten – Conan bekäme Jacks fertige Zahlen als
+Angriffsziel. Das würde den Ankereffekt (Anchoring Bias) einführen und
+genau die Art unabhängiger Divergenz zerstören, die der eigentliche Wert
+des 3-fach-Cross-Checks ist (Beispiel: die echte Piotroski-F-Score-
+Divergenz 4/9 vs. 7/9 bei Rambus wäre bei sequenzieller Verkettung
+vermutlich glattgebügelt worden, da Conan Jacks Zahl schon vor Augen
+gehabt hätte). Jack und Conan bleiben deshalb bei vollständig unabhängiger
+paralleler Recherche (siehe [[feedback_gleiche_methodik_beide_kis]]) – nur
+in der Aegis-Synthese (Seite 10, NACH Vorliegen beider unabhängiger
+Berichte) treffen ihre Ergebnisse aufeinander. Punkte 37/38 oben sind die
+einzigen tatsächlich neuen, unabhängig validierten Bausteine aus diesem
+Vorschlag (auch Gemini selbst stimmte dieser Einordnung nach Rückfrage
+zu). Die übrigen zwei vorgeschlagenen Module (Valuation-Safety-Zonen,
+Kill-Kriterien) existierten bereits als Abstauber-Zone bzw.
+Thesis-Kill-Sheet 🔪 – keine neuen Bausteine, nur andere Namen.
 
 ### 📄 Kanonisches Seitengerüst für Full Deep Dive (neu, 2026-09-09,
 Brian: "könnte man mit diesem Report jetzt bei jeder Analyse anwenden?")
@@ -4714,13 +4759,13 @@ die Obergrenze real um eine Seite verschoben, siehe unten).
 | 1 | Cover | Masthead, Hook-These, Kernzahlen | universell |
 | 2 | Cross-Check-Übersicht | 3-Stimmen-Leiste, Jack/Conan-Divergenz-Analyse, Score-/DCF-Zusammenfassung | universell |
 | 3 | DNA-Check | Vollständige K+E-Kriterien-Tabelle (Punkt 29) | universell im Format, Kriterien selbst bereits sektoradaptiv über die bestehenden Sektor-Overrides (Finanz/SaaS/Piotroski/Infrastruktur, siehe jack-moat-reaper-v11.7.md) |
-| 4 | Historie | 5J-Finanzhistorie, Guidance-Track-Record, Management-Glaubwürdigkeits-Matrix | universell |
+| 4 | Historie | 5J-Finanzhistorie, Guidance-Track-Record, Management-Glaubwürdigkeits-Matrix (inkl. Tonalitäts-Dimension, Punkt 38) | universell |
 | 5 | Chart | Kursverlauf (Technical) | universell |
 | 6 | Bewertung | DCF-Szenarien, Sensitivitätsmatrix (Punkt 24), sektorspezifische Struktur-Risiko-Vertiefung (Punkt 35) falls hier passender als Seite 9 | Bewertungsmethodik universell, Struktur-Risiko-Inhalt sektorabhängig |
 | 7 | Kill-Sheet | Thesis-Kill-Sheet (Punkt 26), Peer-Vergleich, historische Bewertungs-Bandbreite | universell |
 | 8 | Kapitalstruktur | Kapitalrückführungs-Historie, SBC-vs-Buyback-Netting (Punkt 23), Offene Schwächen, Datenintegritäts-Warnstrip | universell (SBC-Netting entfällt mangels Buyback-Programm ersatzlos, siehe Punkt 23 – kein Zusatzaufwand) |
 | **9** | **Sektor-Vertiefung (NEU)** | **Forward-Pipeline-/Katalysator-Ausblick (Punkt 34) + Struktur-Risiko-Check (Punkt 35) + Insider-Transaktionen (Punkt 36)** | **Punkt 34+35 komplett sektorabhängig ausgeprägt (siehe dortige Beispiele je Sektor), Punkt 36 universell** |
-| 10 | Fazit | Finale Synthese, Watchlist-Konsequenz, Quellen | universell |
+| 10 | Fazit | Finale Synthese, Watchlist-Konsequenz, Portfolio-Fit & Klumpenrisiko-Check (Punkt 37), Quellen | universell |
 
 **Was NICHT automatisch 1:1 übernommen wird:** die KONKRETEN Kennzahlen/
 Fragestellungen auf Seite 9 (und teils Seite 6) – ein Halbleiterwert
