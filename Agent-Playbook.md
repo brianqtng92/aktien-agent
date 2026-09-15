@@ -1286,6 +1286,52 @@ Herleitung an der jeweils verlinkten Stelle, nicht diese Tabelle.
        Steuer die Compounding-Basis schmälert, besteht dieses Gate NICHT.
        Verhindert unnötigen Portfolio-Umschlag ("Shiny Object Syndrome") rein
        wegen marginaler Verbesserungen.
+    7. **Konkretisierung von "deutlich" über einen Anker-Stufen-Sprung
+       (2026-09-16, Anstoß durch Raketentonis "55555"-Vierkampf-Bericht —
+       dort eine pauschale 10-15%-Tauschhürde; hier bewusst NICHT übernommen,
+       weil eine freistehende Prozentzahl ohne Herleitung selbst eine Form
+       falscher Präzision wäre. Stattdessen an unser eigenes, bereits
+       bestehendes Rating-Gerüst angelehnt):** "deutlich überzeugender" (Punkt
+       2 und 6) heißt konkret: der Kandidat erreicht eine klar HÖHERE Anker-/
+       Rating-Stufe als die schwächste Position – nicht nur einen höheren
+       Punktwert INNERHALB derselben Stufe. TMR: mindestens ein voller
+       AGENT-SCORE-Anker-Sprung (z.B. 3-5 GRENZFALL/SPEKULATION →
+       6-8 QUALITÄTS-KERN, siehe jack-moat-reaper-v11.7.md, Sektion
+       AGENT SCORE – ANKER & SKALA). Scout: mindestens ein voller
+       EV_Multiple-Band-Sprung (🔴 <1,0x → 🟡 1,0-1,5x → 🟢 ≥1,5x, siehe
+       conan-the-scout-v1.12.md). Liegen Kandidat und schwächste Position in
+       DERSELBEN Anker-/Rating-Stufe, gilt der Kandidat NICHT automatisch als
+       "deutlich überzeugender", selbst bei einem leicht höheren Punktwert –
+       dann zusätzlich prüfen, ob er bei der MEHRHEIT der direkt
+       vergleichbaren K-Kriterien klar vorne liegt (kein reiner
+       Rundungsvorteil); ist auch das nicht eindeutig der Fall, bleibt es bei
+       BEOBACHTEN. Ergänzt (ersetzt nicht) das bestehende steuerliche
+       Rechenmodul aus Punkt 6 – beide Prüfungen (Anker-Sprung UND
+       Steuer-/Turnover-Rechnung) müssen bestanden werden, nicht nur eine.
+    8. **Netto-Cash-Pflicht vor einer Ersetzen-Empfehlung (2026-09-16,
+       gleicher Anstoß wie Punkt 7 — Raketentonis Bericht setzte explizit
+       KEINEN neuen Cashbetrag an, solange Nettoerlös/Gebühren/FX/Valuta
+       eines Verkaufs nicht brokerbestätigt waren; hier auf unser eigenes
+       Live-Tooling übertragen statt manuell nachgerechnet, da wir im
+       Gegensatz zu ihm direkten API-Zugriff auf den echten Cash-Stand
+       haben):** Eine "Ersetzen"-Empfehlung (Punkt 5) benennt den Verkauf der
+       schwächsten Position und den Kauf des Kandidaten NIE als
+       gleichzeitigen Doppelschritt mit dem Brutto-Verkaufspreis als
+       angenommenem Kaufbudget. Ablauf statt dessen: Verkauf zuerst
+       ausführen/bestätigen lassen → DANACH den tatsächlich verfügbaren
+       Cash-Bestand über `get_portfolio_cash_breakdown` (Scalable) bzw. den
+       entsprechenden Broker-Stand (`depot/*.md`, Abschnitt "Budget &
+       Cashflow") abrufen → erst DANN die Kauf-Tranche final bemessen. Der
+       Brutto-Verkaufspreis wird NIE rechnerisch als sofort verfügbares
+       Kaufbudget angenommen (Gebühren, FX-Umrechnung bei
+       Fremdwährungswerten und Settlement-Verzögerung können den tatsächlich
+       verfügbaren Betrag mindern). Ist das Live-Tool nicht verfügbar, gilt
+       jede manuelle Schätzung ausdrücklich als "ungeprüfte Schätzung, kein
+       bestätigter Cash-Stand" – keine Kauf-Order-Vorbereitung auf dieser
+       Basis. Ergänzt den bestehenden allgemeinen Cashreserve-Check (siehe
+       Zonen-Empfehlung-Cross-Check oben, `get_portfolio_cash_breakdown`) um
+       den Sonderfall, dass die Cash-Quelle selbst erst durch den im
+       gleichen Schritt empfohlenen Verkauf entsteht.
     **Geltungsbereich:** gilt für den proaktiven Bodenbildungs-Kauf-Anlass im
     täglichen Trigger-Check (Eskalationslogik, Anlass g), für die "Mögliche
     Käufe"-Abschnitte in Wochenfazit und Monatsrecap, für Sofort-Kauf-Funde aus
@@ -4641,6 +4687,18 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     Blick erkennbar machen, wie im Digital-Arts-Vorbild (dort: höchste
     Marge im Sektor bei gleichzeitig niedrigstem Multiple als zentraler
     Bewertungs-Fund).
+    **Erweiterung (2026-09-15, Abgleich mit Anthropics offiziellem
+    `/comps`-Skill aus `anthropics/financial-services`):** sobald ≥5 direkt
+    vergleichbare Peers vorliegen, zeigt die Tabelle zusätzlich zum Median
+    die volle Streuung – Min/25.Perzentil/Median/75.Perzentil/Max statt nur
+    des einzelnen Medianwerts. Grund: ein Median allein verschleiert, ob die
+    Peer-Gruppe eng beieinander liegt (Median aussagekräftig) oder stark
+    streut (Median wenig aussagekräftig) – genau die Art falscher Präzision,
+    die Core-Rule 13 an anderer Stelle bereits verbietet. Bei 3-4 Peers
+    bleibt es bei der bisherigen reinen Median-Zeile (Perzentile bei so
+    wenigen Werten wenig aussagekräftig, kein Mehrwert). Kein Zusatzaufwand
+    bei der Datenbeschaffung – nur eine zusätzliche Auswertung derselben
+    ohnehin recherchierten Peer-Werte.
 20. **Bear/Base/Bull-DCF-Tabelle bekommt zusätzlich explizite qualitative
     Kernannahmen je Szenario (neu, gleicher Anlass wie Punkt 19).** Bisher
     zeigte die Tabelle nur Wachstumsraten/Terminal-g als Zahlen. Direkt
@@ -4996,6 +5054,37 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     wenigen Calls** (junge IPOs mit erst 1-2 Calls, siehe HAWK) – dann
     explizit "noch nicht genug Calls für einen Tonalitäts-Trend" vermerken,
     nicht erzwingen oder aus einem einzelnen Call hochrechnen.
+39. **Terminal-Value-Cross-Check über Exit-Multiple neben Gordon-Growth
+    (neu, 2026-09-15, Abgleich mit Anthropics offiziellem `/dcf`-Skill aus
+    `anthropics/financial-services`).** Jacks FULL DCF berechnete den
+    Terminal Value bisher ausschließlich über Gordon-Growth-Perpetuity
+    (TV = FCF_J5×(1+g)/(WACC−g)). **Ab sofort zusätzlich, nur im TMR-Pfad
+    (Jack, kein DCF bei Scout/Conan):** ein zweiter Terminal Value über die
+    Exit-Multiple-Methode (Peer-Median-EV/EBITDA × EBITDA_J5, siehe
+    jack-moat-reaper-v11.7.md SCHRITT 5, neue Regel 38) – Standard in
+    jedem professionellen DCF-Modell, weil Gordon-Growth extrem empfindlich
+    auf den (WACC−g)-Spread reagiert, während Exit-Multiple an echter
+    Marktbepreisung hängt. **Kein Zusatzaufwand:** nutzt exakt dieselben
+    Peer-EV/EBITDA-Werte, die ohnehin für die Peer-Multiple-Vergleichstabelle
+    (Punkt 19) recherchiert werden. Weicht beide TV-Methoden um >30% ab,
+    ist eine Pflicht-Begründung fällig, welche Methode hier plausibler ist
+    – ändert NICHT die primäre Base-Case-FV, ist reine Zusatz-Absicherung
+    analog zur bestehenden Reverse-DCF-Sanity-Rolle. Bei <3 vergleichbaren
+    Peers mit EV/EBITDA entfällt der Schritt ersatzlos.
+
+**Woher Punkt 39 und die Erweiterung von Punkt 19 kommen (2026-09-15):**
+Brian fragte nach dem offiziellen Anthropic-Repo `anthropics/financial-
+services` ("Claude for Financial Services") – ein Marketplace aus Agents/
+Skills/MCP-Connectoren für institutionelle Finance-Teams (Investmentbanken/
+PE/Fund-Admin). Die meisten Bausteine (GL-Reconciler, KYC-Screener,
+LBO-Modelle, IC-Memos, Enterprise-Datenconnectoren wie FactSet/PitchBook/
+Moody's) sind für unseren privaten Einzeldepot-Agenten irrelevant – kein
+Bezug zum Anwendungsfall, teils kostenpflichtige Lizenzen, die Brian nicht
+hat. Der gezielte Abgleich der `/dcf`- und `/comps`-Skills gegen unsere
+eigene Methodik ergab: die Terminal-Value->70%-EV-Warnung existierte bei
+uns bereits identisch (jack-moat-reaper-v11.7.md, ursprüngliche Regel 25,
+unabhängig entwickelt) – gute Bestätigung, keine Lücke. Die beiden oben
+umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
 
 **Warum die "Zahnrad"-Idee selbst NICHT übernommen wurde (2026-09-10):**
 Gemini schlug vor, Jack (quantitativ) und Conan (qualitativ/Devil's
