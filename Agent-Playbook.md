@@ -2609,6 +2609,8 @@ Backtest-Vorbehalt unten.
 | 1 (×1) | Erstanträge Arbeitslosenhilfe (4W-Schnitt, Trend vs. Zyklustief – Korrelation zur Sahm-Regel bewusst in Kauf genommen, siehe Audit-Divergenz unten) | stabil | +10-20% | +20-30% | >30% |
 | 1 (×1) | Shiller-KGV / CAPE-Ratio (S&P 500) — **bewusst niedriges Gewicht: strukturelles Langfrist-Signal, KEIN Timing-Indikator** (kann jahrelang "hoch" bleiben, siehe justETF-Quelle) | <28 | 28-35 | 35-40 | >40 (nahe historischem Extrem, nur 1999/2000 höher) |
 | 1 (×1) | Buffett-Indikator (Gesamtmarktkap./BIP) — **gleiche Einschränkung wie CAPE (kein Timing-Signal), zusätzlich drei strukturelle Verzerrungen (justETF, 10.09.2026): (1) Globalisierung — Auslandsumsatz-Anteil ~40% macht "inländische Marktkap. vs. inländisches BIP" ungenauer als früher; (2) externe Faktoren wie Geldpolitik/internationale Kapitalströme können das Verhältnis unabhängig von echter Überbewertung verzerren; (3) sektorblind — ein tech-/wachstumsschwerer Markt (wie der US-Markt aktuell) zeigt strukturell höhere Werte als traditionellere Volkswirtschaften, ohne dass das automatisch Überbewertung bedeutet** | <100% | 100-150% | 150-200% | >200% |
+| 1 (×1) | US-M2-Geldmenge (Wachstum J/J) — **neu, 2026-09-15, echter Lücken-Fund: war im ursprünglichen Quantical-Vorbild enthalten, beim Bau von v2 versehentlich nicht übernommen** (M2-Kontraktion 2022-23 fiel historisch mit dem Bärenmarkt zusammen) | 2-6% (normal) | >6% (locker/inflationär) | 0-2% (schwach) | <0% (Kontraktion) |
+| 1 (×1) | China-Kredit-/Immobilien-Stress (qualitativ, wie Geopolitik-Flag) — **neu, 2026-09-15: war bereits in macro_context.md "Weitere Dimensionen" qualitativ getrackt, bisher nicht in den Score eingebunden (gleiches Muster wie der DXY-Fund im Audit)** | keine Stress-Signale | bekannte, chronische Schwäche ohne neue Verschärfung | – | akute neue Verschärfung (z.B. großer Entwickler-Default-Schub) |
 
 **Summe → Bucket, als % vom aktuellen Maximum (steigt mit Anzahl aktiver
 Indikatoren, daher relativ statt absolut):** 0-20% 🟢 NIEDRIG · 20-40% 🟡
@@ -2726,6 +2728,38 @@ gegenüber v4 (29,2%) ist durch echte, neu recherchierte Fakten getrieben
 nicht durch Methodik-Änderungen — genau das Verhalten, das ein
 seriöser Score zeigen soll, wenn sich die Faktenlage tatsächlich
 verschärft.
+
+**v6-Erweiterung (2026-09-15, Brian: "Gibt's irgendwelche Indikatoren,
+die ich vergessen habe?"):** Zwei echte Lücken geschlossen (siehe
+Tabelle oben): US-M2-Geldmenge (war im Quantical-Vorbild enthalten,
+beim v2-Bau versehentlich übersprungen) und China-Kredit-/Immobilien-
+Stress (war bereits qualitativ in macro_context.md getrackt, aber wie
+DXY vor dem Audit nie in den Score eingebunden). Aktuelle Werte: M2
++3,5% J/J (nur "Anfang 2026"-Stand auffindbar, September-Wert nicht
+sauber recherchierbar — 0 Pkt, normaler Bereich, aber als veraltet
+markiert) · China-Stress 2 Pkt (chronisch schwach: Unternehmenskredite
+seit 3 Jahren rückläufig, Haushaltskredite seit 6 Jahren, ~40%
+Redefault-Quote bei restrukturierten Onshore-Bonds, Vanke-Downgrade —
+aber KEINE frische Verschärfung diese Woche, daher nicht die höchste
+Stufe).
+
+**Bewusst NICHT hinzugefügt (Jarvis-Abwägung, Brian zur Entscheidung
+vorgelegt statt automatisch ergänzt):** Bankensektor-/Repo-Markt-Stress
+(z.B. KBW-Bank-Index-Relativperformance oder SOFR-OIS-Spread — echte
+"Plumbing"-Stress-Frühindikatoren, aber zusätzlicher laufender
+Rechercheaufwand ohne aktuellen akuten Anlass), Margin-Debt-Niveau
+(NYSE/FINRA, klassischer Leverage-Gauge, nur monatlich verfügbar),
+Konsumentenkredit-Ausfallraten (Ergänzung zu Sahm-Regel/Erstanträgen
+von der Schulden- statt Arbeitsmarkt-Seite), Gewinn-Revisions-Breite
+(bereits im Jack-Audit vom 10.09. als Lücke benannt, dort ebenfalls
+bewusst zurückgestellt). Marktkonzentrationsrisiko (Top-10-S&P-500-
+Gewicht) wurde geprüft, aber NICHT ergänzt — wird bereits ausreichend
+von der bestehenden Marktbreite-Divergenz (RSP/SPY) abgedeckt, ein
+Extra-Indikator dafür wäre Redundanz nach demselben Muster, das der
+Audit schon einmal korrigiert hat. Aktueller Stand: 23 Indikatoren
+(4/8/11 je Tier) plus die zwei neuen = 25 – nahe an der Komplexitäts-
+Grenze, die Jacks Audit bereits als Risiko benannt hat. Vor weiteren
+Ergänzungen: eher etwas streichen als addieren.
 
 **Neu instrumentierte Ratio-Indikatoren ohne eigene Historie (Marktbreite,
 Sektorrotation, Kupfer/Gold, Kreditstress):** werden ab 2026-09-10 täglich
