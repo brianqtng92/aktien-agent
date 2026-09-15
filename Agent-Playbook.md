@@ -5086,6 +5086,40 @@ uns bereits identisch (jack-moat-reaper-v11.7.md, ursprüngliche Regel 25,
 unabhängig entwickelt) – gute Bestätigung, keine Lücke. Die beiden oben
 umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
 
+40. **Unternehmensspezifischer Leitindikator im Fact-Pack bei Rohstoff-/
+    Preis-Abhängigkeit (neu, 2026-09-16, von Brian gefordert: "falls bei
+    einer Aktie wie Shell oder Rio Tinto die Marktentwicklung eine Rolle
+    spielt, die passenden Makro-Daten/Indikatoren mit reinpacken").**
+    Die zentralisierte MAKRO-KONTEXT-Momentaufnahme (Fear&Greed/VIX/Zinsen/
+    FX/Indizes, siehe Korrektur-Risiko-Score-Abschnitt) ist bewusst
+    portfolio-generisch gehalten und deckt damit NICHT automatisch den
+    einen externen Preistreiber ab, der bei einem einzelnen Rohstoff-/
+    Energie-/Agrar-/Schifffahrtswert tatsächlich das Geschäft bewegt. **Ab
+    sofort Pflicht bei Full Deep Dive UND Quick Filter, sobald die Aktie
+    eine erkennbar dominante externe Preis-/Nachfrage-Abhängigkeit hat:**
+    Aegis identifiziert VOR dem Dispatch an Jack den 1-3 wichtigsten
+    unternehmensspezifischen Leitindikator/-en und liefert dessen aktuellen
+    Stand + Mehrjahres-Vergleich (nicht nur einen Punktwert) explizit ins
+    Fact-Pack – z.B. Shell/Exxon/BP → Brent/WTI + Raffineriemarge; Rio
+    Tinto/BHP/Vale → Eisenerzpreis 62% Fe CFR China + Kupferpreis + China-
+    Bau-PMI; Reedereien → Baltic Dry Index/Frachtraten; Airlines →
+    Kerosinpreis + Load Factor; Goldminen → Goldpreis + All-in-Sustaining-
+    Cost-Spanne. Technisch umgesetzt über die neue LEITINDIKATOR-PFLICHT
+    (Regel 39) in `jack-moat-reaper-v11.7.md` (v11.14→v11.16) – die
+    Zyklus-Overlay-Phasenbestimmung (SCHRITT 2C) referenziert diesen
+    Indikator explizit, statt die Zyklusphase nur aus der Eigenhistorie des
+    Unternehmens zu schätzen. **Tag-Pflicht (Nachschärfung 2026-09-16,
+    Selbstkritik nach Rückfrage):** der Leitindikator-Wert trägt IMMER ein
+    [LIVE]/[VERIFIED]/[TRAINING]-Tag wie jede andere Kennzahl im System –
+    die erste Fassung dieses Punktes hatte das versäumt, ein Bruch mit der
+    sonst ausnahmslosen Data-Integrity-Tag-Pflicht. **Bewusst nur Jack/TMR-Pfad:** Rohstoff-/
+    Energie-Großkonzerne wie Shell oder Rio Tinto sind reife, profitable
+    Bucket-A/C-Fälle und laufen ohnehin nie über den Scout-Pfad – keine
+    Änderung an `conan-the-scout-v1.12.md` nötig. **Kein neuer eigener
+    Recherche-Aufwand bei Jack:** die Leitindikator-Recherche bleibt wie die
+    übrige Makro-Analyse zentral bei Aegis, Jack referenziert nur den
+    mitgelieferten Wert (oder vermerkt "nicht mitgeliefert").
+
 **Warum die "Zahnrad"-Idee selbst NICHT übernommen wurde (2026-09-10):**
 Gemini schlug vor, Jack (quantitativ) und Conan (qualitativ/Devil's
 Advocate) sequenziell zu verketten – Conan bekäme Jacks fertige Zahlen als
