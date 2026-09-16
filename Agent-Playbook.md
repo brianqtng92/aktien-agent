@@ -4632,6 +4632,18 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
    Risiko greifbar statt abstrakt. Wenn nicht auffindbar: wie bisher
    anonymisiert, aber explizit vermerken, dass keine Namen recherchierbar
    waren (kein stilles Weglassen).
+   **Erweiterung (2026-09-17, Kunden-Capex-Verknüpfung, Gemini-Vorschlag
+   nach der ANET-Gegenprüfung).** Ab einer benannten Einzelkunden-
+   Konzentration >15-20%: die eigene, öffentlich kommunizierte Capex-/
+   Investitionsguidance DIESES Kunden recherchieren (Earnings-Calls/
+   10-K des Kunden, nicht nur des analysierten Unternehmens) und explizit
+   gegen die eigene Wachstumsthese stellen – z.B. "Kunde X guidet Capex
+   2026 auf +40%, stützt damit die Umsatzthese" oder "Kunde X guidet
+   Capex-Verlangsamung, Risiko für die Wachstumsannahme". Macht die
+   Kundenkonzentration von einer abstrakten Prozentzahl zu einer konkret
+   überprüfbaren Abhängigkeit. Nur bei entsprechend hoher Konzentration –
+   sonst entfällt der Schritt ersatzlos (unverhältnismäßiger
+   Rechercheaufwand bei breiter Kundenbasis).
 7. **Eigenständige, proaktive "Offene Schwächen"-Sektion.** Getrennt vom
    bestehenden Devil's Advocate (der die BULL-These angreift): eine Sektion,
    die strukturelle Schwächen so benennt, wie das Management selbst sie
@@ -4764,6 +4776,13 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     wenigen Werten wenig aussagekräftig, kein Mehrwert). Kein Zusatzaufwand
     bei der Datenbeschaffung – nur eine zusätzliche Auswertung derselben
     ohnehin recherchierten Peer-Werte.
+    **Erweiterung (2026-09-17, EV/FCF als Standard-Kennzahl, Gemini-
+    Vorschlag nach der ANET-Gegenprüfung).** Neben Forward-KGV, EV/EBITDA
+    und PEG (Punkt 22, nur bei positivem Wachstum) bekommt die Peer-Tabelle
+    zusätzlich EV/FCF als Standardspalte – KGV allein kann bei hoher
+    SBC-/Capex-Last ein verzerrtes Bild geben, das EV/FCF direkter über
+    die tatsächliche Cash-Erzeugung korrigiert. Nutzt dieselben ohnehin
+    recherchierten Peer-Finanzdaten, kein Zusatzaufwand.
 20. **Bear/Base/Bull-DCF-Tabelle bekommt zusätzlich explizite qualitative
     Kernannahmen je Szenario (neu, gleicher Anlass wie Punkt 19).** Bisher
     zeigte die Tabelle nur Wachstumsraten/Terminal-g als Zahlen. Direkt
@@ -4879,6 +4898,19 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     bereits vorhanden (4 Aufstufungs- + 4 Abstauber-Trigger mit Ist-Werten
     im CLBT-Report), reine Konsolidierungs-/Auffindbarkeits-Verbesserung,
     kein neues Analyse-Element.
+    **Erweiterung (2026-09-17, graduierte Schwellenwerte, ChatGPT-Vorschlag
+    nach der ANET-Gegenprüfung).** Bisher sind Kill-Sheet-Trigger binär
+    (eingetreten/nicht eingetreten). Wo sich ein Trigger auf eine
+    kontinuierliche Kennzahl bezieht (z.B. Marktanteilsverschiebung,
+    Bruttomarge, Operating Margin): zusätzlich 2-3 abgestufte
+    Schwellenwerte mit je einer klaren Reaktion definieren statt nur EINER
+    binären Schwelle – z.B. "🟡 Marktanteilsverschiebung +2-3pp:
+    beobachten" / "🟠 +5pp: These neu bewerten" / "🔴 Bruttomarge dauerhaft
+    <60%: Moat-Substanz-Prüfung". Nutzt dieselben Trigger-Quellen wie
+    bisher (KSF-Scorecard/Struktur-Risiko/Debt-Maturity, siehe Punkt 45),
+    macht nur die Eskalationslogik explizit statt implizit. Nur wo eine
+    kontinuierliche Kennzahl zugrunde liegt – bei echten Ja/Nein-Ereignissen
+    (z.B. Führungswechsel) bleibt es bei der binären Form.
 27. **ARR-/Umsatzwachstums-Qualitätszerlegung als Best-Effort-Zusatz (neu,
     2026-09-08, ChatGPT-Cross-Review) – NUR wo offengelegt.** Wo ein
     Unternehmen New-Logo- vs. Expansion-/Cross-Sell-Anteil am ARR-Wachstum
@@ -4899,6 +4931,20 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     gefordert – keine eigenständige neue Regel, derselbe Best-Effort-/
     Offenlegungs-Vorbehalt gilt unverändert (bei CLBT selbst nicht verfügbar,
     nur ein aggregierter NRR-Wert offengelegt, keine Kohorten-Aufschlüsselung).
+    **Erweiterung (2026-09-17, allgemeine Wachstums-Qualitätszerlegung,
+    ChatGPT-Vorschlag nach der ANET-Gegenprüfung) – gleicher Best-Effort-/
+    Offenlegungs-Vorbehalt, jetzt nicht mehr nur auf SaaS/ARR beschränkt.**
+    Wo ein Unternehmen (jede Branche) eine Aufschlüsselung von Umsatzwachstum
+    in Volumen/Preis/Mix/Marktwachstum/Marktanteilsgewinn/M&A anbietet
+    (Investor-Deck, 10-K MD&A, Earnings-Call): diese Zerlegung übernehmen,
+    um "Wachstum durch Marktboom" von "Wachstum durch echten Marktanteils-
+    gewinn" zu unterscheiden – strukturell verschiedene Qualität trotz
+    identischer Wachstumsrate. **Explizit KEIN neuer Blend-Score:** die
+    einzelnen Treiber werden benannt, nicht zu einer "Growth-Quality-Zahl"
+    verdichtet – ein aggregierter Einzelscore aus mehreren heterogenen
+    Treibern wäre dieselbe Art Blackbox-Verdichtung, die beim Digital-Arts-
+    4-Achsen-Score bereits abgelehnt wurde (siehe Punkt 47/Herkunfts-Notiz).
+    Wo nicht offengelegt: entfällt ersatzlos wie bisher, kein Erzwingen.
 28. **TAM/SAM/SOM-Penetrations-Visualisierung – NUR als Darstellung bereits
     validierter TAM-Sanity-Check-Daten, nie als eigenständiger neuer Datenpunkt
     (neu, 2026-09-08, Geminis Nachfassrunde).** Wichtige Einschränkung, die in
@@ -5187,6 +5233,30 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     Kein Zusatzaufwand: reiner Rechenschritt mit bereits vorhandenen
     Peer-Daten, keine neue Recherche. Entfällt ersatzlos, wenn S3b selbst
     schon entfällt (< 3 vergleichbare Peers).
+    **Ausbau zur echten 2D-Matrix (2026-09-17, weiterer ANET-Feedback-
+    Round, Gemini-Vorschlag): 3 Umsatz-CAGR-Stufen × 3 Exit-Multiple-Stufen**
+    statt nur der 1D-Multiple-Linie – analog zur bereits bestehenden 3×3-
+    WACC×Wachstum-Matrix (Punkt 24), nur für die Exit-Multiple-Seite. Zeigt
+    nicht nur "wie stark reagiert die FV auf das Multiple", sondern die
+    vollständige Wechselwirkung mit der Wachstumsannahme – am aussage-
+    kräftigsten gerade bei einer offenen Moat-Kernfrage wie bei ANET, wo
+    beide Annahmen (Wachstum UND Multiple) gleichzeitig von derselben
+    strukturellen Frage (hält der Moat?) abhängen. Ersetzt die 1D-Linie
+    oben vollständig, kein paralleles Element.
+
+    **Known / Unknown / Unknowable (2026-09-17, ChatGPT-Vorschlag nach der
+    ANET-Gegenprüfung).** Direkt auf der Bewertungsseite, neben der
+    TV-Cross-Check/Sensitivitäts-Sektion: eine knappe 3-Felder-Liste, die
+    explizit trennt, was HART BELEGT ist (Margen/Umsatz/Kundenkonzentration/
+    Cash/ROIC – eigene Ist-Zahlen), was UNBEKANNT, aber grundsätzlich
+    recherchierbar ist (z.B. zukünftiger Marktanteil eines Konkurrenten,
+    Adoptionsrate einer neuen Technologie), und was UNERKENNBAR bleibt
+    (langfristige Nachfrageentwicklung 2030+, zukünftige Marktarchitektur,
+    das "richtige" Terminal-Multiple in 10 Jahren). Verhindert, dass eine
+    breite DCF-Spanne (z.B. $155 vs. $260) als reine Rechenungenauigkeit
+    missverstanden wird, statt als Ausdruck echter, nicht auflösbarer
+    Unsicherheit. Kein Zusatzaufwand: reine Einordnung bereits vorhandener
+    Datenpunkte in drei Kategorien, keine neue Recherche.
 
 **Woher Punkt 39 und die Erweiterung von Punkt 19 kommen (2026-09-15):**
 Brian fragte nach dem offiziellen Anthropic-Repo `anthropics/financial-
@@ -5336,6 +5406,20 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     Regulierungs-/Patent-/Zulassungstermin sein). Fokussiert den Leser auf
     das Wichtigste statt einer gleichgewichtigen Liste. Reine
     Kennzeichnungs-/Formatfrage, keine neue Recherche.
+    **Erweiterung (2026-09-17, Top-10-KPI-Liste + Next-Earnings-Checklist,
+    ChatGPT-Vorschlag nach der ANET-Gegenprüfung).** Ergänzt den
+    Leitkatalysator um zwei kompakte Monitoring-Hilfen auf der Fazit-Seite:
+    (a) **"Die 10 Zahlen, die zählen"** – eine kuratierte Liste der 10
+    wichtigsten KPIs aus dem gesamten Report (typischerweise: 2-3 aus dem
+    DNA-Check, 1-2 aus dem Moat-Decay-/KSF-Bereich, 1-2 Bewertungskennzahlen,
+    1-2 aus dem Leitrisiko-Bereich, Rest sektorspezifisch) – macht die PDF
+    zu einem wiederverwendbaren Monitoring-Referenzpunkt statt einem
+    einmalig gelesenen Dokument. (b) **Next-Earnings-Checklist** – 5-10
+    konkrete Prüfpunkte speziell für den als Leitkatalysator markierten
+    Termin (nicht für jeden Termin in der Timeline, nur den wichtigsten),
+    als Checkbox-Liste statt Fließtext. **Kein Zusatzaufwand:** beide
+    Listen sind reine Kuratierung/Verdichtung bereits im Report vorhandener
+    Kennzahlen und Trigger, keine neue Recherche.
 
 45. **Risiko-Matrix: Wahrscheinlichkeit × Schaden × Frühindikator (neu,
     2026-09-16, gleiche Quelle).** Ergänzt (ersetzt nicht) die bestehenden
@@ -5506,7 +5590,16 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     Matrix zeigt, dass "gutes Unternehmen" und "guter Kauf jetzt" zwei
     unterschiedliche Achsen sind, die in einem einzelnen Score sonst
     unsichtbar verschmelzen.
-
+    **Erweiterung (2026-09-17, "Investment Card" nach vorne, ChatGPT-
+    Vorschlag nach der ANET-Gegenprüfung).** Berechtigter Einwand: ein
+    Leser sollte die Kernaussage nicht erst auf der letzten Seite finden.
+    **Ab sofort zusätzlich eine kondensierte Fassung derselben Matrix auf
+    Seite 2** (Executive-Summary/3-Stimmen-Leiste), ergänzt um Kurs/
+    Fair-Value-Korridor/bevorzugte Einstiegszone/den einen Satz zum
+    Leitrisiko – die volle Matrix mit Herleitung bleibt zusätzlich auf der
+    Fazit-Seite. Keine neue Berechnung, dieselben Werte nur vorgezogen
+    und knapper dargestellt – Leser, die nur die Seite 2 lesen, bekommen
+    die vollständige Kernaussage, Leser, die weiterlesen, die Herleitung.
 50. **Report-Inhalts-Scope: Infrastruktur-/Tooling-Narrative gehören NIE
     in die finale PDF (neu, 2026-09-17, zweite unabhängige Gemini-
     Gegenprüfung desselben ANET-Reports).** Gemini bemängelte "hohes Maß
@@ -5529,6 +5622,127 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     Infrastruktur-Wartungsnarrative, nicht um die Cross-Check-Transparenz
     selbst. Historische Reports (ANET) werden nicht rückwirkend
     angepasst, siehe etablierte Konvention.
+
+51. **Kern-Annahmen-Liste ("Was muss ich glauben?") mit Confidence-Rating
+    (neu, 2026-09-17, ChatGPT-Vorschlag nach der ANET-Gegenprüfung, von
+    Brian als einer der wertvollsten Einzelfunde priorisiert).** Bisher
+    verteilen sich die Annahmen hinter einer Investment-These implizit über
+    DNA-Check/Moat-Decay-Check/KSF-Scorecard/DCF-Modellannahmen – nirgends
+    stehen sie als explizite, geschlossene Liste. **Ab sofort Pflicht bei
+    Full Deep Dive, von JJ UND Conan jeweils EIGENSTÄNDIG geliefert (nicht
+    nur von Aegis zusammengefasst):** 4-6 Kernannahmen, auf denen die
+    eigene Rating-Entscheidung tatsächlich beruht (z.B. bei ANET: "Ethernet
+    bleibt struktureller Gewinner der KI-Netzwerk-Infrastruktur", "EOS
+    bleibt ein echter Software-Moat trotz NVIDIA-Vordringen"), jede mit
+    einem Confidence-Grad (Hoch/Mittel/Niedrig) UND einem Kurzbeleg, WARUM
+    genau dieser Grad. **Zweck:** macht implizite Annahmen einzeln
+    falsifizierbar statt als unausgesprochenes Fundament der gesamten
+    These zu bleiben – deckt sich mit derselben Transparenz-Philosophie
+    wie der Agent-Score-Breakdown (Punkt 46), nur auf Annahmen- statt
+    Score-Ebene angewendet. Da JJ und Conan unabhängig recherchieren,
+    zeigt ein Vergleich ihrer beiden Listen zusätzlich, ob sie überhaupt
+    von denselben Kernannahmen ausgehen – eine mögliche eigene Diskrepanz
+    ist selbst ein meldenswerter Befund. Kein separater Rechercheschritt:
+    die Annahmen werden aus der ohnehin durchgeführten Analyse extrahiert,
+    nur explizit als Liste benannt statt implizit im Fließtext verstreut.
+
+52. **Dissensus-Map: Einzelbewertung je Teildimension statt nur der drei
+    Endscores (neu, 2026-09-17, ChatGPT-Vorschlag nach der ANET-
+    Gegenprüfung, von Brian priorisiert).** Der bestehende 3-Stimmen-
+    Vergleich (JJ/Conan/Aegis) zeigt bisher nur die finalen Scores/Ratings
+    nebeneinander (z.B. "9/10 Kaufen" vs. "7,4/10 Beobachten") – das
+    verschleiert, WORAN genau der Dissens hängt. **Ab sofort Pflicht bei
+    Full Deep Dive, auf der Executive-Summary-Seite (Seite 2), reine
+    Aegis-Synthese aus den bereits unabhängig vorliegenden JJ-/Conan-
+    Analysen:** eine kompakte Tabelle mit 4-6 Teildimensionen (typischerweise
+    Business-Qualität, Moat/Wettbewerbsposition, Leitrisiko, Bewertung,
+    Wachstumsverlässlichkeit) als Zeilen und JJ/Conan/Aegis als Spalten,
+    je Zelle ein 🟢/🟡/🔴 aus der jeweiligen KI-eigenen Einschätzung
+    abgeleitet. Darunter ein Satz, der benennt, ob der Dissens aus
+    unterschiedlichen FAKTEN oder unterschiedlicher GEWICHTUNG derselben
+    Fakten entsteht (bei ANET: reine Gewichtungsfrage bei NVIDIA-Risiko
+    und Bewertung, nicht bei den Fakten selbst – bereits so in der
+    Aegis-Synthese beschrieben, hier nur als eigene Tabelle sichtbar
+    gemacht). Operationalisiert die bereits bestehende Philosophie "echte
+    Divergenz ist Signal, kein Fehler" (siehe
+    [[feedback_gleiche_methodik_beide_kis]]) als eigenständiges,
+    verpflichtendes Darstellungselement statt einer reinen Prosa-Erklärung.
+
+53. **Moat in benannte Komponenten zerlegen statt eines Blend-Scores (neu,
+    2026-09-17, ChatGPT-Vorschlag nach der ANET-Gegenprüfung).** Ein
+    einzelner Moat-Score (z.B. "3-4/4") kann verschleiern, dass ein
+    Unternehmen in einer Komponente strukturell stark, in einer anderen
+    aber unter Druck ist – bei ANET z.B. Software-/EOS-Moat weiterhin
+    elite, während die reine Hardware-Differenzierung im AI-Back-end unter
+    NVIDIA-Druck steht. **Ab sofort Pflicht bei Full Deep Dive, ergänzt die
+    KSF-Scorecard (Punkt 41):** 3-5 branchenspezifisch benannte Moat-
+    Komponenten (typisch: Technologie/Produkt, Software/Ökosystem,
+    Switching-Costs/Kundenbindung, Skalen-/Netzwerkvorteile, Marke/
+    Reputation – je nach Branche unterschiedlich gewichtet und benannt,
+    nicht mechanisch alle 5 durchziehen wo nicht einschlägig) mit je
+    eigener Einschätzung STATT eines einzelnen 0-4-Gesamtscores, PLUS eine
+    explizite Trend-Angabe (verbessernd/stabil/leicht abnehmend/
+    zusammenbrechend) getrennt von der Stärke selbst – ein Unternehmen kann
+    heute einen starken Moat UND eine sich verschlechternde Wettbewerbs-
+    trajektorie gleichzeitig haben, genau das war der Kern der ANET-
+    NVIDIA-Frage. Dieselbe "getrennte Achsen statt einer Note"-Philosophie
+    wie bei der Management-Glaubwürdigkeits-Matrix (Punkt 9), hier auf
+    Moat angewendet. Kein Zusatzaufwand: nutzt dieselbe Moat-/
+    Wettbewerbsrecherche, die für die KSF-Scorecard ohnehin erhoben wird.
+
+54. **"Was würde meine Einschätzung ändern?" – je KI 3 eigene
+    Kipppunkte (neu, 2026-09-17, ChatGPT-Vorschlag nach der ANET-
+    Gegenprüfung).** Ergänzt das bestehende Kill-Sheet (Punkt 26, inkl.
+    Stacking-Logik Punkt 13 und graduierten Schwellenwerten oben) um eine
+    PERSÖNLICHE Falsifizierbarkeits-Verpflichtung statt nur eines
+    gemeinsamen, generischen Trigger-Katalogs. **Ab sofort Pflicht bei
+    Full Deep Dive, von JJ UND Conan jeweils EIGENSTÄNDIG geliefert:** je
+    3 konkrete Entwicklungen, die die EIGENE Einschätzung anheben würden,
+    UND 3, die sie senken würden – in der eigenen Sprache der jeweiligen
+    KI, nicht als geteilte Liste. Zwingt jede KI, ihre eigene Position
+    aktiv falsifizierbar zu machen statt nur retrospektiv zu begründen,
+    warum die aktuelle Einschätzung richtig ist. Unterscheidet sich vom
+    Kill-Sheet dadurch, dass es NICHT die gemeinsamen Fakten-Trigger
+    zusammenführt, sondern explizit die INDIVIDUELLE Meinungsänderungs-
+    Schwelle jeder KI zeigt – bei einer bestehenden Divergenz (siehe
+    Dissensus-Map, Punkt 52) macht das sichtbar, wie weit die jeweilige
+    Position von einem Meinungswechsel entfernt ist. Kein separater
+    Rechercheschritt: reine Selbstreflexion auf Basis der ohnehin
+    durchgeführten Analyse.
+
+**Woher Punkte 51-54 und die Erweiterungen an 6/19/26/27/44/39/49 kommen
+(2026-09-17, dritte Runde, diesmal Gemini UND ChatGPT gemeinsam gefragt:
+"was fehlt aus Sicht eines Investors, der einen Deep Dive liest").** Beide
+KIs bekamen dieselbe offene Frage unabhängig gestellt (kein Playbook-Bezug
+mitgeliefert). Erst-Check gegen die eigenen Regeln ergab: viele Punkte
+bestätigten Bestehendes (Reverse-DCF/Expectation-Check bereits Punkt 11,
+Price-vs-Business-Trennung bereits Punkt 49, Infrastruktur-Rauschen-raus
+bereits Punkt 50, SBC-vs-Buyback-Netting bereits Punkt 23). Explizit
+abgelehnt: ein "Growth-Quality-Score" als EINE Blend-Zahl (derselbe
+Blackbox-Einwand wie beim Digital-Arts-4-Achsen-Score, Punkt 47) – die
+zugrunde liegende Wachstums-Zerlegung selbst wurde stattdessen ohne
+Einzelscore in Punkt 27 aufgenommen; eine eigenständige neue "Revenue-
+Quality"-Seite (redundant mit Punkt 49 und bestehender Konzentrations-/
+Bookings-Wedge-Prüfung); ein "Thesis-Tree" mit Kausalketten-Status und
+ein "Moat-vs-Competition"-Vergleichschart als PFLICHT-Elemente (gute
+Ideen, aber zu firmenspezifisch/aufwendig für eine universelle Regel –
+bleiben optionale Zusatz-Visualisierung wie das bestehende SWOT, Punkt
+15). Ein neuer Daten-Tag [CONFLICT] (für Fälle, in denen JJ/Conan auf
+erkennbar unterschiedlichen Datenbasen für dieselbe Kennzahl stehen) wird
+NUR in der Prosa/Dissensus-Map-Einordnung verwendet, NICHT als Inline-Tag
+in Tabellen – Brian entschied sich ausdrücklich für die schlanke Tabelle
+ohne Inline-Tags (Status quo seit 08.09., bewusst nicht zurückgedreht).
+Vier echte, neue Bausteine wurden umgesetzt (Punkte 51-54 oben) plus
+sieben kleinere Verfeinerungen bestehender Punkte (6: Kunden-Capex-
+Verknüpfung; 19: EV/FCF; 26: graduierte Kill-Sheet-Schwellenwerte; 27:
+allgemeine statt nur SaaS-Wachstumszerlegung; 44: Top-10-KPI+Earnings-
+Checklist; 39: 2D-Exit-Multiple-Matrix+Known/Unknown/Unknowable; 49:
+Investment-Card nach vorne). Punkte 51 und 54 betreffen JJs/Conans
+eigenen Recherche-Prompt (beide müssen selbst liefern, nicht nur Aegis
+zusammenfassen), ebenso die Erweiterungen an 6/19 (TMR-spezifisch für
+19) – alle übrigen sind reine Aegis-Synthese-Ebene. Siehe
+`prompts/jack-moat-reaper-v11.7.md` (v11.21→v11.22) und
+`prompts/conan-the-scout-v1.12.md` (v1.21→v1.22).
 
 **Woher Punkt 49, die Zirkularitäts-Schärfung von Punkt 39, Punkt 50 und
 die Leitrisiko-Erweiterung von Punkt 45 kommen (2026-09-17, erste Runde):**
