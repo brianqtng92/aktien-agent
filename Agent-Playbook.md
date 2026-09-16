@@ -309,7 +309,7 @@ aktiv geprüft (aktuelle Regime-Einschätzung erstmalig bestimmen und
 mitteilen) und danach laufend fortgeführt.
 
 **Drawdown-Psychologie-Protokoll (2026-08-30, aus der Cross-KI-Gesamt-Review
-in Agent-Playbook-Archiv-Diskussionen.md Abschnitt 12, von Brian freigegeben; Jacks Punkt: "in der Theorie sagen
+in Agent-Playbook-Archiv-Diskussionen.md Abschnitt 12, von Brian freigegeben; JJs Punkt: "in der Theorie sagen
 wir 'Trockenpulver einsetzen', in der Praxis schlägt die Psychologie zu").**
 Ergänzt das Regime-System oben um ein konkretes Verhaltens-Protokoll für den
 Moment, in dem es wirklich wehtut – nicht nur eine numerische
@@ -572,14 +572,14 @@ knapp zusammengefasst statt der vollen Herleitung hier) und eine
 Watchlist-Kompaktübersicht (eine Tabellenzeile je der 30 Watchlist-Werte:
 Kategorie, CRV-Ampel, Kurzthese) – NICHT die vollständigen Dateien
 `Agent-Playbook.md`/`watchlist.md` selbst, um das Kontextlängen-/Kosten-
-Risiko bei Jack/Conan zu vermeiden (siehe HANDOVER.md 10.10). Zweck: Jack/
+Risiko bei JJ/Conan zu vermeiden (siehe HANDOVER.md 10.10). Zweck: JJ/
 Conan können damit bei einer Analyse erkennen, ob ein Kandidat zu einer
 offenen Depot-/Watchlist-Lücke passt, ohne vollen Zugriff auf diese beiden
 großen Dateien zu benötigen.
 
 **Geltungsbereich: das gesamte Regelwerk gilt für alle drei KIs, nicht nur
 Jarvis (2026-09-04, von Brian gefordert: "das ganze System soll für alle
-Agenten gelten, sowohl für Jack als auch für Conan").** Jack und Conan
+Agenten gelten, sowohl für JJ als auch für Conan").** JJ und Conan
 lesen `Agent-Playbook.md` selbst NICHT – sie bekommen bei jedem Bridge-Aufruf
 nur das FACT-PACK + die Methodik-Dateien (TMR+Scout+TA) + eine Handvoll
 vorangestellter Klarstellungs-Blöcke (siehe HANDOVER.md 10.13). Das
@@ -587,19 +587,19 @@ bedeutet: eine neue Regel hier gilt automatisch NUR für Jarvis, es sei
 denn, sie wird explizit in einen dieser Blöcke übersetzt und bei jedem
 Bridge-Aufruf mitgeschickt – genau das Problem, das schon beim Terminal-
 State-Mechanismus auftrat (Block 4, HANDOVER.md 10.13: "er erreichte
-Jack/Conan im API-Betrieb möglicherweise gar nicht") und sich am selben
+JJ/Conan im API-Betrieb möglicherweise gar nicht") und sich am selben
 Tag beim Bridge-Block 5 wiederholte (die Gründliche-These-Prüfung-Pflicht
 stand zunächst nur hier, nicht im tatsächlichen Bridge-Prompt-Text).
 **Ausnahme seit 2026-09-06 (Brian: "alle Agenten sollen Zugriff auf das
 master-status haben und wissen was zu tun ist"):** `depot/master_status.md`
 selbst wird bei JEDEM Bridge-Aufruf mit vollem aktuellem Inhalt in Block 6
 eingebettet (siehe HANDOVER.md 10.13) – das ist die einzige Datei außer den
-Methodik-Dateien, die Jack/Conan tatsächlich im Volltext zu sehen bekommen,
+Methodik-Dateien, die JJ/Conan tatsächlich im Volltext zu sehen bekommen,
 bewusst begrenzt auf dieses eine kompakte Status-Dashboard, nicht das ganze
 Regelwerk.
 **Feste Pflicht ab jetzt:** bei jeder neuen Regel mit inhaltlicher
 Rating-/Empfehlungs-Wirkung (nicht reine Datei-Pflege-/Commit-Mechanik,
-die bleibt Jarvis-only) explizit prüfen, ob sie auch Jack/Conan erreichen
+die bleibt Jarvis-only) explizit prüfen, ob sie auch JJ/Conan erreichen
 muss – wenn ja, als neuen Klarstellungs-Block in HANDOVER.md 10.13
 ergänzen UND die Blockzahl in `taeglicher-trigger-check`/`blitz-scan`
 SKILL.md aktualisieren. Diese Prüfung ist explizit Teil der Regel-
@@ -666,7 +666,7 @@ das explizit hier Beschriebene.
 2026-09-09, Brian: "die Agenten sollen automatisiert mit der Zeit
 entscheiden, welche Optionen/Ergänzungen/Verbesserungen einen großen
 Mehrwert bieten").** Der KVP ist kein reiner Fehlerbericht ("was ist
-kaputt/redundant") – Jack, Conan und Jarvis bewerten bei jedem Zyklus
+kaputt/redundant") – JJ, Conan und Jarvis bewerten bei jedem Zyklus
 aktiv, WELCHE der denkbaren Verbesserungen den größten Mehrwert für
 möglichst wenig Aufwand/Risiko bringen würde, nach demselben Muster wie
 der 2026-09-09-Meta-Review selbst (dort: erst messen/quantifizieren –
@@ -711,7 +711,7 @@ Prüf-Aufwand):**
    vermerken, siehe unten).
 3. **Vierteljährlich (an jedem Quartals-Monatsrecap – März/Juni/
    September/Dezember):** ein verkleinerter Nachbau des
-   2026-09-09-Meta-Reviews – Jarvis holt bei Jack UND Conan per Bridge
+   2026-09-09-Meta-Reviews – Jarvis holt bei JJ UND Conan per Bridge
    eine kurze (nicht die volle Session-Länge) Einschätzung ein: "gibt es
    aus eurer Sicht Schwächen im aktuellen Regelwerk, die in den letzten
    3 Monaten aufgefallen sind?" Ergebnis als eigener kurzer Abschnitt im
@@ -739,8 +739,8 @@ Fassung dieses Abschnitts):**
    `CHANGELOG.md`-Zeile "Redundanz-Check <Monat>: kein Fund" reicht als
    Beleg, dass der Check tatsächlich stattfand.
 
-**Jack/Conan haben jetzt eigene Live-Web-Recherche (2026-09-04, von Brian
-gefordert: "Jack und Conan sollen die Freiheit haben, selbst zu
+**JJ/Conan haben jetzt eigene Live-Web-Recherche (2026-09-04, von Brian
+gefordert: "JJ und Conan sollen die Freiheit haben, selbst zu
 recherchieren").** Beide Bridge-Tools (`ask_gemini`, `ask_chatgpt`)
 rufen standardmäßig (`enable_search=True`) das jeweilige native
 Such-Tool auf – Gemini's Google-Search-Grounding bzw. OpenAI's
@@ -760,7 +760,7 @@ Kosten-/Latenz-Trade-off bewusst in Kauf genommen (siehe HANDOVER.md für
 Details) – `enable_search=False` bleibt für reine Diagnose-/
 Formatierungs-Anfragen ohne Recherchebedarf verfügbar.
 
-**Jack/Conan bekommen zusätzlich exakte Kursdaten und einen eng begrenzten
+**JJ/Conan bekommen zusätzlich exakte Kursdaten und einen eng begrenzten
 Datei-Zugriff (2026-09-05, siehe HANDOVER.md 10.11 für die vollständige
 technische Beschreibung).** Im agentischen Modus (`ask_gemini_agentic`/
 `ask_chatgpt_agentic`) können sie jetzt zusätzlich zu den bestehenden
@@ -770,7 +770,7 @@ Websuche-Schätzung) und `read_master_status()` (liest
 das Ergebnis zurück, wie bei allen anderen agentischen Tools auch.
 **`read_master_status` ist bewusst die EINZIGE per Tool zugängliche
 Repo-Datei** – kein Zugriff auf `Agent-Playbook.md` selbst oder sonstige
-Dateien. Begründung: Jack/Conan sollen unabhängige Gutachter für eine
+Dateien. Begründung: JJ/Conan sollen unabhängige Gutachter für eine
 konkrete, von Jarvis gestellte Aufgabe bleiben, kein freier
 Systembrowser – vollständiger Regelwerk-Zugriff würde die Vergleichbarkeit
 der drei unabhängigen Urteile verwässern (sie könnten anfangen, Regeln zu
@@ -782,7 +782,7 @@ korrekte finale Synthese bei beiden Bridges).
 
 Drei eigenständige Prompts, gespeichert unter `prompts/`:
 
-1. **TMR – "Jack, The Moat Agent" (v11.8, 2026-09-03: Korrelierte-Mali-Regel
+1. **TMR – "JJ, The Moat Agent" (v11.8, 2026-09-03: Korrelierte-Mali-Regel
    gegen Agent-Score-Double-Counting ergänzt, siehe Abschnitt 4 [3b])**:
    Fundamentalanalyse etablierter Firmen.
    DNA-Check (K-/E-Kriterien), Data-Integrity-Tagging, DCF/Reverse-DCF, Agent Score
@@ -793,7 +793,7 @@ Drei eigenständige Prompts, gespeichert unter `prompts/`:
    Moat-in-Formation, Gründer-Score, Outcome-Wahrscheinlichkeiten statt DCF, sehr
    kleine Sizing-Stufen (<0,5-2%). Rating WATCHLIST-ELITE/BEOBACHTEN-STARK/
    BEOBACHTEN-SPEKULATIV/ZU FRÜH/DURCHGEFALLEN.
-3. **TA – "Jack, Pure Technical Analyst" (v1.10, 2026-08-30: Twelve-Data-
+3. **TA – "JJ, Pure Technical Analyst" (v1.10, 2026-08-30: Twelve-Data-
    Connector LIVE, siehe unten)**: Reines Chart-/Timing-Modul, keine
    Fundamentaldaten. Läuft eigenständig (SWING) oder im INVESTOR-ENTRY-Handoff mit
    TMR-Fair-Values (Preiszonen, Margin of Safety, Entry-Ampel). Datenbasis seit
@@ -846,7 +846,7 @@ BESTANDTEIL DERSELBEN Änderung, kein späterer Aufräum-Schritt:
 2. Stale Versionsnummern-Kommentare (z.B. "v11.8 intern") auf den
    tatsächlichen aktuellen Stand korrigieren.
 3. Neue Pflicht-Verhaltensweisen (wie das JSON-Summary-Parsing seit
-   Jack v11.10/Conan v1.13, siehe "Jack-Prompt-Redesign-Anfrage
+   JJ v11.10/Conan v1.13, siehe "JJ-Prompt-Redesign-Anfrage
    abgewogen"-Abschnitt) in JEDEN SKILL.md-Job übernehmen, der volle
    3-fach-Cross-Checks fährt (aktuell: `taeglicher-trigger-check` UND
    `blitz-scan`), nicht nur in den zuerst bearbeiteten.
@@ -865,22 +865,22 @@ Firmennamen, sondern mit diesen Spitznamen ausgewiesen:
 
 | Anbieter | Spitzname im Report |
 |---|---|
-| Gemini | **Jack** |
+| Gemini | **JJ** |
 | ChatGPT | **Conan** |
 | Claude | **Jarvis** |
 
 Wichtig zur Klarstellung: Das ist reine Report-Beschriftung, ändert nichts an der
 Regel "alle drei laufen denselben Prompt parallel" (siehe Pipeline-Schritt 3). Die
-Namen Jack/Conan stammen zwar aus den Personas der TMR/TA- bzw. Scout-Prompts selbst,
+Namen JJ/Conan stammen zwar aus den Personas der TMR/TA- bzw. Scout-Prompts selbst,
 werden hier aber als feste Anbieter-Kürzel verwendet, unabhängig davon, welcher der
 drei Prompts gerade läuft (z.B. auch wenn Gemini den Scout-Prompt durchrechnet, heißt
-seine Stimme im Vergleich trotzdem "Jack", nicht "Conan").
+seine Stimme im Vergleich trotzdem "JJ", nicht "Conan").
 
 **Vierter Name, andere Rolle – Aegis (2026-09-08):** Die Tabelle oben listet
 die drei PARALLELEN Analyse-Stimmen. **Aegis** ist kein vierter Anbieter in
 dieser Tabelle, sondern der Name für Jarvis' orchestrierende Rolle
 DANACH – Cross-Check-Synthese, Depot-Regel-Prüfung, finale Sizing-/Rating-
-Entscheidung (siehe "Jack-Prompt-Redesign-Anfrage abgewogen"-Abschnitt).
+Entscheidung (siehe "JJ-Prompt-Redesign-Anfrage abgewogen"-Abschnitt).
 Jarvis bleibt also unter zwei Namen im Umlauf, je nach Funktion: als
 gleichberechtigte dritte Analyse-Stimme heißt es weiterhin "Jarvis", in der
 zusammenführenden Rolle danach heißt dieselbe Funktion "Aegis".
@@ -957,7 +957,7 @@ Herleitung an der jeweils verlinkten Stelle, nicht diese Tabelle.
   (passt exakt zur bestehenden Max.-20-Grenze).
   - **Verifizierter Rechenfehler in der ursprünglichen "10-6-4"-Version
     (2026-09-03, im 3-KI-System-Audit von Conan gefunden, von Jarvis gegen
-    Agent-Playbook.md:913 verifiziert, von Jack nachgerechnet):** die
+    Agent-Playbook.md:913 verifiziert, von JJ nachgerechnet):** die
     ursprüngliche Begründung "4 Talent-Slots, weil 4×10%-Positionscap
     exakt die 40%-Talent-Obergrenze trifft" vermischte zwei verschiedene
     Bezugsgrößen – der 10%-Positionsdeckel (siehe "Positionsgrößen-Limits"
@@ -1045,7 +1045,7 @@ Herleitung an der jeweils verlinkten Stelle, nicht diese Tabelle.
       Kursschwankung.
 - **Update (2026-09-03, von Brian gefordert nach uneinheitlicher
   Kategorisierung im Strategiespiegel-Report): feste Nachschlage-Tabelle
-  statt freier Einschätzung pro Analyse.** Auslöser: Jack, Conan und Jarvis
+  statt freier Einschätzung pro Analyse.** Auslöser: JJ, Conan und Jarvis
   ordneten dieselben Positionen (u.a. Allianz, Bank Central Asia, Rambus,
   Tristel) unterschiedlichen Kategorien zu – teils weil unzulässige Proxies
   wie Positionsgröße oder Emerging-Markets-Status statt der eigentlichen
@@ -1607,7 +1607,7 @@ Allokations-Überlegungen (siehe Offene Punkte, Cash-Allokations-Logik):
     **Cross-KI-Check zu "Reserve vs. ETF-Einmalkauf" (2026-08-30, Brians
     Frage, alle drei einig):** Brian hat gefragt, ob die angesammelte Reserve
     (aktuell gut 1.000€) nicht besser sofort als ETF-Einmalkauf investiert
-    statt als Cash gehalten werden sollte. Jarvis, Jack und Conan sind sich
+    statt als Cash gehalten werden sollte. Jarvis, JJ und Conan sind sich
     einig: **aktuell nicht.** Begründung – die Reserve ist keine
     Rendite-Position, sondern eine Optionalität ("Munition, keine
     Assetklasse", Conan) für eine echte Marktkorrektur; ein Einmalkauf
@@ -1878,14 +1878,14 @@ unbegrenzt fortgeschrieben zu werden.
        (2026-09-05, von Brian gefordert: "alle Agenten Zugriff auf alle 3
        Dateien haben, um viele Sichtweisen bei einer Analyse
        herauszufinden... alle bekommen die gleiche Voraussetzung, die
-       gleichen Analysetools").** Bisher bekam Jack/Conan über die Bridge
+       gleichen Analysetools").** Bisher bekam JJ/Conan über die Bridge
        NUR die eine, per Bucket geroutete Methodik-Datei (TMR ODER Scout)
-       zugeteilt – Jarvis las zwar alle drei, aber Jack/Conan sahen jeweils
+       zugeteilt – Jarvis las zwar alle drei, aber JJ/Conan sahen jeweils
        nur einen Ausschnitt des Werkzeugkastens. Ab sofort gilt: bei JEDER
        vollständigen Einzelanalyse (Quick Filter und Full/Deep-Dive) werden
        ALLE DREI Dateien (`jack-moat-reaper-v11.7.md`/TMR,
        `conan-the-scout-v1.12.md`/Scout, `jack-technical-analyst-v1.9.md`/TA)
-       an Jarvis (liest sie ohnehin selbst), Jack UND Conan gegeben – nicht
+       an Jarvis (liest sie ohnehin selbst), JJ UND Conan gegeben – nicht
        mehr nur die eine, laut Bucket "richtige". **Was sich dadurch NICHT
        ändert:** die Bucket-Zuordnung (TMR-Pfad vs. Scout-Pfad, siehe oben)
        bleibt bestehen und bestimmt weiterhin, welches Rating das
@@ -1896,13 +1896,13 @@ unbegrenzt fortgeschrieben zu werden.
        Methodik zur Verfügung und kann explizit benennen, wenn sie aus
        dieser zusätzlichen Linse eine relevante Beobachtung ableitet (z.B.
        Conan bringt bei einem TMR-Fall trotzdem einen Wachstumsqualitäts-
-       Einwand ein, oder Jack/TMR bemerkt bei einem Scout-Fall eine bereits
+       Einwand ein, oder JJ/TMR bemerkt bei einem Scout-Fall eine bereits
        messbare Preissetzungsmacht) – das macht die Cross-Check-Vielfalt
 
      → **Korrektur/Verschärfung (2026-09-08, von Brian nach dem NVO-Deep-
        Dive gefordert): beide KIs bekommen ab sofort dieselbe, EINE
        Methodik-Datei als eigene primäre/bindende Analyse-Grundlage –
-       nicht mehr Jack fix TMR und Conan fix Scout unabhängig vom Bucket.**
+       nicht mehr JJ fix TMR und Conan fix Scout unabhängig vom Bucket.**
        Auslöser: beim NVO-Full-Deep-Dive (eindeutig Bucket A/C, TMR-Pfad)
        lief Conan trotzdem als Scout ("NONE_APPLICABLE"-Sonderfall mit
        eigenem Multiple-Rahmen statt DNA-Check/Score), was zwei strukturell
@@ -1920,7 +1920,7 @@ unbegrenzt fortgeschrieben zu werden.
        Bucket-Klassifizierung ([2] KATEGORISIERUNG oben) entschieden (TMR-
        Pfad bei Bucket A/C, Scout-Pfad bei Bucket B/D, manuelle Klärung bei
        Grenzfällen wie bisher) – und GENAU DIESE EINE Methodik-Datei wird
-       dann an BEIDE Bridges (Jack/Gemini UND Conan/ChatGPT) als jeweils
+       dann an BEIDE Bridges (JJ/Gemini UND Conan/ChatGPT) als jeweils
        eigene, bindende Analyse-Grundlage geschickt (die dritte Datei plus
        die TA-Datei bleiben als Kontext/Zusatzperspektive weiterhin
        mitgeliefert, siehe oben – nur die BINDENDE Rolle ändert sich).
@@ -1928,17 +1928,17 @@ unbegrenzt fortgeschrieben zu werden.
        (bei TMR-Pfad) bzw. dieselbe Compounder-DNA/Scout-Urteil-Logik (bei
        Scout-Pfad) – Divergenzen im Ergebnis sind dann eindeutig auf
        Modellunterschiede zurückzuführen, nicht auf unterschiedliche
-       Bewertungsraster. Die Namen "Jack" und "Conan" bleiben als Label für
+       Bewertungsraster. Die Namen "JJ" und "Conan" bleiben als Label für
        "Gemini-Bridge" bzw. "ChatGPT-Bridge" bestehen, unabhängig davon,
        welche der drei Dateien im Einzelfall die bindende ist – bei einem
        TMR-Pfad-Kandidaten liefert dann auch "Conan" ein TMR-artiges
        Rating/Score/Verdict, nicht sein eigenes Scout-Urteilsformat.
        größer, ohne die Bucket-Logik selbst aufzuweichen. TA bleibt wie
        bisher bei jeder Einzelanalyse Pflicht (war schon immer Teil aller
-       drei Dateien für jede Analyse, jetzt nur explizit auch an Jack/Conan
+       drei Dateien für jede Analyse, jetzt nur explizit auch an JJ/Conan
        mitgegeben statt implizit vorausgesetzt). **Technische Konsequenz
        (siehe HANDOVER.md 10.10):** die drei Dateien zusammen sind
-       deutlich länger als eine einzelne Methodik-Datei – bei Gemini/Jack
+       deutlich länger als eine einzelne Methodik-Datei – bei Gemini/JJ
        ist `enable_search` bei diesem kombinierten Mega-Prompt IMMER auf
        `False` zu setzen (bekanntes Kontextlängen-/Abbruch-Problem, siehe
        dort), bei Conan/ChatGPT ist das nicht nötig.
@@ -1955,12 +1955,12 @@ unbegrenzt fortgeschrieben zu werden.
        das entzieht dem Mitschicken der zweiten Methodik-Datei die
        ursprüngliche Begründung. **Ab sofort:** nur die per Bucket
        bindende EINE Methodik-Datei (TMR ODER Scout) PLUS
-       `jack-technical-analyst-v1.9.md`/TA gehen an Jack UND Conan – nicht
+       `jack-technical-analyst-v1.9.md`/TA gehen an JJ UND Conan – nicht
        mehr alle drei. Reduziert den Prompt um ~35-40% (von ~204 KB auf
        ~124-132 KB), senkt Kosten/Latenz und das dokumentierte
        Lost-in-the-Middle-Risiko bei Gemini (HANDOVER.md 10.10), ohne eine
        einzige DNA-Check-/Rigor-Standard-Regel zu verändern. `enable_search`
-       bei Gemini/Jack bleibt trotzdem auf `False` (Vorsichtsmaßnahme,
+       bei Gemini/JJ bleibt trotzdem auf `False` (Vorsichtsmaßnahme,
        Kombi-Prompt ist mit ~130 KB immer noch groß) – bei erneuter,
        gezielter Prüfung ggf. später revidierbar.
      → zusätzlich: Kategorie-Zuordnung nach Depot-Ziel-Struktur (siehe Abschnitt 3):
@@ -2038,10 +2038,10 @@ unbegrenzt fortgeschrieben zu werden.
        Verdict), ginge der eigentliche Zweck des Cross-Checks verloren – ein
        gemeinsames Endergebnis statt drei unabhängiger Meinungen, die sich
        gegenseitig kontrollieren können (siehe SKWD-Präzedenz: der Jarvis-vs-
-       Jack-Dissens zur ROIC-Frage wäre bei aufgeteilter Bewertung nie sichtbar
+       JJ-Dissens zur ROIC-Frage wäre bei aufgeteilter Bewertung nie sichtbar
        geworden).
      → **Einheitliches Fact-Pack-Format (2026-08-29, aus der Meta-Retrospektive
-       Jack/Conan/Jarvis, siehe Agent-Playbook-Archiv-Diskussionen.md Abschnitt 9, Phase 1 – von Brian freigegeben):**
+       JJ/Conan/Jarvis, siehe Agent-Playbook-Archiv-Diskussionen.md Abschnitt 9, Phase 1 – von Brian freigegeben):**
        Das SCHRITT-0-Datenpaket bekommt ab jetzt einen festen Kopf, damit alle
        drei KIs nachweislich von identischen Fakten ausgehen, nicht nur von
        "ungefähr denselben": **Zeitstempel** (Datum+Uhrzeit der Abfrage),
@@ -2051,7 +2051,7 @@ unbegrenzt fortgeschrieben zu werden.
        [TRAINING], wie gehabt). Fehlt eines dieser Felder, gilt das
        Datenpaket als unvollständig und muss vor Rundenstart nachgezogen
        werden, statt mit Lücken in den Cross-Check zu gehen.
-     → **Fact-Pack-Tag-Disziplin bei Jarvis selbst / Fact-Pack-Tags sind für Jack/Conan NICHT bindend (2026-09-06, echte Ursache des wiederholten Jack-Reflex-Abbruch-Bugs gefunden, siehe HANDOVER.md 10.13):** Bei Disco Corp (31.08.) UND Lasertec (05.09.) stellte sich beim Nachlesen von Jacks eigener Begründung heraus, dass NICHT Gemini eigenständig zu strikt urteilte, sondern Jarvis' EIGENES Fact-Pack die Kennzahl (Piotroski F-Score, FCF-Marge) bereits als `[N/V]` taggte, obwohl direkt daneben eine plausible qualitative Einschätzung stand, die eigentlich `[TRAINING]` verdient hätte (z.B. Disco: "qualitative Indikatoren sprechen für einen hohen Score, aber keine belastbare Zahl gefunden" → trotzdem als `[N/V]` getaggt). Jack übernahm dieses bereits gesetzte Tag als vorentschieden, statt es selbst neu zu bewerten – Conan überschreibt es in der Praxis öfter eigenständig. **Zwei-teiliger Fix:** (1) Jarvis wendet beim ERSTELLEN des Fact-Packs dieselbe TRAINING-vs-N/V-Schwelle an, die für Jack/Conan gilt (siehe Klarstellungsblock 3 in HANDOVER.md 10.13) – ist aus qualitativen Indikatoren/allgemeinem Wissen eine halbwegs plausible Größenordnung ableitbar, wird im Fact-Pack `[TRAINING]` vergeben, `[N/V]` bleibt reserviert für Fälle mit wirklich GAR KEINER Einordnung. (2) Zusätzlich, als Sicherheitsnetz: jedem Bridge-Aufruf wird ab sofort explizit mitgegeben, dass Fact-Pack-Tags ein Ausgangspunkt sind, keine bindende Vorentscheidung – kann Jack/Conan selbst (aus Training oder eigener Live-Suche) eine plausible Schätzung ableiten, überschreibt das ein `[N/V]`-Tag im Fact-Pack zu `[TRAINING]`, mit eigener kurzer Begründung, statt das Fact-Pack-Tag unkritisch zu übernehmen.
+     → **Fact-Pack-Tag-Disziplin bei Jarvis selbst / Fact-Pack-Tags sind für JJ/Conan NICHT bindend (2026-09-06, echte Ursache des wiederholten JJ-Reflex-Abbruch-Bugs gefunden, siehe HANDOVER.md 10.13):** Bei Disco Corp (31.08.) UND Lasertec (05.09.) stellte sich beim Nachlesen von JJs eigener Begründung heraus, dass NICHT Gemini eigenständig zu strikt urteilte, sondern Jarvis' EIGENES Fact-Pack die Kennzahl (Piotroski F-Score, FCF-Marge) bereits als `[N/V]` taggte, obwohl direkt daneben eine plausible qualitative Einschätzung stand, die eigentlich `[TRAINING]` verdient hätte (z.B. Disco: "qualitative Indikatoren sprechen für einen hohen Score, aber keine belastbare Zahl gefunden" → trotzdem als `[N/V]` getaggt). JJ übernahm dieses bereits gesetzte Tag als vorentschieden, statt es selbst neu zu bewerten – Conan überschreibt es in der Praxis öfter eigenständig. **Zwei-teiliger Fix:** (1) Jarvis wendet beim ERSTELLEN des Fact-Packs dieselbe TRAINING-vs-N/V-Schwelle an, die für JJ/Conan gilt (siehe Klarstellungsblock 3 in HANDOVER.md 10.13) – ist aus qualitativen Indikatoren/allgemeinem Wissen eine halbwegs plausible Größenordnung ableitbar, wird im Fact-Pack `[TRAINING]` vergeben, `[N/V]` bleibt reserviert für Fälle mit wirklich GAR KEINER Einordnung. (2) Zusätzlich, als Sicherheitsnetz: jedem Bridge-Aufruf wird ab sofort explizit mitgegeben, dass Fact-Pack-Tags ein Ausgangspunkt sind, keine bindende Vorentscheidung – kann JJ/Conan selbst (aus Training oder eigener Live-Suche) eine plausible Schätzung ableiten, überschreibt das ein `[N/V]`-Tag im Fact-Pack zu `[TRAINING]`, mit eigener kurzer Begründung, statt das Fact-Pack-Tag unkritisch zu übernehmen.
      → **DATENKONFLIKT-Notbremse (2026-08-29, Meta-Retrospektive Phase 1):**
        Weichen die von den drei KIs zusätzlich selbst recherchierten
        Kernzahlen (Kurs, Quartalszahlen, Marktkapitalisierung) trotz
@@ -2081,10 +2081,10 @@ unbegrenzt fortgeschrieben zu werden.
        unkommentiert zu präsentieren.
      → derselbe Prompt (TMR oder Scout) + derselbe Ticker + dasselbe geprüfte
        SCHRITT-0-Datenpaket wird UNABHÄNGIG von Claude/Jarvis, ChatGPT/Conan und
-       Gemini/Jack durchgerechnet
+       Gemini/JJ durchgerechnet
        (Runde 1 – unabhängige Einzelurteile, keiner sieht die Antwort der anderen)
      → **Depot-Einblick (2026-09-02, von Brian gefordert):** ChatGPT/Conan und
-       Gemini/Jack können bei Bedarf über die `_agentic`-Varianten der jeweiligen
+       Gemini/JJ können bei Bedarf über die `_agentic`-Varianten der jeweiligen
        Bridge (`ask_chatgpt_agentic`/`ask_gemini_agentic`) selbst read-only
        Depot-Tools anfordern (Holdings/Übersicht/Performance/Cash-Breakdown),
        um z.B. Konzentrationsrisiko oder Kategorie-Caps gegen den Kandidaten zu
@@ -2122,7 +2122,7 @@ unbegrenzt fortgeschrieben zu werden.
        vorgeschlagen, von Brian akzeptiert): (a) Kosten – jede Zusatzrunde sind
        nochmal 3 KI-Aufrufe; historisch waren zwei davon fragile Browser-
        Automation-Beine, seit 2026-09-02 laufen ChatGPT/Conan (`openai-bridge`,
-       Modell `gpt-5.5`) UND Gemini/Jack (`gemini-bridge`, Modell
+       Modell `gpt-5.5`) UND Gemini/JJ (`gemini-bridge`, Modell
        `gemini-2.5-flash`) beide über direkten API-Call (siehe HANDOVER.md
        Abschnitt 10.9/10.10) und sind von Browser-Fragilität nicht mehr
        betroffen – die Kosten-Begründung bleibt trotzdem gültig (reine
@@ -2177,7 +2177,7 @@ unbegrenzt fortgeschrieben zu werden.
      AUFFÄLLIGEN FÄLLEN:
      → Auslöser (einer reicht): (a) Konvergenz "widerspruch" nach Ausschöpfung
        des Runden-Caps in [3b], (b) ein dokumentierter Regelverstoß/methodischer
-       Fehler einer KI (z.B. falsch gezählte K-BASIS wie bei Conan/Jack im
+       Fehler einer KI (z.B. falsch gezählte K-BASIS wie bei Conan/JJ im
        SKWD-Fall), (c) derselbe Fehlertyp taucht bei mehreren unabhängigen
        Analysen wiederholt auf.
      → Ablauf: Die 3 KIs bekommen NICHT die Aufgabe, das Aktien-Urteil zu
@@ -2353,13 +2353,13 @@ unbegrenzt fortgeschrieben zu werden.
          nach dem ersten Praxislauf mit 6 Werten):** Ursprünglich lief dieses
          Layout NUR mit Jarvis. Brian hat das nach dem ersten Testlauf explizit
          korrigiert: **auch der Ampel-Batch-Scan läuft grundsätzlich mit allen
-         drei KIs (Jarvis/Jack/Conan)** – unabhängig davon, ob pro Kandidat nur
+         drei KIs (Jarvis/JJ/Conan)** – unabhängig davon, ob pro Kandidat nur
          ein Quick Filter oder ein voller Deep Dive gefahren wird. Begründung
          (Brian wörtlich): "so bekommt man das neutralste aber gleichzeitig
          bestmögliche Ergebnis heraus." Das Ein-KI-Tempo-Argument wird also
          bewusst der Konvergenz-Absicherung durch drei unabhängige Meinungen
          untergeordnet – auch im Batch-Format. Das bedeutet konkret: pro
-         Kandidat im Batch laufen Jarvis, Jack und Conan (je in der für den
+         Kandidat im Batch laufen Jarvis, JJ und Conan (je in der für den
          Batch festgelegten Tiefe, siehe unten), danach eine kurze Konvergenz-/
          Dissens-Einordnung wie beim regulären 3-fach-Cross-Check – nur eben
          kompakter im Ampel-Batch-Layout statt im vollen Agent-Kompakt-Report
@@ -2386,7 +2386,7 @@ unbegrenzt fortgeschrieben zu werden.
      → **WICHTIG (2026-08-23, Feedback von Brian, Erweiterung der obigen Regel):**
        Das gilt jetzt nicht nur für die Ergebnistiefe, sondern auch für den
        PROZESS selbst. Der komplette Analyse-Lauf (alle drei KI-Beine – seit
-       2026-09-02 laufen ChatGPT/Conan UND Gemini/Jack beide per direktem
+       2026-09-02 laufen ChatGPT/Conan UND Gemini/JJ beide per direktem
        API-Call über ihre jeweiligen MCP-Bridges statt Browser-Automation,
        Details HANDOVER.md 10.9/10.10 –, Diskussionsrunde [3b], Datei-
        Ablage) läuft ausschließlich im Hintergrund, ohne Zwischen-Status-
@@ -2402,7 +2402,7 @@ unbegrenzt fortgeschrieben zu werden.
        Punkt der Analyse der Agent gerade steht, z.B.: "Suche gerade Ticker/
        ISIN heraus...", "Ziehe jetzt die Kernkennzahlen (Fact-Pack)...",
        "Rufe aktuelle News der letzten 48-72h ab...", "Fundamental-Cross-
-       Check läuft (Jack/Conan/Jarvis)...", "Technische Analyse (TA)
+       Check läuft (JJ/Conan/Jarvis)...", "Technische Analyse (TA)
        läuft...". Diese Updates sind bewusst knapp (ein Satz je Schritt) und
        ersetzen nicht das fertige Kurz-Fazit am Ende – sie geben Brian nur
        laufend mit, wo der Agent gerade steht, statt dass er minutenlang
@@ -2669,12 +2669,12 @@ eingerechnet: der Korrektur-Risiko-Score bewertet den MARKT, nicht
 dieses spezifische Depot – beides zu vermischen war ein Kategorienfehler.
 
 ### Audit v4 (2026-09-10, gleicher Tag, auf Brians Wunsch: "die Agenten
-sollen das intensiv durchgehen und Anpassungen vornehmen") — Jack (echt)
+sollen das intensiv durchgehen und Anpassungen vornehmen") — JJ (echt)
 + Jarvis-Ersatzrolle für Conan (Bridge nach 4 Versuchen weiterhin down,
 transparent als Aegis-Fallback gekennzeichnet, siehe Rigor-Standard-Punkt
 32)
 
-**Übernommene Funde (beide/Jack, nach eigener Prüfung bestätigt):**
+**Übernommene Funde (beide/JJ, nach eigener Prüfung bestätigt):**
 1. **HYG/LQD-Ratio ersatzlos gestrichen** — misst laut beiden Prüfungen
    dasselbe Phänomen wie US-HY-Credit-Spread (OAS), nur mit einem
    ungenaueren Marktpreis-Proxy statt der direkt berechneten Spread-Zahl.
@@ -2683,7 +2683,7 @@ transparent als Aegis-Fallback gekennzeichnet, siehe Rigor-Standard-Punkt
    — Jarvis' eigene Abwägung: NFCI ist breiter/langsamer als OAS, verdient
    noch einen Platz, aber nicht dasselbe Gewicht wie das direktere
    HY-OAS-Signal, sonst Double-Counting des Kreditrisikofaktors).
-3. **Bewertungsbreite (Depot+Watchlist) aus dem Score entfernt** — Jacks
+3. **Bewertungsbreite (Depot+Watchlist) aus dem Score entfernt** — JJs
    stärkster methodischer Fund: ein Score, der den MARKT bewerten soll,
    darf keine depot-spezifische, nicht-marktweite Eingabe enthalten. Läuft
    jetzt als eigener Portfolio-Overlay-Wert.
@@ -2695,13 +2695,13 @@ transparent als Aegis-Fallback gekennzeichnet, siehe Rigor-Standard-Punkt
 
 **Abgelehnte Funde (Jarvis-Gegenposition, dokumentierte Divergenz statt
 stille Übernahme):**
-1. **Michigan-Verbrauchervertrauen NICHT gestrichen** (Jack: streichen,
+1. **Michigan-Verbrauchervertrauen NICHT gestrichen** (JJ: streichen,
    da selbst als unzuverlässig gekennzeichnet). Jarvis-Gegenposition: die
    1-Punkt-Deckelung (statt 3) IST bereits die Antwort auf die
    Unzuverlässigkeit – ein bekannt unpräziser, aber weiterhin breit
    beachteter Indikator komplett zu streichen verliert mehr Information,
    als der verbleibende Malus-Fehler kostet.
-2. **Buffett-Indikator NICHT gestrichen** (Jack: streichen, da "kein
+2. **Buffett-Indikator NICHT gestrichen** (JJ: streichen, da "kein
    Timing-Indikator"). Jarvis-Gegenposition: das ist bereits durch
    Tier-1-Gewichtung eingepreist (siehe eigene Einschränkung im
    Tabellentext) – die Kritik beschreibt korrekt, WARUM das Gewicht
@@ -2713,23 +2713,23 @@ stille Übernahme):**
    Durchschnitt) – professionelle Makro-Dashboards führen beide genau
    deswegen parallel. Korrelation ja, vollständige Redundanz nein.
 4. **Zentralbank-Event-Risiko NICHT dauerhaft auf Tier 3 hochgestuft**
-   (Jack: dauerhaft ×3). Jarvis-Gegenposition: der Indikator ist episodisch
+   (JJ: dauerhaft ×3). Jarvis-Gegenposition: der Indikator ist episodisch
    (0 an den meisten Tagen ohne Meeting) – eine dauerhafte Tier-3-Gewichtung
    würde ihn an ruhigen Tagen nicht mehr treffen, aber an Meeting-Tagen
    überproportional. Stattdessen: dokumentierte Ausnahme-Regel für echte
    Mehrfach-Meeting-Wochen (siehe Tabellenzeile), kein permanenter
    Tier-Wechsel.
 5. **Fear&Greed-"Inkonsistenz" als Design-Entscheidung erklärt, nicht
-   korrigiert** (Jack hielt Gleichbehandlung von Neutral/Extreme-Fear für
+   korrigiert** (JJ hielt Gleichbehandlung von Neutral/Extreme-Fear für
    einen Fehler). War eine bewusste Entscheidung (Extreme Fear wirkt
    historisch kontrarisch, nicht korrekturverstärkend) – jetzt im
    Tabellentext explizit dokumentiert, damit der nächste Prüfer denselben
    Punkt nicht wieder als Bug einstuft.
 
-**Nicht umgesetzt, aber vorgemerkt (Jacks Vorschläge für fehlende
+**Nicht umgesetzt, aber vorgemerkt (JJs Vorschläge für fehlende
 Indikatoren – Wachstumserwartungs-Revisionen, Cross-Asset-Vola,
 CFTC-Positionierungsdaten):** legitime professionelle Ergänzungen, aber
-zusätzlicher laufender Rechercheaufwand – Jacks eigenes Gesamturteil
+zusätzlicher laufender Rechercheaufwand – JJs eigenes Gesamturteil
 ("zu komplex für ein tägliches System") spricht GEGEN weiteres Hinzufügen
 in dieser Runde. Bei Bedarf später einzeln nachrüsten, nicht alle drei auf
 einmal.
@@ -2797,14 +2797,14 @@ Rechercheaufwand ohne aktuellen akuten Anlass), Margin-Debt-Niveau
 (NYSE/FINRA, klassischer Leverage-Gauge, nur monatlich verfügbar),
 Konsumentenkredit-Ausfallraten (Ergänzung zu Sahm-Regel/Erstanträgen
 von der Schulden- statt Arbeitsmarkt-Seite), Gewinn-Revisions-Breite
-(bereits im Jack-Audit vom 10.09. als Lücke benannt, dort ebenfalls
+(bereits im JJ-Audit vom 10.09. als Lücke benannt, dort ebenfalls
 bewusst zurückgestellt). Marktkonzentrationsrisiko (Top-10-S&P-500-
 Gewicht) wurde geprüft, aber NICHT ergänzt — wird bereits ausreichend
 von der bestehenden Marktbreite-Divergenz (RSP/SPY) abgedeckt, ein
 Extra-Indikator dafür wäre Redundanz nach demselben Muster, das der
 Audit schon einmal korrigiert hat. Aktueller Stand: 23 Indikatoren
 (4/8/11 je Tier) plus die zwei neuen = 25 – nahe an der Komplexitäts-
-Grenze, die Jacks Audit bereits als Risiko benannt hat. Vor weiteren
+Grenze, die JJs Audit bereits als Risiko benannt hat. Vor weiteren
 Ergänzungen: eher etwas streichen als addieren.
 
 **Neu instrumentierte Ratio-Indikatoren ohne eigene Historie (Marktbreite,
@@ -2929,7 +2929,7 @@ WebSearch/WebFetch, ohne strukturierte Indikator-Werte) entfällt ab sofort,
 alle unten genannten Stellen nutzen ab jetzt Twelve Data als Datenbasis.
 
 **Wo das reingespielt wird:**
-- **TA-Prompt-Modul ("Jack, Pure Technical Analyst", jetzt v1.10, siehe
+- **TA-Prompt-Modul ("JJ, Pure Technical Analyst", jetzt v1.10, siehe
   Abschnitt 2)** nutzt ab jetzt echte Live-Indikatoren aus Twelve Data statt
   geschätzter Werte als Grundlage für SWING-/INVESTOR-ENTRY-Einschätzungen.
 - **[C] ENTRY/TIMING-CHECK** (Watchlist) und **[E] EXIT-/GEWINNMITNAHME-CHECK**
@@ -2961,7 +2961,7 @@ dann weiterhin explizit als ungenauer gekennzeichnet.
 ### TA-Pflicht bei JEDER Einzelanalyse inkl. Ad-hoc-Quick-Filter + "Chart- und Einstiegslage"-Sektion (2026-08-31, von Brian gefordert)
 
 **Lücke, die diesen Eintrag ausgelöst hat:** Bei der Disco-Corp-Analyse
-(6146.T, 2026-08-31) hat der 3-fach-Cross-Check (Jarvis/Jack/Conan) rein
+(6146.T, 2026-08-31) hat der 3-fach-Cross-Check (Jarvis/JJ/Conan) rein
 fundamental gearbeitet – keine der drei KIs hat das TA-Modul/Twelve Data
 für Unterstützungs-/Widerstandszonen herangezogen, und der Kurs wurde nur in
 JPY genannt, nicht zusätzlich in EUR (Verstoß gegen die bereits bestehende
@@ -2991,7 +2991,7 @@ anders als DCF/Vollformat-Zusatzmodule ist dieser Schritt NICHT
    unabhängig von Quick-Filter- oder Full-Deep-Dive-Tiefe. Datenbasis:
    Twelve Data (`get_technical_indicator` für EMA20/50/200, Bollinger-Bänder,
    RSI, MACD, ATR; `get_time_series`/Pivot-Punkte für Unterstützung/
-   Widerstand), analog zum bestehenden TA-Prompt-Modul ("Jack, Pure
+   Widerstand), analog zum bestehenden TA-Prompt-Modul ("JJ, Pure
    Technical Analyst" v1.10, siehe Abschnitt 2). Nur wenn Twelve Data den
    Ticker nachweislich nicht führt (seltener Ausnahmefall, siehe oben),
    entfällt dieser Schritt – dann aber explizit als Lücke vermerkt, nicht
@@ -3069,7 +3069,7 @@ TA+EUR-Standard erfüllen musste wie der laufende Monitoring-Kreislauf.
 Drittanalyse ("Szenarios_Vincorion.pdf", Fact-Check/Verfeinerung einer
 Forumsthese zum STAR-Capital-Lock-up bei Vincorion SE/V1NC) hochgeladen und
 gebeten, den Kandidaten zusätzlich über unser eigenes 3-KI-System (Jarvis/
-Jack/Conan) zu prüfen und gegen die fremde Analyse zu spiegeln, um daraus
+JJ/Conan) zu prüfen und gegen die fremde Analyse zu spiegeln, um daraus
 Systemverbesserungen abzuleiten (Einzelanalysen:
 `VNC-TMR-quickfilter-jarvis-claude-2026-08-31.md`,
 `-jack-gemini-2026-08-31.md`, `-conan-chatgpt-2026-08-31.md`; volle
@@ -3090,7 +3090,7 @@ bisher kein eigenes Prüfmodul gab, und (b) eine Datenlücken-Ursache
 bisher identisch wie gewöhnliche Intransparenz (Disco-Fall: Capex/Umsatz,
 CCC nicht auffindbar) behandelt hätte, obwohl beides analytisch
 grundverschieden ist. Zusätzlich fiel im 3-KI-Cross-Check UND in der
-fremden PDF ein wiederkehrendes Muster auf: alle Beteiligten (Jack ~90%+,
+fremden PDF ein wiederkehrendes Muster auf: alle Beteiligten (JJ ~90%+,
 Conan ~70-80%, die fremde PDF ~50/25/15/7/3% je Szenario) neigten dazu,
 für ein grundsätzlich nicht statistisch herleitbares Verkäuferverhalten
 (wird ein PE-Fonds nach Lock-up-Ende verkaufen, und wie?) konkrete
@@ -3158,13 +3158,13 @@ Bias, der eine feste Regel braucht, keine Einzelfall-Disziplin.
    ist die Einschätzung als **Rangfolge + Richtung** auszudrücken (z.B.
    "am wahrscheinlichsten... deutlich möglich... unwahrscheinlich, aber
    nicht ausgeschlossen"), NICHT als erfundene Prozentzahl (z.B. "70-80%
-   Wahrscheinlichkeit") — auch wenn eine befragte Fremd-KI (Jack, Conan)
+   Wahrscheinlichkeit") — auch wenn eine befragte Fremd-KI (JJ, Conan)
    oder eine vom Nutzer hochgeladene Drittquelle das tut. Ausnahme: die
    Prozentzahl stammt selbst direkt und zitierfähig aus einer benannten,
    datierten Primärquelle (z.B. ein Analysten-Report, der explizit "wir
    schätzen X% Wahrscheinlichkeit" schreibt) — dann wird sie als Zitat mit
    Quellenangabe übernommen, nicht als eigene Herleitung ausgegeben.
-   Hintergrund: im Vincorion-Cross-Check griffen 2 von 3 KIs (Jack, Conan)
+   Hintergrund: im Vincorion-Cross-Check griffen 2 von 3 KIs (JJ, Conan)
    UND die vom Nutzer hochgeladene Drittanalyse unabhängig voneinander zu
    erfundenen Prozentzahlen — nur Jarvis hielt sich an Rangfolge ohne
    Zahlen. Das zeigt, dass Schein-Präzision ein systematisches Muster ist,
@@ -3319,7 +3319,7 @@ Für "Talent (langfristig)" bleibt dagegen das antizyklische Grundprinzip
 unverändert die Norm, wie bei Champions/Profi.
 
 **Anwendung auf die Charttechnik (TA-Modul, 2026-09-01 ergänzt):** Das
-TA-Modul (Jack, Pure Technical Analyst, siehe Abschnitt 2) kennt bereits
+TA-Modul (JJ, Pure Technical Analyst, siehe Abschnitt 2) kennt bereits
 zwei Modi – SWING (eigenständig, Momentum-/Setup-getrieben) und
 INVESTOR-ENTRY (Handoff mit TMR-/Scout-Fair-Values, Preiszonen/Margin-of-
 Safety/Entry-Ampel). Diese Modi werden ab sofort explizit an die
@@ -4196,8 +4196,8 @@ kompakte Seite pro Position mit klarer Ampel-Logik" – Struktur, Optik und
 Reihenfolge sind bewusst eigenständig gestaltet.
 
 **Eigene Marke/Identität:** Der Report heißt "AGENT WOCHENREPORT" (Bezug zum
-Jack-Moat-Agent-Regelwerk, nicht Raketentonis generischer Titel), Untertitel
-"3-KI Cross-Check · Jarvis · Conan · Jack".
+JJ-Moat-Agent-Regelwerk, nicht Raketentonis generischer Titel), Untertitel
+"3-KI Cross-Check · Jarvis · Conan · JJ".
 
 **Farbwelt (bewusst abgesetzt von Raketentonis Navy-Corporate-Look):**
 **Korrigiert 2026-09-07 (von Brian gefordert: "zu dunkel und schwer zu
@@ -4227,7 +4227,7 @@ kombiniert mit einer klaren, gut lesbaren serifenlosen Fließtext-Schrift.
 Raketentoni, nicht nur andere Farben):**
 
 - **3-Stimmen-Leiste ganz oben** (unser Kernunterschied, kommt VOR der
-  These, nicht versteckt): drei farbige Badges "Jarvis · Conan · Jack" mit
+  These, nicht versteckt): drei farbige Badges "Jarvis · Conan · JJ" mit
   jeweiligem Einzel-Rating + Konvergenz-Label ("STARK KONVERGENT" /
   "MODERAT" / "WIDERSPRUCH") – Raketentonis Report zeigt nur ein stilles
   synthetisiertes Endergebnis, wir zeigen bewusst die Kontroverse/den
@@ -4285,6 +4285,28 @@ Zeile) bleiben Pflichtbestandteil, werden aber jetzt in diesem saubereren
 Layout statt als reiner Fließtext präsentiert.
 
 ### PDF-Report-Design: "Agent Deep Dive Report" (Full Deep Dive, 2026-09-08)
+
+**Rebranding 2026-09-16 (Brian, ausdrücklicher Wunsch):** Das im Report-
+Masthead angezeigte Markenwort heißt ab sofort **"J.A.C.K DEEP DIVE"** statt
+bisher "AGENT DEEP DIVE" — J.A.C.K steht dabei für die drei beteiligten
+Agenten plus die KI-Ebene: **J** = JJ (Gemini) · **A** = Aegis (Jarvis/
+Claude in der Synthese-Rolle) · **C** = Conan (ChatGPT) · **K** = KI.
+Gleichzeitig wurde die
+Gemini-Persona selbst von "Jack" auf **"JJ"** umbenannt (durchgängig in
+Agent-Playbook.md, HANDOVER.md, `prompts/jack-moat-reaper-v11.7.md`,
+`prompts/jack-technical-analyst-v1.9.md`, `prompts/conan-the-scout-v1.12.md`
+sowie den Gemini-/OpenAI-Bridge-Server-Docstrings außerhalb des Repos).
+**Bewusst NICHT rückwirkend geändert:** die Prompt-Dateinamen selbst
+(`jack-moat-reaper-v11.7.md`, `jack-technical-analyst-v1.9.md` bleiben
+unverändert, gleiches Prinzip wie beim Reaper→Agent-Rebranding 2026-09-07 —
+Referenzbruch vermeiden), CHANGELOG.md-Einträge vor diesem Datum (historisches
+Protokoll, beschreibt korrekt den zum jeweiligen Zeitpunkt gültigen Namen),
+sowie alle bereits abgeschlossenen `analysen/*.md`-Dateien und bereits
+gerenderten Report-PDFs/HTML-Dateien in `reports/` (dort gibt es keine
+gemeinsame Vorlage, jeder Report kopiert das Masthead-Markup individuell —
+ab dem nächsten neu erstellten Full-Deep-Dive-Report gilt "J.A.C.K DEEP
+DIVE" als neues Masthead, ältere Reports bleiben als historischer Schnappschuss
+mit dem alten Branding stehen).
 
 Brian hat eine weitere, deutlich ausgereiftere Beispiel-PDF von Raketentonis
 System geteilt ("MP Materials – Große Aktienanalyse", 13 Seiten, mehrstufiger
@@ -4454,7 +4476,7 @@ pressen:
 
 **Was unverändert bleibt:** DQ-Badge-System (Ⓥ/Ⓣ/Ⓔ/Ⓝ), Farbwelt/Typo,
 Zwei-Runden-Cross-Check-Pflicht (Rigor-Inhalte gehen in Runde 2 zurück an
-Jack/Conan), PFLICHT-JSON-SUMMARY am Ende (Conans eigenes Schema, siehe
+JJ/Conan), PFLICHT-JSON-SUMMARY am Ende (Conans eigenes Schema, siehe
 Regel 43), Quellen-Seite mit Korrektur-Historie-Konvention. **Was NICHT
 1:1 übernommen wird:** kein DCF/WACC/Reverse-DCF (Scout arbeitet mit
 EV/Sales+TAM-Sanity-Check statt DCF, siehe Conan-Prompt "BEWERTUNG – KEIN
@@ -4473,7 +4495,7 @@ Standard). Dazwischen fehlte eine Stufe für "echter 3-fach-Cross-Check,
 aber ohne den vollen Zeit-/Seitenaufwand".
 
 **Methodik-Tiefe: QUICK FILTER, nicht FULL DEEP DIVE.** Beide Bridge-KIs
-(Jack/Gemini + Conan/ChatGPT) laufen im QUICK-FILTER-Modus ihrer jeweils
+(JJ/Gemini + Conan/ChatGPT) laufen im QUICK-FILTER-Modus ihrer jeweils
 bindenden Methodik-Datei (Bucket-Klassifizierung entscheidet wie beim Full
 Deep Dive, siehe "[2] KATEGORISIERUNG" – nur EINE Runde Dispatch, kein
 zweiter Rigor-Standard-Nachschlag). QUICK FILTER bedeutet laut den
@@ -4522,7 +4544,7 @@ Einzelfall anpassen):
   wenn eine Kennzahl trotz Suchversuch nicht auffindbar war — das ist kein
   Konfidenz-Label auf einem gefundenen Wert, sondern die Aussage selbst
   ("kein Wert gefunden"). Die zugrundeliegende KENNZAHLEN-RECHERCHE-PFLICHT
-  (Suchversuch vor jedem Tag) und die interne Tag-Vergabe durch Jack/Conan
+  (Suchversuch vor jedem Tag) und die interne Tag-Vergabe durch JJ/Conan
   bleiben unverändert – nur die Report-DARSTELLUNG wird schlanker. Der
   aggregierte Konfidenz-Wert (🟢/🟡/🔴 + %) bleibt sichtbar und trägt
   weiterhin das Gesamtbild der Datenqualität, ohne dass jede einzelne
@@ -4715,7 +4737,7 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     Tag-Disziplin selbst ([LIVE]/[VERIFIED]/[TRAINING]/[ESTIMATE]/[N/V],
     Klasse-A-Regel aus dem Datenintegritäts-System) bleibt UNVERÄNDERT –
     sie bestimmt weiterhin Daten-Konfidenz, Score-Deckel und Sizing-Limits
-    und wird in den textlichen Divergenz-Einordnungen (z.B. "Jacks Zahl
+    und wird in den textlichen Divergenz-Einordnungen (z.B. "JJs Zahl
     [VERIFIED] vs. Conans [TRAINING]") weiterhin ausgeschrieben, wo sie
     argumentativ gebraucht wird. Nur die WIEDERHOLTE Anzeige in jeder
     einzelnen Tabellenzelle wird visuell verschlankt: statt
@@ -4859,7 +4881,7 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     DNA-Check-Ausgabe", nur aus zwei verschiedenen Anlässen entstanden).**
     Auslöser Teil 1 (Tabellen-Vollständigkeit): der erste NVO-Report zeigte
     den DNA-Check nur als Fließtext-Zusammenfassung (Score/Rating), keine
-    tatsächliche Tabelle – weil Jack selbst die Kennzahlen in Prosa statt im
+    tatsächliche Tabelle – weil JJ selbst die Kennzahlen in Prosa statt im
     eigenen Tabellenformat lieferte, unbemerkt beim Report-Bau übernommen.
     **Ab sofort Pflicht:** jeder Full-Deep-Dive-Report zeigt die komplette
     DNA-CHECK-Tabelle aus der jeweils bindenden Methodik-Datei (TMR: 4-5
@@ -4879,7 +4901,7 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     jack-moat-reaper-v11.7.md bzw. conan-the-scout-v1.12.md (z.B. Beta immer
     Yahoo Finance 5Y-monatlich, Op.-Margin immer GAAP TTM) — nicht mehr die
     erste gefundene Aggregator-Zahl. SEC-Filing/IR geht bei Widerspruch vor
-    Aggregator. Diese Definition steht direkt in der an Jack/Conan
+    Aggregator. Diese Definition steht direkt in der an JJ/Conan
     gesendeten Methodik-Datei (wirkt also am Ort der Entstehung), Jarvis
     prüft beim Report-Bau zusätzlich stichprobenhaft gegen, ob der
     gelieferte Wert zur festgelegten Quelle/Definition passt.
@@ -4915,12 +4937,12 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     Tag-Vergabe für jede DNA-Check-Kennzahl verlangt – ein [TRAINING]/[N/V]
     ohne dokumentierten Suchversuch ist jetzt selbst ein Regelverstoß, nicht
     mehr nur eine ehrliche Falls-nicht-gefunden-Notiz. Zusätzlich wurde ein
-    realer Tagging-Fehler behoben: Jack hatte ROIC/FCF-Marge/Piotroski im
+    realer Tagging-Fehler behoben: JJ hatte ROIC/FCF-Marge/Piotroski im
     AUPH-Fall als [LIVE] getaggt, obwohl [LIVE] laut eigener Definition
     ausschließlich Echtzeit-Marktdaten (Kurs/Zinsen/FX/News) zusteht, nie
     Fundamentalkennzahlen mit Berichtsstichtag – beide Methodik-Dateien
     stellen das jetzt explizit klar. Verschiebt den Qualitätscheck von
-    "Jarvis prüft hinterher nach" zu "Jack/Conan müssen vorher suchen" –
+    "Jarvis prüft hinterher nach" zu "JJ/Conan müssen vorher suchen" –
     senkt die TRAINING/N/V-Rate dort, wo echte Daten recherchierbar wären,
     ändert aber KEINE Schwelle/Abbruch-Logik. Vollständige Begründung/
     Diff siehe CHANGELOG.md 2026-09-09.
@@ -4930,7 +4952,7 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     fehlgeschlagenen Versuchen mit einem bereits fertig ausformulierten,
     langen Analyse-Prompt entdeckt – vermeidbare Zeit- und Kontextverschwendung.
     **Ab sofort Pflicht:** vor dem Versand eines langen/komplexen Full-Deep-
-    Dive- oder Schnellanalyse-Dispatch-Prompts an Jack (`ask_gemini`) oder
+    Dive- oder Schnellanalyse-Dispatch-Prompts an JJ (`ask_gemini`) oder
     Conan (`ask_chatgpt`) wird zuerst EIN minimaler Verbindungstest
     geschickt (z.B. ein Ein-Wort-Prompt oder `list_gemini_models`/
     `list_openai_models`). Nur bei erfolgreichem Health-Check wird der volle
@@ -4948,7 +4970,7 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     plus ein offener Punkt, den vollständigen 3-fach-Cross-Check nachzuholen,
     sobald die Bridge wieder erreichbar ist). Ist NUR eine Bridge ausgefallen
     und die andere erreichbar, läuft der reguläre Zwei-KI-Cross-Check
-    (Jack/Conan, je nach Bucket) normal weiter, nur Aegis' Ersatzrolle
+    (JJ/Conan, je nach Bucket) normal weiter, nur Aegis' Ersatzrolle
     entfällt dann.
 33. **Rigor-Standard-Checklist-Verifikation vor Report-Abschluss (neu,
     2026-09-09, ausgelöst durch einen echten Compliance-Fund beim
@@ -4965,7 +4987,7 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     nur beim ERSTELLEN neuer Punkte an die Anwendung denken, sondern auch
     bei JEDEM folgenden Report erneut. Kein separates Dokument nötig, ein
     kurzer interner Check reicht (ähnlich der bereits bestehenden
-    "Prozess-Pflicht: Rigor-Standard-Inhalte werden an Jack/Conan
+    "Prozess-Pflicht: Rigor-Standard-Inhalte werden an JJ/Conan
     zurückgespielt" unten) – Zweck ist, dass ein bereits beschlossener
     Standard nicht wegen reiner Report-Bau-Hektik unter den Tisch fällt.
     Fällt bei einem späteren Review trotzdem eine Lücke auf: wie beim
@@ -5045,7 +5067,7 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     gleicher Auslöser wie Punkt 37).** Ergänzt die bestehende Management-
     Glaubwürdigkeits-Matrix (Seite 4) um eine Sprach-Dimension neben der
     reinen Fakten-Transparenz. **Ab sofort Pflicht bei Full Deep Dive, von
-    Jack UND Conan als Teil ihrer Recherche mit abgedeckt (keine
+    JJ UND Conan als Teil ihrer Recherche mit abgedeckt (keine
     Zusatzrunde):** über die letzten 2-4 Earnings-Call-Transkripte prüfen:
     Tone-Shift (Optimismus → vage Phrasen wie "Headwinds"/"Macro
     Environment"), Promises-vs-Reality (wurden Vorquartals-Ansagen
@@ -5056,10 +5078,10 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     nicht erzwingen oder aus einem einzelnen Call hochrechnen.
 39. **Terminal-Value-Cross-Check über Exit-Multiple neben Gordon-Growth
     (neu, 2026-09-15, Abgleich mit Anthropics offiziellem `/dcf`-Skill aus
-    `anthropics/financial-services`).** Jacks FULL DCF berechnete den
+    `anthropics/financial-services`).** JJs FULL DCF berechnete den
     Terminal Value bisher ausschließlich über Gordon-Growth-Perpetuity
     (TV = FCF_J5×(1+g)/(WACC−g)). **Ab sofort zusätzlich, nur im TMR-Pfad
-    (Jack, kein DCF bei Scout/Conan):** ein zweiter Terminal Value über die
+    (JJ, kein DCF bei Scout/Conan):** ein zweiter Terminal Value über die
     Exit-Multiple-Methode (Peer-Median-EV/EBITDA × EBITDA_J5, siehe
     jack-moat-reaper-v11.7.md SCHRITT 5, neue Regel 38) – Standard in
     jedem professionellen DCF-Modell, weil Gordon-Growth extrem empfindlich
@@ -5097,7 +5119,7 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     Energie-/Agrar-/Schifffahrtswert tatsächlich das Geschäft bewegt. **Ab
     sofort Pflicht bei Full Deep Dive UND Quick Filter, sobald die Aktie
     eine erkennbar dominante externe Preis-/Nachfrage-Abhängigkeit hat:**
-    Aegis identifiziert VOR dem Dispatch an Jack den 1-3 wichtigsten
+    Aegis identifiziert VOR dem Dispatch an JJ den 1-3 wichtigsten
     unternehmensspezifischen Leitindikator/-en und liefert dessen aktuellen
     Stand + Mehrjahres-Vergleich (nicht nur einen Punktwert) explizit ins
     Fact-Pack – z.B. Shell/Exxon/BP → Brent/WTI + Raffineriemarge; Rio
@@ -5112,12 +5134,12 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     Selbstkritik nach Rückfrage):** der Leitindikator-Wert trägt IMMER ein
     [LIVE]/[VERIFIED]/[TRAINING]-Tag wie jede andere Kennzahl im System –
     die erste Fassung dieses Punktes hatte das versäumt, ein Bruch mit der
-    sonst ausnahmslosen Data-Integrity-Tag-Pflicht. **Bewusst nur Jack/TMR-Pfad:** Rohstoff-/
+    sonst ausnahmslosen Data-Integrity-Tag-Pflicht. **Bewusst nur JJ/TMR-Pfad:** Rohstoff-/
     Energie-Großkonzerne wie Shell oder Rio Tinto sind reife, profitable
     Bucket-A/C-Fälle und laufen ohnehin nie über den Scout-Pfad – keine
     Änderung an `conan-the-scout-v1.12.md` nötig. **Kein neuer eigener
-    Recherche-Aufwand bei Jack:** die Leitindikator-Recherche bleibt wie die
-    übrige Makro-Analyse zentral bei Aegis, Jack referenziert nur den
+    Recherche-Aufwand bei JJ:** die Leitindikator-Recherche bleibt wie die
+    übrige Makro-Analyse zentral bei Aegis, JJ referenziert nur den
     mitgelieferten Wert (oder vermerkt "nicht mitgeliefert").
 
 41. **KSF-Scorecard: Branchen-Erfolgsfaktoren vs. Positionierung (neu,
@@ -5130,14 +5152,14 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     konkrete Unternehmen je Faktor mit einem klaren Status bewerten (✅
     DEFENSIV / 🟡 IN ARBEIT/UNGEPRÜFT / ❌ KRITISCH/SCHWACH). **Ab sofort
     Pflicht bei Full Deep Dive (Seite 3, ergänzt die Moat-Verifikation),
-    optional bei Quick Filter/Scout, beide KIs (Jack + Conan, siehe
+    optional bei Quick Filter/Scout, beide KIs (JJ + Conan, siehe
     jack-moat-reaper-v11.7.md v11.17 und conan-the-scout-v1.12.md v1.19):**
     Kein Zusatzaufwand – die KSFs werden aus der ohnehin vorhandenen
     Moat-/Wettbewerbsanalyse abgeleitet, keine neue Datenquelle. **Direkte
     Kopplung an das Kill-Sheet:** jede Zeile mit 🟡/❌-Status wird
     automatisch Kandidat für die Bull-/Bear-Trigger-Liste – verzahnt
     Wettbewerbsanalyse und Risiko-Triggern enger, statt zwei getrennt
-    wirkende Listen zu führen (genau der Kritikpunkt, den Jack/Conan beim
+    wirkende Listen zu führen (genau der Kritikpunkt, den JJ/Conan beim
     Struktur-Review des CBOE-Reports am 16.09.2026 hatten: Kill-Sheet und
     Wettbewerbsanalyse wirkten wie zwei unabhängig gebaute Listen).
 
@@ -5180,14 +5202,14 @@ verifizierbar, das Data-Integrity-Risiko einer weiteren schlecht
 belegbaren Kennzahl wiegt den Erkenntnisgewinn nicht auf.
 
 **Warum die "Zahnrad"-Idee selbst NICHT übernommen wurde (2026-09-10):**
-Gemini schlug vor, Jack (quantitativ) und Conan (qualitativ/Devil's
-Advocate) sequenziell zu verketten – Conan bekäme Jacks fertige Zahlen als
+Gemini schlug vor, JJ (quantitativ) und Conan (qualitativ/Devil's
+Advocate) sequenziell zu verketten – Conan bekäme JJs fertige Zahlen als
 Angriffsziel. Das würde den Ankereffekt (Anchoring Bias) einführen und
 genau die Art unabhängiger Divergenz zerstören, die der eigentliche Wert
 des 3-fach-Cross-Checks ist (Beispiel: die echte Piotroski-F-Score-
 Divergenz 4/9 vs. 7/9 bei Rambus wäre bei sequenzieller Verkettung
-vermutlich glattgebügelt worden, da Conan Jacks Zahl schon vor Augen
-gehabt hätte). Jack und Conan bleiben deshalb bei vollständig unabhängiger
+vermutlich glattgebügelt worden, da Conan JJs Zahl schon vor Augen
+gehabt hätte). JJ und Conan bleiben deshalb bei vollständig unabhängiger
 paralleler Recherche (siehe [[feedback_gleiche_methodik_beide_kis]]) – nur
 in der Aegis-Synthese (Seite 10, NACH Vorliegen beider unabhängiger
 Berichte) treffen ihre Ergebnisse aufeinander. Punkte 37/38 oben sind die
@@ -5210,7 +5232,7 @@ die Obergrenze real um eine Seite verschoben, siehe unten).
 | # | Seite | Inhalt | Sektor-Status |
 |---|---|---|---|
 | 1 | Cover | Masthead, Hook-These, Kernzahlen | universell |
-| 2 | Cross-Check-Übersicht | 3-Stimmen-Leiste, Jack/Conan-Divergenz-Analyse, Score-/DCF-Zusammenfassung | universell |
+| 2 | Cross-Check-Übersicht | 3-Stimmen-Leiste, JJ/Conan-Divergenz-Analyse, Score-/DCF-Zusammenfassung | universell |
 | 3 | DNA-Check | Vollständige K+E-Kriterien-Tabelle (Punkt 29), optional KSF-Scorecard (Punkt 41) bei mehrdimensionalem/gemischtem Moat-Bild | universell im Format, Kriterien selbst bereits sektoradaptiv über die bestehenden Sektor-Overrides (Finanz/SaaS/Piotroski/Infrastruktur, siehe jack-moat-reaper-v11.7.md) |
 | 4 | Historie | 5J-Finanzhistorie, Guidance-Track-Record, Management-Glaubwürdigkeits-Matrix (inkl. Tonalitäts-Dimension, Punkt 38), optional Bookings/Backlog-Wedge-Analyse (Punkt 42) bei Lizenz→Subscription-Transformation | universell |
 | 5 | Chart | Kursverlauf (Technical) | universell |
@@ -5229,7 +5251,7 @@ Punkt 34/35 für die vollständige Sektor-Beispiel-Liste). Das
 STRUKTURELLE Gerüst (10 Seiten, diese Reihenfolge, dieser
 Detailgrad) ist der wiederverwendbare Teil – die fachliche Substanz je
 Zeile bleibt eine bewusste, sektorspezifische Entscheidung von Jarvis/
-Jack/Conan bei jeder einzelnen Analyse, kein Ausfüll-Formular.
+JJ/Conan bei jeder einzelnen Analyse, kein Ausfüll-Formular.
 **Kein Zwang zur vollen Länge:** ist eine Zeile für den konkreten Fall
 nicht sinnvoll anwendbar (z.B. Insider-Daten bei einem sehr jungen
 IPO-Kandidaten nicht auffindbar, kein aktives Buyback-Programm), entfällt
@@ -5309,13 +5331,13 @@ Datenintegritäts-/Tagging-Disziplin (LIVE/VERIFIED/TRAINING/ESTIMATE/N/V)
 bleibt die eigene, bereits etablierte Methode, um Quellenqualität
 transparent zu machen.
 
-**Prozess-Pflicht: Rigor-Standard-Inhalte werden an Jack/Conan
+**Prozess-Pflicht: Rigor-Standard-Inhalte werden an JJ/Conan
 zurückgespielt (2026-09-08, von Brian gefordert, ausgelöst durch einen
 echten Fund):** Beim ersten CLBT- und ATEN-Full-Deep-Dive wurden die 15
 Rigor-Techniken oben (5-Jahres-Historie, Guidance-Track-Record,
 Produktlinien-Tabelle, Peer-Multiples, Management-Porträts,
 Kapitalrückführungs-Historie usw.) ausschließlich von Jarvis SOLO
-recherchiert, NACHDEM Jack und Conan bereits mit dem ursprünglichen
+recherchiert, NACHDEM JJ und Conan bereits mit dem ursprünglichen
 (schlankeren) Fact-Pack fertig geantwortet hatten – diese Inhalte
 durchliefen also nie den eigentlichen 3-fach-Cross-Check. Genau das führte
 bei A10 zu einem realen, unbemerkten Widerspruch (zwei unterschiedliche
@@ -5323,11 +5345,11 @@ Gesamtschulden-Zahlen aus zwei Quellen in zwei Report-Abschnitten, nie
 gegeneinander geprüft) – von Brian entdeckt, nicht vom System selbst.
 
 **Ab sofort verbindlich:** Full Deep Dive läuft zweistufig statt
-einstufig. **Runde 1** (wie bisher): schlankes Fact-Pack → Jack + Conan →
+einstufig. **Runde 1** (wie bisher): schlankes Fact-Pack → JJ + Conan →
 DNA-Check/Moat/Score/Reality-Flags/Devil's-Advocate. **Runde 2 (neu,
 Pflicht):** Jarvis recherchiert die Rigor-Standard-Inhalte (die 15 Punkte
 oben), fasst sie in einem zweiten, kompakten Zusatz-Fact-Pack zusammen und
-schickt dieses ERNEUT an Jack und Conan, mit der expliziten Bitte, die
+schickt dieses ERNEUT an JJ und Conan, mit der expliziten Bitte, die
 neuen Zahlen (5-Jahres-Historie, Guidance-Zahlen, Konzentrations-/
 Bilanzangaben, Peer-Multiples) per eigener Live-Suche gegenzuprüfen und
 Abweichungen zu benennen – genau wie in Runde 1 bei DNA-Check-Kennzahlen
@@ -5339,13 +5361,13 @@ stillschweigend geglättet. Diese zweite Runde kostet zusätzliche Zeit/
 Tokens pro Report – das ist ein bewusster Tausch für echte statt nur
 behauptete Cross-Check-Tiefe.
 
-### Jack-Prompt-Redesign-Anfrage abgewogen, additiv statt Komplett-Rewrite umgesetzt (2026-09-08, ausgelöst durch Brians externes Gespräch mit Jack/Conan)
+### JJ-Prompt-Redesign-Anfrage abgewogen, additiv statt Komplett-Rewrite umgesetzt (2026-09-08, ausgelöst durch Brians externes Gespräch mit JJ/Conan)
 
-Brian hatte am Vorabend mit Jack (Gemini) und Conan (ChatGPT) außerhalb
-dieser Session über eine mögliche Komplett-Neufassung von Jacks
+Brian hatte am Vorabend mit JJ (Gemini) und Conan (ChatGPT) außerhalb
+dieser Session über eine mögliche Komplett-Neufassung von JJs
 72.000-Zeichen-Systemprompt diskutiert. Conans Vorschlag ("TMR COMPACT
 ENGINE v13.0"): Persona/Sarkasmus raus, Sizing-Tiers/Portfolio-Logik
-komplett aus Jack raus und zentral in einem "Master-Agent" bündeln,
+komplett aus JJ raus und zentral in einem "Master-Agent" bündeln,
 einheitliches JSON-Output-Schema für alle 3 KIs, Makro/Prediction-
 Tracking/Exit-Mechanik zentralisieren. Brian bat Jarvis um eine
 Einschätzung, ob man den kompletten Prompt so neu aufsetzen soll.
@@ -5370,7 +5392,7 @@ die Nachvollziehbarkeit nehmen, die für Cross-Checks gebraucht wird.
    System wird primär von einer anderen KI ausgewertet, nicht von einem
    Menschen gelesen, Ton-Overhead kostet nur Tokens ohne Analysewert.
 2. **Makro-Radar zentralisiert** – lief zuvor redundant bei allen 3 KIs
-   einzeln, läuft jetzt zentral bei Jarvis, Jack referenziert nur noch
+   einzeln, läuft jetzt zentral bei Jarvis, JJ referenziert nur noch
    mitgelieferten Kontext statt eigenen Web-Search-Aufwand zu betreiben.
 3. **Neuer SCHRITT 8 – PFLICHT-JSON-SUMMARY** ergänzt (Regel 37): ein
    strukturierter JSON-Block am Ende von MODUS A/EARNINGS-PREP, der die
@@ -5380,9 +5402,9 @@ die Nachvollziehbarkeit nehmen, die für Cross-Checks gebraucht wird.
    Sizing-Vorschlag im JSON ist explizit als "Vorschlag, keine
    Portfolioentscheidung" gekennzeichnet – die finale Gewichtung bleibt
    bei Jarvis als Master im Cross-Check mit Conan/Claude, unabhängig
-   davon, was Jack selbst vorschlägt (dessen unabhängige Sizing-Meinung
+   davon, was JJ selbst vorschlägt (dessen unabhängige Sizing-Meinung
    bleibt als Cross-Check-Signal erhalten, siehe z.B. die informative
-   Divergenz Jack SCHROTT/0% vs. Conan BEOBACHTEN/1-1,5% bei ATEN).
+   Divergenz JJ SCHROTT/0% vs. Conan BEOBACHTEN/1-1,5% bei ATEN).
 
 Analyse-Substanz (DNA-Check, alle Sektor-Overrides, Entscheidungs-
 hierarchie, Stapel-Logik, Klasse-A-Regeln 1-36) bewusst unverändert
@@ -5395,17 +5417,17 @@ Daten/prüft Risiken/prüft Depot-Regeln) von Hermes übernommen werden
 könnte, als eigener neuer Cron-Job. Beim Blick in
 `~/.claude/scheduled-tasks/taeglicher-trigger-check/SKILL.md` zeigte sich:
 diese Rolle existiert dort bereits (Schritt 5 – voller 3-fach-Cross-Check
-mit Jack/Conan-Bridge-Aufruf, Depot-Regel-Prüfung, UND die "Order-
+mit JJ/Conan-Bridge-Aufruf, Depot-Regel-Prüfung, UND die "Order-
 Ausführung ist IMMER manuell"-Grenze ist dort schon hart eincodiert, siehe
 Abschnitt "FIXE GRENZEN"). Ein zweiter, paralleler Hermes-Job hätte diese
 Logik nur dupliziert/auseinandergerissen statt sie zu verbessern.
 
 Stattdessen wurde die eigentliche Lücke geschlossen: der bestehende
-Cross-Check-Schritt hat Jack/Conan bisher nur als Prosa gelesen, nicht
-über die neuen JSON-Summary-Blöcke (SCHRITT 8 bei Jack v11.10 /
+Cross-Check-Schritt hat JJ/Conan bisher nur als Prosa gelesen, nicht
+über die neuen JSON-Summary-Blöcke (SCHRITT 8 bei JJ v11.10 /
 PFLICHT-JSON-SUMMARY bei Conan v1.13). Ergänzt in
 `~/.claude/scheduled-tasks/taeglicher-trigger-check/SKILL.md` (Abschnitt
-"Jack (Gemini) / Conan (ChatGPT) per API-Bridge"): nach jedem Bridge-Call
+"JJ (Gemini) / Conan (ChatGPT) per API-Bridge"): nach jedem Bridge-Call
 wird jetzt zusätzlich der JSON-Block aus der Antwort geparst und im
 Cross-Check-Vergleich (Schritt 5) explizit gegenübergestellt (Rating,
 Score, Sizing-Vorschlag, aktive Flags), statt nur die Prosa zu lesen und
@@ -5415,7 +5437,7 @@ derselbe Vergleich manuell durch Jarvis, jetzt mit derselben strukturierten
 Grundlage.
 
 **Namensgebung (2026-09-08, von Brian gefordert): der Master-Agent heißt
-Aegis.** Analog zu Jack (Gemini) und Conan (ChatGPT) bekommt die bisher nur
+Aegis.** Analog zu JJ (Gemini) und Conan (ChatGPT) bekommt die bisher nur
 als Rollenbeschreibung geführte vierte Position im Redesign-Diagramm
 ("Master Agent" – vergleicht Daten/prüft Risiken/prüft Depot-Regeln) einen
 Eigennamen: **Aegis**. Wichtig: Aegis ist KEINE vierte, separate KI oder
@@ -5450,14 +5472,14 @@ Gegenprüfung (volle 824 Zeilen zeilenweise gelesen) kam zum selben
 Ergebnis, fand aber einen echten, bis dahin übersehenen Punkt: die 24
 zuletzt ergänzten Regeln (19-42) im Abschnitt GLOBALE REGELN waren fast
 wortgleiche ZWEITFORMULIERUNGEN von Mechaniken, die im Fließtext bereits
-vollständig ausformuliert stehen — anders als Jacks Prompt, wo der
+vollständig ausformuliert stehen — anders als JJs Prompt, wo der
 Regelabschnitt am Dokumentende schon immer nur als Kurzverweis auf die
 einzige verbindliche Formulierung diente ("Diese Sektion klassifiziert
 NUR..."), nicht als Zweitformulierung.
 
 **Umgesetzt** (`conan-the-scout-v1.12.md`, v1.14→v1.15): Regeln 19-42 von
 voller Wiederholung auf kompakte "siehe [Abschnitt] oben"-Verweise
-gekürzt, exakt nach Jacks eigener GLOBALE-REGELN-Konvention. Keine
+gekürzt, exakt nach JJs eigener GLOBALE-REGELN-Konvention. Keine
 einzige Schwelle, Formel, Override-Tabelle oder Konsequenz wurde entfernt
 oder verändert — nur die doppelte Formulierung, ~50 Zeilen (~6%)
 eingespart. Alle Selbstverweise im Fließtext auf Regelnummern (Zeile
@@ -5481,7 +5503,7 @@ Verbesserungspunkte. Jarvis' Bewertung je Punkt:
   Wahrscheinlichkeiten sind bereits im PFLICHT-DISCLAIMER explizit als
   "KEIN statistisches Modell" deklariert (ChatGPT bestätigt das selbst im
   eigenen Text); Conan hat keinen eigenen Makro-Radar-Block, nur die
-  Kontext-Zeile MAKRO-RÜCKENWIND (schon so); Jack/Conan haben bereits
+  Kontext-Zeile MAKRO-RÜCKENWIND (schon so); JJ/Conan haben bereits
   unterschiedliche Score-Vokabulare (Scout Score ≠ Agent Score); die
   Cross-Check-JSON-Felder sind bereits vergleichbar strukturiert; die
   große Redundanz-Fundstelle (Regeln 19-42) ist bereits behoben (siehe
@@ -5544,7 +5566,7 @@ benannten Firmen (Ligand Pharmaceuticals, UCB SA, Itochu, Qnity
 Electronics) – anders als beim automatisierten Kandidaten-Scan (dort
 Pflicht: Identity-/Strategie-Fit-/Duplikations-Gate + 3-fach-Quick-Filter
 vor Aufnahme) wurden diese vier NUR mit Jarvis-Solo-Recherche kategorisiert
-und mit CRV versehen, kein Bridge-Aufruf an Jack/Conan. Das ist bewusst so
+und mit CRV versehen, kein Bridge-Aufruf an JJ/Conan. Das ist bewusst so
 gehandhabt worden (Zeitaufwand vs. Direktvorgabe des Nutzers), aber jeder
 Eintrag ist im Kurzthese-Feld explizit als "kein voller 3-fach-Cross-Check
 gelaufen" markiert – falls Brian vor einer echten Kaufentscheidung die
@@ -5567,11 +5589,11 @@ automatisch einen Ersatz eines bestehenden Werts erzwingen.
 - **ISIN-Pflicht:** Jeder Watchlist-Eintrag führt zusätzlich zu Ticker/Börse
   auch die ISIN, damit ein Kauf direkt ausführbar recherchiert ist, ohne
   dass Brian das selbst nachschlagen muss.
-- **Identity-Gate (2026-08-29, aus der Meta-Retrospektive Jack/Conan/Jarvis,
+- **Identity-Gate (2026-08-29, aus der Meta-Retrospektive JJ/Conan/Jarvis,
   siehe Agent-Playbook-Archiv-Diskussionen.md Abschnitt 9, Phase 1):** Bevor ein Kandidat neu in `watchlist.md`
   aufgenommen wird, müssen fünf Identitätsmerkmale explizit verifiziert und
   im Eintrag vermerkt sein: **Ticker, ISIN, Börsenplatz (Exchange), Land
-  (Country), Sektor**. Grund (Jacks Punkt aus der Retrospektive): bei
+  (Country), Sektor**. Grund (JJs Punkt aus der Retrospektive): bei
   Kandidaten mit mehreren Notierungen, ähnlichen Firmennamen oder
   Ticker-Kollisionen zwischen Börsen ist sonst nicht sauber ausgeschlossen,
   dass Brian am Ende beim Broker das falsche Wertpapier findet. Fehlt eines
@@ -5680,7 +5702,7 @@ automatisch einen Ersatz eines bestehenden Werts erzwingen.
   überschreibt, um den Vergleich ziehen zu können. Stand 2026-09-03 ist
   die Basislinie ohne Vorwert – erste Pfeile entstehen frühestens beim
   nächsten wöchentlichen Watchlist-/Depot-Check.
-  **Drei Ergänzungen nach 3-KI-Produkt-Feedback-Runde (2026-09-03, Jack UND
+  **Drei Ergänzungen nach 3-KI-Produkt-Feedback-Runde (2026-09-03, JJ UND
   Conan unabhängig um Verbesserungsvorschläge gebeten, überschneidende
   Punkte priorisiert umgesetzt):**
   1. **MoS-Drawdown-Hinweis gilt jetzt für ALLE 48 Werte** (Watchlist +
@@ -5870,14 +5892,14 @@ automatisch einen Ersatz eines bestehenden Werts erzwingen.
   3. **3-fach-Quick-Filter-Bestätigung (gemäß der 2026-08-29 von Brian
      bestätigten Regel "immer alle drei KIs, auch im Quick-Filter"):** Für
      jeden Kandidaten, der Schritt 2 übersteht, folgt ein TMR-Quick-Filter
-     (bzw. Scout-Kurzform) mit Jarvis, Jack UND Conan. **Update
-     2026-09-03 (Mechanismus veraltet, im 3-KI-System-Audit von Jack UND
-     Conan unabhängig voneinander bemängelt):** Jack/Conan laufen seit
+     (bzw. Scout-Kurzform) mit Jarvis, JJ UND Conan. **Update
+     2026-09-03 (Mechanismus veraltet, im 3-KI-System-Audit von JJ UND
+     Conan unabhängig voneinander bemängelt):** JJ/Conan laufen seit
      2026-09-02 primär per **API-Bridge** (`gemini-bridge`/`openai-bridge`,
      siehe HANDOVER.md 10.9-10.11) – die vorherige Chrome-Browser-
      Abhängigkeit ("Laptop muss an und Chrome verbunden sein") ist damit
      nur noch ein **letzter Fallback**, falls BEIDE Bridges an einem Lauf
-     ausfallen. Sind auch dann Jack/Conan nicht erreichbar, wird der
+     ausfallen. Sind auch dann JJ/Conan nicht erreichbar, wird der
      Kandidat mit einem klar markierten Jarvis-Only-Vorabbefund konkret in
      die Datei `watchlist_pending_3fach.md` (Repo-Root, NICHT der
      veraltete Pfad `/root/aktien-agent/...`) eingetragen (feste
@@ -5890,7 +5912,7 @@ automatisch einen Ersatz eines bestehenden Werts erzwingen.
      VOR dem eigentlichen Tages-Screening zuerst diese Datei (siehe
      "Täglicher Trigger-Check" Schritt 1) – liegen dort offene Einträge und
      sind die Bridges (bzw. als letzter Fallback Chrome) JETZT erreichbar,
-     wird die fehlende Jack/Conan-Bestätigung sofort nachgeholt, der
+     wird die fehlende JJ/Conan-Bestätigung sofort nachgeholt, der
      Kandidat entweder regulär in `watchlist.md` aufgenommen oder
      verworfen, und der Eintrag in den "Erledigt"-Bereich der
      Warteschlangen-Datei verschoben. Sind auch beim nächsten Lauf weder
@@ -5909,7 +5931,7 @@ automatisch einen Ersatz eines bestehenden Werts erzwingen.
      er klar überzeugender ist als der schwächste Wert seiner Zielkategorie
      (sonst zurückgestellt, nicht verworfen).
      **Triple-Conviction-Flag (2026-08-30, aus der Cross-KI-Diskussion in
-     Agent-Playbook-Archiv-Diskussionen.md Abschnitt 10, von Brian freigegeben):** Stufen Jarvis, Jack und Conan
+     Agent-Playbook-Archiv-Diskussionen.md Abschnitt 10, von Brian freigegeben):** Stufen Jarvis, JJ und Conan
      unabhängig voneinander (keine Übernahme der Thesen untereinander) einen
      Kandidaten als außergewöhnlich ein – nicht nur als "kaufenswert" –, wird
      das explizit als **Triple-Conviction** im Watchlist-/Kauf-Eintrag
@@ -5983,16 +6005,16 @@ automatisch einen Ersatz eines bestehenden Werts erzwingen.
      gefundene Kandidat durchläuft dieselben Gates wie beim normalen
      Kandidaten-Scan (Identity-/Strategie-Fit-/Duplikations-Gate, dann
      voller 3-fach-Check).
-  2b. **Jack/Conan als zusätzliche, unabhängige Suchquelle (2026-09-07, von
+  2b. **JJ/Conan als zusätzliche, unabhängige Suchquelle (2026-09-07, von
      Brian gefordert: "die ganzen Indizes auf der ganzen Welt durchforsten,
      um interessante Kandidaten fürs Watchlist oder das Portfolio zu
      finden... alle 3 KI-Agenten sollen gegenseitig kontrollieren,
      miteinander diskutieren, verbessern, weil jeder die Stärken mit
-     einbringen kann").** Bisher screente NUR Jarvis selbst (Jack/Conan
+     einbringen kann").** Bisher screente NUR Jarvis selbst (JJ/Conan
      bewerteten nur bereits von Jarvis vorgelegte Einzelkandidaten). Bei
      JEDEM Lücken-Auslöser (siehe Punkt 1 oben) zusätzlich zu Jarvis'
      eigenem systematischem Index-Durchlauf einen GEZIELTEN Such-Auftrag an
-     Jack (`ask_gemini`) UND Conan (`ask_chatgpt`) schicken – NICHT den
+     JJ (`ask_gemini`) UND Conan (`ask_chatgpt`) schicken – NICHT den
      Einzelwert-Analyse-Prompt (keine Methodik-Dateien, keine Klarstellungs-
      Blöcke nötig, das ist hier kein Rating-Auftrag), sondern einen
      kompakten Rechercheauftrag: Index/Region/Sektor der Lücke benennen (z.B.
@@ -6003,14 +6025,14 @@ automatisch einen Ersatz eines bestehenden Werts erzwingen.
      Gemini-Kontextlängen-Risiko aus HANDOVER.md 10.10), 3-5 plausible
      Kandidaten mit je 1-2 Sätzen Begründung nennen, KEIN vollständiges
      Rating (das ist nur ein Vorfilter). Jarvis sammelt die Vorschläge aus
-     beiden Quellen (eigener Scan + Jack + Conan), dedupliziert gegen bereits
+     beiden Quellen (eigener Scan + JJ + Conan), dedupliziert gegen bereits
      geprüfte/gesperrte Kandidaten, und schickt ALLE neuen Namen durch
      dieselben Gates wie jeden anderen Kandidaten (Identity-/Strategie-Fit-/
-     Duplikations-Gate, dann voller 3-fach-Check) – ein Jack- oder
+     Duplikations-Gate, dann voller 3-fach-Check) – ein JJ- oder
      Conan-Vorschlag bekommt KEINEN Qualitäts-Bonus/-Rabatt nur weil er von
      einer der beiden KIs kam, er muss dieselbe Hürde nehmen wie jeder
      andere Kandidat. Zweck: echte zusätzliche Perspektive statt nur
-     Jarvis' eigenem Screening-Blickwinkel – Jack/Conan könnten Kandidaten
+     Jarvis' eigenem Screening-Blickwinkel – JJ/Conan könnten Kandidaten
      finden, die Jarvis' eigene Suchstrategie/Suchbegriffe übersieht.
   3. **Kein Qualitäts-Rabatt wegen Strukturbedarf:** ein struktureller
      Bedarf (offener Slot, unterbesetzter Topf) darf einen Kandidaten in
@@ -6116,7 +6138,7 @@ automatisch einen Ersatz eines bestehenden Werts erzwingen.
      (Abschnitt 3).
   3. Sektor-/Regionen-Vorab-Check inkl. anteiliger Mehrsegment-Zuordnung, wo
      zutreffend (siehe Sektor-Streuung, Beispiel Hoya Corp.).
-  4. Voller 3-fach-Check (Jarvis/Jack/Conan, TMR-Quick-Filter bzw. Scout) –
+  4. Voller 3-fach-Check (Jarvis/JJ/Conan, TMR-Quick-Filter bzw. Scout) –
      bei fehlendem Chrome-Zugriff greift dieselbe Warteschlangen-Logik wie
      beim täglichen Scan (`watchlist_pending_3fach.md`).
   5. Besteht der Kandidat alle Gates: automatische Aufnahme in `watchlist.md`
@@ -6176,16 +6198,16 @@ sondern:
 
 Technische Einschränkung, Stand 2026-09-02 (historisch relevant, aktuell
 entschärft): Früher benötigten die Browser-Automation-Beine (ChatGPT/Conan,
-Gemini/Jack) Zugriff auf Brians verbundenen Chrome-Browser, der in einem
+Gemini/JJ) Zugriff auf Brians verbundenen Chrome-Browser, der in einem
 unbeaufsichtigt laufenden Scheduled Task nicht garantiert verfügbar war
 (z.B. wenn Brians Desktop-App gerade nicht offen war) – der Trigger-Check
 lieferte dann nur die Jarvis-Einzelmeinung. Seit 2026-09-02 laufen sowohl
 ChatGPT/Conan (`openai-bridge`-MCP-Server, Modell `gpt-5.5`) als auch
-Gemini/Jack (`gemini-bridge`-MCP-Server, Modell `gemini-2.5-flash`) über
+Gemini/JJ (`gemini-bridge`-MCP-Server, Modell `gemini-2.5-flash`) über
 direkten API-Call statt Browser-Automation (siehe HANDOVER.md Abschnitt
 10.9/10.10) – **beide sind damit von Chrome/Desktop-App-Verfügbarkeit
 unabhängig.** Ein unbeaufsichtigt laufender Scheduled Task kann dadurch
-jetzt regulär den vollen 3-fach-Check (Jarvis + Jack + Conan) fahren, auch
+jetzt regulär den vollen 3-fach-Check (Jarvis + JJ + Conan) fahren, auch
 wenn Brians Desktop-App gerade nicht offen ist. Chrome-Browser-Automation
 bleibt als Fallback dokumentiert (falls eine der beiden Bridges mal
 ausfällt, siehe HANDOVER.md 10.4), ist aber nicht mehr der Standardweg.
@@ -6225,7 +6247,7 @@ browserlosen Jarvis-Only-Scan beschränkt, der nur bei echtem Treffer eskaliert.
 Quartalszahlen veröffentlicht, automatisch und systematisch eine kompakte
 Zahlen-Zusammenfassung vorgelegt wird — nicht erst auf Nachfrage. Als
 Stil-Inspiration hat er eine fremde NVIDIA-Earnings-Zusammenfassung
-(Raketentonis Jack-Persona) geteilt. Wie bei jeder bisherigen fremden
+(Raketentonis JJ-Persona) geteilt. Wie bei jeder bisherigen fremden
 Vorlage (Couche-Tard-PDF, Wochenreport-Vorbild, HawkEye-Szenarien-PDF)
 gilt: **lose stilistische Inspiration, kein 1:1-Klon.** Übernommen wird die
 Grundidee (Kernzahlen vs. Erwartung, Segment-Treiber, Guidance, kurzer
@@ -6447,7 +6469,7 @@ via yfinance"-Vorgehen funktioniert hier also nicht. Stattdessen:
   laufen, schreibt das volle Ergebnis in eine Datei unter `analysen/` und liefert
   ein Kurz-Fazit zurück (siehe Pipeline-Schritt 5). Läuft für Claude als Subagent;
   seit 2026-09-02 laufen ChatGPT/Conan (`openai-bridge`-MCP-Server, `ask_chatgpt`,
-  Modell `gpt-5.5`) UND Gemini/Jack (`gemini-bridge`-MCP-Server, `ask_gemini`,
+  Modell `gpt-5.5`) UND Gemini/JJ (`gemini-bridge`-MCP-Server, `ask_gemini`,
   Modell `gemini-2.5-flash`) beide per direktem API-Call statt Browser-
   Automation (siehe HANDOVER.md Abschnitt 10.9/10.10); der komplette
   Methodik-Prompt/das Fact-Pack wandert dabei 1:1 als `prompt`-Argument rein,
@@ -6469,7 +6491,7 @@ via yfinance"-Vorgehen funktioniert hier also nicht. Stattdessen:
   Diskussionsrunde [3b] (jede KI bekommt die beiden anderen Urteile vorgelegt und
   nimmt Stellung), bevor das Konvergenz-Ergebnis ins Kurz-Fazit geht. Erstmals
   end-to-end durchgespielt am 2026-08-22 für CLBT (Claude/Jarvis vs. ChatGPT/Conan
-  vs. Gemini/Jack) – dabei aber nur Runde 1 (unabhängige Einzelurteile), die
+  vs. Gemini/JJ) – dabei aber nur Runde 1 (unabhängige Einzelurteile), die
   Diskussionsrunde [3b] selbst ist technisch noch nicht gebaut (offener Punkt).
 - **Wochenfazit-Job**: eigener wöchentlicher Scheduled Task (freitags 22:00 Uhr
   Europe/Berlin, siehe Abschnitt 5), fasst Depotstatus + Kategorie-Status +
@@ -6486,7 +6508,7 @@ via yfinance"-Vorgehen funktioniert hier also nicht. Stattdessen:
   Split (Conans Vorschlag vom 2026-08-30).** Ausgelöst durch einen real
   aufgetretenen Beleg für Conans "Rule Overfitting"-Warnung (RKLB-
   Meta-Retro-Fall, siehe Abschnitt 14) hat Brian den Split am 2026-09-01
-  freigegeben und per Cross-KI-Diskussionsrunde mit Jack und Conan
+  freigegeben und per Cross-KI-Diskussionsrunde mit JJ und Conan
   umgesetzt: 16 Core-Rules, ein Terminal-State-Mechanismus (Abbruch wird
   echter Systemzustand statt reiner Texterwähnung) und Advisory-Rules als
   situativer Rest. Volle Herleitung, beide KI-Antworten und der
@@ -6657,11 +6679,11 @@ via yfinance"-Vorgehen funktioniert hier also nicht. Stattdessen:
 - **NEU (2026-08-28): Auffälliger Fall für die META-RETRO-RUNDE [3c] – RKLB-
   Scout-Quick-Filter.** Beim ersten Live-Einsatz des Scout-Regelwerks (Conan-
   the-Scout v1.12) auf zwei neue Talent-Positionen (Kraken Robotics, Rocket Lab)
-  kamen Jarvis (Claude) und Jack (Gemini) für Rocket Lab UNABHÄNGIG zur exakt
+  kamen Jarvis (Claude) und JJ (Gemini) für Rocket Lab UNABHÄNGIG zur exakt
   gleichen DNA-Check-Diagnose (K-Erfüllung 3/5 unter Deep-Tech-Override →
   Abbruch-Logik greift laut Wortlaut des Regelwerks: "K ≤ K-BASIS−2 → ABBRUCH →
   direkt Scout-Urteil"). Jarvis hat daraus konsequent RATING: ZU FRÜH (Sizing 0%
-  für Neukauf) abgeleitet. Jack hat den Abbruch zwar explizit benannt ("ABBRUCH-
+  für Neukauf) abgeleitet. JJ hat den Abbruch zwar explizit benannt ("ABBRUCH-
   LOGIK GREIFT"), ist aber trotzdem durch Moat-/Gründer-/Outcome-Module
   gegangen und kam am Ende auf RATING: BEOBACHTEN-STARK (Sizing 0,5-1,5%) –
   das widerspricht dem eigenen Abbruch-Befund und dem Vorrang-Prinzip (Regel
@@ -6706,7 +6728,7 @@ Regelwerk in harte Core-Rules und kontextabhängige Advisory-Rules zu
 trennen, wurde damals zurückgestellt ("bis das Regelwerk-Volumen in der
 Praxis tatsächlich zum Problem wird"). Am 01.09.2026 wurde beim Aufräumen
 des Rocket-Lab-Falls (siehe `analysen/KRKN-RKLB-nachholanalyse-final-2026-09-01.md`)
-ein konkreter, real aufgetretener Beleg dafür gefunden: Jack (Gemini) hatte
+ein konkreter, real aufgetretener Beleg dafür gefunden: JJ (Gemini) hatte
 beim Scout-Quick-Filter vom 28.08. selbst korrekt erkannt und benannt
 "ABBRUCH-LOGIK GREIFT" (K-Erfüllung unter K-BASIS-2), ist danach aber
 regulär durch Moat-in-Formation, Gründer-Score und Outcome-Wahrscheinlichkeiten
@@ -6715,10 +6737,10 @@ echter Sizing-Freigabe (0,5-1,5%) vergeben — ein direkter Selbst-
 Widerspruch, der die Rocket-Lab-Bewertung im System faktisch verfälscht
 hätte, wäre er nicht beim Aufräumen aufgefallen. Brian hat daraufhin
 angeordnet, den Core-/Advisory-Split jetzt ernsthaft umzusetzen, inklusive
-einer eigenen Cross-KI-Diskussionsrunde mit Jack und Conan (nicht nur
+einer eigenen Cross-KI-Diskussionsrunde mit JJ und Conan (nicht nur
 Jarvis-Entscheidung).
 
-**Jarvis' Ausgangsvorschlag** (15 Punkte, an Jack/Conan zur unabhängigen
+**Jarvis' Ausgangsvorschlag** (15 Punkte, an JJ/Conan zur unabhängigen
 Prüfung vorgelegt): Order-Ausführung ausschließlich manuell; USA-Cap 60%;
 ETF-Mindestanteil 50%; Positions-Cap 10%/12%; Max. 20 Positionen; TMR
 Going-Concern-Precheck → SCHROTT; TMR K [N/V] → Abbruch; TMR
@@ -6726,12 +6748,12 @@ Entscheidungshierarchie; Scout K [N/V] → Abbruch; Scout K≤K-BASIS-2 →
 Abbruch; Scout Vorrang-Prinzip; Scout Fraud-Check-Abbruch; No-False-
 Precision; "immer alle drei KIs"; Datenintegritäts-Tag-Hierarchie.
 
-**Jacks unabhängige Antwort:** stimmt der Liste grundsätzlich zu, ergänzt
+**JJs unabhängige Antwort:** stimmt der Liste grundsätzlich zu, ergänzt
 zwei Punkte — (a) der harte 18%-Trailing-Weight-Cap (Rebalancing-
 Notfallgrenze) muss explizit als Core-Rule geführt werden, nicht nur als
 Kontrast zur 15%-Review-Schwelle erwähnt; (b) eine explizite Regel, dass
 niemals eine Sizing-Freigabe >0% erteilt werden darf, wenn ein
-vorgelagerter Core-Breaker bereits ausgelöst hat. Jacks zentraler
+vorgelagerter Core-Breaker bereits ausgelöst hat. JJs zentraler
 Lösungsvorschlag: ein **"Circuit Breaker"**-Mechanismus — löst eine
 Core-Rule/Abbruch-Logik aus, muss die Ausgabe SOFORT mit einem
 standardisierten Abbruch-Block enden ("🛑 CIRCUIT BREAKER TRIGGERED",
@@ -6739,9 +6761,9 @@ auslösende Regel + Status "ANALYSE BEENDET, nachgelagerte Module
 DEAKTIVIERT" + Endurteil + Sizing 0,0%), kein weiterer Text/Score/Sizing
 danach.
 
-**Conans unabhängige Antwort** (ohne Kenntnis von Jacks Antwort, eigener
+**Conans unabhängige Antwort** (ohne Kenntnis von JJs Antwort, eigener
 Chat): stimmt der 15er-Liste zu ~90-95% zu, schlägt strukturell dieselbe
-Grundidee wie Jack vor, aber formaler gefasst:
+Grundidee wie JJ vor, aber formaler gefasst:
 - **CORE RULE 16 — TERMINAL-STATE-INTEGRITÄT** (Conans wichtigste
   Ergänzung): Löst eine Core-Rule einen Abbruch/SCHROTT/PASS/sonstigen
   finalen Zustand aus, wird dieser Zustand sofort **terminal**. Nach
@@ -6776,7 +6798,7 @@ Grundidee wie Jack vor, aber formaler gefasst:
   diesem Abschnitt zu dokumentieren (siehe unten).
 
 **Synthese (Jarvis, aus beiden unabhängigen Antworten zusammengeführt —
-Jack und Conan kamen, ohne voneinander zu wissen, auf strukturell
+JJ und Conan kamen, ohne voneinander zu wissen, auf strukturell
 dieselbe Grundidee: ein erkannter Abbruch muss den Prozess wirklich
 stoppen, nicht nur im Text erwähnt werden. Das ist ein starkes Signal,
 dass dies der richtige Fix ist, nicht nur eine von mehreren
@@ -6791,7 +6813,7 @@ gleichwertigen Optionen):**
 3. ETF-Mindestanteil: mindestens 50% des Gesamtportfolios.
 4. Einzelposition: max. 10% (Ausnahme bis 12% nur bei Top-Conviction,
    echte Ausnahme, kein neues Standard-Limit).
-5. **Trailing-Weight-Hard-Cap 18%** (ergänzt von Jack): über 18% zwingendes
+5. **Trailing-Weight-Hard-Cap 18%** (ergänzt von JJ): über 18% zwingendes
    Rebalancing, kein Ermessen — die 15%-Review-Schwelle bleibt Advisory.
 6. Max. 20 Einzelpositionen.
 7. TMR Going-Concern-Precheck bei Auditor-Zweifel → sofort SCHROTT, keine
@@ -6815,7 +6837,7 @@ gleichwertigen Optionen):**
     Ergebnis. Scores dürfen eine durch eine Core-Rule ausgelöste
     Entscheidung niemals überschreiben, relativieren oder kompensieren.
     Keine Sizing-Freigabe >0% ist möglich, wenn ein vorgelagerter
-    Core-Breaker bereits ausgelöst hat (Jacks Ergänzung).
+    Core-Breaker bereits ausgelöst hat (JJs Ergänzung).
 
 **Methodik-Backtest (NEU, 2026-09-09, aus dem Playbook-Meta-Review "was
 fehlt zum professionellen Fondsmanager" – siehe
@@ -6849,7 +6871,7 @@ Zustand aus, gilt ab sofort:
    loggend (z.B. "informell, da Abbruch — nur als Kontext", wie Jarvis es
    beim RKLB-Fall bereits richtig gemacht hat), niemals ratingwirksam.
 2. **Ausgabeformat bei Terminal-State (Pflicht ab sofort für TMR/Scout-
-   Läufe, Jacks Vorschlag):** die Analyse endet mit einem klar markierten
+   Läufe, JJs Vorschlag):** die Analyse endet mit einem klar markierten
    Abbruch-Block statt normal weiterzulaufen:
    ```
    🛑 ABBRUCH-ZUSTAND ERREICHT
@@ -6875,7 +6897,7 @@ Zustand aus, gilt ab sofort:
    festgestellt? Falls ja: entspricht das Endergebnis exakt dem
    Abbruch-Ausgabeformat oben, ohne dass ein nachgelagertes Modul das
    Rating/Sizing beeinflusst hat?" Diese Prüfung ist selbst eine
-   Core-Rule (Meta-Ebene) und gilt für Jarvis genauso wie für Jack/Conan.
+   Core-Rule (Meta-Ebene) und gilt für Jarvis genauso wie für JJ/Conan.
 
 ### Advisory-Rules (Beispiele, nicht abschließend — situativ gewichtet, dürfen Core nie überschreiben)
 
@@ -6906,7 +6928,7 @@ unterschiedlichen, jeweils fest zugeordneten Bezugsgrößen.
 ### Canonical Failure Case: Rocket Lab (RKLB), 28.08.-01.09.2026
 
 Zur Dokumentation, warum dieser Mechanismus eingeführt wurde (Conans
-Vorschlag): Beim Scout-Quick-Filter für Rocket Lab hat Jack (Gemini)
+Vorschlag): Beim Scout-Quick-Filter für Rocket Lab hat JJ (Gemini)
 korrekt erkannt und wörtlich notiert "ABBRUCH-LOGIK GREIFT" (K-Erfüllung
 3/5, unter K-BASIS−2), ist aber danach regulär weitergelaufen: Moat-in-
 Formation (4/4) → Gründer-Score → Outcome-Wahrscheinlichkeiten →
@@ -6921,7 +6943,7 @@ die von den folgenden Modulen faktisch ignoriert wurde. Aufgelöst am
 10-Stück-Position bleibt unangetastet (reine Aufstockungssperre, keine
 Exit-These).
 
-**Status: von Brian am 01.09.2026 angeordnet, Cross-KI-Diskussion mit Jack
+**Status: von Brian am 01.09.2026 angeordnet, Cross-KI-Diskussion mit JJ
 und Conan durchgeführt (beide unabhängig befragt, ohne dass eine KI die
 Antwort der anderen kannte), Ergebnis oben synthetisiert und mit
 sofortiger Wirkung freigegeben.** Betrifft nur, WIE Core-Rules technisch

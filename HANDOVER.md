@@ -27,7 +27,7 @@ KI-System aus drei "Personas" analysieren, überwachen und dokumentieren:
   eigentliche Recherche/Analyse aus, orchestriert die anderen beiden KIs
   (seit 2026-09-02 primär per direktem API-Call statt Browser-Automation,
   siehe unten), schreibt alle Dateien, verwaltet Git, Reports, PDFs.
-- **Jack** = Gemini (Google). Seit 2026-09-02 über die `gemini-bridge`-
+- **JJ** = Gemini (Google). Seit 2026-09-02 über die `gemini-bridge`-
   MCP-Tools (`ask_gemini`, Modell `gemini-2.5-flash`) angesprochen – direkter
   API-Call statt Chrome-Browser-Automation. Details: Abschnitt 10.10.
 - **Conan** = ChatGPT (OpenAI). Seit 2026-09-02 über die `openai-bridge`-
@@ -40,9 +40,9 @@ beide KIs nur noch **Fallback**, falls eine der beiden Bridges mal ausfällt
 
 **Wichtig:** Diese Namen sind reine Reporting-Nicknames für die drei KIs,
 unabhängig davon, welchen der drei Methodologie-Prompts sie gerade
-ausführen. "Jack" heißt in den Prompt-Dateien selbst z.B. auch "The Moat
+ausführen. "JJ" heißt in den Prompt-Dateien selbst z.B. auch "The Moat
 Agent" oder "Pure Technical Analyst" – das ist derselbe Gemini-Slot, nur
-mit unterschiedlichem Auftrag. Verwechsle nicht "Jack" (Persona/Gemini) mit
+mit unterschiedlichem Auftrag. Verwechsle nicht "JJ" (Persona/Gemini) mit
 "jack-moat-reaper" (Dateiname/Methodik) – ersteres ist WER antwortet,
 letzteres ist WELCHES Regelwerk gerade angewendet wird.
 
@@ -167,11 +167,11 @@ Muster aus dieser Übergabe: 4 Subagenten für je ~700 Zeilen).
 2. **[1.5] Kill-Gates + Bucket-Einordnung A-D** – harte Ausschlusskriterien,
    Vorsortierung.
 3. **[2] Kategorisierung** – Champions/Profi/Talent-Zuordnung + Routing:
-   TMR (Jack-Moat-Agent) für etablierte Firmen, Scout (Conan-the-Scout)
+   TMR (JJ-Moat-Agent) für etablierte Firmen, Scout (Conan-the-Scout)
    für Frühphasen-/spekulative Werte. Enthält Frische-Gate,
    Liquiditäts-/Spread-Gate (>500.000€ Tagesvolumen, <1,5% Spread,
    Limit-Orders-Pflicht für Talent/Scout).
-4. **[3] 3-fach Cross-Check** – alle drei KIs (Jarvis/Jack/Conan) bekommen
+4. **[3] 3-fach Cross-Check** – alle drei KIs (Jarvis/JJ/Conan) bekommen
    identisches Fact-Pack (Schritt-0-Datenpaket), analysieren unabhängig.
    Bei widersprüchlichen selbst-recherchierten Kernzahlen: **Datenkonflikt-
    Notbremse** – kein hochkonfidentes Ergebnis, sondern Flag "DATENKONFLIKT".
@@ -179,7 +179,7 @@ Muster aus dieser Übergabe: 4 Subagenten für je ~700 Zeilen).
    Konvergenz-Status stark/moderat/widerspruch.
 6. **[3c] Meta-Retro-Runde** – selten, nur bei echten Methodik-Streitfällen
    (nicht bei normalen Zahlen-Dissensen).
-7. **[4] TA** – Pure Technical Analyst (Jack-TA), seit 2026-08-31 Pflicht
+7. **[4] TA** – Pure Technical Analyst (JJ-TA), seit 2026-08-31 Pflicht
    bei JEDER Einzelanalyse (ausgelöst durch den Disco-Corp-Vorfall).
 8. **[5] Report** – Kurz-Fazit (5-8 Sätze), PDF-Pflicht bei jeder
    abgeschlossenen Analyse, Ampel-Batch-Scan-Layout für Übersichten.
@@ -246,7 +246,7 @@ Fundamentalanalyse etablierter Firmen. Kernablauf:
   Upgrade-/Downgrade-Trigger.
 - **Modi:** A (Einzelanalyse), B (Battle A-vs-B), C (These-Check "noch
   intakt?"), D (Quick News Scan), E (Ultra-Quick-Scan), F (Decision Mode,
-  "Jack, entscheide"), Earnings-Prep.
+  "JJ, entscheide"), Earnings-Prep.
 - **36 Globale Regeln (Klasse A – eisern)** am Dateiende sind die einzige
   verbindliche Formulierung; alles davor ist nur Kurzverweis.
 
@@ -291,7 +291,7 @@ Volumen, Pivot-Punkte, OBV, ATR).
   gleichzeitig aktiven Bullish-VETOs wird ein STRONG-BUY-Rating auf BUY
   gedeckelt (VETO-Aggregat-Deckel).
 - **Formations-Modul (v1.9):** reiner User-Input (Doppeltop/Doppelboden/
-  SKS), Jack schätzt keine Chartformationen selbst aus Zahlenreihen.
+  SKS), JJ schätzt keine Chartformationen selbst aus Zahlenreihen.
 - **Investor-Entry-Modus Blöcke A-F:** Preiszonen-Analyse (5 Zonen relativ
   zu TMR Bear/Base/Bull FV), Margin of Safety, Entry-Ampel, Kombinations-
   Score (0-10, verbindet TA-Score mit Bewertungs-Zone + MoS-Bonus, mit
@@ -379,7 +379,7 @@ einen Slot bekommt oder als reiner LatAm-Beobachtungsposten außerhalb der
 `watchlist_pending_3fach.md`: Warteschlange für Kandidaten aus dem
 täglichen automatisierten Scan, die das Strategie-Fit-Gate, den
 Duplikations-Check und das Identity-Gate bestanden haben, aber nur einen
-Jarvis-Only-Vorabbefund haben, weil Jack/Conan am Scan-Tag nicht
+Jarvis-Only-Vorabbefund haben, weil JJ/Conan am Scan-Tag nicht
 erreichbar waren. **Update 2026-09-03:** seit der API-Bridge-Migration
 (2026-09-02) landet hier nur noch etwas, wenn BEIDE Bridges UND der
 Chrome-Fallback an einem Lauf ausfallen – der alte "Laptop/Chrome war
@@ -524,7 +524,7 @@ mehrere parallele Subagenten gelesen werden kann.
 dem contenteditable-Element direkt – Gemini: `.ql-editor[role="textbox"]`.
 Text dabei ASCII-sicher halten (Umlaute ausschreiben, keine Emoji).
 **Betrifft seit 2026-09-02 keine der beiden KIs mehr im Standardbetrieb** –
-sowohl ChatGPT/Conan (Abschnitt 10.9) als auch Gemini/Jack (Abschnitt 10.10)
+sowohl ChatGPT/Conan (Abschnitt 10.9) als auch Gemini/JJ (Abschnitt 10.10)
 laufen über direkte API-Calls, nicht mehr über den Browser. Diese ganze
 Sektion (inkl. `#prompt-textarea`/`.ql-editor`-Selektoren) ist damit
 Altlast-Wissen, nur relevant falls beide Bridges mal ausfallen und auf den
@@ -564,7 +564,7 @@ Punkt 2) – hier nur die Kategorien-Übersicht:
 
 ### 10.8 Agent-Kompakt-PDF-Designsystem
 Dunkles Anthrazit/Gold-Theme, Schriften DejaVu Sans Condensed + Carlito,
-3-Stimmen-Leiste (Jarvis/Jack/Conan-Konsens visualisiert),
+3-Stimmen-Leiste (Jarvis/JJ/Conan-Konsens visualisiert),
 Agent-Score-Gauge (Halbkreis-Anzeige), DNA-Check-Strang (farbiges
 Segmentband). Gerendert per Playwright/Chromium aus einer
 Single-Page-HTML-Datei. Vollständiges CSS-Token-System steht in
@@ -582,7 +582,7 @@ API-Key in dortiger `.env`). Stellt zwei Tools bereit:
   Antworttext zurück. Ersetzt den bisherigen Weg über
   `claude-in-chrome`/chatgpt.com für die Conan-Rolle vollständig (siehe
   Docstring in `server.py`).
-  **`enable_search` (2026-09-04, von Brian gefordert: "Jack und Conan
+  **`enable_search` (2026-09-04, von Brian gefordert: "JJ und Conan
   sollen die Freiheit haben, selbst zu recherchieren"):** aktiviert
   OpenAI's natives `web_search`-Tool über die **Responses-API**
   (`/v1/responses` statt `/v1/chat/completions`, da Chat Completions kein
@@ -622,7 +622,7 @@ KURZE, gezielte Anfragen (z.B. "aktueller Kurs von X") bleibt
 Problem NICHT auf; **Update 2026-09-05 (alle drei KIs bekommen jetzt alle
 drei Methodik-Dateien, siehe Agent-Playbook.md Abschnitt "Kategorisierung"):**
 diese Regel gilt jetzt ERST RECHT für den neuen Standardfall, dass ALLE
-DREI Dateien (TMR+Scout+TA, zusammen ~190KB) in einem Prompt an Jack
+DREI Dateien (TMR+Scout+TA, zusammen ~190KB) in einem Prompt an JJ
 gehen – `enable_search=False` ist hier PFLICHT, nicht optional, das Risiko
 ist strukturell größer als beim bisherigen Einzeldatei-Fall (Conan lief mit `enable_search=True` UND vollem
 ~74K-Zeichen-Prompt sauber durch, 22.826 Zeichen Analyse-Output,
@@ -662,7 +662,7 @@ bevor `-pro` für volle Methodik-Läufe wieder infrage kommt.
 – Conan/ChatGPT-Bein einer TMR-Quick-Filter-Analyse für ASML (Watchlist-
 Champion), sauber [TRAINING]-getaggt (kein Fact-Pack für Fundamentaldaten
 vorhanden), Ergebnis BEOBACHTEN, Agent Score 6/10, Abstauber-Limit $1250.
-War ein reiner Conan-Solo-Testlauf (kein Jarvis/Jack-Bein, kein echter
+War ein reiner Conan-Solo-Testlauf (kein Jarvis/JJ-Bein, kein echter
 3-fach-Cross-Check) – nicht als vollwertige Watchlist-Analyse behandeln,
 nur als Beleg dass die Bridge inhaltlich sauber funktioniert.
 
@@ -677,12 +677,12 @@ KI-Slot. Der in `Agent-Playbook.md` an mehreren Stellen erwähnte Status
 "fragiles Browser-Automation-Bein" wurde dort **nachträglich, mit Brians
 Freigabe, angepasst** (Zeilen um 1433, 1633, 3211, 3392 – Stand nach dieser
 Übergabe; siehe Git-Historie für den genauen Diff). Update seit demselben
-Tag: das gilt jetzt **auch für Jack/Gemini**, siehe 10.10 unten – die
-ursprüngliche Aussage "Jack bleibt Browser-basiert" ist damit überholt.
+Tag: das gilt jetzt **auch für JJ/Gemini**, siehe 10.10 unten – die
+ursprüngliche Aussage "JJ bleibt Browser-basiert" ist damit überholt.
 
-### 10.10 `gemini-bridge` MCP-Server – Jack läuft seit 2026-09-02 per API
+### 10.10 `gemini-bridge` MCP-Server – JJ läuft seit 2026-09-02 per API
 
-Analog zu 10.9, aber für Gemini/Jack. Neuer projekt-lokaler MCP-Server
+Analog zu 10.9, aber für Gemini/JJ. Neuer projekt-lokaler MCP-Server
 (`.mcp.json` → Eintrag `gemini-bridge`, Code unter
 `~/.claude/mcp-servers/gemini-bridge/`, API-Key in dortiger `.env` als
 `GEMINI_API_KEY`, von Brian selbst bei Google AI Studio erstellt und
@@ -693,8 +693,8 @@ zwei Tools bereit:
   – schickt den Prompt direkt an die Google-Gemini-API
   (`generativelanguage.googleapis.com/v1beta/models/{model}:generateContent`),
   gibt den Antworttext zurück. Ersetzt den bisherigen Weg über
-  `claude-in-chrome`/gemini.google.com für die Jack-Rolle vollständig.
-  **`enable_search` (2026-09-04, von Brian gefordert: "Jack und Conan
+  `claude-in-chrome`/gemini.google.com für die JJ-Rolle vollständig.
+  **`enable_search` (2026-09-04, von Brian gefordert: "JJ und Conan
   sollen die Freiheit haben, selbst zu recherchieren"):** aktiviert
   Gemini's natives Google-Search-Grounding-Tool (`tools: [{"google_search":
   {}}]` im API-Payload) – Gemini entscheidet SELBST, ob/wann/was es sucht,
@@ -706,9 +706,9 @@ zwei Tools bereit:
   proxied Quellen-URLs über `vertexaisearch.cloud.google.com/grounding-
   api-redirect/...` statt der Original-URL direkt auszugeben – das ist ein
   bekanntes Verhalten von Gemini Grounding, kein Bug. **Motivation:**
-  bisher bekamen alle drei KIs (Jarvis/Jack/Conan) dasselbe von Jarvis
+  bisher bekamen alle drei KIs (Jarvis/JJ/Conan) dasselbe von Jarvis
   kuratierte FACT-PACK – ein blinder Fleck dort vererbte sich auf alle
-  drei Urteile. Mit eigener Live-Recherche kann Jack jetzt unabhängig
+  drei Urteile. Mit eigener Live-Recherche kann JJ jetzt unabhängig
   gefundene Fakten einbringen, was den Cross-Check echter unabhängig
   macht (kann auch zu mehr Divergenz zwischen den drei Urteilen führen -
   das ist beabsichtigt, kein Fehler). **Kosten-/Latenz-Hinweis:** jede
@@ -718,7 +718,7 @@ zwei Tools bereit:
 - `mcp__gemini-bridge__list_gemini_models()` – listet verfügbare
   Modell-IDs für den API-Key.
 
-**Festgelegtes Modell für Jack (Brian, 2026-09-02): `gemini-2.5-flash`**
+**Festgelegtes Modell für JJ (Brian, 2026-09-02): `gemini-2.5-flash`**
 (= Tool-Default, kein `model`-Override nötig).
 
 **Begründung/Vorgeschichte:** Der ursprünglich naheliegende Kandidat für
@@ -741,7 +741,7 @@ https://ai.google.dev/gemini-api/docs/rate-limits), bevor ein Pro-Modell
 infrage kommt – das kann nur Brian selbst tun (Zahlungsdaten).
 
 **Praktische Konsequenz:** Mit `gemini-bridge` UND `openai-bridge` laufen
-jetzt **beide** externen KI-Beine (Jack + Conan) ohne Chrome-Abhängigkeit.
+jetzt **beide** externen KI-Beine (JJ + Conan) ohne Chrome-Abhängigkeit.
 Das hebt die alte Scheduled-Task-Einschränkung auf (siehe Agent-Playbook.md,
 Abschnitt "Wichtige technische Einschränkung" bei den Earnings-/Trigger-
 Checks) – ein unbeaufsichtigter Scheduled Task kann jetzt den vollen
@@ -762,14 +762,14 @@ bestehenden Tools) tauchen zusätzlich erst nach einem echten
 Session-Neustart in der Tool-Liste auf – reines Prozess-Killen reicht dafür
 nicht (siehe 10.11 unten, dort erstmals aufgetreten).
 
-### 10.11 Depot-Zugriff für Jack/Conan – `ask_chatgpt_agentic` / `ask_gemini_agentic`
+### 10.11 Depot-Zugriff für JJ/Conan – `ask_chatgpt_agentic` / `ask_gemini_agentic`
 
-Auf Brians Wunsch (2026-09-02): Jack und Conan sollen einen echten Blick
+Auf Brians Wunsch (2026-09-02): JJ und Conan sollen einen echten Blick
 aufs Depot haben, nicht nur auf den einzelnen Analyse-Kandidaten. Wichtige
 Einschränkung, die die gesamte Umsetzung bestimmt: **Die Bridge-Prozesse
 selbst haben keinerlei Depot-Zugriff** – sie sind isolierte Skripte mit nur
 einem OpenAI-/Gemini-API-Key, keine Verbindung zum Scalable-Capital-MCP.
-"Live-Zugriff" bedeutet daher technisch: Jack/Conan fordern per
+"Live-Zugriff" bedeutet daher technisch: JJ/Conan fordern per
 Function-Calling Depot-Daten an, **Jarvis führt die echten MCP-Tools aus
 und reicht das Ergebnis zurück** – kein direkter Durchgriff der externen
 KIs, sondern ein von Jarvis gesteuerter Relay-Loop.
@@ -784,7 +784,7 @@ gebraucht wird):**
 Preview-Zugriff, siehe Whitelist Abschnitt 10.7):**
 `get_portfolio_holdings`, `get_portfolio_overview`, `get_portfolio_performance`,
 `get_portfolio_cash_breakdown` – 1:1 dieselben vier MCP-Tools, die auch
-Jarvis selbst nutzt, nur als Function-Calling-Schema an Jack/Conan gespiegelt.
+Jarvis selbst nutzt, nur als Function-Calling-Schema an JJ/Conan gespiegelt.
 **Plus `get_manual_broker_positions`** (2026-09-02 ergänzt, nachdem Brian
 darauf hingewiesen hat, dass die vier `get_portfolio_*`-Tools NUR den
 Scalable-Capital-Teil des Depots zeigen): liefert die Positionen der DREI
@@ -795,7 +795,7 @@ Kein MCP-Tool – Jarvis liest bei diesem Tool-Call einfach die drei Dateien
 und liefert eine kondensierte Zusammenfassung (nur aktive Positionen, keine
 verkauften; wo kein aktueller Kurs bekannt ist, klar als "data_gap"/
 Investsumme statt Live-Wert kennzeichnen – Data-Integrity-Prinzip auch hier).
-**Ohne dieses Tool sehen Jack/Conan nur ~11.100€ von insgesamt ~34.800€
+**Ohne dieses Tool sehen JJ/Conan nur ~11.100€ von insgesamt ~34.800€
 Depotwert** (Stand des Testlaufs 2026-09-02) – bei jeder Depot-Kontext-Analyse
 `get_manual_broker_positions` also mit anfordern (die Tool-Beschreibung
 weist die KI bereits explizit darauf hin, es "IMMER" zusätzlich zu nutzen).
@@ -846,7 +846,7 @@ wie oben:
 - **`get_quote(symbol)`:** Jarvis führt das echte
   `mcp__57370ae8-105f-49c4-a0dd-b4c78cb6ceb7__get_quote`-Tool dieser
   Session mit dem angeforderten `symbol` aus und reicht das Ergebnis
-  zurück. Gibt Jack/Conan einen exakten, strukturierten Live-Kurs statt
+  zurück. Gibt JJ/Conan einen exakten, strukturierten Live-Kurs statt
   einer aus der Websuche zusammengesuchten Zahl – nützlich für Abstauber-
   Limit-/Einstiegszonen-Berechnungen.
 - **`read_master_status()`:** Jarvis liest `depot/master_status.md` (das
@@ -854,7 +854,7 @@ wie oben:
   Master-Status") und reicht den Inhalt zurück. **Bewusst die EINZIGE per
   Tool zugängliche Repo-Datei** – kein Zugriff auf `Agent-Playbook.md`,
   `watchlist.md`, `depot/kategorisierung.md` oder sonstige Dateien.
-  **Begründung für diese enge Grenze (Jarvis, von Brian bestätigt):** Jack
+  **Begründung für diese enge Grenze (Jarvis, von Brian bestätigt):** JJ
   und Conan sollen unabhängige Gutachter für eine konkrete, von Jarvis
   gestellte Aufgabe bleiben, keine freien Systembrowser – mit Zugriff aufs
   ganze Regelwerk könnten sie anfangen, sich ihre eigene Aufgabenstellung
@@ -889,19 +889,19 @@ jede übernommene Kennzahl gegen ISIN/Ticker+Börsenplatz gegenprüfen, sonst
 [N/V] statt "wahrscheinlich richtig". Lieber Datenlücke im Fact-Pack als
 falsch zugeordnete Kennzahl.
 
-### 10.13 Standard-Meta-Instruktion für Bridge-Aufrufe (Pflicht ab 2026-09-02) – behebt Jacks systematischen Reflex-Abbruch
+### 10.13 Standard-Meta-Instruktion für Bridge-Aufrufe (Pflicht ab 2026-09-02) – behebt JJs systematischen Reflex-Abbruch
 
-**Symptom (Orion Oyj + Asahi Intecc, beide 2026-09-02):** Jack (Gemini)
+**Symptom (Orion Oyj + Asahi Intecc, beide 2026-09-02):** JJ (Gemini)
 brach bei JEDEM frischen Quick-Filter-Kandidaten ohne vollständiges
 IR-Fact-Pack sofort auf SCHROTT/1 ab, während Conan (ChatGPT) mit
 denselben Lücken zu einem vollständigen Rating kam. Auf Brians
 ausdrückliche Bitte systematisch untersucht (nicht einfach hingenommen).
 
 **Diagnose (verifiziert, kein Prompt-Kürzungs-Bug):** Ein Diagnose-Prompt
-an Jack ("zitiere den letzten Satz vor dieser Frage wortwörtlich") kam mit
+an JJ ("zitiere den letzten Satz vor dieser Frage wortwörtlich") kam mit
 dem exakt korrekten letzten Satz der 70KB-Methodik-Datei zurück – der
 volle Text kommt vollständig an. Die eigentliche Ursache waren ZWEI
-Stellen, an denen Jack eine im Regelwerk vorhandene Formulierung
+Stellen, an denen JJ eine im Regelwerk vorhandene Formulierung
 literalistischer als Conan ausgelegt hat und sich damit einen
 Abbruchgrund gesucht hat:
 1. Unklare Schwelle, wann `[TRAINING]` statt `[N/V]` bei fehlenden
@@ -910,13 +910,13 @@ Abbruchgrund gesucht hat:
 2. SCHRITT-0-LIVE-CHECK und die RECHEN-DOKTRIN (Regel 20,
    Python-Tool-Call-Pflicht für WACC/DCF) wörtlich genommen, obwohl die
    API-Bridge strukturell weder Web-Search noch Tool-Calls hat – nachdem
-   Punkt 1 gefixt war, hat sich Jack genau diese zweite Stelle als neuen
+   Punkt 1 gefixt war, hat sich JJ genau diese zweite Stelle als neuen
    Abbruchgrund gesucht.
 
 **Fix (getestet, funktioniert – Asahi Intecc lief danach vollständig
 durch: BEOBACHTEN, Agent Score 5/10, nah an Conans unabhängigem 6/10):**
 Ab sofort bei JEDEM Bridge-Aufruf (`ask_chatgpt`/`ask_gemini`, sowohl
-Jack als auch Conan – identischer Wortlaut für beide, damit sie nach
+JJ als auch Conan – identischer Wortlaut für beide, damit sie nach
 demselben Maßstab urteilen) folgende **vier** Klarstellungs-Blöcke VOR die
 Methodik-Datei setzen, zusätzlich zum bisherigen Fact-Pack-Hinweis (Block
 4 seit 2026-09-03, siehe Ergänzung unten):
@@ -1007,8 +1007,8 @@ die ABBRUCH-LOGIK differenziert das nicht explizit) – auf beide KIs
 gleich angewendet, damit nicht die Modellwahl (Gemini vs. GPT) über das
 Ergebnis entscheidet, sondern die Faktenlage.
 
-**Praktische Konsequenz:** Die SCHROTT-Ergebnisse für Orion Oyj (Jack,
-2026-09-02) und den ersten Asahi-Intecc-Lauf (Jack, 2026-09-02, vor dem
+**Praktische Konsequenz:** Die SCHROTT-Ergebnisse für Orion Oyj (JJ,
+2026-09-02) und den ersten Asahi-Intecc-Lauf (JJ, 2026-09-02, vor dem
 Fix) gelten als durch einen Prompt-Klarheits-Mangel verzerrt, nicht als
 belastbares Urteil über die Firmen – bei Bedarf mit dieser Standard-
 Instruktion neu laufen lassen. Ab sofort MUSS jeder neue Bridge-Aufruf
@@ -1027,25 +1027,25 @@ Block 4 (Terminal-State), Block 7 (Fact-Pack-Tags-nicht-bindend) und Block 8
 alle Details).
 
 **Block 4 ergänzt (2026-09-03, aus dem 3-KI-System-Audit):** Brian ließ
-Jarvis, Jack und Conan das gesamte Regelwerk gemeinsam durchgehen. Beide
+Jarvis, JJ und Conan das gesamte Regelwerk gemeinsam durchgehen. Beide
 KIs fanden unabhängig voneinander denselben kritischen Punkt: der
 Terminal-State-Mechanismus (siehe Agent-Playbook.md Abschnitt 14, ausgelöst
 durch den RKLB-Fall) steht bisher NUR in Agent-Playbook.md, nicht in den
 tatsächlichen Prompt-Dateien oder im bisherigen Bridge-Meta-Instruktion-
-Text – d.h. er erreichte Jack/Conan im API-Betrieb möglicherweise gar
+Text – d.h. er erreichte JJ/Conan im API-Betrieb möglicherweise gar
 nicht. Genau der Fehler, den der Mechanismus verhindern soll, könnte sich
 so unbemerkt wiederholen. Block 4 schließt diese Lücke, indem er die
 Terminal-State-Pflicht direkt in den Text einbettet, der bei jedem
 Bridge-Aufruf tatsächlich ankommt.
 
 **Block 5 ergänzt (2026-09-04, Brian: "das ganze System soll für alle
-Agenten gelten, sowohl für Jack als auch für Conan").** Dieselbe Lücke wie
+Agenten gelten, sowohl für JJ als auch für Conan").** Dieselbe Lücke wie
 bei Block 4 trat erneut auf: die am selben Tag gebaute "Gründliche-These-
 Prüfung-vor-Verkaufsempfehlung-Pflicht" (Auslöser: der Cellebrite-Fall,
 siehe Agent-Playbook.md "Verkaufsdisziplin & Gewinnmitnahme-Regeln") wurde
 zunächst nur in Agent-Playbook.md und den FIXE-GRENZEN-Abschnitten der
 SKILL.md-Dateien verankert – das steuert Jarvis' eigenes Verhalten, aber
-NICHT das, was Jack/Conan bei einem Bridge-Aufruf tatsächlich zu lesen
+NICHT das, was JJ/Conan bei einem Bridge-Aufruf tatsächlich zu lesen
 bekommen. Ohne diesen Block hätte ein künftiger Scout-/TMR-Lauf für eine
 bestehende Depot-Position genau denselben vorschnellen SCHROTT-Reflex
 wiederholen können, den die Regel eigentlich verhindern soll. Block 5:
@@ -1086,13 +1086,13 @@ sollen Zugriff auf das master-status haben und wissen was zu tun ist"):**
 Master-Status/Informations-Vorrang-Hierarchie. Ursprünglich nur ein kurzer
 Hinweis für den agentischen Modus (`ask_gemini_agentic`/`ask_chatgpt_agentic`,
 siehe 10.11) – jetzt UNBEDINGT bei JEDEM Bridge-Aufruf (auch dem normalen,
-nicht-agentischen `ask_gemini`/`ask_chatgpt`), da Jack/Conan sonst keinerlei
+nicht-agentischen `ask_gemini`/`ask_chatgpt`), da JJ/Conan sonst keinerlei
 Sicht auf den aktuellen Projekt-/Depot-Status haben (Fact-Pack deckt nur den
 einzelnen Kandidaten ab, nicht Kategorie-Zählungen, offene Checkpoints,
 Portfolio-Regel-Verstöße, Kategorisierungs-Kriterien oder einen
 Watchlist-Vergleichsmaßstab). Jarvis liest `depot/master_status.md` VOR jedem
 Bridge-Dispatch frisch ein und fügt den **vollständigen aktuellen Inhalt**
-direkt in Block 6 ein (nicht nur einen Verweis auf den Dateinamen – Jack/Conan
+direkt in Block 6 ein (nicht nur einen Verweis auf den Dateinamen – JJ/Conan
 können die Datei selbst nicht lesen, nur was hier im Prompt-Text steht):
 
 ```
@@ -1118,7 +1118,7 @@ stark wächst. Bewusst NICHT die vollen `Agent-Playbook.md`/`watchlist.md`
 eingebettet (siehe 10.10 zum bekannten Gemini-Längenproblem) – stattdessen
 nur die daraus destillierten Kern-Kriterien bzw. eine 30-Zeilen-Tabelle.
 
-**Block 7 ergänzt (2026-09-06, echte Ursache des wiederholten Jack-Reflex-Abbruch-Bugs gefunden):** Bisher wurde der wiederholte SCHROTT/Terminal-State-Abbruch bei Jack (Asahi Intecc, Disco Corp, Lasertec) als Gemini-spezifisches Modellverhalten eingeordnet ("Jack tendiert reflexhaft zu N/V statt TRAINING"). Brian machte den entscheidenden Beobachtungshinweis: bei manueller Anwendung des Jack-Prompts (ohne Jarvis' Fact-Pack) läuft dieselbe Analyse normal durch, kein Abbruch. Beim Nachlesen von Jacks eigener Begründung (siehe `analysen/LASERTEC-TMR-quickfilter-jack-gemini-2026-09-05.md` Zeile 19-29 und `analysen/DISCO-6146-TMR-quickfilter-jarvis-claude-2026-08-31.md` Zeile 53) bestätigte sich: Jarvis' EIGENES Fact-Pack hatte Piotroski F-Score/FCF-Marge bereits selbst als `[N/V]` getaggt (obwohl daneben oft eine plausible qualitative Einschätzung stand, die `[TRAINING]` verdient hätte) – Jack übernahm dieses bereits gesetzte Tag als vorentschieden, statt es selbst neu zu bewerten. Die eigentliche Ursache liegt also in Jarvis' Fact-Pack-Erstellung (siehe Agent-Playbook.md "Fact-Pack-Tag-Disziplin", neu ergänzt), nicht in Gemini selbst – Block 7 ist das zusätzliche Sicherheitsnetz auf Bridge-Seite:
+**Block 7 ergänzt (2026-09-06, echte Ursache des wiederholten JJ-Reflex-Abbruch-Bugs gefunden):** Bisher wurde der wiederholte SCHROTT/Terminal-State-Abbruch bei JJ (Asahi Intecc, Disco Corp, Lasertec) als Gemini-spezifisches Modellverhalten eingeordnet ("JJ tendiert reflexhaft zu N/V statt TRAINING"). Brian machte den entscheidenden Beobachtungshinweis: bei manueller Anwendung des JJ-Prompts (ohne Jarvis' Fact-Pack) läuft dieselbe Analyse normal durch, kein Abbruch. Beim Nachlesen von JJs eigener Begründung (siehe `analysen/LASERTEC-TMR-quickfilter-jack-gemini-2026-09-05.md` Zeile 19-29 und `analysen/DISCO-6146-TMR-quickfilter-jarvis-claude-2026-08-31.md` Zeile 53) bestätigte sich: Jarvis' EIGENES Fact-Pack hatte Piotroski F-Score/FCF-Marge bereits selbst als `[N/V]` getaggt (obwohl daneben oft eine plausible qualitative Einschätzung stand, die `[TRAINING]` verdient hätte) – JJ übernahm dieses bereits gesetzte Tag als vorentschieden, statt es selbst neu zu bewerten. Die eigentliche Ursache liegt also in Jarvis' Fact-Pack-Erstellung (siehe Agent-Playbook.md "Fact-Pack-Tag-Disziplin", neu ergänzt), nicht in Gemini selbst – Block 7 ist das zusätzliche Sicherheitsnetz auf Bridge-Seite:
 
 ```
 WICHTIG: FACT-PACK-TAGS SIND NICHT BINDEND. Das Fact-Pack ist Jarvis' eigene
@@ -1159,10 +1159,10 @@ Auswahl des zuletzt genannten Werts aufloesen.
 dokumentiert):** die "Regel-Aufnahme-Disziplin/Ruleset-Hygiene" und der
 "Tieferer Zweck der Kandidatensuche" (Bereicherung/Unter-Radar/Watchlist-
 Vergleich) sind reine Jarvis-Orchestrierungs-Aufgaben (Screening, Datei-
-Pflege, Regelwerk-Pflege) – Jack/Conan bewerten nur den ihnen vorgelegten
+Pflege, Regelwerk-Pflege) – JJ/Conan bewerten nur den ihnen vorgelegten
 einzelnen Kandidaten, sie screenen nicht selbst und pflegen keine Regeln.
 Diese beiden Mechanismen bräuchten deshalb keinen eigenen Bridge-Block;
-sollte sich das ändern (z.B. Jack/Conan werden künftig selbst zum
+sollte sich das ändern (z.B. JJ/Conan werden künftig selbst zum
 Screening herangezogen), müsste das hier nachgezogen werden.
 
 **Bridge-Status-Log ergänzt (2026-09-04, Conans Vorschlag aus dem
@@ -1171,14 +1171,14 @@ funktionierend, aber nie verifiziert, tagelang unbemerkt ausgefallen)
 merkte Conan an, dass derselbe blinde Fleck beim API-Bridge-Mechanismus
 selbst bestehen könnte – "die Architektur ist besser, aber Ausfälle
 werden nicht sichtbar". Neue Datei `depot/bridge_status.md`: jeder
-Scheduled-Task-Lauf, der Jack/Conan per Bridge einsetzt (oder bewusst
+Scheduled-Task-Lauf, der JJ/Conan per Bridge einsetzt (oder bewusst
 nicht einsetzt), hängt eine Statuszeile an (OK/FAIL/Fallback je KI). Fällt
 eine Bridge über mehrere Läufe hinweg aus, ist das jetzt aus der Datei
 ablesbar, statt erst aufzufallen, wenn eine Analyse spürbar fehlt.
 
 **Dritte dokumentierte Wiederholung des Reflex-Abbruch-Bugs (2026-09-05,
 Lasertec-Lauf):** trotz Block 2/3 (TRAINING-vs-N/V-Klarstellung) UND
-eigener Websuche brach Jack erneut mit SCHROTT/Terminal-State ab, weil
+eigener Websuche brach JJ erneut mit SCHROTT/Terminal-State ab, weil
 Piotroski-F-Score (für japanische Emittenten strukturell oft nicht sauber
 ermittelbar) und eine durch Working-Capital-Timing verzerrte
 Quartals-FCF-Marge als [N/V] statt [TRAINING] eingestuft wurden – identisch
@@ -1186,17 +1186,17 @@ zum Muster bei Asahi Intecc und Disco Corp (siehe watchlist.md-
 Änderungsprotokoll). **Bemerkenswert:** Conan stand im selben Lauf vor
 GENAU denselben Datenlücken und schätzte beide korrekt mit [TRAINING]
 (Piotroski 7-8/9, FCF-Marge ~19,5-20,3%) statt abzubrechen. Das bestätigt:
-Block 2/3 hat das Problem für Conan gelöst, für Jack/Gemini nur
-teilweise – die Klarstellung wird zwar gelesen (Jack referenziert sie
+Block 2/3 hat das Problem für Conan gelöst, für JJ/Gemini nur
+teilweise – die Klarstellung wird zwar gelesen (JJ referenziert sie
 explizit im Output), aber bei genau diesen zwei Kennzahlen (Piotroski bei
 Nicht-US-Emittenten, Quartals-FCF-Marge bei Working-Capital-Verzerrung)
-entscheidet sich Jack trotzdem für die strengste Lesart. **Noch nicht
+entscheidet sich JJ trotzdem für die strengste Lesart. **Noch nicht
 behoben, nur dokumentiert:** ein möglicher nächster Schritt wäre ein noch
 konkreteres Beispiel im Klarstellungsblock ("Piotroski bei japanischen/
 nicht-US-Emittenten OHNE 10-K: nutze eine plausible TRAINING-Schätzung
 basierend auf Profitabilität/Bilanzqualität, niemals N/V allein deswegen")
 – bei Gelegenheit prüfen, ob das die Wiederholungsrate senkt. Bis dahin:
-ein Jack-SCHROTT/Terminal-State-Ergebnis, das ausschließlich auf Piotroski
+ein JJ-SCHROTT/Terminal-State-Ergebnis, das ausschließlich auf Piotroski
 und/oder einer einzelnen verzerrten FCF-Quartalszahl beruht, wird als
 Datenlücken-Artefakt behandelt, nicht als belastbares Urteil – Conans und
 Jarvis' Einschätzung erhalten in diesem Fall mehr Gewicht.
@@ -1206,7 +1206,7 @@ Jarvis' Einschätzung erhalten in diesem Fall mehr Gewicht.
 **Symptom (CBOE-Full-Deep-Dive, 2026-09-16):** Jarvis dispatchte an
 `ask_gemini_agentic`/`ask_chatgpt_agentic` (weil ursprünglich ein
 Kurs-Fallback per `get_quote`-Relay eingebaut werden sollte). Ergebnis:
-**Jack (Gemini) erfand Fundamentaldaten** (ROIC/EPS-CAGR/WACC/DCF-Werte),
+**JJ (Gemini) erfand Fundamentaldaten** (ROIC/EPS-CAGR/WACC/DCF-Werte),
 selbst als "Simulierte Bloomberg/Yahoo/CBOE IR" gekennzeichnet, aber
 trotzdem mit `[VERIFIED]`/`[LIVE]` getaggt – ein echter Regelverstoß gegen
 die eigene Data-Integrity-Methodik. **Conan (ChatGPT) verhielt sich
@@ -1217,7 +1217,7 @@ taggte alles korrekt `[TRAINING]`/`[ESTIMATE]`, Confidence nur 42%.
 `~/.claude/mcp-servers/`):**
 - `ask_gemini_agentic` hatte im `tools`-Payload **ausschließlich**
   `DEPOT_TOOLS` (die Portfolio-Function-Declarations) – **kein**
-  `{"google_search": {}}`. Jack hatte in dieser Funktion technisch NIE
+  `{"google_search": {}}`. JJ hatte in dieser Funktion technisch NIE
   einen Such-Tool-Zugriff, unabhängig vom Prompt-Inhalt.
 - `ask_chatgpt_agentic` lief über die **Chat-Completions-API**
   (`/v1/chat/completions`), die **kein natives Web-Search-Tool kennt** –
@@ -1265,7 +1265,7 @@ nur ~360 Output-Tokens) – die Suche selbst wird fälschlich als
 abgeschlossene Antwort behandelt. Das gilt unabhängig davon, ob `ask_gemini`
 oder `ask_gemini_agentic` verwendet wird (gleiche zugrunde liegende
 Gemini-API, gleiches Modell). **Praktische Konsequenz/korrigierte Regel:**
-"Jack hat jetzt immer Web-Search" ist nur dann tatsächlich wahr, wenn der
+"JJ hat jetzt immer Web-Search" ist nur dann tatsächlich wahr, wenn der
 Prompt NICHT der volle 130KB-Mega-Prompt ist. Zwei gangbare Wege:
 1. **Kondensierter Methodik-Prompt** (Kernregeln/Schwellen in eigenen
    Worten zusammengefasst statt der drei Methodik-Dateien wörtlich, siehe
@@ -1275,14 +1275,14 @@ Prompt NICHT der volle 130KB-Mega-Prompt ist. Zwei gangbare Wege:
 2. Voller Mega-Prompt + `enable_search=False` (wie bisherige Praxis,
    siehe SKILL.md-Dateien) – dann bleibt Jarvis' eigenes Fact-Pack (jetzt
    inkl. WebSearch/WebFetch-verifizierten Zahlen) die einzige Live-Quelle
-   für Jack, kein eigener Suchzugriff.
+   für JJ, kein eigener Suchzugriff.
 Conan/ChatGPT ist von dieser Einschränkung nicht betroffen (siehe 10.10:
 voller ~74K-Zeichen-Mega-Prompt + `enable_search=True` lief bereits am
 2026-09-05 sauber durch, deckte sogar einen echten Fact-Pack-Fehler auf).
 **Diese Handover-Notiz ersetzt NICHT die pauschale SKILL.md-Regel
 "`enable_search` MUSS bei diesem Mega-Prompt auf `False` gesetzt werden" –
 die bleibt für den vollen Mega-Prompt-Fall weiterhin richtig. Sie ergänzt
-sie um Weg 1 (kondensierter Prompt) als Alternative, wenn echte Jack-Suche
+sie um Weg 1 (kondensierter Prompt) als Alternative, wenn echte JJ-Suche
 für eine konkrete Analyse wichtiger ist als die wörtliche Vollständigkeit
 der Methodik-Datei.**
 
@@ -1332,7 +1332,7 @@ hier nur die wichtigsten für den Sessionstart):
     für Wochenreports.
 13. **RKLB-Scout-Quick-Filter-Meta-Retro-Fall — GELÖST (2026-09-01, hier
     nur nachträglich als erledigt markiert, 2026-09-04 im Rahmen der
-    Gaps-Abarbeitung geprüft):** Jacks Rating widersprach seinem eigenen
+    Gaps-Abarbeitung geprüft):** JJs Rating widersprach seinem eigenen
     Abbruch-Befund (Regelfehler, nicht gleichwertige Auslegung) - Auflösung
     in `analysen/KRKN-RKLB-nachholanalyse-final-2026-09-01.md`: Jarvis'
     ursprüngliches Ergebnis vom 28.08. (RATING ZU FRÜH, Sizing 0%) als
