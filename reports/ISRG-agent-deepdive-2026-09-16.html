@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>J.A.C.K Deep Dive - ISRG</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FFFFFF; --bg-panel: #F7F6F2; --bg-panel-2: #EFEDE6;
+    --border: #D9D4C8; --border-soft: #E6E2D9;
+    --text: #262420; --text-dim: #5C564A; --text-faint: #837C6C;
+    --gold: #9C7A2E; --gold-bright: #8A6A22; --gold-dim: #C9AD6E;
+    --green: #3F7D44; --green-bg: rgba(63,125,68,0.10);
+    --yellow: #A6790A; --yellow-bg: rgba(166,121,10,0.10);
+    --red: #B03A2E; --red-bg: rgba(176,58,46,0.09);
+    --blue: #2E6690; --blue-bg: rgba(46,102,144,0.09);
+    --orange: #AB591C; --orange-bg: rgba(171,89,28,0.09);
+  }
+  html, body { width: 210mm; background: var(--bg); color: var(--text); font-family: "Carlito", "DejaVu Sans", Arial, sans-serif; font-size: 11pt; line-height: 1.36; }
+  .display { font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif; font-weight: 700; font-stretch: condensed; }
+  .page { width: 210mm; height: 297mm; padding: 8mm 12mm 5mm 12mm; display: flex; flex-direction: column; gap: 2mm; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 2.6mm; }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 23pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 9.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag { font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim); border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm; display: inline-block; width: fit-content; }
+  .meta-block { text-align: right; font-size: 9.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 10.6pt; }
+  .position-header { display: flex; justify-content: space-between; align-items: center; background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold); border-radius: 3px; padding: 2.6mm 4mm; }
+  .position-name .ticker { font-size: 17pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 10pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 5mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 8.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); white-space: nowrap; }
+  .stat .value { font-size: 12pt; color: var(--text); margin-top: 0.4mm; white-space: nowrap; }
+  .hook-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 3.4mm 4.2mm; }
+  .hook-title { font-size: 16pt; line-height: 1.28; color: var(--text); font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .hook-title .accent { color: var(--gold-bright); }
+  .hook-title .accent-red { color: var(--red); }
+  .hook-sub { font-size: 9.6pt; color: var(--text-dim); line-height: 1.4; margin-top: 1.8mm; }
+  .narrative-box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 3mm 4mm; flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .narrative-box p { font-size: 9.4pt; color: var(--text-dim); line-height: 1.46; }
+  .narrative-box p b { color: var(--text); }
+  .narrative-box p .lead { color: var(--gold-bright); font-weight: bold; }
+  .section-label { font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0; }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+  .chart-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 74mm; flex: 0 0 auto; }
+  .chart-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; border-radius: 2px; }
+  .bbb-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 52mm; flex: 0 0 auto; }
+  .bbb-frame img { max-width: 100%; max-height: 100%; }
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
+  .box h3 { font-size: 9.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .box p { font-size: 9.1pt; color: var(--text-dim); line-height: 1.32; overflow-wrap: break-word; }
+  .box p b { color: var(--text); }
+  .verify-table, .compare-table, .scenario-table, .score-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .verify-table th, .verify-table td, .compare-table th, .compare-table td, .scenario-table th, .scenario-table td, .score-table th, .score-table td { font-size: 8.5pt; padding: 0.9mm 1.4mm; text-align: left; border-bottom: 1px solid var(--border-soft); }
+  .verify-table th, .compare-table th, .scenario-table th, .score-table th { color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; font-weight: normal; font-size: 7.9pt; }
+  .verify-table td, .compare-table td, .score-table td { color: var(--text); }
+  .scenario-table th, .scenario-table td { text-align: right; }
+  .scenario-table th:first-child, .scenario-table td:first-child { text-align: left; color: var(--text-dim); }
+  .pass { color: var(--green); } .fail { color: var(--red); } .warn { color: var(--yellow); }
+  .two-col { display: flex; gap: 3mm; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .divergence-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--orange); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .divergence-box h3 { color: var(--orange); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.4mm; }
+  .divergence-box p { font-size: 9.2pt; color: var(--text); line-height: 1.42; }
+  .integrity-box { background: var(--blue-bg); border: 1px solid var(--blue); border-radius: 3px; padding: 2.6mm 3.6mm; }
+  .integrity-box h3 { color: var(--blue); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
+  .integrity-box p { font-size: 9pt; color: var(--text); line-height: 1.4; }
+  .trigger-row { display: flex; gap: 3mm; }
+  .trigger-box { flex: 1; border-radius: 3px; padding: 2.4mm 3.4mm; }
+  .trigger-box.bull { background: var(--green-bg); border: 1px solid var(--green); }
+  .trigger-box.bear { background: var(--red-bg); border: 1px solid var(--red); }
+  .trigger-box h3 { font-size: 9.4pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2mm; }
+  .trigger-box.bull h3 { color: var(--green); }
+  .trigger-box.bear h3 { color: var(--red); }
+  .trigger-box ul { list-style: none; }
+  .trigger-box li { font-size: 8.8pt; color: var(--text); padding: 0.6mm 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .trigger-box li:last-child { border-bottom: none; }
+  .killsheet-box { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .killsheet-box h3 { color: var(--gold-bright); font-size: 10.4pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.6mm; }
+  .warn-strip { background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.7mm 3mm; font-size: 8.7pt; color: var(--yellow); margin-top: 1mm; }
+  .warn-strip b { color: var(--text); }
+  .fazit { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 2.8mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0; }
+  .fazit-verdict { flex: 0 0 auto; max-width: 42mm; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 13pt; color: var(--yellow); letter-spacing: 0.02em; }
+  .fazit-verdict .sub { font-size: 8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.6mm; }
+  .sources-list { font-size: 8.8pt; color: var(--text-dim); line-height: 1.5; }
+  .sources-list .n { color: var(--gold); margin-right: 1.5mm; }
+  .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 1.5mm; font-size: 8.1pt; color: var(--text-faint); flex-shrink: 0; }
+  .footer .gold-dot { color: var(--gold); }
+  .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm; }
+  .decision-card { border-radius: 3px; padding: 2.4mm 3.2mm; }
+  .decision-card.attractive { background: var(--green-bg); border: 1px solid var(--green); }
+  .decision-card.caution { background: var(--red-bg); border: 1px solid var(--red); }
+  .decision-card.watch { background: var(--blue-bg); border: 1px solid var(--blue); }
+  .decision-card.action { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); }
+  .decision-card h3 { font-size: 9.1pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .decision-card.attractive h3 { color: var(--green); }
+  .decision-card.caution h3 { color: var(--red); }
+  .decision-card.watch h3 { color: var(--blue); }
+  .decision-card.action h3 { color: var(--gold-bright); }
+  .decision-card p { font-size: 8.5pt; color: var(--text); line-height: 1.34; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hook -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">2-fach TMR-Cross-Check · Aegis · JJ (Conan: Bridge-Ausfall)</div>
+      <div class="edition-tag">Depot-Position · Champions · Full Deep Dive</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">16. September 2026</div>
+      <div>TMR-Pfad · Modus A</div>
+      <div>Nach Quick-Filter vom 25.08.2026 (🔴-Konfidenz)</div>
+    </div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-title">🏥 Intuitive Surgical — Exzellente DNA, aber der Burggraben steht <span class="accent-red">unter echtem Doppelangriff</span></div>
+    <div class="hook-sub">Intuitive Surgical, Inc. (NASDAQ: ISRG) · Kurs $383,61 (16.09.2026, +1,71% intraday) · 52W-Range $328,57-$603,88 (-36,5% vom Hoch) · Sektor Medtech/Roboterchirurgie · Depot-relevant: 4 Aktien, Ø-Einstand ~$350, aktuell ca. -13% bis -15%</div>
+  </div>
+
+  <div class="section-label">Der Full Deep Dive, den der eigene Quick-Filter selbst gefordert hat</div>
+  <div class="narrative-box">
+    <p><span class="lead">Der Auslöser.</span> Der Quick-Filter vom 25.08.2026 fand eine exzellente, aber nur einzelquellen-belegte DNA und eine eklatante, unaufgelöste Bewertungs-Diskrepanz (Morningstar-Fair-Value $265 vs. Sell-Side-Konsens bis $509) — und forderte explizit einen Full Deep Dive mit echtem DCF und Zweitquellen-Verifikation, bevor eine höhere Konviktion gerechtfertigt wäre.</p>
+    <p><span class="lead">Der Doppelangriff auf den Moat.</span> Zwei unabhängige strukturelle Ereignisse laufen gleichzeitig: J&J erhielt am 22.07.2026 die FDA-Zulassung für Ottava und beendete damit Intuitives ~2 Jahrzehnte währendes Soft-Tissue-Regulierungsmonopol; der 9th Circuit Court of Appeals hob am 13.08.2026 das vorherige Urteil zugunsten Intuitive im Kartellrechtsstreit um das Tying-Modell (System+Service an Instrumentenkäufe gekoppelt) auf und verwies zur Neuverhandlung zurück — Streitwert ca. $140 Mio., Kernvorwurf trifft direkt die Recurring-Revenue-Ökonomie.</p>
+    <p><span class="lead">Was der Full Deep Dive klärt.</span> Die DNA verifiziert sich zweitquellen-bestätigt als exzellent (ROIC ~20%, FCF-Marge 25-33%, praktisch schuldenfrei mit $8,63 Mrd. Netto-Cash). Die Bewertungs-Diskrepanz löst sich als Funktion unterschiedlicher, aber jeweils in sich schlüssiger DCF-Annahmen auf, nicht als Modellfehler einer Seite — Details Seite 5-6. Ein eigener, wichtiger Fund: JJ korrigierte einen über ein Jahr alten Fehler in unserer eigenen Quick-Filter-Analyse (CEO-Wechsel bereits 01.07.2025, siehe Seite 4).</p>
+    <p><span class="lead">Der Cross-Check-Befund.</span> Diese Runde lief als 2-fach-Check (Aegis + JJ) — der OpenAI-Bridge (Conan) war während der gesamten Sitzung nicht erreichbar, der dritte bestätigte Ausfall in Folge an diesem Tag. Beide verbleibenden Perspektiven konvergieren auf HALTEN.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ISRG-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/12</div>
+  </div>
+</div>
+
+<!-- PAGE 2: Executive Summary -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Executive Summary · Investment-These · 2-Stimmen-Leiste</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 2</div><div>ISRG Intuitive Surgical</div></div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">ISRG <span style="color:var(--text-dim); font-size:9.5pt;">· NASDAQ</span></div>
+      <div class="company">Intuitive Surgical, Inc. — Marktführer Roboterchirurgie (da-Vinci)</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs</div><div class="value">$383,61</div></div>
+      <div class="stat"><div class="label">Tagesbewegung</div><div class="value" style="color:var(--green);">+1,71%</div></div>
+      <div class="stat"><div class="label">Depot-Position</div><div class="value" style="color:var(--text);">4 Stk., ca. -13 bis -15%</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">2-Stimmen-Leiste (Conan/ChatGPT diese Runde nicht erreichbar)</div>
+  <div style="display:flex; gap:2.4mm;">
+    <div class="box" style="flex:1;">
+      <h3>Aegis · Claude (Synthese)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">HALTEN</p>
+      <p style="font-size:8.4pt;">Konfidenz 🟡, kein Nachkauf vor Rechtsstreit-/Wettbewerbsklärung</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>JJ · Gemini (TMR, Zweitquellen-verifiziert)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">HOLD</p>
+      <p style="font-size:8.4pt;">Score 7/10, Konfidenz 🟡 (von 🔴 im Quick-Filter angehoben)</p>
+    </div>
+    <div class="box" style="flex:1; opacity:0.55;">
+      <h3>Conan · ChatGPT (TMR)</h3>
+      <p style="font-size:12pt; color:var(--text-faint);">— nicht erreichbar —</p>
+      <p style="font-size:8.4pt;">OpenAI-Bridge-Ausfall (3. Mal in Folge, siehe Seite 12)</p>
+    </div>
+  </div>
+  <div class="warn-strip" style="margin-top:0;"><b>Konfidenz-Anhebung wie vom Quick-Filter erhofft:</b> Beide fraglichen K-Kriterien (Piotroski 6/9, CCC ~233 Tage) verifizierten sich zweitquellen-bestätigt als branchentypische Nicht-Probleme, nicht als versteckte Schwächen — genau die Bedingung, die der Quick-Filter für eine Anhebung von 🔴 auf 🟡 genannt hatte.</div>
+
+  <div class="section-label">Investment-These: Warum Halten, nicht Verkaufen oder Nachkaufen?</div>
+  <div class="narrative-box" style="flex:0 0 auto;">
+    <p>Intuitive Surgical bleibt fundamental einer der stärksten Compounder im gesamten Depot: praktisch schuldenfrei, ROIC ~20%, FCF-Marge 25-33%, ein Moat, der trotz zwei realer struktureller Angriffe immer noch bei 3/4 liegt. <b>Aber:</b> beide Angriffe (Kartellrechts-Retrial, Ottava/Hugo-Marktöffnung) sind ECHT, laufend und nicht kurzfristig auflösbar — kein Grund zur Panik, aber auch kein Grund für Euphorie. Die DCF-Bewertung zeigt eine ungewöhnlich breite, aber methodisch nachvollziehbare Streuung ($136-650 je Szenario/Modell) — der aktuelle Kurs liegt zwischen den beiden unabhängigen Base-Cases. Ein Nachkauf ist erst gerechtfertigt, wenn sich mindestens einer der beiden zentralen Unsicherheitsfaktoren klärt.</p>
+  </div>
+
+  <div class="section-label">Entscheidungs-Übersicht</div>
+  <div class="decision-grid">
+    <div class="decision-card attractive">
+      <h3>✓ Warum die Qualität stimmt</h3>
+      <p>DNA jetzt zweitquellen-verifiziert exzellent, praktisch schuldenfrei ($8,63 Mrd. Netto-Cash), Moat trotz Abzug bei 3/4, disziplinierte Kapitalallokation, TA-Erholung der letzten Woche (RSI/MACD/OBV).</p>
+    </div>
+    <div class="decision-card caution">
+      <h3>⚠ Warum kein Nachkauf jetzt</h3>
+      <p>Kartellrechts-Retrial ohne Termin, Ottava/Hugo-Bedrohung langfristig real, Insider verkaufen (keine Käufe 90 Tage), Kurs bleibt unter SMA200 trotz kurzfristiger Erholung, DCF-Streuung historisch ungewöhnlich breit.</p>
+    </div>
+    <div class="decision-card watch">
+      <h3>👁 Was wir beobachten</h3>
+      <p>Q3-2026-Earnings (20.10.), jedes prozessuale Update im Kartellrechtsverfahren, reale Marktanteilsverschiebung Ottava/Hugo, Insider-Transaktionen, Guidance-Ton am nächsten Call.</p>
+    </div>
+    <div class="decision-card action">
+      <h3>▶ Aktion</h3>
+      <p>HALTEN. Bestehende 4-Aktien-Position bleibt unverändert. Kein methodischer Nachkauf vor Klärung von Rechtsstreit oder Wettbewerbsdynamik.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ISRG-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/12</div>
+  </div>
+</div>
+
+<!-- PAGE 3: DNA-Check + Moat-Decay -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Vollständiger DNA-Check · Moat-Decay-Check (das Herzstück)</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 3</div><div>ISRG Intuitive Surgical</div></div>
+  </div>
+
+  <div class="section-label">DNA-CHECK: ISRG — K-BASIS 5 (Standard, Medtech-Hardware-/Recurring-Hybrid)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Kriterium</th><th>Schwelle</th><th>Ist-Wert (Zweitquellen-verifiziert)</th><th>Status</th></tr>
+      <tr><td colspan="4" style="color:var(--gold); font-size:7.6pt; text-transform:uppercase; letter-spacing:0.05em; padding-top:1.8mm;">K-Kriterien (Gatekeeper)</td></tr>
+      <tr><td>ROIC</td><td>&gt;20%</td><td>19,96-20,73% (GuruFocus/FinanceCharts) — knapp, aber erfüllt</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>FCF-Marge (real)</td><td>≥20%</td><td>24,7-32,79% je Quelle/Periode</td><td class="pass">✅ Deutlich erfüllt</td></tr>
+      <tr><td>Operativer Leverage</td><td>Ja/Nein</td><td>Ja — Q2 Op.-Gewinn +30,7% bei Umsatz +18,5%</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Piotroski F-Score</td><td>≥7</td><td>6/9 (10-Jahres-Median, Branchen-Ø 5,0) — Zweitquelle bestätigt Quick-Filter-Wert</td><td class="warn">🟡 Grenzfall, kein Alarmsignal</td></tr>
+      <tr><td>EPS-CAGR (5J)</td><td>≥12%</td><td>19,5-21,5% je Quelle</td><td class="pass">✅ Deutlich erfüllt</td></tr>
+      <tr><td colspan="4" style="color:var(--gold); font-size:7.6pt; text-transform:uppercase; letter-spacing:0.05em; padding-top:1.8mm;">E-Kriterien</td></tr>
+      <tr><td>Bruttomarge</td><td>≥60%</td><td>66,0-67,8% je Periode</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Op. Margin</td><td>≥20%</td><td>29,3-33,6% je Periode</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Revenue-CAGR (5J)</td><td>≥8-10%</td><td>16,4-18,2%</td><td class="pass">✅ Deutlich erfüllt</td></tr>
+      <tr><td>Net Debt/EBITDA</td><td>&lt;2,0x</td><td>0,00x — praktisch schuldenfrei, $8,63 Mrd. Netto-Cash</td><td class="pass">✅ Erfüllt, sehr stark</td></tr>
+      <tr><td>Capex/Umsatz</td><td>≤5%</td><td>4,39% TTM</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>CCC</td><td>&lt;30 Tage</td><td>~233 Tage — für Medtech-Kapitalgüter (lange Fertigungs-/Lager-/Zahlungszyklen) strukturell normal, kein Substanzproblem</td><td class="warn">🟡 Branchentypische Ausnahme</td></tr>
+    </table>
+    <p style="margin-top:1.6mm; font-size:8.4pt;"><b>DNA-Urteil: K praktisch 5/5, E praktisch 6/6</b> (beide 🟡-Zeilen branchentypisch erklärt, kein Substanzproblem) — deutlich gestärkt ggü. dem Quick-Filter (K 4/5 Grenzfall), weil beide fraglichen Kennzahlen jetzt zweitquellen-verifiziert und kontextualisiert sind.</p>
+  </div>
+
+  <div class="section-label">Moat-Decay-Check — der eigentliche Kern dieser Analyse</div>
+  <div class="divergence-box">
+    <h3>⚠ Zwei unabhängige, echte strukturelle Angriffe gleichzeitig</h3>
+    <p><b>(a) J&J-Ottava-FDA-Zulassung (22.07.2026):</b> beendet Intuitives ~2 Jahrzehnte währendes Soft-Tissue-Regulierungsmonopol. CFO Jamie Samath sagte im September 2026, J&J werde "ein paar Jahre" brauchen, um gegen Intuitives volles Ökosystem zu skalieren — stützt eine kurzfristige Entlastung, ohne die langfristige Bedrohung zu widerlegen. Medtronic Hugo bleibt marktseitig nachrangig. <b>(b) 9th-Circuit-Kartellrechts-Rückverweisung (13.08.2026):</b> Urteil zugunsten Intuitive aufgehoben (fehlerhafte Kodak/Epic-Jury-Instruktion), Neuverhandlung zum Tying-Modell (System+Service an Instrumentenkäufe gekoppelt) — Streitwert ~$140 Mio., trifft direkt die Recurring-Revenue-Ökonomie. Kein öffentlich bekannter Retrial-Termin. <b>Moat-Score: 3/4</b> (von 4/4 abgestuft) — Moat-Trend LEICHT ABSCHWÄCHEND, nicht STARK ERODIEREND: beide Angriffe sind real, aber weder kurzfristig entscheidungsreif noch bereits in Marktanteilsverlusten sichtbar.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ISRG-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/12</div>
+  </div>
+</div>
+
+<!-- PAGE 4: KSF-Scorecard + Management -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">KSF-Scorecard · Management-Score · Korrektur zum Quick-Filter</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 4</div><div>ISRG Intuitive Surgical</div></div>
+  </div>
+
+  <div class="integrity-box">
+    <h3>🔵 Korrektur: der Quick-Filter vom 25.08.2026 führte einen über ein Jahr alten CEO-Fehler</h3>
+    <p>Gary Guthart ist bereits seit dem <b>01.07.2025</b> nicht mehr CEO von Intuitive Surgical — er wechselte zu Executive Chair. Neuer CEO ist <b>Dave Rosa</b>. JJ fand dies eigenständig, Aegis hat es unabhängig per WebSearch (u.a. medtechdive.com, intuitive.com/leadership) bestätigt. Der eigene Quick-Filter vom 25.08.2026 hatte fälschlich noch "CEO Gary Guthart (seit 2010)" geführt — ein unbemerkt gebliebener, über ein Jahr alter Fakt-Fehler in unserer eigenen vorherigen Analyse, kein Fund dieser Runde selbst. Ab jetzt korrigiert für alle künftigen ISRG-Analysen.</p>
+  </div>
+
+  <div class="section-label">KSF-Scorecard (Outside-in)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Key Success Factor (Roboterchirurgie-Branche)</th><th>ISRG-Positionierung</th><th>Status</th></tr>
+      <tr><td>Regulatorische Zulassungsbreite über Fachgebiete</td><td>Breiteste FDA-Zulassungspalette der Branche nach 2 Dekaden Aufbau</td><td class="pass">✅ DEFENSIV</td></tr>
+      <tr><td>Chirurgen-Ausbildungs-/Zertifizierungs-Ökosystem</td><td>Größte trainierte Chirurgenbasis weltweit, hohe Wechselkosten</td><td class="pass">✅ DEFENSIV</td></tr>
+      <tr><td>Rechtssicherheit des Aftermarket-/Tying-Modells</td><td>Kartellrechts-Retrial läuft, Ausgang offen, trifft den Kern der Marge</td><td class="fail">❌ KRITISCH/OFFEN</td></tr>
+      <tr><td>Krankenhaus-Capex-Zyklen/Kaufentscheidungsprozesse</td><td>Lang, komplex — da Vinci 5 als Upgrade-Pfad, aber Wettbewerber könnten Zyklen beeinflussen</td><td class="warn">🟡 IN ARBEIT</td></tr>
+      <tr><td>Dateneigentum/KI-Integration in OP-Workflows</td><td>Aktive Investition, große Datenbasis aus installierter Flotte</td><td class="pass">✅ DEFENSIV</td></tr>
+      <tr><td>Innovationsgeschwindigkeit/Technologie-Roadmap</td><td>da Vinci 5, Ion Endoluminal System als laufende Weiterentwicklung</td><td class="pass">✅ DEFENSIV</td></tr>
+    </table>
+    <p style="margin-top:1.2mm; font-size:8pt; color:var(--text-faint);">Die einzige ❌-Zeile ist exakt der Punkt, der auch das zentrale Struktur-Risiko (Seite 9) und den Moat-Decay-Check (Seite 3) trägt — keine isolierte Schwäche, sondern der zentrale, wiederkehrende Unsicherheitsfaktor der gesamten Analyse.</p>
+  </div>
+
+  <div class="section-label">Management- & Capital-Allocation-Score: 6/7</div>
+  <div class="box">
+    <p><b>Positiv:</b> disziplinierte Kapitalallokation (hohe Reinvestition in F&E/Ökosystem-Ausbau, Aktienrückkäufe, Share-Count leicht rückläufig 357→354 Mio. seit 2023), Guidance-Zurückhaltung trotz Q2-Beat als umsichtige statt fehlerhafte Kommunikation eingeordnet, transparente Ansprache von Ottava/Hugo/Rechtsstreit in Calls ohne erkennbaren Dodge-Factor.</p>
+    <p style="margin-top:1mm;"><b>Abzug:</b> Insider-Verkäufe überwiegen klar (~$4,5-4,9 Mio. Verkäufe, keine Käufe in 90 Tagen) — kein akutes Warnsignal, aber ein Beobachtungspunkt, gerade während der laufenden Rechtsstreit-Unsicherheit.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ISRG-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 4/12</div>
+  </div>
+</div>
+
+<!-- PAGE 5: Bewertung I -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">DCF-Vergleich · Litigation-Drain-Check · Bilanz</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 5</div><div>ISRG Intuitive Surgical</div></div>
+  </div>
+
+  <div class="section-label">DCF-Vergleich der unabhängigen Beine (10-Jahres-Explizit-Modell)</div>
+  <div class="box">
+    <table class="scenario-table">
+      <tr><th style="text-align:left;">Bein</th><th>Beta</th><th>WACC</th><th>Bear-FV</th><th>Base-FV</th><th>Bull-FV</th><th>TV-Anteil EV (Base)</th></tr>
+      <tr><td style="text-align:left;">Aegis</td><td>1,30</td><td>10,60%</td><td>$136</td><td>$247</td><td>$349</td><td class="warn">57,8%</td></tr>
+      <tr><td style="text-align:left;">JJ</td><td>1,16</td><td>10,88%</td><td>$250-320</td><td class="pass"><b>$420-460</b></td><td>$550-650</td><td class="warn">60-80% (geschätzt)</td></tr>
+    </table>
+    <p style="margin-top:1.6mm; font-size:8.4pt;"><b>Wichtiger methodischer Fund (Aegis-Selbstkorrektur):</b> Ein erster Durchlauf mit nur 5 Jahren explizitem Cashflow-Horizont ergab absurd niedrige Werte (Base $169, Reverse-DCF implizit 34,9% nötiges Wachstum) — ein Artefakt eines zu kurzen Prognosehorizonts, kein reales Bewertungsurteil. Nach Korrektur auf 10 Jahre (wie JJ) sinkt das implizite Reverse-DCF-Wachstum auf 17,1% p.a. — nah an ISRGs eigener Wachstumsrate (Prozeduren +16% YoY) und damit plausibel. Die Wahl des Prognosehorizonts ändert das Ergebnis stärker als jede realistische WACC- oder Wachstumsraten-Anpassung.</p>
+    <p style="margin-top:1mm; font-size:8.4pt;">Aegis' konservativere FCF-Margen-Progression (27%→31%) erklärt den größten Teil der Differenz zu JJs Zahlen (konstant ~25%, aber mit optimistischerer Wachstumsrate) — beide Modelle sind in sich schlüssig, nicht widersprüchlich in der Methodik. Aegis' Werte dienen als konservative Bear-seitige Leitplanke, nicht als Punktschätzung, da ISRGs reale TTM-FCF-Marge bereits bei 29-33% liegt.</p>
+  </div>
+
+  <div class="section-label">Litigation-Drain-Check (Pflicht, im Quick-Filter nur [N/V])</div>
+  <div class="box">
+    <p style="font-size:8.6pt;">Weder Aegis noch JJ konnten eine explizite Rückstellung oder eine quantifizierte OCF-Belastung durch die beiden laufenden Kartellrechtsverfahren (zertifizierte Sammelklage 2017-2021 + 9th-Circuit-Fall) aus öffentlich zugänglichen Quellen finden — Management erwähnte im Q1-2026-Call "niedrigere Rechtskosten", ohne Beträge zu nennen [N/V]. Bei einem Streitwert von ~$140 Mio. gegen eine Marktkapitalisierung von ~$135 Mrd. wäre selbst eine vollständige Verlustzahlung finanziell verkraftbar (&lt;0,1% der Marktkap.) — das eigentliche Risiko ist nicht die Zahlungshöhe, sondern ein mögliches <b>Präzedenzurteil gegen das Tying-Modell selbst</b>, das die Recurring-Revenue-Ökonomie strukturell verändern könnte.</p>
+  </div>
+
+  <div class="section-label">Bilanz (Zweitquellen-verifiziert)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Position</th><th>Wert</th><th>Einordnung</th></tr>
+      <tr><td>Netto-Cash (30.06.2026)</td><td>$8,63 Mrd.</td><td>Praktisch schuldenfrei, mehrquellenbestätigt</td></tr>
+      <tr><td>Net Debt/EBITDA</td><td>0,00x</td><td>Keine signifikanten langfristigen Schulden</td></tr>
+      <tr><td>Share Count (2023→Q2 2026)</td><td>357 Mio. → 354 Mio.</td><td>Leicht rückläufig, keine Verwässerung</td></tr>
+    </table>
+    <p style="margin-top:1.2mm; font-size:7.8pt; color:var(--text-faint);"><b>Verwässerungs-Wasserfall: entfällt ersatzlos.</b> Keine gleichzeitigen dilutiven Instrumente, Share-Count-Trend leicht rückläufig.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ISRG-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/12</div>
+  </div>
+</div>
+
+<!-- PAGE 6: Bewertung II — DCF Chart -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Bewertung II · DCF-Szenarien im Chart</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 6</div><div>ISRG Intuitive Surgical</div></div>
+  </div>
+
+  <div class="section-label">DCF-Szenarien (Bear/Base/Bull) — Aegis vs. JJ vs. aktueller Kurs</div>
+  <div class="bbb-frame" style="height:82mm; width:100%;"><img src="ISRG_dcf_scenarios.png" alt="ISRG DCF-Szenarien"></div>
+
+  <div class="box">
+    <p style="font-size:8.6pt;"><b>Einordnung:</b> Der aktuelle Kurs ($383,61) liegt zwischen Aegis' konservativem Base-Case ($247) und JJs optimistischerem Base-Case ($420-460) — deutlich näher an JJs Zahlen. Das spricht dafür, dass der Markt aktuell eher die optimistischere Lesart einpreist (Moat hält trotz der beiden Angriffe im Kern), nicht die pessimistische. Selbst Aegis' Bull-Case ($349) erreicht den aktuellen Kurs nicht ganz — ein Hinweis darauf, dass die Bewertung nicht mehr "billig" ist, auch nach dem -36%-Rückgang vom Hoch, sondern auf eine erfolgreiche Bewältigung beider struktureller Risiken angewiesen bleibt.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ISRG-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/12</div>
+  </div>
+</div>
+
+<!-- PAGE 7: Kursverlauf + TA -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Kursverlauf · Technische Analyse (Investor-Modus)</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 7</div><div>ISRG Intuitive Surgical</div></div>
+  </div>
+
+  <div class="section-label">Kursverlauf (6 Monate) mit Sondersituation-Ereignissen</div>
+  <div class="chart-frame" style="height:76mm; width:100%;"><img src="ISRG_chart.png" alt="ISRG Kursverlauf"></div>
+
+  <div class="section-label">TA-Werte (16.09.2026, Twelve Data — aktueller als JJs Sekundärquellen)</div>
+  <div class="two-col">
+    <div class="col">
+      <div class="box">
+        <table class="verify-table">
+          <tr><td>Kurs vs. SMA200</td><td>$383,61 vs. $456,93</td><td class="fail">Klar unter SMA200</td></tr>
+          <tr><td>RSI(14)</td><td>56,1 (erholt von ~35 am 08.09.)</td><td class="pass">Neutral, kurzfristig erholt</td></tr>
+          <tr><td>MACD</td><td>-1,75, Signal -3,57, Hist. +1,82 (dreht seit 5 Tagen positiv)</td><td class="pass">Kurzfristig bullische Divergenz</td></tr>
+          <tr><td>Bollinger</td><td>$383,61, über Mittelband ($371,64), unter oberem Band ($391,50)</td><td class="pass">Erholung Richtung Bandmitte</td></tr>
+          <tr><td>OBV-Trend</td><td>Wechsel von negativ (08.09.) zu klar positiv (16.09.)</td><td class="pass">Käuferrückkehr</td></tr>
+          <tr><td>ATR(14) / ATR%</td><td>$11,74 / ~3,1%</td><td class="warn">Moderat</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="col">
+      <div class="box">
+        <h3>Gesamtscore & Rating</h3>
+        <p style="font-size:13pt; color:var(--yellow);">Kurzfristig <b>ERHOLEND</b>, langfristig <b>BEARISH</b></p>
+        <p style="font-size:8.4pt;">Kurs unter SMA200, aber RSI/MACD/OBV zeigen unabhängig übereinstimmend eine echte, junge Erholung der letzten Woche.</p>
+      </div>
+      <div class="box">
+        <h3>Datenqualitäts-Hinweis</h3>
+        <p style="font-size:8.4pt;">JJs sekundäre TA-Quellen (TipRanks u.a.) zeigten noch MACD -6,10 und RSI 37-42 — ein älterer Datenstand. Twelve Data bleibt ausnahmslos die Referenz für TA-Werte.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ISRG-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/12</div>
+  </div>
+</div>
+
+<!-- PAGE 8: Stress-Test + Devils Advocate -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Stress-Test · Devil's Advocate</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 8</div><div>ISRG Intuitive Surgical</div></div>
+  </div>
+
+  <div class="section-label">Stress-Test-Annahmen je Szenario (beide Beine konvergent in der Logik)</div>
+  <div class="box">
+    <p><b>Bear:</b> Kartellrechts-Retrial verloren, Tying-Modell für wettbewerbswidrig erklärt → Zerschlagung des Recurring-Revenue-Modells, niedrigere Instrumentenpreise, höhere Servicekosten. Zusätzlich: Ottava/Hugo überwinden Anlaufschwierigkeiten schneller als erwartet, gewinnen realen Marktanteil bei einfacheren Eingriffen, Preisdruck auf da-Vinci-Systeme. Prozedurwachstum fällt unter 10%.</p>
+    <p style="margin-top:1mm;"><b>Base:</b> Moderat verlangsamtes, aber weiterhin zweistelliges Wachstum, Moat hält mit Reibungsverlusten durch Wettbewerb/Rechtsstreit, kein binäres Ereignis in beide Richtungen bis mindestens Q3-2026.</p>
+    <p style="margin-top:1mm;"><b>Bull:</b> Rechtsstreit wird beigelegt oder zugunsten Intuitive entschieden, Tying-Modell bleibt unangetastet. Ottava/Hugo scheitern dauerhaft an Skalierung/Workflow-Integration. Beschleunigtes Wachstum durch da Vinci 5 und internationale Expansion.</p>
+  </div>
+
+  <div class="trigger-row">
+    <div class="trigger-box bull">
+      <h3>📈 Nachkauf-/Bull-Trigger</h3>
+      <ul>
+        <li>1. Günstiges Urteil/Vergleich im Kartellrechtsstreit</li>
+        <li>2. Bestätigte Ottava/Hugo-Skalierungsprobleme über weitere Quartale</li>
+        <li>3. Beschleunigtes Prozedurwachstum (da Vinci 5/international)</li>
+        <li>4. Neue Indikationen/Produkteinführungen jenseits des Kerngeschäfts</li>
+      </ul>
+    </div>
+    <div class="trigger-box bear">
+      <h3>📉 Stop-These-Trigger</h3>
+      <ul>
+        <li>1. Verlust im Kartellrechts-Retrial (Tying-Modell fällt)</li>
+        <li>2. Schnelle, erfolgreiche Marktdurchdringung von Ottava/Hugo</li>
+        <li>3. Prozedurwachstum &lt;10% über 2 Quartale in Folge</li>
+        <li>4. Technologischer Durchbruch eines Wettbewerbers</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ISRG-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 8/12</div>
+  </div>
+</div>
+
+<!-- PAGE 9: Pipeline + Struktur-Risiko + Insider -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Pipeline-Ausblick · Struktur-Risiko · Insider-Transaktionen</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 9</div><div>ISRG Intuitive Surgical</div></div>
+  </div>
+
+  <div class="section-label">Pipeline-/Katalysator-Ausblick</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Datum</th><th>Event</th><th>Relevanz</th></tr>
+      <tr><td>20.10.2026</td><td>Q3-2026-Earnings, Konsens-EPS $2,64</td><td>Nächster harter Datenpunkt für Prozedurwachstum/Guidance</td></tr>
+      <tr><td>Laufend</td><td>da Vinci 5 / Ion Endoluminal System</td><td>Upgrade-Zyklus im Bestand, neue Indikationen</td></tr>
+      <tr><td>Laufend, kein Termin</td><td>9th-Circuit-Retrial</td><td>Kein öffentlich bekannter Termin — bleibt offene Unsicherheit</td></tr>
+    </table>
+  </div>
+
+  <div class="section-label">Struktur-Risiko (Update)</div>
+  <div class="box">
+    <p style="font-size:8.6pt;"><b>Rechtsstreit:</b> siehe Seite 3/5, kein neuer Verfahrensstand seit dem 13.08. auffindbar. <b>Ottava/Hugo:</b> "gemessene" Markteinführung laut mehreren Quellen, CFO Samath bestätigt mehrjährigen Zeitbedarf für J&J zur vollen Skalierung. <b>Zoll-/Tarif-Gegenwind:</b> ~1,0% Bruttomargen-Belastung 2026 bereits in der Guidance eingepreist, Q2 enthielt sogar einen 8-Cent-"tariff-refund benefit".</p>
+  </div>
+
+  <div class="section-label">Insider-Transaktionen (letzte 2-3 Monate)</div>
+  <div class="box">
+    <p style="font-size:8.6pt;">Mehr Verkäufe als Käufe: ca. $4,5-4,9 Mio. Verkäufe (mehrquellenbestätigt, MarketBeat/Benzinga), <b>keine gemeldeten Käufe</b> in den letzten 90 Tagen. CEO Dave Rosa und Executive Chair Gary Guthart halten weiterhin substanzielle Positionen (Guthart &gt;1,3 Mio. Aktien). <b>Einordnung:</b> kein akutes Warnsignal (bei etablierten Führungskräften oft Options-Vesting-getrieben), aber ein Beobachtungspunkt — echte Open-Market-Käufe während der laufenden Rechtsstreit-Unsicherheit wären ein stärkeres Vertrauenssignal gewesen.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ISRG-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 9/12</div>
+  </div>
+</div>
+
+<!-- PAGE 10: Risiko-Quadrant -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Risiko-Quadrant — Wahrscheinlichkeit × Schaden</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 10</div><div>ISRG Intuitive Surgical</div></div>
+  </div>
+
+  <div class="section-label">Risiko-Quadrant (Rigor-Punkt 45) — abgeleitet aus eigenen Modulen</div>
+  <div class="bbb-frame" style="height:72mm; width:100%;"><img src="ISRG_risk_quadrant.png" alt="ISRG Risiko-Quadrant"></div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Risiko</th><th>Herkunft im Report</th><th>Frühindikator</th></tr>
+      <tr><td>Kartellrechts-Retrial verloren (Tying-Modell fällt)</td><td>Moat-Decay-Check (S.3)</td><td>Retrial-Terminierung, ungünstige Zwischenentscheidungen</td></tr>
+      <tr><td>Ottava/Hugo gewinnen real Marktanteil</td><td>Moat-Decay-Check (S.3)</td><td>Belegbare System-Platzierungen bei Wettbewerbern, Marktanteilsdaten</td></tr>
+      <tr><td>Prozedurwachstum &lt;10% (2 Quartale)</td><td>DNA-Check (S.3)</td><td>Q3/Q4-2026-Zahlen unterhalb Guidance-Mitte</td></tr>
+      <tr><td>Guidance-Kommunikation verschärft Bewertungslücke</td><td>Management-Score (S.4)</td><td>Weitere Guidance-Zurückhaltung trotz starker Zahlen</td></tr>
+      <tr><td>Insider-Verkaufsserie weitet sich aus</td><td>Struktur-Risiko (S.9)</td><td>Weitere Form-4-Verkäufe ohne Gegenkäufe</td></tr>
+    </table>
+    <p style="margin-top:1mm; font-size:7.8pt;"><b>Einordnung:</b> Der obere linke Bereich (Kartellrechts-Retrial) trägt das höchste Schaden-Potenzial bei mittlerer Wahrscheinlichkeit — kein Zufall, sondern der zentrale, wiederkehrende Punkt dieser gesamten Analyse.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ISRG-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 10/12</div>
+  </div>
+</div>
+
+<!-- PAGE 11: Datenintegritaets-Fund (Bridge-Ausfall) -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Datenintegritäts- & Prozess-Hinweise</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 11</div><div>ISRG Intuitive Surgical</div></div>
+  </div>
+
+  <div class="integrity-box">
+    <h3>🔵 OpenAI-Bridge dritten Tag in Folge ausgefallen (SNPS, HAWK, jetzt ISRG)</h3>
+    <p>Der Ausfall wurde erneut über mehrere unabhängige Diagnose-Läufe bestätigt (triviale Anfragen ohne Suche, Modell-Listing funktioniert einwandfrei, nur <code>ask_chatgpt</code>/<code>ask_chatgpt_agentic</code> selbst schlagen fehl). Diese Runde lief transparent als 2-fach-Check (Aegis + JJ). Kein künstlicher dritter Blickwinkel wurde ergänzt.</p>
+  </div>
+
+  <div class="integrity-box" style="margin-top:2mm;">
+    <h3>🔵 TA-Datenstand-Diskrepanz: Twelve Data vs. JJs Sekundärquellen</h3>
+    <p>JJs TA-Werte (MACD -6,10, RSI 37-42, via TipRanks/Financhill) spiegeln einen älteren Datenstand (~08.-10.09.) wider und hätten die reale, junge technische Erholung der letzten Handelswoche komplett übersehen. Twelve Data (Live-Stand 16.09.) zeigt ein deutlich konstruktiveres Kurzfrist-Bild (RSI 56,1, MACD-Histogramm +1,82, OBV positiv). Konsequenz: Twelve Data bleibt ausnahmslos die Referenz für TA-Werte, unabhängig davon, welche Quelle eine KI selbst zitiert.</p>
+  </div>
+
+  <div class="section-label">Warum diese Runde trotz Bridge-Ausfall belastbar bleibt</div>
+  <div class="box">
+    <p style="font-size:8.6pt;">JJs Recherche war diesmal ungewöhnlich gründlich (durchgängige Zweitquellen-Verifikation, eigenständige CEO-Korrektur, kritische Prüfung der Ottava/Hugo-Wettbewerbsbehauptungen) und deckt genau die Punkte ab, die der Quick-Filter für einen Full Deep Dive gefordert hatte. Ein 2-fach-Check ist methodisch schwächer als ein 3-fach-Check, aber die Substanz dieser Analyse steht auf solidem Boden.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ISRG-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 11/12</div>
+  </div>
+</div>
+
+<!-- PAGE 12: Fazit -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Finale Synthese · Aegis-Verdict</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 12</div><div>ISRG Intuitive Surgical</div></div>
+  </div>
+
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">HALTEN</div>
+      <div class="sub">Bestandsposition · kein Nachkauf</div>
+    </div>
+    <p style="font-size:9.6pt; color:var(--text); line-height:1.5;">Der Full Deep Dive erfüllt genau das, was der Quick-Filter vom 25.08. gefordert hatte: die Konfidenz konnte von 🔴 auf 🟡 angehoben werden, weil sich beide fraglichen DNA-Kennzahlen (Piotroski, CCC) als branchentypische Nicht-Probleme bestätigten. Die Bewertungs-Diskrepanz löst sich als Funktion unterschiedlicher, aber beide schlüssiger DCF-Annahmen auf — der aktuelle Kurs liegt zwischen Aegis' konservativerem und JJs optimistischerem Base-Case, näher an JJ. Der Moat bleibt bei 3/4 trotz zwei realer, laufender struktureller Angriffe (Kartellrechts-Retrial, Ottava/Hugo). <b>Aegis' Synthese: HALTEN</b> — die bestehende 4-Aktien-Position wird gehalten, kein Nachkauf vor einer Klärung mindestens einer der beiden zentralen Unsicherheiten.</p>
+  </div>
+
+  <div class="section-label">Konsequenz für Depot & Kategorisierung</div>
+  <div class="box">
+    <p>Intuitive Surgical bleibt Kategorie Champions. Bestehende 4-Aktien-Position (Ø-Einstand ~$350) unverändert halten. Nächster Pflicht-Prüfpunkt: Q3-2026-Earnings (20.10.2026) und jedes prozessuale Update im Kartellrechts-Retrial.</p>
+  </div>
+
+  <div class="section-label">Agent Score & Konfidenz</div>
+  <div class="two-col">
+    <div class="col"><div class="box"><h3>Agent Score</h3><p style="font-size:16pt; color:var(--gold-bright);">7/10</p><p>Anker: 6-8 Qualitäts-Kern, oberes Ende durch Moat-Decay-Abzug (3/4) gedeckelt.</p></div></div>
+    <div class="col"><div class="box"><h3>Konfidenz</h3><p style="font-size:16pt; color:var(--yellow);">🟡 MITTEL</p><p>Von 🔴 (Quick-Filter) angehoben — DNA verifiziert stark, aber zwei zentrale Unsicherheiten laufend und ungelöst.</p></div></div>
+  </div>
+
+  <div class="section-label">Agent-Score-Herleitung (Rigor-Punkt 46)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Schritt</th><th>Ergebnis</th></tr>
+      <tr><td>Anker-Bereich</td><td>6-8 QUALITÄTS-KERN — DNA praktisch vollständig erfüllt, aber Moat-Decay verhindert 9-10-Bereich</td></tr>
+      <tr><td>Ausgangswert im Bereich</td><td>7 von 6-8 (Mitte) — Moat 3/4 statt 4/4, Management-Score 6/7 statt 7/7</td></tr>
+      <tr><td>Aktive Mali</td><td>Korrelierte-Mali-Regel: Rechtsstreit + Ottava/Hugo werden als EIN Root-Cause (Moat-unter-Druck) behandelt, nicht doppelt abgezogen</td></tr>
+      <tr><td>Aktive Deckel</td><td>Konfidenz-Deckel 🟡 (nicht 🔴, nicht 🟢) wegen zwei laufenden, nicht kurzfristig auflösbaren Unsicherheiten</td></tr>
+      <tr><td><b>Finaler Agent Score</b></td><td class="warn"><b>7/10</b> — deckungsgleich mit JJ, Herleitung bestätigt den Wert</td></tr>
+    </table>
+  </div>
+
+  <div class="section-label">Quellen (Auswahl)</div>
+  <div class="sources-list">
+    <div><span class="n">1</span>GuruFocus, FinanceCharts, Seeking Alpha, MLQ.ai, TipRanks — DNA-Kennzahlen (Zweitquellen-Kreuzverifikation)</div>
+    <div><span class="n">2</span>Surgical Instrument Service Co. v. Intuitive Surgical, 9th Cir. 2026 (law.justia.com, Law360)</div>
+    <div><span class="n">3</span>MedTechDive, MDDIOnline, intuitive.com/leadership — CEO-Wechsel Guthart→Rosa (01.07.2025)</div>
+    <div><span class="n">4</span>Oppenheimer/BTIG-Analystenkommentare zu Ottava/Hugo-Wettbewerbsdynamik</div>
+    <div><span class="n">5</span>Twelve Data — Kurs-/TA-Daten ISRG (autoritative Quelle für alle [LIVE]-Werte)</div>
+    <div><span class="n">6</span>analysen/ISRG-TMR-quickfilter-jarvis-claude-2026-08-25.md (Ausgangspunkt dieses Full Deep Dive)</div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ISRG-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 12/12</div>
+  </div>
+</div>
+
+</body>
+</html>
