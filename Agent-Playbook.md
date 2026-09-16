@@ -2996,6 +2996,21 @@ anders als DCF/Vollformat-Zusatzmodule ist dieser Schritt NICHT
    Ticker nachweislich nicht führt (seltener Ausnahmefall, siehe oben),
    entfällt dieser Schritt – dann aber explizit als Lücke vermerkt, nicht
    stillschweigend ausgelassen.
+   **Vollständigkeits-Pflicht bei Full Deep Dive (neu, 2026-09-17, echter
+   Compliance-Fund am ANET-Report: die TA-Seite zeigte nur 3 Zeilen
+   SMA-Stack/RSI/MACD, obwohl die TA-Methodik-Datei selbst bereits
+   W1-Konfluenz, Relative Stärke vs. Benchmark, Institutional-Footprint/
+   OBV, Support/Resistance und ein ATR-Risiko-Modul vorschreibt — keine
+   Methodik-Lücke, sondern eine Anwendungs-Lücke, analog zum
+   NVO-Compliance-Fund).** Ab sofort Pflicht bei Full Deep Dive: die
+   TA-Seite zeigt ALLE für den Kandidaten anwendbaren Ausgabefelder aus
+   "JJ, Pure Technical Analyst" (Faktor 1-5 inkl. W1-Konfluenz, Relative
+   Stärke vs. Benchmark, Institutional-Footprint/OBV, Support/Resistance,
+   ATR-Risiko-Modul mit Stop-Loss/R-R-Ratio, VETO-Ergebnis, Konfidenz-
+   Stufe) — nicht nur eine willkürliche Teilmenge. Fehlt ein Feld
+   mangels Datenlage: explizit als [KEINE DATEN] ausweisen statt
+   stillschweigend wegzulassen. Reiner Report-Vollständigkeits-Fix, keine
+   neue Methodik nötig.
 2. **Eigene Sektion "Chart- und Einstiegslage"** in jeder Einzelanalyse
    (Markdown-Datei UND Agent-Kompakt-PDF) – der Name der Sektion und die
    Grundidee (Trend-Ampeln + Zonen-Tabelle) sind von der fremden Vorlage

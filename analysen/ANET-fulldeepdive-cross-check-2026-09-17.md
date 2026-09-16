@@ -74,5 +74,22 @@ Der Dissens entsteht NICHT bei den Fakten (alle drei bestätigen unabhängig Net
 ## Aegis-Synthese
 **Rating: BEOBACHTEN, Agent Score 7-8/10, Konfidenz 🟡 MITTEL.** Die faire-Wert-Spanne hat sich durch die geschärfte Methodik NICHT verengt, sondern verbreitert ($65-449 über drei unabhängige Ansätze) — ehrlicher Ausdruck echter, primärquellenbelegter Unsicherheit statt Scheinpräzision. Champions-Fit ja (Unternehmensqualität unbestritten), sofortige hohe Konviktion nein (Aktienqualität zum aktuellen Preis bleibt die offene Frage).
 
+## Technische Analyse (JJ) — nachgezogen mit voller Methodik (NEU, 2026-09-17)
+
+Nach externer Kritik (Gemini/ChatGPT) zur TA-Sektion des ERSTEN ANET-Reports (16.09.) wurde geprüft, ob es sich um Methodik- oder Compliance-Lücken handelt: **Compliance-Fund, keine Methodik-Lücke** — nahezu alle als "fehlend" kritisierten Punkte (Weekly/W1, Relative Stärke, Volumen/OBV, Support/Resistance) existierten bereits in `prompts/jack-technical-analyst-v1.9.md`, wurden im ersten Report aber nur mit 3 von ~15 Feldern gezeigt. Für den v2-Report wurden echte Twelve-Data-Werte gezogen (SMA20/50/200, RSI14, MACD, BBANDS, ATR14+20T-Ø, OBV, SPY-Zeitreihe für Relative Stärke) und die volle Methodik als neue Seite 6 in den PDF-Report aufgenommen (Report jetzt 13 statt 12 Seiten):
+
+- **SMA-Stack:** $192,38/$186,87/$154,41 — Golden-Stack intakt (Kurs&gt;20&gt;50&gt;200)
+- **RSI(14):** 54,6 (neutral) · **MACD/Signal/Hist:** 1,82/2,23/-0,41 (leicht bearish, flach) · **Bollinger:** $202,45/$192,38/$182,31
+- **W1 (Weekly) seit Tief 31.03.2025:** durchgängige Higher-Highs/Higher-Lows — Struktur intakt, kein Bruch
+- **Relative Stärke vs. SPY:** 6M +34,2pp, 3M +17,1pp, 1M +0,3pp (flach, keine Verschlechterung)
+- **Support/Resistance:** R3 $214,89 / R2 $210-211 / R1 $200-201 / Kurs $197,54 / S1 $186-189 / S2 $181-183 / S3(SMA200) $154,41
+- **ATR-Risiko-Modul:** ATR14 $8,22, ATR-20T-Ø $8,65 (leicht rückläufig); Stop-Loss (2×ATR) ~$181,10 deckt sich mit S2/unterem Bollinger; R/R zum 52W-Hoch ~1,05:1
+- **Volumen-Bestätigung** (Regel-Umbenennung von "Institutional Footprint", v1.10): OBV letzte 5 Tage (+23,4 Mio.) klar stärker als die 5 Tage davor (+9,6 Mio.) → Kursanstieg volumen-bestätigt, keine Distributions-Divergenz
+- **VETO-Modul:** kein aktives VETO; Formations-Modul [KEINE DATEN] (kein Chart-Pattern-Input vom Nutzer)
+- **Technische These-Bruch-Prüfung (NEU, v1.10):** 0/3 Säulen gebrochen → kein Thesis-Break, normale Volatilität
+- **TA-Gesamtverdikt:** HALTEN/BEOBACHTEN aus reiner TA-Sicht, Konfidenz 🟢 hoch — überschreibt wie immer nicht die fundamentale TMR-These
+
+Parallel dazu wurden zwei genuine Methodik-Verfeinerungen in `prompts/jack-technical-analyst-v1.9.md` (intern v1.10) umgesetzt: die neue "Technical Thesis Break"-Prüfung sowie eine sprachliche Präzisierung des Institutional-Footprint-Blocks ("Volumen-Bestätigungsmuster"), plus eine explizite TECHNICAL-ANALYSIS-HIERARCHY-Klausel. Siehe CHANGELOG.md für Details.
+
 ## Quellen
 SEC 10-K FY2025, 10-Q Q2 2026; Microsoft FY26 Q3/Q4 Earnings Calls; Meta Q2 2026 10-Q/Earnings Call; IDC Datacenter-Ethernet-Switching-Report Q1 2026; NVIDIA Spectrum-X Produktseite; SEC Form 4 Filings; Twelve Data (Live-Kurs, Wochenschlusskurse seit 2016); StockAnalysis/TipRanks/Yahoo Finance (Peer-Multiples, Analysten-Konsens).
