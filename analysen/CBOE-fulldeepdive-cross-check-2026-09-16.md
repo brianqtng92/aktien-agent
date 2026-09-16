@@ -105,6 +105,10 @@ Der erste Report-Entwurf hatte die Pflicht-Elemente Rigor-Punkte 34-36 (Pipeline
 
 **Insider-Transaktionen (Rigor-Punkt 36):** Janet P. Froetscher (Director), Verkauf 937 Aktien @ $278,95 am 12.08.2026 unter 10b5-1-Plan — routinemäßig, geplant. Fredric J. Tomczyk (Director), 337 Aktien einbehalten für Steuern (RSU-Vesting) am 01.07.2026 — kein Verkauf am Markt. **Kein klares Signal in beide Richtungen** — ausschließlich geplante 10b5-1-Verkäufe und steuerbedingte Einbehalte, keine ungeplanten Netto-Käufe/-Verkäufe.
 
+**KGV-Verlauf (trailing GAAP, Jahresschlusskurs ÷ EPS, Twelve-Data-Kurse + Company-Releases):** 2021 26,5x → 2023 25,1x → 2024 27,1x → 2025 23,8x → aktuell ~25,9x (auf FY2025-EPS-Basis, TTM-Näherung). 2022 wegen der Goodwill-Impairment-Anomalie ausgelassen (KGV nicht aussagekräftig). **Einordnung:** das aktuelle KGV liegt nahe am historischen 4-Jahres-Durchschnitt (Ø 25,6x) — keine erkennbare Multiple-Expansion oder -Kontraktion. Der Kursrücksetzer vom 15.09. ist damit kein Bewertungs-Reset (die Aktie war weder "billig geworden" noch "teurer geworden" relativ zu ihrer eigenen Historie), sondern reine Kursbewegung innerhalb der etablierten Bewertungsbandbreite.
+
+**DCF-Szenarien im Chart-Kontext:** Der aktuelle Kurs $270,40 liegt knapp über Conans risikoadjustierter Bear-Zone ($240-245) und deutlich unter der Base-Zone ($360-400) — visualisiert auf der neuen Report-Seite 7 zusammen mit dem KGV-Verlauf. Die Bear-Zone fungiert damit als grober struktureller Boden (nicht als hartes Stop-Signal).
+
 ---
 
 ## 6. Datenintegritäts-Fund
