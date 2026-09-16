@@ -5174,6 +5174,19 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     plausiblere Methode, nur weil es höher/marktnäher ausfällt – im
     Gegenteil kann eine offene Moat-Frage genau GEGEN ein hohes
     Terminal-Multiple sprechen.
+    **Exit-Multiple-Sensitivität als quantitatives Gegenstück (2026-09-17,
+    zweite Gemini-Gegenprüfung desselben ANET-Reports).** Ergänzt die
+    Zirkularitäts-Schärfung oben: statt die Multiple-Rechtfertigung nur
+    qualitativ zu verlangen, wird zusätzlich SICHTBAR gemacht, wie
+    empfindlich die Exit-Multiple-FV auf das angenommene Peer-Median-
+    Multiple selbst reagiert – 3 Werte (Peer-Median −15% / Peer-Median /
+    Peer-Median +15%, oder falls vorhanden Peer-Min/-Median/-Max) neben der
+    bereits bestehenden WACC×FCF-Wachstum-Sensitivitätsmatrix (Punkt 24).
+    Macht eine extrem breite Bewertungsspanne (wie bei ANET $55-325) direkt
+    nachvollziehbar statt nur implizit im Bear/Base/Bull-Sprung sichtbar.
+    Kein Zusatzaufwand: reiner Rechenschritt mit bereits vorhandenen
+    Peer-Daten, keine neue Recherche. Entfällt ersatzlos, wenn S3b selbst
+    schon entfällt (< 3 vergleichbare Peers).
 
 **Woher Punkt 39 und die Erweiterung von Punkt 19 kommen (2026-09-15):**
 Brian fragte nach dem offiziellen Anthropic-Repo `anthropics/financial-
@@ -5494,11 +5507,34 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     unterschiedliche Achsen sind, die in einem einzelnen Score sonst
     unsichtbar verschmelzen.
 
-**Woher Punkt 49, die Zirkularitäts-Schärfung von Punkt 39 und die
-Leitrisiko-Erweiterung von Punkt 45 kommen (2026-09-17):** Brian hatte
-den fertigen ANET-Report eigenständig, außerhalb dieses Systems, bei
-Gemini zur Zweitmeinung vorgelegt und dessen Antwort hierher zurück-
-gespielt. Erst-Check gegen die eigenen Regeln (siehe
+50. **Report-Inhalts-Scope: Infrastruktur-/Tooling-Narrative gehören NIE
+    in die finale PDF (neu, 2026-09-17, zweite unabhängige Gemini-
+    Gegenprüfung desselben ANET-Reports).** Gemini bemängelte "hohes Maß
+    an systeminternem Meta-Rauschen" – der ANET-Report erzählte auf einer
+    eigenen Seite die OpenAI-Bridge-Ausfall-/Wiederherstellungs-Geschichte,
+    die für einen Leser der Analyse als Investment-Entscheidung keinen
+    Mehrwert hat. Berechtigt: der kanonische Seitengerüst-Plan sieht dafür
+    ursprünglich nur einen schmalen **Datenintegritäts-Warnstrip** vor
+    (Seite 8, siehe Seitengerüst-Tabelle), keine eigene Erzähl-Seite – die
+    ANET-Umsetzung wich davon ab. **Ab sofort klare Trennung, Pflicht bei
+    jedem Full Deep Dive:** der Datenintegritäts-Warnstrip bleibt auf
+    DATEN-KONFIDENZ beschränkt (Tags, Quellenlage, bekannte Datenlücken,
+    Widersprüche zwischen JJ/Conan) – Infrastruktur-/Tooling-Zustand
+    (Bridge-Ausfälle, Credits-Aufladungen, Debugging-Schritte, welches
+    Modell/welcher Fallback verwendet wurde) gehört AUSSCHLIESSLICH in
+    CHANGELOG.md und die interne `analysen/*.md`-Arbeitsdatei, NIE in die
+    an Brian ausgelieferte PDF. **Wichtig, was NICHT entfällt:** die
+    3-Stimmen-Leiste (JJ/Conan/Aegis mit Scores) bleibt der Kern des
+    Reports und wird NICHT gekürzt – hier geht es nur um reine
+    Infrastruktur-Wartungsnarrative, nicht um die Cross-Check-Transparenz
+    selbst. Historische Reports (ANET) werden nicht rückwirkend
+    angepasst, siehe etablierte Konvention.
+
+**Woher Punkt 49, die Zirkularitäts-Schärfung von Punkt 39, Punkt 50 und
+die Leitrisiko-Erweiterung von Punkt 45 kommen (2026-09-17, erste Runde):**
+Brian hatte den fertigen ANET-Report eigenständig, außerhalb dieses
+Systems, bei Gemini zur Zweitmeinung vorgelegt und dessen Antwort hierher
+zurückgespielt. Erst-Check gegen die eigenen Regeln (siehe
 [[feedback_externe_kritik_erst_gegen_eigene_regeln_pruefen]]) ergab: die
 meisten Lob-Punkte (NVIDIA-Konflikt korrekt behandelt, Kundenkonzentration
 ernst genommen, Divergenz zwischen JJ/Conan als Wert statt Fehler
@@ -5513,9 +5549,26 @@ Gesamt-Score kann die Trennung zwischen Unternehmensqualität und
 Kaufbarkeit-zum-Preis verschleiern (neuer Punkt 49); (3) bei einem klar
 dominanten Einzelrisiko sollte das Kill-Sheet aktiv eine gezielte
 Folge-Analyse empfehlen statt es implizit zu lassen (Erweiterung von
-Punkt 45). Alle drei sind reine Aegis-Synthese-/Report-Ebene außer der
-TV-Cross-Check-Begründungspflicht, die JJs eigenen DCF-Schritt betrifft
-– siehe `prompts/jack-moat-reaper-v11.7.md` (v11.19→v11.20, Regel 38).
+Punkt 45).
+
+**Zweite Runde (2026-09-17, selben Tags):** Brian legte denselben ANET-
+Report EIN ZWEITES MAL, unabhängig, bei Gemini vor. Die meisten Punkte
+bestätigten wieder Bestehendes (u.a. die $850-Mio.-Insider-Verkaufszahl
+gegen die eigene PDF geprüft – korrekt zitiert, keine Erfindung) oder
+waren ANET-spezifische Inhalts-Feinheiten ohne Verallgemeinerungswert
+(Front-end-/Back-end-AI-Fabric-Differenzierung bei NVIDIA Spectrum-X –
+wertvoll für einen möglichen ANET-Refresh, aber keine systemweite Regel).
+Zwei Kritikpunkte waren echte, umgesetzte Funde: (4) "systeminternes
+Meta-Rauschen" (Bridge-Ausfall-Narrative in der PDF) – Schärfung/
+Rückführung auf den ursprünglich vorgesehenen schmalen Datenintegritäts-
+Warnstrip (neuer Punkt 50); (5) die extrem breite Bewertungsspanne
+($55-325) sollte nicht nur im Bear/Base/Bull-Sprung sichtbar sein, sondern
+über eine explizite Exit-Multiple-Sensitivität (Erweiterung von Punkt 39).
+
+Alle fünf Funde sind reine Aegis-Synthese-/Report-Ebene außer der
+TV-Cross-Check-Begründungspflicht und der Exit-Multiple-Sensitivität, die
+JJs eigenen DCF-Schritt betreffen – siehe `prompts/jack-moat-reaper-v11.7.md`
+(v11.19→v11.20→v11.21, Regel 38/38b/38c).
 
 **Woher Punkt 47 kommt, und was NICHT übernommen wurde (2026-09-16,
 zweiter Digital-Arts-Review mit allen 3 KIs):** Brian bat darum, dass alle
