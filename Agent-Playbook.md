@@ -4911,6 +4911,14 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     macht nur die Eskalationslogik explizit statt implizit. Nur wo eine
     kontinuierliche Kennzahl zugrunde liegt – bei echten Ja/Nein-Ereignissen
     (z.B. Führungswechsel) bleibt es bei der binären Form.
+    **Abgrenzung zur These-Monitoring-Kette (2026-09-17, Conans
+    Redundanz-Fund am selben Tag):** wo eine graduierte Schwelle direkt
+    eine der Kernannahmen aus Punkt 51 betrifft, lebt sie DORT (als
+    Eskalations-Schwellen-Spalte), nicht zusätzlich hier – nur die
+    Kill-Sheet-eigenen, nicht-annahmengebundenen Ereignis-Trigger
+    (Litigation, Insider-Verkaufsserien, Führungswechsel u.ä.) bleiben in
+    dieser Sektion, um doppelte Pflege derselben Schwelle in zwei
+    Report-Sektionen zu vermeiden.
 27. **ARR-/Umsatzwachstums-Qualitätszerlegung als Best-Effort-Zusatz (neu,
     2026-09-08, ChatGPT-Cross-Review) – NUR wo offengelegt.** Wo ein
     Unternehmen New-Logo- vs. Expansion-/Cross-Sell-Anteil am ARR-Wachstum
@@ -5420,6 +5428,13 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     als Checkbox-Liste statt Fließtext. **Kein Zusatzaufwand:** beide
     Listen sind reine Kuratierung/Verdichtung bereits im Report vorhandener
     Kennzahlen und Trigger, keine neue Recherche.
+    **Abgrenzung zur These-Monitoring-Kette (2026-09-17, Conans
+    Redundanz-Fund am selben Tag):** die "10 Zahlen, die zählen" ziehen
+    ihre Kandidaten BEVORZUGT aus der Spalte "Beobachtbarer KPI" der
+    Kernannahmen-Kette (Punkt 51) – ergänzt nur um Kennzahlen, die sich
+    keiner einzelnen Kernannahme zuordnen lassen (z.B. allgemeine
+    Bilanz-/Cash-Gesundheit). Keine unabhängig davon kuratierte, zweite
+    KPI-Auswahl.
 
 45. **Risiko-Matrix: Wahrscheinlichkeit × Schaden × Frühindikator (neu,
     2026-09-16, gleiche Quelle).** Ergänzt (ersetzt nicht) die bestehenden
@@ -5623,28 +5638,52 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     selbst. Historische Reports (ANET) werden nicht rückwirkend
     angepasst, siehe etablierte Konvention.
 
-51. **Kern-Annahmen-Liste ("Was muss ich glauben?") mit Confidence-Rating
-    (neu, 2026-09-17, ChatGPT-Vorschlag nach der ANET-Gegenprüfung, von
-    Brian als einer der wertvollsten Einzelfunde priorisiert).** Bisher
-    verteilen sich die Annahmen hinter einer Investment-These implizit über
-    DNA-Check/Moat-Decay-Check/KSF-Scorecard/DCF-Modellannahmen – nirgends
-    stehen sie als explizite, geschlossene Liste. **Ab sofort Pflicht bei
-    Full Deep Dive, von JJ UND Conan jeweils EIGENSTÄNDIG geliefert (nicht
-    nur von Aegis zusammengefasst):** 4-6 Kernannahmen, auf denen die
-    eigene Rating-Entscheidung tatsächlich beruht (z.B. bei ANET: "Ethernet
-    bleibt struktureller Gewinner der KI-Netzwerk-Infrastruktur", "EOS
-    bleibt ein echter Software-Moat trotz NVIDIA-Vordringen"), jede mit
-    einem Confidence-Grad (Hoch/Mittel/Niedrig) UND einem Kurzbeleg, WARUM
-    genau dieser Grad. **Zweck:** macht implizite Annahmen einzeln
-    falsifizierbar statt als unausgesprochenes Fundament der gesamten
-    These zu bleiben – deckt sich mit derselben Transparenz-Philosophie
-    wie der Agent-Score-Breakdown (Punkt 46), nur auf Annahmen- statt
-    Score-Ebene angewendet. Da JJ und Conan unabhängig recherchieren,
-    zeigt ein Vergleich ihrer beiden Listen zusätzlich, ob sie überhaupt
-    von denselben Kernannahmen ausgehen – eine mögliche eigene Diskrepanz
-    ist selbst ein meldenswerter Befund. Kein separater Rechercheschritt:
-    die Annahmen werden aus der ohnehin durchgeführten Analyse extrahiert,
-    nur explizit als Liste benannt statt implizit im Fließtext verstreut.
+51. **These-Monitoring-Kette: Kernannahme → beobachtbarer KPI →
+    Eskalations-Schwelle → eigener Kipppunkt, ALS EINE VERKETTETE TABELLE
+    statt vier getrennter Listen (neu, 2026-09-17, ChatGPT-Vorschlag nach
+    der ANET-Gegenprüfung; Struktur am 2026-09-17 selbst noch einmal von
+    Conan gegengeprüft und auf dessen Anraten von vier parallelen Listen
+    zu EINER Kette umgebaut – siehe Herkunfts-Notiz unten).** Ursprünglich
+    als separate "Kern-Annahmen-Liste" UND separate "Kipppunkte"-Liste
+    eingeführt – Conans Gegenprüfung fand zu Recht, dass beide (plus die
+    graduierten Kill-Sheet-Schwellen aus Punkt 26 und Teile der Top-10-KPI-
+    Liste aus Punkt 44) strukturell dieselbe zugrunde liegende Frage aus
+    vier Blickwinkeln beantworten und so leicht zu vierfacher Wiederholung
+    derselben Inhalte in leicht anderer Form führen. **Ab sofort EINE
+    Tabelle statt vier Listen, Pflicht bei Full Deep Dive, von JJ UND Conan
+    jeweils EIGENSTÄNDIG geliefert (nicht nur von Aegis zusammengefasst):**
+    pro Zeile eine Kernannahme, auf der die eigene Rating-Entscheidung
+    tatsächlich beruht (4-6 Zeilen, z.B. bei ANET: "EOS bleibt ein echter
+    Software-Moat trotz NVIDIA-Vordringen"), mit vier Spalten:
+    - **Confidence** (Hoch/Mittel/Niedrig) + Kurzbeleg, warum genau dieser Grad
+    - **Beobachtbarer KPI/Evidenzpunkt**, an dem sich die Annahme konkret prüfen lässt
+    - **Eskalations-Schwelle** (🟡 beobachten/🟠 neu bewerten/🔴 These
+      gefährdet), wo dieser KPI eine kontinuierliche Kennzahl ist (bei
+      echten Ja/Nein-Ereignissen ohne kontinuierliche Schwelle: Feld leer,
+      diese Annahme bleibt dann eine reine Beobachtungs-, keine
+      Eskalations-Zeile)
+    - **Eigener Kipppunkt**: was würde GENAU BEI DIESER Annahme die eigene
+      Einschätzung anheben bzw. senken (in eigener Sprache formuliert,
+      nicht als geteilte Liste)
+    **Zweck:** macht implizite Annahmen einzeln falsifizierbar, koppelt
+    sie an einen konkreten Beobachtungspunkt UND an eine graduierte
+    Reaktionsschwelle – aus vier separaten Transparenz-Bausteinen wird ein
+    zusammenhängendes These-Monitoring-System statt vierfacher Wiederholung.
+    Deckt sich mit derselben Transparenz-Philosophie wie der Agent-Score-
+    Breakdown (Punkt 46), nur auf Annahmen- statt Score-Ebene angewendet.
+    Da JJ und Conan unabhängig recherchieren, zeigt ein Vergleich ihrer
+    beiden Tabellen zusätzlich, ob sie überhaupt von denselben Kernannahmen
+    ausgehen – eine mögliche eigene Diskrepanz ist selbst ein meldenswerter
+    Befund. Kein separater Rechercheschritt: die Inhalte werden aus der
+    ohnehin durchgeführten Analyse extrahiert. **Verhältnis zu Punkt 26
+    (Kill-Sheet) und Punkt 44 (Top-10-KPI-Liste):** Kill-Sheet behält seine
+    EIGENEN, nicht-annahmengebundenen Ereignis-Trigger (Litigation,
+    Insider-Verkaufsserien, Führungswechsel u.ä.) – nur die Trigger, die
+    direkt eine der obigen Kernannahmen betreffen, wandern in diese Tabelle
+    statt doppelt gepflegt zu werden. Die Top-10-KPI-Liste zieht ihre
+    KPIs bevorzugt aus der Spalte "Beobachtbarer KPI" dieser Tabelle,
+    ergänzt nur um Kennzahlen, die keiner einzelnen Kernannahme zuordenbar
+    sind (z.B. allgemeine Bilanz-/Cash-Gesundheit).
 
 52. **Dissensus-Map: Einzelbewertung je Teildimension statt nur der drei
     Endscores (neu, 2026-09-17, ChatGPT-Vorschlag nach der ANET-
@@ -5668,47 +5707,45 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     [[feedback_gleiche_methodik_beide_kis]]) als eigenständiges,
     verpflichtendes Darstellungselement statt einer reinen Prosa-Erklärung.
 
-53. **Moat in benannte Komponenten zerlegen statt eines Blend-Scores (neu,
-    2026-09-17, ChatGPT-Vorschlag nach der ANET-Gegenprüfung).** Ein
-    einzelner Moat-Score (z.B. "3-4/4") kann verschleiern, dass ein
-    Unternehmen in einer Komponente strukturell stark, in einer anderen
-    aber unter Druck ist – bei ANET z.B. Software-/EOS-Moat weiterhin
-    elite, während die reine Hardware-Differenzierung im AI-Back-end unter
-    NVIDIA-Druck steht. **Ab sofort Pflicht bei Full Deep Dive, ergänzt die
-    KSF-Scorecard (Punkt 41):** 3-5 branchenspezifisch benannte Moat-
-    Komponenten (typisch: Technologie/Produkt, Software/Ökosystem,
-    Switching-Costs/Kundenbindung, Skalen-/Netzwerkvorteile, Marke/
-    Reputation – je nach Branche unterschiedlich gewichtet und benannt,
-    nicht mechanisch alle 5 durchziehen wo nicht einschlägig) mit je
-    eigener Einschätzung STATT eines einzelnen 0-4-Gesamtscores, PLUS eine
-    explizite Trend-Angabe (verbessernd/stabil/leicht abnehmend/
+53. **Moat-Komponenten-Zerlegung als Begründungsebene INNERHALB der
+    KSF-Scorecard, kein paralleles zweites Scoring-System (neu, 2026-09-17,
+    ChatGPT-Vorschlag nach der ANET-Gegenprüfung; am selben Tag von Conan
+    selbst nachgeschärft, siehe Herkunfts-Notiz unten).** Ein einzelner
+    Moat-Score (z.B. "3-4/4") kann verschleiern, dass ein Unternehmen in
+    einer Komponente strukturell stark, in einer anderen aber unter Druck
+    ist – bei ANET z.B. Software-/EOS-Moat weiterhin elite, während die
+    reine Hardware-Differenzierung im AI-Back-end unter NVIDIA-Druck steht.
+    **Erste Fassung dieses Punktes** führte die Moat-Komponenten als
+    eigenständigen Block NEBEN der KSF-Scorecard (Punkt 41) ein – Conans
+    Gegenprüfung fand zu Recht die Gefahr eines zweiten, parallel
+    laufenden Wettbewerbs-Bewertungssystems. **Ab sofort stattdessen:** die
+    KSF-Scorecard behält ihre outside-in Struktur (branchenspezifische Key
+    Success Factors zuerst benennen, Unternehmen je Faktor bewerten), aber
+    GENAU der KSF-Faktor, der die Wettbewerbsposition/den Moat betrifft,
+    wird nicht mehr mit einem einzelnen ✅/🟡/❌ abgehandelt, sondern in
+    3-5 branchenspezifisch benannte Unter-Komponenten aufgefächert (typisch:
+    Technologie/Produkt, Software/Ökosystem, Switching-Costs/Kundenbindung,
+    Skalen-/Netzwerkvorteile, Marke/Reputation – nur die einschlägigen, nicht
+    mechanisch alle durchziehen), jede mit eigener Einschätzung PLUS einer
+    expliziten Trend-Angabe (verbessernd/stabil/leicht abnehmend/
     zusammenbrechend) getrennt von der Stärke selbst – ein Unternehmen kann
     heute einen starken Moat UND eine sich verschlechternde Wettbewerbs-
-    trajektorie gleichzeitig haben, genau das war der Kern der ANET-
-    NVIDIA-Frage. Dieselbe "getrennte Achsen statt einer Note"-Philosophie
-    wie bei der Management-Glaubwürdigkeits-Matrix (Punkt 9), hier auf
-    Moat angewendet. Kein Zusatzaufwand: nutzt dieselbe Moat-/
+    trajektorie gleichzeitig haben, genau das war der Kern der ANET-NVIDIA-
+    Frage. Bleibt EIN System (die KSF-Scorecard), nur an der Moat-Stelle
+    detaillierter aufgelöst statt eines zweiten, parallelen Scoring-Layers.
+    Dieselbe "getrennte Achsen statt einer Note"-Philosophie wie bei der
+    Management-Glaubwürdigkeits-Matrix (Punkt 9), hier auf den Moat-Faktor
+    der KSF-Scorecard angewendet. Kein Zusatzaufwand: nutzt dieselbe Moat-/
     Wettbewerbsrecherche, die für die KSF-Scorecard ohnehin erhoben wird.
 
-54. **"Was würde meine Einschätzung ändern?" – je KI 3 eigene
-    Kipppunkte (neu, 2026-09-17, ChatGPT-Vorschlag nach der ANET-
-    Gegenprüfung).** Ergänzt das bestehende Kill-Sheet (Punkt 26, inkl.
-    Stacking-Logik Punkt 13 und graduierten Schwellenwerten oben) um eine
-    PERSÖNLICHE Falsifizierbarkeits-Verpflichtung statt nur eines
-    gemeinsamen, generischen Trigger-Katalogs. **Ab sofort Pflicht bei
-    Full Deep Dive, von JJ UND Conan jeweils EIGENSTÄNDIG geliefert:** je
-    3 konkrete Entwicklungen, die die EIGENE Einschätzung anheben würden,
-    UND 3, die sie senken würden – in der eigenen Sprache der jeweiligen
-    KI, nicht als geteilte Liste. Zwingt jede KI, ihre eigene Position
-    aktiv falsifizierbar zu machen statt nur retrospektiv zu begründen,
-    warum die aktuelle Einschätzung richtig ist. Unterscheidet sich vom
-    Kill-Sheet dadurch, dass es NICHT die gemeinsamen Fakten-Trigger
-    zusammenführt, sondern explizit die INDIVIDUELLE Meinungsänderungs-
-    Schwelle jeder KI zeigt – bei einer bestehenden Divergenz (siehe
-    Dissensus-Map, Punkt 52) macht das sichtbar, wie weit die jeweilige
-    Position von einem Meinungswechsel entfernt ist. Kein separater
-    Rechercheschritt: reine Selbstreflexion auf Basis der ohnehin
-    durchgeführten Analyse.
+54. *(Retired 2026-09-17 – konsolidiert in Punkt 51, "These-Monitoring-
+    Kette".)* Die ursprünglich hier eigenständig eingeführten "eigenen
+    Kipppunkte je KI" sind jetzt die vierte Spalte der Kette in Punkt 51,
+    nicht mehr eine separate fünfte Liste – Conans Gegenprüfung fand die
+    getrennte Führung redundant zu Kernannahmen/Kill-Sheet/KPI-Liste.
+    Nummer bleibt aus Referenz-Gründen bestehen (analog zur Konsolidierung
+    des ehemaligen Punktes 30 in Punkt 29), verweist aber vollständig auf
+    Punkt 51.
 
 **Woher Punkte 51-54 und die Erweiterungen an 6/19/26/27/44/39/49 kommen
 (2026-09-17, dritte Runde, diesmal Gemini UND ChatGPT gemeinsam gefragt:
@@ -5743,6 +5780,36 @@ zusammenfassen), ebenso die Erweiterungen an 6/19 (TMR-spezifisch für
 19) – alle übrigen sind reine Aegis-Synthese-Ebene. Siehe
 `prompts/jack-moat-reaper-v11.7.md` (v11.21→v11.22) und
 `prompts/conan-the-scout-v1.12.md` (v1.21→v1.22).
+
+**Vierte Runde, selben Tags (2026-09-17): Aegis fragte JJ UND Conan
+unabhängig um eine kritische Selbsteinschätzung der gerade beschlossenen
+Punkte 47-54 – "ist das echter Mehrwert oder Over-Engineering?"** Klare
+Divergenz im Ton, die selbst aufschlussreich ist: JJ bestätigte praktisch
+jeden Punkt ohne nennenswerte Einschränkung ("Chapeau!"), fand auch bei
+gezielter Nachfrage keine Redundanzen zwischen den neuen Bausteinen. Conan
+war deutlich strenger und fand einen echten, konkreten Fund: die vier
+Bausteine Kern-Annahmen-Liste (51), "eigene Kipppunkte" (54), graduierte
+Kill-Sheet-Schwellen (Erweiterung Punkt 26) und Top-10-KPI-Liste
+(Erweiterung Punkt 44) beantworten strukturell dieselbe Frage aus vier
+Blickwinkeln und drohten, denselben Inhalt vierfach zu wiederholen. Sein
+konkreter Lösungsvorschlag – eine verkettete Tabelle (Kernannahme →
+beobachtbarer KPI → Eskalations-Schwelle → eigener Kipppunkt) statt vier
+paralleler Listen – wurde direkt umgesetzt: Punkt 54 in Punkt 51
+konsolidiert (Nummer bleibt aus Referenz-Gründen bestehen, analog zur
+früheren Konsolidierung von Punkt 30 in Punkt 29), Punkt 26 und Punkt 44
+bekamen je eine explizite Abgrenzungsklausel, um doppelte Pflege derselben
+Inhalte zu vermeiden. Zweiter Fund: die Moat-Komponenten-Zerlegung
+(Punkt 53) lief als eigenständiger Block NEBEN der KSF-Scorecard – Gefahr
+eines zweiten, parallelen Wettbewerbs-Scoring-Systems. Umgesetzt: die
+Moat-Komponenten sind jetzt die Begründungsebene INNERHALB des
+KSF-Scorecard-Moat-Faktors, kein separates System mehr. Dieselbe
+JJ-optimistisch/Conan-streng-Divergenz, die bereits beim ANET-Rating
+selbst auftrat (9/10 Kaufen vs. 7,4/10 Beobachten) – ein weiteres Beispiel
+dafür, dass die beiden KIs unabhängig von der konkreten Aufgabe
+systematisch unterschiedlich kritisch sind, nicht nur bei Aktienanalysen.
+Betrifft Agent-Playbook.md (Punkte 51/53/54 überarbeitet, Erweiterungen
+an 26/44 präzisiert) sowie `prompts/jack-moat-reaper-v11.7.md`
+(v11.22→v11.23) und `prompts/conan-the-scout-v1.12.md` (v1.22→v1.23).
 
 **Woher Punkt 49, die Zirkularitäts-Schärfung von Punkt 39, Punkt 50 und
 die Leitrisiko-Erweiterung von Punkt 45 kommen (2026-09-17, erste Runde):**
