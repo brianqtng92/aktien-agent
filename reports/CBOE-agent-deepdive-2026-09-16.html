@@ -97,6 +97,18 @@
   .sources-list .n { color: var(--gold); margin-right: 1.5mm; }
   .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 1.5mm; font-size: 8.1pt; color: var(--text-faint); flex-shrink: 0; }
   .footer .gold-dot { color: var(--gold); }
+  .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm; }
+  .decision-card { border-radius: 3px; padding: 2.4mm 3.2mm; }
+  .decision-card.attractive { background: var(--green-bg); border: 1px solid var(--green); }
+  .decision-card.caution { background: var(--red-bg); border: 1px solid var(--red); }
+  .decision-card.watch { background: var(--blue-bg); border: 1px solid var(--blue); }
+  .decision-card.action { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); }
+  .decision-card h3 { font-size: 9.1pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .decision-card.attractive h3 { color: var(--green); }
+  .decision-card.caution h3 { color: var(--red); }
+  .decision-card.watch h3 { color: var(--blue); }
+  .decision-card.action h3 { color: var(--gold-bright); }
+  .decision-card p { font-size: 8.5pt; color: var(--text); line-height: 1.34; }
 </style>
 </head>
 <body>
@@ -124,9 +136,9 @@
   <div class="section-label">Die Geschichte eines Champions, der im Sektor-Ausverkauf mitgerissen wurde</div>
   <div class="narrative-box">
     <p><span class="lead">Das operative Geschäft.</span> Cboe lieferte im Q2 2026 Rekord-Net-Revenue ($731,6 Mio., +25% YoY), Diluted EPS +50%, Adjusted EPS +45% — getrieben von Optionsvolumen, Data Vantage und der proprietären SPX-/VIX-Franchise. Die 2026er-Guidance wurde bereits zweimal angehoben (zuletzt auf "mid to high teens" organisches Net-Revenue-Wachstum). Bruttomarge expandiert real seit 2023 (39,3%→40,9%→43,4%), Bilanz Netto-Cash, Dividende zum 16. Mal in Folge erhöht (+19%).</p>
-    <p><span class="lead">Der Kurs.</span> Am 15.09.2026 fiel die Aktie -4,96% — deutlich mehr als die direkten Peers (ICE -0,54%, CME -1,91%, NDAQ -2,56%) am selben, sektorweit schwachen Tag (US-10J-Rendite auf 5,041%, höchster Stand seit Juli 2007, FOMC-Vortag). Kein CBOE-spezifischer Negativ-Auslöser gefunden. Technisch bleibt das Bild aber kurzfristig schwach: Kurs unter allen gleitenden Durchschnitten, Momentum-Rating WEAK (Details Seite 5).</p>
-    <p><span class="lead">Der zentrale Bewertungsbefund.</span> Alle drei unabhängigen DCF-Rechnungen (Jarvis, Jack, Conan) kommen strukturell über dem Analysten-Konsens ($292-318) heraus — der WACC-Terminal-g-Spread ist bei CBOEs niedrigem Beta extrem eng (Terminal-Value-Anteil 84-87% EV). Details Seite 2/6.</p>
-    <p><span class="lead">Der Cross-Check-Befund.</span> 2 von 3 unabhängigen Beinen (Jack, Conan) kommen auf KAUFEN — gestützt durch einen Peer-EV/EBITDA-Abschlag. Die eigene TA-Rechnung (Seite 5) bestätigt: fundamental attraktive Zone, aber Technik noch nicht bestätigt — daher gestaffelter Nachkauf statt sofortiger voller Position.</p>
+    <p><span class="lead">Der Kurs.</span> Am 15.09.2026 fiel die Aktie -4,96% — deutlich mehr als die direkten Peers (ICE -0,54%, CME -1,91%, NDAQ -2,56%) am selben, sektorweit schwachen Tag (US-10J-Rendite auf 5,041%, höchster Stand seit Juli 2007, FOMC-Vortag). Kein CBOE-spezifischer Negativ-Auslöser gefunden. Technisch bleibt das Bild aber kurzfristig schwach: Kurs unter allen gleitenden Durchschnitten, Momentum-Rating WEAK (Details Seite 8).</p>
+    <p><span class="lead">Der zentrale Bewertungsbefund.</span> Alle drei unabhängigen DCF-Rechnungen (Jarvis, Jack, Conan) kommen strukturell über dem Analysten-Konsens ($292-318) heraus — der WACC-Terminal-g-Spread ist bei CBOEs niedrigem Beta extrem eng (Terminal-Value-Anteil 84-87% EV). Details Seite 5.</p>
+    <p><span class="lead">Der Cross-Check-Befund.</span> 2 von 3 unabhängigen Beinen (Jack, Conan) kommen auf KAUFEN — gestützt durch einen Peer-EV/EBITDA-Abschlag. Die eigene TA-Rechnung (Seite 8) bestätigt: fundamental attraktive Zone, aber Technik noch nicht bestätigt — daher gestaffelter Nachkauf statt sofortiger voller Position.</p>
   </div>
 
   <div class="footer">
@@ -135,12 +147,12 @@
   </div>
 </div>
 
-<!-- PAGE 2: 3-Stimmen + WACC-Spread-Erklärung -->
+<!-- PAGE 2: Executive Summary & Investment-These -->
 <div class="page">
   <div class="masthead">
     <div class="brand-block">
       <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
-      <div class="brand-sub">3-Stimmen-Leiste · Warum alle drei DCFs "zu hoch" liegen</div>
+      <div class="brand-sub">Executive Summary · Investment-These · 3-Stimmen-Leiste</div>
     </div>
     <div class="meta-block"><div class="date">16. September 2026 — Seite 2</div><div>CBOE Cboe Global Markets</div></div>
   </div>
@@ -176,15 +188,29 @@
     </div>
   </div>
 
-  <div class="section-label">Der Kernbefund — WACC-Terminal-g-Spread bei niedrigem Beta</div>
-  <div class="divergence-box">
-    <h3>⚠ Alle drei DCFs kommen über dem Analysten-Konsens heraus — Struktur, kein Zufall</h3>
-    <p>CBOEs Beta liegt je Quelle zwischen 0,41 und 0,64 — für einen margen-/cash-starken Compounder sehr niedrig. Bei einer 3%-Gordon-Terminalwachstumsrate bleibt dadurch bei allen drei Rechnungen nur ein enger WACC-Spread von 3,7-4,7 Prozentpunkten übrig — der Terminal-Value-Anteil am Enterprise Value schnellt dadurch auf 84-87% hoch (Warnschwelle liegt bei 70%). Ergebnis: Gordon-Growth-Fair-Values zwischen $396 (Jack) und $484 (Jarvis) — deutlich über dem Analysten-Konsens von $292-318. <b>Aegis-Einordnung:</b> das ist ein Struktur-Artefakt des Modells bei diesem Beta-/Margen-Profil, keine drei unabhängigen Rechenfehler. Conan ging damit am saubersten um — statt den mechanischen Wert (~$435-447) unkommentiert zu übernehmen, wurde er explizit auf einen risikoadjustierten Korridor von $360-400 heruntergezogen und der Analysten-Konsens als zusätzlicher, konservativerer Anker herangezogen.</p>
+  <div class="section-label">Investment-These: Warum CBOE jetzt?</div>
+  <div class="narrative-box" style="flex:0 0 auto;">
+    <p>CBOE ist ein kapitalleichtes Börsen-/Derivate-Quasi-Monopol mit einer SPX-/VIX-Exklusivlizenz, das operativ so stark wie selten läuft (Rekord-Net-Revenue, zwei Guidance-Anhebungen 2026, expandierende Bruttomarge, Netto-Cash-Bilanz) — und trotzdem mit einem Abschlag zu seinen direkten Peers (ICE/CME/NDAQ) gehandelt wird. Der Kursrücksetzer vom 15.09. war sektorweit, kein CBOE-spezifisches Problem. <b>Aber:</b> die Bewertungslücke ist real, rechtfertigt aber keinen bedingungslosen Kauf — alle drei unabhängigen DCF-Rechnungen sind wegen CBOEs niedrigem Beta strukturell terminalwert-getrieben (dazu mehr auf Seite 5) und damit für sich allein kein hartes Kaufsignal. Das KAUFEN-Rating stützt sich deshalb zusätzlich auf Peer-Vergleich und Analysten-Konsens, und die Umsetzung erfolgt bewusst gestaffelt, weil die Technik der Bewertung aktuell hinterherhinkt (Seite 8).</p>
   </div>
 
-  <div class="section-label">Wo alle drei konvergieren</div>
-  <div class="box">
-    <p>Unabhängig vom exakten DCF-Wert: Moat STARK (SPX-/VIX-Exklusivlizenz, Netzwerkeffekte), Bilanz Netto-Cash, kein Going-Concern, kein CBOE-spezifischer Auslöser für den Kursrücksetzer. Peer-EV/EBITDA-Vergleich (CBOE 14,25x vs. Peer-Median 17,3x aus ICE/CME/NDAQ) stützt die These einer relativen Unterbewertung zusätzlich, unabhängig vom sensiblen Gordon-Growth-Modell.</p>
+  <div class="section-label">Entscheidungs-Übersicht</div>
+  <div class="decision-grid">
+    <div class="decision-card attractive">
+      <h3>✓ Warum attraktiv</h3>
+      <p>Peer-Abschlag trotz besserer Kennzahlen (EV/EBITDA 14,25x vs. 17,3x Median), starker Moat, Netto-Cash-Bilanz, zwei Guidance-Anhebungen 2026, kein CBOE-spezifischer Auslöser für den Rücksetzer.</p>
+    </div>
+    <div class="decision-card caution">
+      <h3>⚠ Warum nicht blind kaufen</h3>
+      <p>DCF-Fair-Values ($360-484) sind wegen niedrigem Beta stark terminalwert-getrieben (TV-Anteil 84-87% EV) — allein kein hartes Signal. Technik aktuell WEAK, Timing-Konflikt Bewertung vs. Technik.</p>
+    </div>
+    <div class="decision-card watch">
+      <h3>👁 Was wir beobachten</h3>
+      <p>Q3-2026-Earnings (30.10., Konsens EPS $3,43), Januar-2027-Notes-Fälligkeit ($650 Mio.), aufkommende Prediction-Market-Konkurrenz (Polymarket), technische Bestätigung (RSI&gt;45, MACD-Boden, OBV-Wechsel).</p>
+    </div>
+    <div class="decision-card action">
+      <h3>▶ Aktion</h3>
+      <p>KAUFEN, gestaffelt. Tranche 1 bei Stabilisierung $268-270 (~1,5-2%), Tranche 2 bei $255-262. Keine automatische Order — technische Bestätigung vor Tranche 1 Pflicht.</p>
+    </div>
   </div>
 
   <div class="footer">
@@ -309,14 +335,131 @@
   </div>
 </div>
 
-<!-- PAGE 5 (NEU): Kursverlauf + Technische Analyse -->
+<!-- PAGE 5: Bewertung I — DCF-Vergleich + WACC-Spread-Erklaerung + Peer-Vergleich -->
 <div class="page">
   <div class="masthead">
     <div class="brand-block">
       <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
-      <div class="brand-sub">Kursverlauf · Technische Analyse (Jack-TA v1.9, Investor-Modus)</div>
+      <div class="brand-sub">DCF-Vergleich · WACC-Spread · Peer-Vergleich</div>
     </div>
     <div class="meta-block"><div class="date">16. September 2026 — Seite 5</div><div>CBOE Cboe Global Markets</div></div>
+  </div>
+
+  <div class="section-label">DCF-Vergleich der drei unabhängigen Beine</div>
+  <div class="box">
+    <table class="scenario-table">
+      <tr><th style="text-align:left;">Bein</th><th>Beta</th><th>WACC</th><th>g (Basis)</th><th>Gordon-FV</th><th>Exit-Multiple-FV</th><th>TV-Anteil EV</th><th>Finales Base-FV</th></tr>
+      <tr><td style="text-align:left;">Jarvis</td><td>0,44</td><td>6,89%</td><td>6,2%</td><td>$484</td><td>$393</td><td class="warn">84%</td><td>$484 (Konsens/Peers als Zusatz-Anker)</td></tr>
+      <tr><td style="text-align:left;">Jack</td><td>0,64</td><td>7,73%</td><td>5,6%</td><td>$410</td><td>$382</td><td>—</td><td>$396,16 (ungedämpft übernommen)</td></tr>
+      <tr><td style="text-align:left;">Conan</td><td>0,41</td><td>6,74%</td><td>9,5%</td><td>$447</td><td>$435</td><td class="warn">85%</td><td class="pass"><b>$360-400 (bewusst gedämpft)</b></td></tr>
+    </table>
+    <p style="margin-top:1.6mm; font-size:8.4pt;"><b>Analysten-Konsens (real recherchiert):</b> $292-318 (Barclays $354 Overweight, Deutsche Bank $380 Buy, UBS/Morgan Stanley eher Hold-Bereich). Alle drei mechanischen DCF-Werte liegen &gt;25-30% über dem Konsens — SCHRITT-5B-Begründungspflicht korrekt ausgelöst.</p>
+  </div>
+
+  <div class="section-label">Der Kernbefund — WACC-Terminal-g-Spread bei niedrigem Beta</div>
+  <div class="divergence-box">
+    <h3>⚠ Alle drei DCFs kommen über dem Analysten-Konsens heraus — Struktur, kein Zufall</h3>
+    <p>CBOEs Beta liegt je Quelle zwischen 0,41 und 0,64 — für einen margen-/cash-starken Compounder sehr niedrig. Bei einer 3%-Gordon-Terminalwachstumsrate bleibt dadurch bei allen drei Rechnungen nur ein enger WACC-Spread von 3,7-4,7 Prozentpunkten übrig — der Terminal-Value-Anteil am Enterprise Value schnellt dadurch auf 84-87% hoch (Warnschwelle liegt bei 70%). <b>Aegis-Einordnung:</b> das ist ein Struktur-Artefakt des Modells bei diesem Beta-/Margen-Profil, keine drei unabhängigen Rechenfehler. Conan ging damit am saubersten um — statt den mechanischen Wert (~$435-447) unkommentiert zu übernehmen, wurde er explizit auf einen risikoadjustierten Korridor von $360-400 heruntergezogen und der Analysten-Konsens als zusätzlicher, konservativerer Anker herangezogen.</p>
+  </div>
+
+  <div class="section-label">Peer-Vergleich EV/EBITDA (real recherchiert)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Unternehmen</th><th>EV/EBITDA</th><th>Einordnung ggü. CBOE</th></tr>
+      <tr><td><b>CBOE</b></td><td><b>14,25x</b></td><td>—</td></tr>
+      <tr><td>ICE</td><td>16,0x</td><td>+12% teurer als CBOE</td></tr>
+      <tr><td>NDAQ</td><td>17,3x</td><td>+21% teurer als CBOE</td></tr>
+      <tr><td>CME</td><td>17-25x (Quellen uneinheitlich)</td><td>+19-75% teurer als CBOE</td></tr>
+    </table>
+    <p style="margin-top:1.2mm;">CBOE handelt mit einem klaren Abschlag zu allen drei direkten Peers, trotz vergleichbarer oder besserer operativer Kennzahlen — dieser Peer-Anker ist der zweite, vom sensiblen Gordon-Growth-Modell unabhängige Beleg für die Unterbewertungsthese (Fortsetzung mit Chart-Visualisierung auf Seite 6).</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CBOE-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/10</div>
+  </div>
+</div>
+
+<!-- PAGE 6: Bewertung II — DCF-Szenarien-Chart + KGV-Verlauf -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Bewertung II · DCF-Szenarien im Chart · KGV-Verlauf (trailing GAAP)</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 6</div><div>CBOE Cboe Global Markets</div></div>
+  </div>
+
+  <div class="section-label">DCF-Szenarien (Bear/Base/Bull) vs. aktueller Kurs</div>
+  <div class="bbb-frame" style="height:70mm; width:100%;"><img src="CBOE_dcf_scenarios.png" alt="CBOE DCF-Szenarien"></div>
+
+  <div class="section-label">KGV-Verlauf (trailing GAAP, Jahresschlusskurs ÷ EPS)</div>
+  <div class="bbb-frame" style="height:70mm; width:100%;"><img src="CBOE_pe_history.png" alt="CBOE KGV-Verlauf"></div>
+
+  <div class="box">
+    <p style="font-size:8.4pt;"><b>Einordnung:</b> Das aktuelle KGV von ~25,9x (auf FY2025-EPS-Basis) liegt nahe am historischen Durchschnitt der letzten vier bereinigten Jahre (2021, 2023-2025: Ø 25,6x, 2022 wegen Goodwill-Impairment-Anomalie ausgelassen) — <b>keine erkennbare Multiple-Expansion oder -Kontraktion</b>, der Kursrücksetzer vom 15.09. ist damit kein Bewertungs-Reset, sondern folgt weiterhin der historischen Bewertungsbandbreite. Im DCF-Vergleich liegt der Kurs $270,40 knapp über der Bear-Zone ($240-245) und deutlich unter der risikoadjustierten Base-Zone ($360-400) — die Bear-Zone fungiert damit als grober struktureller Boden, kein hartes Stop-Signal.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CBOE-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/10</div>
+  </div>
+</div>
+
+<!-- PAGE 7: Pipeline/Struktur-Risiko/Insider -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Pipeline-Ausblick · Struktur-Risiko-Check · Insider-Transaktionen</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 7</div><div>CBOE Cboe Global Markets</div></div>
+  </div>
+
+  <div class="section-label">Pipeline-/Katalysator-Ausblick (Rigor-Punkt 34)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Datum</th><th>Event</th><th>Relevanz</th></tr>
+      <tr><td>30.10.2026</td><td>Q3-2026-Earnings (Analysten-Konsens EPS $3,43)</td><td>Dritte Guidance-Bestätigung/-Anhebung nach zwei Anhebungen in Folge — hoher Erwartungsdruck</td></tr>
+      <tr><td>Ab 19./28.09.2026</td><td>SPX-Weeklys-Erweiterung (Dienstag/Donnerstag-Expiries)</td><td>Zusätzliches Produktangebot, marginal umsatzpositiv</td></tr>
+      <tr><td>Laufend, real recherchiert</td><td><b>Cboe/Charles-Schwab-Partnerschaft für S&amp;P-500-Binary-Options</b> in regulierten Prediction-Markets</td><td>Neue, proprietäre Produktkategorie + Schwab-Distribution — direkte Antwort auf die Prediction-Market-Konkurrenz (siehe Struktur-Risiko unten)</td></tr>
+    </table>
+  </div>
+
+  <div class="section-label">Struktur-Risiko-Check (Rigor-Punkt 35) — neuer Fund</div>
+  <div class="divergence-box">
+    <h3>⚠ Prediction-Markets (Polymarket) als neue Wettbewerbsform</h3>
+    <p>Real recherchiert: CBOE geriet 2026 zeitweise unter Druck wegen möglicher Konkurrenz durch <b>Polymarket</b>, eine Prediction-Market-Plattform, die eine CFTC-Zulassung anstrebt. Prediction Markets sind strukturell eine neue, potenziell disruptive Wettbewerbsform gegenüber klassischen Optionsbörsen (einfachere Ja/Nein-Kontrakte statt komplexer Optionsstrukturen). CBOEs Antwort ist proaktiv, nicht defensiv: die Schwab-Partnerschaft bringt CBOEs eigene S&amp;P-500-Produkte direkt in reguliertes Prediction-Market-Terrain — eher Absicherung des Terrains als Rückzug. <b>Keine akute Bedrohung, aber ein neues, im Auge zu behaltendes Strukturthema</b> — bisher nicht in den bestehenden These-Bruch-Kriterien abgedeckt, ab jetzt als Beobachtungspunkt ergänzt.</p>
+  </div>
+  <div class="box" style="margin-top:1mm;">
+    <h3>Regulatorik SPX-Exklusivlizenz — weiterhin unkritisch</h3>
+    <p style="font-size:8.6pt;">Keine neue Litigation gegen die SPX-/DJX-Exklusivlizenz gefunden (historischer Präzedenzfall zugunsten CBOE gegen ISE bereits rechtskräftig). 2026er SEC-Filings zeigen ausschließlich proaktive Produkterweiterungen (Binary Options auf Exklusiv-Indizes, A.M.-Settled-SPX-Optionen) — keine regulatorische Erosion des Kern-Moats erkennbar.</p>
+  </div>
+
+  <div class="section-label">Insider-Transaktionen (Rigor-Punkt 36)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Datum</th><th>Person</th><th>Transaktion</th><th>Einordnung</th></tr>
+      <tr><td>12.08.2026</td><td>Janet P. Froetscher (Director)</td><td>Verkauf 937 Aktien @ $278,95 (10b5-1-Plan)</td><td>Routinemäßig, geplant — kein Signal</td></tr>
+      <tr><td>01.07.2026</td><td>Fredric J. Tomczyk (Director)</td><td>337 Aktien einbehalten für Steuern (RSU-Vesting)</td><td>Routine, kein Verkauf am Markt</td></tr>
+    </table>
+    <p style="margin-top:1.2mm;"><b>Kein klares Signal in beide Richtungen</b> — ausschließlich geplante 10b5-1-Verkäufe und steuerbedingte Einbehalte, keine ungeplanten Netto-Verkäufe oder -Käufe. Vollwertiges, meldenswertes Ergebnis nach Data-Integrity-Philosophie, kein Rechercheversagen.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CBOE-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/10</div>
+  </div>
+</div>
+
+<!-- PAGE 8: Kursverlauf + Technische Analyse -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Kursverlauf · Technische Analyse (Investor-Modus)</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 8</div><div>CBOE Cboe Global Markets</div></div>
   </div>
 
   <div class="section-label">Kursverlauf (6 Monate) mit Nachkauf-Zonen</div>
@@ -354,127 +497,6 @@
 
   <div class="footer">
     <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CBOE-fulldeepdive-cross-check-2026-09-16.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/10</div>
-  </div>
-</div>
-
-<!-- PAGE 6: DCF -->
-<div class="page">
-  <div class="masthead">
-    <div class="brand-block">
-      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
-      <div class="brand-sub">DCF-Szenarien · TV-Cross-Check · Peer-Vergleich</div>
-    </div>
-    <div class="meta-block"><div class="date">16. September 2026 — Seite 6</div><div>CBOE Cboe Global Markets</div></div>
-  </div>
-
-  <div class="section-label">DCF-Vergleich der drei unabhängigen Beine</div>
-  <div class="box">
-    <table class="scenario-table">
-      <tr><th style="text-align:left;">Bein</th><th>Beta</th><th>WACC</th><th>g (Basis)</th><th>Gordon-FV</th><th>Exit-Multiple-FV</th><th>TV-Anteil EV</th><th>Finales Base-FV</th></tr>
-      <tr><td style="text-align:left;">Jarvis</td><td>0,44</td><td>6,89%</td><td>6,2%</td><td>$484</td><td>$393</td><td class="warn">84%</td><td>$484 (Konsens/Peers als Zusatz-Anker)</td></tr>
-      <tr><td style="text-align:left;">Jack</td><td>0,64</td><td>7,73%</td><td>5,6%</td><td>$410</td><td>$382</td><td>—</td><td>$396,16 (ungedämpft übernommen)</td></tr>
-      <tr><td style="text-align:left;">Conan</td><td>0,41</td><td>6,74%</td><td>9,5%</td><td>$447</td><td>$435</td><td class="warn">85%</td><td class="pass"><b>$360-400 (bewusst gedämpft)</b></td></tr>
-    </table>
-    <p style="margin-top:1.6mm; font-size:8.4pt;"><b>Analysten-Konsens (real recherchiert):</b> $292-318 (Barclays $354 Overweight, Deutsche Bank $380 Buy, UBS/Morgan Stanley eher Hold-Bereich). Alle drei mechanischen DCF-Werte liegen &gt;25-30% über dem Konsens — SCHRITT-5B-Begründungspflicht korrekt ausgelöst und übereinstimmend auf den engen WACC-Terminal-g-Spread bei niedrigem Beta zurückgeführt (siehe Seite 2).</p>
-  </div>
-
-  <div class="section-label">Peer-Vergleich EV/EBITDA (real recherchiert)</div>
-  <div class="box">
-    <table class="verify-table">
-      <tr><th>Unternehmen</th><th>EV/EBITDA</th><th>Einordnung ggü. CBOE</th></tr>
-      <tr><td><b>CBOE</b></td><td><b>14,25x</b></td><td>—</td></tr>
-      <tr><td>ICE</td><td>16,0x</td><td>+12% teurer als CBOE</td></tr>
-      <tr><td>NDAQ</td><td>17,3x</td><td>+21% teurer als CBOE</td></tr>
-      <tr><td>CME</td><td>17-25x (Quellen uneinheitlich)</td><td>+19-75% teurer als CBOE</td></tr>
-    </table>
-    <p style="margin-top:1.2mm;">CBOE handelt mit einem klaren Abschlag zu allen drei direkten Peers, trotz vergleichbarer oder besserer operativer Kennzahlen.</p>
-  </div>
-
-  <div class="section-label">Stress-Test (Conans Fassung, methodisch am konservativsten)</div>
-  <div class="box">
-    <table class="scenario-table">
-      <tr><th>Szenario</th><th>Fair Value</th><th>Δ vs. Kurs $270,40</th></tr>
-      <tr><td>Bear</td><td>$240-245</td><td class="neg">-9 bis -11%</td></tr>
-      <tr><td>Base (risikoadjustiert)</td><td>$360-400</td><td class="pass">+33 bis +48%</td></tr>
-      <tr><td>Bull</td><td>$540-610</td><td class="pass">+100 bis +126%</td></tr>
-    </table>
-  </div>
-
-  <div class="footer">
-    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CBOE-fulldeepdive-cross-check-2026-09-16.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/10</div>
-  </div>
-</div>
-
-<!-- PAGE 7 (NEU, Nachtrag): DCF-Szenarien-Chart + KGV-Verlauf -->
-<div class="page">
-  <div class="masthead">
-    <div class="brand-block">
-      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
-      <div class="brand-sub">DCF-Szenarien im Chart · KGV-Verlauf (trailing GAAP)</div>
-    </div>
-    <div class="meta-block"><div class="date">16. September 2026 — Seite 7</div><div>CBOE Cboe Global Markets</div></div>
-  </div>
-
-  <div class="section-label">DCF-Szenarien (Bear/Base/Bull) vs. aktueller Kurs</div>
-  <div class="bbb-frame" style="height:70mm; width:100%;"><img src="CBOE_dcf_scenarios.png" alt="CBOE DCF-Szenarien"></div>
-
-  <div class="section-label">KGV-Verlauf (trailing GAAP, Jahresschlusskurs ÷ EPS)</div>
-  <div class="bbb-frame" style="height:70mm; width:100%;"><img src="CBOE_pe_history.png" alt="CBOE KGV-Verlauf"></div>
-
-  <div class="box">
-    <p style="font-size:8.4pt;"><b>Einordnung:</b> Das aktuelle KGV von ~25,9x (auf FY2025-EPS-Basis) liegt nahe am historischen Durchschnitt der letzten vier bereinigten Jahre (2021, 2023-2025: Ø 25,6x, 2022 wegen Goodwill-Impairment-Anomalie ausgelassen) — <b>keine erkennbare Multiple-Expansion oder -Kontraktion</b>, der Kursrücksetzer vom 15.09. ist damit kein Bewertungs-Reset, sondern folgt weiterhin der historischen Bewertungsbandbreite. Im DCF-Vergleich liegt der Kurs $270,40 knapp über der Bear-Zone ($240-245) und deutlich unter der risikoadjustierten Base-Zone ($360-400) — die Bear-Zone fungiert damit als grober struktureller Boden, kein hartes Stop-Signal.</p>
-  </div>
-
-  <div class="footer">
-    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CBOE-fulldeepdive-cross-check-2026-09-16.md</div>
-    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/10</div>
-  </div>
-</div>
-
-<!-- PAGE 8 (NEU): Pipeline/Struktur-Risiko/Insider -->
-<div class="page">
-  <div class="masthead">
-    <div class="brand-block">
-      <div class="brand display">AGENT <span class="accent">DEEP DIVE</span></div>
-      <div class="brand-sub">Pipeline-Ausblick · Struktur-Risiko-Check · Insider-Transaktionen</div>
-    </div>
-    <div class="meta-block"><div class="date">16. September 2026 — Seite 8</div><div>CBOE Cboe Global Markets</div></div>
-  </div>
-
-  <div class="section-label">Pipeline-/Katalysator-Ausblick (Rigor-Punkt 34)</div>
-  <div class="box">
-    <table class="verify-table">
-      <tr><th>Datum</th><th>Event</th><th>Relevanz</th></tr>
-      <tr><td>30.10.2026</td><td>Q3-2026-Earnings (Analysten-Konsens EPS $3,43)</td><td>Dritte Guidance-Bestätigung/-Anhebung nach zwei Anhebungen in Folge — hoher Erwartungsdruck</td></tr>
-      <tr><td>Ab 19./28.09.2026</td><td>SPX-Weeklys-Erweiterung (Dienstag/Donnerstag-Expiries)</td><td>Zusätzliches Produktangebot, marginal umsatzpositiv</td></tr>
-      <tr><td>Laufend, real recherchiert</td><td><b>Cboe/Charles-Schwab-Partnerschaft für S&amp;P-500-Binary-Options</b> in regulierten Prediction-Markets</td><td>Neue, proprietäre Produktkategorie + Schwab-Distribution — direkte Antwort auf die Prediction-Market-Konkurrenz (siehe Struktur-Risiko unten)</td></tr>
-    </table>
-  </div>
-
-  <div class="section-label">Struktur-Risiko-Check (Rigor-Punkt 35) — neuer Fund</div>
-  <div class="divergence-box">
-    <h3>⚠ Prediction-Markets (Polymarket) als neue Wettbewerbsform</h3>
-    <p>Real recherchiert: CBOE geriet 2026 zeitweise unter Druck wegen möglicher Konkurrenz durch <b>Polymarket</b>, eine Prediction-Market-Plattform, die eine CFTC-Zulassung anstrebt. Prediction Markets sind strukturell eine neue, potenziell disruptive Wettbewerbsform gegenüber klassischen Optionsbörsen (einfachere Ja/Nein-Kontrakte statt komplexer Optionsstrukturen). CBOEs Antwort ist proaktiv, nicht defensiv: die Schwab-Partnerschaft bringt CBOEs eigene S&amp;P-500-Produkte direkt in reguliertes Prediction-Market-Terrain — eher Absicherung des Terrains als Rückzug. <b>Keine akute Bedrohung, aber ein neues, im Auge zu behaltendes Strukturthema</b> — bisher nicht in den bestehenden These-Bruch-Kriterien abgedeckt, ab jetzt als Beobachtungspunkt ergänzt.</p>
-  </div>
-  <div class="box" style="margin-top:1mm;">
-    <h3>Regulatorik SPX-Exklusivlizenz — weiterhin unkritisch</h3>
-    <p style="font-size:8.6pt;">Keine neue Litigation gegen die SPX-/DJX-Exklusivlizenz gefunden (historischer Präzedenzfall zugunsten CBOE gegen ISE bereits rechtskräftig). 2026er SEC-Filings zeigen ausschließlich proaktive Produkterweiterungen (Binary Options auf Exklusiv-Indizes, A.M.-Settled-SPX-Optionen) — keine regulatorische Erosion des Kern-Moats erkennbar.</p>
-  </div>
-
-  <div class="section-label">Insider-Transaktionen (Rigor-Punkt 36)</div>
-  <div class="box">
-    <table class="verify-table">
-      <tr><th>Datum</th><th>Person</th><th>Transaktion</th><th>Einordnung</th></tr>
-      <tr><td>12.08.2026</td><td>Janet P. Froetscher (Director)</td><td>Verkauf 937 Aktien @ $278,95 (10b5-1-Plan)</td><td>Routinemäßig, geplant — kein Signal</td></tr>
-      <tr><td>01.07.2026</td><td>Fredric J. Tomczyk (Director)</td><td>337 Aktien einbehalten für Steuern (RSU-Vesting)</td><td>Routine, kein Verkauf am Markt</td></tr>
-    </table>
-    <p style="margin-top:1.2mm;"><b>Kein klares Signal in beide Richtungen</b> — ausschließlich geplante 10b5-1-Verkäufe und steuerbedingte Einbehalte, keine ungeplanten Netto-Verkäufe oder -Käufe. Vollwertiges, meldenswertes Ergebnis nach Data-Integrity-Philosophie, kein Rechercheversagen.</p>
-  </div>
-
-  <div class="footer">
-    <div>Agent Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/CBOE-fulldeepdive-cross-check-2026-09-16.md</div>
     <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 8/10</div>
   </div>
 </div>
@@ -498,7 +520,7 @@
     <h3>Nächste Prüfpunkte</h3>
     <div class="catalyst-item"><div class="catalyst-date">30.10.2026</div><div class="catalyst-desc"><b>Q3-2026-Earnings</b> — muss den "mid to high teens"-Ausblick mindestens halten, nach zwei Anhebungen in Folge.</div></div>
     <div class="catalyst-item"><div class="catalyst-date">Januar 2027</div><div class="catalyst-desc"><b>$650-Mio.-Notes-Fälligkeit</b> — Refinanzierung oder Bardeckung, Kupon-Delta gegen 3,65% beobachten.</div></div>
-    <div class="catalyst-item"><div class="catalyst-date">Laufend</div><div class="catalyst-desc"><b>Prediction-Market-Wettbewerb (Polymarket u.ä.)</b> — neues, bisher nicht in den These-Bruch-Kriterien abgedecktes Strukturthema (siehe Seite 8).</div></div>
+    <div class="catalyst-item"><div class="catalyst-date">Laufend</div><div class="catalyst-desc"><b>Prediction-Market-Wettbewerb (Polymarket u.ä.)</b> — neues, bisher nicht in den These-Bruch-Kriterien abgedecktes Strukturthema (siehe Seite 7).</div></div>
     <div class="catalyst-item"><div class="catalyst-date">Laufend</div><div class="catalyst-desc"><b>SPX-Exklusivlizenz mit S&amp;P Global</b> — vertraglich, nicht ewig; aktuell keine Litigation, aber langfristiges These-Bruch-Kriterium.</div></div>
   </div>
 
@@ -543,7 +565,7 @@
       <div class="rating display">KAUFEN</div>
       <div class="sub">gestaffelt · Tier 2</div>
     </div>
-    <p style="font-size:9.6pt; color:var(--text); line-height:1.5;">Zwei von drei unabhängigen Beinen (Jack, Conan) kommen trotz methodisch vorsichtiger DCF-Behandlung auf KAUFEN — gestützt durch einen realen Peer-EV/EBITDA-Abschlag und einen moderat über dem Kurs liegenden Analysten-Konsens. Die eigene TA-Rechnung (Seite 5, Investor-Modus) bestätigt quantitativ: Preiszone 2 ATTRAKTIV, aber Entry-Ampel 🟡 WARTEN (Technik-Score WEAK). Die schwache Technik bestimmt bei dieser bestehenden Champions-Position nur die <b>Tranchierung</b> des Nachkaufs, nicht die fundamentale Grundentscheidung.</p>
+    <p style="font-size:9.6pt; color:var(--text); line-height:1.5;">Zwei von drei unabhängigen Beinen (Jack, Conan) kommen trotz methodisch vorsichtiger DCF-Behandlung auf KAUFEN — gestützt durch einen realen Peer-EV/EBITDA-Abschlag und einen moderat über dem Kurs liegenden Analysten-Konsens. Die eigene TA-Rechnung (Seite 8, Investor-Modus) bestätigt quantitativ: Preiszone 2 ATTRAKTIV, aber Entry-Ampel 🟡 WARTEN (Technik-Score WEAK). Die schwache Technik bestimmt bei dieser bestehenden Champions-Position nur die <b>Tranchierung</b> des Nachkaufs, nicht die fundamentale Grundentscheidung.</p>
   </div>
 
   <div class="section-label">Kaufplan (keine automatische Order)</div>
