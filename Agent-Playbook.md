@@ -5153,6 +5153,27 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     – ändert NICHT die primäre Base-Case-FV, ist reine Zusatz-Absicherung
     analog zur bestehenden Reverse-DCF-Sanity-Rolle. Bei <3 vergleichbaren
     Peers mit EV/EBITDA entfällt der Schritt ersatzlos.
+    **Zirkularitäts-Schärfung (2026-09-17, ausgelöst durch Brians eigene
+    externe Gegenprüfung des ANET-Reports bei Gemini):** Gemini fand einen
+    echten methodischen Schwachpunkt in der ANET-Umsetzung – die Begründung
+    "Exit-Multiple ist plausibler" stützte sich faktisch nur darauf, dass
+    das Ergebnis näher am aktuellen Marktpreis lag, nicht auf eine
+    unabhängige Rechtfertigung des angenommenen Exit-Multiples selbst.
+    Damit verschiebt man die Optimismus-Annahme nur vom Wachstum (Gordon-g)
+    in den Terminal-Multiple, löst das Problem aber nicht – exakt die Art
+    Zirkelschluss, vor der DCF-Modelle strukturell geschützt werden müssen.
+    **Ab sofort Pflicht bei der TV-Methoden-Begründung:** "näher am
+    Marktpreis" oder "plausibler" allein reicht NICHT als Begründung – die
+    Begründung muss explizit adressieren, WARUM das Unternehmen im
+    Terminal-Jahr noch das angenommene Peer-Median-Multiple verdient
+    (Wettbewerbsposition zu diesem Zeitpunkt, Margen-Nachhaltigkeit,
+    erwartete Wachstumsverlangsamung Richtung Branchen-Norm) – unabhängig
+    davon, ob das Ergebnis dann näher am oder weiter vom aktuellen Kurs
+    liegt. Bei einer offenen strukturellen Kernfrage (wie Aristas
+    NVIDIA-Konkurrenzfrage) ist das Exit-Multiple NICHT automatisch die
+    plausiblere Methode, nur weil es höher/marktnäher ausfällt – im
+    Gegenteil kann eine offene Moat-Frage genau GEGEN ein hohes
+    Terminal-Multiple sprechen.
 
 **Woher Punkt 39 und die Erweiterung von Punkt 19 kommen (2026-09-15):**
 Brian fragte nach dem offiziellen Anthropic-Repo `anthropics/financial-
@@ -5341,6 +5362,26 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     Matplotlib-PNG in den bestehenden Report-Hausfarben (--gold/--orange/
     --blue/--green), analog zu den bereits bestehenden DCF-/KGV-Charts.
 
+    **Erweiterung (2026-09-17, Leitrisiko-Folge-Empfehlung, ausgelöst durch
+    Brians externe Gegenprüfung des ANET-Reports bei Gemini):** Gemini
+    schlug als konkreten nächsten Schritt vor, statt eines weiteren
+    allgemeinen Deep Dive gezielt EINE fokussierte Folge-Analyse zum
+    dominanten Risiko zu bauen (bei ANET: "ANET vs. NVIDIA Spectrum-X
+    Moat-Kill-Test" statt eines weiteren Rundum-Reports) – ein guter,
+    bisher nicht formalisierter Reflex. **Ab sofort Pflicht:** sticht im
+    Risiko-Quadrant EIN Risiko klar als das Wahrscheinlichkeit×Schaden-
+    dominante heraus (oberer rechter Quadrant, deutlich vor den übrigen
+    Punkten), wird das im Kill-Sheet explizit als **Leitrisiko** benannt
+    UND eine gezielte, eng geschnittene Folge-Analyse dazu empfohlen
+    (Formulierung: "Nächster sinnvoller Schritt: kein weiterer Full Deep
+    Dive, sondern ein fokussierter [X]-vs-[Y]-Test zu genau diesem einen
+    Risiko"). Kein Zusatzaufwand: reine Formulierungs-/Empfehlungs-Pflicht
+    auf Basis der bereits vorhandenen Risiko-Quadrant-Daten, keine neue
+    Recherche. Sticht kein Risiko klar heraus (mehrere ähnlich gewichtete
+    Risiken statt eines dominanten), entfällt die Leitrisiko-Kennzeichnung
+    ersatzlos – kein künstliches Erzwingen eines Einzelrisikos, wo die
+    Datenlage mehrere gleichrangige zeigt.
+
 46. **Agent-Score-Breakdown: die bestehende Anker-Mali-Deckel-Herleitung
     sichtbar machen statt nur das Endergebnis (neu, 2026-09-16, gleiche
     Quelle, nach Prüfung gegen die bestehende Methodik korrigiert).**
@@ -5422,6 +5463,59 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     als solche vermerkt statt erfunden. Kein Zusatzaufwand: nutzt exakt
     dieselbe Twelve-Data-Kurs-Zeitreihe, die für den Kursverlauf-Chart
     (Seite 5) ohnehin abgerufen wird.
+
+49. **Executive-Verdict-Matrix: Unternehmensqualität von Aktienqualität-
+    zum-aktuellen-Preis GETRENNT ausweisen (neu, 2026-09-17, ausgelöst
+    durch Brians externe Gegenprüfung des ANET-Reports bei Gemini).**
+    Gemini kritisierte zu Recht, dass ein finaler Score wie "8/10,
+    BEOBACHTEN" verschleiern kann, dass zwei sehr unterschiedliche Fragen
+    dahinterstecken: "ist das ein außergewöhnliches Unternehmen?" (fast
+    immer klar zu beantworten) und "ist es JETZT zu diesem Preis kaufbar?"
+    (oft die eigentlich strittige Frage). Wir trennen das bereits implizit
+    (Business-Qualität vs. Bewertungs-Timing ist Grundphilosophie, siehe
+    z.B. die Fresh-Eyes-Test-Logik), aber ohne ein explizites, verpflichtendes
+    Darstellungselement dafür – anders als z.B. die Management-Glaubwürdig-
+    keits-Matrix (Punkt 9), die genau diese Trennung für EINE Teilfrage
+    schon erzwingt. **Ab sofort Pflicht auf der Fazit-Seite bei Full Deep
+    Dive:** eine kompakte Tabelle mit zwei klar getrennten Blöcken –
+    **Unternehmensqualität** (DNA-Check-Gesamtbild, Bilanz/Netto-Cash,
+    Moat-Status inkl. Trend aus dem Moat-Decay-Check, Wachstumsqualität,
+    je mit 🟢/🟡/🔴) und **Aktienqualität zum aktuellen Preis**
+    (Bewertung ggü. Historie/Peers, Kundenkonzentration falls einschlägig,
+    das dominante Einzelrisiko aus dem Risiko-Quadrant, Champions-/
+    Depot-Fit als STRUKTURELLE Eignung getrennt von "sofort in hoher
+    Konviktion kaufbar"). **Bewusst KEINE neue Rechenlogik:** jede Zeile
+    zitiert nur ein bereits an anderer Stelle im Report hergeleitetes
+    Ergebnis (DNA-Check, Moat-Decay-Check, Risiko-Quadrant, Agent-Score-
+    Herleitung Punkt 46) – reine Zusammenführungs-/Darstellungspflicht,
+    kein Zusatzaufwand. Ergänzt (ersetzt nicht) den bestehenden Agent-
+    Score-Breakdown (Punkt 46): der zeigt WIE der Score entstand, diese
+    Matrix zeigt, dass "gutes Unternehmen" und "guter Kauf jetzt" zwei
+    unterschiedliche Achsen sind, die in einem einzelnen Score sonst
+    unsichtbar verschmelzen.
+
+**Woher Punkt 49, die Zirkularitäts-Schärfung von Punkt 39 und die
+Leitrisiko-Erweiterung von Punkt 45 kommen (2026-09-17):** Brian hatte
+den fertigen ANET-Report eigenständig, außerhalb dieses Systems, bei
+Gemini zur Zweitmeinung vorgelegt und dessen Antwort hierher zurück-
+gespielt. Erst-Check gegen die eigenen Regeln (siehe
+[[feedback_externe_kritik_erst_gegen_eigene_regeln_pruefen]]) ergab: die
+meisten Lob-Punkte (NVIDIA-Konflikt korrekt behandelt, Kundenkonzentration
+ernst genommen, Divergenz zwischen JJ/Conan als Wert statt Fehler
+gerahmt) bestätigten nur bereits Bestehendes. Ein Kritikpunkt (Moat "sollte
+3/4 statt 4/4 sein") war reine dritte Gewichtungsmeinung, keine
+Methodik-Lücke – analog zur bereits dokumentierten JJ/Conan-Divergenz,
+keine Änderung ausgelöst. Drei Kritikpunkte waren echte, umgesetzte Funde:
+(1) die TV-Cross-Check-Begründung "Exit-Multiple ist plausibler" stützte
+sich zirkulär nur auf Marktnähe statt auf eine unabhängige Terminal-
+Multiple-Rechtfertigung (Schärfung von Punkt 39); (2) ein einzelner
+Gesamt-Score kann die Trennung zwischen Unternehmensqualität und
+Kaufbarkeit-zum-Preis verschleiern (neuer Punkt 49); (3) bei einem klar
+dominanten Einzelrisiko sollte das Kill-Sheet aktiv eine gezielte
+Folge-Analyse empfehlen statt es implizit zu lassen (Erweiterung von
+Punkt 45). Alle drei sind reine Aegis-Synthese-/Report-Ebene außer der
+TV-Cross-Check-Begründungspflicht, die JJs eigenen DCF-Schritt betrifft
+– siehe `prompts/jack-moat-reaper-v11.7.md` (v11.19→v11.20, Regel 38).
 
 **Woher Punkt 47 kommt, und was NICHT übernommen wurde (2026-09-16,
 zweiter Digital-Arts-Review mit allen 3 KIs):** Brian bat darum, dass alle
