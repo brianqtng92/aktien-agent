@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>J.A.C.K Deep Dive - ANET v2</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FFFFFF; --bg-panel: #F7F6F2; --bg-panel-2: #EFEDE6;
+    --border: #D9D4C8; --border-soft: #E6E2D9;
+    --text: #262420; --text-dim: #5C564A; --text-faint: #837C6C;
+    --gold: #9C7A2E; --gold-bright: #8A6A22; --gold-dim: #C9AD6E;
+    --green: #3F7D44; --green-bg: rgba(63,125,68,0.10);
+    --yellow: #A6790A; --yellow-bg: rgba(166,121,10,0.10);
+    --red: #B03A2E; --red-bg: rgba(176,58,46,0.09);
+    --blue: #2E6690; --blue-bg: rgba(46,102,144,0.09);
+    --orange: #AB591C; --orange-bg: rgba(171,89,28,0.09);
+  }
+  html, body { width: 210mm; background: var(--bg); color: var(--text); font-family: "Carlito", "DejaVu Sans", Arial, sans-serif; font-size: 11pt; line-height: 1.36; }
+  .display { font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif; font-weight: 700; font-stretch: condensed; }
+  .page { width: 210mm; height: 297mm; padding: 8mm 12mm 5mm 12mm; display: flex; flex-direction: column; gap: 2mm; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 2.6mm; }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 23pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 9.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag { font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim); border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm; display: inline-block; width: fit-content; }
+  .meta-block { text-align: right; font-size: 9.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 10.6pt; }
+  .position-header { display: flex; justify-content: space-between; align-items: center; background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold); border-radius: 3px; padding: 2.6mm 4mm; }
+  .position-name .ticker { font-size: 17pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 10pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 5mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 8.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); white-space: nowrap; }
+  .stat .value { font-size: 12pt; color: var(--text); margin-top: 0.4mm; white-space: nowrap; }
+  .hook-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 3.4mm 4.2mm; }
+  .hook-title { font-size: 16pt; line-height: 1.28; color: var(--text); font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .hook-title .accent { color: var(--gold-bright); }
+  .hook-title .accent-red { color: var(--red); }
+  .hook-sub { font-size: 9.6pt; color: var(--text-dim); line-height: 1.4; margin-top: 1.8mm; }
+  .narrative-box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 3mm 4mm; flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .narrative-box p { font-size: 9.4pt; color: var(--text-dim); line-height: 1.46; }
+  .narrative-box p b { color: var(--text); }
+  .narrative-box p .lead { color: var(--gold-bright); font-weight: bold; }
+  .section-label { font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0; }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+  .chart-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 74mm; flex: 0 0 auto; }
+  .chart-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; border-radius: 2px; }
+  .bbb-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 52mm; flex: 0 0 auto; }
+  .bbb-frame img { max-width: 100%; max-height: 100%; }
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
+  .box h3 { font-size: 9.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .box p { font-size: 9.1pt; color: var(--text-dim); line-height: 1.32; overflow-wrap: break-word; }
+  .box p b { color: var(--text); }
+  .verify-table, .compare-table, .scenario-table, .score-table, .chain-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .verify-table th, .verify-table td, .compare-table th, .compare-table td, .scenario-table th, .scenario-table td, .score-table th, .score-table td, .chain-table th, .chain-table td { font-size: 8.3pt; padding: 0.9mm 1.4mm; text-align: left; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+  .verify-table th, .compare-table th, .scenario-table th, .score-table th, .chain-table th { color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; font-weight: normal; font-size: 7.7pt; }
+  .verify-table td, .compare-table td, .score-table td, .chain-table td { color: var(--text); }
+  .scenario-table th, .scenario-table td { text-align: right; }
+  .scenario-table th:first-child, .scenario-table td:first-child { text-align: left; color: var(--text-dim); }
+  .pass { color: var(--green); } .fail { color: var(--red); } .warn { color: var(--yellow); }
+  .two-col { display: flex; gap: 3mm; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .divergence-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--orange); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .divergence-box h3 { color: var(--orange); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.4mm; }
+  .divergence-box p { font-size: 9.2pt; color: var(--text); line-height: 1.42; }
+  .integrity-box { background: var(--blue-bg); border: 1px solid var(--blue); border-radius: 3px; padding: 2.6mm 3.6mm; }
+  .integrity-box h3 { color: var(--blue); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
+  .integrity-box p { font-size: 9pt; color: var(--text); line-height: 1.4; }
+  .trigger-row { display: flex; gap: 3mm; }
+  .trigger-box { flex: 1; border-radius: 3px; padding: 2.4mm 3.4mm; }
+  .trigger-box.bull { background: var(--green-bg); border: 1px solid var(--green); }
+  .trigger-box.bear { background: var(--red-bg); border: 1px solid var(--red); }
+  .trigger-box h3 { font-size: 9.4pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2mm; }
+  .trigger-box.bull h3 { color: var(--green); }
+  .trigger-box.bear h3 { color: var(--red); }
+  .trigger-box ul { list-style: none; }
+  .trigger-box li { font-size: 8.7pt; color: var(--text); padding: 0.6mm 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .trigger-box li:last-child { border-bottom: none; }
+  .killsheet-box { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .killsheet-box h3 { color: var(--gold-bright); font-size: 10.4pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.6mm; }
+  .warn-strip { background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.7mm 3mm; font-size: 8.6pt; color: var(--yellow); margin-top: 1mm; }
+  .warn-strip b { color: var(--text); }
+  .fazit { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 2.8mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0; }
+  .fazit-verdict { flex: 0 0 auto; max-width: 42mm; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 13pt; color: var(--yellow); letter-spacing: 0.02em; }
+  .fazit-verdict .sub { font-size: 8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.6mm; }
+  .sources-list { font-size: 8.7pt; color: var(--text-dim); line-height: 1.5; }
+  .sources-list .n { color: var(--gold); margin-right: 1.5mm; }
+  .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 1.5mm; font-size: 8.1pt; color: var(--text-faint); flex-shrink: 0; }
+  .footer .gold-dot { color: var(--gold); }
+  .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm; }
+  .decision-card { border-radius: 3px; padding: 2.4mm 3.2mm; }
+  .decision-card.attractive { background: var(--green-bg); border: 1px solid var(--green); }
+  .decision-card.caution { background: var(--red-bg); border: 1px solid var(--red); }
+  .decision-card.watch { background: var(--blue-bg); border: 1px solid var(--blue); }
+  .decision-card.action { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); }
+  .decision-card h3 { font-size: 9.1pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .decision-card.attractive h3 { color: var(--green); }
+  .decision-card.caution h3 { color: var(--red); }
+  .decision-card.watch h3 { color: var(--blue); }
+  .decision-card.action h3 { color: var(--gold-bright); }
+  .decision-card p { font-size: 8.5pt; color: var(--text); line-height: 1.34; }
+  .verdict-matrix { display: flex; gap: 3mm; }
+  .verdict-col { flex: 1; border-radius: 3px; padding: 2.4mm 3.2mm; }
+  .verdict-col.quality { background: var(--green-bg); border: 1px solid var(--green); }
+  .verdict-col.price { background: var(--yellow-bg); border: 1px solid var(--yellow); }
+  .verdict-col h3 { font-size: 9.2pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2mm; }
+  .verdict-col.quality h3 { color: var(--green); }
+  .verdict-col.price h3 { color: var(--yellow); }
+  .verdict-row { display: flex; justify-content: space-between; font-size: 8.6pt; padding: 0.5mm 0; }
+  .verdict-row .k { color: var(--text-dim); }
+  .verdict-row .v { color: var(--text); font-weight: bold; }
+  .chip { display: inline-block; border-radius: 2px; padding: 0.2mm 1.4mm; font-size: 8.2pt; }
+  .chip.g { background: var(--green-bg); color: var(--green); }
+  .chip.y { background: var(--yellow-bg); color: var(--yellow); }
+  .chip.r { background: var(--red-bg); color: var(--red); }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hook -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">3-fach TMR-Cross-Check · Aegis · JJ · Conan</div>
+      <div class="edition-tag">Full Deep Dive v2 · Methodik v11.23/v1.23</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">17. September 2026</div>
+      <div>TMR-Pfad · Modus A</div>
+      <div>Zweiter vollständiger 3-fach-Check, geschärfte Methodik</div>
+    </div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-title">🔀 Arista Networks — Makellose Fundamentaldaten, <span class="accent-red">aber jetzt eine noch schärfere Bewertungs-Frage</span></div>
+    <div class="hook-sub">Arista Networks, Inc. (NYSE: ANET) · Kurs $197,54 (16.09.2026) · 52W-Range $114,52-$214,89 · Sektor Netzwerktechnik/KI-Rechenzentren</div>
+  </div>
+
+  <div class="section-label">Zweiter Durchgang, geschärfte Methodik nach zwei externen Gegenprüfungen (Gemini/ChatGPT)</div>
+  <div class="narrative-box">
+    <p><span class="lead">Was neu ist.</span> Dieser Report wendet die seit gestern erweiterte Methodik an: Zirkularitäts-Sperre bei der Terminal-Value-Wahl, 2D-Sensitivitätsmatrix, Moat-Komponenten-Zerlegung innerhalb der KSF-Scorecard, eine verkettete These-Monitoring-Kette statt vier Einzellisten, historischer Max-Drawdown-Pflicht, Kunden-Capex-Verknüpfung, EV/FCF als Standardkennzahl, und eine Dissensus-Map, die zeigt, WORAN genau der KI-Dissens hängt.</p>
+    <p><span class="lead">Das operative Geschäft bleibt makellos.</span> ROIC ~50%, FCF-Marge (SBC-bereinigt) ~44-54% je Berechnung, Net-Debt/EBITDA negativ (Netto-Cash $13,3 Mrd.), Bruttomarge ~63%, Op.-Margin GAAP ~43-45%. Praktisch schuldenfrei, Rekord-Kapitalrenditen.</p>
+    <p><span class="lead">Der Bewertungsbefund hat sich verschärft, nicht entschärft.</span> Diesmal lieferten JJ und Conan beide vollständig eigenständige, konkrete DCF-Zahlen (nicht nur Methodik-Beschreibungen) — und liegen weiter auseinander als beim ersten Durchgang: JJ Base $214 (über dem aktuellen Kurs), Conan Base $130 (deutlich darunter), Aegis' eigener 10-Jahres-Exit-Multiple-Ansatz $245. Die Bandbreite ist real, nicht ein Rechenfehler.</p>
+    <p><span class="lead">Neuer, wichtiger historischer Fund.</span> Der eigene, primärquellen-berechnete Max-Drawdown liegt NICHT bei der oft zitierten Covid-Korrektur, sondern bei einem jüngeren, deutlich größeren Einbruch: -50,2% zwischen Januar und März 2025 — relevanter für die Risikoeinschätzung als ältere Zahlen.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive v2 <span class="gold-dot">·</span> Volltext: analysen/ANET-fulldeepdive-cross-check-2026-09-17.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/12</div>
+  </div>
+</div>
+
+<!-- PAGE 2: Executive Summary + Investment Card + Dissensus-Map -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Investment-Card · Dissensus-Map · 3-Stimmen-Leiste</div>
+    </div>
+    <div class="meta-block"><div class="date">17. September 2026 — Seite 2</div><div>ANET Arista Networks</div></div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">ANET <span style="color:var(--text-dim); font-size:9.5pt;">· NYSE</span></div>
+      <div class="company">Arista Networks, Inc. — Hochleistungs-Ethernet-Switches für Rechenzentren</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs</div><div class="value">$197,54</div></div>
+      <div class="stat"><div class="label">Marktkap.</div><div class="value">$243-252 Mrd.</div></div>
+      <div class="stat"><div class="label">Analysten-Konsens</div><div class="value">~$241 (sekundär)</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">Investment-Card (Kurzfassung — volle Herleitung Seite 12)</div>
+  <div class="verdict-matrix" style="flex:0 0 auto;">
+    <div class="verdict-col quality">
+      <h3>Unternehmensqualität</h3>
+      <div class="verdict-row"><span class="k">Business-Qualität</span><span class="v"><span class="chip g">🟢 sehr hoch</span></span></div>
+      <div class="verdict-row"><span class="k">Bilanz/Netto-Cash</span><span class="v"><span class="chip g">🟢 exzellent</span></span></div>
+      <div class="verdict-row"><span class="k">Moat (Software/EOS)</span><span class="v"><span class="chip g">🟢 stark</span></span></div>
+      <div class="verdict-row"><span class="k">Moat (AI-Back-end)</span><span class="v"><span class="chip y">🟡 unter Druck</span></span></div>
+      <div class="verdict-row"><span class="k">Wachstumsqualität</span><span class="v"><span class="chip g">🟢 sehr hoch</span></span></div>
+    </div>
+    <div class="verdict-col price">
+      <h3>Aktienqualität zum aktuellen Preis</h3>
+      <div class="verdict-row"><span class="k">Bewertung ggü. Peers</span><span class="v"><span class="chip r">🔴 anspruchsvoll</span></span></div>
+      <div class="verdict-row"><span class="k">Kundenkonzentration</span><span class="v"><span class="chip y">🟡 hoch (~42%)</span></span></div>
+      <div class="verdict-row"><span class="k">Leitrisiko (NVIDIA)</span><span class="v"><span class="chip y">🟡 real, gemanagt</span></span></div>
+      <div class="verdict-row"><span class="k">Fair-Value-Korridor</span><span class="v">$65-310 (weit)</span></div>
+      <div class="verdict-row"><span class="k">Champions-Fit vs. Sofort-Kauf</span><span class="v">Fit ja · Kauf nicht eindeutig</span></div>
+    </div>
+  </div>
+
+  <div class="section-label">Dissensus-Map — woran genau hängt der Dissens?</div>
+  <table class="chain-table" style="flex:0 0 auto;">
+    <tr><th>Teildimension</th><th>JJ</th><th>Conan</th><th>Aegis</th></tr>
+    <tr><td>Business-Qualität</td><td>🟢</td><td>🟢</td><td>🟢</td></tr>
+    <tr><td>Moat/Wettbewerbsposition</td><td>🟢 (Trend: stärker)</td><td>🟡 (Trend: AI-Back-end schwächer)</td><td>🟡</td></tr>
+    <tr><td>Leitrisiko NVIDIA</td><td>🟡 gemanagt</td><td>🟠 wesentlich</td><td>🟡</td></tr>
+    <tr><td>Bewertung (Base-FV vs. Kurs $197,54)</td><td>🟢 $214 (über Kurs)</td><td>🔴 $130 (unter Kurs)</td><td>🟢 $245 (über Kurs)</td></tr>
+    <tr><td>Wachstumsverlässlichkeit</td><td>🟢</td><td>🟡</td><td>🟢</td></tr>
+  </table>
+  <div class="warn-strip" style="margin-top:0;"><b>Der Dissens entsteht NICHT bei den Fakten</b> (alle drei bestätigen unabhängig Netto-Cash, Margen, Kundenkonzentration ~42%, NVIDIA-Spectrum-X-Realität) — <b>sondern bei der TV-Methoden-Gewichtung und dem DCF-Horizont.</b> Conan gewichtet Gordon-Growth stärker (65/35) und begründet dies unabhängig mit Terminal-Margin-Unsicherheit; JJ und Aegis kommen über einen längeren Horizont bzw. konvergente TV-Methoden auf spürbar höhere Werte. Das ist die eigentliche Investmentfrage, nicht ein Datenproblem.</div>
+
+  <div class="section-label">3-Stimmen-Leiste</div>
+  <div style="display:flex; gap:2.4mm;">
+    <div class="box" style="flex:1;">
+      <h3>Aegis · Claude (Synthese)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">BEOBACHTEN</p>
+      <p style="font-size:8.4pt;">10J-Exit-Multiple Base $245 · zwischen JJ und Konsens</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>JJ · Gemini (TMR, frisch)</h3>
+      <p style="font-size:12pt; color:var(--green);">Implizit konstruktiv</p>
+      <p style="font-size:8.4pt;">Base $214 über Kurs · Moat-Trend "stärker"</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>Conan · ChatGPT (TMR, frisch)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">NEUTRAL/WATCHLIST</p>
+      <p style="font-size:8.4pt;">Score 74/100 · Base $130 unter Kurs</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive v2</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/12</div>
+  </div>
+</div>
+
+<!-- PAGE 3: DNA-Check + KSF-Scorecard mit Moat-Komponenten -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block"><div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div><div class="brand-sub">DNA-Check · KSF-Scorecard mit Moat-Komponenten</div></div>
+    <div class="meta-block"><div class="date">17. September 2026 — Seite 3</div><div>ANET Arista Networks</div></div>
+  </div>
+
+  <div class="section-label">DNA-Check (K+E-Kriterien, konvergent zwischen JJ/Conan)</div>
+  <table class="verify-table" style="flex:0 0 auto;">
+    <tr><th>Kriterium</th><th>JJ</th><th>Conan</th><th>Status</th></tr>
+    <tr><td>ROIC</td><td>49,9%</td><td>&gt;200% (verzerrt, Cash-lastig)</td><td class="pass">✅ konvergent (elite)</td></tr>
+    <tr><td>FCF-Marge (SBC-ber.)</td><td>~53,7%</td><td>~44,1%</td><td class="pass">✅ konvergent (elite, Methodendifferenz)</td></tr>
+    <tr><td>Piotroski F-Score</td><td>4/9</td><td>~6/9</td><td class="warn">🟡 Divergenz, beide "branchentypisch unkritisch"</td></tr>
+    <tr><td>EPS-CAGR (5J)</td><td>39,9%</td><td>~40%</td><td class="pass">✅ konvergent</td></tr>
+    <tr><td>Bruttomarge</td><td>63,0%</td><td>~63,0%</td><td class="pass">✅ konvergent</td></tr>
+    <tr><td>Op. Margin (GAAP)</td><td>49,9% (Non-GAAP)</td><td>~43,1% (GAAP)</td><td class="pass">✅ konvergent (Basis-Differenz erklärt)</td></tr>
+    <tr><td>Revenue-CAGR (5J)</td><td>26,9%</td><td>~32%</td><td class="pass">✅ konvergent (elite)</td></tr>
+    <tr><td>Net-Debt/EBITDA</td><td>0,00 (netto cash)</td><td>-2,9x (netto cash)</td><td class="pass">✅ konvergent</td></tr>
+    <tr><td>Capex/Umsatz</td><td>1,44%</td><td>~1,4%</td><td class="pass">✅ konvergent (sehr kapitalleicht)</td></tr>
+    <tr><td>SBC/Umsatz (3J-Trend)</td><td>steigend absolut</td><td>~5,1%→4,9%→4,8% (leicht fallend)</td><td class="pass">✅ konvergent (unkritisch)</td></tr>
+  </table>
+
+  <div class="section-label">KSF-Scorecard — inkl. integrierter Moat-Komponenten-Zerlegung (Regel 53)</div>
+  <table class="verify-table" style="flex:0 0 auto;">
+    <tr><th>Key Success Factor</th><th>Status</th></tr>
+    <tr><td>High-Speed-Ethernet-Roadmap (800G/1.6T)</td><td class="pass">✅ DEFENSIV</td></tr>
+    <tr><td>Software-/OS-Konsistenz &amp; Automatisierung (EOS)</td><td class="pass">✅ DEFENSIV</td></tr>
+    <tr><td>Hyperscaler-Design-Wins &amp; Co-Development</td><td class="warn">🟡 defensiv, aber konzentriert</td></tr>
+    <tr><td>Supply-Chain-Ausführung/Time-to-Deploy</td><td class="warn">🟡 IN ARBEIT</td></tr>
+    <tr><td><b>Wettbewerbsposition/Moat gegen NVIDIA — siehe Komponenten unten</b></td><td class="warn">🟡 IN ARBEIT</td></tr>
+    <tr><td>Diversifikation jenseits Microsoft/Meta</td><td class="warn">🟡 IN ARBEIT</td></tr>
+  </table>
+  <div class="box" style="flex:0 0 auto;">
+    <h3>Moat-Komponenten (Begründungsebene des Wettbewerbsfaktors, nicht paralleles System)</h3>
+    <table class="verify-table">
+      <tr><th>Komponente</th><th>Stärke</th><th>Trend</th></tr>
+      <tr><td>Software/EOS-Ökosystem</td><td class="pass">Sehr stark</td><td class="pass">Stärker</td></tr>
+      <tr><td>Hardware-AI-Back-end</td><td class="warn">Stark, umkämpft</td><td class="fail">Schwächer (Conan) / Stärker (JJ) — Dissens</td></tr>
+      <tr><td>Switching-Costs/Kundenbindung</td><td class="pass">Mittel-stark</td><td class="pass">Stabil-steigend</td></tr>
+      <tr><td>Skalen-/Ökosystemvorteile (Hyperscaler-Co-Dev)</td><td class="warn">Mittel</td><td class="warn">Ambivalent (Kundenmacht)</td></tr>
+      <tr><td>Offene Standards vs. NVIDIA-vertikale Integration</td><td class="warn">Mittel</td><td class="warn">Strukturelle Schlacht, offen</td></tr>
+    </table>
+  </div>
+
+  <div class="footer"><div>J.A.C.K Full Deep Dive v2</div><div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/12</div></div>
+</div>
+
+<!-- PAGE 4: Financial Health + Kundenkonzentration/Capex -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block"><div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div><div class="brand-sub">Financial Health · Management · Kundenkonzentration + Capex-Verknüpfung</div></div>
+    <div class="meta-block"><div class="date">17. September 2026 — Seite 4</div><div>ANET Arista Networks</div></div>
+  </div>
+
+  <div class="section-label">Bilanz &amp; Kapitalstruktur (Q2 2026, Conan-Primärquelle SEC 10-Q)</div>
+  <table class="verify-table" style="flex:0 0 auto;">
+    <tr><td>Cash + Marketable Securities</td><td>$13,34 Mrd.</td></tr>
+    <tr><td>Explizite Finanzschulden</td><td class="pass">Nahe null</td></tr>
+    <tr><td>Current Ratio</td><td>~3,0x</td></tr>
+    <tr><td>Share-Count-Trend (Dez.24→Dez.25→Jul.26)</td><td>1,2613 Mrd. → 1,2565 Mrd. → 1,2612 Mrd. (netto leicht rückläufig, H1 2026 keine Buybacks)</td></tr>
+    <tr><td>Buyback-Autorisierung offen (30.06.2026)</td><td>$817,9 Mio.</td></tr>
+  </table>
+
+  <div class="section-label">Management-Score &amp; Tonalität zur NVIDIA-Frage</div>
+  <div class="box" style="flex:0 0 auto;">
+    <p><b>Management-Score: Conan 5,5/7, JJ 6/7 — konvergent stark.</b> Management-Tonalität (beide unabhängig): Arista positioniert sich NICHT als NVIDIA-Konkurrent bei GPUs, sondern als Netzwerk-Partner für heterogene/offene AI-Fabrics. Explizite Segmentierung von Management selbst: bei vollständig vertikal integrierten NVIDIA-Stacks (Scale-up/NVLink-nah) "sehr geringe Beteiligung" für Arista — bei Scale-out/Scale-across bessere Position. <b>Bewertung:</b> ehrlich statt euphorisch, bestätigt aber genau das strukturelle Risiko.</p>
+  </div>
+
+  <div class="section-label">Kundenkonzentration + Capex-Verknüpfung (Regel 6-Erweiterung, NEU)</div>
+  <div class="box" style="flex:0 0 auto;">
+    <p><b>Top-2-Konzentration 2025: ~42%</b> (Kunde A 26%, Kunde B 16% laut 10-K — Microsoft/Meta gemäß Vorjahresangaben). <b>Microsoft:</b> FY27-Capex-Wachstum YoY bestätigt, CY2026-Capex-Erwartung ~$190 Mrd. (davon ~$25 Mrd. reine Preiseffekte). <b>Meta:</b> 2026-Capex-Guidance $130-145 Mrd., explizit für AI-/Core-Infrastruktur, Q2 2026 Capex $31,08 Mrd. <b>Einordnung:</b> beide Großkunden bestätigen strukturell hohe, wachsende Capex — der Engpass ist nicht das Capex-Budget, sondern die INTERNE ALLOKATION (offene Ethernet-Fabrics vs. vertikale NVIDIA-Bundles). Status: 🟠 wesentliches, aber datenbelegtes Struktur-Risiko, kein akutes Ausschlusskriterium.</p>
+  </div>
+
+  <div class="footer"><div>J.A.C.K Full Deep Dive v2</div><div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 4/12</div></div>
+</div>
+
+<!-- PAGE 5: Kursverlauf + historischer Max-Drawdown -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block"><div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div><div class="brand-sub">Kursverlauf · Historischer Max-Drawdown-Kontext (Regel 48, NEU universell)</div></div>
+    <div class="meta-block"><div class="date">17. September 2026 — Seite 5</div><div>ANET Arista Networks</div></div>
+  </div>
+
+  <div class="chart-frame"><img src="ANET_chart_v2.png" alt="Kursverlauf ANET"></div>
+
+  <div class="section-label">Historischer Max-Drawdown-Kontext — Pflicht bei JEDEM Full Deep Dive, nicht nur AI-Hype-Werten</div>
+  <div class="box" style="flex:0 0 auto;">
+    <p><b>Eigene Berechnung (Aegis, Twelve-Data-Wochenschlusskurse seit 2016, [LIVE]-Primärquelle):</b> größter historischer Drawdown <b>-50,2%</b>, Peak $129,17 (20.01.2025) → Trough $64,37 (31.03.2025) — deutlich jünger und größer als die oft zitierte Covid-Korrektur (~-50% März 2020) oder der Inflations-Schock 2022 (-36,7%). <b>Auslöser:</b> Wachstums-/Bewertungssorgen Anfang 2025, nicht durch die aktuelle NVIDIA-Frage getrieben. <b>These danach intakt?</b> Ja — der Kurs erholte sich bis September 2026 auf $197,54, deutlich über dem Vor-Drawdown-Niveau. <b>Lehre:</b> selbst bei intakter fundamentaler These sind bei ANET 50%-Drawdowns historisch real und aktuell — "günstig ggü. Historie" ist keine Garantie gegen einen ähnlichen erneuten Rückgang, insbesondere bei der aktuellen KGV ~61x-Bewertung.</p>
+  </div>
+
+  <div class="footer"><div>J.A.C.K Full Deep Dive v2</div><div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/12</div></div>
+</div>
+
+<!-- PAGE 6: DCF-Vergleich + Zirkularitätssperre + Known/Unknown/Unknowable -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block"><div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div><div class="brand-sub">Bewertung · TV-Cross-Check · Zirkularitäts-Sperre · Known/Unknown/Unknowable</div></div>
+    <div class="meta-block"><div class="date">17. September 2026 — Seite 6</div><div>ANET Arista Networks</div></div>
+  </div>
+
+  <div class="section-label">DCF-Vergleich, drei unabhängige Ansätze (echte Zahlen, keine Platzhalter)</div>
+  <table class="scenario-table" style="flex:0 0 auto;">
+    <tr><th>Quelle</th><th>Bear</th><th>Base</th><th>Bull</th><th>Methode</th></tr>
+    <tr><td>Aegis</td><td>$116</td><td>$245</td><td>$449</td><td>10J explizit, Exit-Multiple (18-34x)</td></tr>
+    <tr><td>JJ</td><td>$158,55</td><td>$214,28</td><td>$310,48</td><td>5J explizit, Gordon≈Exit-Multiple (konvergent)</td></tr>
+    <tr><td>Conan</td><td>$65</td><td>$130-135</td><td>$220</td><td>Gordon 65%/Exit-Multiple 35% gewichtet, Zirkularitäts-Sperre angewendet</td></tr>
+  </table>
+  <div class="warn-strip" style="margin-top:0;">Kurs $197,54 liegt zwischen Conans Base und JJs/Aegis' Base — bestätigt erneut den bereits dokumentierten methodischen Fund: ein kürzerer expliziter Horizont (JJ: 5J) plus Gordon-Growth unterschätzt einen Wachstumswert wie ANET strukturell ggü. einem 10J-Exit-Multiple-Ansatz (Aegis). Conans Ergebnis ist NICHT der Ausreißer, sondern die bewusst konservativste, unabhängig begründete Gewichtung.</div>
+
+  <div class="section-label">Zirkularitäts-Sperre (Regel 38b) — wer hat sie wie angewendet?</div>
+  <div class="box" style="flex:0 0 auto;">
+    <p><b>Conan (einzige KI mit &gt;30%-TV-Divergenz):</b> Exit-Multiple lag ~30%+ über Gordon-Growth. Begründung für die gewählte 65/35-Gewichtung zugunsten Gordon war explizit NICHT "näher am Kurs", sondern: (1) unklare Terminal-Wettbewerbsposition gegen NVIDIA-Bundles in Jahr 10+, (2) bereits beobachtete Margin-Kompression durch Large-Customer-Discounts, (3) Wachstumsnormalisierungs-Risiko. Regelkonform.</p>
+    <p><b>JJ:</b> Gordon-Growth ($214,28) und Exit-Multiple ($209,79) lagen &lt;3% auseinander — die Zirkularitäts-Sperre greift laut Regel 38b erst &gt;30% Abweichung, hier also gar nicht nötig. Kein Regelverstoß, aber JJs kürzerer 5-Jahres-Horizont bleibt eine Abweichung vom Haus-Standard (10J für Wachstumscompounder).</p>
+  </div>
+
+  <div class="section-label">Known / Unknown / Unknowable</div>
+  <table class="verify-table" style="flex:0 0 auto;">
+    <tr><th>Known</th><th>Unknown (recherchierbar)</th><th>Unknowable</th></tr>
+    <tr><td>Umsatz/Margen/Cash/Kundenkonzentration ~42%, aktuelle NVIDIA-Marktanteilszahlen</td><td>Exakter 2026/27-Wallet-Share bei Microsoft/Meta, tatsächliche Spectrum-X-Verdrängung je Cluster</td><td>Ob offene Ethernet-Fabrics über 10J gegen vertikale GPU-Stacks dominieren, langfristige AI-Nachfrage 2030+</td></tr>
+  </table>
+
+  <div class="footer"><div>J.A.C.K Full Deep Dive v2</div><div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/12</div></div>
+</div>
+
+<!-- PAGE 7: DCF-Chart + Sensitivitätsmatrix + Peer-Table mit EV/FCF -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block"><div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div><div class="brand-sub">DCF-Szenarien-Chart · 3×3-Exit-Multiple-Matrix · Peer-Vergleich inkl. EV/FCF</div></div>
+    <div class="meta-block"><div class="date">17. September 2026 — Seite 7</div><div>ANET Arista Networks</div></div>
+  </div>
+
+  <div class="chart-frame"><img src="ANET_dcf_scenarios_v2.png" alt="DCF-Szenarien-Vergleich"></div>
+
+  <div class="section-label">Exit-Multiple-Sensitivität als echte 3×3-Matrix (Regel 38c, Conan-Beispiel)</div>
+  <table class="scenario-table" style="flex:0 0 auto;">
+    <tr><th>5J-Umsatz-CAGR \ Exit-Multiple</th><th>19,6x</th><th>23,1x</th><th>26,6x</th></tr>
+    <tr><td>12%</td><td>$129</td><td>$147</td><td>$165</td></tr>
+    <tr><td>17%</td><td>$157</td><td>$179</td><td>$201</td></tr>
+    <tr><td>22%</td><td>$190</td><td>$216</td><td>$244</td></tr>
+  </table>
+
+  <div class="section-label">Peer-Multiple-Vergleich inkl. EV/FCF (Regel 19-Erweiterung, NEU)</div>
+  <table class="verify-table" style="flex:0 0 auto;">
+    <tr><th>Unternehmen</th><th>Fwd. KGV</th><th>EV/EBITDA</th><th>EV/FCF</th><th>Op.-Margin</th></tr>
+    <tr><td>Arista (ANET)</td><td>~50er</td><td>~45-46x</td><td>~44-46x</td><td>~43%</td></tr>
+    <tr><td>Cisco (CSCO)</td><td>21,4x</td><td>24,2x</td><td>35,4x</td><td>25,4%</td></tr>
+    <tr><td>Broadcom (AVGO)</td><td>19,6x</td><td>31,7x</td><td>42,0x</td><td>48,8%</td></tr>
+    <tr><td>NVIDIA (NVDA)</td><td>~23,6x</td><td>~22,1x</td><td>~47,0x</td><td>~60%</td></tr>
+    <tr><td>HPE</td><td>12,2x</td><td>12,8x</td><td>21,2x</td><td>niedrig-mittel</td></tr>
+  </table>
+  <div class="warn-strip" style="margin-top:0;">Qualitäts-Multiple-Check (Punkt 19): ANET zeigt sowohl die höchste Bewertung ALS AUCH überdurchschnittliche Marge im Peer-Set — anders als beim Digital-Arts-Fall KEINE Inversions-Anomalie, sondern ein konsistentes Premium für Wachstum+Marge. Erklärungspflicht erfüllt.</div>
+
+  <div class="footer"><div>J.A.C.K Full Deep Dive v2</div><div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/12</div></div>
+</div>
+
+<!-- PAGE 8: Kill-Sheet mit graduierten Schwellenwerten + Meilenstein-Timeline -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block"><div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div><div class="brand-sub">🔪 Thesis-Kill-Sheet · graduierte Schwellenwerte · Meilenstein-Timeline</div></div>
+    <div class="meta-block"><div class="date">17. September 2026 — Seite 8</div><div>ANET Arista Networks</div></div>
+  </div>
+
+  <div class="killsheet-box">
+    <h3>🔪 Kill-Sheet — graduierte Schwellenwerte (Regel 26-Erweiterung, NEU)</h3>
+    <table class="verify-table">
+      <tr><th>Kennzahl</th><th>🟡 Beobachten</th><th>🟠 Neu bewerten</th><th>🔴 These gefährdet</th></tr>
+      <tr><td>Bruttomarge (GAAP)</td><td>&lt;62% (2Q)</td><td>&lt;60%</td><td>&lt;58% + Pricing-Druck</td></tr>
+      <tr><td>NVIDIA-Marktanteil (Ethernet-Switching)</td><td>weitere Anteilsgewinne, ANET wächst noch</td><td>NVIDIA gewinnt bei bestehenden ANET-Kunden</td><td>ANET verliert mehrere AI-Fabric-Design-Wins</td></tr>
+      <tr><td>Kundenkonzentration Top-2</td><td>bleibt &gt;40%, Wachstum hoch</td><td>ein Top-Kunde reduziert deutlich</td><td>Top-Kunde fällt unter Run-Rate (Architekturwechsel)</td></tr>
+      <tr><td>Working-Capital/Deferred Revenue</td><td>wächst schneller als Umsatz</td><td>FCF-Marge &lt;30% (Timing)</td><td>materielle Write-downs/Retouren</td></tr>
+    </table>
+  </div>
+
+  <div class="trigger-row">
+    <div class="trigger-box bull">
+      <h3>Bull-Trigger</h3>
+      <ul>
+        <li>FY26-Umsatz &gt;$12,8 Mrd. + starker FY27-Ausblick</li>
+        <li>1,6T/Etherlink-Deployments bei mehreren Hyperscalern</li>
+        <li>Top-2-Konzentration sinkt &lt;35% bei weiter hohem Wachstum</li>
+        <li>Konkrete Non-NVIDIA-Custom-XPU-Design-Wins</li>
+      </ul>
+    </div>
+    <div class="trigger-box bear">
+      <h3>Bear-/Warn-Trigger</h3>
+      <ul>
+        <li>Großer Hyperscaler kündigt strategische NVIDIA-Netzwerk-Partnerschaft an</li>
+        <li>Insider-Verkaufsserie weitet sich über 10b5-1-Routine hinaus aus</li>
+        <li>Op.-Margin strukturell &lt;35% (nicht nur ein Quartal)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-label">Meilenstein-Timeline mit Leitkatalysator ⭐</div>
+  <table class="verify-table" style="flex:0 0 auto;">
+    <tr><th>Termin</th><th>Positivsignal</th><th>Warnsignal</th></tr>
+    <tr><td>⭐ <b>Q3 2026 Earnings (~Nov. 2026) — LEITKATALYSATOR</b></td><td>Umsatz ≥$3,3 Mrd., GM stabil &gt;62%, starker FY27-Kommentar</td><td>schwacher Q4-Ausblick, GM-Druck, vage NVIDIA-Aussagen</td></tr>
+    <tr><td>Microsoft/Meta nächste Earnings</td><td>Capex bleibt netzwerkinfrastrukturlastig</td><td>Capex verschiebt sich zu GPU-only/vertikalen Bundles</td></tr>
+    <tr><td>1,6T-Produkt-Updates 2027</td><td>mehrere Hyperscaler-Deployments</td><td>Ramp verzögert, NVIDIA dominiert neue Cluster</td></tr>
+  </table>
+
+  <div class="footer"><div>J.A.C.K Full Deep Dive v2</div><div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 8/12</div></div>
+</div>
+
+<!-- PAGE 9: These-Monitoring-Kette -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block"><div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div><div class="brand-sub">🧠 These-Monitoring-Kette (Regel 51, NEU — eine Tabelle statt vier Listen)</div></div>
+    <div class="meta-block"><div class="date">17. September 2026 — Seite 9</div><div>ANET Arista Networks</div></div>
+  </div>
+
+  <div class="section-label">Kernannahme → Confidence → Beobachtbarer KPI → Eigener Kipppunkt</div>
+  <table class="chain-table" style="flex:0 0 auto;">
+    <tr><th>Kernannahme</th><th>Confidence + Beleg</th><th>Beobachtbarer KPI</th><th>Eigener Kipppunkt</th></tr>
+    <tr><td>Arista bleibt führender offener Ethernet-Fabric-Anbieter für Hyperscaler/AI</td><td>Mittel-hoch — EOS/Roadmap/Wachstum stützen, NVIDIA greift strukturell an</td><td>AI-/Cloud-Titan-Revenue, 1,6T-Deployments, Data-Center-Switching-Share</td><td>Anheben: AI-Fabric-Wins außerhalb MSFT/Meta · Senken: NVIDIA gewinnt bestehende ANET-Designs</td></tr>
+    <tr><td>AI-Capex bei Microsoft/Meta bleibt hoch genug für ANET-Wachstum 2026/27</td><td>Hoch kurzfristig — beide Kunden kommunizieren massiv steigenden Capex</td><td>MSFT/META-Capex-Guidance, Network-Infrastructure-Kommentare</td><td>Anheben: FY27-Capex weiter netzwerkbetont · Senken: Capex-Repriorisierung weg von Ethernet</td></tr>
+    <tr><td>Margen bleiben strukturell außergewöhnlich trotz Large-Customer-Discounts</td><td>Mittel — Op.-Margin stark, aber GM fiel bereits wegen Kundenmix</td><td>GAAP-GM, Non-GAAP-Op.-Margin, Produktmix</td><td>🟡 &lt;62% GM (2Q) · 🟠 &lt;60% · 🔴 &lt;58%+Pricing-Druck</td></tr>
+    <tr><td>Kundenkonzentration bleibt kontrollierbar</td><td>Mittel — Top-2 ~42% ist hoch, aber Kunden-Capex stark</td><td>Top-1/Top-2-Anteil, Customer-Sector-Revenue</td><td>Anheben: Top-2 &lt;35% bei &gt;20% Wachstum · Senken: ein Top-Kunde reduziert/verschiebt Architektur</td></tr>
+    <tr><td>FCF-Qualität bleibt hoch, nicht primär Deferred-Revenue-Timing-getrieben</td><td>Mittel — FCF stark, aber Deferred Revenue/Acceptance-Terms steigen</td><td>CFO-NI-Abgleich, Deferred Revenue, Inventory</td><td>Anheben: FCF-Marge &gt;35% ohne überproportionale Deferred-Revenue-Zunahme · Senken: FCF &lt;30% oder Write-downs</td></tr>
+    <tr><td>Bewertung bleibt durch Wachstum rechtfertigbar</td><td>Niedrig-mittel — aktueller Kurs verlangt Bull-nahe Ausführung</td><td>5J-Wachstumspfad, EV/FCF, Forward-EPS-Revisionen</td><td>Anheben: 5J-Wachstum &gt;20% sichtbar · Senken: Wachstum &lt;15% bei EV/FCF &gt;35x</td></tr>
+  </table>
+  <div class="warn-strip" style="margin-top:0;">JJ und Conan haben diese Kette unabhängig geliefert — beide landen auf strukturell denselben 5-6 Kernannahmen, ein starkes Konvergenzsignal trotz unterschiedlicher Bewertungs-Schlussfolgerung.</div>
+
+  <div class="footer"><div>J.A.C.K Full Deep Dive v2</div><div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 9/12</div></div>
+</div>
+
+<!-- PAGE 10: Struktur-Risiko + Insider -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block"><div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div><div class="brand-sub">Struktur-Risiko · Insider-Transaktionen</div></div>
+    <div class="meta-block"><div class="date">17. September 2026 — Seite 10</div><div>ANET Arista Networks</div></div>
+  </div>
+
+  <div class="divergence-box">
+    <h3>Struktur-Risiko: NVIDIA Spectrum-X</h3>
+    <p>NVIDIA ist laut IDC in Q1 2026 im Datacenter-Ethernet-Switching auf Platz 1 vorgestoßen (Marktsurge +39,8% auf $15,4 Mrd.) — ein struktureller, mehrjähriger Risikofaktor, unabhängig vom aktuellen Newsflow. NVIDIA bündelt GPU+NIC+Switch+Software zu einem vertikal integrierten AI-Fabric-Stack; Arista bleibt bei offenen, heterogenen Ethernet-Fabrics stark, ist aber in den wertvollsten neuen AI-Back-end-Designs stärker gefordert. Kein Existenzrisiko, aber ein reales Multiple-/Wachstumspfad-Risiko bei der aktuellen Bewertung.</p>
+  </div>
+
+  <div class="section-label">Insider-Transaktionen</div>
+  <div class="box" style="flex:0 0 auto;">
+    <p>Überwiegend Verkäufe in den letzten 90 Tagen (u.a. CEO Ullal, Co-Founder Bechtolsheim, Kenneth Duda), <b>fast ausnahmslos als 10b5-1-Planverkäufe</b> gekennzeichnet — kein diskretionäres Panikverkaufsmuster, aber auch kein bullisches Signal. Keine Open-Market-Käufe in den letzten 12 Monaten dokumentiert. Bei der aktuell hohen Bewertung ist das fehlende Insider-Buying ein relevanter, wenn auch nicht alarmierender Datenpunkt.</p>
+  </div>
+
+  <div class="footer"><div>J.A.C.K Full Deep Dive v2</div><div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 10/12</div></div>
+</div>
+
+<!-- PAGE 11: Datenintegritäts-Warnstrip (nur Daten-Konfidenz, KEIN Infra-Narrative) + Quellen -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block"><div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div><div class="brand-sub">Datenintegrität · Quellen</div></div>
+    <div class="meta-block"><div class="date">17. September 2026 — Seite 11</div><div>ANET Arista Networks</div></div>
+  </div>
+
+  <div class="integrity-box">
+    <h3>Datenintegritäts-Warnstrip (Regel 50 — reine Daten-Konfidenz, keine Infrastruktur-Historie)</h3>
+    <p>Alle Kernkennzahlen [LIVE]/[VERIFIED] über SEC-10-Q/10-K-Primärquellen (Conan) bzw. Aggregator-Quellen mit Websuche (JJ), gegenseitig plausibilisiert. Piotroski-F-Score zeigt eine Divergenz (JJ 4/9 vs. Conan ~6/9) — beide werten dies als branchentypisch unkritisch für einen Netto-Cash-Compounder, nicht als Datenfehler. Historischer Max-Drawdown wurde von Aegis direkt aus Twelve-Data-Primärreihen nachgerechnet (nicht aus einer Sekundärquelle übernommen) und weicht dadurch von einer zunächst zitierten älteren Zahl ab — die selbst berechnete, aktuellere Zahl (-50,2%, Jan-Mär 2025) gilt als verbindlich.</p>
+  </div>
+
+  <div class="section-label">Quellen</div>
+  <div class="sources-list">
+    <div><span class="n">1</span>SEC 10-K FY2025, 10-Q Q2 2026 (Arista Networks)</div>
+    <div><span class="n">2</span>Microsoft FY26 Q3/Q4 Earnings Calls (Capex-Guidance)</div>
+    <div><span class="n">3</span>Meta Q2 2026 10-Q / Earnings Call (Capex-Guidance)</div>
+    <div><span class="n">4</span>IDC Datacenter-Ethernet-Switching-Report Q1 2026</div>
+    <div><span class="n">5</span>NVIDIA Spectrum-X Produktseite/Positionierung</div>
+    <div><span class="n">6</span>SEC Form 4 Filings (Insider-Transaktionen Ullal/Bechtolsheim/Duda)</div>
+    <div><span class="n">7</span>Twelve Data (Live-Kurs, historische Wochenschlusskurse seit 2016, Max-Drawdown-Berechnung)</div>
+    <div><span class="n">8</span>StockAnalysis/TipRanks/Yahoo Finance (Peer-Multiples, Analysten-Konsens)</div>
+  </div>
+
+  <div class="footer"><div>J.A.C.K Full Deep Dive v2</div><div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 11/12</div></div>
+</div>
+
+<!-- PAGE 12: Fazit + volle Executive-Verdict-Matrix + Agent-Score-Herleitung -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block"><div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div><div class="brand-sub">Fazit · Executive-Verdict-Matrix · Agent-Score-Herleitung</div></div>
+    <div class="meta-block"><div class="date">17. September 2026 — Seite 12</div><div>ANET Arista Networks</div></div>
+  </div>
+
+  <div class="section-label">Executive-Verdict-Matrix (volle Fassung)</div>
+  <div class="verdict-matrix" style="flex:0 0 auto;">
+    <div class="verdict-col quality">
+      <h3>Unternehmensqualität</h3>
+      <div class="verdict-row"><span class="k">DNA-Check-Gesamtbild</span><span class="v"><span class="chip g">🟢</span></span></div>
+      <div class="verdict-row"><span class="k">Bilanz/Netto-Cash</span><span class="v"><span class="chip g">🟢</span></span></div>
+      <div class="verdict-row"><span class="k">Moat-Status (Software)</span><span class="v"><span class="chip g">🟢 stark, Trend +</span></span></div>
+      <div class="verdict-row"><span class="k">Moat-Status (AI-Back-end)</span><span class="v"><span class="chip y">🟡 umkämpft</span></span></div>
+      <div class="verdict-row"><span class="k">Wachstumsqualität</span><span class="v"><span class="chip g">🟢</span></span></div>
+      <div class="verdict-row"><span class="k">Management-Score</span><span class="v">5,5-6/7</span></div>
+    </div>
+    <div class="verdict-col price">
+      <h3>Aktienqualität zum aktuellen Preis</h3>
+      <div class="verdict-row"><span class="k">Bewertung ggü. Peers</span><span class="v"><span class="chip r">🔴</span></span></div>
+      <div class="verdict-row"><span class="k">Kundenkonzentration</span><span class="v"><span class="chip y">🟡 ~42%</span></span></div>
+      <div class="verdict-row"><span class="k">Leitrisiko (dominant)</span><span class="v">NVIDIA Spectrum-X</span></div>
+      <div class="verdict-row"><span class="k">Historischer Max-Drawdown</span><span class="v">-50,2% (2025)</span></div>
+      <div class="verdict-row"><span class="k">Champions-Fit</span><span class="v"><span class="chip g">🟢 ja</span></span></div>
+      <div class="verdict-row"><span class="k">Sofort hohe Konviktion?</span><span class="v"><span class="chip y">🟡 nicht eindeutig</span></span></div>
+    </div>
+  </div>
+
+  <div class="section-label">Agent-Score-Herleitung (Aegis-Synthese)</div>
+  <table class="score-table" style="flex:0 0 auto;">
+    <tr><td>Anker-Bereich</td><td>6-8 Qualitäts-Kern (nahe Ausnahme-Compounder-Schwelle)</td></tr>
+    <tr><td>Ausgangswert</td><td>8 von 6-8 — DNA/Bilanz/Moat-Substanz elite</td></tr>
+    <tr><td>Aktive Mali</td><td>Bewertungsdeckel (KGV ~50-61x), Kundenkonzentration ~42%, NVIDIA-Leitrisiko — als korrelierte Gruppe behandelt (alle senken Sicherheitsmarge)</td></tr>
+    <tr><td>Aktive Deckel</td><td>Konfidenz max. 🟡 (echte 3-Wege-DCF-Divergenz $65-310)</td></tr>
+    <tr><td><b>Finaler Score</b></td><td><b>7-8/10, Konfidenz 🟡 MITTEL</b></td></tr>
+  </table>
+
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating">BEOBACHTEN</div>
+      <div class="sub">Score 7-8/10 · Konfidenz 🟡</div>
+    </div>
+    <p style="font-size:9.4pt; color:var(--text-dim); line-height:1.44;">Ein fundamental makelloser Compounder, dessen Bewertung diesmal noch schärfer geprüft wurde — und dessen faire-Wert-Spanne sich dabei NICHT verengt, sondern verbreitert hat ($65-449 über drei unabhängige Ansätze). Das ist kein Rechenfehler, sondern der ehrliche Ausdruck echter, primärquellenbelegter Unsicherheit über die NVIDIA-Wettbewerbsfrage und die richtige DCF-Methodik für einen 10-Jahres-Wachstumscompounder. Champions-Fit ja, sofortige hohe Konviktion nein.</p>
+  </div>
+
+  <div class="footer"><div>J.A.C.K Full Deep Dive v2 · Volltext: analysen/ANET-fulldeepdive-cross-check-2026-09-17.md</div><div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 12/12</div></div>
+</div>
+
+</body>
+</html>
