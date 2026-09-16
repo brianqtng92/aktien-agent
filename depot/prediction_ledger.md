@@ -71,6 +71,16 @@ nicht als tägliche Meldung.
 - **Nächster Prüfpunkt:** NIM-Entwicklung über die nächsten 2-3 Quartale.
 - **Prüf-Zeithorizont:** 6 Monate (2027-03-04).
 
+### 2026-09-16 — CBOE Holdings (Depot, Champions) — Full Deep Dive, Rating KAUFEN (gestaffelt)
+- **Anlass:** Bestehende Depot-Position, echter 3-fach-Cross-Check auf Brians Wunsch (Ausbau der Position prüfen) — siehe `analysen/CBOE-fulldeepdive-cross-check-2026-09-16.md`. Erster Analyseversuch scheiterte an einem Bugfix-Bedarf (Bridges ohne echten Web-Search-Zugriff, siehe HANDOVER.md 10.14), nach Fix komplett neu durchgeführt.
+- **Empfehlungs-Typ:** Nachkauf-Empfehlung (KAUFEN, gestaffelt), Kurs bei Empfehlung $270,40 (15.09.2026, nach -4,96%-Tagesverlust, sektorweiter FOMC-Ausverkauf ohne CBOE-spezifischen Auslöser).
+- **Zentrale These:** Champion-Qualität bestätigt (ROE 25-26%, ROIC 17-29% je Quelle, Netto-Cash-Bilanz, Moat STARK/SPX-VIX-Exklusivlizenz), Guidance 2026 zweimal angehoben. Alle drei unabhängigen DCF-Rechnungen (Jarvis/Jack/Conan) kommen strukturell über Analysten-Konsens ($292-318) — Ursache: bei CBOEs niedrigem Beta (0,41-0,64) ist der WACC-Terminal-g-Spread so eng, dass der Terminal-Value-Anteil auf 84-87% des EV steigt (Modell-Artefakt, kein Fehler). Peer-EV/EBITDA-Abschlag (14,25x vs. Peer-Median 17,3x) stützt die These zusätzlich.
+- **Konkrete Erwartung (Fair-Value-Bandbreite):** Bear $240-291 · Base $360-410 (bewusst unter dem mechanischen Gordon-DCF-Wert von $396-484, siehe Root-Cause oben) · Bull $503-610. Analysten-Konsens $292-318 als zusätzlicher, konservativerer Anker.
+- **These-Bruch-Kriterien:** (a) ROIC dreht 2 Quartale in Folge unter WACC; (b) Moat-Decay bestätigt (SPX-Exklusivlizenz-Risiko materialisiert); (c) Debt-Maturity Januar 2027 dreht auf KRITISCH ohne klare Refinanzierungslösung; (d) Kurs steigt >30% über Base-FV ohne Fundamentalverbesserung.
+- **Nachkauf-Trigger (gestaffelt, keine automatische Order):** Tranche 1 bei Stabilisierung über $268-270 (Tier 2, ~1,5-2%) — technische Bestätigung Pflicht (RSI-Erholung >45, MACD-Bodenbildung oder OBV-Trendwechsel). Tranche 2 bei $255-262.
+- **Nächster Prüfpunkt:** Ausführung Tranche 1 (technische Bestätigung) sowie Q3-2026-Earnings.
+- **Prüf-Zeithorizont:** 6 Monate (2027-03-16).
+
 ## Erledigt (Post-Mortem abgeschlossen)
 
 _Noch keine fälligen Einträge._

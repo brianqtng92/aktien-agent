@@ -1201,6 +1201,102 @@ und/oder einer einzelnen verzerrten FCF-Quartalszahl beruht, wird als
 Datenlücken-Artefakt behandelt, nicht als belastbares Urteil – Conans und
 Jarvis' Einschätzung erhalten in diesem Fall mehr Gewicht.
 
+### 10.14 `_agentic`-Varianten hatten NIE echten Web-Search-Zugriff – Bugfix 2026-09-16, plus korrigierte Praxis-Regel
+
+**Symptom (CBOE-Full-Deep-Dive, 2026-09-16):** Jarvis dispatchte an
+`ask_gemini_agentic`/`ask_chatgpt_agentic` (weil ursprünglich ein
+Kurs-Fallback per `get_quote`-Relay eingebaut werden sollte). Ergebnis:
+**Jack (Gemini) erfand Fundamentaldaten** (ROIC/EPS-CAGR/WACC/DCF-Werte),
+selbst als "Simulierte Bloomberg/Yahoo/CBOE IR" gekennzeichnet, aber
+trotzdem mit `[VERIFIED]`/`[LIVE]` getaggt – ein echter Regelverstoß gegen
+die eigene Data-Integrity-Methodik. **Conan (ChatGPT) verhielt sich
+vorbildlich** – erkannte "kein Web-Search-Zugriff in dieser Session",
+taggte alles korrekt `[TRAINING]`/`[ESTIMATE]`, Confidence nur 42%.
+
+**Root-Cause-Analyse (Code-Review beider Server unter
+`~/.claude/mcp-servers/`):**
+- `ask_gemini_agentic` hatte im `tools`-Payload **ausschließlich**
+  `DEPOT_TOOLS` (die Portfolio-Function-Declarations) – **kein**
+  `{"google_search": {}}`. Jack hatte in dieser Funktion technisch NIE
+  einen Such-Tool-Zugriff, unabhängig vom Prompt-Inhalt.
+- `ask_chatgpt_agentic` lief über die **Chat-Completions-API**
+  (`/v1/chat/completions`), die **kein natives Web-Search-Tool kennt** –
+  nur die Responses-API (`/v1/responses`, von `ask_chatgpt` bereits
+  genutzt) unterstützt `{"type": "web_search"}`. Conans "kein
+  Web-Search-Tool"-Meldung war also technisch korrekt, keine Übertreibung.
+
+**Fix (beide Dateien, live end-to-end getestet nach Prozess-Neustart):**
+- `ask_gemini_agentic`: `enable_search`-Parameter (Default `True`) neu
+  eingeführt. Kombination "`google_search` + eigene `functionDeclarations`
+  im selben Request" ist bei Gemini nur ab der **Gemini-3-Modellfamilie**
+  erlaubt (offiziell "Preview", ai.google.dev/gemini-api/docs/
+  tool-combination) – auf `gemini-2.5-flash` gibt die API einen harten
+  400er ("Built-in tools and Function Calling cannot be combined").
+  **Live getestet 2026-09-16: alle Gemini-3-Modelle (`gemini-3.8-flash`,
+  `gemini-3-flash-preview`, `gemini-3.1-flash-lite`, `gemini-3.5-flash`)
+  liefern auf Brians aktuellem API-Key `HTTP 429 RESOURCE_EXHAUSTED` –
+  keine Quota für die Gemini-3-Familie (Stand 2026-09-16, ggf. nach
+  Plan-Upgrade/Billing bei Google erneut prüfen).** Deshalb bleibt der
+  Default-Modell weiterhin `gemini-2.5-flash`, und `enable_search`
+  entscheidet jetzt, welches Tool-Set aktiv ist (sich gegenseitig
+  ausschließend auf 2.5-flash): `True` → nur `google_search` (kein
+  Depot-Zugriff in diesem Call), `False` → nur `DEPOT_TOOLS` (wie vor
+  dem Fix). Live-Test mit `enable_search=True` bestätigt: echte Google-
+  Search-Grounding-Antwort inkl. Quellen (boerse.de/wallstreet-online/
+  onvista, echte `vertexaisearch.cloud.google.com`-Redirect-URLs).
+- `ask_chatgpt_agentic`: komplett auf die **Responses-API** umgebaut
+  (Tool-Format von der verschachtelten Chat-Completions-Form
+  `{"type":"function","function":{...}}` auf die flache Responses-Form
+  `{"type":"function","name":...}` umgestellt, State-Handling von
+  `messages`-Array auf `input`-Item-Array mit `function_call`/
+  `function_call_output`-Items umgebaut). **Anders als bei Gemini
+  KEINE Preview-Einschränkung** – `web_search` und eigene Function-Tools
+  laufen bei OpenAI offiziell unterstützt zusammen, auch auf `gpt-5.5`
+  ohne Sondermodell. Live-Test bestätigt: echte Web-Search-Antwort inkl.
+  Quellen (financecharts.com/apnews.com/finanzen.net) UND funktionierender
+  Depot-Tool-Call (`get_quote`) im selben Ablauf.
+
+**WICHTIGE, bereits vor diesem Fix bestehende Einschränkung, die weiter
+gilt (siehe 10.10 oben, "Bekannte Einschränkung entdeckt 2026-09-05"):**
+bei Gemini führt `enable_search=True` **kombiniert mit einem sehr langen
+Prompt (>50-70K Zeichen, wie der volle TMR/Scout/TA-Mega-Prompt)** dazu,
+dass Gemini nach der Suche vorzeitig abbricht (`finishReason: STOP` nach
+nur ~360 Output-Tokens) – die Suche selbst wird fälschlich als
+abgeschlossene Antwort behandelt. Das gilt unabhängig davon, ob `ask_gemini`
+oder `ask_gemini_agentic` verwendet wird (gleiche zugrunde liegende
+Gemini-API, gleiches Modell). **Praktische Konsequenz/korrigierte Regel:**
+"Jack hat jetzt immer Web-Search" ist nur dann tatsächlich wahr, wenn der
+Prompt NICHT der volle 130KB-Mega-Prompt ist. Zwei gangbare Wege:
+1. **Kondensierter Methodik-Prompt** (Kernregeln/Schwellen in eigenen
+   Worten zusammengefasst statt der drei Methodik-Dateien wörtlich, siehe
+   `analysen/CBOE-...` vom 2026-09-16 als Vorlage, ~15-20K statt ~130K
+   Zeichen) + `enable_search=True` – so tatsächlich getestet und
+   funktionierend beim CBOE-Full-Deep-Dive.
+2. Voller Mega-Prompt + `enable_search=False` (wie bisherige Praxis,
+   siehe SKILL.md-Dateien) – dann bleibt Jarvis' eigenes Fact-Pack (jetzt
+   inkl. WebSearch/WebFetch-verifizierten Zahlen) die einzige Live-Quelle
+   für Jack, kein eigener Suchzugriff.
+Conan/ChatGPT ist von dieser Einschränkung nicht betroffen (siehe 10.10:
+voller ~74K-Zeichen-Mega-Prompt + `enable_search=True` lief bereits am
+2026-09-05 sauber durch, deckte sogar einen echten Fact-Pack-Fehler auf).
+**Diese Handover-Notiz ersetzt NICHT die pauschale SKILL.md-Regel
+"`enable_search` MUSS bei diesem Mega-Prompt auf `False` gesetzt werden" –
+die bleibt für den vollen Mega-Prompt-Fall weiterhin richtig. Sie ergänzt
+sie um Weg 1 (kondensierter Prompt) als Alternative, wenn echte Jack-Suche
+für eine konkrete Analyse wichtiger ist als die wörtliche Vollständigkeit
+der Methodik-Datei.**
+
+**Prozess-Neustart-Hinweis (gilt für JEDE Code-Änderung an den Bridge-
+Servern, nicht nur diesen Fix):** die MCP-Hintergrundprozesse
+(`~/.claude/mcp-servers/{gemini,openai}-bridge/server.py`) laufen als
+eigenständige, langlebige Kindprozesse eines internen Claude-Desktop-
+Helferprozesses (PPID ungleich der Haupt-App-PID) – ein normaler
+App-Neustart (Fenster schließen/neu öffnen) tötet sie NICHT zuverlässig,
+sie liefen bei diesem Fix seit dem 10.09. ungestört weiter. Zuverlässiger
+Weg: `ps aux | grep mcp-servers/<name>-bridge` → `kill <pid>` → der
+nächste Tool-Aufruf respawnt den Prozess automatisch mit dem aktuellen
+Datei-Stand (kein `run.sh` von Hand nötig).
+
 ---
 
 ## 11. Offene Punkte (Stand dieser Übergabe)
