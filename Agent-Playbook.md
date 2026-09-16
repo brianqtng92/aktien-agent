@@ -4670,10 +4670,37 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     "effektiver Bewertungsboden" einordnen (z.B. "selbst im Extrem-Bear-Fall
     liegt der Cash-Wert pro Aktie bei X, was Y% Downside-Schutz ab dem
     aktuellen Kurs bedeutet").
+    **Erweiterung (2026-09-16, zweiter Digital-Arts-Review, alle 3 KIs):**
+    zwei zusätzliche Kennzahlen ergänzen die bestehende Cash-pro-Aktie-Angabe
+    – Netto-Cash als % der aktuellen Marktkapitalisierung (macht die
+    Größenordnung sofort vergleichbar über verschiedene Marktkap-Klassen
+    hinweg) UND das implizite P/B-Multiple am Bear-Case-Kurs (zeigt, ob der
+    Boden selbst noch "billig" oder bereits fair bewertet wäre – ein Bear-
+    Case-Kurs mit P/B 1,8x ist ein schwächerer Boden als einer mit P/B 0,6x).
+    **Sprachdisziplin (Conans expliziter Einwand, von Aegis übernommen):**
+    durchgängig als "Substanz-/Downside-Cushion" bezeichnen, NIE als "harter
+    Floor" oder "Boden" ohne Konjunktiv – Netto-Cash kann durch M&A,
+    Verluste, Sonderdividenden oder Kapitalfehlallokation aufgebraucht
+    werden, ein Aktionär ohne Kontrollmehrheit hat auf die
+    Kapitalallokation keinen Einfluss. Formulierungsvorbild: "Netto-Cash
+    deckt X% der Marktkap – ein Abschlag hiervon, kein garantierter Boden."
 13. **Bear-Case als benannter Wahrscheinlichkeits-Katalog statt Fließtext-
     Liste.** 3-5 konkrete, einzeln benannte Risiken, jeweils mit eigener
     Eintrittswahrscheinlichkeits-Einschätzung (Niedrig/Mittel/Hoch) statt
     einem undifferenzierten Absatz "es gibt Risiken".
+    **Erweiterung (2026-09-16, zweiter Digital-Arts-Review, alle 3 KIs,
+    einstimmig empfohlen): Stacking-Logik statt isolierter Einzelbewertung.**
+    Ein einzelner Trigger mit "Niedrig/Mittel" tötet die These meist nicht
+    allein – das eigentliche Risiko liegt oft im GLEICHZEITIGEN Eintreten
+    mehrerer Trigger (z.B. Wachstum unter Schwelle UND Backlog schrumpft
+    UND ein Großkunde/-distributor fällt aus). Direkt unter der Trigger-
+    Tabelle ein bis zwei Sätze ergänzen, WELCHE Trigger-Kombinationen sich
+    gegenseitig verstärken würden ("wenn X und Y gleichzeitig eintreten,
+    kippt der Fall von BEOBACHTEN auf VERKAUFEN, da beide auf denselben
+    Nachfrage-Rückgang hindeuten würden") – reine qualitative Verknüpfungs-
+    Logik, keine Pseudo-Wahrscheinlichkeits-Multiplikation (das wäre falsche
+    Präzision, siehe Core-Rule 13/No-False-Precision). Kein Zusatzaufwand:
+    nutzt ausschließlich die bereits vorhandenen Trigger-Zeilen.
 14. **Root-Cause-Analyse bei jeder Guidance-Kürzung/negativen Überraschung.**
     Nicht nur feststellen DASS gekürzt wurde, sondern explizit einordnen:
     Nachfrage-Problem (strukturell, schlechter) oder Ausführungs-/Timing-
@@ -5050,6 +5077,21 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     Risiko-Faktor, der unabhängig vom aktuellen Krisen-/Hype-Zustand
     wirkt, gehört immer in die Analyse, auch wenn er (wie bei NVO) heute
     noch kein akutes Ausschlusskriterium ist.
+    **Erweiterung (2026-09-16, zweiter Digital-Arts-Review, alle 3 KIs,
+    einstimmig empfohlen): explizites Ablaufdatum bei politik-/programm-
+    getriebenem Umsatzanteil.** Wo ein signifikanter Umsatzanteil auf ein
+    konkretes staatliches Programm, eine Subvention oder eine befristete
+    Beschaffungswelle zurückgeht (z.B. ein Bildungs-/Infrastruktur-Förder-
+    programm, eine Abwrackprämie, ein Rüstungsbeschaffungs-Zyklus): das
+    bekannte oder recherchierte Auslauf-/Renewal-Datum explizit benennen,
+    statt den Tailwind implizit als Dauerzustand zu behandeln ("Tailwind
+    mit Timer" statt struktureller TAM-Wachstum). Pflichtfrage: "Was
+    ersetzt diesen Umsatzanteil nach Ablauf – ein bereits sichtbares
+    Folgeprogramm oder eine offene Lücke?" Bei fehlendem Folgeprogramm
+    gehört das Datum in die Meilenstein-Timeline (Punkt 44) als
+    Warnsignal-Termin. **Nur wo zutreffend** (Normalfall bei den meisten
+    Full-Deep-Dive-Kandidaten ist rein marktgetriebene Nachfrage ohne
+    Programm-Bindung – dann entfällt der Punkt ersatzlos).
 36. **Insider-Transaktions-Check (neu, 2026-09-09, gleicher Auslöser wie
     Punkt 34, universell – NICHT sektorabhängig).** Der NVO-Report prüfte
     nie, ob Management/Insider während der Krise eigene Aktien gekauft
@@ -5199,6 +5241,19 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     Lizenzgeschäft zum Umstellen haben). Kein Zusatzaufwand: nutzt
     Kennzahlen, die ohnehin Teil der Management-Transparenz-Prüfung sind
     (Punkt 9), macht nur explizit, WIE man die Divergenz interpretiert.
+    **Erweiterung (2026-09-16, zweiter, gründlicherer Digital-Arts-Review
+    mit allen 3 KIs, einstimmig empfohlen): Margen-Wedge zusätzlich zum
+    Wachstumsraten-Wedge.** Die bestehende Wedge-Tabelle vergleicht bisher
+    nur WACHSTUMSRATEN (Bookings/Backlog wächst schneller als Umsatz). Wo
+    das Unternehmen zusätzlich genug offenlegt, um eine Marge auf
+    Vertragswert-/Bookings-Basis ("Booking Margin") von der GAAP-Marge auf
+    realisiertem Umsatz ("Recognized Margin") zu unterscheiden: beide
+    Prozentsätze nebeneinander zeigen. Beantwortet eine andere Frage als
+    der Wachstums-Wedge – nicht nur "kommt Umsatz später", sondern "kommt
+    später Umsatz mit besserer oder schlechterer Marge". Nur wo eine
+    belastbare Vertragswert-Margen-Angabe auffindbar ist (Investor-Deck/
+    Earnings-Call) – sonst wie üblich als Datenlücke vermerken, nicht
+    schätzen (No-False-Precision-Regel).
 
 43. **Verwässerungs-Wasserfall bei komplexer Kapitalstruktur (neu,
     2026-09-16, Vergleich mit Raketentonis MP-Materials-Report).** Das
@@ -5236,6 +5291,15 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     universell Pflicht bei Full Deep Dive** – reiner Formatwechsel der
     bestehenden Tabelle, keine neue Datenerhebung, macht nur explizit,
     was Aegis ohnehin bei jedem Prüfpunkt im Kopf hat.
+    **Erweiterung (2026-09-16, zweiter Digital-Arts-Review, alle 3 KIs,
+    einstimmig empfohlen): genau EIN Termin wird als "Leitkatalysator"
+    markiert** (Stern/Badge in der Tabelle), statt alle Termine optisch
+    gleichrangig zu zeigen – der eine Termin, an dem sich die Investment-
+    these mit der höchsten Wahrscheinlichkeit entscheidet (meist der
+    nächste Earnings-Termin mit Guidance-Update, kann aber auch ein
+    Regulierungs-/Patent-/Zulassungstermin sein). Fokussiert den Leser auf
+    das Wichtigste statt einer gleichgewichtigen Liste. Reine
+    Kennzeichnungs-/Formatfrage, keine neue Recherche.
 
 45. **Risiko-Matrix: Wahrscheinlichkeit × Schaden × Frühindikator (neu,
     2026-09-16, gleiche Quelle).** Ergänzt (ersetzt nicht) die bestehenden
@@ -5303,6 +5367,99 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     Einzelzahl. **Ab sofort Pflicht auf der Fazit-Seite bei Full Deep
     Dive.** Kein Zusatzaufwand: die Herleitung existiert bereits, wird nur
     sichtbar gemacht statt nur im Ergebnis zu münden.
+
+47. **Markt-Struktur-/Crowding-Risiko als eigene, von Fundamentalrisiken
+    GETRENNTE Kategorie (neu, 2026-09-16, zweiter, gründlicherer Digital-
+    Arts-Review mit allen 3 KIs – der einzige wirklich neue, bisher komplett
+    fehlende Baustein dieses zweiten Durchgangs, siehe Herkunfts-Notiz
+    unten).** Bisher deckt kein Modul systematisch ab, ob eine Position
+    durch reine MARKT-STRUKTUR (nicht Fundamentaldaten) anfällig für einen
+    überproportionalen Kursrutsch ist – dünner Streubesitz, wenige/kein
+    Analyst-Coverage, hoher Anteil gehebelter/Margin-Positionierung, hohe
+    Short-Interest-Quote. Das ist kein Qualitäts- oder Bewertungsrisiko,
+    sondern ein Liquiditäts-/Crowding-Risiko, das unabhängig von der
+    fundamentalen These die Drawdown-Tiefe und Re-Rating-Geschwindigkeit
+    beeinflusst. **Ab sofort Pflicht bei Full Deep Dive, NUR wo mindestens
+    EIN Auslöser vorliegt** (Small-/Mid-Cap unter ~2 Mrd. USD/Äquivalent
+    Marktkap, erkennbar dünner Streubesitz/hohe Insider-/Gründer-Bindung,
+    <3 Sell-Side-Analysten, oder eine auffällig hohe Short-Interest-/
+    Margin-Handel-Quote wo verfügbar) – **sonst ersatzlos entfällt** (bei
+    liquiden Large-Caps mit breiter Coverage wie den meisten TMR-Kandidaten
+    dieser Session irrelevantes Rauschen, siehe Data-Integrity-Philosophie
+    gegen unnötige Kennzahlen). Eigene kleine Sektion, NICHT in den
+    DNA-Check oder die KSF-Scorecard gemischt: Short-Interest-%-Free-Float
+    (wo per Twelve Data/WebSearch auffindbar), Analysten-Coverage-Anzahl,
+    Streubesitz-%/Top-10-Konzentration (oft schon Teil der Ownership-
+    Recherche), Durchschnitts-Handelsvolumen als Liquiditäts-Proxy. Wird
+    KEIN Bull-/Bear-Trigger im Kill-Sheet (das bleibt fundamental), sondern
+    fließt nur in die bestehende Positionsgrößen-/Sizing-Einordnung ein
+    (dünne Marktstruktur = Tranchen-Empfehlung statt Einmalkauf, unabhängig
+    vom fundamentalen Rating).
+
+**Woher Punkt 47 kommt, und was NICHT übernommen wurde (2026-09-16,
+zweiter Digital-Arts-Review mit allen 3 KIs):** Brian bat darum, dass alle
+drei KIs (Aegis/JJ/Conan) unabhängig dieselbe 5-teilige Digital-Arts-Serie
+NOCH EINMAL, diesmal gründlicher, durchleuchten und diskutieren, was für
+unser System an Mehrwert übrig bleibt. Aegis las alle 5 Teile per WebFetch
+vollständig durch; JJ (Gemini) konnte die uncoveredjapan.com-URLs über die
+eigene Search-Grounding-Funktion technisch nicht abrufen (funktioniert bei
+anderen Domains nachweislich, vermutlich ein Zugriffs-/Crawling-Block bei
+genau dieser Domain – kein bekannter Bug, nur dokumentiert für den Fall
+einer Wiederholung) und bekam stattdessen Aegis' eigene Extraktion als
+Grundlage; Conan (ChatGPT) konnte die Seiten selbst abrufen und wies
+zusätzlich eigenständig auf einen wichtigen Kontext-Punkt hin, den auch
+Aegis nicht hatte: uncoveredjapan.com selbst kennzeichnet seine Artikel als
+KI-generiert und ohne artikelweise menschliche Verifikation publiziert,
+und dieser konkrete Report datiert auf Juli 2026 ("not subsequently
+updated") – bestätigt einmal mehr [[feedback_externe_quellen_nie_benchmark]]:
+lose methodische Inspiration ja, Zahlen/Bewertungsurteile aus der Quelle
+NIE ungeprüft übernehmen.
+
+Von ca. 12 geprüften Kandidaten-Techniken stellten sich SECHS bei genauer
+Prüfung als bereits identisch oder strenger abgedeckt heraus (keine neuen
+Funde, reine Bestätigung bestehender Disziplin): die formalisierte
+Guidance-Reliability-Kennzahl (5J-Ø+Standardabweichung, bereits Punkt 2),
+der Cashflow-Normalisierungs-Check bei Deferred-Revenue-Timing-Effekten
+(bereits Punkt 3), der Bilanz-Ratio-Mechanik-vs-Substanz-Check (bereits
+Punkt 4), der Netto-Cash-Downside-Boden (bereits Punkt 12, hier nur um
+zwei Kennzahlen geschärft statt neu erfunden), der Bear-Case-
+Wahrscheinlichkeits-Katalog (bereits Punkt 13, hier nur um die Stacking-
+Logik ergänzt) und die Qualitäts-Multiple-Inversions-Prüfung im Peer-
+Vergleich (bereits Punkt 19 samt exakt demselben Digital-Arts-Beispiel als
+Referenz). Das bestätigt erneut [[feedback_externe_kritik_erst_gegen_eigene_regeln_pruefen]]:
+die Mehrzahl vermeintlich neuer externer Funde sind bei genauer Prüfung
+bereits gelöste Fälle. Fünf Kandidaten waren echte, aber kleine
+Verfeinerungen bereits bestehender Punkte (oben als Erweiterungen an
+Punkt 12/13/35/42/44 umgesetzt, bewusst OHNE neue Punktnummern, da sie
+denselben Grundmechanismus nur schärfen statt einen neuen einzuführen).
+Nur EIN Kandidat war ein wirklich neuer, bisher fehlender Baustein (oben
+als Punkt 47 umgesetzt).
+
+Explizit geprüft und NICHT übernommen: (a) der proprietäre 4-Achsen-
+13/20-Score (Growth/Value/Macro-Fit/Supply-Demand) – alle drei KIs
+lehnten ihn übereinstimmend ab, da die Gewichtung im Artikel nicht
+offengelegt ist (Blackbox-Charakter) und unser System mit TRIAGE/DNA-
+Check/KSF-Scorecard/transparenter Agent-Score-Herleitung (Punkt 46)
+bereits dieselben Dimensionen einzeln und nachvollziehbar abdeckt; (b)
+PEST-Framework als eigenständiges neues Analysemodul – inhaltlich
+redundant zu MAKRO-KONTEXT + Struktur-Risiko-Check + KSF-Scorecard,
+JJ merkte zusätzlich an, dass die "Politik"-Dimension (Tailwind-
+Ablaufdatum) als konkrete Schärfung von Punkt 35 sinnvoller aufgehoben
+ist als in einem weiteren Rahmenwerk-Label; (c) SWOT als eigenständiges
+neues Modul – war bereits als optionale Zusatz-Visualisierung
+dokumentiert (Punkt 15 aus dem allerersten Digital-Arts-Durchgang,
+2026-09-07), keine Änderung nötig; (d) "Buyback-Reaktionsgeschwindigkeit"
+als eigenständige neue Kennzahl – Conan riet ausdrücklich davon ab, ein
+weiteres Modul dafür zu bauen (Anekdoten-Charakter, geringe
+Belastbarkeit über eine Beobachtung); bleibt als optionaler, informeller
+Beleg innerhalb der bereits bestehenden Kapitalrückführungs-Historie
+(Punkt 8)/Management-Tonalität (Punkt 38), ohne eigene Kennzahl oder
+Pflichtfeld. Betrifft `prompts/jack-moat-reaper-v11.7.md` (v11.18→v11.19)
+und `prompts/conan-the-scout-v1.12.md` (v1.20→v1.21) für die einzigen
+zwei Punkte mit echtem neuen Recherche-Bedarf (Margen-Wedge-Erweiterung
+Punkt 42, Markt-Struktur-Risiko Punkt 47) – alle übrigen Erweiterungen
+(12/13/35/44) sind reine Aegis-Synthese-/Report-Ebene, analog zum
+bereits etablierten Muster bei Punkte 44-46.
 
 **Woher Punkte 43-46 kommen, und was NICHT übernommen wurde (2026-09-16):**
 Brian teilte Raketentonis "MP Materials – Große Aktienanalyse" (13 Seiten,
