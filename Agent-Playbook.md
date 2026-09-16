@@ -5120,6 +5120,65 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     übrige Makro-Analyse zentral bei Aegis, Jack referenziert nur den
     mitgelieferten Wert (oder vermerkt "nicht mitgeliefert").
 
+41. **KSF-Scorecard: Branchen-Erfolgsfaktoren vs. Positionierung (neu,
+    2026-09-16, Brian bat um Prüfung des externen Digital-Arts-Deep-Dive,
+    uncoveredjapan.com, gegen unsere Methodik).** Ergänzt die bestehende
+    MOAT-VERIFIKATION um eine bewusst umgedrehte, "outside-in"-Perspektive:
+    statt direkt zu fragen "wie stark ist der Moat dieses Unternehmens?",
+    zuerst 4-6 branchenspezifische Key Success Factors benennen (was muss
+    JEDES Unternehmen in dieser Branche können, um zu gewinnen?), dann das
+    konkrete Unternehmen je Faktor mit einem klaren Status bewerten (✅
+    DEFENSIV / 🟡 IN ARBEIT/UNGEPRÜFT / ❌ KRITISCH/SCHWACH). **Ab sofort
+    Pflicht bei Full Deep Dive (Seite 3, ergänzt die Moat-Verifikation),
+    optional bei Quick Filter/Scout, beide KIs (Jack + Conan, siehe
+    jack-moat-reaper-v11.7.md v11.17 und conan-the-scout-v1.12.md v1.19):**
+    Kein Zusatzaufwand – die KSFs werden aus der ohnehin vorhandenen
+    Moat-/Wettbewerbsanalyse abgeleitet, keine neue Datenquelle. **Direkte
+    Kopplung an das Kill-Sheet:** jede Zeile mit 🟡/❌-Status wird
+    automatisch Kandidat für die Bull-/Bear-Trigger-Liste – verzahnt
+    Wettbewerbsanalyse und Risiko-Triggern enger, statt zwei getrennt
+    wirkende Listen zu führen (genau der Kritikpunkt, den Jack/Conan beim
+    Struktur-Review des CBOE-Reports am 16.09.2026 hatten: Kill-Sheet und
+    Wettbewerbsanalyse wirkten wie zwei unabhängig gebaute Listen).
+
+42. **Bookings/Backlog/Revenue-"Wedge"-Analyse bei Lizenz→Subscription-
+    Transformation (neu, 2026-09-16, gleiche Quelle wie Punkt 41).** Bei
+    Unternehmen, die erkennbar von Einmallizenz/-verkauf zu Subscription/
+    Cloud transformieren (steigender Recurring-/Cloud-Anteil, meist vom
+    Management selbst kommuniziert): zusätzlich zur bestehenden Umsatz-/
+    Ergebnis-Tabelle (Seite 4, Historie) eine zweite kleine Tabelle mit
+    YoY-Wachstumsraten für Bookings, Backlog/Auftragsbestand, realisierten
+    Umsatz und Operating Profit nebeneinander – macht die "Lag-Struktur"
+    sichtbar (Bookings wächst am schnellsten, Op.Profit hinkt hinterher,
+    weil Subscription-Umsatz erst über die Vertragslaufzeit realisiert
+    wird). **Zentrale Einordnung, die explizit ausgesprochen werden muss:**
+    eine wachsende Kluft zwischen Bookings/Backlog-Wachstum und Revenue/
+    Op.Profit-Wachstum ist bei einer echten Subscription-Transformation ein
+    POSITIVES Frühindikator-Signal, kein Warnsignal – sonst wirkt
+    "Umsatzwachstum verlangsamt sich" fälschlich negativ. **Ab sofort
+    Pflicht NUR bei erkennbarer Transformation, sonst ersatzlos entfällt**
+    (bei Conan/Scout selten anwendbar, da junge Kandidaten meist noch kein
+    Lizenzgeschäft zum Umstellen haben). Kein Zusatzaufwand: nutzt
+    Kennzahlen, die ohnehin Teil der Management-Transparenz-Prüfung sind
+    (Punkt 9), macht nur explizit, WIE man die Divergenz interpretiert.
+
+**Woher Punkte 41 und 42 kommen, und was NICHT übernommen wurde
+(2026-09-16):** Brian bat darum, einen externen Deep Dive zu Digital Arts
+(TSE: 2326, japanischer Cybersecurity-Spezialist, uncoveredjapan.com)
+gegen unsere eigene Methodik zu prüfen. Erst-Check gegen die eigenen Regeln
+(siehe [[feedback_externe_kritik_erst_gegen_eigene_regeln_pruefen]]) ergab:
+die meisten dortigen Techniken existierten bei uns bereits identisch oder
+strenger – Distributor-/Kundenkonzentration MIT NAMEN (Punkt 6+25, inkl.
+gezielter 10-K-Risk-Factor-Suche, strenger als der Artikel), Produktlinien-
+Tabelle mit benannten Wettbewerbern (Punkt 5), Management-Glaubwürdigkeit
+über getrennte Achsen statt einer Note (Punkt 9), Kapitalrückführungs-
+Historie (Punkt 8). Zwei Techniken waren ein echter, neuer Fund (oben als
+Punkt 41/42 umgesetzt). Eine dritte Idee aus dem Artikel – Operating
+Profit pro Mitarbeiter als Produktivitätskennzahl – wurde bewusst NICHT
+übernommen: Personalzahlen sind über Datenquellen oft inkonsistent/schwer
+verifizierbar, das Data-Integrity-Risiko einer weiteren schlecht
+belegbaren Kennzahl wiegt den Erkenntnisgewinn nicht auf.
+
 **Warum die "Zahnrad"-Idee selbst NICHT übernommen wurde (2026-09-10):**
 Gemini schlug vor, Jack (quantitativ) und Conan (qualitativ/Devil's
 Advocate) sequenziell zu verketten – Conan bekäme Jacks fertige Zahlen als
@@ -5152,8 +5211,8 @@ die Obergrenze real um eine Seite verschoben, siehe unten).
 |---|---|---|---|
 | 1 | Cover | Masthead, Hook-These, Kernzahlen | universell |
 | 2 | Cross-Check-Übersicht | 3-Stimmen-Leiste, Jack/Conan-Divergenz-Analyse, Score-/DCF-Zusammenfassung | universell |
-| 3 | DNA-Check | Vollständige K+E-Kriterien-Tabelle (Punkt 29) | universell im Format, Kriterien selbst bereits sektoradaptiv über die bestehenden Sektor-Overrides (Finanz/SaaS/Piotroski/Infrastruktur, siehe jack-moat-reaper-v11.7.md) |
-| 4 | Historie | 5J-Finanzhistorie, Guidance-Track-Record, Management-Glaubwürdigkeits-Matrix (inkl. Tonalitäts-Dimension, Punkt 38) | universell |
+| 3 | DNA-Check | Vollständige K+E-Kriterien-Tabelle (Punkt 29), optional KSF-Scorecard (Punkt 41) bei mehrdimensionalem/gemischtem Moat-Bild | universell im Format, Kriterien selbst bereits sektoradaptiv über die bestehenden Sektor-Overrides (Finanz/SaaS/Piotroski/Infrastruktur, siehe jack-moat-reaper-v11.7.md) |
+| 4 | Historie | 5J-Finanzhistorie, Guidance-Track-Record, Management-Glaubwürdigkeits-Matrix (inkl. Tonalitäts-Dimension, Punkt 38), optional Bookings/Backlog-Wedge-Analyse (Punkt 42) bei Lizenz→Subscription-Transformation | universell |
 | 5 | Chart | Kursverlauf (Technical) | universell |
 | 6 | Bewertung | DCF-Szenarien, Sensitivitätsmatrix (Punkt 24), sektorspezifische Struktur-Risiko-Vertiefung (Punkt 35) falls hier passender als Seite 9 | Bewertungsmethodik universell, Struktur-Risiko-Inhalt sektorabhängig |
 | 7 | Kill-Sheet | Thesis-Kill-Sheet (Punkt 26), Peer-Vergleich, historische Bewertungs-Bandbreite | universell |
