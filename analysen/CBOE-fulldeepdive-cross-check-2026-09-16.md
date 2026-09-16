@@ -10,7 +10,37 @@
 
 Der erste Versuch (16.09., vormittags) über `ask_gemini_agentic`/`ask_chatgpt_agentic` scheiterte: beide Funktionen hatten **keinen echten Web-Search-Zugriff** (reiner Code-Bug in den lokalen Bridge-Servern, siehe HANDOVER.md Abschnitt 10.14) — JJ (Gemini) erfand daraufhin Fundamentaldaten (selbst als "Simulierte..." gekennzeichnet, aber trotzdem mit `[VERIFIED]`/`[LIVE]` getaggt, ein echter Regelverstoß), Conan (ChatGPT) erkannte den fehlenden Zugriff dagegen korrekt und meldete ihn ehrlich statt zu raten.
 
-Nach dem Bugfix (beide Bridge-Server neu gestartet, `ask_gemini`/`ask_chatgpt` jetzt mit echtem Such-Zugriff verifiziert) wurde dieser Full Deep Dive komplett neu durchgeführt — diesmal mit echter, unabhängiger Web-Recherche bei allen drei Beinen (Jarvis/JJ/Conan). JJ brach einmal mitten in der Analyse ab (bekanntes Gemini-Verhalten: Suche wird fälschlich als abgeschlossene Antwort interpretiert) und wurde mit einem gezielten Fortsetzungs-Prompt komplettiert.
+Nach dem Bugfix (beide Bridge-Server neu gestartet, `ask_gemini`/`ask_chatgpt` jetzt mit echtem Such-Zugriff verifiziert) wurde dieser Full Deep Dive komplett neu durchgeführt — diesmal mit echter, unabhängiger Web-Recherche bei allen drei Beinen (Aegis/JJ/Conan). JJ brach einmal mitten in der Analyse ab (bekanntes Gemini-Verhalten: Suche wird fälschlich als abgeschlossene Antwort interpretiert) und wurde mit einem gezielten Fortsetzungs-Prompt komplettiert.
+
+---
+
+## 0b. Komplette Neuauflage (16.09., dritte Runde — auf Brians ausdrücklichen Wunsch)
+
+Nachdem im Laufe des Tages mehrere neue Rigor-Punkte (41-46: KSF-Scorecard, Bookings/Backlog-Wedge, Verwässerungs-Wasserfall, Meilenstein-Timeline, Risiko-Quadrant, Agent-Score-Herleitung) sowie das JJ/Aegis-Rebranding in die Methodik eingeflossen waren, bemerkte Brian zu Recht: diese neuen Bausteine waren bislang nur von Aegis selbst nachträglich in den Report eingefügt worden — JJ und Conan hatten sie nie mit ihrer jeweils AKTUALISIERTEN Methodik-Datei unabhängig selbst durchlaufen. Deshalb: kompletter 3-fach-Cross-Check von vorne, mit einem kondensierten Prompt (~7 KB, um JJs bekannten Trunkierungsbug bei langen Prompts + Search zu vermeiden), der die vollständige aktuelle Methodik (inkl. KSF-Scorecard, Verwässerungs-Wasserfall, Management-Tonalität, TV-Cross-Check) abbildet.
+
+**Live-Check bestätigt unverändert:** Kurs $270,44 [LIVE, Twelve Data], -4,95%, Markt am 16.09. noch nicht eröffnet — keine neuen Handelsdaten seit der ersten Runde, konsistent.
+
+### Was sich BESTÄTIGT hat (zwei unabhängige Neuauflagen, gleiches Ergebnis)
+- **DNA-Check K 4/4, E 4/4** — beide Beine unabhängig bestätigt.
+- **Going-Concern: kein Flag** — beide Beine unabhängig bestätigt (JJs früherer JSON-Fehler trat in dieser Runde NICHT erneut auf).
+- **Moat STARK** (JJ 4/4, Conan 3,5/4) mit stabilem bis leicht steigendem Trend.
+- **Verwässerungs-Wasserfall entfällt ersatzlos** — JETZT von BEIDEN Beinen unabhängig bestätigt (vorher nur von Aegis behauptet), da keine Wandelanleihen/Preferred/Warrants gleichzeitig vorliegen.
+- **Debt-Maturity 🟢** mit den bereits bekannten Fälligkeiten ($650 Mio. Jan. 2027 @ 3,65%, $500 Mio. 2030 @ 1,625%, $300 Mio. 2032 @ 3,0%) — von Conan erneut bestätigt.
+- **Analysten-Konsens weiterhin oberhalb des Kurses** ($315-320, leicht höher als die $292-318 der ersten Runde).
+
+### Was NEU bzw. GESCHÄRFT ist
+**Struktur-Risiko konkretisiert:** Statt der bisherigen generischen "Polymarket als Konkurrenzform"-Einordnung fanden BEIDE Beine unabhängig einen konkreteren, aktuelleren Fund — **Kalshi hat eine Eingabe bei der SEC gemacht, um CBOEs Produkteinführungen (Binary Options auf Unternehmens-Earnings) zu verzögern.** Das ist ein echter regulatorischer Konflikt mit einem NAMENTLICH benannten Wettbewerber, nicht nur eine abstrakte Wettbewerbsform-Beobachtung — schärft Rigor-Punkt 35 gegenüber der ersten Runde.
+
+**Insider-Transaktionen erweitert:** Zusätzlich zu Janet Froetscher (bereits bekannt) fand Conan einen weiteren Director-Verkauf: **Allen Wilkinson, 248 Aktien @ ca. $73k am 23.02.2026** — ebenfalls routinemäßig, kein neues Signal, aber vollständigere Abdeckung.
+
+**Echter Rating-Dissens diese Runde:** Anders als beim ersten Durchlauf (wo JJ und Conan beide KAUFEN sagten und nur Aegis' allererste Vor-Bugfix-Einschätzung BEOBACHTEN war) kommt jetzt **Conan selbst auf HALTEN/"selektiv Kaufen bei Rücksetzern"** (Agent Score 7,6/10, Konfidenz 0,74), während **JJ weiterhin KAUFEN** sagt (Agent Score 8/10, Konfidenz GRÜN). Ein echter, informativer Dissens zwischen den beiden unabhängigen Recherche-Beinen selbst — zeigt, dass die Bewertungsfrage genuin grenzwertig ist, nicht nur eine Frage der Datenqualität.
+
+**DCF-Rekonziliation:** Conan lieferte diesmal eine saubere eigene Rechnung (Gordon-Growth $279, Exit-Multiple $305, geblendeter Base FV **$292**, TV-Anteil EV **79%** — über der 70%-Warnschwelle, korrekt geflaggt). JJ verzichtete auf eine sauber abgeschlossene eigene Zahl und verwies stattdessen direkt auf den Analysten-Konsens ($315-320) — methodisch schwächer als Conans Ansatz, aber richtungsgleich (beide klar über dem aktuellen Kurs $270,44). Bear/Bull-Spannen beider Beine überlappen deutlich (Conan $220-390, JJ $200-240/$350-380).
+
+**TA von Aegis direkt über Twelve Data nachverifiziert** (JJ hatte keine Live-Indikatoren, Conan nutzte leicht abweichende/ältere Werte): RSI14 35,79, MACD -2,69/Signal 1,08/Hist -3,77, SMA20/50/200 296,38/289,25/286,16 (Kurs $270,40 liegt UNTER allen drei — bearish), Bollinger unteres Band 273,32 (Kurs knapp darunter), ATR14 10,64 (~3,9%, erhöht), OBV fallend über die letzten 5 Handelstage. Bestätigt exakt den bereits in Runde 1 berechneten TA-Score -2,71 → WEAK. Die reale TA stützt damit eher Conans vorsichtigere Einschätzung als JJs unveränderten Optimismus — der bereits dokumentierte Timing-Konflikt (fundamental attraktiv, technisch schwach) bleibt der zentrale Befund.
+
+### Aegis-Synthese der Neuauflage
+Die fundamentale These (Qualität STARK, Moat STARK, Bewertung strukturell über Kurs, Verwässerung kein Thema) ist jetzt durch ZWEI unabhängige, vollständig frische Recherche-Durchläufe bestätigt — eine stärkere Evidenzbasis als vorher. Der neue Kalshi-Fund schärft das bekannte Struktur-Risiko, ändert aber nichts am Gesamtbild (weiterhin "kein akutes, aber ein zu beobachtendes Thema"). Der echte Rating-Dissens zwischen JJ (KAUFEN) und Conan (HALTEN) bei gleichzeitig unveränderter, real nachgeprüfter WEAK-Technik bestätigt: das ursprüngliche **KAUFEN, gestaffelt (Tier 2)**-Verdict bleibt der richtige Mittelweg — es nimmt weder JJs volle Zuversicht noch Conans Zurückhaltung 1:1, sondern genau die bereits etablierte gestaffelte Tranchierung, die für einen echten Timing-Konflikt gebaut wurde. **Finaler Rating bleibt: KAUFEN, gestaffelt, Tier 2, Agent Score 8/10, Konfidenz 🟡 MITTEL** (jetzt zusätzlich begründet durch den echten JJ/Conan-Dissens, nicht nur durch Quellenstreuung).
 
 ---
 
@@ -35,7 +65,7 @@ CBOE = Hybrid/Finanzdienstleister-Börsenbetreiber, VIX/Optionsvolumen als domin
 
 ## 3. DNA-Check — Finanzsektor-Override (K-BASIS 4 nach Piotroski-Override)
 
-| Kriterium | Jarvis | JJ | Conan |
+| Kriterium | Aegis | JJ | Conan |
 |---|---|---|---|
 | ROIC >20% | 26,9% ✅ (stockanalysis) | 16,9% ❌ (GuruFocus, konservativ gewählt) | 23-29% ✅ |
 | Op. Leverage | Ja ✅ | Ja ✅ | Ja ✅ (H1 Op.Income +41,6% bei Net-Revenue +26,7%) |
@@ -68,7 +98,7 @@ Trotz der ROIC-Divergenz (Datenquellen-Streuung 16,9-29%, siehe bekanntes Muster
 
 **Alle drei unabhängigen DCF-Rechnungen kommen auf einen Fair Value deutlich über dem Analysten-Konsens (~$315) und über dem aktuellen Kurs:**
 
-| | Jarvis | JJ | Conan |
+| | Aegis | JJ | Conan |
 |---|---|---|---|
 | Beta | 0,44 | 0,64 | 0,41 |
 | WACC | 6,89% | 7,73% | 6,74% |
@@ -136,7 +166,7 @@ Vier weitere, aus demselben externen Vergleich stammende Bausteine (Agent-Playbo
 
 **Meilenstein-Timeline mit Positiv-/Warnsignal (Rigor-Punkt 44):** die bestehende "Nächste Prüfpunkte"-Tabelle wurde um zwei Spalten erweitert — z.B. beim Q3-2026-Earnings-Termin (30.10.) Positivsignal "Ausblick mind. gehalten, dritte Anhebung in Folge" vs. Warnsignal "Ausblick gesenkt oder nur bestätigt statt angehoben". Reiner Formatwechsel, keine neue Datenerhebung.
 
-**Risiko-Matrix (Rigor-Punkt 45):** fünf Risiken, alle aus bereits vorhandenen Report-Bausteinen abgeleitet (nicht frei erfunden) — Prediction-Market-Konkurrenz (Mittel/Mittel), Data-Vantage-Diversifikation stagniert (Niedrig/Mittel), SPX-Exklusivlizenz nicht verlängert (Niedrig/Hoch), Januar-2027-Refinanzierung ungünstig (Mittel/Mittel), ROIC fällt unter WACC (Niedrig/Hoch). **Einordnung:** kein Risiko liegt in der Kombination Hoch-Wahrscheinlichkeit/Hoch-Schaden — deckt sich mit dem KAUFEN-Rating.
+**Risiko-Quadrant (Rigor-Punkt 45, 16.09. nachgeschärft auf Brians Einwand "1:1 von Raketentoni übernommen"):** statt einer reinen Wort-Tabelle jetzt ein echter 2D-Chart (Wahrscheinlichkeit×Schaden als Achsen), fünf Risiken als Punkte, farbcodiert nach Herkunfts-Modul — Prediction-Market-Konkurrenz (Mittel/Mittel, aus Struktur-Risiko-Check S.8), Data-Vantage-Diversifikation stagniert (Niedrig/Mittel, aus KSF-Scorecard S.7), SPX-Exklusivlizenz nicht verlängert (Niedrig/Hoch, aus KSF-Scorecard S.7), Januar-2027-Refinanzierung ungünstig (Mittel/Mittel, aus Debt-Maturity S.4), ROIC fällt unter WACC (Niedrig/Hoch, aus DNA-Check S.3). Alle fünf aus bereits vorhandenen Report-Bausteinen abgeleitet, nicht frei erfunden. **Einordnung:** kein Risiko liegt im oberen rechten Quadranten (Hoch-Wahrscheinlichkeit/Hoch-Schaden) — deckt sich mit dem KAUFEN-Rating. Bekam dafür wieder eine eigene Report-Seite (Kill-Sheet+Chart passten nicht mehr auf eine Seite) — Report jetzt 12 Seiten.
 
 **Agent-Score-Herleitung (Rigor-Punkt 46):** macht die bestehende Anker-Bereich→Mali→Deckel-Logik als Tabelle sichtbar statt nur die Endzahl zu zeigen. Anker-Bereich 6-8 QUALITÄTS-KERN (K-Basis erfüllt, Moat 4/4 STARK, Bewertung akzeptabel, keine kritischen Risiken aktiv). Ausgangswert 8 von 6-8 (oberes Ende wegen außergewöhnlich starkem Moat, nicht 9-10 weil Management-Score nur 4-5/7 statt 6-7 und keine echte Sicherheitsmarge — MoS 🔴 KEINER laut TA-Investor-Entry-Block). Keine aktiven Mali (kein SBC-Infection/Litigation-Drain/Kundenkonzentration/Bias-Strike). Keine aktiven Deckel (Konfidenz 🟡 nicht 🔴, kein Moat-Decay, kein Runway-kritisch). **Finaler Score: 8/10 — Herleitung bestätigt den bereits ausgewiesenen Score, keine Korrektur nötig.** Wichtig: die erste Entwurfsfassung dieses Punktes hätte den Score fälschlich bottom-up aus sechs neuen Dimensionen neu berechnet, statt die bestehende Anker-Methodik nur transparent zu machen — beim Umsetzen selbst korrigiert (siehe Agent-Playbook.md Punkt 46).
 
@@ -152,11 +182,11 @@ JJs abschließender JSON-Block enthielt `"going_concern_flag": true` — dies wi
 
 | | Rating | Sizing |
 |---|---|---|
-| Jarvis (Jarvis-eigene Analyse, vor Bugfix) | BEOBACHTEN (Technik: unter 200D-SMA, RSI 35,8, MACD bearish, OBV fallend) | Watchlist/Tier 3 |
+| Aegis (eigene Analyse, vor Bugfix) | BEOBACHTEN (Technik: unter 200D-SMA, RSI 35,8, MACD bearish, OBV fallend) | Watchlist/Tier 3 |
 | JJ | KAUFEN (mechanisch, folgt DCF direkt) | Tier 2 |
 | Conan | KAUFEN, gestaffelt (DCF bewusst gedämpft) | Tier 2 (3-5%) |
 
-**Finales Aegis-Verdict: KAUFEN, Ausführung gestaffelt.** Zwei von drei unabhängigen Beinen kommen trotz methodisch vorsichtiger DCF-Behandlung auf KAUFEN, gestützt zusätzlich durch den Peer-EV/EBITDA-Abschlag und den moderat über dem Kurs liegenden Analysten-Konsens. Die kurzfristig schwache Technik (Jarvis' ursprünglicher Vorbehalt) bestimmt bei einer bestehenden Champions-Position nur die Tranchierung des Nachkaufs, nicht die fundamentale KAUFEN/BEOBACHTEN-Grundentscheidung.
+**Finales Aegis-Verdict: KAUFEN, Ausführung gestaffelt.** Zwei von drei unabhängigen Beinen kommen trotz methodisch vorsichtiger DCF-Behandlung auf KAUFEN, gestützt zusätzlich durch den Peer-EV/EBITDA-Abschlag und den moderat über dem Kurs liegenden Analysten-Konsens. Die kurzfristig schwache Technik (Aegis' ursprünglicher Vorbehalt) bestimmt bei einer bestehenden Champions-Position nur die Tranchierung des Nachkaufs, nicht die fundamentale KAUFEN/BEOBACHTEN-Grundentscheidung.
 
 **AGENT SCORE: 8/10 · Konfidenz: 🟡 MITTEL** (Beta-/ROIC-Streuung zwischen Quellen, DCF-Modell-Sensitivität bei diesem Beta-Profil).
 

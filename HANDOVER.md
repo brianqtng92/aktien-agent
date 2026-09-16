@@ -23,7 +23,7 @@ Brian betreibt mehrere Wertpapierdepots (Scalable Capital, Trade Republic,
 Smartbroker+, finanzen.net zero) und lässt sein Portfolio von einem
 KI-System aus drei "Personas" analysieren, überwachen und dokumentieren:
 
-- **Jarvis** = du selbst (Claude, nativ in dieser Session) – führt die
+- **Aegis** = du selbst (Claude, nativ in dieser Session) – führt die
   eigentliche Recherche/Analyse aus, orchestriert die anderen beiden KIs
   (seit 2026-09-02 primär per direktem API-Call statt Browser-Automation,
   siehe unten), schreibt alle Dateien, verwaltet Git, Reports, PDFs.
@@ -171,7 +171,7 @@ Muster aus dieser Übergabe: 4 Subagenten für je ~700 Zeilen).
    für Frühphasen-/spekulative Werte. Enthält Frische-Gate,
    Liquiditäts-/Spread-Gate (>500.000€ Tagesvolumen, <1,5% Spread,
    Limit-Orders-Pflicht für Talent/Scout).
-4. **[3] 3-fach Cross-Check** – alle drei KIs (Jarvis/JJ/Conan) bekommen
+4. **[3] 3-fach Cross-Check** – alle drei KIs (Aegis/JJ/Conan) bekommen
    identisches Fact-Pack (Schritt-0-Datenpaket), analysieren unabhängig.
    Bei widersprüchlichen selbst-recherchierten Kernzahlen: **Datenkonflikt-
    Notbremse** – kein hochkonfidentes Ergebnis, sondern Flag "DATENKONFLIKT".
@@ -360,7 +360,7 @@ im Wochenfazit-Lauf fortgeschrieben (`depot/performance_tracking.md`).
 ## 8. Watchlist & Pending-Queue
 
 `watchlist.md`: **30 Werte** (Cap 20-30), Champions 13 / Profi 10 / Talent 7.
-Herkunft: 21 von Brian selbst vorgegeben, 9 systematisch von Jarvis ergänzt.
+Herkunft: 21 von Brian selbst vorgegeben, 9 systematisch von Aegis ergänzt.
 Mehrere Werte sind explizit als **[EX-DEPOT]**-Wiederaufnahmekandidaten
 markiert (Visa, S&P Global, Stryker, Keyence – alle am 27.08.2026 verkauft).
 Aufnahme-/Ausschlusskriterien und wöchentlicher Prüfprozess stehen
@@ -379,12 +379,12 @@ einen Slot bekommt oder als reiner LatAm-Beobachtungsposten außerhalb der
 `watchlist_pending_3fach.md`: Warteschlange für Kandidaten aus dem
 täglichen automatisierten Scan, die das Strategie-Fit-Gate, den
 Duplikations-Check und das Identity-Gate bestanden haben, aber nur einen
-Jarvis-Only-Vorabbefund haben, weil JJ/Conan am Scan-Tag nicht
+Aegis-Only-Vorabbefund haben, weil JJ/Conan am Scan-Tag nicht
 erreichbar waren. **Update 2026-09-03:** seit der API-Bridge-Migration
 (2026-09-02) landet hier nur noch etwas, wenn BEIDE Bridges UND der
 Chrome-Fallback an einem Lauf ausfallen – der alte "Laptop/Chrome war
 aus"-Fall ist nicht mehr der Regelfall. Regel unverändert: **niemals**
-wird ein Eintrag allein auf Jarvis-Basis übernommen – es braucht immer
+wird ein Eintrag allein auf Aegis-Basis übernommen – es braucht immer
 alle drei KIs, auch im Quick-Filter (Brian-Regel vom 2026-08-29). Stand
 Übergabe: Datei ist leer, keine offenen Einträge.
 
@@ -564,7 +564,7 @@ Punkt 2) – hier nur die Kategorien-Übersicht:
 
 ### 10.8 Agent-Kompakt-PDF-Designsystem
 Dunkles Anthrazit/Gold-Theme, Schriften DejaVu Sans Condensed + Carlito,
-3-Stimmen-Leiste (Jarvis/JJ/Conan-Konsens visualisiert),
+3-Stimmen-Leiste (Aegis/JJ/Conan-Konsens visualisiert),
 Agent-Score-Gauge (Halbkreis-Anzeige), DNA-Check-Strang (farbiges
 Segmentband). Gerendert per Playwright/Chromium aus einer
 Single-Page-HTML-Datei. Vollständiges CSS-Token-System steht in
@@ -612,7 +612,7 @@ Tool-Use-Tokens verarbeitet wurden – das Modell "erledigte" offenbar die
 Suche und hielt das für eine abgeschlossene Antwort, statt mit der vollen
 Methodik fortzufahren. **Workaround (getestet, funktioniert):**
 `enable_search=False` bei vollen TMR/Scout/TA-Methodik-Aufrufen setzen
-(Jarvis' eigenes Fact-Pack lieferte in diesem Fall ausreichend Grundlage) –
+(Aegis' eigenes Fact-Pack lieferte in diesem Fall ausreichend Grundlage) –
 lief danach sauber durch (7.981 Zeichen vollständige Analyse). **Für
 KURZE, gezielte Anfragen (z.B. "aktueller Kurs von X") bleibt
 `enable_search=True` Default und funktioniert nachweislich zuverlässig**
@@ -627,7 +627,7 @@ gehen – `enable_search=False` ist hier PFLICHT, nicht optional, das Risiko
 ist strukturell größer als beim bisherigen Einzeldatei-Fall (Conan lief mit `enable_search=True` UND vollem
 ~74K-Zeichen-Prompt sauber durch, 22.826 Zeichen Analyse-Output,
 inklusive einem wichtigen Fund: Conans Live-Suche deckte einen ~29%-
-Kursfehler in Jarvis' Fact-Pack auf, siehe
+Kursfehler in Aegis' Fact-Pack auf, siehe
 `analysen/LASERTEC-cross-check-fazit-2026-09-05.md`) – das Problem ist
 Gemini-spezifisch, keine grundsätzliche Grenze der Architektur.
 - `mcp__openai-bridge__list_openai_models()` – listet verfügbare
@@ -662,7 +662,7 @@ bevor `-pro` für volle Methodik-Läufe wieder infrage kommt.
 – Conan/ChatGPT-Bein einer TMR-Quick-Filter-Analyse für ASML (Watchlist-
 Champion), sauber [TRAINING]-getaggt (kein Fact-Pack für Fundamentaldaten
 vorhanden), Ergebnis BEOBACHTEN, Agent Score 6/10, Abstauber-Limit $1250.
-War ein reiner Conan-Solo-Testlauf (kein Jarvis/JJ-Bein, kein echter
+War ein reiner Conan-Solo-Testlauf (kein Aegis/JJ-Bein, kein echter
 3-fach-Cross-Check) – nicht als vollwertige Watchlist-Analyse behandeln,
 nur als Beleg dass die Bridge inhaltlich sauber funktioniert.
 
@@ -706,7 +706,7 @@ zwei Tools bereit:
   proxied Quellen-URLs über `vertexaisearch.cloud.google.com/grounding-
   api-redirect/...` statt der Original-URL direkt auszugeben – das ist ein
   bekanntes Verhalten von Gemini Grounding, kein Bug. **Motivation:**
-  bisher bekamen alle drei KIs (Jarvis/JJ/Conan) dasselbe von Jarvis
+  bisher bekamen alle drei KIs (Aegis/JJ/Conan) dasselbe von Aegis
   kuratierte FACT-PACK – ein blinder Fleck dort vererbte sich auf alle
   drei Urteile. Mit eigener Live-Recherche kann JJ jetzt unabhängig
   gefundene Fakten einbringen, was den Cross-Check echter unabhängig
@@ -770,9 +770,9 @@ Einschränkung, die die gesamte Umsetzung bestimmt: **Die Bridge-Prozesse
 selbst haben keinerlei Depot-Zugriff** – sie sind isolierte Skripte mit nur
 einem OpenAI-/Gemini-API-Key, keine Verbindung zum Scalable-Capital-MCP.
 "Live-Zugriff" bedeutet daher technisch: JJ/Conan fordern per
-Function-Calling Depot-Daten an, **Jarvis führt die echten MCP-Tools aus
+Function-Calling Depot-Daten an, **Aegis führt die echten MCP-Tools aus
 und reicht das Ergebnis zurück** – kein direkter Durchgriff der externen
-KIs, sondern ein von Jarvis gesteuerter Relay-Loop.
+KIs, sondern ein von Aegis gesteuerter Relay-Loop.
 
 **Neue Tools (zusätzlich zu `ask_chatgpt`/`ask_gemini`, die unverändert
 bleiben und weiterhin die einfache Wahl sind, wenn kein Depot-Kontext
@@ -784,14 +784,14 @@ gebraucht wird):**
 Preview-Zugriff, siehe Whitelist Abschnitt 10.7):**
 `get_portfolio_holdings`, `get_portfolio_overview`, `get_portfolio_performance`,
 `get_portfolio_cash_breakdown` – 1:1 dieselben vier MCP-Tools, die auch
-Jarvis selbst nutzt, nur als Function-Calling-Schema an JJ/Conan gespiegelt.
+Aegis selbst nutzt, nur als Function-Calling-Schema an JJ/Conan gespiegelt.
 **Plus `get_manual_broker_positions`** (2026-09-02 ergänzt, nachdem Brian
 darauf hingewiesen hat, dass die vier `get_portfolio_*`-Tools NUR den
 Scalable-Capital-Teil des Depots zeigen): liefert die Positionen der DREI
 WEITEREN Broker (Trade Republic, Smartbroker+, finanzen.net zero), die
 keine API haben und nur manuell per Screenshot in `depot/trade-republic.md`,
 `depot/smartbroker-plus.md`, `depot/finanzen-net-zero.md` gepflegt werden.
-Kein MCP-Tool – Jarvis liest bei diesem Tool-Call einfach die drei Dateien
+Kein MCP-Tool – Aegis liest bei diesem Tool-Call einfach die drei Dateien
 und liefert eine kondensierte Zusammenfassung (nur aktive Positionen, keine
 verkauften; wo kein aktueller Kurs bekannt ist, klar als "data_gap"/
 Investsumme statt Live-Wert kennzeichnen – Data-Integrity-Prinzip auch hier).
@@ -800,11 +800,11 @@ Depotwert** (Stand des Testlaufs 2026-09-02) – bei jeder Depot-Kontext-Analyse
 `get_manual_broker_positions` also mit anfordern (die Tool-Beschreibung
 weist die KI bereits explizit darauf hin, es "IMMER" zusätzlich zu nutzen).
 
-**Ablauf (von Jarvis manuell zu steuern, kein Automatismus):**
+**Ablauf (von Aegis manuell zu steuern, kein Automatismus):**
 1. Erster Aufruf nur mit `prompt` (+ optional `system_prompt`/`model`).
 2. Rückgabe ist immer ein JSON-String mit `"status"`:
    - `"tool_calls"`: die KI will Depot-Daten. Enthält die angeforderten
-     Tool-Namen/Argumente + `state_json` für den nächsten Aufruf. Jarvis
+     Tool-Namen/Argumente + `state_json` für den nächsten Aufruf. Aegis
      führt JEDES angeforderte Tool über die echten
      `mcp__50674d01-4841-4959-92e2-6fc6b4e8a1ca__get_portfolio_*`-Tools
      dieser Session aus und ruft die Bridge-Funktion erneut auf, mit
@@ -843,19 +843,19 @@ Relay-Loops (mehr Roundtrips = mehr Zeit/Tokens pro Analyse).
 "Twelve-Data erweitern, Dateizugriff mit begrenzter Variante").** Zwei
 neue Tools zur bestehenden Whitelist hinzugefügt, gleiches Relay-Prinzip
 wie oben:
-- **`get_quote(symbol)`:** Jarvis führt das echte
+- **`get_quote(symbol)`:** Aegis führt das echte
   `mcp__57370ae8-105f-49c4-a0dd-b4c78cb6ceb7__get_quote`-Tool dieser
   Session mit dem angeforderten `symbol` aus und reicht das Ergebnis
   zurück. Gibt JJ/Conan einen exakten, strukturierten Live-Kurs statt
   einer aus der Websuche zusammengesuchten Zahl – nützlich für Abstauber-
   Limit-/Einstiegszonen-Berechnungen.
-- **`read_master_status()`:** Jarvis liest `depot/master_status.md` (das
+- **`read_master_status()`:** Aegis liest `depot/master_status.md` (das
   konsolidierte Status-Dashboard, siehe Agent-Playbook.md "Konsolidierter
   Master-Status") und reicht den Inhalt zurück. **Bewusst die EINZIGE per
   Tool zugängliche Repo-Datei** – kein Zugriff auf `Agent-Playbook.md`,
   `watchlist.md`, `depot/kategorisierung.md` oder sonstige Dateien.
-  **Begründung für diese enge Grenze (Jarvis, von Brian bestätigt):** JJ
-  und Conan sollen unabhängige Gutachter für eine konkrete, von Jarvis
+  **Begründung für diese enge Grenze (Aegis, von Brian bestätigt):** JJ
+  und Conan sollen unabhängige Gutachter für eine konkrete, von Aegis
   gestellte Aufgabe bleiben, keine freien Systembrowser – mit Zugriff aufs
   ganze Regelwerk könnten sie anfangen, sich ihre eigene Aufgabenstellung
   zusammenzusuchen oder Regeln zu hinterfragen statt sie anzuwenden, was
@@ -866,7 +866,7 @@ wie oben:
 
 **Beide neuen Tools mit echten End-to-End-Tests bestätigt (2026-09-05,
 beide Bridges):** ein Test-Prompt forderte gezielt beide Tools parallel
-an (`get_quote(RKLB)` + `read_master_status`), Jarvis führte beide aus
+an (`get_quote(RKLB)` + `read_master_status`), Aegis führte beide aus
 (echter Twelve-Data-Call + echter Datei-Read) und reichte die Ergebnisse
 zurück – beide KIs lieferten eine korrekte, beide Datenpunkte
 einbeziehende Zusammenfassung im finalen `"status":"final"`-Ergebnis.
@@ -928,13 +928,13 @@ inhaltlich unveraendert, nur zusammengefasst, da alle drei denselben
 Grundgedanken behandeln: dir fehlt ein bestimmter Tool-Zugriff bzw. es wurde
 bereits vorab recherchiert - schaetze plausibel statt abzubrechen).
 
-SCHRITT-0-LIVE-CHECK GILT ALS BEREITS DURCHGEFUEHRT UND ABGESCHLOSSEN. Jarvis
+SCHRITT-0-LIVE-CHECK GILT ALS BEREITS DURCHGEFUEHRT UND ABGESCHLOSSEN. Aegis
 (der Orchestrator) hat SCHRITT 0 bereits SELBST per echter Web-Recherche
 erledigt, BEVOR dieser Prompt an dich ging - das Ergebnis steht im FACT-PACK
 unten. Wo SCHRITT 0/Global-Regeln von "Live-Check", "Web-Search ausfuehren"
 oder "pausieren bis Live-Daten bestaetigt sind" sprechen: das bezieht sich auf
 den Fall, dass GAR KEINE Live-Recherche stattgefunden hat. Hier hat sie
-stattgefunden (durch Jarvis) - behandle das FACT-PACK als soliden Ausgangspunkt,
+stattgefunden (durch Aegis) - behandle das FACT-PACK als soliden Ausgangspunkt,
 nicht als von dir nochmal komplett neu zu recherchierende Leerstelle.
 
 DU HAST JETZT SELBST LIVE-WEB-SUCHE (Google Search Grounding). Das FACT-PACK
@@ -973,7 +973,7 @@ ein KORREKTES, ERWARTETES Ergebnis dieser Sitzungsart, kein Grund zum Abbruch.
 Ein Abbruch ist nur bei einem ECHTEN K-Kriterium-[N/V] angemessen (siehe
 Klarstellung oben), nicht bei fehlendem Tool-Zugriff als solchem.
 
-WICHTIG: TERMINAL-STATE-PFLICHT (gilt fuer dich genauso wie fuer Jarvis und
+WICHTIG: TERMINAL-STATE-PFLICHT (gilt fuer dich genauso wie fuer Aegis und
 die andere KI im selben Cross-Check). Ausloeser: der RKLB-Canonical-
 Failure-Case (2026-09-01) - eine KI hatte "ABBRUCH-LOGIK GREIFT" korrekt
 erkannt, ist aber danach trotzdem regulaer durch die nachgelagerten Module
@@ -1027,7 +1027,7 @@ Block 4 (Terminal-State), Block 7 (Fact-Pack-Tags-nicht-bindend) und Block 8
 alle Details).
 
 **Block 4 ergänzt (2026-09-03, aus dem 3-KI-System-Audit):** Brian ließ
-Jarvis, JJ und Conan das gesamte Regelwerk gemeinsam durchgehen. Beide
+Aegis, JJ und Conan das gesamte Regelwerk gemeinsam durchgehen. Beide
 KIs fanden unabhängig voneinander denselben kritischen Punkt: der
 Terminal-State-Mechanismus (siehe Agent-Playbook.md Abschnitt 14, ausgelöst
 durch den RKLB-Fall) steht bisher NUR in Agent-Playbook.md, nicht in den
@@ -1044,7 +1044,7 @@ bei Block 4 trat erneut auf: die am selben Tag gebaute "Gründliche-These-
 Prüfung-vor-Verkaufsempfehlung-Pflicht" (Auslöser: der Cellebrite-Fall,
 siehe Agent-Playbook.md "Verkaufsdisziplin & Gewinnmitnahme-Regeln") wurde
 zunächst nur in Agent-Playbook.md und den FIXE-GRENZEN-Abschnitten der
-SKILL.md-Dateien verankert – das steuert Jarvis' eigenes Verhalten, aber
+SKILL.md-Dateien verankert – das steuert Aegis' eigenes Verhalten, aber
 NICHT das, was JJ/Conan bei einem Bridge-Aufruf tatsächlich zu lesen
 bekommen. Ohne diesen Block hätte ein künftiger Scout-/TMR-Lauf für eine
 bestehende Depot-Position genau denselben vorschnellen SCHROTT-Reflex
@@ -1052,7 +1052,7 @@ wiederholen können, den die Regel eigentlich verhindern soll. Block 5:
 
 ```
 WICHTIG: GRUENDLICHE-THESE-PRUEFUNG-VOR-VERKAUFSEMPFEHLUNG-PFLICHT (gilt fuer
-dich genauso wie fuer Jarvis und die andere KI im selben Cross-Check). Ausloeser:
+dich genauso wie fuer Aegis und die andere KI im selben Cross-Check). Ausloeser:
 der Cellebrite-Fall (2026-09-04) - ein vorschneller Scout-Check kam zu SCHROTT/
 VERKAUFEN fuer eine BEREITS GEHALTENE Depot-Position, obwohl 2 von 3 Re-Rating-
 Triggern mangels aktueller Quartalszahlen noch gar nicht pruefbar waren (nicht
@@ -1090,13 +1090,13 @@ nicht-agentischen `ask_gemini`/`ask_chatgpt`), da JJ/Conan sonst keinerlei
 Sicht auf den aktuellen Projekt-/Depot-Status haben (Fact-Pack deckt nur den
 einzelnen Kandidaten ab, nicht Kategorie-Zählungen, offene Checkpoints,
 Portfolio-Regel-Verstöße, Kategorisierungs-Kriterien oder einen
-Watchlist-Vergleichsmaßstab). Jarvis liest `depot/master_status.md` VOR jedem
+Watchlist-Vergleichsmaßstab). Aegis liest `depot/master_status.md` VOR jedem
 Bridge-Dispatch frisch ein und fügt den **vollständigen aktuellen Inhalt**
 direkt in Block 6 ein (nicht nur einen Verweis auf den Dateinamen – JJ/Conan
 können die Datei selbst nicht lesen, nur was hier im Prompt-Text steht):
 
 ```
-MASTER-STATUS (aktueller Stand von depot/master_status.md, von Jarvis
+MASTER-STATUS (aktueller Stand von depot/master_status.md, von Aegis
 unmittelbar vor diesem Aufruf frisch eingelesen – NICHT rein informativ,
 sondern aktiv nutzen fuer Kategorie-Konsistenz, Vergleich mit bestehenden
 Positionen/Checkpoints und Portfolio-Regel-Kontext):
@@ -1118,10 +1118,10 @@ stark wächst. Bewusst NICHT die vollen `Agent-Playbook.md`/`watchlist.md`
 eingebettet (siehe 10.10 zum bekannten Gemini-Längenproblem) – stattdessen
 nur die daraus destillierten Kern-Kriterien bzw. eine 30-Zeilen-Tabelle.
 
-**Block 7 ergänzt (2026-09-06, echte Ursache des wiederholten JJ-Reflex-Abbruch-Bugs gefunden):** Bisher wurde der wiederholte SCHROTT/Terminal-State-Abbruch bei JJ (Asahi Intecc, Disco Corp, Lasertec) als Gemini-spezifisches Modellverhalten eingeordnet ("JJ tendiert reflexhaft zu N/V statt TRAINING"). Brian machte den entscheidenden Beobachtungshinweis: bei manueller Anwendung des JJ-Prompts (ohne Jarvis' Fact-Pack) läuft dieselbe Analyse normal durch, kein Abbruch. Beim Nachlesen von JJs eigener Begründung (siehe `analysen/LASERTEC-TMR-quickfilter-jack-gemini-2026-09-05.md` Zeile 19-29 und `analysen/DISCO-6146-TMR-quickfilter-jarvis-claude-2026-08-31.md` Zeile 53) bestätigte sich: Jarvis' EIGENES Fact-Pack hatte Piotroski F-Score/FCF-Marge bereits selbst als `[N/V]` getaggt (obwohl daneben oft eine plausible qualitative Einschätzung stand, die `[TRAINING]` verdient hätte) – JJ übernahm dieses bereits gesetzte Tag als vorentschieden, statt es selbst neu zu bewerten. Die eigentliche Ursache liegt also in Jarvis' Fact-Pack-Erstellung (siehe Agent-Playbook.md "Fact-Pack-Tag-Disziplin", neu ergänzt), nicht in Gemini selbst – Block 7 ist das zusätzliche Sicherheitsnetz auf Bridge-Seite:
+**Block 7 ergänzt (2026-09-06, echte Ursache des wiederholten JJ-Reflex-Abbruch-Bugs gefunden):** Bisher wurde der wiederholte SCHROTT/Terminal-State-Abbruch bei JJ (Asahi Intecc, Disco Corp, Lasertec) als Gemini-spezifisches Modellverhalten eingeordnet ("JJ tendiert reflexhaft zu N/V statt TRAINING"). Brian machte den entscheidenden Beobachtungshinweis: bei manueller Anwendung des JJ-Prompts (ohne Aegis' Fact-Pack) läuft dieselbe Analyse normal durch, kein Abbruch. Beim Nachlesen von JJs eigener Begründung (siehe `analysen/LASERTEC-TMR-quickfilter-jack-gemini-2026-09-05.md` Zeile 19-29 und `analysen/DISCO-6146-TMR-quickfilter-jarvis-claude-2026-08-31.md` Zeile 53) bestätigte sich: Aegis' EIGENES Fact-Pack hatte Piotroski F-Score/FCF-Marge bereits selbst als `[N/V]` getaggt (obwohl daneben oft eine plausible qualitative Einschätzung stand, die `[TRAINING]` verdient hätte) – JJ übernahm dieses bereits gesetzte Tag als vorentschieden, statt es selbst neu zu bewerten. Die eigentliche Ursache liegt also in Aegis' Fact-Pack-Erstellung (siehe Agent-Playbook.md "Fact-Pack-Tag-Disziplin", neu ergänzt), nicht in Gemini selbst – Block 7 ist das zusätzliche Sicherheitsnetz auf Bridge-Seite:
 
 ```
-WICHTIG: FACT-PACK-TAGS SIND NICHT BINDEND. Das Fact-Pack ist Jarvis' eigene
+WICHTIG: FACT-PACK-TAGS SIND NICHT BINDEND. Das Fact-Pack ist Aegis' eigene
 Ersteinschaetzung, keine bereits abgeschlossene, unveraenderliche Bewertung.
 Ist eine Kennzahl im Fact-Pack als [N/V] getaggt: pruefe SELBST (aus eigenem
 Training und/oder eigener Live-Suche), ob DU eine halbwegs plausible
@@ -1138,12 +1138,12 @@ Fact-Pack selbst [N/V] sagt.
 
 ```
 WICHTIG: SELBSTWIDERSPRUCH-CHECK VOR DER FINALEN DNA-CHECK-TABELLE (gilt fuer
-dich genauso wie fuer Jarvis und die andere KI im selben Cross-Check). Ausloeser:
+dich genauso wie fuer Aegis und die andere KI im selben Cross-Check). Ausloeser:
 beim Novo-Nordisk-Full-Deep-Dive (2026-09-08) enthielt eine Bridge-Antwort fuer
 dieselbe Kennzahl (Operating Margin) in derselben Antwort zwei verschiedene
 Werte (37,23% und 42,24%), und eine andere Kennzahl (Capex/Umsatz) war durch
 versehentlich mit eingerechnete Akquisitionskosten aufgeblaeht - beides wurde
-erst durch Jarvis' nachtraegliche Gegenpruefung gefunden, nicht von dir selbst.
+erst durch Aegis' nachtraegliche Gegenpruefung gefunden, nicht von dir selbst.
 PRUEFE VOR DER AUSGABE DER FINALEN DNA-CHECK-TABELLE EINMAL SELBST: hast du fuer
 IRGENDEINE Kennzahl in dieser Antwort mehr als einen Wert genannt (z.B. einmal
 aus dem Fact-Pack, einmal aus deiner eigenen Live-Suche, einmal aus einer
@@ -1158,7 +1158,7 @@ Auswahl des zuletzt genannten Werts aufloesen.
 **Bewusst NICHT in die Bridge-Blöcke übernommen (2026-09-04, Abwägung
 dokumentiert):** die "Regel-Aufnahme-Disziplin/Ruleset-Hygiene" und der
 "Tieferer Zweck der Kandidatensuche" (Bereicherung/Unter-Radar/Watchlist-
-Vergleich) sind reine Jarvis-Orchestrierungs-Aufgaben (Screening, Datei-
+Vergleich) sind reine Aegis-Orchestrierungs-Aufgaben (Screening, Datei-
 Pflege, Regelwerk-Pflege) – JJ/Conan bewerten nur den ihnen vorgelegten
 einzelnen Kandidaten, sie screenen nicht selbst und pflegen keine Regeln.
 Diese beiden Mechanismen bräuchten deshalb keinen eigenen Bridge-Block;
@@ -1199,11 +1199,11 @@ basierend auf Profitabilität/Bilanzqualität, niemals N/V allein deswegen")
 ein JJ-SCHROTT/Terminal-State-Ergebnis, das ausschließlich auf Piotroski
 und/oder einer einzelnen verzerrten FCF-Quartalszahl beruht, wird als
 Datenlücken-Artefakt behandelt, nicht als belastbares Urteil – Conans und
-Jarvis' Einschätzung erhalten in diesem Fall mehr Gewicht.
+Aegis' Einschätzung erhalten in diesem Fall mehr Gewicht.
 
 ### 10.14 `_agentic`-Varianten hatten NIE echten Web-Search-Zugriff – Bugfix 2026-09-16, plus korrigierte Praxis-Regel
 
-**Symptom (CBOE-Full-Deep-Dive, 2026-09-16):** Jarvis dispatchte an
+**Symptom (CBOE-Full-Deep-Dive, 2026-09-16):** Aegis dispatchte an
 `ask_gemini_agentic`/`ask_chatgpt_agentic` (weil ursprünglich ein
 Kurs-Fallback per `get_quote`-Relay eingebaut werden sollte). Ergebnis:
 **JJ (Gemini) erfand Fundamentaldaten** (ROIC/EPS-CAGR/WACC/DCF-Werte),
@@ -1273,7 +1273,7 @@ Prompt NICHT der volle 130KB-Mega-Prompt ist. Zwei gangbare Wege:
    Zeichen) + `enable_search=True` – so tatsächlich getestet und
    funktionierend beim CBOE-Full-Deep-Dive.
 2. Voller Mega-Prompt + `enable_search=False` (wie bisherige Praxis,
-   siehe SKILL.md-Dateien) – dann bleibt Jarvis' eigenes Fact-Pack (jetzt
+   siehe SKILL.md-Dateien) – dann bleibt Aegis' eigenes Fact-Pack (jetzt
    inkl. WebSearch/WebFetch-verifizierten Zahlen) die einzige Live-Quelle
    für JJ, kein eigener Suchzugriff.
 Conan/ChatGPT ist von dieser Einschränkung nicht betroffen (siehe 10.10:
@@ -1334,7 +1334,7 @@ hier nur die wichtigsten für den Sessionstart):
     nur nachträglich als erledigt markiert, 2026-09-04 im Rahmen der
     Gaps-Abarbeitung geprüft):** JJs Rating widersprach seinem eigenen
     Abbruch-Befund (Regelfehler, nicht gleichwertige Auslegung) - Auflösung
-    in `analysen/KRKN-RKLB-nachholanalyse-final-2026-09-01.md`: Jarvis'
+    in `analysen/KRKN-RKLB-nachholanalyse-final-2026-09-01.md`: Aegis'
     ursprüngliches Ergebnis vom 28.08. (RATING ZU FRÜH, Sizing 0%) als
     offizielles System-Ergebnis bestätigt. Dieser Fall wurde zudem zum
     Canonical Failure Case für den späteren Terminal-State-Mechanismus
@@ -1455,7 +1455,7 @@ Mechanismen umgestellt:
 
 ---
 
-*Dieses Dokument wurde von Jarvis (Claude) am 2026-08-31 als reine
+*Dieses Dokument wurde von Aegis (Claude) am 2026-08-31 als reine
 Dokumentations-/Konsolidierungsarbeit erstellt, auf Brians expliziten
 Wunsch ohne jede Änderung an bestehenden Regeln. Es fasst zusammen und
 verweist – bei jedem Widerspruch zwischen diesem Dokument und
