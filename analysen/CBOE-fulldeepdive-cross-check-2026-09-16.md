@@ -128,6 +128,20 @@ Aus dem Vergleich mit dem externen Digital-Arts-Deep-Dive (uncoveredjapan.com) w
 
 ---
 
+## 5d. Nachtrag (16.09., nach Brians Vergleich mit Raketentonis MP-Materials-Report): Verwässerungs-Wasserfall, Meilenstein-Timeline, Risiko-Matrix, Score-Herleitung
+
+Vier weitere, aus demselben externen Vergleich stammende Bausteine (Agent-Playbook.md Rigor-Punkte 43-46) auf CBOE angewendet:
+
+**Verwässerungs-Wasserfall (Rigor-Punkt 43): entfällt ersatzlos.** CBOEs Fremdkapital besteht ausschließlich aus einfachen Corporate Notes ($650 Mio./$500 Mio./$300 Mio., keine Wandelrechte) — keine Wandelanleihen, keine wandelbaren Preferred-Aktien, keine signifikanten Warrants gleichzeitig vorhanden (Bedingung für die Methodik: mindestens zwei solcher Instrumente gleichzeitig). Die Basis-Aktienzahl ist bereits die ökonomisch relevante Zahl.
+
+**Meilenstein-Timeline mit Positiv-/Warnsignal (Rigor-Punkt 44):** die bestehende "Nächste Prüfpunkte"-Tabelle wurde um zwei Spalten erweitert — z.B. beim Q3-2026-Earnings-Termin (30.10.) Positivsignal "Ausblick mind. gehalten, dritte Anhebung in Folge" vs. Warnsignal "Ausblick gesenkt oder nur bestätigt statt angehoben". Reiner Formatwechsel, keine neue Datenerhebung.
+
+**Risiko-Matrix (Rigor-Punkt 45):** fünf Risiken, alle aus bereits vorhandenen Report-Bausteinen abgeleitet (nicht frei erfunden) — Prediction-Market-Konkurrenz (Mittel/Mittel), Data-Vantage-Diversifikation stagniert (Niedrig/Mittel), SPX-Exklusivlizenz nicht verlängert (Niedrig/Hoch), Januar-2027-Refinanzierung ungünstig (Mittel/Mittel), ROIC fällt unter WACC (Niedrig/Hoch). **Einordnung:** kein Risiko liegt in der Kombination Hoch-Wahrscheinlichkeit/Hoch-Schaden — deckt sich mit dem KAUFEN-Rating.
+
+**Agent-Score-Herleitung (Rigor-Punkt 46):** macht die bestehende Anker-Bereich→Mali→Deckel-Logik als Tabelle sichtbar statt nur die Endzahl zu zeigen. Anker-Bereich 6-8 QUALITÄTS-KERN (K-Basis erfüllt, Moat 4/4 STARK, Bewertung akzeptabel, keine kritischen Risiken aktiv). Ausgangswert 8 von 6-8 (oberes Ende wegen außergewöhnlich starkem Moat, nicht 9-10 weil Management-Score nur 4-5/7 statt 6-7 und keine echte Sicherheitsmarge — MoS 🔴 KEINER laut TA-Investor-Entry-Block). Keine aktiven Mali (kein SBC-Infection/Litigation-Drain/Kundenkonzentration/Bias-Strike). Keine aktiven Deckel (Konfidenz 🟡 nicht 🔴, kein Moat-Decay, kein Runway-kritisch). **Finaler Score: 8/10 — Herleitung bestätigt den bereits ausgewiesenen Score, keine Korrektur nötig.** Wichtig: die erste Entwurfsfassung dieses Punktes hätte den Score fälschlich bottom-up aus sechs neuen Dimensionen neu berechnet, statt die bestehende Anker-Methodik nur transparent zu machen — beim Umsetzen selbst korrigiert (siehe Agent-Playbook.md Punkt 46).
+
+---
+
 ## 6. Datenintegritäts-Fund
 
 JJs abschließender JSON-Block enthielt `"going_concern_flag": true` — dies widerspricht seiner eigenen Prosa (kein Going-Concern-Vermerk gefunden) und seinem eigenen Rating KAUFEN (unter einem echten Going-Concern-Flag zwingend SCHROTT). Als Tipp-/Generierungsfehler eingeordnet und in der Synthese auf `false` korrigiert — Beispiel dafür, warum der JSON-Block die Prosa nie ungeprüft ersetzen darf (siehe Methodik, "JSON ersetzt nicht die Begründungspflicht").

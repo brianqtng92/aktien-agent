@@ -5184,6 +5184,117 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     Kennzahlen, die ohnehin Teil der Management-Transparenz-Prüfung sind
     (Punkt 9), macht nur explizit, WIE man die Divergenz interpretiert.
 
+43. **Verwässerungs-Wasserfall bei komplexer Kapitalstruktur (neu,
+    2026-09-16, Vergleich mit Raketentonis MP-Materials-Report).** Das
+    bestehende Kriterium "Verwässerung: Share Count Trend (3J) ≤0% p.a."
+    (SCHRITT 4) erfasst nur die HISTORISCHE Aktienzahl-Entwicklung, nicht
+    das FORWARD-Risiko aus bereits existierenden, aber noch nicht
+    ausgeübten dilutiven Instrumenten. **Ab sofort Pflicht bei Full Deep
+    Dive, NUR wenn mindestens zwei der folgenden gleichzeitig vorliegen**
+    (Wandelanleihen, Preferred-Aktien mit Wandeloption, signifikante
+    Warrants, große unvestete Optionsprogramme) – **sonst ersatzlos
+    entfällt** (der Normalfall bei etablierten Blue-Chips mit reinem
+    Common-Stock, z.B. CBOE): eine Tabelle Instrument → potenzielle neue
+    Aktien → Auslösebedingung (Kurs-Schwelle, Fälligkeitsdatum, Vesting) →
+    bereits in der Basis-Aktienzahl enthalten (Ja/Nein). Ergebnis ist eine
+    "ökonomisch voll verwässerte" Aktienzahl, die für die Fair-Value-pro-
+    Aktie-Rechnung verwendet wird, sobald die Abweichung zur Basis-
+    Aktienzahl >5-10% beträgt – nicht nur eine Fußnote, sondern ein
+    Pflicht-Hinweis direkt neben dem Fair-Value-Ergebnis. **Kein
+    Zusatzaufwand:** nutzt ausschließlich Daten, die ohnehin aus dem
+    10-K/10-Q für den Kapitalstruktur-Abschnitt (SCHRITT 4) recherchiert
+    werden, macht nur explizit, wie sie zur Aktienzahl zusammengerechnet
+    werden – Raketentonis MP-Materials-Beispiel zeigt den Effekt konkret
+    (178,1 Mio. Stammaktien vs. ökonomisch ~205-225 Mio. verwässert nach
+    Preferred+Warrant+Wandelanleihe, ein Unterschied von 15-26%, der bei
+    reiner Marktkapitalisierungsrechnung unsichtbar bliebe).
+
+44. **Meilenstein-Timeline mit Positiv-/Warnsignal-Spalten (neu,
+    2026-09-16, gleiche Quelle).** Erweitert die bestehende "Nächste
+    Prüfpunkte"-Tabelle im Thesis-Kill-Sheet 🔪 (Punkt 26): statt nur
+    Datum + Beschreibung bekommt jede Zeile zusätzlich zwei Spalten
+    **Positives Signal** und **Warnsignal** – was an diesem Prüfpunkt
+    KONKRET beobachtet werden soll, um die These zu bestätigen bzw. zu
+    widerlegen (z.B. bei einem Earnings-Termin: "Guidance mindestens
+    gehalten" vs. "Guidance gesenkt oder nur knapp erreicht"). **Ab sofort
+    universell Pflicht bei Full Deep Dive** – reiner Formatwechsel der
+    bestehenden Tabelle, keine neue Datenerhebung, macht nur explizit,
+    was Aegis ohnehin bei jedem Prüfpunkt im Kopf hat.
+
+45. **Risiko-Matrix: Wahrscheinlichkeit × Schaden × Frühindikator (neu,
+    2026-09-16, gleiche Quelle).** Ergänzt (ersetzt nicht) die bestehenden
+    Bull-/Bear-Trigger-Listen im Kill-Sheet um eine systematische
+    Risiko-Inventur: pro identifiziertem Risiko drei Spalten – Wahr-
+    scheinlichkeit (niedrig/mittel/hoch), Schaden bei Eintritt (niedrig/
+    mittel/hoch), Frühindikator (was konkret beobachten). **Bewusste
+    Abweichung von Raketentonis Vorlage:** die Matrix-Zeilen werden NICHT
+    frei erfunden, sondern zwingend aus bereits vorhandenen Report-
+    Bausteinen abgeleitet – jede 🟡/❌-Zeile der KSF-Scorecard (Punkt 41),
+    jeder Struktur-Risiko-Fund (Punkt 35) und ein 🟡/🔴-Debt-Maturity-
+    Urteil (SCHRITT 4) wird automatisch eine Matrix-Zeile. Das verhindert
+    eine zweite, unabhängig gepflegte Risikoliste, die mit der Zeit von
+    den eigentlichen Befunden abdriften könnte – ein Risiko taucht in
+    genau EINER kanonischen Form auf, nicht in drei verschiedenen
+    Formulierungen über den Report verteilt. **Ab sofort Pflicht bei Full
+    Deep Dive**, Kein Zusatzaufwand: reine Zusammenführung bereits
+    vorhandener Befunde in eine Tabelle.
+
+46. **Agent-Score-Breakdown: die bestehende Anker-Mali-Deckel-Herleitung
+    sichtbar machen statt nur das Endergebnis (neu, 2026-09-16, gleiche
+    Quelle, nach Prüfung gegen die bestehende Methodik korrigiert).**
+    **Wichtige Selbstkorrektur beim Umsetzen:** die erste Fassung dieses
+    Punktes wollte den AGENT SCORE aus sechs neu gewichteten Einzeldimen-
+    sionen bottom-up neu berechnen – das hätte der bereits bestehenden,
+    bewährten Anker-Bereich→Mali→Deckel-Logik (Abschnitt "AGENT SCORE –
+    ANKER & SKALA", inkl. Korrelierte-Mali-Regel) eine zweite, konkurrierende
+    Rechenlogik zur Seite gestellt. **Stattdessen, auf unsere Art:** die
+    bereits vorhandene Herleitung wird nur noch TRANSPARENT als Tabelle
+    ausgewiesen statt nur als nackte Endzahl:
+    - **Anker-Bereich** (9-10 Ausnahme-Compounder / 6-8 Qualitäts-Kern /
+      3-5 Grenzfall / 1-2 Finger weg) mit 1-Satz-Begründung, welche
+      Anker-Kriterien erfüllt sind
+    - **Ausgangswert innerhalb des Bereichs** (z.B. "8 von 6-8, nahe der
+      Ausnahme-Compounder-Schwelle")
+    - **Aktive Mali** (benannt, mit Punktabzug je Mali, Korrelierte-Mali-
+      Regel angewendet falls zutreffend) oder "keine"
+    - **Aktive Deckel** (benannt, mit resultierender Obergrenze) oder
+      "keiner"
+    - **Finaler Score** nach Anwendung aller Mali/Deckel
+    Das ist keine neue Rechenlogik, sondern die ohnehin im Kopf
+    durchlaufene Herleitung explizit als Tabelle statt als Prosa-Satz –
+    macht sichtbar, WARUM ein Score 8/10 ist (welcher Anker, welche
+    Mali/Deckel geprüft und verworfen wurden), statt einer unbegründeten
+    Einzelzahl. **Ab sofort Pflicht auf der Fazit-Seite bei Full Deep
+    Dive.** Kein Zusatzaufwand: die Herleitung existiert bereits, wird nur
+    sichtbar gemacht statt nur im Ergebnis zu münden.
+
+**Woher Punkte 43-46 kommen, und was NICHT übernommen wurde (2026-09-16):**
+Brian teilte Raketentonis "MP Materials – Große Aktienanalyse" (13 Seiten,
+derselbe Report, der ursprünglich als Vorbild für unser Full-Deep-Dive-
+PDF-Format diente, siehe Abschnitt "PDF-Report-Design" oben) und bat um
+einen erneuten Vergleich. Erst-Check gegen die eigenen Regeln ergab:
+die "Datenhygiene zum beigefügten Market-View-Report" (Fact-Check einer
+mitgelieferten Drittquelle) existiert bei uns bereits (Punkt 9), das
+"Was noch bewiesen werden muss" neben der Investment-These entspricht
+bereits unserer neuen Executive-Summary-Decision-Grid (unabhängig
+letzte Woche nach Jack/Conans Struktur-Kritik eingeführt, siehe CBOE-
+Report). Vier Techniken waren ein echter, neuer Fund (oben als Punkte
+43-46 umgesetzt) – bei allen vieren wurde bewusst NICHT 1:1 aus der
+Vorlage übernommen, sondern auf unser eigenes Modul-/Nummerierungs-
+system aufgesetzt (siehe jeweilige "Bewusste Abweichung"-Hinweise oben).
+Zwei weitere Ideen aus dem Report wurden geprüft und NICHT übernommen:
+(a) die drei benannten Entry-Varianten (Geduldiger Pullback/Kernzone/
+Momentum) mit je eigener Positionsgrößen-Vorgabe – für unser bestehendes
+gestaffeltes Tranchen-Modell (Kaufplan, Seite 10/11) wäre das
+Over-Engineering, drei benannte Strategien mit je eigenen Prozentsätzen
+addieren keine neue Entscheidung ggü. den bereits vorhandenen zwei
+Tranchen mit klaren Preiszonen; (b) die visuelle Wertschöpfungsketten-
+Grafik (Mine→Separation→Metal→Magnets→Customers) auf Seite 1 – schön für
+vertikal integrierte Industriewerte, aber kein universeller Baustein
+(die meisten Full-Deep-Dive-Kandidaten sind keine mehrstufigen
+Produktionsketten) und würde bei generischer Anwendung zu einem
+Ausfüll-Diagramm ohne echten Informationswert verkommen.
+
 **Woher Punkte 41 und 42 kommen, und was NICHT übernommen wurde
 (2026-09-16):** Brian bat darum, einen externen Deep Dive zu Digital Arts
 (TSE: 2326, japanischer Cybersecurity-Spezialist, uncoveredjapan.com)
@@ -5237,10 +5348,10 @@ die Obergrenze real um eine Seite verschoben, siehe unten).
 | 4 | Historie | 5J-Finanzhistorie, Guidance-Track-Record, Management-Glaubwürdigkeits-Matrix (inkl. Tonalitäts-Dimension, Punkt 38), optional Bookings/Backlog-Wedge-Analyse (Punkt 42) bei Lizenz→Subscription-Transformation | universell |
 | 5 | Chart | Kursverlauf (Technical) | universell |
 | 6 | Bewertung | DCF-Szenarien, Sensitivitätsmatrix (Punkt 24), sektorspezifische Struktur-Risiko-Vertiefung (Punkt 35) falls hier passender als Seite 9 | Bewertungsmethodik universell, Struktur-Risiko-Inhalt sektorabhängig |
-| 7 | Kill-Sheet | Thesis-Kill-Sheet (Punkt 26), Peer-Vergleich, historische Bewertungs-Bandbreite | universell |
-| 8 | Kapitalstruktur | Kapitalrückführungs-Historie, SBC-vs-Buyback-Netting (Punkt 23), Offene Schwächen, Datenintegritäts-Warnstrip | universell (SBC-Netting entfällt mangels Buyback-Programm ersatzlos, siehe Punkt 23 – kein Zusatzaufwand) |
+| 7 | Kill-Sheet | Thesis-Kill-Sheet (Punkt 26) mit Meilenstein-Timeline inkl. Positiv-/Warnsignal-Spalten (Punkt 44), Risiko-Matrix Wahrscheinlichkeit×Schaden×Frühindikator (Punkt 45), Peer-Vergleich, historische Bewertungs-Bandbreite | universell |
+| 8 | Kapitalstruktur | Kapitalrückführungs-Historie, SBC-vs-Buyback-Netting (Punkt 23), optional Verwässerungs-Wasserfall (Punkt 43) bei komplexer Kapitalstruktur, Offene Schwächen, Datenintegritäts-Warnstrip | universell (SBC-Netting/Wasserfall entfallen mangels Buyback-Programm bzw. komplexer Instrumente ersatzlos, siehe Punkt 23/43 – kein Zusatzaufwand) |
 | **9** | **Sektor-Vertiefung (NEU)** | **Forward-Pipeline-/Katalysator-Ausblick (Punkt 34) + Struktur-Risiko-Check (Punkt 35) + Insider-Transaktionen (Punkt 36)** | **Punkt 34+35 komplett sektorabhängig ausgeprägt (siehe dortige Beispiele je Sektor), Punkt 36 universell** |
-| 10 | Fazit | Finale Synthese, Watchlist-Konsequenz, Portfolio-Fit & Klumpenrisiko-Check (Punkt 37), Quellen | universell |
+| 10 | Fazit | Finale Synthese, Agent-Score-Breakdown gewichtete Einzeldimensionen (Punkt 46), Watchlist-Konsequenz, Portfolio-Fit & Klumpenrisiko-Check (Punkt 37), Quellen | universell |
 
 **Was NICHT automatisch 1:1 übernommen wird:** die KONKRETEN Kennzahlen/
 Fragestellungen auf Seite 9 (und teils Seite 6) – ein Halbleiterwert
