@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>J.A.C.K Deep Dive - SNPS</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FFFFFF; --bg-panel: #F7F6F2; --bg-panel-2: #EFEDE6;
+    --border: #D9D4C8; --border-soft: #E6E2D9;
+    --text: #262420; --text-dim: #5C564A; --text-faint: #837C6C;
+    --gold: #9C7A2E; --gold-bright: #8A6A22; --gold-dim: #C9AD6E;
+    --green: #3F7D44; --green-bg: rgba(63,125,68,0.10);
+    --yellow: #A6790A; --yellow-bg: rgba(166,121,10,0.10);
+    --red: #B03A2E; --red-bg: rgba(176,58,46,0.09);
+    --blue: #2E6690; --blue-bg: rgba(46,102,144,0.09);
+    --orange: #AB591C; --orange-bg: rgba(171,89,28,0.09);
+  }
+  html, body { width: 210mm; background: var(--bg); color: var(--text); font-family: "Carlito", "DejaVu Sans", Arial, sans-serif; font-size: 11pt; line-height: 1.36; }
+  .display { font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif; font-weight: 700; font-stretch: condensed; }
+  .page { width: 210mm; height: 297mm; padding: 8mm 12mm 5mm 12mm; display: flex; flex-direction: column; gap: 2mm; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 2.6mm; }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 23pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 9.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag { font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim); border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm; display: inline-block; width: fit-content; }
+  .meta-block { text-align: right; font-size: 9.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 10.6pt; }
+  .position-header { display: flex; justify-content: space-between; align-items: center; background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold); border-radius: 3px; padding: 2.6mm 4mm; }
+  .position-name .ticker { font-size: 17pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 10pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 5mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 8.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); white-space: nowrap; }
+  .stat .value { font-size: 12pt; color: var(--text); margin-top: 0.4mm; white-space: nowrap; }
+  .hook-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 3.4mm 4.2mm; }
+  .hook-title { font-size: 16pt; line-height: 1.28; color: var(--text); font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .hook-title .accent { color: var(--gold-bright); }
+  .hook-title .accent-red { color: var(--red); }
+  .hook-sub { font-size: 9.6pt; color: var(--text-dim); line-height: 1.4; margin-top: 1.8mm; }
+  .narrative-box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 3mm 4mm; flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .narrative-box p { font-size: 9.4pt; color: var(--text-dim); line-height: 1.46; }
+  .narrative-box p b { color: var(--text); }
+  .narrative-box p .lead { color: var(--gold-bright); font-weight: bold; }
+  .section-label { font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0; }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+  .chart-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 74mm; flex: 0 0 auto; }
+  .chart-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; border-radius: 2px; }
+  .bbb-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 52mm; flex: 0 0 auto; }
+  .bbb-frame img { max-width: 100%; max-height: 100%; }
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
+  .box h3 { font-size: 9.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .box p { font-size: 9.1pt; color: var(--text-dim); line-height: 1.32; overflow-wrap: break-word; }
+  .box p b { color: var(--text); }
+  .verify-table, .compare-table, .scenario-table, .score-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .verify-table th, .verify-table td, .compare-table th, .compare-table td, .scenario-table th, .scenario-table td, .score-table th, .score-table td { font-size: 8.5pt; padding: 0.9mm 1.4mm; text-align: left; border-bottom: 1px solid var(--border-soft); }
+  .verify-table th, .compare-table th, .scenario-table th, .score-table th { color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; font-weight: normal; font-size: 7.9pt; }
+  .verify-table td, .compare-table td, .score-table td { color: var(--text); }
+  .scenario-table th, .scenario-table td { text-align: right; }
+  .scenario-table th:first-child, .scenario-table td:first-child { text-align: left; color: var(--text-dim); }
+  .pass { color: var(--green); } .fail { color: var(--red); } .warn { color: var(--yellow); } .neg { color: var(--red); }
+  .two-col { display: flex; gap: 3mm; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .divergence-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--orange); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .divergence-box h3 { color: var(--orange); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.4mm; }
+  .divergence-box p { font-size: 9.2pt; color: var(--text); line-height: 1.42; }
+  .integrity-box { background: var(--blue-bg); border: 1px solid var(--blue); border-radius: 3px; padding: 2.6mm 3.6mm; }
+  .integrity-box h3 { color: var(--blue); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
+  .integrity-box p { font-size: 9pt; color: var(--text); line-height: 1.4; }
+  .trigger-row { display: flex; gap: 3mm; }
+  .trigger-box { flex: 1; border-radius: 3px; padding: 2.4mm 3.4mm; }
+  .trigger-box.bull { background: var(--green-bg); border: 1px solid var(--green); }
+  .trigger-box.bear { background: var(--red-bg); border: 1px solid var(--red); }
+  .trigger-box h3 { font-size: 9.4pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2mm; }
+  .trigger-box.bull h3 { color: var(--green); }
+  .trigger-box.bear h3 { color: var(--red); }
+  .trigger-box ul { list-style: none; }
+  .trigger-box li { font-size: 8.8pt; color: var(--text); padding: 0.6mm 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .trigger-box li:last-child { border-bottom: none; }
+  .killsheet-box { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .killsheet-box h3 { color: var(--gold-bright); font-size: 10.4pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.6mm; }
+  .catalyst-item { display: flex; gap: 3mm; padding: 1.3mm 0; border-bottom: 1px solid var(--border-soft); align-items: flex-start; }
+  .catalyst-item:last-child { border-bottom: none; }
+  .catalyst-date { flex: 0 0 auto; width: 30mm; font-size: 8.8pt; color: var(--gold-bright); font-weight: bold; }
+  .catalyst-desc { flex: 1; font-size: 8.8pt; color: var(--text-dim); line-height: 1.32; }
+  .catalyst-desc b { color: var(--text); }
+  .warn-strip { background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.7mm 3mm; font-size: 8.7pt; color: var(--yellow); margin-top: 1mm; }
+  .warn-strip b { color: var(--text); }
+  .fazit { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 2.8mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0; }
+  .fazit-verdict { flex: 0 0 auto; max-width: 42mm; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 13pt; color: var(--yellow); letter-spacing: 0.02em; }
+  .fazit-verdict .sub { font-size: 8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.6mm; }
+  .sources-list { font-size: 8.8pt; color: var(--text-dim); line-height: 1.5; }
+  .sources-list .n { color: var(--gold); margin-right: 1.5mm; }
+  .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 1.5mm; font-size: 8.1pt; color: var(--text-faint); flex-shrink: 0; }
+  .footer .gold-dot { color: var(--gold); }
+  .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm; }
+  .decision-card { border-radius: 3px; padding: 2.4mm 3.2mm; }
+  .decision-card.attractive { background: var(--green-bg); border: 1px solid var(--green); }
+  .decision-card.caution { background: var(--red-bg); border: 1px solid var(--red); }
+  .decision-card.watch { background: var(--blue-bg); border: 1px solid var(--blue); }
+  .decision-card.action { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); }
+  .decision-card h3 { font-size: 9.1pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .decision-card.attractive h3 { color: var(--green); }
+  .decision-card.caution h3 { color: var(--red); }
+  .decision-card.watch h3 { color: var(--blue); }
+  .decision-card.action h3 { color: var(--gold-bright); }
+  .decision-card p { font-size: 8.5pt; color: var(--text); line-height: 1.34; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hook -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">3-fach TMR-Cross-Check · Aegis · JJ · Conan</div>
+      <div class="edition-tag">Neuer Kandidat · Champions-Kandidat · Full Deep Dive</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">16. September 2026</div>
+      <div>TMR-Pfad · Modus A</div>
+      <div>Erster Full Deep Dive dieses Kandidaten</div>
+    </div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-title">🔬 Synopsys — Mission-Critical-Moat trifft <span class="accent-red">Mega-Merger-Übergangsphase</span></div>
+    <div class="hook-sub">Synopsys Inc. (NASDAQ: SNPS) · ISIN US8716071076 · Kurs $375,73 (16.09.2026, +2,18% intraday) · 52W-Range $362,55-$539,48 (-30,4% vom Hoch) · Sektor EDA-Software + Ansys-Multiphysics/CAE · Neuer Kandidat, noch nicht im Depot</div>
+  </div>
+
+  <div class="section-label">Die Geschichte eines Duopol-Champions mitten in der größten Fusion der EDA-Geschichte</div>
+  <div class="narrative-box">
+    <p><span class="lead">Das operative Geschäft.</span> Synopsys dominiert gemeinsam mit Cadence den EDA-Markt (Chip-Design-Software, ~80-85% gemeinsamer Marktanteil) und hat am 17.07.2025 für $35 Mrd. Ansys übernommen — die größte Fusion der Branchengeschichte, die EDA (Chip-Design) mit CAE (Multiphysics-Simulation) verbindet. Q3 FY26: Umsatz $2,477 Mrd. (+42% YoY, davon $711 Mio. allein Ansys), organisches EDA-Wachstum 8,5%. FY26-Guidance $9,69-9,74 Mrd., Non-GAAP-Op-Margin ~41,5%. Term Loans aus der Ansys-Finanzierung bereits vollständig getilgt — Deleveraging läuft schneller als angekündigt.</p>
+    <p><span class="lead">Der Kurs.</span> -30,4% vom 52W-Hoch, aktuell nahe dem 52W-Tief ($362,55, erreicht am 15.09.). Belastend: die riesige GAAP/Non-GAAP-Lücke (GAAP-Op-Margin FY26-Guidance nur ~10,4%), ein leicht rückläufiger Backlog ($11,4 Mrd. → $10,9 Mrd., teils durch die Processor-IP-Divestiture erklärt) und generell steigende Zinsen. Peer Cadence (CDNS) bewegte sich am selben Tag ähnlich, aber schwächer als SNPS im Tagesverlauf — teils sektorweiter, teils SNPS-spezifischer Druck.</p>
+    <p><span class="lead">Die Sondersituation.</span> Seit März 2026 hält Elliott Investment Management eine Multi-Milliarden-Beteiligung, seit 01.06.2026 mit Board-Sitz (Jesse Cohn) via Cooperation Agreement — Fokus auf Margen/Profitabilität. Cadence kontert die Ansys-Fusion strukturell mit einem eigenen $3,16-Mrd.-Zukauf (Hexagon Design & Engineering). Investor Day am 30.09.2026 gilt laut BofA als "key catalyst" — in nur zwei Wochen.</p>
+    <p><span class="lead">Der Cross-Check-Befund.</span> Alle drei unabhängigen Perspektiven (Aegis, JJ, Conan) konvergieren auf BEOBACHTEN, Agent Score 6-7/10 — ungewöhnlich einig für eine derart komplexe Sondersituation. Der eigentliche Fund dieser Runde ist kein Rating-Dissens, sondern ein Daten-Integritäts-Fund: JJ nannte trotz aktivem Web-Search einen um +54% zu hohen Kurs. Details Seite 10.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/SNPS-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/12</div>
+  </div>
+</div>
+
+<!-- PAGE 2: Executive Summary & Investment-These -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Executive Summary · Investment-These · 3-Stimmen-Leiste</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 2</div><div>SNPS Synopsys Inc.</div></div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">SNPS <span style="color:var(--text-dim); font-size:9.5pt;">· NASDAQ</span></div>
+      <div class="company">Synopsys Inc. — EDA-Software + Ansys-Multiphysics/CAE</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs</div><div class="value">$375,73</div></div>
+      <div class="stat"><div class="label">Tagesbewegung</div><div class="value" style="color:var(--green);">+2,18%</div></div>
+      <div class="stat"><div class="label">Analysten-Konsens</div><div class="value" style="color:var(--text);">~$545 (sekundär)</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">3-Stimmen-Leiste (erste Runde, unabhängige Recherche)</div>
+  <div style="display:flex; gap:2.4mm;">
+    <div class="box" style="flex:1;">
+      <h3>Aegis · Claude (Synthese)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">BEOBACHTEN</p>
+      <p style="font-size:8.4pt;">Score 6,5/10, kein Kauf vor Investor Day · Tier 2/3</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>JJ · Gemini (TMR, frische Web-Recherche)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">BEOBACHTEN</p>
+      <p style="font-size:8.4pt;">Score 6/10 · ⚠ Kursbasis fehlerhaft, siehe S.10 · Tier 3</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>Conan · ChatGPT (TMR, frische Web-Recherche)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">BEOBACHTEN</p>
+      <p style="font-size:8.4pt;">Score 7/10, SEC-primärquellen-gestützt · Tier 2</p>
+    </div>
+  </div>
+  <div class="warn-strip" style="margin-top:0;"><b>Konvergenz statt Dissens — mit einem Datenqualitäts-Fund:</b> Alle drei Perspektiven kommen unabhängig auf BEOBACHTEN. Bemerkenswert ist nicht der Rating-Gleichklang, sondern dass JJs zugrunde liegende Kursbasis um +54% zu hoch war (Details Seite 10) — ein eigenständiger Beleg dafür, dass aktiviertes Search-Grounding nicht vor Kern-Zahlen-Fehlern schützt.</div>
+
+  <div class="section-label">Investment-These: Warum SNPS jetzt (noch) nicht kaufen, aber genau beobachten?</div>
+  <div class="narrative-box" style="flex:0 0 auto;">
+    <p>Synopsys hat einen der stärksten Software-Moats überhaupt (4/4 in allen drei Analysen: Mission-Critical-EDA, jahrzehntelange Switching-Costs, jetzt erweitert um Ansys' Multiphysics-Simulation) und beschleunigt aktuell sein Deleveraging schneller als kommuniziert. <b>Aber:</b> der DNA-Check zeigt aktuell nur K-Basis 1/4 — nicht als Qualitätsurteil, sondern weil $26,8 Mrd. Goodwill aus dem Ansys-Deal ROIC/ROE/EPS-Wachstum auf der pro-forma-Basis real unter die Schwellenwerte drückt. Die DCF-Bewertung ist bei einer FCF-Basis von nur $2,6 Mrd. gegen eine EV von ~$78,6 Mrd. fast vollständig terminalwert-getrieben (TV-Anteil 68-76% je Modell) — jede Punktschätzung ist mit Vorsicht zu genießen. Der Investor Day am 30.09.2026 muss liefern: organisches Wachstum jenseits der Ansys-Konsolidierung, echte Cross-Sell-Kennzahlen statt reiner Umsatzaddition, einen glaubwürdigen Margen-Pfad.</p>
+  </div>
+
+  <div class="section-label">Entscheidungs-Übersicht</div>
+  <div class="decision-grid">
+    <div class="decision-card attractive">
+      <h3>✓ Warum attraktiv</h3>
+      <p>4/4-Moat in allen drei Analysen, Mission-Critical-EDA+CAE-Kombination, Deleveraging schneller als angekündigt (Term Loans bereits getilgt), Backlog trotz Rückgang weiterhin $10,9 Mrd., kein Going-Concern-Flag.</p>
+    </div>
+    <div class="decision-card caution">
+      <h3>⚠ Warum nicht blind kaufen</h3>
+      <p>K-Basis nur 1/4 (ROIC/ROE/EPS-CAGR real unter Schwelle, nicht nur Datenlücke), GAAP-Op-Margin nur ~10,4%, Management-Score nur 1-1,5/7, TA klar bearish, Cadence kontert strukturell mit eigenem Multiphysics-Zukauf.</p>
+    </div>
+    <div class="decision-card watch">
+      <h3>👁 Was wir beobachten</h3>
+      <p>Investor Day 30.09.2026 (neues Long-Term-Modell erwartet), Backlog-Entwicklung (organisch vs. Ansys), Cadence-Hexagon-Integration als Gegenspieler, China-Exportkontroll-Risiko, Elliotts weiteres Verhalten (Halten/Ausbau/Exit).</p>
+    </div>
+    <div class="decision-card action">
+      <h3>▶ Aktion</h3>
+      <p>BEOBACHTEN. Kein Kauf vor dem Investor Day. Bei Neuaufnahme danach: max. Tier 2/3, keine Tier-1-Position vor bewiesener Integrationstransparenz.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/SNPS-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/12</div>
+  </div>
+</div>
+
+<!-- PAGE 3: DNA-Check -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Vollständiger DNA-Check (K- & E-Kriterien) — nach Ansys-Konsolidierung</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 3</div><div>SNPS Synopsys Inc.</div></div>
+  </div>
+
+  <div class="section-label">DNA-CHECK: SNPS — K-BASIS 4 (Standard, kein Sektor-Override)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Kriterium</th><th>Schwelle</th><th>Ist-Wert (pro-forma nach Ansys)</th><th>Status</th></tr>
+      <tr><td colspan="4" style="color:var(--gold); font-size:7.6pt; text-transform:uppercase; letter-spacing:0.05em; padding-top:1.8mm;">K-Kriterien (Gatekeeper)</td></tr>
+      <tr><td>ROIC</td><td>&gt;20%</td><td>Unbereinigt nur ~1,7-2,0% (Goodwill $26,8 Mrd. bläht Kapitalbasis auf), bereinigt (Non-GAAP-Basis) ~8-10% — beide klar unter Schwelle</td><td class="fail">❌ Verfehlt</td></tr>
+      <tr><td>Operativer Leverage</td><td>Ja/Nein</td><td>Ja — Q3 FY26 GAAP-Op.Income +116% YoY bei Umsatz +42% YoY (teils M&A-Konsolidierungseffekt)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>EPS-CAGR (5J)</td><td>≥12%</td><td>GAAP durch Ansys-Amortisation/Integrationskosten stark verzerrt und aktuell rückläufig (FY24 $9,25 → FY25 $8,07 → FY26e $3,84-4,08) — kein sauberer 5J-CAGR belegbar</td><td class="fail">❌ Verfehlt/N/V</td></tr>
+      <tr><td>ROE</td><td>&gt;15%</td><td>Unbereinigt ~3-4%, bereinigt (Non-GAAP) ~9-10% — beide unter Schwelle</td><td class="fail">❌ Verfehlt</td></tr>
+      <tr><td colspan="4" style="color:var(--gold); font-size:7.6pt; text-transform:uppercase; letter-spacing:0.05em; padding-top:1.8mm;">E-Kriterien</td></tr>
+      <tr><td>Op. Margin (GAAP-TTM)</td><td>≥20%</td><td>~10,4% (FY26-Guidance) — Non-GAAP dagegen ~41,5% (Amortisation erworbener Intangibles, SBC, Integrationskosten erklären die Lücke)</td><td class="fail">❌ Verfehlt (GAAP)</td></tr>
+      <tr><td>Revenue-CAGR (5J)</td><td>≥8-10%</td><td>Reported ~18% (stark M&A-getrieben) · organisch ex-Ansys ~9,9% — Ersatzkriterium erfüllt</td><td class="pass">✅ Erfüllt (organisch)</td></tr>
+      <tr><td>Net Debt/EBITDA</td><td>&lt;2,0x</td><td>~1,5-1,6x (Cash $3,6 Mrd., Debt-Principal $10,1 Mrd., Term Loans bereits vollständig getilgt)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Capex/Umsatz</td><td>≤5%</td><td>~2,3% (FY26-Guidance $225 Mio. / $9,715 Mrd.)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>SBC-Infection-Check</td><td>&lt;15% Umsatz / &lt;2% Verwässerung p.a.</td><td>SBC/Umsatz 9M FY26 ~10,0% (unter Schwelle) · Share Count +24% seit Okt. 2024 — aber einmalig durch Ansys-Aktienausgabe + NVIDIA-Private-Placement, nicht laufende SBC-Verwässerung</td><td class="warn">🟡 SBC ok, Deal-Verwässerung hoch</td></tr>
+    </table>
+    <p style="margin-top:1.6mm; font-size:8.4pt;"><b>DNA-Urteil: K 1/4 · E 3/4.</b> Kein Substanzproblem im Sinne einer schlechten Firma, sondern eine reale, primärquellenbelegte Verzerrung durch den $35-Mrd.-Ansys-Deal: Goodwill und Amortisation drücken ROIC/ROE/EPS-Wachstum auf der pro-forma-Basis strukturell unter die Schwellenwerte. Alle drei unabhängigen Analysen (Aegis, JJ, Conan) kommen unabhängig auf dasselbe K 1/4-Bild — ein starkes Konvergenz-Signal.</p>
+  </div>
+
+  <div class="section-label">Moat- & Management-Verifikation</div>
+  <div class="two-col">
+    <div class="col">
+      <div class="box">
+        <h3>Moat: STARK (4/4) · Trend STABIL bis STÄRKER</h3>
+        <p>EDA ist Mission-Critical (Design-Sign-off), enorme Switching-Costs durch jahrzehntelange Tool-Integration. Ansys-Fusion erweitert das Bundle um Multiphysics-Simulation — strukturell moat-stärkend, aber kurzfristig integrationsriskant. <b>Primärquellenbelegte Nuance (EU-Fusionsentscheidung):</b> Synopsys hat in einem Teilsegment (Place&amp;Route) real Marktanteil an Cadence verloren (~60-70%→~40-50% seit 2018) — ein echter, wenn auch begrenzter Moat-Decay-Hinweis.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="box">
+        <h3>Management-Score: 1-1,5/7 RISIKO</h3>
+        <p>Guidance-Hit-Rate als einziger klarer Pluspunkt. ROIC-Trend, Reinvestitionsrendite, Buyback-Timing, M&A-Qualität und Share-Count-Trend alle negativ oder nicht belegbar — v.a. wegen der Deal-Verwässerung (+24% Aktien) und der noch unbewiesenen Ansys-Integration. Elliott-Board-Sitz seit 01.06.2026 als teils Qualitäts-, teils Warnsignal eingeordnet (siehe Seite 8).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/SNPS-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/12</div>
+  </div>
+</div>
+
+<!-- PAGE 4: Historie / Bilanz / Debt-Maturity -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Historie · Backlog · Bilanz · Debt-Maturity</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 4</div><div>SNPS Synopsys Inc.</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="section-label">Umsatz-Historie & Ansys-Effekt (Mio. USD)</div>
+      <div class="box">
+        <table class="verify-table">
+          <tr><th>Periode</th><th>Umsatz</th><th>YoY</th><th>Ansys-Anteil</th></tr>
+          <tr><td>FY21</td><td>4.204</td><td>—</td><td>—</td></tr>
+          <tr><td>FY25</td><td>7.054</td><td>+12%</td><td>—</td></tr>
+          <tr><td>Q3 FY26</td><td>2.477</td><td>+42%</td><td>711 (davon)</td></tr>
+          <tr><td>FY26e (Guidance)</td><td>9.690-9.740</td><td>~+37-38%</td><td>~2.980 (davon)</td></tr>
+        </table>
+        <p style="margin-top:1.2mm; font-size:7.6pt; color:var(--text-faint);">Organisches EDA-Wachstum ex-Ansys/ex-Divestitures ca. 8,5-9,9% — der Großteil des reported Wachstums 2026 ist M&A-Konsolidierungseffekt, kein organischer Hypergrowth.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="section-label">Backlog-Entwicklung</div>
+      <div class="box">
+        <table class="verify-table">
+          <tr><th>Zeitpunkt</th><th>Backlog</th><th>Kommentar</th></tr>
+          <tr><td>FY25-Ende</td><td>$11,4 Mrd.</td><td>vor Processor-IP-Divestiture</td></tr>
+          <tr><td>Q3 FY26</td><td>$10,9 Mrd.</td><td class="warn">Leicht rückläufig, teils durch Divestiture erklärt</td></tr>
+        </table>
+        <p style="margin-top:1.2mm; font-size:8.2pt;"><b>Einordnung:</b> Der Rückgang ist nicht dramatisch, aber ein Beobachtungspunkt für den Investor Day — Management muss zeigen, dass der organische Backlog trägt, nicht nur der Ansys-Zufluss.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Bilanz & Debt-Maturity (SEC-10-Q-verifiziert, 31.07.2026)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Fälligkeit</th><th>Betrag</th><th>Kupon</th><th>Risiko</th></tr>
+      <tr><td>2027</td><td>$1,0 Mrd.</td><td>4,55%</td><td class="warn">🟡 Erhöht (Zinsumfeld ~5%)</td></tr>
+      <tr><td>2028</td><td>$1,0 Mrd.</td><td>4,65%</td><td class="warn">🟡 Erhöht</td></tr>
+      <tr><td>2030</td><td>$2,0 Mrd.</td><td>4,85%</td><td class="pass">🟢 Unkritisch (weit)</td></tr>
+      <tr><td>2032 / 2035 / 2055</td><td>$1,5/$2,4/$2,1 Mrd.</td><td>5,00%/5,15%/5,70%</td><td class="pass">🟢 Unkritisch (weit)</td></tr>
+    </table>
+    <p style="margin-top:1.2mm;">Cash $3,6 Mrd., Net Debt ~$6,5 Mrd., Term Loans bereits vollständig getilgt, keine Revolver-Ziehung. GAAP-EBIT/Interest-Coverage nur ~1,6x (dünn), Non-GAAP-Coverage ~6,9x (solide) — <b>Refinanzierungsrisiko 🟡 MITTEL</b>, nicht KRITISCH.</p>
+    <p style="margin-top:1.6mm; font-size:7.8pt; color:var(--text-faint);"><b>Verwässerungs-Wasserfall (Rigor-Punkt 43): entfällt ersatzlos.</b> Keine Wandelanleihen, keine wandelbaren Preferred-Aktien, keine signifikanten Warrants gefunden. Die Aktien-Verwässerung durch den Ansys-Deal (+24% seit Okt. 2024, ~30 Mio. neue Aktien + $2,0 Mrd. NVIDIA-Private-Placement) ist ein bereits abgeschlossenes, einmaliges Ereignis, vollständig im aktuellen Share-Count enthalten — kein offener Wasserfall-Trigger für die Zukunft.</p>
+    <p style="margin-top:1mm; font-size:7.8pt; color:var(--text-faint);"><b>Divestiture-Check:</b> Verkauf der Processor-IP-Sparte (ARC-V/ARC CPU/DSP/NPU-IP) an GlobalFoundries (angekündigt 14.01.2026, Closing erwartet 2. Halbjahr 2026) brachte $440 Mio. Netto-Erlös in 9M FY26 — strategische Fokussierung auf EDA/CAE/Interface-IP, marginaler Umsatzeffekt (~$40 Mio. in der FY26-Guidance reflektiert).</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/SNPS-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 4/12</div>
+  </div>
+</div>
+
+<!-- PAGE 5: Bewertung I — DCF-Vergleich + Divergenz -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">DCF-Vergleich · TV-Sensitivität · Reverse-DCF</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 5</div><div>SNPS Synopsys Inc.</div></div>
+  </div>
+
+  <div class="section-label">DCF-Vergleich der unabhängigen Beine (Runde 1)</div>
+  <div class="box">
+    <table class="scenario-table">
+      <tr><th style="text-align:left;">Bein</th><th>Beta</th><th>WACC</th><th>Methode</th><th>Bear-FV</th><th>Base-FV</th><th>Bull-FV</th><th>TV-Anteil EV</th></tr>
+      <tr><td style="text-align:left;">Aegis</td><td>1,15</td><td>10,10%</td><td>Reiner Gordon-Growth</td><td>$138</td><td>$210</td><td>$281</td><td class="fail">68-76%</td></tr>
+      <tr><td style="text-align:left;">JJ</td><td>1,11</td><td>9,82%*</td><td>nicht ausgeführt (Methodik-Verzicht)</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td style="text-align:left;">Conan</td><td>1,23</td><td>10,50%</td><td>Gordon + Exit-Multiple, gewichtet</td><td>$200-230</td><td class="warn"><b>$375-400</b></td><td>$500-540</td><td class="fail">54% (Gordon) / &gt;75% (Exit)</td></tr>
+    </table>
+    <p style="margin-top:1.6mm; font-size:8.4pt;"><b>*JJs WACC-Rechnung basiert auf einer nachweislich falschen Kursbasis</b> ($577,92 statt real $375,73, siehe Seite 10) und wird für die Synthese nicht verwendet — JJ selbst verzichtete bewusst auf eine vollständige DCF-Punktschätzung ("um Scheingenauigkeit zu vermeiden"), was in der Rückschau richtig war.</p>
+  </div>
+
+  <div class="section-label">Der Kernbefund — TV-Anteil durchgängig über der 70%-Warnschwelle</div>
+  <div class="divergence-box">
+    <h3>⚠ Alle DCF-Varianten sind strukturell terminalwert-getrieben</h3>
+    <p>Bei einer FCF-Basis von nur $2,6 Mrd. (FY26-Guidance) gegen eine Enterprise Value von ~$78,6 Mrd. muss fast der gesamte Unternehmenswert aus weit in der Zukunft liegendem Wachstum kommen — Aegis' reiner Gordon-Growth-Ansatz liegt bei 68-76% TV-Anteil, Conans Exit-Multiple-Ansatz sogar über 75%. <b>Reverse-DCF (Aegis):</b> um den aktuellen Kurs zu rechtfertigen, müsste SNPS 5 Jahre lang ~21,3% p.a. FCF-Wachstum liefern (bei 3% Terminal-g) — das liegt spürbar über dem Durchschnitt selbst des eigenen Bull-Szenarios (~12,8%). Der Markt preist damit einen aggressiveren Silicon-to-Systems-Erfolg ein, als selbst die optimistische Aegis-Schätzung unterstellt. <b>Konsequenz:</b> reiner DCF ist hier eher eine Leitplanke als eine Punktschätzung — Peer-Vergleich und der Investor Day selbst sind die verlässlicheren nächsten Datenpunkte.</p>
+  </div>
+
+  <div class="section-label">Analysten-Konsens-Sanity-Check</div>
+  <div class="box">
+    <p style="font-size:8.6pt;">Laut sekundärer Recherche (Conan, nicht über Twelve Data verifizierbar — Statistics-Endpunkt gesperrt) liegt der Analysten-Konsens bei ca. $544,97 (Range $414,77-$633), was +48% Upside implizieren würde. Das weicht von Aegis' eigenem DCF-Base-Case ($210) um weit mehr als die 25-30%-Warnschwelle ab. <b>Aegis-Einordnung:</b> Ein reiner Cashflow-DCF ohne vollen Ansys-Synergie-Case ist für ein frisch fusioniertes, noch unbewiesenes Bundle-Geschäft systematisch zu konservativ — der Analysten-Konsens preist wahrscheinlich einen erfolgreichen Cross-Sell UND eine Multiple-Erholung nach dem Investor Day ein. Beide Extreme sind als Leitplanken zu verstehen, die Wahrheit liegt vermutlich näher an Conans gemischtem Ansatz ($375-400).</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/SNPS-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/12</div>
+  </div>
+</div>
+
+<!-- PAGE 6: Bewertung II — DCF-Szenarien-Chart -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Bewertung II · DCF-Szenarien im Chart</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 6</div><div>SNPS Synopsys Inc.</div></div>
+  </div>
+
+  <div class="section-label">DCF-Szenarien (Bear/Base/Bull) vs. aktueller Kurs & Analysten-Range</div>
+  <div class="bbb-frame" style="height:80mm; width:100%;"><img src="SNPS_dcf_scenarios.png" alt="SNPS DCF-Szenarien"></div>
+
+  <div class="box">
+    <p style="font-size:8.6pt;"><b>Einordnung:</b> Der aktuelle Kurs ($375,73) liegt zwischen Aegis' konservativem Base-Case ($210) und Conans gemischtem Base-Case ($388) — praktisch identisch mit Conans Modell, deutlich über Aegis' reinem Gordon-Growth-Ansatz. Diese Streuung ist selbst der wichtigste Befund: bei so hoher Terminal-Value-Sensitivität ist die einzelne DCF-Zahl weniger aussagekräftig als die Bandbreite. Der Kurs liegt aktuell klar unter der Bull-Zone beider Modelle und unter der Analysten-Konsens-Range — für eine Neuaufnahme wäre das rein bewertungstechnisch kein schlechter Einstiegspunkt, <b>aber</b> die K-Basis-1/4-Verzerrung (Seite 3) und die TA-Schwäche (Seite 9) sprechen gegen ein sofortiges Handeln vor dem Investor Day.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/SNPS-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/12</div>
+  </div>
+</div>
+
+<!-- PAGE 7: KSF-Scorecard -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">KSF-Scorecard — Branchen-Erfolgsfaktoren vs. Positionierung</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 7</div><div>SNPS Synopsys Inc.</div></div>
+  </div>
+
+  <div class="section-label">Outside-in: was muss ein EDA/CAE-Anbieter im KI-Chip-Zeitalter können, um zu gewinnen? (Rigor-Punkt 41)</div>
+  <div class="box">
+    <p style="font-size:8.6pt; margin-bottom:1.6mm;">Alle drei unabhängigen Analysen (Aegis-Synthese aus JJ/Conan) kommen auf ein fast identisches Bild — starke Konvergenz zwischen zwei unabhängig dispatchten KIs bei derselben Faktoren-Auswahl.</p>
+    <table class="verify-table">
+      <tr><th>Key Success Factor</th><th>SNPS-Positionierung</th><th>Status</th></tr>
+      <tr><td>KI-native/agentische Design-Flows</td><td>Synopsys.ai/DSO.ai, Kooperationen mit Microsoft/AMD/NVIDIA für autonome Design-Workflows, bis zu 50x schnellere RTL-Verifikation in Kundenpilots genannt</td><td class="pass">✅ DEFENSIV</td></tr>
+      <tr><td>Foundry-Zertifizierungen (TSMC/Samsung/Intel)</td><td>Enge Partnerschaften für 2nm/Angstrom-Nodes, 3DIC Compiler, Advanced-Packaging-Design</td><td class="pass">✅ DEFENSIV</td></tr>
+      <tr><td>Cross-Sell-Integration EDA+CAE ohne Kundenverlust</td><td>Erstes gemeinsames Produkt (Multiphysics Fusion) gelauncht, Referenzkunden (NVIDIA, Cisco, MediaTek, Samsung) genannt — aber belastbare Retention-/Cross-Sell-Kohorten fehlen noch</td><td class="warn">🟡 IN ARBEIT/UNGEPRÜFT</td></tr>
+      <tr><td>Reaktion auf Cadences Gegenzug (Hexagon-Zukauf)</td><td>Cadence hat mit eigenem $3,16-Mrd.-Zukauf (Closing 23.02.2026) eine Gegenplattform aufgebaut — Wettbewerb strukturell verschärft, Ausgang offen</td><td class="warn">🟡 IN ARBEIT/UNGEPRÜFT</td></tr>
+      <tr><td>Backlog-Qualität/Sichtbarkeit</td><td>$10,9 Mrd., robust, aber leicht rückläufig (Seite 4) — organischer Anteil noch nicht sauber isoliert</td><td class="warn">🟡 IN ARBEIT/UNGEPRÜFT</td></tr>
+      <tr><td>Bilanzdisziplin/Deleveraging nach Mega-M&A</td><td>Term Loans bereits vollständig getilgt, Net Debt/EBITDA ~1,5-1,6x — schneller als ursprünglicher 2-Jahres-Plan</td><td class="pass">✅ DEFENSIV</td></tr>
+    </table>
+  </div>
+
+  <div class="section-label">Kopplung an Kill-Sheet und DCF</div>
+  <div class="divergence-box">
+    <p style="font-size:9pt;">3 von 6 Faktoren stehen auf 🟡 — genau die Punkte, die auch das Kill-Sheet (Seite 10) als Stop-These-Trigger führt und die die DCF-Bewertung (Seite 5) so terminalwert-abhängig machen. Kein Faktor steht auf ❌ — das Gesamtbild bleibt defensiv-mit-offenen-Fragen, nicht kritisch. Der Investor Day am 30.09.2026 ist der natürliche Termin, an dem mindestens der Cross-Sell- und der Backlog-Faktor von 🟡 auf ✅ oder ❌ kippen sollten.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/SNPS-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/12</div>
+  </div>
+</div>
+
+<!-- PAGE 8: Pipeline/Struktur-Risiko/Insider -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Pipeline-Ausblick · Struktur-Risiko-Check · Insider-Transaktionen</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 8</div><div>SNPS Synopsys Inc.</div></div>
+  </div>
+
+  <div class="section-label">Pipeline-/Katalysator-Ausblick (Rigor-Punkt 34)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Datum</th><th>Event</th><th>Relevanz</th></tr>
+      <tr><td>30.09.2026</td><td>Investor Day</td><td>Von BofA als "key catalyst" benannt — neues Long-Term-Modell inkl. Ansys-Synergien, Margen-Pfad, organisches Wachstumsziel erwartet</td></tr>
+      <tr><td>~Anfang Dez. 2026 (geschätzt)</td><td>Q4-FY26-Earnings</td><td>Offizielles Datum noch nicht bestätigt — nächster harter Datenpunkt für Backlog/Organik</td></tr>
+      <tr><td>2. Halbjahr 2026</td><td>Closing Processor-IP-Verkauf an GlobalFoundries</td><td>Bereinigt Portfolio weiter Richtung EDA/CAE/Interface-IP-Kern</td></tr>
+    </table>
+  </div>
+
+  <div class="section-label">Struktur-Risiko-Check (Rigor-Punkt 35)</div>
+  <div class="divergence-box">
+    <h3>⚠ Cadence-Hexagon-Zukauf als strukturelle Antwort auf die Ansys-Fusion</h3>
+    <p>Cadence hat am 23.02.2026 die Übernahme von Hexagons Design &amp; Engineering-Geschäft (inkl. MSC Software) abgeschlossen — eine direkte, primärquellenbelegte Reaktion auf Synopsys' Ansys-Fusion, mit erwartetem 2026er-Umsatzbeitrag von ca. $160 Mio. Das reduziert die Wahrscheinlichkeit, dass Synopsys-Ansys den gesamten "Silicon-to-Systems"-Profitpool unangefochten kontrolliert — beide Anbieter bauen jetzt parallel Multiphysics-/Digital-Twin-Plattformen aus. <b>Zusätzlich, primärquellenbelegt (EU-Fusionsentscheidung):</b> Synopsys hat im Teilsegment Place&amp;Route bereits real Marktanteil an Cadence verloren (~60-70%→~40-50% seit 2018, während Cadence von ~30-40%→~40-50% stieg) — ein konkreter, nicht nur hypothetischer Beleg für begrenzten Moat-Decay in einem Subsegment.</p>
+  </div>
+  <div class="box" style="margin-top:1mm;">
+    <h3>China-Exportkontroll-/Geopolitik-Risiko</h3>
+    <p style="font-size:8.6pt;">China-SAMR genehmigte die Ansys-Fusion am 14.07.2025 unter Auflagen (Bestandsverträge chinesischer Kunden müssen weiter bedient werden, keine erzwungene Bündelung). China-Umsatz 9M FY26 ca. $707 Mio. — relevant, aber nicht dominierend. Synopsys' eigene FY26-Guidance setzt ausdrücklich voraus, dass es keine weitere Verschärfung der Export-/Entity-List-Beschränkungen gibt — ein latentes, nicht unter eigener Kontrolle stehendes Risiko für die gesamte EDA-Branche.</p>
+  </div>
+
+  <div class="section-label">Insider-Transaktionen (Rigor-Punkt 36)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Datum</th><th>Person</th><th>Transaktion</th><th>Einordnung</th></tr>
+      <tr><td>01.09.2026</td><td>Aart de Geus (Executive Chair, Gründer)</td><td>Verkauf 49.641 Aktien, ca. $21,38 Mio.</td><td class="warn">Kein Kaufsignal, aber 10b5-1-Kontext — nicht these-killend</td></tr>
+      <tr><td>28.08./31.08.2026</td><td>Aart de Geus</td><td>Weitere planmäßige Verkäufe</td><td>Routine im selben Zeitraum</td></tr>
+      <tr><td>seit 01.06.2026</td><td>Jesse Cohn (Elliott, neuer Director)</td><td>Board-Sitz via Cooperation Agreement</td><td class="warn">Kein Insider-Kauf im klassischen Sinn, aber aktivistische Beteiligung als Signal (siehe Seite 3)</td></tr>
+    </table>
+    <p style="margin-top:1.2mm;"><b>Kein positives Insider-Signal für eine Neuaufnahme</b> — Gründer/Executive Chair verkauft planmäßig, keine Netto-Käufe von Insidern gefunden.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/SNPS-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 8/12</div>
+  </div>
+</div>
+
+<!-- PAGE 9: Kursverlauf + TA -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Kursverlauf · Technische Analyse (Investor-Modus)</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 9</div><div>SNPS Synopsys Inc.</div></div>
+  </div>
+
+  <div class="section-label">Kursverlauf (6 Monate) mit Sondersituation-Ereignissen</div>
+  <div class="chart-frame" style="height:78mm; width:100%;"><img src="SNPS_chart.png" alt="SNPS Kursverlauf"></div>
+
+  <div class="section-label">TA-Werte (Investor-Horizont, echte Indikatoren, Twelve Data)</div>
+  <div class="two-col">
+    <div class="col">
+      <div class="box">
+        <table class="verify-table">
+          <tr><td>Kurs vs. SMA200</td><td>$375,73 vs. $446,92</td><td class="fail">Klar unter SMA200</td></tr>
+          <tr><td>6M-Trend</td><td>-30,4% vom 52W-Hoch</td><td class="fail">Bearish</td></tr>
+          <tr><td>RSI(14)</td><td>38,71 → 34,56 (fallend)</td><td class="warn">Schwach, noch nicht extrem überverkauft</td></tr>
+          <tr><td>MACD</td><td>-8,47, Signal -3,76, Hist. -4,71</td><td class="fail">Bearish</td></tr>
+          <tr><td>Bollinger</td><td>Unter Mittelband ($405,15), nahe unterem Band ($360,07)</td><td class="warn">Nahe unterem Band</td></tr>
+          <tr><td>OBV-Trend (letzte Tage)</td><td>Klar negativ</td><td class="fail">Verkaufsdruck (Distribution)</td></tr>
+          <tr><td>ATR(14) / ATR%</td><td>$15,25 / ~4,1%</td><td class="warn">Erhöht (Sizing reduzieren)</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="col">
+      <div class="box">
+        <h3>Gesamtscore & Rating</h3>
+        <p style="font-size:14pt; color:var(--red);">Klar <b>BEARISH</b></p>
+        <p style="font-size:8.4pt;">Kurs nahe 52W-Tief, aber (noch) kein klassisches Extrem-Oversold-Signal. Keine technische Bodenbildung erkennbar.</p>
+      </div>
+      <div class="box">
+        <h3>Timing-Einordnung</h3>
+        <p style="font-size:8.4pt;"><b>Bewertung:</b> teils attraktiv (Kurs zwischen Aegis-Base und Conan-Base, siehe S.6)<br><b>Technik:</b> klar bearish, kein Bestätigungssignal<br><b>Konsequenz:</b> kein Timing-Argument FÜR einen sofortigen Einstieg — spricht für "abwarten bis Investor Day", nicht für "jetzt zugreifen"</p>
+      </div>
+    </div>
+  </div>
+  <div class="warn-strip"><b>Einordnung:</b> Die TA bestätigt quantitativ, was die Aegis-Synthese qualitativ schon sagt — bei einem Neu-Kandidaten mit derart bearishem technischem Bild und ungeklärter Integrationslage gibt es aktuell keinen Grund zur Eile.</div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/SNPS-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 9/12</div>
+  </div>
+</div>
+
+<!-- PAGE 10: Kill-Sheet + Datenintegritaet -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">🔪 Thesis-Kill-Sheet · Datenintegritäts-Fund</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 10</div><div>SNPS Synopsys Inc.</div></div>
+  </div>
+
+  <div class="integrity-box">
+    <h3>🔵 Datenintegritäts-Fund: JJs Kursangabe um +54% zu hoch trotz aktivem Search-Grounding</h3>
+    <p>JJ (Gemini) nannte in Schritt 0 einen aktuellen Kurs von <b>$577,92</b> und eine 52W-Range von <b>$405-$830</b> — beide eindeutig falsch. Twelve Data (autoritative Live-Quelle) und Conans unabhängige Recherche stimmen dagegen fast exakt überein ($375,73 / $362,55-$539,48). Marktkapitalisierung, abgeleiteter Share-Count und alle darauf aufbauenden DCF-Sanity-Check-Werte von JJ wurden für diese Synthese verworfen. Dies ist ein eigenständiger, dokumentierter Beleg dafür, dass aktives Search-Grounding nicht vor Halluzinationen auf der grundlegendsten Kennzahl schützt — vergleichbar mit dem RMBS-CFO-Namen-Fund vom 10.09.2026, dieses Mal auf dem Kurs selbst statt auf einem Nebenfakt. <b>Konsequenz:</b> Twelve Data bleibt ausnahmslos die Referenz für Kurs-/TA-Daten, jede KI-genannte Kurszahl wird vor Übernahme dagegen geprüft.</p>
+  </div>
+
+  <div class="killsheet-box">
+    <h3>Meilenstein-Timeline (Rigor-Punkt 44)</h3>
+    <table class="verify-table">
+      <tr><th>Termin</th><th>Was beobachten</th><th>Positives Signal</th><th>Warnsignal</th></tr>
+      <tr><td>30.09.2026</td><td>Investor Day</td><td>Glaubwürdiger FY28/FY30-Margen-/Wachstumspfad, konkrete Cross-Sell-KPIs</td><td>Nur vage Synergie-Versprechen, keine harten Zahlen zu Retention/Cross-Sell</td></tr>
+      <tr><td>Ab Investor Day</td><td>Backlog-Entwicklung</td><td>Backlog stabilisiert/wächst wieder, organischer Anteil transparent ausgewiesen</td><td>Backlog schrumpft weiter oder bleibt intransparent</td></tr>
+      <tr><td>Laufend</td><td>Cadence-Hexagon-Integration</td><td>SNPS verteidigt/erweitert Place&amp;Route-Marktanteil</td><td>Weiterer, belegbarer Marktanteilsverlust an Cadence</td></tr>
+      <tr><td>Laufend</td><td>China-Exportkontrollen</td><td>Keine Verschärfung, SAMR-Auflagen erfüllt</td><td>Neue Restriktionen oder Entity-List-Erweiterung</td></tr>
+    </table>
+  </div>
+
+  <div class="trigger-row">
+    <div class="trigger-box bull">
+      <h3>📈 Nachkauf-/Bull-Trigger</h3>
+      <ul>
+        <li>1. Investor Day liefert glaubwürdigen Margen-/Wachstumspfad</li>
+        <li>2. Backlog stabilisiert sich organisch nachweisbar</li>
+        <li>3. Net Debt/EBITDA &lt;1x schneller als erwartet erreicht</li>
+        <li>4. Technische Bodenbildung (RSI-Erholung, MACD-Wende, OBV-Trendwechsel)</li>
+      </ul>
+    </div>
+    <div class="trigger-box bear">
+      <h3>📉 Stop-These-Trigger</h3>
+      <ul>
+        <li>1. Backlog schrumpft weiter organisch</li>
+        <li>2. Cadence gewinnt nachweislich weiter Marktanteil (Place&amp;Route/Multiphysics)</li>
+        <li>3. GAAP-Marge bleibt strukturell &lt;15% über mehrere Quartale</li>
+        <li>4. Elliott eskaliert öffentlich oder verkauft die Position</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/SNPS-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 10/12</div>
+  </div>
+</div>
+
+<!-- PAGE 11: Risiko-Quadrant -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Risiko-Quadrant — Wahrscheinlichkeit × Schaden</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 11</div><div>SNPS Synopsys Inc.</div></div>
+  </div>
+
+  <div class="section-label">Risiko-Quadrant (Rigor-Punkt 45) — abgeleitet aus eigenen Modulen, nicht frei erfunden</div>
+  <div class="bbb-frame" style="height:72mm; width:100%;"><img src="SNPS_risk_quadrant.png" alt="SNPS Risiko-Quadrant"></div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Risiko</th><th>Herkunft im Report</th><th>Frühindikator</th></tr>
+      <tr><td>Ansys-Cross-Sell bleibt hinter Erwartung</td><td>KSF-Scorecard (S.7)</td><td>Keine konkreten Cross-Sell-/Retention-KPIs am Investor Day</td></tr>
+      <tr><td>Cadence gewinnt weiter Marktanteil (Place&amp;Route bereits real belegt)</td><td>Moat-Check (S.3), Struktur-Risiko (S.8)</td><td>Neue EU-/Marktanteils-Daten zeigen fortgesetzten Trend</td></tr>
+      <tr><td>GAAP-Marge bleibt strukturell &lt;15%</td><td>DNA-Check (S.3)</td><td>2 aufeinanderfolgende Quartale ohne GAAP-Margen-Verbesserung</td></tr>
+      <tr><td>China-Exportkontroll-Eskalation</td><td>Struktur-Risiko (S.8)</td><td>Neue Entity-List-Erweiterung oder verschärfte Auflagen</td></tr>
+      <tr><td>Elliott eskaliert/verkauft Position</td><td>Management-Score (S.3)</td><td>13F-/Form-4-Meldungen zeigen Positionsreduktion</td></tr>
+    </table>
+    <p style="margin-top:1mm; font-size:7.8pt;"><b>Einordnung:</b> Der obere rechte Quadrant (Hoch-Wahrscheinlichkeit/Hoch-Schaden) enthält mit dem Ansys-Cross-Sell-Risiko genau den Punkt, der auch den DNA-Check, die KSF-Scorecard und die DCF-Bewertung am stärksten belastet — kein isoliertes Einzelrisiko, sondern der zentrale, wiederkehrende Unsicherheitsfaktor dieser gesamten Analyse.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/SNPS-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 11/12</div>
+  </div>
+</div>
+
+<!-- PAGE 12: Fazit -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Finale Synthese · Aegis-Verdict</div>
+    </div>
+    <div class="meta-block"><div class="date">16. September 2026 — Seite 12</div><div>SNPS Synopsys Inc.</div></div>
+  </div>
+
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">BEOBACHTEN</div>
+      <div class="sub">kein Kauf vor Investor Day · Tier 2/3</div>
+    </div>
+    <p style="font-size:9.6pt; color:var(--text); line-height:1.5;">Alle drei unabhängigen Perspektiven (Aegis, JJ, Conan) konvergieren auf BEOBACHTEN — ein starkes Signal bei einer derart komplexen Sondersituation. Synopsys ist strategisch ein Top-Asset mit 4/4-Moat, aber nach dem $35-Mrd.-Ansys-Deal aktuell kein sauberer "Kaufen-und-weglegen"-Fall: K-Basis nur 1/4, GAAP-Marge nur ~10,4%, Management-Score nur 1-1,5/7, TA klar bearish. Die DCF-Bewertung ist so terminalwert-getrieben, dass keine einzelne Punktschätzung belastbar ist. <b>Aegis' Synthese: BEOBACHTEN</b> — der Investor Day am 30.09.2026 ist der natürliche, datierte Prüfpunkt, an dem sich entscheidet, ob die Ansys-Integration wirklich trägt.</p>
+  </div>
+
+  <div class="section-label">Beobachtungsplan (keine automatische Order, kein Depot-Bestand)</div>
+  <div class="box">
+    <p><b>Vor dem 30.09.2026:</b> keine Position. <b>Nach dem Investor Day, bei glaubwürdigem Margen-/Wachstumspfad und stabilisiertem Backlog:</b> Neuaufnahme max. Tier 2 (~1,5-2,5% Zielgewicht), gestaffelt, mit technischer Bestätigung (RSI-Erholung, MACD-Wende) vor Tranche 1. <b>Kein Tier-1-Sizing</b> vor bewiesener Integrationstransparenz.</p>
+  </div>
+
+  <div class="section-label">Agent Score & Konfidenz</div>
+  <div class="two-col">
+    <div class="col"><div class="box"><h3>Agent Score</h3><p style="font-size:16pt; color:var(--gold-bright);">6,5/10</p><p>Anker: 6-8 Qualitäts-Kern, oberes Ende gedeckelt durch unbewiesene Integration.</p></div></div>
+    <div class="col"><div class="box"><h3>Konfidenz</h3><p style="font-size:16pt; color:var(--yellow);">🟡 MITTEL</p><p>Ehrlich in Übergang: Mega-Merger, aktivistischer Investor, Investor Day in 2 Wochen — nicht wegen unvollständiger Recherche.</p></div></div>
+  </div>
+
+  <div class="section-label">Agent-Score-Herleitung (Rigor-Punkt 46)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Schritt</th><th>Ergebnis</th></tr>
+      <tr><td>Anker-Bereich</td><td>6-8 QUALITÄTS-KERN — Moat 4/4 STARK (grenzt an 9-10-Kriterium), aber K-Basis nur 1/4 verhindert höheren Anker</td></tr>
+      <tr><td>Ausgangswert im Bereich</td><td>7 von 6-8 (Mitte) — nicht oberes Ende, weil GAAP-Qualität und Management-Score beide klar schwach sind</td></tr>
+      <tr><td>Aktive Mali</td><td>-0,5 GAAP/Non-GAAP-Lücke ungewöhnlich groß · korrelierte Mali-Regel: Goodwill-Verzerrung (ROIC/ROE/EPS) wird als EIN Root-Cause behandelt, nicht dreifach abgezogen</td></tr>
+      <tr><td>Aktive Deckel</td><td>Konfidenz-Deckel 🟡 (nicht 🔴) wegen der Investor-Day-Unsicherheit in 2 Wochen</td></tr>
+      <tr><td><b>Finaler Agent Score</b></td><td class="warn"><b>6,5/10</b> — Herleitung bestätigt den Mittelwert aus Aegis (6,5)/JJ (6)/Conan (7)</td></tr>
+    </table>
+  </div>
+
+  <div class="section-label">Quellen (Auswahl)</div>
+  <div class="sources-list">
+    <div><span class="n">1</span>Synopsys 10-Q Q3 FY2026 (31.07.2026), SEC EDGAR; Synopsys Q3-FY26-Earnings-Release, news.synopsys.com (26.08.2026)</div>
+    <div><span class="n">2</span>Synopsys Q3-FY26-Earnings-Call-Transkript, Fool.com (31.08.2026)</div>
+    <div><span class="n">3</span>Synopsys-Ansys-Fusion: Completes-Acquisition-PR (17.07.2025), China-SAMR-Freigabe-Berichterstattung (Reuters/Investing.com, 14.07.2025)</div>
+    <div><span class="n">4</span>Synopsys "Appoints Jesse Cohn to Board of Directors", news.synopsys.com (27.05.2026)</div>
+    <div><span class="n">5</span>Synopsys "Enters Definitive Agreement with GlobalFoundries", news.synopsys.com (14.01.2026)</div>
+    <div><span class="n">6</span>Cadence "Completes Acquisition of Hexagon's Design and Engineering Business", cadence.com (Feb. 2026); EU-Kommissions-Fusionsentscheidung (Marktanteilsdaten Place&amp;Route)</div>
+    <div><span class="n">7</span>Twelve Data: Kurs-/Zeitreihen-/Technik-Daten SNPS (autoritative Quelle für alle [LIVE]-Werte)</div>
+    <div><span class="n">8</span>SEC Form 4 Filings (Insider-Transaktionen, Aart de Geus)</div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/SNPS-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 12/12</div>
+  </div>
+</div>
+
+</body>
+</html>
