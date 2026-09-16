@@ -5025,7 +5025,9 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     NVO-Report-Bau schlicht nicht angewendet wurden – kein Methodik-Fund,
     sondern ein Compliance-Fund. **Ab sofort Pflicht:** vor Fertigstellung
     jedes Full-Deep-Dive-Reports einmal explizit die Liste der
-    Rigor-Standard-Punkte 1-32 durchgehen und für jeden anwendbaren Punkt
+    Rigor-Standard-Punkte 1-48 (Nummerierung läuft laufend weiter, hier
+    immer der tatsächlich aktuelle Höchststand gemeint, nicht diese Zahl
+    wörtlich) durchgehen und für jeden anwendbaren Punkt
     kurz bestätigen "umgesetzt" oder "nicht anwendbar, weil..." – nicht
     nur beim ERSTELLEN neuer Punkte an die Anwendung denken, sondern auch
     bei JEDEM folgenden Report erneut. Kein separates Dokument nötig, ein
@@ -5395,6 +5397,31 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     fließt nur in die bestehende Positionsgrößen-/Sizing-Einordnung ein
     (dünne Marktstruktur = Tranchen-Empfehlung statt Einmalkauf, unabhängig
     vom fundamentalen Rating).
+
+48. **Historischer Max-Drawdown-Kontext als Pflicht-Gegenstück zu jedem
+    🟢-KAUFEN-Urteil (neu, 2026-09-16, Verallgemeinerung der bisher nur für
+    AI-Trend-Werte geltenden Margin-of-Safety-Regel vom 2026-09-03, auf
+    Brians ausdrücklichen Wunsch "mach das universell").** Ein günstiges
+    KGV/DCF-Ergebnis ggü. der eigenen Historie ist KEINE Garantie gegen
+    einen erneuten scharfen Rückgang – auch Qualitäts-Compounder korrigieren
+    historisch 30-90%, oft OHNE dass die fundamentale These nachträglich
+    widerlegt wurde (Nvidia -56% 2018/-66% 2021-22, Visa -52% 2009,
+    Mastercard -63%, S&P Global -40%, ASML bis -90% seit Börsengang, TSM bis
+    -89%). **Ab sofort Pflicht bei JEDEM Full Deep Dive** (ergänzt die
+    bestehende Watchlist-Praxis, die dies bereits informell für fast jeden
+    Eintrag dokumentiert, siehe `watchlist.md`-Feld "MoS-Hinweis"): über
+    Twelve Data die verfügbare Kurshistorie (möglichst 10J, sonst so lang
+    wie vorhanden) auf den/die größten historischen Drawdown(s) prüfen –
+    Ausmaß, ungefährer Auslöser falls erkennbar (Makro-Schock/Sektor-Krise/
+    unternehmenseigene Krise), und ob die These danach nachweislich intakt
+    blieb oder tatsächlich strukturell beschädigt war. Ergebnis fließt als
+    eigene Zeile neben der Bear-Case-DCF/Stress-Test-Sektion ein (Seite 6),
+    KEIN neuer Score-Malus – reine Erwartungssteuerung, dass "günstig"
+    nicht "immun gegen weitere Rückgänge" bedeutet. Bei zu kurzer
+    Handelshistorie (junge IPOs) entfällt die Aussage ersatzlos, explizit
+    als solche vermerkt statt erfunden. Kein Zusatzaufwand: nutzt exakt
+    dieselbe Twelve-Data-Kurs-Zeitreihe, die für den Kursverlauf-Chart
+    (Seite 5) ohnehin abgerufen wird.
 
 **Woher Punkt 47 kommt, und was NICHT übernommen wurde (2026-09-16,
 zweiter Digital-Arts-Review mit allen 3 KIs):** Brian bat darum, dass alle
@@ -6050,16 +6077,24 @@ automatisch einen Ersatz eines bestehenden Werts erzwingen.
   Brian ergänzt: "auch die Kurse aus der Vergangenheit mit einbeziehen,
   z.B. dass Nvidia in der Vergangenheit auch mal 40-50% korrigieren
   kann"):** ein 🟢-KAUFEN-Signal (günstig ggü. eigener Historie) ist KEINE
-  Garantie gegen eine erneute scharfe Korrektur – insbesondere bei
-  AI-Trend-/Hype-getriebenen Werten sind 30-50%+ Drawdowns historisch
-  normal, auch wenn die fundamentale These im Nachhinein intakt blieb
-  (Beispiel Nvidia: -56% 2018, -66% 2021/22, trotzdem seither jeweils
-  wieder deutlich höhere Hochs). Bei AI-Trend-exponierten Watchlist-Werten
-  wird das historische Max-Drawdown-Muster zusätzlich zur reinen
-  KGV-Kennzahl in der CRV-Begründung dokumentiert (siehe `watchlist.md`,
-  Feld "MoS-Hinweis"). Ersetzt nicht die bestehende Positionsgrößen-
-  Disziplin (Sizing-Tiers/Positions-Cap) – "günstig" heißt nicht
-  "risikofrei".
+  Garantie gegen eine erneute scharfe Korrektur (Beispiel Nvidia: -56% 2018,
+  -66% 2021/22, trotzdem seither jeweils wieder deutlich höhere Hochs). Das
+  historische Max-Drawdown-Muster wird zusätzlich zur reinen KGV-Kennzahl
+  in der CRV-Begründung dokumentiert (siehe `watchlist.md`, Feld
+  "MoS-Hinweis"). Ersetzt nicht die bestehende Positionsgrößen-Disziplin
+  (Sizing-Tiers/Positions-Cap) – "günstig" heißt nicht "risikofrei".
+  **Verallgemeinert (2026-09-16, auf Brians ausdrücklichen Wunsch "mach das
+  universell"):** ursprünglich nur für AI-Trend-/Hype-getriebene Werte
+  vorgeschrieben, in der gelebten Praxis aber ohnehin längst auf praktisch
+  jeden watchlist.md-Eintrag angewendet (Visa/Mastercard/S&P Global/ASML/
+  TSM/Lasertec/Hoya/Brookfield u.a. haben alle bereits ein MoS-Hinweis-
+  Feld) – die Regel wird jetzt formal an diese Praxis angeglichen: **Pflicht
+  bei JEDEM Watchlist-Eintrag UND jedem Full Deep Dive**, unabhängig von
+  Sektor/Hype-Status, sobald über Twelve Data eine ausreichend lange
+  Kurshistorie verfügbar ist (siehe neuer Rigor-Punkt 48 unten für die
+  Full-Deep-Dive-Ausprägung). Kein Zusatzaufwand bei fehlender Historie
+  (junge IPOs, siehe HAWK) – dann explizit "zu kurze Handelshistorie für
+  eine belastbare Drawdown-Aussage" vermerken statt zu erfinden.
 - **Tägliche Watchlist-News-Ampel (2026-09-03, von Brian gefordert, als
   schnelle Vorstufe zum wöchentlichen Check oben, nicht als Ersatz):**
   Auslöser – Brian bemerkte anhand eines fremden Beispiel-Systems (tägliche
