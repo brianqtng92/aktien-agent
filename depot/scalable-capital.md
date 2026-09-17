@@ -54,6 +54,31 @@ Beobachtungsfeld, kein Anlass für eine Eskalation).
 durch den ungeklärten Cash-Rückgang, nicht durch Kursverluste (BCA/Vanguard
 zusammen fast stabil, Gold-ETC leicht schwächer).
 
+**Update 2026-09-17 (Depot-Update, live über Scalable-MCP — Verbindung war seit 17.09. kurzzeitig unauthentifiziert, von Brian re-autorisiert, siehe Agent-Playbook.md/HANDOVER.md):**
+
+**Offener Punkt vom 09.09. jetzt geklärt:** die "unerklärte" Cash-Abweichung
+(460,33 €→0,00 €) war eine **interne Überweisung/Umbuchung von -460,33 €
+am 07.09.2026**, jetzt sichtbar in `list_portfolio_transactions` – keine
+Dateninkonsistenz, sondern eine reguläre, von Brian selbst veranlasste
+Buchung. Cash/Kaufkraft bleibt bei **0,00 €**.
+
+| Position | Wert aktuell | Kurs/Stück | Anteile |
+|---|---|---|---|
+| Boerse Stuttgart EUWAX Gold II | 494,05 € | 123,513 € | 4 |
+| Bank Central Asia | 1.952,96 € | 0,315 € | 6.199,871861 |
+| Vanguard FTSE All-World (Acc) | 8.149,30 € | 167,04 € | 48,786235 |
+
+**Gesamtwert Scalable Capital (live, Stand 17.09.2026 ~08:30 UTC): 10.596,26 €**
+(nur Wertpapiere, Cash weiterhin 0,00 €) – leicht über dem 09.09.-Stand
+(10.585,46 €), keine Auffälligkeit. **Performance laut Scalable (absolute
+Rendite, nicht %):** YTD +1.013,81 €, 1 Jahr +1.272,41 €, seit Kontoeröffnung
+(MAX) +2.414,25 €. Letzte Transaktionen: BCA-Dividende 15.09. (5,25 €,
+reinvestiert 16.09.), Vanguard-Sparplanrate 07.09. (600 €), Einzahlung
+28.08. (800 €), größerer BCA-Nachkauf 21.08. (4.112 Stück @ 0,3411 €) plus
+mehrere Teilverkäufe (L&G Global Quality Dividends komplett liquidiert,
+VanEck Morningstar/iShares Nasdaq 100 teilverkauft) – ältere Umschichtung,
+nicht neu.
+
 **NEU entdeckt über die Live-Anbindung: Boerse Stuttgart EUWAX Gold II**
 (physisches Gold-ETC, 4 Stück, Kauf 30.01.2026 @ 138,21€). War in keiner
 bisherigen Erfassung/keinem Screenshot enthalten. **Einordnung (2026-08-30,
