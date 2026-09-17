@@ -5785,6 +5785,75 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     des ehemaligen Punktes 30 in Punkt 29), verweist aber vollständig auf
     Punkt 51.
 
+55. **Kapitalintensive Ramp-up-Fälle im TMR-Pfad: Szenario-Ertragskraft-
+    modell statt DCF-Zwang + Projekt-Ökonomie-Kette (neu, 2026-09-18,
+    zweiter Vergleich mit Raketentonis MP-Materials-Report, diesmal via
+    ChatGPT gegen den ANET-Report gestellt).** Der TMR-Pfad geht bei
+    SCHRITT 6 (DCF-Vergleich, 3 unabhängige Ansätze) implizit davon aus,
+    dass ein klassisches DCF sinnvoll ist – das stimmt bei etablierten,
+    margenstabilen Compoundern (ANET, CBOE etc.), aber nicht bei einem
+    TMR-würdigen Unternehmen (echter, mehrjähriger Umsatz, kein Scout-Fall),
+    das gleichzeitig mitten in einem transformativen Kapitalausbau steckt,
+    dessen wirtschaftlicher Zielzustand erst Jahre in der Zukunft liegt
+    (MP Materials' 10X-Anlage: Investition >US$1,25 Mrd., Inbetriebnahme
+    2028, Ziel-EBITDA erst 2029-2030 sichtbar). Ein Standard-DCF mit
+    WACC/Terminal-Value über einen Zeitraum, in dem sich Marge, Kapazität
+    UND Aktienzahl (Verwässerung, siehe Punkt 43) noch grundlegend ändern,
+    liefert hier Scheingenauigkeit statt Erkenntnis – dieselbe
+    Datenintegritäts-Philosophie wie bei Punkt 47/48, nur auf die
+    Bewertungsmethode selbst angewendet statt auf eine Kennzahl.
+
+    **Ab sofort Pflicht bei Full Deep Dive (TMR-Pfad), NUR wenn mindestens
+    ZWEI der folgenden gleichzeitig vorliegen** – sonst ersatzlos entfällt,
+    Standard-DCF bleibt der Normalfall:
+    - laufendes Einzelprojekt/Capex-Programm mit einer Investitionssumme,
+      die einen wesentlichen Teil der aktuellen Marktkapitalisierung
+      ausmacht oder laut eigener Guidance die Kapazität/das Geschäft
+      transformiert (nicht nur normale Erhaltungs-Capex)
+    - die vom Unternehmen selbst kommunizierte Ziel-Wirtschaftlichkeit
+      (Marge/EBITDA/FCF-Guidance) liegt 2+ Jahre in der Zukunft und ist
+      nicht aus der aktuellen Ist-Lage ableitbar
+    - aktuelles FCF ist durch den Ausbau selbst negativ oder knapp positiv
+      (nicht durch operative Schwäche des Kerngeschäfts)
+
+    **Wo der Trigger erfüllt ist, ersetzt (nicht ergänzt) ein Szenario-
+    Ertragskraftmodell den Standard-DCF** in SCHRITT 6: pro Szenario
+    (Bear/Base/Bull) Ziel-Adj.-EBITDA im dokumentierten Zieljahr (aus
+    Unternehmens-Guidance/Kapazitätsplan, nicht erfunden) × ein
+    Exit-Multiple-Band (peer-abgeleitet, mit Begründung) × Netto-
+    finanzposition im Zieljahr (inkl. der ökonomisch voll verwässerten
+    Aktienzahl aus Punkt 43, nicht der Basis-Aktienzahl) → Barwert-Spanne
+    je Aktie, mit einem Diskontsatz-Band statt eines Einzel-WACC. Explizit
+    als "Belastungstest, kein präziser DCF" kennzeichnen – analog zur
+    bereits bestehenden Scout-Ausnahme (Punkt zu "kein DCF-Zwang" im
+    Scout-Pfad), aber für einen strukturell anderen Fall: TMR mit echter
+    Umsatzhistorie, nicht Pre-Revenue.
+
+    **Projekt-Ökonomie-Kette als Pflicht-Ergänzung der bestehenden
+    Meilenstein-Timeline (Punkt 44), keine neue eigenständige Tabelle:**
+    jede Zeile der Meilenstein-Timeline bekommt bei einem ausgelösten
+    Ramp-up-Fall zusätzlich die operative Kette als Kontext – Capex-
+    Programm → Zeitplan/Baufortschritt → Zielkapazität → Qualifizierungs-/
+    Hochlaufstatus → Auslastungspfad → Ziel-EBITDA/FCF – damit klar wird,
+    WAS an jedem Prüfpunkt konkret erreicht sein muss, nicht nur DASS ein
+    Termin bevorsteht. Nutzt dieselbe Datenbasis wie die Meilenstein-
+    Timeline, kein Zusatzaufwand.
+
+    **Kein Zusatzaufwand bei Nicht-Auslösung:** die überwältigende
+    Mehrheit der TMR-Kandidaten (etablierte, margenstabile Compounder)
+    bleibt unverändert beim Standard-DCF – diese Regel betrifft
+    ausschließlich den schmalen Fall "TMR-würdig, aber mitten im
+    transformativen Ausbau", nicht generell kapitalintensive Branchen.
+
+    **Offener Folgeschritt:** SCHRITT 6 in `prompts/jack-moat-reaper-v11.7.md`
+    und `prompts/conan-the-scout-v1.12.md` (beide bauen ihr DCF bisher
+    unabhängig als Teil des 3-fach-Cross-Checks) müssen bei der nächsten
+    Prompt-Revision um diese bedingte Szenario-Modell-Alternative ergänzt
+    werden, damit sie bei einem echten Ramp-up-Fall nicht weiterhin
+    automatisch ein Standard-DCF liefern – bis dahin wendet Aegis diese
+    Regel manuell in der eigenen Synthese an, wenn JJ/Conan trotzdem ein
+    DCF liefern.
+
 **Woher Punkte 51-54 und die Erweiterungen an 6/19/26/27/44/39/49 kommen
 (2026-09-17, dritte Runde, diesmal Gemini UND ChatGPT gemeinsam gefragt:
 "was fehlt aus Sicht eines Investors, der einen Deep Dive liest").** Beide
