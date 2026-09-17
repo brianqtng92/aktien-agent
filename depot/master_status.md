@@ -53,6 +53,20 @@ Gate oder 3-fach-Quick-Filter in diesem Lauf durchlaufen (Zeitpriorität).
 Keine offene Empfehlung fällig zur Erinnerung (Kraken/Rambus zuletzt erst
 07.09. erinnert). Bestätigungsmail verschickt (siehe Verifikation unten).
 
+**Nachtrag 2026-09-17 (Depot- und Watchlist-Komplettupdate, live, Scalable-Capital-Reconnect erfolgreich):** Scalable-Capital-Verbindung war seit dem 17.09. kurzzeitig unauthentifiziert, von Brian re-authentifiziert (siehe `project_scalable_capital_mcp_auth_fehlt.md`, GELÖST). Alle 4 Broker frisch geprüft, soweit live erreichbar:
+
+| Broker | Wert (17.09.) | Vorheriger Stand |
+|---|---|---|
+| Scalable Capital (Gold+BCA+Vanguard-ETF, Cash 0€) | 10.596,26 € | 10.585,46 € (09.09.) |
+| finanzen.net zero (11 von 15 Positionen live aktualisiert) | 21.123,39 € | 21.084,86 € (09.09.) |
+| Trade Republic (Allianz, Xetra nicht live abrufbar) | 512,09 € | unverändert (09.09.) |
+| Smartbroker+ (HawkEye 360) | 1.407,62 € | 1.419,89 € (09.09.) |
+| **Gesamt (4 Broker)** | **33.639,36 €** | ~34.523 € (08.09.) — **-2,56%** |
+
+**Wichtigste Einzelfunde:** (1) CBOE ist von +4,0% auf **-4,0%** gedreht (Full-Deep-Dive-Tag 16.09., -4,96%-Tagesverlust) — Kurs $270,43 sitzt praktisch genau an der Tranche-1-Nachkaufzone ($268-270), noch keine bestätigte Stabilisierung. (2) Rambus weiter geschwächt (-20,4% ggü. Einstand, war -15,7%), nähert sich der $68-75-Abstauberzone weiter an. (3) A10 Networks/Intuitive Surgical/ServiceNow deutlich erholt. (4) Die am 08.09. "unerklärte" Scalable-Cash-Abweichung (460,33€→0€) ist geklärt: eine reguläre interne Überweisung vom 07.09., keine Dateninkonsistenz. (5) **Neuer bestätigter Twelve-Data-Fund:** Xetra/Frankfurt jetzt zusätzlich zu TSX/TSXV/LSE/Paris auf dem aktuellen Tarif gesperrt — betrifft Münchener Rück und Allianz, die deshalb weiterhin nicht live aktualisiert werden können. (6) Scalable-Watchlist aufgeräumt: 9 verworfene/kaputte Einträge entfernt (Rorze, Novo Nordisk, UCB, Aurinia, Ligand, ITOCHU, Vietnam Enterprise, Qnity Electronics, ein unauflösbarer ISIN-Eintrag), 48 statt 57 Einträge übrig.
+
+**Nicht in diesem Lauf gemacht (Transparenz):** keine vollständige Neubewertung der CRV-Ampeln/Kategorie-Zuordnung (das wäre ein Wochenfazit-artiger Rechercheaufwand) — nur Kursaktualisierung + Auffälligkeiten-Check. Watchlist-CRV-Ampeln bleiben auf dem Stand vom 03./04.09. (bis auf die bereits dokumentierten Einzel-Updates).
+
 # Master-Status – Aktien-Agent (Brian)
 
 **Zweck (2026-09-04, von Raketentonis "Master-Status"-Konzept übernommen,

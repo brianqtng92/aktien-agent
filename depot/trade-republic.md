@@ -45,6 +45,12 @@ Wert: 1,151396 × 449,60 € = **517,67 €** (+2,6%).
 EZB-Ratssitzung 09./10.09.2026 ist der nächste relevante Katalysator für
 diese Position (Zinsentscheid-Exposure Finanzsektor).
 
+**Versuch 2026-09-17 (Depot-Komplettupdate):** Xetra/Frankfurt jetzt
+bestätigt auf dem aktuellen Twelve-Data-Tarif gesperrt (gleicher Fund wie
+bei Münchener Rück, siehe `finanzen-net-zero.md`) — kein frischer Live-Kurs
+abrufbar, Wert bleibt auf dem Stand vom 09.09. (444,76 €/Aktie, 512,09 €,
++1,5%) stehen.
+
 ## Position 2 – WM (vermutlich Waste Management Inc.) — **VERKAUFT 27.08.2026 @ 187,35€, vollständiger Exit**
 
 **Letzte Aktualisierung laut App:** 12.08., 21:16 Uhr

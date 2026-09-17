@@ -179,6 +179,28 @@ nach.
 
 **Summe finanzen.net zero: 21.084,86 € (Invest 19.900,09 €, +6,0%)** — korrigiert von der ursprünglich fehlerhaften 21.650,74 €.
 
+## Update 2026-09-17 (Depot-Komplettupdate, Twelve Data, EUR/USD 1,14913)
+
+| Position | Anteile | Investsumme | Live-Kurs | Quelle | **Wert aktuell (EUR)** | Rendite | Δ vs. 09.09 |
+|---|---|---|---|---|---|---|---|
+| SoFi Technologies | 250 | 2.612,93 € | 16,84 $ | Twelve Data | **3.663,60 €** | +40,2% | leicht schwächer (war +43,5%) |
+| ServiceNow Inc | 20 | 1.948,96 € | 139,82 $ | Twelve Data | **2.433,99 €** | +24,9% | deutlich stärker (war +16,4%) |
+| MercadoLibre Inc | 1 | 1.442,80 € | 1.839,71 $ | Twelve Data | **1.600,66 €** | +10,9% | leicht schwächer (war +11,7%) |
+| CBOE Holdings Inc | 5 | 1.226,15 € | 270,43 $ | Twelve Data | **1.176,51 €** | **-4,0%** | **Umschwung von +4,0% zu -4,0%** — Full Deep Dive 16.09. (-4,96%-Tagesverlust), Kurs sitzt genau an der Tranche-1-Nachkaufzone ($268-270), siehe `depot/offene_empfehlungen.md` |
+| Broadridge Financial Solutions | 8 | 1.119,68 € | 167,09 $ | Twelve Data | **1.163,30 €** | +3,9% | leicht stärker (war +2,9%) |
+| Rambus Inc. | 6 | 533,64 € | 81,41 $ | Twelve Data | **424,94 €** | **-20,4%** | weiter schwächer (war -15,7%), nähert sich der $68-75-Abstauberzone weiter an |
+| A10 Networks Inc | 21 | 506,52 € | 26,54 $ | Twelve Data | **484,98 €** | -4,3% | erholt (war -11,1%) |
+| Intuitive Surgical Inc | 4 | 1.400,50 € | 382,29 $ | Twelve Data | **1.330,35 €** | -5,0% | erholt (war -13,8%) |
+| Cellebrite DI Ltd | 200 | 2.166,15 € | 11,43 $ | Twelve Data | **1.989,99 €** | -8,1% | ~unverändert (war -9,2%, Differenz nur FX) |
+| Rocket Lab USA, Inc. | 10 | 554,00 € | 63,70 $ | Twelve Data | **554,35 €** | +0,1% | ~unverändert |
+| Kraken Robotics Inc. | 300 | 1.050,00 € | ≈4,59 CAD (näherungsweise, OTC:KRKNF-Proxy 3,28$ × USD/CAD 1,39896, TSXV weiterhin nicht direkt abrufbar) | Twelve Data (Proxy) | **≈856,86 €** | ≈-18,4% | schwächer (war -8,3%) — Proxy-Unsicherheit, siehe Hinweis |
+| Constellation Software Inc | 1 | 1.380,00 € | — | nicht aktualisiert (TSX weiterhin auf Twelve-Data-Basic-Plan gesperrt) | **1.791,29 €** (Stand 09.09.) | +29,8% | unverändert übernommen |
+| Tristel PLC | 210 | 1.002,67 € | — | nicht aktualisiert (LSE weiterhin nicht per Twelve Data abrufbar) | **1.027,37 €** (Stand 09.09.) | +2,5% | unverändert übernommen |
+| Münchener Rückversicherungs-Gesellschaft | 2 | 1.051,00 € | — | nicht aktualisiert (Xetra/Frankfurt jetzt bestätigt auf Twelve-Data-Basic-Plan gesperrt, neuer Fund) | **1.052,20 €** (Stand 03.09.) | +0,1% | unverändert übernommen |
+| Hermès | 1 | 1.905,09 € | — | nicht aktualisiert (Paris weiterhin nicht per Twelve Data abrufbar) | **1.573,00 €** (Stand 08.-09.09.) | -17,4% | unverändert übernommen |
+
+**Summe finanzen.net zero (17.09.2026): 21.123,39 € (Invest 19.900,09 €, +6,15%)** — praktisch unverändert ggü. 09.09. (+6,0%) in der Summe, aber deutliche Einzelbewegungen darunter (CBOE ins Minus gedreht, Rambus/Kraken weiter geschwächt, A10/Intuitive Surgical/ServiceNow erholt). **Neuer bestätigter Fund:** Twelve Data sperrt auf unserem Tarif nicht nur TSX/TSXV/LSE/Paris, sondern jetzt auch bestätigt Xetra/Frankfurt (Münchener Rück, Allianz) — betrifft alle 5 nicht-US-Positionen dieser Datei gleichermaßen, kein Einzelfall.
+
 **Update 2026-09-09 (Full Deep Dive Rambus auf Brians Anfrage):** vollständiger
 3-fach-Cross-Check abgeschlossen (Jack+Conan, TMR-Pfad). Rating bestätigt
 **BEOBACHTEN**, kein Nachkauf beim aktuellen Kurs (~$87). Beide KIs kommen

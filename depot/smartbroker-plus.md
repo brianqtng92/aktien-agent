@@ -52,6 +52,14 @@ Pflicht-Prüfpunkt: Q3-2026-Zahlen (~November 2026), insbesondere
 Backlog-Entwicklung. Siehe `analysen/HAWK-fulldeepdive-cross-check-2026-09-09.md`
 und `reports/HAWK-agent-deepdive-2026-09-09.pdf`.
 
+**Update 2026-09-17 (Depot-Komplettupdate, Twelve Data, EUR/USD 1,14913):**
+Live-Kurs 16,17 $/Aktie (HAWK). Aktueller Wert: 100 × 16,17 $ ÷ 1,14913 =
+**1.407,62 €** (-16,3% ggü. Investsumme 1.681,70 €) — leicht schwächer als
+am 09.09. (-15,5%), reine Fortsetzung der bekannten Post-IPO-Space-Tech-
+Neubewertung, kein neuer unternehmensspezifischer Fund. Status weiterhin
+HALTEN, kein Nachkauf (Position bewusst "voll", nächster Pflicht-Prüfpunkt
+Q3-2026-Zahlen ~November).
+
 Hinweis (2026-08-23, weiterhin gültig): Depot-Erfassung insgesamt abgeschlossen –
 von Brian bestätigt ("das sind meine ganzen Positionen"). Zusammen mit
 `scalable-capital.md`, `finanzen-net-zero.md` und `trade-republic.md` ist das
