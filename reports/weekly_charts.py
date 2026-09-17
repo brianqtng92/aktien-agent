@@ -28,34 +28,34 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-STAND = "2026-09-07"
+STAND = "2026-09-17"
 
 # (Name, Investsumme, Wert aktuell, Region, Sektor)
 # Region-Buckets: USA | Europa/UK | Japan/Asien | Lateinamerika | Sonstige (CA/IL/etc.)
 # Sektor-Buckets: Technologie | Finanzwesen | Gesundheitswesen | Industriewerte | Rest
 DATA = [
-    ("SoFi Technologies",              2612.93, 3984.69, "USA",          "Finanzwesen"),
-    ("Constellation Software",         1380.00, 1881.77, "Sonstige",     "Technologie"),  # Kanada
-    ("Allianz SE",                      504.43,  517.67, "Europa/UK",    "Finanzwesen"),
-    ("ServiceNow Inc",                 1948.96, 2507.32, "USA",          "Technologie"),
-    ("MercadoLibre Inc",               1442.80, 1714.48, "Lateinamerika","Rest"),
-    ("Broadridge Financial Sol.",      1119.68, 1232.46, "USA",          "Finanzwesen"),
-    ("CBOE Holdings",                  1226.15, 1285.18, "USA",          "Finanzwesen"),
-    ("Kraken Robotics",                1050.00,  957.70, "Sonstige",     "Industriewerte"),  # Kanada
-    ("Rocket Lab USA",                  554.00,  553.21, "USA",          "Industriewerte"),
-    ("Rambus Inc.",                     533.64,  435.75, "USA",          "Technologie"),
-    ("HawkEye 360",                    1681.70, 1494.42, "USA",          "Industriewerte"),
-    ("Bank Central Asia",              1999.94, 2003.54, "Japan/Asien",  "Finanzwesen"),
-    ("Münchener Rück",                 1051.00, 1030.80, "Europa/UK",    "Finanzwesen"),
-    ("A10 Networks",                    506.52,  446.83, "USA",          "Technologie"),
-    ("Intuitive Surgical",             1400.50, 1273.83, "USA",          "Gesundheitswesen"),
-    ("Tristel PLC",                    1002.67,  929.88, "Europa/UK",    "Gesundheitswesen"),
-    ("Cellebrite DI Ltd",              2166.15, 2056.28, "Sonstige",     "Technologie"),  # Israel
-    ("Hermès",                         1905.09, 1541.50, "Europa/UK",    "Rest"),
+    ("SoFi Technologies",              2612.93, 3663.60, "USA",          "Finanzwesen"),
+    ("Constellation Software",         1380.00, 1791.29, "Sonstige",     "Technologie"),  # Kanada
+    ("Allianz SE",                      504.43,  512.09, "Europa/UK",    "Finanzwesen"),
+    ("ServiceNow Inc",                 1948.96, 2433.99, "USA",          "Technologie"),
+    ("MercadoLibre Inc",               1442.80, 1600.66, "Lateinamerika","Rest"),
+    ("Broadridge Financial Sol.",      1119.68, 1163.30, "USA",          "Finanzwesen"),
+    ("CBOE Holdings",                  1226.15, 1176.51, "USA",          "Finanzwesen"),
+    ("Kraken Robotics",                1050.00,  856.86, "Sonstige",     "Industriewerte"),  # Kanada
+    ("Rocket Lab USA",                  554.00,  554.35, "USA",          "Industriewerte"),
+    ("Rambus Inc.",                     533.64,  424.94, "USA",          "Technologie"),
+    ("HawkEye 360",                    1681.70, 1407.62, "USA",          "Industriewerte"),
+    ("Bank Central Asia",              1999.94, 1952.96, "Japan/Asien",  "Finanzwesen"),
+    ("Münchener Rück",                 1051.00, 1052.20, "Europa/UK",    "Finanzwesen"),
+    ("A10 Networks",                    506.52,  484.98, "USA",          "Technologie"),
+    ("Intuitive Surgical",             1400.50, 1330.35, "USA",          "Gesundheitswesen"),
+    ("Tristel PLC",                    1002.67, 1027.37, "Europa/UK",    "Gesundheitswesen"),
+    ("Cellebrite DI Ltd",              2166.15, 1989.99, "Sonstige",     "Technologie"),  # Israel
+    ("Hermès",                         1905.09, 1573.00, "Europa/UK",    "Rest"),
 ]
 ETF_NAME = "Vanguard FTSE All-World (ETF)"
 ETF_INVEST = 6753.40
-ETF_WERT = 8186.86
+ETF_WERT = 8149.30
 
 # Naeherung, Stand 31.07.2026 (justetf/Vanguard-Factsheet, siehe architecture.md)
 ETF_REGION_SPLIT = {

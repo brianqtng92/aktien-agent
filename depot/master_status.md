@@ -294,7 +294,31 @@ Quelle: `depot/offene_empfehlungen.md` (dort maßgeblich, hier nur Kurzstand).
 | Kraken Robotics | Nachkauf-Zone (Preisalarm) | ≤2,80 |
 | Rambus | Nachkauf-Zone (Preisalarm) | ≤65 |
 
-## 7. Portfolio-Regel-Check (echt berechnet, 2026-09-07)
+## 7a. Portfolio-Regel-Check — AKTUALISIERT 2026-09-17 (Region-/Sektor-Diskrepanz geklärt)
+
+**Fund beim Nachrechnen (Brian: "kläre das jetzt"):** eine erste Schnellrechnung kam auf USA≈38% statt der dokumentierten 53,65% — Ursache war ein reiner Rechenfehler (ETF-Wert nur im Nenner mitgezählt, aber nicht per `ETF_REGION_SPLIT`/`ETF_SECTOR_SPLIT` (siehe `reports/weekly_charts.py`) auf die Regionen/Sektoren verteilt). Mit korrigierter Methodik und heutigen Live-Zahlen (Depot-Komplettupdate vom 17.09., Gesamtwert 33.639,41 €, Stocks+ETF-Basis 33.145,36 €):
+
+| Region | Real (17.09.) | Ziel-Band | Status | Vorher (07.09.) |
+|---|---|---|---|---|
+| USA/Nordamerika | 53,28% | ≤55-60% | erfüllt | 53,65% (nahezu unverändert) |
+| Europa/UK | 15,54% | 15-20% | **jetzt im Zielband** | 14,73% (knapp unterbesetzt) |
+| Japan/Asien | 9,57% | 10-15% | unterbesetzt | 9,49% (nahezu unverändert) |
+| Sonstige (CA/IL) | 16,77% | kein festes Band | unverändert ausgelastet | 17,10% |
+| Lateinamerika | 4,83% | kein festes Band | unverändert | 5,04% |
+
+| Sektor | Real (17.09.) | Ziel-Band | Status | Vorher (07.09.) |
+|---|---|---|---|---|
+| Finanzwesen | 32,58% | 20-25% | **weiterhin klar über Zielband** | 33,32% |
+| Technologie/Halbleiter | 29,71% | 30-35% | knapp unterbesetzt | 29,57% |
+| Rest | 17,05% | 5-10% | über Zielband | 16,88% |
+| Industriewerte | 11,60% | 10-15% | im Zielband | 11,86% |
+| Gesundheitswesen | 9,06% | 10-15% | unterbesetzt | 8,38% |
+
+**ETF-Anteil:** 24,23% des Gesamtportfolios (Ziel ≥50%, weiterhin VERSTOSS, aber im gewohnten langsamen Aufbau via 600€/Monat-Sparplan — war 23,40% am 07.09.). **Positionsgrößen:** größte Position SoFi 10,89% (innerhalb der dokumentierten 12%-Ausnahme, kein Verstoß), keine Position unter der 1%-Mindestgrenze.
+
+**Konsequenz unverändert:** kein automatisches Verkaufssignal. Finanzwesen bleibt der einzige echte Struktur-Überhang, Japan/Asien und Gesundheitswesen bleiben die priorisierten Lücken für neues Kapital — deckt sich mit der bereits laufenden Priorisierung (Hoya/Disco/Asahi-Intecc-Zielzonen).
+
+## 7. Portfolio-Regel-Check (echt berechnet, 2026-09-07, historisch — siehe 7a oben für den aktuellen Stand)
 
 **Methodik:** Live-Positionswerte Scalable Capital (ETF, Bank Central Asia,
 Gold, Cash) zum 07.09., übrige 3 Broker unverändert aus `depot/*.md` vom
@@ -355,7 +379,7 @@ am 04.09.).
 | Lücke | Zuletzt geprüfter Kandidat | Ergebnis | Nächster Schritt |
 |---|---|---|---|
 | Talent-Slot (Watchlist) + Europa/UK + Gesundheitswesen | BONESUPPORT Holding AB (BONEX) | **Aufgenommen 07.09.2026** (3-fach-Quick-Filter einstimmig BEOBACHTEN-STARK, ersetzt Rorze) | Erledigt für diesen Slot – Beobachtungspunkt: CERAMENT-V-FDA-Entscheidung (Datenpaket fällig 31.10.2026) |
-| Japan/Asien-Region (weiterhin unterbesetzt, 9,49% vs. 10-15%) | Rorze (6323) | Durchgefallen (3-fach Scout-Check, 04.09.2026) – Moat 2/4, Wachstum eingebrochen | **08.09.2026:** gezielter Jack+Conan-Rechercheauftrag (kein Index-Volldurchlauf, siehe `depot/bridge_status.md`) lieferte 10 neue Namen: Sansan, Smaregi, VRAIN Solution, Shin-Etsu Chemical, Park Systems (Jack); OBIC, GMO Payment Gateway, eGuarantee, SMC Corp, AirTAC International (Conan). Noch KEIN Gate-Check/Quick-Filter durchlaufen – nächster Lauf: Strategie-Fit-/Duplikations-/Identity-Gate für alle 10, dann Quick-Filter für die 1-2 stärksten (Shin-Etsu Chemical/SMC Corp fachlich am stärksten, aber große Standardwerte; OBIC/eGuarantee am nischigsten). Vollständiger Nikkei225/TOPIX-Indexdurchlauf weiterhin separat ausstehend. |
+| Japan/Asien-Region (weiterhin unterbesetzt, 9,49% vs. 10-15%) | Rorze (6323) | Durchgefallen (3-fach Scout-Check, 04.09.2026) – Moat 2/4, Wachstum eingebrochen | **17.09.2026 (Brian): Kandidaten-Pipeline vorerst abgeblasen.** Die 10 am 08.09. gefundenen Namen (Sansan, Smaregi, VRAIN Solution, Shin-Etsu Chemical, Park Systems, OBIC, GMO Payment Gateway, eGuarantee, SMC Corp, AirTAC International) bleiben unverarbeitet als Backlog dokumentiert (kein Gate-Check/Quick-Filter durchlaufen), werden aber NICHT weiter aktiv verfolgt, bis Brian das reaktiviert. Stattdessen aktueller Fokus: Zielzonen für bereits bekannte Japan-Watchlist-Werte (Asahi Intecc/Hoya/Disco) herleiten, siehe watchlist.md. Kein Datenverlust – die 10 Namen bleiben hier als Wiedereinstiegspunkt notiert. |
 
 ## 9. Letzte Scheduled-Task-Läufe
 

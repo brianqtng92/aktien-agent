@@ -22,3 +22,29 @@ gebunden:** Force-Push, `git reset --hard`, das Löschen von Branches, das
 Amenden bereits gepushter Commits, oder jede andere destruktive/
 history-verändernde Git-Operation. Diese Ausnahme gilt unabhängig von der
 obigen Auto-Push-Freigabe.
+
+## Gemeinsames Gedächtnis über Chat-Sessions UND automatisierte Läufe hinweg (seit 2026-09-17, von Brian gefordert)
+
+Chat-Sessions (interaktiv) und die Hermes-Cron-Läufe (taeglicher-trigger-check/
+blitz-scan/wochenfazit/monatsrecap) sind GETRENNTE Ausführungskontexte ohne
+gemeinsames Live-Gedächtnis — sie teilen sich Zustand AUSSCHLIESSLICH über die
+Dateien in diesem Repo. Ein Cron-Lauf, der gerade eben etwas erledigt hat,
+ist einer neu gestarteten Chat-Session nicht automatisch bekannt, und
+umgekehrt.
+
+**Deshalb PFLICHT, bevor in irgendeiner Session eine depot-/watchlist-/
+finanzbezogene Einschätzung, Empfehlung oder Aktion erfolgt:**
+1. `depot/master_status.md` vollständig lesen (konsolidierter Status —
+   Kategorie-Zählungen, offene Prüfpunkte, offene Empfehlungen, Cash-Stand).
+2. Die letzten ~40 Zeilen von `depot/bridge_status.md` lesen (Log der
+   jüngsten automatisierten Läufe — zeigt, was zuletzt automatisiert
+   passiert ist, auch wenn diese Session davon nichts "weiß").
+3. Bei Widersprüchen zwischen beiden Dateien oder zu älteren Annahmen: die
+   Informations-Vorrang-Hierarchie aus `Agent-Playbook.md` anwenden
+   (jüngste bestätigte Transaktion/Entscheidung > `master_status.md` >
+   `Agent-Playbook.md` > ältere Analysen/`HANDOVER.md`).
+
+Das gilt für JEDE Session-Art gleichermaßen — interaktiver Chat, Blitz-Scan,
+Täglicher Trigger-Check, Wochenfazit, Monatsrecap. Ziel: keine Session
+agiert auf einem Stand, der durch eine andere Session in der Zwischenzeit
+bereits überholt wurde.
