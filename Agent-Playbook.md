@@ -6019,26 +6019,42 @@ Thesis-Kill-Sheet 🔪 – keine neuen Bausteine, nur andere Namen.
 ### 📄 Kanonisches Seitengerüst für Full Deep Dive (neu, 2026-09-09,
 Brian: "könnte man mit diesem Report jetzt bei jeder Analyse anwenden?")
 
-Der NVO-Report (`reports/NVO-agent-deepdive-2026-09-08.pdf`, finale
-Fassung 10 Seiten) wird ab sofort als Referenz-Gerüst für JEDEN
-künftigen Full Deep Dive verwendet – analog zum bereits bestehenden
-expliziten Seitengerüst der Schnellanalyse oben. **Zielrahmen jetzt
-7-10 Seiten** (vorher 7-9 – die drei neuen Standard-Punkte 34-36 haben
-die Obergrenze real um eine Seite verschoben, siehe unten).
+**Referenz-Update 2026-09-17 (Brian: "diese ANET-Analyse soll als Vorlage
+für die weiteren Analysen dienen, daran sollen sich die weiteren Analysen
+orientieren"):** Der ANET-Report (`reports/ANET-agent-deepdive-2026-09-17.pdf`,
+finale Fassung 12 Seiten, nach mehreren Überarbeitungsrunden am selben Tag)
+ersetzt den bisherigen NVO-Report als TMR-Pfad-Referenz-Gerüst (NVO bleibt
+als historische Referenz dokumentiert, siehe unten). **Zielrahmen jetzt
+10-12 Seiten** (vorher 7-10 – die neuen Standard-Elemente Historische-
+Entwicklung-Seite und chartbasierte TA/Kursverlauf-Darstellung haben die
+Obergrenze real um zwei Seiten verschoben).
 
 | # | Seite | Inhalt | Sektor-Status |
 |---|---|---|---|
 | 1 | Cover | Masthead, Hook-These, Kernzahlen | universell |
-| 2 | Cross-Check-Übersicht | 3-Stimmen-Leiste, JJ/Conan-Divergenz-Analyse, Score-/DCF-Zusammenfassung | universell |
-| 3 | DNA-Check | Vollständige K+E-Kriterien-Tabelle (Punkt 29), optional KSF-Scorecard (Punkt 41) bei mehrdimensionalem/gemischtem Moat-Bild | universell im Format, Kriterien selbst bereits sektoradaptiv über die bestehenden Sektor-Overrides (Finanz/SaaS/Piotroski/Infrastruktur, siehe jack-moat-reaper-v11.7.md) |
-| 4 | Historie | 5J-Finanzhistorie, Guidance-Track-Record, Management-Glaubwürdigkeits-Matrix (inkl. Tonalitäts-Dimension, Punkt 38), optional Bookings/Backlog-Wedge-Analyse (Punkt 42) bei Lizenz→Subscription-Transformation | universell |
-| 5 | Chart | Kursverlauf (Technical) | universell |
-| 6 | Bewertung | DCF-Szenarien, Sensitivitätsmatrix (Punkt 24), sektorspezifische Struktur-Risiko-Vertiefung (Punkt 35) falls hier passender als Seite 9 | Bewertungsmethodik universell, Struktur-Risiko-Inhalt sektorabhängig |
-| 7 | Kill-Sheet | Thesis-Kill-Sheet (Punkt 26) mit Meilenstein-Timeline inkl. Positiv-/Warnsignal-Spalten (Punkt 44), Peer-Vergleich, historische Bewertungs-Bandbreite | universell |
-| 7b | Risiko-Quadrant (optional eigene Seite bei Platzbedarf) | Risiko-Quadrant-Chart Wahrscheinlichkeit×Schaden mit Herkunfts-Modul-Farbcodierung (Punkt 45) | universell im Format |
-| 8 | Kapitalstruktur | Kapitalrückführungs-Historie, SBC-vs-Buyback-Netting (Punkt 23), optional Verwässerungs-Wasserfall (Punkt 43) bei komplexer Kapitalstruktur, Offene Schwächen, Datenintegritäts-Warnstrip | universell (SBC-Netting/Wasserfall entfallen mangels Buyback-Programm bzw. komplexer Instrumente ersatzlos, siehe Punkt 23/43 – kein Zusatzaufwand) |
-| **9** | **Sektor-Vertiefung (NEU)** | **Forward-Pipeline-/Katalysator-Ausblick (Punkt 34) + Struktur-Risiko-Check (Punkt 35) + Insider-Transaktionen (Punkt 36)** | **Punkt 34+35 komplett sektorabhängig ausgeprägt (siehe dortige Beispiele je Sektor), Punkt 36 universell** |
-| 10 | Fazit | Finale Synthese, Agent-Score-Breakdown gewichtete Einzeldimensionen (Punkt 46), Watchlist-Konsequenz, Portfolio-Fit & Klumpenrisiko-Check (Punkt 37), Quellen | universell |
+| 2 | Cross-Check-Übersicht | Investment-Card (Kurzfassung Unternehmensqualität/Aktienqualität), Dissensus-Map (Teildimension-Vergleich JJ/Conan/Aegis), 3-Stimmen-Leiste | universell |
+| 3 | DNA-Check | Vollständige K+E-Kriterien-Tabelle (Punkt 29), KSF-Scorecard MIT integrierter Moat-Komponenten-Zerlegung (Punkt 53, Begründungsebene, kein paralleles System) | universell im Format, Kriterien selbst bereits sektoradaptiv über die bestehenden Sektor-Overrides (Finanz/SaaS/Piotroski/Infrastruktur, siehe jack-moat-reaper-v11.7.md) |
+| 4 | Financial Health | Bilanz &amp; Kapitalstruktur, Management-Score &amp; Tonalität (Punkt 38), Kundenkonzentration + Capex-Verknüpfung (Punkt 6-Erweiterung) | universell |
+| **5** | **Historische Entwicklung (NEU, universell ab jetzt)** | **Umsatz-/Ergebnis-Historie als Chart (5J), Bruttomarge-Trend als Chart (letzte ~10 Quartale, mit Kill-Sheet-Schwellenwerten annotiert), Guidance-Track-Record als Tabelle (EPS-Konsens vs. tatsächlich, min. 6-8 Quartale + aktuelle Forward-Guidance), KGV-Verlauf als Chart (Fiskaljahresende trailing + aktuell)** | **universell – bei Scout-Pfad (Bucket B, jung/unprofitabel) tritt statt KGV-Verlauf ein methodisch passender Ersatz (EV/Revenue-Verlauf), siehe HAWK-Referenz** |
+| 6 | Bewertung, Teil 1 | DCF-Vergleich (3 unabhängige Ansätze als Tabelle), Zirkularitäts-Sperre-Anwendung (Regel 38b), Known/Unknown/Unknowable | universell (Scout-Pfad: kein DCF, siehe Bucket-Ausnahme – Nachbar-Zeilen bleiben trotzdem Pflicht) |
+| 7 | Bewertung, Teil 2 | DCF-Szenarien-Chart, Exit-Multiple-Sensitivität als echte 3×3-Matrix (Regel 38c), Peer-Multiple-Vergleich inkl. EV/FCF (Punkt 19) | Bewertungsmethodik universell, Struktur-Risiko-Inhalt sektorabhängig |
+| **8** | **Kursverlauf (langfristig, NEU chartbasiert)** | **5-Jahres-Kursverlauf (Log-Skala) mit SMA50/SMA200 (Wochen), technischen Support-Zonen, den Bear/Base-Einstiegszonen + Margin-of-Safety AUS DEN AUF SEITE 6-7 HERGELEITETEN DCF-Werten (deshalb Reihenfolge: Bewertung vor Kursverlauf), plus historischer Max-Drawdown-Kontext (Punkt 48) im selben Chart – EIN Chart statt zwei getrennter, redundanter Charts** | universell |
+| **9** | **Technische Analyse (NEU chartbasiert statt Tabellen)** | **Preisstruktur kurzfristig (SMA-Stack/Bollinger/S-R/Stop-Loss) als Chart, Relative Stärke vs. Benchmark als Chart, TA-Gesamtrating als Fazit-Box – VETO-Modul-Detail/einzelne Thesis-Break-Säulen/rohe RSI-MACD-Werte dürfen in die analysen/*.md-Volltextdatei wandern (siehe TA-Vollständigkeits-Pflicht-Klarstellung), solange die Schlussfolgerung im PDF sichtbar bleibt** | universell |
+| 10 | Risiko-Monitoring-Framework | These-Monitoring-Kette (Punkt 51, Kernannahme→Confidence→KPI→Kipppunkt), Struktur-Risiko-Check (Punkt 35), Insider-Transaktionen (Punkt 36) | Punkt 35 sektorabhängig ausgeprägt, Rest universell |
+| 11 | Kill-Sheet (NACH dem Monitoring-Framework, da darauf aufbauend) | Thesis-Kill-Sheet mit graduierten Schwellenwerten (Punkt 26), Bull-/Bear-Trigger, Meilenstein-Timeline mit Leitkatalysator-Kennzeichnung (Punkt 44) | universell |
+| 12 | Fazit | Datenintegritäts-Warnstrip (Punkt 50) + Quellen, Executive-Verdict-Matrix volle Fassung (Punkt 49), Agent-Score-Herleitung (Punkt 46), finale Synthese | universell |
+
+**Warum diese Reihenfolge (nicht willkürlich):** Bewertung (6-7) steht VOR
+dem Kursverlauf (8), weil Seite 8 die dort hergeleiteten DCF-Bear/Base-Werte
+als Einstiegszonen direkt am Chart zeigt – ohne vorherige Erklärung wären
+das nur Zahlen ohne Kontext. Die These-Monitoring-Kette (10) steht VOR dem
+Kill-Sheet (11), weil das Kill-Sheet seine KPI-Referenzen explizit aus der
+Monitoring-Kette bezieht (Punkt 26-Erweiterung dedupliziert dagegen). Dieser
+Fund entstand, weil mehrere Einzel-Ergänzungen am selben Tag die Reihenfolge
+durchmischt hatten, ohne die Abhängigkeiten neu zu prüfen – Lehre: nach
+mehreren Einzel-Edits an einem Report immer einmal die Gesamt-Reihenfolge
+gegen Abhängigkeiten durchgehen, nicht nur den jeweils zuletzt bearbeiteten
+Abschnitt.
 
 **Was NICHT automatisch 1:1 übernommen wird:** die KONKRETEN Kennzahlen/
 Fragestellungen auf Seite 9 (und teils Seite 6) – ein Halbleiterwert
@@ -6080,9 +6096,19 @@ Ersatz (EV/Revenue-Verlauf + Peer-Multiple, siehe HAWK-Referenz unten)
 
 **Zwei konkrete Referenz-Implementierungen statt nur einer:**
 - **TMR-Pfad (Bucket A/C, etablierte/profitable Werte):**
-  `reports/NVO-agent-deepdive-2026-09-08.pdf` bleibt die Referenz –
-  DCF-Bear/Base/Bull als Chart, Bruttomargen-Erosion als Chart,
-  DCF-Szenario-Tabelle, WACC-Sensitivitätsmatrix, KGV-Verlauf (Seite 5+7).
+  `reports/ANET-agent-deepdive-2026-09-17.pdf` ist ab 2026-09-17 die
+  Referenz (ersetzt NVO, siehe Referenz-Update oben) – DCF-Vergleich als
+  Tabelle + Zirkularitäts-Sperre + Known/Unknown/Unknowable (Seite 6),
+  DCF-Szenarien-Chart + 3×3-Sensitivitätsmatrix + Peer-Vergleich inkl.
+  EV/FCF (Seite 7), langfristiger Kursverlauf MIT integrierten DCF-
+  Einstiegszonen/Margin-of-Safety UND historischem Max-Drawdown in einem
+  Chart (Seite 8), chartbasierte Technische Analyse statt Tabellen
+  (Seite 9), Umsatz-/Ergebnis-Historie + Bruttomarge-Trend + Guidance-
+  Track-Record + KGV-Verlauf (Seite 5). `reports/NVO-agent-deepdive-
+  2026-09-08.pdf` bleibt als historische Referenz dokumentiert (10-Seiten-
+  Gerüst, bewusst nicht gelöscht), ist aber nicht mehr die aktuelle Vorlage
+  – analog zum Punkt-30→29-Konsolidierungsprinzip: Referenz wird ersetzt,
+  nicht stillschweigend gelöscht.
 - **Scout-Pfad (Bucket B, jung/GAAP-unprofitabel):**
   `reports/HAWK-agent-deepdive-2026-09-09.pdf` (Fassung vom 10.09.2026)
   ist ab jetzt die Referenz – gleiche Elemente, aber DCF/WACC ersetzt
