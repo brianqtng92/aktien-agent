@@ -6672,6 +6672,67 @@ automatisch einen Ersatz eines bestehenden Werts erzwingen.
      Firmennamen wird jeder News-Fund gegen ISIN/Ticker+Börsenplatz der
      watchlist.md-Zeile gegengeprüft, bevor er einer Ampel-Farbe zugeordnet
      wird. Unklare Zuordnung zählt als [N/V], nicht als 🔴/🟡-Fund.
+- **Preisalarm-Auslösungs-Check + systematische Kauf-Bewertung (NEU,
+  2026-09-17, Brian: "automatisiert und systematisch entscheiden, wann/wie/
+  wo/was ein Preisalarm gesetzt wird, und mir dann per Blitz-Scan oder
+  Trigger-Check zukommen lassen, ob ein Order-Limit, in welcher
+  Größenordnung, mit welchen Gründen").** Auslöser: `create_price_alert`
+  wird bereits bei jeder neuen Zonen-Festlegung aufgerufen (siehe
+  "Zonen-Benachrichtigung" oben), aber es gab bisher KEINEN Schritt, der
+  aktiv prüft, ob ein Alarm inzwischen ausgelöst hat – konkret gefunden:
+  ein Kraken-Robotics-Alarm (≤2,80 CAD) hatte am 2026-09-14 real ausgelöst
+  (`triggeredTimestampUtc` gesetzt), ohne dass das je in Chat/E-Mail/
+  `depot/offene_empfehlungen.md` aufgetaucht wäre – eine echte Lücke, kein
+  Einzelfall-Bug.
+  1. **Preisalarm-Pflicht bei jeder Zonen-Festlegung, präzisiert:** wird in
+     einem Full Deep Dive/Quick-Filter eine konkrete Kauf-/Nachkauf-Zone
+     (Abstauber-Zone, Tranche-Grenze, DCF-Bear-Case-Niveau) festgelegt,
+     wird `create_price_alert` SOFORT für die relevante ISIN aufgerufen –
+     bei mehreren Tranchen (siehe CBOE-Präzedenzfall) ein Alarm PRO
+     Tranchen-Grenze, nicht nur einer für die gesamte Zone. Preis in der
+     Alert-Währung, wie sie das Scalable-Depot selbst quotiert (i.d.R.
+     EUR) – bei Fremdwährungs-Zonen (JPY/CAD/USD) vor dem Setzen einmalig
+     per `currency_conversion` umrechnen, Umrechnungskurs+Datum im
+     zugehörigen `analysen/*.md`-Eintrag festhalten.
+  2. **Neuer Pflichtschritt bei JEDEM Blitz-Scan-Lauf (stündlich) UND
+     JEDEM Täglichen-Trigger-Check-Lauf:** `list_price_alerts(activeOnly:
+     false)` aufrufen, gegen `depot/price_alerts_processed.md` (neue Datei,
+     Format: `alertId | ISIN/Name | Preis | triggeredTimestampUtc |
+     verarbeitet am`) abgleichen. Jeder Alarm mit gesetztem
+     `triggeredTimestampUtc`, der dort NOCH NICHT als verarbeitet
+     vermerkt ist, ist ein neuer Fund – unabhängig davon, wie lange er
+     schon zurückliegt (Nachhol-Pflicht, kein Verfallsdatum).
+  3. **Für jeden neuen Fund, die drei von Brian geforderten Antworten
+     ableiten, nicht nur "Zone erreicht" melden:**
+     - **Soll ein Order-Limit hinterlegt werden?** Ja/Nein/Noch abwarten –
+       geprüft gegen ALLE dokumentierten Bedingungen der Zone, nicht nur
+       den Preis. Verlangt die zugrundeliegende Analyse zusätzlich eine
+       technische Bestätigung (siehe CBOE-Präzedenzfall: RSI-Erholung,
+       MACD-Bodenbildung oder OBV-Trendwechsel) oder einen Makro-Vorbehalt
+       (z.B. eine anstehende Notenbank-Entscheidung), wird das explizit
+       gegen aktuelle Daten geprüft – ein reines Preis-Treffer ohne
+       erfüllte Zusatzbedingung ist ein "noch kein Kaufsignal, Zone
+       erreicht"-Fund, kein "Ja".
+     - **Größenordnung:** aus der dokumentierten Tier-/Zielgewicht-Angabe
+       (z.B. "Tier 2, 1,5-2% Zielgewicht") in einen konkreten €-Betrag
+       umrechnen, Basis ist der zuletzt bekannte Gesamtportfoliowert
+       (`depot/master_status.md`). Bereits bestehende Positionsgröße
+       gegen das Zielgewicht gegenrechnen (nicht blind die volle Tranche
+       empfehlen, wenn die Position dem Ziel schon nahe ist).
+     - **Gründe:** kompakte Zusammenfassung der investment-These aus dem
+       zugrundeliegenden Full Deep Dive/Quick-Filter/Analyse-Eintrag, PLUS
+       was konkret JETZT den Auslöser bildet (Preis + ggf. Technik/Makro).
+  4. **Zustellung wie ein handlungsrelevanter Fund** (Chat + E-Mail,
+     PushNotification bei echtem Kaufsignal) – bei reinem "Zone erreicht,
+     Zusatzbedingung fehlt noch" reicht eine kompakte Zeile ohne volle
+     Eskalation. Nach Verarbeitung: Eintrag in
+     `depot/price_alerts_processed.md` ergänzen, damit derselbe Fund nicht
+     bei jedem weiteren Lauf erneut gemeldet wird.
+  5. **Alarme sind Einweg** (einmal ausgelöst, `isActive` bleibt `false`,
+     kein automatisches Neu-Bewaffnen) – nach jeder Bewertung eines
+     ausgelösten Alarms bewusst entscheiden, ob ein NEUER Alarm für eine
+     verfeinerte/tiefere Zone gesetzt wird (z.B. Tranche 2 nach
+     ausgelöster Tranche 1), nicht automatisch identisch neu anlegen.
 - **Täglicher automatisierter Kandidaten-Scan (2026-08-29, von Brian gefordert
   – Erweiterung, nicht Ersatz des wöchentlichen Checks oben):** Brian möchte
   ausdrücklich NICHT nur, dass bestehende Watchlist-Werte wöchentlich auf
