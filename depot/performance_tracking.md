@@ -43,6 +43,7 @@ Wachstumsrate, nicht um eine exakte währungsbereinigte Renditevergleichsgröße
 | 30.08.2026 | 35.034,17 € | 0,0% | 7.711,76 | 0,0% | 29.433,43 | 0,0% | 127,735 € | 0,0% | Neuer Startpunkt, noch kein Vergleich möglich |
 | 04.09.2026 | 35.029,69 € | -0,01% | 7.718,60 | +0,09% | 29.544,15 | +0,38% | 127,89 € | +0,12% | Praktisch gleichauf mit allen drei Indizes, marginal dahinter (Differenz max. 0,4 Pp.) – ruhige Woche ohne große Marktbewegung |
 | 07.09.2026 | 34.992,90 € | -0,12% | 7.718,60 (unverändert – US-Feiertag Labor Day 07.09., keine neue Handelssession) | +0,09% | 29.544,15 (unverändert, dito) | +0,38% | 127,495 € | -0,19% | Depot leicht hinter S&P 500/Nasdaq 100 (max. 0,5 Pp. Differenz), aber leicht VOR dem MSCI-World-Proxy – kein Handelstag-Vergleich möglich für US-Indizes (Feiertag), reine Momentaufnahme über ein verkürztes 3-Tage-Fenster seit dem letzten Wochenfazit |
+| 17.09.2026 | 33.639,41 € | -3,98% | 7.596,00 | -1,50% | 29.412,73 | -0,07% | 126,77 € | -0,76% | Depot deutlich hinter allen drei Indizes zurück (10-Tage-Lücke seit dem letzten Wochenfazit, verlängertes Fenster statt der üblichen Woche) – Hauptursache die zwischenzeitliche Marktvolatilität rund um den Fed-Hike (25bp auf 3,75-4,00%) und die Eskalation des Korrektur-Risiko-Scores auf 🟠 HOCH, nicht eine strukturelle Einzelposition-Schwäche (siehe Rendite-Chart, `chart_rendite.png`) |
 
 ## Prozess für den wöchentlichen Wochenfazit-Lauf (freitags)
 
