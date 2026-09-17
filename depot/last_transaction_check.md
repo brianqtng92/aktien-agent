@@ -7,7 +7,16 @@ Scalable Capital. Bei jedem Lauf wird `list_portfolio_transactions` mit
 letzten Lauf zu erkennen (siehe Agent-Playbook.md, Abschnitt "Täglicher
 Trigger-Check" → "Depot-Transaktions-Erkennung").
 
-Zuletzt gesehene Transaktion (lastEventAt, ISO-8601 UTC): 2026-09-07T10:55:33.757Z
+Zuletzt gesehene Transaktion (lastEventAt, ISO-8601 UTC): 2026-09-16T14:18:59.156Z
+
+Lauf 2026-09-17 (taeglicher-trigger-check, ~heutiger Lauf): list_portfolio_transactions
+fromTime=2026-09-07T10:55:33.757Z → 2 neue Treffer, beide routinemäßige
+Bank-Central-Asia-Dividendenausschüttung + automatische Reinvestment-BUY
+(Cash-Distribution +5,25 EUR am 2026-09-15, REINVESTMENT-BUY -5,25 EUR/
+16,104294 Stück am 2026-09-16) - keine diskretionäre Einzelwert-Transaktion,
+kein neuer Thesen-Prüfungsbedarf (gleiche Einordnung wie die ETF-
+Sparplanrate vom 07.09.), daher KEIN 3-fach-Cross-Check ausgelöst. Checkpoint
+auf den neuesten gesehenen lastEventAt-Wert vorgezogen.
 
 Lauf 2026-09-08 (regulärer taeglicher Lauf, ca. 19:10 UTC): keine neuen
 Security-Transaktionen seit letztem Checkpoint (list_portfolio_transactions

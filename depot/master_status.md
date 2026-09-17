@@ -67,6 +67,27 @@ Keine offene Empfehlung fällig zur Erinnerung (Kraken/Rambus zuletzt erst
 
 **Nicht in diesem Lauf gemacht (Transparenz):** keine vollständige Neubewertung der CRV-Ampeln/Kategorie-Zuordnung (das wäre ein Wochenfazit-artiger Rechercheaufwand) — nur Kursaktualisierung + Auffälligkeiten-Check. Watchlist-CRV-Ampeln bleiben auf dem Stand vom 03./04.09. (bis auf die bereits dokumentierten Einzel-Updates).
 
+**Nachtrag 2026-09-17 ~13:15 UTC (taeglicher-trigger-check, Folgelauf nach
+dem Depot-Komplettupdate desselben Tages):** Pending-Queue leer. 2 neue
+Scalable-Transaktionen seit Checkpoint (BCA-Dividende + automatisches
+Reinvestment, 15./16.09.) als routinemäßig gewertet, kein Cross-Check nötig
+- Checkpoint auf 2026-09-16T14:18:59.156Z vorgezogen. Watchlist-News-Ampel
+(gebündelt) ohne neue 🔴/🟡-Funde - bestehende Flags MPWR/WSO/SYK/FICO
+unverändert; die gefundene Rambus-DOJ-Subpoena-Meldung datiert auf Juni
+2026 (bereits bekannt/eingepreist, kein neuer Fund). Fed hat am 16.09. wie
+zu ~90-92% erwartet um 25 Bp auf 3,75-4,00% angehoben (erste Anhebung seit
+2023) - keine Überraschung, daher kein Material Shift trotz der
+grundsätzlichen Tragweite; BoJ-Entscheid (17./18.09.) zum Zeitpunkt dieses
+Laufs noch offen. Kraken Robotics (zuletzt erinnert 07.09., 8 Werktage) und
+Rambus (zuletzt erinnert 09.09., 6 Werktage) waren fällig zur Erinnerung -
+beide weiterhin weit von ihrer Nachkaufzone entfernt (Kraken 4,69 CAD vs.
+Zone ≤2,80 CAD; Rambus $85,28 vs. Zone $68-75) - Erinnerung per E-Mail +
+PushNotification verschickt, `depot/offene_empfehlungen.md` aktualisiert.
+Kuchendiagramm neu erzeugt (`reports/portfolio_pie_2026-09-17.png`,
+Gesamtwert 33.639,41 € auf Basis des heutigen Komplettupdates). Japan/
+Asien-Kandidaten-Backlog (10 Namen, siehe Abschnitt 8) bewusst nicht
+weiterbearbeitet (Zeitpriorität, Komplettupdate lief bereits heute).
+
 # Master-Status – Aktien-Agent (Brian)
 
 **Zweck (2026-09-04, von Raketentonis "Master-Status"-Konzept übernommen,
@@ -342,19 +363,18 @@ Quelle: `depot/bridge_status.md` (Log) + `list_scheduled_tasks` (Live-Stand).
 
 | Task | Letzter Lauf | Nächster Lauf |
 |---|---|---|
-| taeglicher-trigger-check | 2026-09-08 ~19:10 UTC (regulärer Lauf, ruhiger Tag, kein Trigger, Bridges für Japan/Asien-Rechercheauftrag genutzt) | täglich ~21:03 lokale Zeit |
+| taeglicher-trigger-check | 2026-09-17 ~13:15 UTC (regulärer Lauf, ruhiger Tag, kein Trigger, Kraken/Rambus-Erinnerung verschickt, Kuchendiagramm auf Basis des heutigen Depot-Komplettupdates neu erzeugt) | täglich ~21:03 lokale Zeit |
 | blitz-scan | 2026-09-04 ~16:15 UTC (Bridges FAIL, Jarvis-Only) | stündlich |
 | wochenfazit | 2026-09-07 ~17:15 lokale Zeit (ersetzt den entfernten nativen Scheduled-Task-Eintrag, läuft ab jetzt über Hermes-Cron; verkürztes 3-Tage-Fenster seit 04.09., PDF gebaut+committet, E-Mail als Text-Zusammenfassung ohne Anhang verschickt – siehe Kopfnotiz oben) | Freitag, nächster reg. Lauf voraussichtlich 11.09.2026 |
 | monatsrecap | noch nicht gelaufen | 28.-31. des Monats |
 
 ## 10. Cash-Stand (nur Scalable Capital, live abrufbar)
 
-Stand 2026-09-08 ~19:10 UTC (live verifiziert): verfügbare Kaufkraft/
-Cash-Bestand **0,00 €** (Rückgang ggü. 07.09. von 460,33 € - KEINE
-erklärende Transaktion gefunden, siehe Nachtrag oben, als unerklärte
-Abweichung vermerkt statt automatisch interpretiert). Für die drei
-manuellen Broker (finanzen.net zero, Trade Republic, Smartbroker+) kein
-Live-Zugriff – siehe jeweilige `depot/*.md`-Datei für den zuletzt gemeldeten
-Stand. Gesamtportfoliowert (alle 4 Broker inkl. Cash+Gold, Scalable-Anteil
-live, übrige Broker Stand 05.09., siehe
-`reports/portfolio_pie_2026-09-08.png`): ~34.523 €.
+Stand 2026-09-17 ~13:15 UTC (live verifiziert): verfügbare Kaufkraft/
+Cash-Bestand weiterhin **0,00 €** (die frühere 08.09.-Abweichung ist geklärt
+- reguläre interne Überweisung vom 07.09., siehe Nachtrag 17.09. oben). Für
+die drei manuellen Broker (finanzen.net zero, Trade Republic, Smartbroker+)
+kein Live-Zugriff für Trade Republic (Xetra gesperrt), die anderen beiden
+per Twelve Data frisch – siehe jeweilige `depot/*.md`-Datei. Gesamt-
+portfoliowert (alle 4 Broker inkl. Cash+Gold, Stand 17.09.-
+Komplettupdate, siehe `reports/portfolio_pie_2026-09-17.png`): 33.639,41 €.

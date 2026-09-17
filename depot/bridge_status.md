@@ -125,3 +125,18 @@ eGuarantee wirken auf Kennzahlenbasis am nischigsten). Kein Anlass für
 vollen Cross-Check heute (Depot-/Watchlist-News-Scan ohne 🔴/🟡-Neufunde,
 kein Material Shift im Markt-/Makro-Kontext, keine neue Transaktion).
 Bridge-Status insgesamt: beide OK, kein Fallback nötig.
+
+**2026-09-17 (taeglicher-trigger-check, ~13:15 UTC, Folgelauf nach dem
+Depot-Komplettupdate vom selben Tag):** kein Bridge-Einsatz nötig - Jack/
+Conan n.a. (kein 3-fach-Cross-Check ausgelöst: 2 neue Scalable-Transaktionen
+waren reine BCA-Dividende+Reinvestment, kein diskretionäres Event; gebündelte
+Depot-/Watchlist-News-Scan ohne neue 🔴/🟡-Funde, bestehende Flags MPWR/WSO/
+SYK/FICO unverändert, Rambus-DOJ-Subpoena-Meldung bereits aus Juni 2026
+bekannt/eingepreist; Markt-/Makro-Kontext ohne Material Shift trotz FOMC-
+Hike, da vollständig eingepreist gewesen). Kraken/Rambus-Erinnerung fällig
+(5+ Werktage seit letzter Erinnerung) und per E-Mail verschickt, kein neuer
+3-fach-Cross-Check dafür nötig (unverändert weit von der Nachkaufzone
+entfernt). Portfolio-Lücken-Kandidaten-Backlog (Japan/Asien, 10 Namen aus
+08.09.) bewusst NICHT in diesem Lauf weiterbearbeitet (Zeitpriorität - der
+umfangreiche Depot-Komplettupdate-Lauf lief bereits am selben Tag), bleibt
+offen für einen künftigen Lauf.

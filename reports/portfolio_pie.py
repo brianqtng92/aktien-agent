@@ -2,33 +2,32 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-# Stand 2026-09-08: Scalable-Positionen + Cash live per MCP aktualisiert
-# (Kurse per 08.09. abends, Cash-Verrechnungskonto zeigt live 0,00 EUR -
-# siehe macro/master-status-Notiz), uebrige Broker unveraendert aus
-# depot/*.md uebernommen (Stand 2026-09-05, keine taegliche Live-Quelle
-# fuer diese drei Broker verfuegbar, siehe Fussnote im Chart)
+# Stand 2026-09-17: Depot-Komplettupdate, alle 4 Broker live/frisch geprueft
+# (Scalable per MCP, finanzen.net zero + Smartbroker+ per Twelve Data,
+# Trade Republic Xetra weiterhin nicht live abrufbar - Stand 09.09.
+# uebernommen, siehe depot/trade-republic.md)
 data = [
-    ("Vanguard FTSE All-World (ETF)", 8168.99, "#2E5A8C"),
-    ("SoFi Technologies", 3984.69, "#E4572E"),
-    ("Bank Central Asia", 2015.91, "#4A7FB5"),
-    ("ServiceNow Inc", 2507.32, "#F2A541"),
-    ("Cellebrite DI Ltd", 2056.28, "#7A6FB0"),
-    ("MercadoLibre Inc", 1714.48, "#5CA793"),
-    ("Hermès", 1541.50, "#B85C8A"),
-    ("Constellation Software Inc", 1881.77, "#9B59B6"),
-    ("HawkEye 360", 1494.42, "#D98C3D"),
-    ("Intuitive Surgical", 1273.83, "#D4A5A5"),
-    ("CBOE Holdings", 1285.18, "#6FA3D8"),
-    ("Broadridge Financial Sol.", 1232.46, "#8FBB4A"),
+    ("Vanguard FTSE All-World (ETF)", 8149.30, "#2E5A8C"),
+    ("SoFi Technologies", 3663.60, "#E4572E"),
+    ("Bank Central Asia", 1952.96, "#4A7FB5"),
+    ("ServiceNow Inc", 2433.99, "#F2A541"),
+    ("Cellebrite DI Ltd", 1989.99, "#7A6FB0"),
+    ("MercadoLibre Inc", 1600.66, "#5CA793"),
+    ("Hermès", 1573.00, "#B85C8A"),
+    ("Constellation Software Inc", 1791.29, "#9B59B6"),
+    ("HawkEye 360", 1407.62, "#D98C3D"),
+    ("Intuitive Surgical", 1330.35, "#D4A5A5"),
+    ("CBOE Holdings", 1176.51, "#6FA3D8"),
+    ("Broadridge Financial Sol.", 1163.30, "#8FBB4A"),
     ("Cash (Scalable)", 0.00, "#5A5A5A"),
-    ("Kraken Robotics", 957.70, "#C9A227"),
-    ("Münchener Rück", 1030.80, "#B85C5C"),
-    ("Tristel PLC", 929.88, "#8C6BB1"),
-    ("Rocket Lab USA", 553.21, "#3E9C8C"),
-    ("EUWAX Gold II", 494.68, "#D4B106"),
-    ("Allianz SE", 517.67, "#2F6B5E"),
-    ("A10 Networks", 446.83, "#C46A6A"),
-    ("Rambus Inc.", 435.75, "#A0A0A0"),
+    ("Kraken Robotics", 856.86, "#C9A227"),
+    ("Münchener Rück", 1052.20, "#B85C5C"),
+    ("Tristel PLC", 1027.37, "#8C6BB1"),
+    ("Rocket Lab USA", 554.35, "#3E9C8C"),
+    ("EUWAX Gold II", 494.05, "#D4B106"),
+    ("Allianz SE", 512.09, "#2F6B5E"),
+    ("A10 Networks", 484.98, "#C46A6A"),
+    ("Rambus Inc.", 424.94, "#A0A0A0"),
 ]
 
 labels = [f"{name}\n{value:,.0f} €".replace(",", ".") for name, value, _ in data]
@@ -55,19 +54,19 @@ for at in autotexts:
 
 total_str = f"{total:,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
 ax.set_title(
-    f"Portfolio-Zusammensetzung – alle 4 Broker, Stand 2026-09-08\n"
+    f"Portfolio-Zusammensetzung – alle 4 Broker, Stand 2026-09-17\n"
     f"Gesamtwert: {total_str}",
     fontsize=13, fontweight="bold", pad=20,
 )
 ax.text(
     0, -1.42,
-    "Scalable Capital (ETF, Bank Central Asia, Gold, Cash) live per MCP Stand 08.09.\n"
-    "Übrige Positionen (finanzen.net zero, Trade Republic, Smartbroker+): letzter Stand aus depot/*.md vom 05.09. (keine tägliche Live-Quelle).",
+    "Depot-Komplettupdate 17.09.: Scalable Capital live per MCP, finanzen.net zero + Smartbroker+ per Twelve Data.\n"
+    "Trade Republic (Allianz, Xetra): letzter Stand vom 09.09. (keine Live-Quelle, Tarif-Sperre).",
     ha="center", va="center", fontsize=8.5, style="italic", color="#555555",
 )
 ax.axis("equal")
 plt.tight_layout()
-plt.savefig("/Users/brianqtng/Downloads/aktien-agent/reports/portfolio_pie_2026-09-08.png", dpi=150, bbox_inches="tight")
+plt.savefig("/Users/brianqtng/Downloads/aktien-agent/reports/portfolio_pie_2026-09-17.png", dpi=150, bbox_inches="tight")
 print("Saved. Total value:", total)
 for name, value, _ in data:
     print(f"{name}: {value:.2f} EUR -> {value/total*100:.1f}%")

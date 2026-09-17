@@ -11,8 +11,8 @@ Empfehlungen").
 
 | Position | ISIN | Empfehlung | Zone/Preis | Quelle | Datum | Zuletzt erinnert |
 |---|---|---|---|---|---|---|
-| Kraken Robotics | CA50077N1024 | Nachkauf-Zone (Preisalarm) | ≤2,80 (Downside-Alert aktiv) | E-Mail "Zwei Zonen im Blick", 2026-09-01 | 2026-09-01 | 2026-09-07 |
-| Rambus | US7509171069 | Nachkauf-Zone (Preisalarm) | ≤$68-75 (Zone präzisiert nach Full Deep Dive, vorher pauschal $75) | RMBS-Full-Deep-Dive, 2026-09-09 | 2026-09-01 | 2026-09-09 |
+| Kraken Robotics | CA50077N1024 | Nachkauf-Zone (Preisalarm) | ≤2,80 CAD (Downside-Alert aktiv) | E-Mail "Zwei Zonen im Blick", 2026-09-01 | 2026-09-01 | 2026-09-17 |
+| Rambus | US7509171069 | Nachkauf-Zone (Preisalarm) | ≤$68-75 (Zone präzisiert nach Full Deep Dive, vorher pauschal $75) | RMBS-Full-Deep-Dive, 2026-09-09 | 2026-09-01 | 2026-09-17 |
 | CBOE Holdings | US12503M1080 | Nachkauf-Zone, gestaffelt (KAUFEN, Tier 2) | Tranche 1: Stabilisierung über $268-270 (~1,5-2%) · Tranche 2: $255-262 | CBOE-Full-Deep-Dive, 2026-09-16 | 2026-09-16 | – |
 
 ## Format bei neuem Eintrag
