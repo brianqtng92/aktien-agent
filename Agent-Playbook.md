@@ -3010,7 +3010,18 @@ anders als DCF/Vollformat-Zusatzmodule ist dieser Schritt NICHT
    Stufe) — nicht nur eine willkürliche Teilmenge. Fehlt ein Feld
    mangels Datenlage: explizit als [KEINE DATEN] ausweisen statt
    stillschweigend wegzulassen. Reiner Report-Vollständigkeits-Fix, keine
-   neue Methodik nötig.
+   neue Methodik nötig. **Klarstellung (gleicher Tag, Brians Layout-
+   Feedback am ANET-Report):** "alle Felder zeigen" heißt nicht zwingend
+   "alle Felder als eigene PDF-Tabelle". Prozess-/Checklisten-artige
+   Einzelheiten (VETO-Modul-Detailergebnis, einzelne Thesis-Break-Säulen,
+   rohe RSI/MACD-Werte) dürfen wie andere interne Prüfschritte (siehe
+   Punkt 50, Report-Inhalts-Scope) in der analysen/*.md-Volltextdatei
+   vollständig dokumentiert bleiben, solange die PDF-Seite selbst die
+   Schlussfolgerung weiterhin sichtbar zusammenfasst (kein VETO ja/nein,
+   Thesis-Break ja/nein) und wo sinnvoll durch Chartdarstellungen ersetzt
+   – nicht ersatzlos gestrichen wird. Für allgemeine/langfristige
+   Investoren zählt die visuelle Preisstruktur (inkl. eines mehrjährigen
+   Charts für Support-Zonen) oft mehr als eine Rohdaten-Tabelle.
 2. **Eigene Sektion "Chart- und Einstiegslage"** in jeder Einzelanalyse
    (Markdown-Datei UND Agent-Kompakt-PDF) – der Name der Sektion und die
    Grundidee (Trend-Ampeln + Zonen-Tabelle) sind von der fremden Vorlage
@@ -5110,6 +5121,18 @@ No-False-Precision-Regel, kein Erfinden von Zahlen):**
     stillschweigendes Weglassen. Direkt ein 🟢-sicherer KVP-Fall (siehe
     "Kontinuierlicher Verbesserungsprozess" oben) – keine Rating-Logik
     ändert sich dadurch, nur die Vollständigkeit der Ausgabe.
+    **Scope-Erweiterung (neu, 2026-09-17, ausgelöst durch den analogen
+    ANET-TA-Compliance-Fund):** die Checklist-Pflicht deckte bisher nur
+    die durchnummerierten Rigor-Standard-Punkte der Playbook-Liste ab –
+    nicht die eigenen Feldlisten der drei Methodik-Baustein-Dateien
+    selbst (jack-moat-reaper/TMR, conan-the-scout/Scout,
+    jack-technical-analyst/TA). Genau das ließ die ANET-TA-Lücke (Report
+    zeigte 3 von ~15 vorhandenen TA-Feldern) durch diesen Check
+    hindurchrutschen. Ab sofort gilt die Vollständigkeits-Pflicht explizit
+    auch für die Feldlisten aller drei Methodik-Dateien selbst, nicht nur
+    für die Rigor-Standard-Punkte – gleiche Logik, gleiche drei
+    Antwort-Optionen (umgesetzt / [KEINE DATEN] mit Begründung /
+    nicht anwendbar mit Begründung), nur der Scope ist jetzt vollständig.
 34. **Forward-Pipeline-/Katalysator-Ausblick jenseits bekannter Fehlschläge
     (neu, 2026-09-09, ausgelöst durch Brians Nachfrage "siehst du noch
     Verbesserungen?" zum NVO-Report).** Auslöser: der NVO-Report
