@@ -60,6 +60,14 @@ Neubewertung, kein neuer unternehmensspezifischer Fund. Status weiterhin
 HALTEN, kein Nachkauf (Position bewusst "voll", nächster Pflicht-Prüfpunkt
 Q3-2026-Zahlen ~November).
 
+**Update 2026-09-18 (Wochenfazit-Lauf, Twelve Data, EUR/USD 1,14842):**
+Live-Kurs 16,27 $/Aktie (HAWK). Aktueller Wert: 100 × 16,27 $ ÷ 1,14842 =
+**1.416,73 €** (-15,8% ggü. Investsumme 1.681,70 €) — minimal stärker als
+am 17.09. (-16,3%), reine Fortsetzung des bekannten Post-IPO-Space-Tech-
+Musters, kein neuer unternehmensspezifischer Fund. Status weiterhin
+HALTEN, kein Nachkauf (Position bewusst "voll", nächster Pflicht-Prüfpunkt
+Q3-2026-Zahlen ~Dezember, siehe earnings_calendar.md).
+
 Hinweis (2026-08-23, weiterhin gültig): Depot-Erfassung insgesamt abgeschlossen –
 von Brian bestätigt ("das sind meine ganzen Positionen"). Zusammen mit
 `scalable-capital.md`, `finanzen-net-zero.md` und `trade-republic.md` ist das

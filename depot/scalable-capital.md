@@ -99,6 +99,16 @@ und 200 €/Monat als Puffer auf dem Verrechnungskonto (kein aktiver Sparplan).
 Der BCA-Sparplan (zuvor 100 €/Monat) läuft nicht mehr – siehe
 `Agent-Playbook.md`, Abschnitt "Budget & Cashflow (2026-08-28)".
 
+**Update 2026-09-18 (Wochenfazit-Lauf, live über Scalable-MCP, Verbindung wieder stabil):**
+
+| Position | Wert aktuell | Kurs/Stück | Anteile |
+|---|---|---|---|
+| Boerse Stuttgart EUWAX Gold II | 500,42 € | 125,105 € | 4 |
+| Bank Central Asia | 1.921,96 € | 0,31 € | 6.199,871861 |
+| Vanguard FTSE All-World (Acc) | 8.159,01 € | 167,24 € | 48,786235 |
+
+**Gesamtwert Scalable Capital (live, Stand 18.09.2026): 10.581,88 €** (nur Wertpapiere, Cash weiterhin 0,00 €) — leicht unter dem 17.09.-Stand (10.596,26 €), BCA leicht schwächer, ETF-Sparplan-Anteilswert leicht höher. Keine neuen Transaktionen seit 17.09. (`list_portfolio_transactions` seit 2026-09-17T00:00:00Z → 0 Treffer).
+
 Hinweis (2026-08-23): Depot-Erfassung insgesamt abgeschlossen – von Brian bestätigt
 ("das sind meine ganzen Positionen"). Zusammen mit `finanzen-net-zero.md`,
 `trade-republic.md` und `smartbroker-plus.md` ist das jetzt das vollständige Depot.

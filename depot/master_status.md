@@ -1,3 +1,65 @@
+**Nachtrag 2026-09-18 (wochenfazit, später am Tag als der Trigger-Check unten):**
+vollständiger Wochenfazit-Lauf (Freitag-Turnus, 1-Tages-Fenster seit dem
+Ad-hoc-Wochenfazit vom 17.09.). Alle 4 Broker frisch geprüft: Scalable live
+(`ping` OK, 10.581,88 €), finanzen.net-zero/Trade-Republic/Smartbroker+ per
+Twelve Data für alle Twelve-Data-fähigen Ticker frisch nachgezogen (TSX/
+TSXV/LSE/Xetra weiterhin gesperrt, dort Vorwoche-Stand übernommen).
+**Gesamtdepot (4 Broker, inkl. Gold, Cash 0€): 33.426,76 €** (-0,63% ggü.
+33.639,41 € am 17.09.). **Wichtigster Einzelfund: Hermès fiel auf 1.352 €**
+(TradingView-Monatschart Brian, live) – **-29,0% ggü. Einstand, -14% ggü.
+Vorwoche** – Kurs liegt praktisch AUF dem fundamentalen Abstauber-Limit
+(≤1.350€) UND testet gleichzeitig die technische 2022-Konsolidierungszone
+von oben (siehe `depot/offene_empfehlungen.md`, JJ+Conan-Schnellanalyse +
+TA-Monatschart-Review vom 18.09.) – noch keine bestätigte Stabilisierung,
+kein Order-Limit. CBOE bestätigt in der Tranche-1-Zone ($269,16), aber
+RSI(14) 36,28 weiterhin unter der 45er-Bestätigungsschwelle, kein
+Order-Signal (deckt sich mit dem Trigger-Check-Fund von heute Nachmittag,
+siehe Nachtrag unten). Portfolio-Regel-Check mit frischen Zahlen neu
+gerechnet (Abschnitt 7a unten aktualisiert) – Europa/UK ist durch den
+Hermès-Rücksetzer knapp unter das Zielband gerutscht (14,98% vs. 15-20%).
+performance_tracking.csv/md neue Zeile, alle 5 Charts + Benchmark-Chart neu
+erzeugt – Depot fällt weiter hinter S&P 500/MSCI World zurück (-4,59% seit
+Baseline vs. S&P -1,69%/MSCI -0,76%; Nasdaq 100 dagegen leicht positiv
++0,31%), Hauptursache der Hermès-Rücksetzer, keine breite Marktschwäche.
+Watchlist unverändert (37 Werte, 19/13/5, kein neuer Trigger seit 17.09.).
+Keine Kategorie-/CRV-Änderungen ggü. 17.09. (1-Tages-Fenster, keine neue
+strukturelle Bewegung außer dem bereits gesondert dokumentierten
+Hermès-Preisfund). 8-seitiges Wochenfazit-PDF gebaut
+(`reports/Wochenfazit-2026-09-18.pdf`).
+
+**Nachtrag 2026-09-18 ~19:15 UTC (taeglicher-trigger-check, regulärer Lauf):**
+ruhiger Tag, kein 3-fach-Cross-Check-Anlass. Scalable live geprüft (`ping`
+OK) – Vanguard/BCA/Gold aktualisiert, Hermès auf den bereits dokumentierten
+TradingView-Kurs 1.352,00 € nachgezogen (siehe `depot/
+offene_empfehlungen.md`), die übrigen Positionen vom 17.09.-Komplettupdate
+unverändert übernommen. **Gesamtdepot (4 Broker) auf dieser Basis ≈
+33.399,73 €** (`reports/portfolio_pie_2026-09-18.png`). **Transparenz-
+Hinweis:** während dieses Laufs lief PARALLEL eine zweite, deutlich
+gründlichere Wochenfazit-Session mit vollständiger Twelve-Data-Neubewertung
+aller Positionen (siehe die zeitgleichen Änderungen in `depot/
+finanzen-net-zero.md`, `depot/scalable-capital.md`, `depot/
+smartbroker-plus.md`, `depot/performance_tracking.md`, Stand dort:
+Gesamtdepot 33.426,76 €, kleine Differenz zu diesem Lauf durch nicht voll
+deckungsgleiche Einzelkurs-Zeitpunkte) – DIESE Zahlen sind die genaueren/
+aktuelleren, sobald jene Session committet. Einzige Transaktion seit
+Checkpoint war die bereits verarbeitete BCA-Reinvestment-BUY vom 16.09. –
+kein neues Event, Checkpoint unverändert. Keine neuen Preisalarme (Kraken/
+Rambus-Auslösungen vom 14./18.09. bereits verarbeitet). **Wichtigste
+Beobachtung:** CBOE Holdings hat die dokumentierte Tranche-1-Nachkaufzone
+($268-270) heute erstmals erreicht (Tagesspanne $265,28-271,39, Schluss
+$269,05) – noch KEINE bestätigte Stabilisierung (RSI(14) 36,28, weiterhin
+unter der 45er-Schwelle laut Parallel-Session), kein Order-Signal. Markt-/
+Makro: **BoJ hat wie zu ~97% erwartet um 25 Bp auf 1,25% angehoben**
+(höchster Leitzins seit 1995, 7-2-Votum) – keine Überraschung, kein
+Material Shift (VIX 15,4 rückläufig, F&G 28,7 weiter Fear-Zone, SPY
+-0,19%/QQQ +0,32%, weiterhin klar über 50D/200D-SMA). Watchlist-Ampel-Check
+bei den bereits bekannten Flags (MPWR/FICO/SYK/WSO) ohne neue 🔴/🟡-Funde –
+FICO-VantageScore-Regulatorik und SYK-Cybervorfall bleiben bereits
+bekannte/eingepreiste Themen, MPWR nur neutrale/positive News (Dividende +
+GlobalFoundries-Partnerschaft). Kein neuer Watchlist-Kandidat, kein
+Index-Scan (Brian hat die Japan/Asien-Kandidaten-Pipeline am 17.09.
+explizit pausiert). Bestätigungsmail verschickt (siehe Verifikation unten).
+
 **Nachtrag 2026-09-09 ~Nachmittag (ad-hoc-chat, Depot-Update, KORRIGIERTE
 FASSUNG – Brian wies die erste Fassung zurecht als falsch zurück):** Erste
 Fassung dieses Depot-Updates enthielt zwei echte Fehler aus WebSearch-
@@ -291,12 +353,36 @@ Quelle: `depot/offene_empfehlungen.md` (dort maßgeblich, hier nur Kurzstand).
 
 | Position | Empfehlung | Zone/Preis |
 |---|---|---|
-| Kraken Robotics | Nachkauf-Zone (Preisalarm) | ≤2,80 |
-| Rambus | Nachkauf-Zone (Preisalarm) | ≤65 |
-| CBOE Holdings | Nachkauf-Zone, gestaffelt (KAUFEN, Tier 2) | Tranche 1: $268-270 · Tranche 2: $255-262 |
-| Hermès | Nachkauf-Zone (Preisalarm) | ≤1.350€ (Kurs 18.09. bereits nahe/an der Zone, 1.353-1.387€) |
+| Kraken Robotics | Nachkauf-Zone (Preisalarm) | ≤2,80 CAD |
+| Rambus | Nachkauf-Zone (Preisalarm) | $68-75 (Kurs 18.09.: $85,87, Preisalarm $75 UP verarbeitet, kein Kaufsignal) |
+| CBOE Holdings | Nachkauf-Zone erstmals erreicht, TA-Bestätigung fehlt (Tier 2) | Tranche 1: $268-270 UND RSI&gt;45 (Kurs $269,16, RSI 36,28 – kein Order-Signal) · Tranche 2: $255-262 |
+| Hermès | Nachkauf-Zone praktisch erreicht, TA-Bestätigung fehlt | ≤1.350€ (Kurs 18.09.: 1.352€ – kein Order-Signal) |
 
-## 7a. Portfolio-Regel-Check — AKTUALISIERT 2026-09-17 (Region-/Sektor-Diskrepanz geklärt)
+## 7b. Portfolio-Regel-Check — AKTUALISIERT 2026-09-18 (Wochenfazit)
+
+Frische Live-Zahlen (Stocks+ETF-Basis 32.926,34 €, Gesamtportfolio inkl. Gold+Cash 33.426,76 €):
+
+| Region | Real (18.09.) | Ziel-Band | Status | Vorher (17.09.) |
+|---|---|---|---|---|
+| USA/Nordamerika | 53,70% | ≤55-60% | erfüllt | 53,28% |
+| Europa/UK | 14,98% | 15-20% | **wieder knapp unterbesetzt** (Hermès-Rücksetzer) | 15,54% (im Zielband) |
+| Japan/Asien | 9,55% | 10-15% | unterbesetzt | 9,57% (nahezu unverändert) |
+| Sonstige (CA/IL) | 17,00% | kein festes Band | unverändert ausgelastet | 16,77% |
+| Lateinamerika | 4,77% | kein festes Band | unverändert | 4,83% |
+
+| Sektor | Real (18.09.) | Ziel-Band | Status | Vorher (17.09.) |
+|---|---|---|---|---|
+| Finanzwesen | 32,71% | 20-25% | **weiterhin klar über Zielband** | 32,58% |
+| Technologie/Halbleiter | 29,93% | 30-35% | knapp unterbesetzt | 29,71% |
+| Rest | 16,41% | 5-10% | über Zielband (Hermès-Anteil hier gesunken) | 17,05% |
+| Industriewerte | 11,72% | 10-15% | im Zielband | 11,60% |
+| Gesundheitswesen | 9,23% | 10-15% | unterbesetzt | 9,06% |
+
+**ETF-Anteil:** 24,41% des Gesamtportfolios (Ziel ≥50%, weiterhin VERSTOSS, langsamer Aufbau via 600€/Monat-Sparplan — war 24,23% am 17.09.). **Positionsgrößen:** größte Position SoFi 11,04% (innerhalb der 12%-Ausnahme, leicht gestiegen ggü. 10,89%). Kleinste: Rambus 1,34% (über der 1%-Mindestgrenze).
+
+**Konsequenz:** kein automatisches Verkaufssignal. Einzige echte Statusänderung ggü. 17.09.: Europa/UK ist durch den Hermès-Preisrückgang knapp aus dem Zielband gerutscht (15,54%→14,98%) — reiner Bewertungseffekt einer bestehenden Position, kein neuer struktureller Befund. Finanzwesen bleibt der Struktur-Überhang, Japan/Asien und Gesundheitswesen bleiben priorisierte Lücken für neues Kapital.
+
+## 7a. Portfolio-Regel-Check — Stand 2026-09-17 (Region-/Sektor-Diskrepanz geklärt, historisch — siehe 7b oben für den aktuellen Stand)
 
 **Fund beim Nachrechnen (Brian: "kläre das jetzt"):** eine erste Schnellrechnung kam auf USA≈38% statt der dokumentierten 53,65% — Ursache war ein reiner Rechenfehler (ETF-Wert nur im Nenner mitgezählt, aber nicht per `ETF_REGION_SPLIT`/`ETF_SECTOR_SPLIT` (siehe `reports/weekly_charts.py`) auf die Regionen/Sektoren verteilt). Mit korrigierter Methodik und heutigen Live-Zahlen (Depot-Komplettupdate vom 17.09., Gesamtwert 33.639,41 €, Stocks+ETF-Basis 33.145,36 €):
 
@@ -389,18 +475,22 @@ Quelle: `depot/bridge_status.md` (Log) + `list_scheduled_tasks` (Live-Stand).
 
 | Task | Letzter Lauf | Nächster Lauf |
 |---|---|---|
-| taeglicher-trigger-check | 2026-09-17 ~13:15 UTC (regulärer Lauf, ruhiger Tag, kein Trigger, Kraken/Rambus-Erinnerung verschickt, Kuchendiagramm auf Basis des heutigen Depot-Komplettupdates neu erzeugt) | täglich ~21:03 lokale Zeit |
-| blitz-scan | 2026-09-04 ~16:15 UTC (Bridges FAIL, Jarvis-Only) | stündlich |
-| wochenfazit | 2026-09-07 ~17:15 lokale Zeit (ersetzt den entfernten nativen Scheduled-Task-Eintrag, läuft ab jetzt über Hermes-Cron; verkürztes 3-Tage-Fenster seit 04.09., PDF gebaut+committet, E-Mail als Text-Zusammenfassung ohne Anhang verschickt – siehe Kopfnotiz oben) | Freitag, nächster reg. Lauf voraussichtlich 11.09.2026 |
+| taeglicher-trigger-check | 2026-09-18 ~19:15 UTC (regulärer Lauf, ruhiger Tag, kein Cross-Check-Trigger, CBOE erstmals in Tranche-1-Zone beobachtet, BoJ-Hike eingepreist/kein Material Shift) | täglich ~21:03 lokale Zeit |
+| blitz-scan | 2026-09-18 ~09:22/~05:33 UTC (Rambus-Preisalarm $75 UP verarbeitet, kein Kaufsignal) | stündlich |
+| wochenfazit | 2026-09-18 (regulärer Freitags-Lauf, 1-Tages-Fenster seit dem Ad-hoc-Wochenfazit vom 17.09.; alle 4 Broker frisch geprüft, PDF gebaut+committet, E-Mail mit GitHub-Link verschickt) | Freitag, nächster reg. Lauf voraussichtlich 25.09.2026 |
 | monatsrecap | noch nicht gelaufen | 28.-31. des Monats |
 
 ## 10. Cash-Stand (nur Scalable Capital, live abrufbar)
 
-Stand 2026-09-17 ~13:15 UTC (live verifiziert): verfügbare Kaufkraft/
-Cash-Bestand weiterhin **0,00 €** (die frühere 08.09.-Abweichung ist geklärt
-- reguläre interne Überweisung vom 07.09., siehe Nachtrag 17.09. oben). Für
-die drei manuellen Broker (finanzen.net zero, Trade Republic, Smartbroker+)
-kein Live-Zugriff für Trade Republic (Xetra gesperrt), die anderen beiden
-per Twelve Data frisch – siehe jeweilige `depot/*.md`-Datei. Gesamt-
-portfoliowert (alle 4 Broker inkl. Cash+Gold, Stand 17.09.-
-Komplettupdate, siehe `reports/portfolio_pie_2026-09-17.png`): 33.639,41 €.
+**Stand 2026-09-18 (Wochenfazit-Lauf, später als der Trigger-Check-Snapshot
+oben, alle 4 Broker frisch geprüft):** verfügbare Kaufkraft/Cash-Bestand
+weiterhin **0,00 €**. Scalable-Gesamtwert (live): 10.581,88 €. Finanzen.net
+zero (Twelve Data, alle Twelve-Data-fähigen Ticker frisch): 20.916,55 €.
+Trade Republic (Allianz, Xetra weiterhin gesperrt, Stand 09.09. übernommen):
+512,09 €. Smartbroker+ (HawkEye 360, Twelve Data): 1.416,73 €.
+**Gesamtportfoliowert (alle 4 Broker inkl. Cash+Gold): 33.426,76 €**
+(-0,63% ggü. 33.639,41 € am 17.09.; -0,58% ggü. dem separaten
+Trigger-Check-Snapshot von heute Nachmittag [33.620,73 €] – Differenz
+primär durch den erst danach eingepreisten Hermès-Rücksetzer auf 1.352 €,
+der im Trigger-Check-Snapshot noch nicht berücksichtigt war, da dort die 3
+manuellen Broker nicht neu abgefragt wurden).

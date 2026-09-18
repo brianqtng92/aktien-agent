@@ -51,6 +51,10 @@ bei Münchener Rück, siehe `finanzen-net-zero.md`) — kein frischer Live-Kurs
 abrufbar, Wert bleibt auf dem Stand vom 09.09. (444,76 €/Aktie, 512,09 €,
 +1,5%) stehen.
 
+**Versuch 2026-09-18 (Wochenfazit-Lauf):** unverändert weiterhin
+gesperrt (Xetra), Wert bleibt auf dem Stand vom 09.09. (512,09 €, +1,5%)
+stehen.
+
 ## Position 2 – WM (vermutlich Waste Management Inc.) — **VERKAUFT 27.08.2026 @ 187,35€, vollständiger Exit**
 
 **Letzte Aktualisierung laut App:** 12.08., 21:16 Uhr

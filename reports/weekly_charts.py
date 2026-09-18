@@ -28,34 +28,34 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-STAND = "2026-09-17"
+STAND = "2026-09-18"
 
 # (Name, Investsumme, Wert aktuell, Region, Sektor)
 # Region-Buckets: USA | Europa/UK | Japan/Asien | Lateinamerika | Sonstige (CA/IL/etc.)
 # Sektor-Buckets: Technologie | Finanzwesen | Gesundheitswesen | Industriewerte | Rest
 DATA = [
-    ("SoFi Technologies",              2612.93, 3663.60, "USA",          "Finanzwesen"),
-    ("Constellation Software",         1380.00, 1791.29, "Sonstige",     "Technologie"),  # Kanada
-    ("Allianz SE",                      504.43,  512.09, "Europa/UK",    "Finanzwesen"),
-    ("ServiceNow Inc",                 1948.96, 2433.99, "USA",          "Technologie"),
-    ("MercadoLibre Inc",               1442.80, 1600.66, "Lateinamerika","Rest"),
-    ("Broadridge Financial Sol.",      1119.68, 1163.30, "USA",          "Finanzwesen"),
-    ("CBOE Holdings",                  1226.15, 1176.51, "USA",          "Finanzwesen"),
-    ("Kraken Robotics",                1050.00,  856.86, "Sonstige",     "Industriewerte"),  # Kanada
-    ("Rocket Lab USA",                  554.00,  554.35, "USA",          "Industriewerte"),
-    ("Rambus Inc.",                     533.64,  424.94, "USA",          "Technologie"),
-    ("HawkEye 360",                    1681.70, 1407.62, "USA",          "Industriewerte"),
-    ("Bank Central Asia",              1999.94, 1952.96, "Japan/Asien",  "Finanzwesen"),
-    ("Münchener Rück",                 1051.00, 1052.20, "Europa/UK",    "Finanzwesen"),
-    ("A10 Networks",                    506.52,  484.98, "USA",          "Technologie"),
-    ("Intuitive Surgical",             1400.50, 1330.35, "USA",          "Gesundheitswesen"),
-    ("Tristel PLC",                    1002.67, 1027.37, "Europa/UK",    "Gesundheitswesen"),
-    ("Cellebrite DI Ltd",              2166.15, 1989.99, "Sonstige",     "Technologie"),  # Israel
-    ("Hermès",                         1905.09, 1573.00, "Europa/UK",    "Rest"),
+    ("SoFi Technologies",              2612.93, 3688.76, "USA",          "Finanzwesen"),
+    ("Constellation Software",         1380.00, 1791.29, "Sonstige",     "Technologie"),  # Kanada, TSX gesperrt, Stand 09.09.
+    ("Allianz SE",                      504.43,  512.09, "Europa/UK",    "Finanzwesen"),  # Xetra gesperrt, Stand 09.09.
+    ("ServiceNow Inc",                 1948.96, 2384.15, "USA",          "Technologie"),
+    ("MercadoLibre Inc",               1442.80, 1571.00, "Lateinamerika","Rest"),
+    ("Broadridge Financial Sol.",      1119.68, 1141.32, "USA",          "Finanzwesen"),
+    ("CBOE Holdings",                  1226.15, 1171.87, "USA",          "Finanzwesen"),
+    ("Kraken Robotics",                1050.00,  856.86, "Sonstige",     "Industriewerte"),  # Kanada, TSXV gesperrt, Stand 17.09.
+    ("Rocket Lab USA",                  554.00,  558.85, "USA",          "Industriewerte"),
+    ("Rambus Inc.",                     533.64,  448.63, "USA",          "Technologie"),
+    ("HawkEye 360",                    1681.70, 1416.73, "USA",          "Industriewerte"),
+    ("Bank Central Asia",              1999.94, 1921.96, "Japan/Asien",  "Finanzwesen"),
+    ("Münchener Rück",                 1051.00, 1052.20, "Europa/UK",    "Finanzwesen"),  # Xetra gesperrt, Stand 03.09.
+    ("A10 Networks",                    506.52,  477.08, "USA",          "Technologie"),
+    ("Intuitive Surgical",             1400.50, 1368.04, "USA",          "Gesundheitswesen"),
+    ("Tristel PLC",                    1002.67, 1027.37, "Europa/UK",    "Gesundheitswesen"),  # LSE gesperrt, Stand 09.09.
+    ("Cellebrite DI Ltd",              2166.15, 2027.13, "Sonstige",     "Technologie"),  # Israel
+    ("Hermès",                         1905.09, 1352.00, "Europa/UK",    "Rest"),  # TradingView-Monatschart Brian, 18.09. -- deutlicher Ruecksetzer, Nachkauf-Zone erreicht
 ]
 ETF_NAME = "Vanguard FTSE All-World (ETF)"
 ETF_INVEST = 6753.40
-ETF_WERT = 8149.30
+ETF_WERT = 8159.01
 
 # Naeherung, Stand 31.07.2026 (justetf/Vanguard-Factsheet, siehe architecture.md)
 ETF_REGION_SPLIT = {
