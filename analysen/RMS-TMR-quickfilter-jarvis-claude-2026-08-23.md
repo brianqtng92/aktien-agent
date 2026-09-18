@@ -181,3 +181,17 @@ Erste echte 3-fach-Perspektive auf RMS (vorher nur Aegis/Claude solo). JJ (Gemin
 - Conan: Kurs ≤~1.250€ (KGV ≤~28x) ODER Q3-Update (22.10.2026) zeigt Gruppe ≥7-8% ccy + APAC/Greater China >5% ccy
 
 **Nächster Prüfpunkt:** Q3-Trading-Update 22.10.2026 (unverändert), zusätzlich laufende Kursbeobachtung um die 1.350€-Zone.
+
+---
+
+## 📉 TA-Update 2026-09-18 — Monatschart-Review (Brian: TradingView-Chart, RMS 1T Euronext Paris)
+
+**Kontext:** Kurs 1.352€ (18.09.) sitzt praktisch exakt auf dem 23.08.-Abstauber-Limit (1.350€) — Anlass für einen technischen Blick auf den Monatschart.
+
+**Befund:**
+- Gleitender Durchschnitt (Monatsbasis) bei 1.776€, Kurs liegt weit darunter — intakter, unbestätigt endender Abwärtstrend, keine Bodenbildung erkennbar.
+- Vom Hoch (~2.482€, 2025) ergibt sich ein Drawdown von **-45,5%** — in der historischen Größenordnung vergangener Luxus-Konsum-Schocks (2008/2020).
+- **Zentraler Fund:** Der aktuelle Kurs testet die alte **2022-Konsolidierungszone (~1.350-1.395€)**, die damals über ~9 Monate mehrfach als Support/Widerstand fungierte, bevor der Ausbruch 2023 Richtung 2.482€ folgte. Ein Rücktest dieser mehrjährigen Struktur-Zone von oben ist ein klassisches Polaritäts-Level (alter Widerstand/Support wird erneut geprüft).
+- **Konfluenz:** Dieses technische Level fällt fast exakt mit dem fundamentalen Abstauber-Limit (1.350€, KGV-basiert) zusammen — Chart- und Fundamentalanalyse bestätigen sich hier gegenseitig, seltener und daher stärkerer Fund als jedes Level allein.
+
+**Einordnung (Order-Limit-Status, siehe Agent-Playbook.md "Preisalarm-Auslösungs-Check"):** trotz der Konfluenz reicht die reine Level-Berührung NICHT als bestätigtes Kaufsignal — der übergeordnete Trend bleibt klar abwärts (Kurs << langfristiger gleitender Durchschnitt). **Status: "Zone erreicht, technische Bestätigung ausstehend"** — abwarten, ob das Level hält (z.B. eine Monatskerze mit Schlusskurs auf/über der Zone), bevor ein echtes Nachkauf-Signal ausgerufen wird. In `depot/offene_empfehlungen.md` entsprechend nachgetragen.
