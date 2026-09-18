@@ -293,6 +293,8 @@ Quelle: `depot/offene_empfehlungen.md` (dort maßgeblich, hier nur Kurzstand).
 |---|---|---|
 | Kraken Robotics | Nachkauf-Zone (Preisalarm) | ≤2,80 |
 | Rambus | Nachkauf-Zone (Preisalarm) | ≤65 |
+| CBOE Holdings | Nachkauf-Zone, gestaffelt (KAUFEN, Tier 2) | Tranche 1: $268-270 · Tranche 2: $255-262 |
+| Hermès | Nachkauf-Zone (Preisalarm) | ≤1.350€ (Kurs 18.09. bereits nahe/an der Zone, 1.353-1.387€) |
 
 ## 7a. Portfolio-Regel-Check — AKTUALISIERT 2026-09-17 (Region-/Sektor-Diskrepanz geklärt)
 

@@ -159,3 +159,25 @@ Begründung in einem Satz: Ausnahme-Qualität (Moat 🟢 STARK, ROIC 40–50%, f
 ---
 
 *Hinweis: Diese Quick-Filter-Analyse ersetzt keinen FULL DEEP DIVE (kein Python-DCF, keine Beneish-Prüfung, kein Vollformat-Moat-/Management-Score, kein ausführlicher Reaper-Reality-Check). Bei Übergang RMS von Watchlist in eine konkrete Kaufentscheidung: FULL DEEP DIVE nachholen.*
+
+---
+
+## 🔄 Update 2026-09-18 — Schnellanalyse-Cross-Check mit JJ + Conan (Brian: "wie sehen die Agenten aktuell die Hermes Aktie?")
+
+Erste echte 3-fach-Perspektive auf RMS (vorher nur Aegis/Claude solo). JJ (Gemini) und Conan (ChatGPT) unabhängig per `ask_gemini`/`ask_chatgpt` (`enable_search=True`) befragt, gleicher reduzierter Quick-Filter-Scope wie oben.
+
+**Kurs:** deutlich gefallen seit 23.08. (1.573€) → JJ: 1.387€ (17.09.), Conan: **1.353€ (18.09., -1,6% intraday)** — ca. -14 bis -12%. Ursache laut beiden: sektorweiter Luxus-Ausverkauf (China/APAC-Konsumsorge, LVMH/Kering ebenfalls betroffen), nicht firmenspezifisch. FX-Gegenwind verzerrt reported Wachstum (+1,6%) stark ggü. konstanter FX (+6,1% H1, +6,7% Q2) — Kernthese unverändert intakt (Lederwaren/Sattlerei sogar +9,8-10,2% ccy).
+
+**Fundamentaldaten (H1 2026, beide konvergent):** ROIC ~38-50% (Bandbreite je Quelle), FCF-Marge 26,7% (verbessert ggü. 24,3% am 23.08.), Bruttomarge 71,1%, operative Marge 41,0% (fast doppelt LVMH 22,5%, deutlich über Kering 12,8%). Going-Concern unauffällig (Netto-Cash 12,3-12,9 Mrd.€, Debt/Equity 0,12). Moat 🟢 STARK bestätigt, Management/Kapitalallokation unverändert solide (Insider-Ownership laut JJ ~67% über Familienholding).
+
+**Valuation:** KGV auf ~31-33x komprimiert (von ~36,5x) — niedrigster Stand seit ~10 Jahren (10J-Median ~48-49x). EV/FCF ~31-34x.
+
+**Verdict beider Agenten: BEOBACHTEN** (Konsens mit Aegis' ursprünglichem Urteil) — Qualität exzellent, aber Wachstumsverlangsamung (reported) und weiterhin zäher China/APAC-Konsum rechtfertigen noch kein KAUFEN trotz deutlich günstigerer Bewertung.
+
+**Wichtigster Fund:** Conans Live-Kurs (1.353€, 18.09.) liegt **praktisch auf dem 23.08.-Abstauber-Limit (1.350€)** — einer der 3 ursprünglichen Upgrade-Trigger ist damit fast erreicht, rein preisgetrieben, ohne fundamentale Verschlechterung. In `depot/offene_empfehlungen.md` als Nachkauf-Zone-Beobachtung aufgenommen (2026-09-18).
+
+**Trigger-Updates (Synthese, ersetzen NICHT die 23.08.-Trigger, ergänzen sie):**
+- JJ: KGV <30x ODER Wachstum-ccy-Reakzeleration über mehrere Quartale
+- Conan: Kurs ≤~1.250€ (KGV ≤~28x) ODER Q3-Update (22.10.2026) zeigt Gruppe ≥7-8% ccy + APAC/Greater China >5% ccy
+
+**Nächster Prüfpunkt:** Q3-Trading-Update 22.10.2026 (unverändert), zusätzlich laufende Kursbeobachtung um die 1.350€-Zone.
