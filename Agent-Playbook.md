@@ -5845,14 +5845,69 @@ umgesetzten Punkte waren die einzigen echten, kleinen Ergänzungen.
     ausschließlich den schmalen Fall "TMR-würdig, aber mitten im
     transformativen Ausbau", nicht generell kapitalintensive Branchen.
 
-    **Offener Folgeschritt:** SCHRITT 6 in `prompts/jack-moat-reaper-v11.7.md`
-    und `prompts/conan-the-scout-v1.12.md` (beide bauen ihr DCF bisher
-    unabhängig als Teil des 3-fach-Cross-Checks) müssen bei der nächsten
-    Prompt-Revision um diese bedingte Szenario-Modell-Alternative ergänzt
-    werden, damit sie bei einem echten Ramp-up-Fall nicht weiterhin
-    automatisch ein Standard-DCF liefern – bis dahin wendet Aegis diese
-    Regel manuell in der eigenen Synthese an, wenn JJ/Conan trotzdem ein
-    DCF liefern.
+    **Umgesetzt (2026-09-18):** SCHRITT 5 in `prompts/jack-moat-reaper-v11.7.md`
+    (v11.23→v11.24) bekam den neuen SCHRITT 5E mit der vollständigen
+    Szenariomodell-Logik plus die erweiterte Entscheidungs-Matrix, die den
+    4. Pfad ("Ramp-up → SCHRITT 5E statt FULL DCF") explizit ausweist.
+    `prompts/conan-the-scout-v1.12.md` braucht KEINE Änderung an dieser
+    Stelle – Scout arbeitet ohnehin ohne DCF (EV/Sales+TAM-Sanity-Check),
+    Regel 55 betrifft ausschließlich den TMR-Pfad.
+
+56. **Thesis Dependency Map: Abhängigkeitstiefe der Kernannahmen-Kette
+    sichtbar machen (neu, 2026-09-18, ChatGPT-Vorschlag nach dem MP-vs-
+    ANET-Vergleich).** Die bestehende These-Monitoring-Kette (Punkt 51)
+    bewertet jede der 4-6 Kernannahmen EINZELN (Confidence + KPI +
+    Kipppunkt), macht aber nicht sichtbar, ob eine einzelne Annahme
+    gleichzeitig MEHRERE andere Zeilen trägt – bei MP Materials hängen
+    Magnetkapazität, Kundenumsätze, EBITDA UND Bewertung praktisch alle am
+    einzigen Erfolg der 10X-Anlage; bei einem diversifizierten Compounder
+    dagegen tragen mehrere unabhängige Stützen (Pricing Power, Cross-
+    Selling, Retention, M&A) die These gemeinsam. Das ist eine andere
+    Information als eine reine Risikomatrix (Punkt 45) – es misst
+    Kopplung/Konzentration der These selbst, nicht Einzelrisiken. **Ab
+    sofort Pflicht bei Full Deep Dive:** ein Satz direkt unter der
+    bestehenden Kernannahmen-Tabelle, ob die These an einer dominanten
+    Annahme konzentriert ist (mit Nennung, welche) oder breit diversifiziert.
+    Kein Zusatzaufwand: reine Einordnung der bereits vorhandenen Tabelle,
+    keine neue Recherche, kein zweites Scoring-System (dieselbe Lektion wie
+    bei den Moat-Komponenten, Punkt 53 – Erweiterung eines bestehenden
+    Bausteins statt eines neuen parallelen).
+
+57. **"Die 3 nächsten Infos" aus Known/Unknown/Unknowable priorisieren
+    (neu, 2026-09-18, gleiche Quelle).** Die bestehende Known/Unknown/
+    Unknowable-Liste (Punkt 39-Erweiterung) sortiert Datenpunkte nach
+    Erkennbarkeit, wählt aber aus der UNKNOWN-Zeile nichts aus. **Ab sofort
+    Pflicht:** aus UNKNOWN die 3 Punkte priorisieren, deren Klärung die
+    Unsicherheit der These am stärksten reduzieren würde – nicht nur eine
+    Liste von Unbekannten, sondern eine geordnete "worauf als Nächstes
+    warten" für das Watchlist-/Monitoring-System. Kein Zusatzaufwand: reine
+    Kuratierung der bereits vorhandenen UNKNOWN-Liste.
+
+    **Explizit NICHT übernommen, weil bereits vorhanden bzw. falsch
+    verortet (gleiche ChatGPT-Runde, Erst-Check gegen eigene Regeln):**
+    "Evidence Quality/Proof Burden" (Thesen-Claims nach Beweisstand
+    ampeln) entspricht inhaltlich der seit v11.23/v1.23 bestehenden Spalte
+    "Confidence + Beleg" in der These-Monitoring-Kette (Punkt 51) – eine
+    zweite, parallele Achse dafür wäre exakt die Art Redundanz, die bei den
+    Moat-Komponenten (Punkt 53) schon einmal korrigiert werden musste.
+    "Thesis vs. Price Divergence" (fundamentale Entwicklung × Kursbewegung
+    als 2×2-Matrix) ist kein Report-Baustein, sondern gehört ins bereits
+    bestehende Preisalarm-Auslösungs-System (siehe dortiger Abschnitt) –
+    genau dort wird bei einem ausgelösten Alarm ohnehin geprüft, ob sich
+    die These verändert hat, bevor ein Nachkauf empfohlen wird.
+
+**Bewusste Pause nach Punkten 55-57 (2026-09-18, ChatGPTs eigene
+Mahnung, von Brian direkt weitergegeben und geteilt):** ChatGPT selbst
+warnte nach dem MP-vs-ANET-Vergleich davor, ein "Regelmonster" zu bauen –
+bei 9,0-9,3/10 kommen die letzten Prozent nicht durch weitere Checks,
+sondern durch bessere Architektur und weniger Scheingenauigkeit. Deckt
+sich mit einer bereits früher gemachten Erfahrung in diesem System (siehe
+[[project_playbook_meta_review_haertung]], 09.09., "4 Over-Engineering-
+Kürzungen"). **Ab sofort:** keine weiteren Rigor-Punkt-Ergänzungen aus
+reflexiver externer Kritik, bis das bestehende Regelwerk an mehreren
+echten Analysen (ANET, MP Materials falls aufgenommen, nächster Full Deep
+Dive) getestet wurde – die Leitfrage wechselt von "was fehlt noch?" zu
+"hat uns das bestehende System tatsächlich vor einem Fehler bewahrt?".
 
 **Woher Punkte 51-54 und die Erweiterungen an 6/19/26/27/44/39/49 kommen
 (2026-09-17, dritte Runde, diesmal Gemini UND ChatGPT gemeinsam gefragt:
@@ -6791,6 +6846,25 @@ automatisch einen Ersatz eines bestehenden Werts erzwingen.
      - **Gründe:** kompakte Zusammenfassung der investment-These aus dem
        zugrundeliegenden Full Deep Dive/Quick-Filter/Analyse-Eintrag, PLUS
        was konkret JETZT den Auslöser bildet (Preis + ggf. Technik/Makro).
+  3b. **These-vs-Kurs-Divergenz-Check (NEU, 2026-09-18, ChatGPT-Vorschlag,
+      MP-vs-ANET-Vergleich, verortet hier statt als neuer Report-Baustein
+      – genau hier wird die Frage bei jedem ausgelösten Alarm ohnehin
+      gestellt).** Vor der Order-Limit-Antwort in Schritt 3 explizit
+      einordnen, in welchem der vier Zustände sich die Position befindet:
+      **These↑/Kurs↑** (bestätigend, kein Sonderfall), **These↑/Kurs↓**
+      (der eigentlich interessante Fall – Fundamentaldaten intakt oder
+      besser, Kurs trotzdem gefallen: stärkstes Argument FÜR ein
+      Order-Limit, sofern auch die übrigen Bedingungen erfüllt sind),
+      **These↓/Kurs↑** (Warnsignal – Markt preist Verbesserung ein, die
+      laut eigener Analyse nicht gedeckt ist, kein Nachkauf trotz
+      möglicher Preisalarm-Logik), **These↓/Kurs↓** (kein automatisches
+      Schnäppchen – erst prüfen, ob der Kursverfall die schwächer gewordene
+      These bereits einpreist oder übertreibt). "These↑/↓" wird aus dem
+      zuletzt dokumentierten Analyse-Stand abgeleitet (neuere News/Zahlen
+      seit der letzten Vollanalyse, nicht neu recherchiert). Kein
+      Ersatz für die bestehende Order-Limit-Prüfung in Schritt 3, sondern
+      deren Einordnungsrahmen – macht explizit, WARUM ein reiner Preistreffer
+      allein nie automatisch "Ja" bedeutet.
   4. **Zustellung wie ein handlungsrelevanter Fund** (Chat + E-Mail,
      PushNotification bei echtem Kaufsignal) – bei reinem "Zone erreicht,
      Zusatzbedingung fehlt noch" reicht eine kompakte Zeile ohne volle
