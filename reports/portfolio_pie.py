@@ -2,18 +2,18 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-# Stand 2026-09-17: Depot-Komplettupdate, alle 4 Broker live/frisch geprueft
-# (Scalable per MCP, finanzen.net zero + Smartbroker+ per Twelve Data,
-# Trade Republic Xetra weiterhin nicht live abrufbar - Stand 09.09.
-# uebernommen, siehe depot/trade-republic.md)
+# Stand 2026-09-18: taeglicher-trigger-check, nur Scalable Capital live neu
+# abgefragt (Vanguard/BCA/Gold), die uebrigen Positionen vom 17.09.-
+# Depot-Komplettupdate unveraendert uebernommen (kein voller Re-Pull an
+# einem ruhigen Tag mit nur geringer US-Marktbewegung seit 17.09.).
 data = [
-    ("Vanguard FTSE All-World (ETF)", 8149.30, "#2E5A8C"),
+    ("Vanguard FTSE All-World (ETF)", 8155.27, "#2E5A8C"),
     ("SoFi Technologies", 3663.60, "#E4572E"),
-    ("Bank Central Asia", 1952.96, "#4A7FB5"),
+    ("Bank Central Asia", 1921.96, "#4A7FB5"),
     ("ServiceNow Inc", 2433.99, "#F2A541"),
     ("Cellebrite DI Ltd", 1989.99, "#7A6FB0"),
     ("MercadoLibre Inc", 1600.66, "#5CA793"),
-    ("Hermès", 1573.00, "#B85C8A"),
+    ("Hermès", 1352.00, "#B85C8A"),
     ("Constellation Software Inc", 1791.29, "#9B59B6"),
     ("HawkEye 360", 1407.62, "#D98C3D"),
     ("Intuitive Surgical", 1330.35, "#D4A5A5"),
@@ -24,7 +24,7 @@ data = [
     ("Münchener Rück", 1052.20, "#B85C5C"),
     ("Tristel PLC", 1027.37, "#8C6BB1"),
     ("Rocket Lab USA", 554.35, "#3E9C8C"),
-    ("EUWAX Gold II", 494.05, "#D4B106"),
+    ("EUWAX Gold II", 500.40, "#D4B106"),
     ("Allianz SE", 512.09, "#2F6B5E"),
     ("A10 Networks", 484.98, "#C46A6A"),
     ("Rambus Inc.", 424.94, "#A0A0A0"),
@@ -54,19 +54,20 @@ for at in autotexts:
 
 total_str = f"{total:,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
 ax.set_title(
-    f"Portfolio-Zusammensetzung – alle 4 Broker, Stand 2026-09-17\n"
+    f"Portfolio-Zusammensetzung – alle 4 Broker, Stand 2026-09-18\n"
     f"Gesamtwert: {total_str}",
     fontsize=13, fontweight="bold", pad=20,
 )
 ax.text(
     0, -1.42,
-    "Depot-Komplettupdate 17.09.: Scalable Capital live per MCP, finanzen.net zero + Smartbroker+ per Twelve Data.\n"
-    "Trade Republic (Allianz, Xetra): letzter Stand vom 09.09. (keine Live-Quelle, Tarif-Sperre).",
+    "18.09. (taeglicher-trigger-check): Scalable Capital live neu abgefragt (Vanguard/BCA/Gold);\n"
+    "Hermès auf 1.352,00 EUR aktualisiert (bereits dokumentierter TradingView-Kurs, siehe offene_empfehlungen.md).\n"
+    "Restliche Positionen vom 17.09.-Depot-Komplettupdate uebernommen (finanzen.net zero/Trade Republic/Smartbroker+).",
     ha="center", va="center", fontsize=8.5, style="italic", color="#555555",
 )
 ax.axis("equal")
 plt.tight_layout()
-plt.savefig("/Users/brianqtng/Downloads/aktien-agent/reports/portfolio_pie_2026-09-17.png", dpi=150, bbox_inches="tight")
+plt.savefig("/Users/brianqtng/Downloads/aktien-agent/reports/portfolio_pie_2026-09-18.png", dpi=150, bbox_inches="tight")
 print("Saved. Total value:", total)
 for name, value, _ in data:
     print(f"{name}: {value:.2f} EUR -> {value/total*100:.1f}%")

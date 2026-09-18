@@ -9,6 +9,11 @@ Trigger-Check" → "Depot-Transaktions-Erkennung").
 
 Zuletzt gesehene Transaktion (lastEventAt, ISO-8601 UTC): 2026-09-16T14:18:59.156Z
 
+Lauf 2026-09-18 (taeglicher-trigger-check, ~19:15 UTC): list_portfolio_transactions
+fromTime=2026-09-16T14:18:59.156Z → 1 Treffer, identisch mit der bereits
+verarbeiteten BCA-Reinvestment-BUY vom 16.09. (lastEventAt unverändert),
+kein neues Event. Checkpoint unverändert gelassen.
+
 Lauf 2026-09-17 (taeglicher-trigger-check, ~heutiger Lauf): list_portfolio_transactions
 fromTime=2026-09-07T10:55:33.757Z → 2 neue Treffer, beide routinemäßige
 Bank-Central-Asia-Dividendenausschüttung + automatische Reinvestment-BUY

@@ -140,3 +140,17 @@ entfernt). Portfolio-Lücken-Kandidaten-Backlog (Japan/Asien, 10 Namen aus
 08.09.) bewusst NICHT in diesem Lauf weiterbearbeitet (Zeitpriorität - der
 umfangreiche Depot-Komplettupdate-Lauf lief bereits am selben Tag), bleibt
 offen für einen künftigen Lauf.
+
+**2026-09-18 (taeglicher-trigger-check, ~19:15 UTC):** Jack/Conan n.a. - kein
+Bridge-Einsatz nötig (kein 3-fach-Cross-Check ausgelöst: keine neue
+diskretionäre Transaktion, keine 🔴/🟡-Watchlist-Ampel-Neufunde bei den
+gezielt geprüften bereits geflaggten Namen (MPWR: nur Dividende +
+GlobalFoundries-Partnerschaft, beides neutral/positiv; FICO: VantageScore-
+Regulatorik bereits bekannt/eingepreist, kein neues Datum; SYK/WSO: keine
+neuen Funde), kein Material Shift trotz BoJ-Hike (vollständig eingepreist,
+~97% erwartet). Kandidaten-Scan/Portfolio-Lücken-Suche bewusst nicht erneut
+angestoßen (Brian hat die Japan/Asien-Pipeline am 17.09. explizit pausiert).
+Einzige Auffälligkeit: CBOE Holdings hat die dokumentierte Tranche-1-
+Nachkaufzone ($268-270) heute erstmals erreicht (Schluss $269,05) - noch
+keine bestätigte Stabilisierung, kein Cross-Check-Anlass (bereits vollständig
+im CBOE-Full-Deep-Dive vom 16.09. abgedeckt). Bestätigungsmail verschickt.
