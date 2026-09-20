@@ -7017,6 +7017,22 @@ automatisch einen Ersatz eines bestehenden Werts erzwingen.
      einer solchen Lücke geprüfter Kandidat (egal ob aus der Watchlist oder
      neu gefunden) fällt nach vollem 3-fach-Check durch (KEIN Kauf, KEINE
      Sizing-Freigabe).
+  1b. **Klarstellung: Kategorie-Slot-Suche und Region-/Sektor-Lücken-Suche
+     sind UNABHÄNGIGE, getrennte Aufträge, nie eine ersetzt/verengt die
+     andere (2026-09-20, von Brian klargestellt, ausgelöst durch eine
+     Verwechslung im Talent/Japan-Fall vom 08.09.: "die Talent-Slots sollen
+     unabhängig von der Region sein").** Fallen Auslöser (a) und (b) zeitlich
+     zusammen (z.B. 2 freie Talent-Slots UND Japan/Asien gleichzeitig
+     unterbesetzt, wie am 04./08.09.2026), heißt das NICHT, dass die
+     Talent-Slot-Suche auf die unterbesetzte Region eingeengt wird – die
+     Kategorie-Slot-Suche bleibt WELTWEIT/regionsunabhängig (reine
+     Champions/Profi/Talent-Kriterien: Marge, Moat, Wachstumsverlässlichkeit
+     bzw. das Bucket-A-D-Modell, siehe Abschnitt 2), während die Region-/
+     Sektor-Lücken-Suche gezielt in den einschlägigen Indizes läuft (siehe
+     Punkt 2 unten). Ein Kandidat, der zufällig beide Lücken schließt (z.B.
+     ein junger japanischer Talent-Kandidat), ist willkommen, aber kein
+     Muss – die beiden Suchaufträge laufen parallel und unabhängig, nicht
+     als ein einziger eingeschränkter Auftrag.
   2. **Pflicht-Reaktion, SOFORT im selben Lauf, nicht erst beim nächsten
      turnusmäßigen Scan-Slot:** eine GEZIELTE Kandidatensuche für genau
      diese Lücke anstoßen. **Klarstellung (2026-09-04, von Brian präzisiert:
