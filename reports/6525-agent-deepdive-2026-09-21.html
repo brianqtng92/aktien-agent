@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>J.A.C.K Deep Dive - Kokusai Electric</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FFFFFF; --bg-panel: #F7F6F2; --bg-panel-2: #EFEDE6;
+    --border: #D9D4C8; --border-soft: #E6E2D9;
+    --text: #262420; --text-dim: #5C564A; --text-faint: #837C6C;
+    --gold: #9C7A2E; --gold-bright: #8A6A22; --gold-dim: #C9AD6E;
+    --green: #3F7D44; --green-bg: rgba(63,125,68,0.10);
+    --yellow: #A6790A; --yellow-bg: rgba(166,121,10,0.10);
+    --red: #B03A2E; --red-bg: rgba(176,58,46,0.09);
+    --blue: #2E6690; --blue-bg: rgba(46,102,144,0.09);
+    --orange: #AB591C; --orange-bg: rgba(171,89,28,0.09);
+  }
+  html, body { width: 210mm; background: var(--bg); color: var(--text); font-family: "Carlito", "DejaVu Sans", Arial, sans-serif; font-size: 11pt; line-height: 1.36; }
+  .display { font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif; font-weight: 700; font-stretch: condensed; }
+  .page { width: 210mm; height: 297mm; padding: 8mm 12mm 5mm 12mm; display: flex; flex-direction: column; gap: 2mm; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 2.6mm; }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 23pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 9.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag { font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim); border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm; display: inline-block; width: fit-content; }
+  .meta-block { text-align: right; font-size: 9.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 10.6pt; }
+  .position-header { display: flex; justify-content: space-between; align-items: center; background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold); border-radius: 3px; padding: 2.6mm 4mm; }
+  .position-name .ticker { font-size: 17pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 10pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 5mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 8.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); white-space: nowrap; }
+  .stat .value { font-size: 12pt; color: var(--text); margin-top: 0.4mm; white-space: nowrap; }
+  .hook-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 3.4mm 4.2mm; }
+  .hook-title { font-size: 16pt; line-height: 1.28; color: var(--text); font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .hook-title .accent { color: var(--gold-bright); }
+  .hook-title .accent-red { color: var(--red); }
+  .hook-sub { font-size: 9.6pt; color: var(--text-dim); line-height: 1.4; margin-top: 1.8mm; }
+  .narrative-box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 3mm 4mm; flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .narrative-box p { font-size: 9.4pt; color: var(--text-dim); line-height: 1.46; }
+  .narrative-box p b { color: var(--text); }
+  .narrative-box p .lead { color: var(--gold-bright); font-weight: bold; }
+  .section-label { font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0; }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+  .chart-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 74mm; flex: 0 0 auto; }
+  .chart-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; border-radius: 2px; }
+  .bbb-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 52mm; flex: 0 0 auto; }
+  .bbb-frame img { max-width: 100%; max-height: 100%; }
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
+  .box h3 { font-size: 9.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .box p { font-size: 9.1pt; color: var(--text-dim); line-height: 1.32; overflow-wrap: break-word; }
+  .box p b { color: var(--text); }
+  .verify-table, .compare-table, .scenario-table, .score-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .verify-table th, .verify-table td, .compare-table th, .compare-table td, .scenario-table th, .scenario-table td, .score-table th, .score-table td { font-size: 8.5pt; padding: 0.9mm 1.4mm; text-align: left; border-bottom: 1px solid var(--border-soft); }
+  .verify-table th, .compare-table th, .scenario-table th, .score-table th { color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; font-weight: normal; font-size: 7.9pt; }
+  .verify-table td, .compare-table td, .score-table td { color: var(--text); }
+  .scenario-table th, .scenario-table td { text-align: right; }
+  .scenario-table th:first-child, .scenario-table td:first-child { text-align: left; color: var(--text-dim); }
+  .pass { color: var(--green); } .fail { color: var(--red); } .warn { color: var(--yellow); } .neg { color: var(--red); }
+  .two-col { display: flex; gap: 3mm; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .divergence-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--orange); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .divergence-box h3 { color: var(--orange); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.4mm; }
+  .divergence-box p { font-size: 9.2pt; color: var(--text); line-height: 1.42; }
+  .integrity-box { background: var(--blue-bg); border: 1px solid var(--blue); border-radius: 3px; padding: 2.6mm 3.6mm; }
+  .integrity-box h3 { color: var(--blue); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
+  .integrity-box p { font-size: 9pt; color: var(--text); line-height: 1.4; }
+  .trigger-row { display: flex; gap: 3mm; }
+  .trigger-box { flex: 1; border-radius: 3px; padding: 2.4mm 3.4mm; }
+  .trigger-box.bull { background: var(--green-bg); border: 1px solid var(--green); }
+  .trigger-box.bear { background: var(--red-bg); border: 1px solid var(--red); }
+  .trigger-box h3 { font-size: 9.4pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2mm; }
+  .trigger-box.bull h3 { color: var(--green); }
+  .trigger-box.bear h3 { color: var(--red); }
+  .trigger-box ul { list-style: none; }
+  .trigger-box li { font-size: 8.8pt; color: var(--text); padding: 0.6mm 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .trigger-box li:last-child { border-bottom: none; }
+  .killsheet-box { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .killsheet-box h3 { color: var(--gold-bright); font-size: 10.4pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.6mm; }
+  .warn-strip { background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.7mm 3mm; font-size: 8.7pt; color: var(--yellow); margin-top: 1mm; }
+  .warn-strip b { color: var(--text); }
+  .fazit { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 2.8mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0; }
+  .fazit-verdict { flex: 0 0 auto; max-width: 42mm; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 13pt; color: var(--yellow); letter-spacing: 0.02em; }
+  .fazit-verdict .sub { font-size: 8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.6mm; }
+  .sources-list { font-size: 8.8pt; color: var(--text-dim); line-height: 1.5; }
+  .sources-list .n { color: var(--gold); margin-right: 1.5mm; }
+  .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 1.5mm; font-size: 8.1pt; color: var(--text-faint); flex-shrink: 0; }
+  .footer .gold-dot { color: var(--gold); }
+  .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm; }
+  .decision-card { border-radius: 3px; padding: 2.4mm 3.2mm; }
+  .decision-card.attractive { background: var(--green-bg); border: 1px solid var(--green); }
+  .decision-card.caution { background: var(--red-bg); border: 1px solid var(--red); }
+  .decision-card.watch { background: var(--blue-bg); border: 1px solid var(--blue); }
+  .decision-card.action { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); }
+  .decision-card h3 { font-size: 9.1pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .decision-card.attractive h3 { color: var(--green); }
+  .decision-card.caution h3 { color: var(--red); }
+  .decision-card.watch h3 { color: var(--blue); }
+  .decision-card.action h3 { color: var(--gold-bright); }
+  .decision-card p { font-size: 8.5pt; color: var(--text); line-height: 1.34; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hook -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">3-fach TMR-Cross-Check · Aegis · JJ · Conan</div>
+      <div class="edition-tag">Watchlist · Profi · Full Deep Dive</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">21. September 2026</div>
+      <div>TMR-Pfad (Bucket A/C) · Modus A</div>
+      <div>Auf Brians direkte Anforderung</div>
+    </div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-title">🛡 Kokusai Electric — Weltmarktführer im Rekordquartal, <span class="accent">aber der Kurs hat schon vorgegriffen</span></div>
+    <div class="hook-sub">Kokusai Electric Corporation (TSE: 6525) · ISIN JP3266400005 · Kurs ¥8.884 (18.09.2026, +7,24%) ≈ €49,17 · 52W-Range ¥3.752-¥12.220 · Marktkap. ~¥2,07 Bio. (~€11,46 Mrd.) · Sektor Halbleiterausrüstung (Batch-ALD) · Watchlist-relevant: Profi, neu aufgenommen</div>
+  </div>
+
+  <div class="section-label">Eine echte Meinungsverschiedenheit zwischen JJ und Conan, aufgelöst durch Diskussion</div>
+  <div class="narrative-box">
+    <p><span class="lead">Das operative Geschäft.</span> Kokusai ist Weltmarktführer (~70-80% Marktanteil) bei Batch-ALD-Systemen — der Kernprozess-Ausrüstung für DRAM-, 3D-NAND- und GAA-Logic-Fertigung. FY2026 (März-Bilanz) war ein China-getriebenes Abwärtsjahr (Umsatz -1,6%, Gewinn -16,4%). Q1 FY2027 (April-Juni 2026, primärquellenverifiziert) markiert den Bruch nach oben: Umsatz +45,6%, Adj. Op.-Ergebnis +59,3%, Nettogewinn +70,6% — Management hob die FY2027-Guidance daraufhin um 21% an.</p>
+    <p><span class="lead">Der Moat.</span> Physikbasiert, nicht nur technologisch: Batch-Verarbeitung ist für Speicherhersteller aus Kostengründen Single-Wafer-Systemen (Domäne von ASM International) strukturell überlegen. Beide KIs bewerten den Moat unabhängig als STARK.</p>
+    <p><span class="lead">Der Streitpunkt.</span> JJ kam in Runde 1 auf KAUFEN (5-7% Sizing, DCF-Base ¥9.500-11.000), Conan auf HOLD (1-1,5%, DCF-Base ¥5.500-7.000) — eine fast doppelte Differenz. Die Diskussionsrunde (Seite 5) legte die Ursache offen: JJs Modell implizierte eine FCF-Marge von 18-25%, tatsächlich liegt sie bei nur 13,5% (FY2026) — deutlich unter der 20%-TMR-Elite-Schwelle.</p>
+    <p><span class="lead">Das konvergierte Ergebnis.</span> Nach der Diskussion landen beide KIs bei HOLD/BEOBACHTEN mit einer Nachkauf-Zone ¥6.500-7.800 — der aktuelle Kurs (¥8.884) liegt am oberen Rand der reconciliierten Base-Case-Spanne. Kein Kauf jetzt, aber ein klar definierter Beobachtungspunkt.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/6525-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/8</div>
+  </div>
+</div>
+
+<!-- PAGE 2: Executive Summary -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Executive Summary · Investment-These · 3-Stimmen-Leiste</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 2</div><div>6525 Kokusai Electric</div></div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">6525 <span style="color:var(--text-dim); font-size:9.5pt;">· Tokyo Stock Exchange</span></div>
+      <div class="company">Kokusai Electric Corporation — Batch-ALD-Halbleiterausrüstung</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs</div><div class="value">¥8.884</div></div>
+      <div class="stat"><div class="label">Tagesbewegung</div><div class="value" style="color:var(--green);">+7,24%</div></div>
+      <div class="stat"><div class="label">Analysten-Konsens</div><div class="value" style="color:var(--text);">¥10.580-10.917</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">3-Stimmen-Leiste (nach Diskussionsrunde, konvergiert)</div>
+  <div style="display:flex; gap:2.4mm;">
+    <div class="box" style="flex:1;">
+      <h3>Aegis · Claude (Synthese)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">BEOBACHTEN</p>
+      <p style="font-size:8.4pt;">Nachkauf-Zone ¥6.500-7.800, Sizing max. 3-4%</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>JJ · Gemini (TMR, revidiert)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">HOLD/WATCHLIST BUY</p>
+      <p style="font-size:8.4pt;">Von KAUFEN auf HOLD revidiert, akzeptiert FCF-Margen-Einwand · Sizing 1,0-2,0%</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>Conan · ChatGPT (TMR, revidiert)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">BUY/ACCUMULATE &lt;¥7.800</p>
+      <p style="font-size:8.4pt;">Von striktem HOLD leicht nach oben, Sizing 1,5-4% je Kurs</p>
+    </div>
+  </div>
+  <div class="warn-strip" style="margin-top:0;"><b>Konvergenz: von WIDERSPRUCH zu MODERAT.</b> Runde 1: JJ KAUFEN/5-7% vs. Conan HOLD/1-1,5% (DCF-Base fast doppelt so weit auseinander). Nach Diskussion (Seite 5) beide bei HOLD/BEOBACHTEN, Sizing-Obergrenze 3-4% statt JJs ursprünglicher 5-7%.</div>
+
+  <div class="section-label">Investment-These: Warum Kokusai jetzt beobachten, nicht kaufen?</div>
+  <div class="narrative-box" style="flex:0 0 auto;">
+    <p>Kokusai Electric ist ein Qualitätsunternehmen mit einem echten, physikbasierten Moat (~70-80% Batch-ALD-Marktanteil) und einer gerade durchlaufenen, primärquellenbestätigten Gewinn-Reacceleration nach einer China-getriebenen Schwächephase. <b>Aber:</b> der zentrale Vorbehalt ist konsistent über beide KIs UND Aegis' eigene Sanity-Rechnung (Seite 6) — die FCF-Marge (13,5%) liegt noch klar unter der TMR-Elite-Schwelle (20%), und der aktuelle Kurs preist bereits einen erheblichen Teil der erwarteten Erholung ein. Das rechtfertigt eine Watchlist-Aufnahme mit klarer Nachkauf-Zone, keinen sofortigen Kauf.</p>
+  </div>
+
+  <div class="section-label">Entscheidungs-Übersicht</div>
+  <div class="decision-grid">
+    <div class="decision-card attractive">
+      <h3>✓ Warum interessant</h3>
+      <p>Physikbasierter Moat (~70-80% Batch-ALD-Marktanteil), Netto-Cash-Bilanz, primärquellenverifizierte Gewinn-Reacceleration (Q1 FY2027 +70,6% Nettogewinn), Guidance um 21% angehoben.</p>
+    </div>
+    <div class="decision-card caution">
+      <h3>⚠ Warum nicht jetzt kaufen</h3>
+      <p>FCF-Marge (13,5%) verfehlt die 20%-TMR-Elite-Schwelle deutlich. Aktueller Kurs liegt am oberen Rand der reconciliierten DCF-Base-Spanne (¥6.800-8.500) — begrenzte Sicherheitsmarge.</p>
+    </div>
+    <div class="decision-card watch">
+      <h3>👁 Was wir beobachten</h3>
+      <p>Q2 FY2027-Zahlen (~Anfang November 2026): normalisiert sich die FCF-Marge Richtung 15-18%? Bleibt der Auftragseingang nach der Q1-Spitze stark? China-Exportkontrollen.</p>
+    </div>
+    <div class="decision-card action">
+      <h3>▶ Aktion</h3>
+      <p>BEOBACHTEN, keine Order jetzt. Nachkauf-Zone ¥6.500-7.800: Starter 1,5-2,0%, unter ¥7.000 bis 2,5%. Maximum vor FCF-Bestätigung: 3-4%.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/6525-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/8</div>
+  </div>
+</div>
+
+<!-- PAGE 3: DNA-Check + Moat + Management -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">DNA-Check (K- & E-Kriterien) · Moat-Verifikation · Management</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 3</div><div>6525 Kokusai Electric</div></div>
+  </div>
+
+  <div class="section-label">DNA-CHECK: Kokusai Electric — K-BASIS 5 (Standard)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Kriterium</th><th>Schwelle</th><th>Ist-Wert</th><th>Status</th></tr>
+      <tr><td>ROIC</td><td>&gt;20%</td><td>22,25% aktuell / 14,53% FY2026 / 18,19% FY2025</td><td class="warn">🟡 Grenzfall — aktuell erfüllt, FY2026 verfehlt</td></tr>
+      <tr><td>FCF-Marge</td><td>≥20%</td><td>~13,5% FY2026, Q1 FY2027 niedriger (Working-Capital-Aufbau)</td><td class="fail">❌ Zentraler K-Kritikpunkt beider KIs</td></tr>
+      <tr><td>Op. Leverage</td><td>Ja/Nein</td><td>Ja — Q1 FY2027 Umsatz +45,6%, Adj. Op. +59,3% (Gewinn wächst schneller als Umsatz)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Piotroski F-Score</td><td>≥7</td><td>~5/9 (Conans konservative Berechnung FY2026 vs. FY2025)</td><td class="warn">🟡 Grenzfall</td></tr>
+      <tr><td>EPS-CAGR</td><td>≥12%</td><td>Historisch zyklisch/volatil; FY2027-Guidance impliziert +84% NI-Wachstum</td><td class="warn">🟡 Forward erfüllt, historisch nicht belastbar</td></tr>
+      <tr><td>Net Debt/EBITDA</td><td>&lt;2,0x</td><td>-0,10 (Netto-Cash-Position)</td><td class="pass">✅ Erfüllt, sehr stark</td></tr>
+      <tr><td>Equity Ratio</td><td>Solide</td><td>60,6%</td><td class="pass">✅ Erfüllt</td></tr>
+    </table>
+    <p style="margin-top:1.6mm; font-size:8.4pt;"><b>DNA-Urteil: K 2,5-3/5 (Grenzfall) — die Hauptlücke ist die FCF-Marge, nicht ROIC oder Wachstum.</b> Bilanz und Marktstellung erfüllen die E-Kriterien klar. Going-Concern: bestanden, kein Problem (Cash ¥56,97 Mrd., durchgehend positiver Operating Cashflow).</p>
+  </div>
+
+  <div class="section-label">Moat- & Management-Verifikation</div>
+  <div class="two-col">
+    <div class="col">
+      <div class="box">
+        <h3>Moat: STARK (konvergent, JJ 4/5, Conan 8,5/10)</h3>
+        <p><b>Cost Advantage (sehr stark):</b> Batch-Verarbeitung strukturell kostengünstiger für Speicherhersteller (DRAM/3D-NAND) als Single-Wafer-Systeme — physikbasiert (Diffusionszeitkonstanten bei High-Aspect-Ratio-Strukturen). <b>Switching Costs (hoch):</b> "Process of Record"-Qualifizierung bei allen großen Speicherherstellern. <b>Intangible Assets (hoch):</b> ~70-80% Weltmarktanteil (unternehmenseigene Schätzung). <b>Network Effects (niedrig):</b> nicht anwendbar. Haupt-Konkurrent ASM International (~55% Single-Wafer-ALD-Anteil) besetzt eine benachbarte, sich ergänzende Nische.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="box">
+        <h3>Management: solide bis gut</h3>
+        <p>CEO Kazunori Tsukada (seit April 2025). <b>Positiv:</b> Guidance nach Q1 schnell und deutlich angehoben (+21%), Dividende erhöht (¥47→¥65, Payout ~25,2%), Buyback abgeschlossen (565.900 Aktien, ¥5,3 Mrd.), saubere Governance nach KKR-Exit (kein Overhang mehr), Mitarbeiterbeteiligungsprogramm. <b>Fragezeichen:</b> kurze Publikums-Historie (IPO erst Okt. 2023), CEO-Amtszeit noch jung.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/6525-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/8</div>
+  </div>
+</div>
+
+<!-- PAGE 4: Geschaeftsverlauf -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Geschäftsverlauf · Zwei Perioden nicht verwechseln</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 4</div><div>6525 Kokusai Electric</div></div>
+  </div>
+
+  <div class="section-label">⚠ SCHRITT-0-Datenkonflikt gefunden und aufgelöst</div>
+  <div class="integrity-box">
+    <h3>🔵 Widersprüchliche Q1-Meldungen — unterschiedliche Berichtsperioden verwechselt</h3>
+    <p>Erste WebSearch-Treffer zeigten sowohl "Q1-Umsatz -21%/Op.-Gewinn -44%" als auch "Rekord-Q1" — direkt widersprüchlich. Primärquellen-Check (Kokusai IR/TDnet) klärte auf: die negative Meldung bezog sich auf einen älteren Berichtszeitraum (vermutlich Q1 FY2026, ein Jahr zuvor). Das tatsächlich jüngste Quartal (Q1 FY2027, April-Juni 2026) war ein echtes, primärquellenverifiziertes Rekordquartal.</p>
+  </div>
+
+  <div class="section-label">Umsatz &amp; Nettogewinn: FY2026-Delle → Q1-FY2027-Rekord → FY2027-Guidance</div>
+  <div class="bbb-frame" style="height:66mm; width:100%;"><img src="kokusai_revenue.png" alt="Kokusai Umsatz- und Gewinnverlauf"></div>
+
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Periode</th><th>Umsatz</th><th>Adj. Op.-Ergebnis</th><th>Nettogewinn</th><th>Kommentar</th></tr>
+      <tr><td>FY2026 (Apr.25-März 26, abgeschlossen)</td><td>¥235,08 Mrd. (-1,6%)</td><td>¥47,60 Mrd.</td><td>¥30,10 Mrd. (-16,4%)</td><td>China-Nachfrageschwäche</td></tr>
+      <tr><td>Q1 FY2027 (Apr.-Jun. 26, jüngstes Quartal)</td><td>¥75,41 Mrd. (+45,6%)</td><td>¥17,37 Mrd. (+59,3%)</td><td>¥11,56 Mrd. (+70,6%)</td><td>Rekordquartal, Aufträge ~¥140 Mrd. über Plan</td></tr>
+      <tr><td>FY2027-Guidance (nach Q1 um 21% angehoben)</td><td>¥340 Mrd.</td><td>¥86,0 Mrd.</td><td>¥55,5 Mrd.</td><td>EPS ¥237,63 (adj. ¥256,90), Dividende ¥47→¥65</td></tr>
+    </table>
+    <p style="margin-top:1.2mm; font-size:8.4pt;">Segment-Details Q1 FY2027: DRAM +158% YoY, Logic/Foundry +82% YoY, NAND -34% YoY aber +84% QoQ (Stabilisierung). Non-China-Umsatz +75% YoY, China -3% YoY aber +18% QoQ.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/6525-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 4/8</div>
+  </div>
+</div>
+
+<!-- PAGE 5: DCF Diskussionsrunde -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">DCF-Diskussionsrunde — von WIDERSPRUCH zu MODERATER Konvergenz</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 5</div><div>6525 Kokusai Electric</div></div>
+  </div>
+
+  <div class="section-label">Runde 1 — unabhängig, große Divergenz</div>
+  <div class="box">
+    <table class="scenario-table">
+      <tr><th style="text-align:left;">Bein</th><th>Bear</th><th>Base</th><th>Bull</th><th>Rating</th><th>Sizing</th></tr>
+      <tr><td style="text-align:left;">JJ (Runde 1)</td><td>¥6.000-7.500</td><td class="warn"><b>¥9.500-11.000</b></td><td>¥12.500-14.000</td><td class="pass">KAUFEN (STRONG BUY)</td><td>5-7%</td></tr>
+      <tr><td style="text-align:left;">Conan (Runde 1)</td><td>¥3.200-4.200</td><td class="warn"><b>¥5.500-7.000</b></td><td>¥9.800-11.800</td><td class="warn">HOLD/WATCHLIST BUY</td><td>1,0-1,5%</td></tr>
+    </table>
+    <p style="margin-top:1.6mm; font-size:8.4pt;"><b>Ursache der Divergenz (von JJ selbst identifiziert nach Konfrontation mit Conans Zahlen):</b> JJs Base Case implizierte FCF-Margen von 18-25% — deutlich über der tatsächlichen 13,5% (FY2026). Das war der überwiegende Treiber der ~70-100%igen Differenz, nicht WACC/Terminal-Growth (JJ: WACC 8,5-9%, g 2-2,5%; Conan: WACC 9,5-10%, g ~3% — diese Unterschiede allein hätten nur 15-30% Abweichung erklärt).</p>
+  </div>
+
+  <div class="section-label">Runde 2 — nach Diskussion, Konvergenz MODERAT</div>
+  <div class="divergence-box">
+    <h3>⚠ Beide revidieren aufeinander zu — die FCF-Marge war der Kernpunkt</h3>
+    <p><b>JJ revidiert:</b> stimmt Conans FCF-Marge-Einwand vollständig zu, revidiert Rating auf HOLD/WATCHLIST BUY, Sizing auf 1,0-2,0%, übernimmt Conans Kaufzone ¥6.500-7.200. <b>Conan revidiert (moderat nach oben):</b> Q1-Reacceleration rechtfertigt eine positive Neubewertung — neue DCF-Spanne Bear ¥4.000-5.200 · Base ¥6.800-8.500 · Bull ¥10.500-13.000. Rating von striktem HOLD zu "vorsichtiger BUY/ACCUMULATE unter ~¥7.800, HOLD oberhalb ~¥8.500-9.000". Sizing: 1,5-2,5% Starter, Maximum vor weiterer Bestätigung 3-4% (nicht JJs ursprüngliche 5-7%).</p>
+  </div>
+
+  <div class="section-label">DCF-Szenarien (reconciliiert) vs. aktueller Kurs</div>
+  <div class="bbb-frame" style="height:62mm; width:100%;"><img src="kokusai_dcf.png" alt="Kokusai DCF-Szenarien"></div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/6525-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/8</div>
+  </div>
+</div>
+
+<!-- PAGE 6: Peer-Vergleich + KGV-Sprung-Check + Aegis-Sanity-Check -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Peer-Vergleich (ASM International) · KGV-Sprung-Check · Aegis-Sanity-Check</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 6</div><div>6525 Kokusai Electric</div></div>
+  </div>
+
+  <div class="section-label">Peer-Vergleich: Kokusai vs. ASM International (Conan, live recherchiert)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Faktor</th><th>Kokusai Electric</th><th>ASM International</th></tr>
+      <tr><td>Kerngebiet</td><td>Batch-ALD/Vertical-Furnace-Deposition (Memory-Fokus)</td><td>Single-Wafer-ALD, Epi (Leading-Edge-Logic-Fokus)</td></tr>
+      <tr><td>Marktanteil (eigene Nische)</td><td>~70-80% Batch-ALD-kompatible Deposition (CY2025, unternehmenseigene Schätzung)</td><td>~55% Single-Wafer-ALD</td></tr>
+      <tr><td>Bruttomarge</td><td>40,7% (Q1 FY2027)</td><td>~51,8-51,9% (2025/Q2 2026)</td></tr>
+      <tr><td>Operative Marge</td><td>17,8% (FY2026) → Guidance Adj. ~25,3% (FY2027)</td><td>~29,6-33,0%</td></tr>
+      <tr><td>Bewertung</td><td>~59,7x trailing / ~32,6-37x auf FY2027-Guidance</td><td>~37x trailing, Marktkap. ~€39,9 Mrd. (18.09.2026)</td></tr>
+    </table>
+    <p style="margin-top:1.2mm; font-size:8.4pt;"><b>Peer-Fazit (Conan):</b> Kokusai hat die spannendere Re-Rating-/Recovery-Komponente und eine starke Memory-/Batch-Nische. ASM ist qualitativ glatter (höhere Brutto-/Op.-Marge, längere Kapitalmarkt-Historie). Kokusai sollte nicht dauerhaft mit einem großen Premium zu ASM handeln, solange FCF-Marge und Zyklusqualität nicht mithalten.</p>
+  </div>
+
+  <div class="section-label">KGV-Sprung-Check (Pflicht bei Forward-Multiples)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>EPS-Basis</th><th>EPS</th><th>Impliziertes KGV</th></tr>
+      <tr><td>TTM Nettogewinn (~¥34,88 Mrd. / ~233,4 Mio. Aktien)</td><td>~¥149-150</td><td>~59x</td></tr>
+      <tr><td>FY2027-Guidance, IFRS-EPS</td><td>¥237,63</td><td>~37,4x</td></tr>
+      <tr><td>FY2027-Guidance, Adj. EPS</td><td>¥256,90</td><td>~34,6x</td></tr>
+      <tr><td>Forward-KGV laut Aggregator</td><td>(impliziert ~¥272,4)</td><td>32,61x</td></tr>
+    </table>
+    <p style="margin-top:1.2mm; font-size:8.4pt;"><b>Erklärung:</b> Der Sprung von trailing 59,66x auf forward 32,61x ist operativ erklärbar (FY2027-Gewinnsprung), kein Datenfehler. Aber: das Aggregator-Forward-KGV liegt sogar leicht UNTER dem KGV auf Kokusais eigener FY2027-Guidance — impliziert entweder Street-Schätzungen oberhalb der aktuellen Guidance oder bereits einen Blick auf FY2028. <b>Kein konservativer Wert.</b></p>
+  </div>
+
+  <div class="section-label">Aegis-Sanity-Check (unabhängige dritte Rechnung)</div>
+  <div class="box">
+    <p>Grobe Kapitalisierung der FY2027-Guidance (Adj. EPS ¥256,90) mit einem qualitätsadjustierten Multiple von ~26,5x (zwischen "zyklisch-konservativ" 20x und "Qualitäts-Moat" 35x) ergibt ≈ <b>¥6.808</b> — landet fast exakt in Conans revidierter unterer Base-Case-Zone. Beim aktuellen Forward-KGV von 32,61x preist der Markt bereits die obere Hälfte einer "Qualitäts-Multiple"-Bewertung ein, nicht die konservative Seite. <b>Bestätigt die konvergierte Einschätzung: begrenzte Sicherheitsmarge beim aktuellen Kurs.</b></p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/6525-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/8</div>
+  </div>
+</div>
+
+<!-- PAGE 7: Kill-Sheet -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">🔪 Thesis-Kill-Sheet · Meilenstein-Timeline</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 7</div><div>6525 Kokusai Electric</div></div>
+  </div>
+
+  <div class="killsheet-box">
+    <h3>Meilenstein-Timeline</h3>
+    <table class="verify-table">
+      <tr><th>Termin</th><th>Was beobachten</th><th>Positives Signal</th><th>Warnsignal</th></tr>
+      <tr><td>~Anfang Nov. 2026</td><td>Q2 FY2027-Zahlen</td><td>FCF-Marge normalisiert Richtung 15-18%, Aufträge bleiben stark</td><td>FCF-Marge verschlechtert sich weiter, Auftragseingang bricht ein</td></tr>
+      <tr><td>Laufend</td><td>China-Exportkontrollen</td><td>Keine neuen Verschärfungen mit Kokusai-Bezug</td><td>Neue Restriktionen, die Kokusai direkt betreffen</td></tr>
+      <tr><td>Laufend</td><td>NAND-Segment</td><td>NAND-Erholung setzt sich fort (Q1: +84% QoQ)</td><td>NAND-Schwäche erweist sich als struktureller statt zyklischer Rückgang</td></tr>
+    </table>
+  </div>
+
+  <div class="trigger-row">
+    <div class="trigger-box bull">
+      <h3>📈 Nachkauf-Trigger (gestaffelt)</h3>
+      <ul>
+        <li>1. Kurs erreicht Zone ¥6.500-7.800</li>
+        <li>2. Starter 1,5-2,0% in der Zone, bis 2,5% unter ¥7.000</li>
+        <li>3. Aufstockung auf 3-4% erst nach Bestätigung der FCF-Margen-Normalisierung (Richtung 15-18%)</li>
+      </ul>
+    </div>
+    <div class="trigger-box bear">
+      <h3>📉 Stop-These-Trigger</h3>
+      <ul>
+        <li>1. Auftragseingang bricht nach Q1-Spitze deutlich ein</li>
+        <li>2. FCF-Marge normalisiert sich NICHT, verschlechtert sich weiter</li>
+        <li>3. China-Exportkontrollen verschärfen sich mit direktem Kokusai-Bezug</li>
+        <li>4. NAND-Schwäche erweist sich als struktureller Rückgang</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/6525-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/8</div>
+  </div>
+</div>
+
+<!-- PAGE 8: Fazit -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Finale Synthese · Aegis-Verdict</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 8</div><div>6525 Kokusai Electric</div></div>
+  </div>
+
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">BEOBACHTEN</div>
+      <div class="sub">Nachkauf-Zone ¥6.500-7.800</div>
+    </div>
+    <p style="font-size:9.6pt; color:var(--text); line-height:1.5;">Kokusai Electric ist ein Qualitätsunternehmen mit echtem, physikbasiertem Moat und einer primärquellenbestätigten Gewinn-Reacceleration — aber kein Kauf zum aktuellen Kurs. Nach einer echten Rating-Divergenz zwischen JJ (KAUFEN) und Conan (HOLD) in Runde 1 zeigte die Diskussionsrunde: die implizite FCF-Margen-Annahme war der Haupttreiber der Differenz, nicht WACC oder Terminal-Growth. Beide KIs konvergieren nach Diskussion auf HOLD/BEOBACHTEN, gestützt durch Aegis' eigene Sanity-Rechnung. <b>Watchlist-Aufnahme (Profi), keine Kaufempfehlung zum aktuellen Kurs.</b></p>
+  </div>
+
+  <div class="section-label">Nachkauf-Plan (keine automatische Order)</div>
+  <div class="box">
+    <p><b>Bei ¥7.000-7.800:</b> Starter 1,5-2,0%.<br><b>Unter ¥7.000:</b> bis 2,5%.<br><b>Aufstockung auf 3-4%:</b> erst nach Bestätigung der FCF-Margen-Normalisierung (Q2 FY2027-Zahlen, ~Anfang November 2026).<br><b>Über ¥9.000:</b> viel Recovery bereits eingepreist, eher HOLD ohne neue Guidance-Anhebung.</p>
+  </div>
+
+  <div class="section-label">Konfidenz</div>
+  <div class="two-col">
+    <div class="col"><div class="box"><h3>Konfidenz</h3><p style="font-size:16pt; color:var(--yellow);">🟡 MITTEL</p><p>Marktanteilszahlen unternehmenseigene Schätzung statt neutral verifiziert, Piotroski nur grob geschätzt, kurze Publikums-Historie seit IPO Okt. 2023.</p></div></div>
+    <div class="col"><div class="box"><h3>Nächster Prüfpunkt</h3><p style="font-size:12pt; color:var(--gold-bright);">Q2 FY2027-Zahlen</p><p>~Anfang November 2026 — insbesondere FCF-Margen-Normalisierung und Auftragseingang.</p></div></div>
+  </div>
+
+  <div class="section-label">Quellen (Auswahl)</div>
+  <div class="sources-list">
+    <div><span class="n">1</span>Kokusai Electric IR/TDnet: Q1 FY2027-Ergebnisse (06.08.2026), FY2026-Jahresabschluss</div>
+    <div><span class="n">2</span>stockanalysis.com, investing.com: Kurs/Multiples/Ratios</div>
+    <div><span class="n">3</span>Manuel Walz Substack, Eremos Notes, SemiAnalysis: Moat-/Marktanteils-Einordnung</div>
+    <div><span class="n">4</span>ASM International Q2 2026 Earnings Release (globenewswire.com): Peer-Vergleich</div>
+    <div><span class="n">5</span>JJ (Gemini) und Conan (ChatGPT) Full-Deep-Dive-Cross-Check inkl. Diskussionsrunde, 21.09.2026</div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/6525-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 8/8</div>
+  </div>
+</div>
+
+</body>
+</html>
