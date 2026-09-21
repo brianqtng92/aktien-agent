@@ -81,6 +81,16 @@ nicht als tägliche Meldung.
 - **Nächster Prüfpunkt:** Ausführung Tranche 1 (technische Bestätigung) sowie Q3-2026-Earnings.
 - **Prüf-Zeithorizont:** 6 Monate (2027-03-16).
 
+### 2026-09-21 — WALLIX Group SA (ALLIX, Euronext Growth Paris, FR0010131409)
+- **Kategorie:** Talent (Bucket B, Quality in Formation) · Scout-Pfad
+- **Anlass:** Brians direkte Anforderung eines Full Deep Dive. Zweiter Kandidat für die 2 offenen, weltweiten Talent-Slots (siehe Agent-Playbook.md Punkt 1b) — erster war ORKA.
+- **Empfehlungs-Typ:** Watchlist-Aufnahme (KEIN volles Kauf-Rating, Starter-Empfehlung) — Rating bei Aufnahme: KAUFEN-KANDIDAT/Starter. Konvergenz MODERAT (JJ konstruktiv aber vage, Conan strenger/spezifischer — kein Rating-Widerspruch wie beim Kokusai-Fall, daher keine formale Diskussionsrunde nötig). Siehe `analysen/ALLIX-Scout-fulldeepdive-2026-09-21.md`.
+- **Zentrale These:** Europäischer PAM-Cybersecurity-Anbieter, echter Wendepunkt 2025 (erstmals positiver Gesamtjahres-FCF), wiederkehrender Umsatz +24,1% (81% des Umsatzes), starker Cash-Runway. Zentraler Vorbehalt: Rule-of-40 nur ~19,2 (klar unter 30-40%-SaaS-Elite-Schwelle), keine NRR-Offenlegung.
+- **Konkrete Erwartung (EV/Sales-zu-Wachstum, kein DCF):** EV/Sales ~3,1-3,4x, EV/ARR ~4,3-4,6x — bei ~15% Wachstum "fair", nicht klar teuer noch klar günstig.
+- **These-Bruch-Kriterien:** (a) Rule-of-40 verschlechtert sich weiter; (b) FCF-Wende erweist sich als Einmaleffekt; (c) neue Finanzierung (€25-65 Mio.) wird für überteuerte/schlecht integrierte M&A statt organisches Wachstum verwendet; (d) dokumentierter Kundenverlust an CyberArk/Delinea/BeyondTrust.
+- **Nächster Prüfpunkt:** H1-2026-Zahlen 08.10.2026 — Margenpfad, FCF-Fortsetzung, ARR/MRR-Wachstumstempo, ob NRR erstmals offengelegt wird.
+- **Prüf-Zeithorizont:** 6 Monate (2027-03-21).
+
 ### 2026-09-21 — Kokusai Electric Corporation (6525, Tokyo, JP3266400005)
 - **Kategorie:** Profi (Bucket A/C) · TMR-Pfad
 - **Anlass:** Brians direkte Anforderung eines Full Deep Dive.

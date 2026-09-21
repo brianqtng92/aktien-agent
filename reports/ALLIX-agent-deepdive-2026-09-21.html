@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Conan Deep Dive - WALLIX Group</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FFFFFF; --bg-panel: #F7F6F2; --bg-panel-2: #EFEDE6;
+    --border: #D9D4C8; --border-soft: #E6E2D9;
+    --text: #262420; --text-dim: #5C564A; --text-faint: #837C6C;
+    --gold: #9C7A2E; --gold-bright: #8A6A22; --gold-dim: #C9AD6E;
+    --green: #3F7D44; --green-bg: rgba(63,125,68,0.10);
+    --yellow: #A6790A; --yellow-bg: rgba(166,121,10,0.10);
+    --red: #B03A2E; --red-bg: rgba(176,58,46,0.09);
+    --blue: #2E6690; --blue-bg: rgba(46,102,144,0.09);
+    --orange: #AB591C; --orange-bg: rgba(171,89,28,0.09);
+  }
+  html, body { width: 210mm; background: var(--bg); color: var(--text); font-family: "Carlito", "DejaVu Sans", Arial, sans-serif; font-size: 11pt; line-height: 1.36; }
+  .display { font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif; font-weight: 700; font-stretch: condensed; }
+  .page { width: 210mm; height: 297mm; padding: 8mm 12mm 5mm 12mm; display: flex; flex-direction: column; gap: 2mm; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 2.6mm; }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 23pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 9.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag { font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim); border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm; display: inline-block; width: fit-content; }
+  .meta-block { text-align: right; font-size: 9.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 10.6pt; }
+  .position-header { display: flex; justify-content: space-between; align-items: center; background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold); border-radius: 3px; padding: 2.6mm 4mm; }
+  .position-name .ticker { font-size: 17pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 10pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 5mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 8.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); white-space: nowrap; }
+  .stat .value { font-size: 12pt; color: var(--text); margin-top: 0.4mm; white-space: nowrap; }
+  .hook-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 3.4mm 4.2mm; }
+  .hook-title { font-size: 16pt; line-height: 1.28; color: var(--text); font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .hook-title .accent { color: var(--gold-bright); }
+  .hook-sub { font-size: 9.6pt; color: var(--text-dim); line-height: 1.4; margin-top: 1.8mm; }
+  .narrative-box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 3mm 4mm; flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .narrative-box p { font-size: 9.4pt; color: var(--text-dim); line-height: 1.46; }
+  .narrative-box p b { color: var(--text); }
+  .narrative-box p .lead { color: var(--gold-bright); font-weight: bold; }
+  .section-label { font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0; }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+  .bbb-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 52mm; flex: 0 0 auto; }
+  .bbb-frame img { max-width: 100%; max-height: 100%; }
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
+  .box h3 { font-size: 9.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .box p { font-size: 9.1pt; color: var(--text-dim); line-height: 1.32; overflow-wrap: break-word; }
+  .box p b { color: var(--text); }
+  .verify-table, .scenario-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .verify-table th, .verify-table td, .scenario-table th, .scenario-table td { font-size: 8.5pt; padding: 0.9mm 1.4mm; text-align: left; border-bottom: 1px solid var(--border-soft); }
+  .verify-table th, .scenario-table th { color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; font-weight: normal; font-size: 7.9pt; }
+  .verify-table td { color: var(--text); }
+  .pass { color: var(--green); } .fail { color: var(--red); } .warn { color: var(--yellow); }
+  .two-col { display: flex; gap: 3mm; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .divergence-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--orange); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .divergence-box h3 { color: var(--orange); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.4mm; }
+  .divergence-box p { font-size: 9.2pt; color: var(--text); line-height: 1.42; }
+  .integrity-box { background: var(--blue-bg); border: 1px solid var(--blue); border-radius: 3px; padding: 2.6mm 3.6mm; }
+  .integrity-box h3 { color: var(--blue); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
+  .integrity-box p { font-size: 9pt; color: var(--text); line-height: 1.4; }
+  .trigger-row { display: flex; gap: 3mm; }
+  .trigger-box { flex: 1; border-radius: 3px; padding: 2.4mm 3.4mm; }
+  .trigger-box.bull { background: var(--green-bg); border: 1px solid var(--green); }
+  .trigger-box.bear { background: var(--red-bg); border: 1px solid var(--red); }
+  .trigger-box h3 { font-size: 9.4pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2mm; }
+  .trigger-box.bull h3 { color: var(--green); }
+  .trigger-box.bear h3 { color: var(--red); }
+  .trigger-box ul { list-style: none; }
+  .trigger-box li { font-size: 8.8pt; color: var(--text); padding: 0.6mm 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .trigger-box li:last-child { border-bottom: none; }
+  .warn-strip { background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.7mm 3mm; font-size: 8.7pt; color: var(--yellow); margin-top: 1mm; }
+  .warn-strip b { color: var(--text); }
+  .fazit { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 2.8mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0; }
+  .fazit-verdict { flex: 0 0 auto; max-width: 42mm; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 12pt; color: var(--green); letter-spacing: 0.02em; }
+  .fazit-verdict .sub { font-size: 8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.6mm; }
+  .sources-list { font-size: 8.8pt; color: var(--text-dim); line-height: 1.5; }
+  .sources-list .n { color: var(--gold); margin-right: 1.5mm; }
+  .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 1.5mm; font-size: 8.1pt; color: var(--text-faint); flex-shrink: 0; }
+  .footer .gold-dot { color: var(--gold); }
+  .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm; }
+  .decision-card { border-radius: 3px; padding: 2.4mm 3.2mm; }
+  .decision-card.attractive { background: var(--green-bg); border: 1px solid var(--green); }
+  .decision-card.caution { background: var(--red-bg); border: 1px solid var(--red); }
+  .decision-card.watch { background: var(--blue-bg); border: 1px solid var(--blue); }
+  .decision-card.action { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); }
+  .decision-card h3 { font-size: 9.1pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .decision-card.attractive h3 { color: var(--green); }
+  .decision-card.caution h3 { color: var(--red); }
+  .decision-card.watch h3 { color: var(--blue); }
+  .decision-card.action h3 { color: var(--gold-bright); }
+  .decision-card p { font-size: 8.5pt; color: var(--text); line-height: 1.34; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hook -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">SCOUT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Full Scout · Aegis · JJ · Conan</div>
+      <div class="edition-tag">Watchlist · Talent · Full Deep Dive</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">21. September 2026</div>
+      <div>Scout-Pfad (Bucket B) · SaaS-Default</div>
+      <div>Auf Brians direkte Anforderung</div>
+    </div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-title">🛡 WALLIX Group — der europäische PAM-Herausforderer erreicht den <span class="accent">Cashflow-Wendepunkt</span></div>
+    <div class="hook-sub">WALLIX Group SA (Euronext Growth Paris: ALLIX) · ISIN FR0010131409 · Kurs €22,25-22,40 (21.09.2026) · 52W-Range €20,55-30,20 · Marktkap. korrigiert ~€159 Mio. · Sektor Cybersecurity (Privileged Access Management) · Watchlist-relevant: Talent, neu aufgenommen</div>
+  </div>
+
+  <div class="section-label">Zwei Datenkonflikte selbst aufgedeckt und aufgelöst, bevor bewertet wurde</div>
+  <div class="narrative-box">
+    <p><span class="lead">Das operative Geschäft.</span> WALLIX ist ein französischer PAM-Anbieter (Privileged Access Management, "Bastion"-Suite) mit über 4.000 Kunden in 100+ Ländern. FY2025 markiert einen echten Wendepunkt: erstmals positiver Gesamtjahres-Free-Cashflow (€1,04 Mio., ggü. -€4,88 Mio. FY2024). H1 2026: wiederkehrender Umsatz +24,1% (jetzt 81% des Gesamtumsatzes), ARR €33,1 Mio.</p>
+    <p><span class="lead">Der Datencheck.</span> Conan fand eine echte Umsatz-Divergenz zwischen Aggregator-Daten (€45,84 Mio. FY2025) und WALLIX' eigener IR-Zahl (€40,62 Mio.) — beide transparent nebeneinander verwendet statt einen zu unterschlagen. Aegis fand zusätzlich eine veraltete Aktienzahl bei mehreren Datenanbietern: nach einer NextStage-AM-Anleihewandlung im August 2026 stieg die Aktienzahl auf 7.099.569 — korrigierte Market Cap ~€159 Mio., nicht die von Aggregatoren gezeigten €146 Mio.</p>
+    <p><span class="lead">Der zentrale Vorbehalt.</span> Rule-of-40 liegt nur bei ~19,2 (Umsatzwachstum 16,9% + FCF-Marge 2,3%) — klar unter der 30-40%-Schwelle, die einen echten SaaS-Elite-Compounder auszeichnet. Der Moat ist solide (Switching Costs, EU-Souveränitäts-Rückenwind durch NIS2/DORA), aber nicht dominant gegenüber CyberArk/Delinea/BeyondTrust.</p>
+    <p><span class="lead">Das Ergebnis.</span> JJ und Conan konvergieren MODERAT auf einen vorsichtig-konstruktiven Scout-Buy — KAUFEN-KANDIDAT als Starter-Position, kein Core-Compounder. Zweiter Kandidat für die 2 offenen, weltweiten Talent-Slots (nach ORKA).</p>
+  </div>
+
+  <div class="footer">
+    <div>Scout Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ALLIX-Scout-fulldeepdive-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/7</div>
+  </div>
+</div>
+
+<!-- PAGE 2: Executive Summary -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">SCOUT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Executive Summary · Investment-These · 3-Stimmen-Leiste</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 2</div><div>ALLIX WALLIX Group</div></div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">ALLIX <span style="color:var(--text-dim); font-size:9.5pt;">· Euronext Growth Paris</span></div>
+      <div class="company">WALLIX Group SA — Privileged Access Management (PAM)</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs</div><div class="value">€22,25-22,40</div></div>
+      <div class="stat"><div class="label">Market Cap (korrigiert)</div><div class="value">~€159 Mio.</div></div>
+      <div class="stat"><div class="label">Analysten-Konsens</div><div class="value" style="color:var(--text);">€31,50 (nur 2 Analysten)</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">3-Stimmen-Leiste (Konvergenz MODERAT, kein Rating-Widerspruch)</div>
+  <div style="display:flex; gap:2.4mm;">
+    <div class="box" style="flex:1;">
+      <h3>Aegis · Claude (Synthese)</h3>
+      <p style="font-size:12pt; color:var(--green);">KAUFEN-KANDIDAT/Starter</p>
+      <p style="font-size:8.4pt;">Talent-Watchlist, gestaffeltes Sizing 0,5-2,5%</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>JJ · Gemini (Scout-Methodik)</h3>
+      <p style="font-size:12pt; color:var(--green);">Konstruktiv</p>
+      <p style="font-size:8.4pt;">"Überzeugendes Quality-in-Formation" · Sizing vage ("mittelgroß")</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>Conan · ChatGPT (Scout-Methodik)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">B/73 — Starter-Buy</p>
+      <p style="font-size:8.4pt;">Explizit "kein Core-Compounder", gestaffeltes Sizing 0,5-2,5%</p>
+    </div>
+  </div>
+  <div class="warn-strip" style="margin-top:0;"><b>Konvergenz: MODERAT, kein Widerspruch.</b> Beide KIs landen auf einem vorsichtig-konstruktiven Scout-Buy — Conan ist deutlich spezifischer/strenger (Rule-of-40-Berechnung, Datenkonflikte selbst gefunden) und wird daher als maßgeblich übernommen, keine formale Diskussionsrunde nötig.</div>
+
+  <div class="section-label">Investment-These: Warum WALLIX als Talent-Starter, nicht als Core?</div>
+  <div class="narrative-box" style="flex:0 0 auto;">
+    <p>WALLIX zeigt einen echten, primärquellenbestätigten Wendepunkt: nach Jahren negativen Cashflows war 2025 erstmals FCF-positiv, getragen von einem strukturellen Shift zu wiederkehrendem Umsatz (81%, +24,1% Wachstum). Der EU-Souveränitäts-Rückenwind (NIS2/DORA/CRA-Regulierung, "European digital sovereignty champion"-Positionierung mit NextStage AM als verstärktem Aktionär) ist ein realer, strategisch relevanter Treiber. <b>Aber:</b> Rule-of-40 (~19,2) verfehlt die SaaS-Elite-Schwelle klar, NRR ist nicht offengelegt, und WALLIX bleibt gegenüber CyberArk/Delinea/BeyondTrust ein kleiner Nischenanbieter (Gartner-Rang 4). Das rechtfertigt eine Watchlist-Aufnahme mit vorsichtigem Starter-Sizing, keine große Core-Position.</p>
+  </div>
+
+  <div class="section-label">Entscheidungs-Übersicht</div>
+  <div class="decision-grid">
+    <div class="decision-card attractive">
+      <h3>✓ Warum interessant</h3>
+      <p>Echter FCF-Wendepunkt 2025, 81% wiederkehrender Umsatz mit +24,1% Wachstum, gründergeführt mit Alignment, EU-Souveränitäts-Rückenwind, starke Cash-Position + €25-65 Mio. neue nicht-verwässernde Finanzierung.</p>
+    </div>
+    <div class="decision-card caution">
+      <h3>⚠ Warum nicht groß einsteigen</h3>
+      <p>Rule-of-40 nur ~19,2 (klar unter 30-40%-Schwelle), keine NRR-Offenlegung, kleiner Nischenanbieter ggü. drei US-Marktführern, Euronext-Growth-Microcap-Liquiditätsrisiko, nur 2 Analysten Coverage.</p>
+    </div>
+    <div class="decision-card watch">
+      <h3>👁 Was wir beobachten</h3>
+      <p>H1-2026-Zahlen 08.10.2026: Margenpfad, FCF-Fortsetzung, ARR/MRR-Tempo, ob NRR erstmals offengelegt wird. Verwendung der neuen Finanzierung (organisches Wachstum vs. M&A).</p>
+    </div>
+    <div class="decision-card action">
+      <h3>▶ Aktion</h3>
+      <p>KAUFEN-KANDIDAT, Starter 0,5-1,0%. Aufstockung auf 1,5-2,0% nach Bestätigung 08.10.2026. Max. 2,5% ohne Rule-of-40-Beweis. Kauf-Zone €20-22.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Scout Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ALLIX-Scout-fulldeepdive-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/7</div>
+  </div>
+</div>
+
+<!-- PAGE 3: DNA-Check + Moat -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">SCOUT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Compounder-DNA-Check (SaaS-Default) · Zukunfts-Moat-Check</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 3</div><div>ALLIX WALLIX Group</div></div>
+  </div>
+
+  <div class="section-label">Compounder-DNA-Check — SaaS-Default</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Kriterium</th><th>Schwelle</th><th>Ist-Wert</th><th>Status</th></tr>
+      <tr><td>Umsatz-CAGR (3J)</td><td>≥30%</td><td>~13,6% (2021-25), 14,2-16,9% aktuell</td><td class="fail">❌ Verfehlt deutlich</td></tr>
+      <tr><td>Bruttomarge-Trend</td><td>steigend</td><td>~98,6-99,2% (Aggregator) — strukturell hoch (Software)</td><td class="pass">✅ Niveau erfüllt</td></tr>
+      <tr><td>Rule of 40</td><td>≥30% oder klar verbessernd</td><td><b>~19,2</b> (Wachstum 16,9% + FCF-Marge 2,3%)</td><td class="fail">❌ Zentraler K-Kritikpunkt</td></tr>
+      <tr><td>Burn-Multiple</td><td>&lt;2,0x</td><td>Nicht anwendbar — FY2025 FCF-positiv (€1,04 Mio.)</td><td class="pass">✅ Bestmöglich erfüllt</td></tr>
+      <tr><td>Cash-Runway</td><td>≥18 Monate</td><td>Cash €12,1 Mio. + €25-65 Mio. neue Finanzierung — sehr stark</td><td class="pass">✅ Deutlich erfüllt</td></tr>
+      <tr><td>Insider-/Gründer-Ownership</td><td>≥10%</td><td>CEO ~9,4%, TDH ~6,4%, Mitgründer ~3,8% — zusammen &gt;19%</td><td class="warn">🟡 Grenzfall je nach Zählweise</td></tr>
+      <tr><td>TAM-Expansionsnachweis</td><td>Belegt</td><td>PAM-Markt CAGR 21-29% je Quelle, Wallix &lt;1% globaler Anteil</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Net Revenue Retention</td><td>≥110%</td><td>Nicht offengelegt — nur Gross-Retention &gt;95%</td><td class="fail">❌ Echte Datenlücke</td></tr>
+      <tr><td>Verwässerung (3J)</td><td>Beobachten</td><td>+4,6% durch NextStage-Wandlung, dafür €5 Mio. Schuldenabbau</td><td class="warn">🟡 Beobachten, mit Gegenwert</td></tr>
+    </table>
+    <p style="margin-top:1.6mm; font-size:8.4pt;"><b>DNA-Urteil: K 3/5 (Rule-of-40 UND Umsatz-CAGR beide verfehlt), E 2/4 belegt, 1 Grenzfall, 1 echte Lücke.</b> Kein Elite-SaaS-Profil, aber der FCF-Wendepunkt 2025 ist ein echter, verifizierter Fortschritt.</p>
+  </div>
+
+  <div class="section-label">Zukunfts-Moat-Check (4 Dimensionen, Conan)</div>
+  <div class="bbb-frame" style="height:52mm; width:100%;"><img src="wallix_moat.png" alt="WALLIX Moat-Scorecard"></div>
+  <div class="box">
+    <p style="font-size:8.4pt;"><b>Moat-Gesamt: 14,5/20 — solider Nischenmoat, kein dominanter Plattform-Moat.</b> Regulatory/Sovereignty-Moat (NIS2/DORA/CRA, EU-Souveränitäts-Agenda) und Switching Costs (Retention &gt;95%) sind die stärksten Säulen; Distribution/Ecosystem ist die Schwachstelle ggü. den US-Marktführern.</p>
+  </div>
+
+  <div class="footer">
+    <div>Scout Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ALLIX-Scout-fulldeepdive-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/7</div>
+  </div>
+</div>
+
+<!-- PAGE 4: Geschaeftsverlauf + Datenkonflikte -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">SCOUT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Geschäftsverlauf · Datenintegritäts-Funde</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 4</div><div>ALLIX WALLIX Group</div></div>
+  </div>
+
+  <div class="integrity-box">
+    <h3>🔵 Datenintegritäts-Fund 1: Umsatz-Divergenz (Conan)</h3>
+    <p>Aggregator (StockAnalysis) zeigt FY2025-Umsatz €45,84 Mio., WALLIX' eigene IR-Veröffentlichung nennt €40,62 Mio. "chiffre d'affaires". Beide transparent nebeneinander verwendet: Marktdaten-Zahl für Bewertungsmultiples, Unternehmenszahlen für operative KPIs — statt einen Wert stillschweigend zu bevorzugen.</p>
+  </div>
+  <div class="integrity-box" style="margin-top:1mm;">
+    <h3>🔵 Datenintegritäts-Fund 2: Market-Cap-Korrektur (Aegis)</h3>
+    <p>NextStage AM wandelte im August 2026 Anleihen in 312.499 neue Aktien — Aktienzahl stieg von 6.787.070 auf <b>7.099.569</b>. Mehrere Aggregatoren (z.B. €146,36 Mio. Market Cap) reflektieren noch die alte, niedrigere Aktienzahl. <b>Korrigiert: 7.099.569 × €22,40 ≈ €159,0 Mio.</b></p>
+  </div>
+
+  <div class="section-label">Umsatz-Mix-Shift: wiederkehrender Umsatz wächst deutlich schneller</div>
+  <div class="bbb-frame" style="height:60mm; width:100%;"><img src="wallix_revenue.png" alt="WALLIX Umsatz-Trend"></div>
+
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Periode</th><th>Gesamtumsatz</th><th>Wiederkehrender Umsatz</th><th>Kommentar</th></tr>
+      <tr><td>FY2024</td><td>€39,20 Mio.</td><td>—</td><td>FCF noch negativ (-€4,88 Mio.)</td></tr>
+      <tr><td>FY2025</td><td>€45,84 Mio. (+16,9%)</td><td>—</td><td>Erstmals FCF-positiv (€1,04 Mio.), H2-Op.-Marge nahe 10%</td></tr>
+      <tr><td>H1 2026</td><td>€20,6 Mio. (+14,2%)</td><td>€16,6 Mio. (+24,1%, 81% des Umsatzes)</td><td>183 neue Verträge, 4.090 aktive Verträge, Retention &gt;95%</td></tr>
+      <tr><td>ARR (Ende Jun. 2026)</td><td>—</td><td>€33,1 Mio.</td><td>MRR €2,76 Mio. (+19,4% YoY)</td></tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    <div>Scout Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ALLIX-Scout-fulldeepdive-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 4/7</div>
+  </div>
+</div>
+
+<!-- PAGE 5: Rule of 40 + Bewertung -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">SCOUT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Rule-of-40 · Bewertung (EV/Sales-zu-Wachstum + TAM-Sanity-Check)</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 5</div><div>ALLIX WALLIX Group</div></div>
+  </div>
+
+  <div class="section-label">Rule-of-40: der zentrale K-Kritikpunkt, visualisiert</div>
+  <div class="bbb-frame" style="height:58mm; width:100%;"><img src="wallix_ruleof40.png" alt="WALLIX Rule-of-40"></div>
+  <div class="box">
+    <p style="font-size:8.6pt;"><b>Einordnung:</b> Rule-of-40 (Umsatzwachstum + FCF-Marge) liegt bei ~19,2 — deutlich unter der 30-40%-Schwelle, die einen Elite-SaaS-Compounder auszeichnet. Der Wert ist real verbessert ggü. den Vorjahren (FCF war 2024 noch klar negativ), aber WALLIX ist noch kein "Rule-of-40-Compounder", sondern eher "Rule-of-20 mit echter, verifizierter Verbesserungstendenz".</p>
+  </div>
+
+  <div class="section-label">Bewertung — EV/Sales-zu-Wachstum + TAM-Sanity-Check (kein DCF, Scout-Methodik)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Kennzahl</th><th>Wert</th><th>Einordnung</th></tr>
+      <tr><td>EV/Sales (FY2025-Umsatz)</td><td>~3,1-3,4x</td><td>Bei ~15% Wachstum am oberen Rand von "fair" (Schwelle 1,0-2,0 fair, &gt;2,0 teuer)</td></tr>
+      <tr><td>EV/ARR</td><td>~4,3-4,6x</td><td>Vertretbar für 81% wiederkehrenden Umsatz mit FCF-Wende</td></tr>
+      <tr><td>TAM-Sanity-Check</td><td>PAM-Markt CAGR 21-29% je Quelle</td><td>Markt ist nicht das Problem — Wallix hält &lt;1% globalen Anteil, Execution/Differenzierung ggü. CyberArk/Delinea/BeyondTrust ist die offene Frage</td></tr>
+      <tr><td>Analysten-Konsens</td><td>Strong Buy, €31,50 (+41-42%)</td><td>Nur 2 Analysten — dünne Coverage, wenig belastbar</td></tr>
+    </table>
+    <p style="margin-top:1.2mm; font-size:8.4pt;"><b>Einordnung:</b> Nicht spottbillig, aber angesichts von 81% wiederkehrendem Umsatz, FCF-Wende und EU-Souveränitäts-Narrativ vertretbar. Teuer würde es erst bei &gt;5x Sales ohne begleitendes ARR-Wachstum &gt;25%/FCF-Marge &gt;10%.</p>
+  </div>
+
+  <div class="footer">
+    <div>Scout Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ALLIX-Scout-fulldeepdive-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/7</div>
+  </div>
+</div>
+
+<!-- PAGE 6: Gründer-Score + Kill-Sheet -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">SCOUT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Gründer-/Führungs-Score · 🔪 Kill-Kriterien</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 6</div><div>ALLIX WALLIX Group</div></div>
+  </div>
+
+  <div class="section-label">Gründer-/Führungs-Score: 4/5 (beide KIs konvergent)</div>
+  <div class="box">
+    <p>Jean-Noël de Galzain, Gründer seit 2003, CEO/Chairman seit 2022, führte WALLIX 2015 als erste französische Cybersecurity-Firma an die Pariser Börse. <b>Positiv:</b> aktiver Gründer, relevanter Eigenanteil (~9,4%), lange Branchenexpertise (auch Hexatrust-Gründer), strategisch passende Positionierung (EU-Souveränität/OT/PAM/AI via Malizen-Akquisition + Inria-Partnerschaft). <b>Negativ:</b> seit IPO 2015 lange Phase ohne klare Profitabilität, internationale Skalierung noch nicht bewiesen, Euronext-Growth-typische Liquiditäts-/Governance-Risiken.</p>
+  </div>
+
+  <div class="trigger-row">
+    <div class="trigger-box bull">
+      <h3>📈 Nachkauf-/Aufstockungs-Trigger (gestaffelt)</h3>
+      <ul>
+        <li>1. Starter 0,5-1,0% in der Zone €20-22</li>
+        <li>2. Aufstockung auf 1,5-2,0% nach Bestätigung 08.10.2026 (Margenpfad, FCF, ARR/MRR-Tempo)</li>
+        <li>3. Max. 2,5% erst mit sichtbarer Rule-of-40-Verbesserung Richtung 30%+</li>
+        <li>4. Kein Core-Sizing (&gt;3%) vor mind. 2 Jahren positivem FCF + &gt;20% ARR-Wachstum durchgehend</li>
+      </ul>
+    </div>
+    <div class="trigger-box bear">
+      <h3>📉 Stop-These-/Kill-Trigger</h3>
+      <ul>
+        <li>1. Rule-of-40 verschlechtert sich weiter statt sich zu verbessern</li>
+        <li>2. FCF-Wende erweist sich als Einmaleffekt (Rückfall in negativen FCF)</li>
+        <li>3. Neue Finanzierung (€25-65 Mio.) wird für überteuerte/schlecht integrierte M&A statt organisches Wachstum verwendet</li>
+        <li>4. Dokumentierter Kundenverlust an CyberArk/Delinea/BeyondTrust</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-label">Meilenstein</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Termin</th><th>Was beobachten</th></tr>
+      <tr><td>08.10.2026</td><td>H1-2026-Zahlen: Margenpfad, FCF-Fortsetzung, ARR/MRR-Wachstumstempo, ob NRR erstmals offengelegt wird</td></tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    <div>Scout Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ALLIX-Scout-fulldeepdive-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/7</div>
+  </div>
+</div>
+
+<!-- PAGE 7: Fazit -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">SCOUT <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Finale Synthese · Aegis-Verdict</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 7</div><div>ALLIX WALLIX Group</div></div>
+  </div>
+
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">KAUFEN-KANDIDAT</div>
+      <div class="sub">Starter-Position · Talent</div>
+    </div>
+    <p style="font-size:9.6pt; color:var(--text); line-height:1.5;">WALLIX Group zeigt einen echten, verifizierten Wendepunkt (erstmals FCF-positiv 2025, 81% wiederkehrender Umsatz mit +24,1% Wachstum) und einen soliden, wenn auch nicht dominanten Moat (Switching Costs + EU-Souveränitäts-Rückenwind). Zwei selbst gefundene und aufgelöste Datenkonflikte (Umsatz-Divergenz, Market-Cap-Korrektur) stärken die Belastbarkeit dieser Analyse. Der zentrale Vorbehalt bleibt: Rule-of-40 (~19,2) verfehlt die SaaS-Elite-Schwelle klar, NRR fehlt strukturell. <b>Watchlist-Aufnahme als Talent, Starter-Sizing, kein Core-Compounder.</b> Zweiter Kandidat für die 2 offenen, weltweiten Talent-Slots — nach ORKA.</p>
+  </div>
+
+  <div class="section-label">Sizing-Plan (keine automatische Order)</div>
+  <div class="box">
+    <p><b>Kauf-Zone €20-22:</b> Starter 0,5-1,0%.<br><b>Neutral-Zone €22-26:</b> halten/klein akkumulieren.<br><b>Aufstockung auf 1,5-2,0%:</b> nach Bestätigung 08.10.2026.<br><b>Max. 2,5%:</b> solange Rule-of-40 &lt;30% und ohne NRR-Offenlegung.<br><b>Disziplin-Zone &gt;€31:</b> nur gerechtfertigt bei sichtbar beschleunigtem Wachstum/Margen.</p>
+  </div>
+
+  <div class="section-label">Konfidenz</div>
+  <div class="two-col">
+    <div class="col"><div class="box"><h3>Konfidenz</h3><p style="font-size:16pt; color:var(--yellow);">🟡 MITTEL</p><p>Umsatz-/Aktienzahl-Divergenzen selbst gegengeprüft und korrigiert, aber NRR fehlt strukturell, nur 2 Analysten Coverage.</p></div></div>
+    <div class="col"><div class="box"><h3>Nächster Prüfpunkt</h3><p style="font-size:12pt; color:var(--gold-bright);">08.10.2026</p><p>H1-2026-Zahlen — Margenpfad, FCF-Fortsetzung, ARR/MRR-Tempo, NRR-Offenlegung.</p></div></div>
+  </div>
+
+  <div class="section-label">Quellen (Auswahl)</div>
+  <div class="sources-list">
+    <div><span class="n">1</span>WALLIX IR/Actusnews: FY2025-Ergebnisse, H1-2026-Ergebnisse, Finanzierungs-Pressemitteilungen (Juli/August 2026)</div>
+    <div><span class="n">2</span>stockanalysis.com, investing.com: Kurs/Multiples/Cashflow-Statement</div>
+    <div><span class="n">3</span>MarketScreener: Shareholder-Struktur/Insider-Ownership</div>
+    <div><span class="n">4</span>Gartner Magic Quadrant PAM, KuppingerCole Leadership Compass: Wettbewerbspositionierung</div>
+    <div><span class="n">5</span>JJ (Gemini) und Conan (ChatGPT) Full-Scout-Cross-Check, 21.09.2026</div>
+  </div>
+
+  <div class="footer">
+    <div>Scout Full Deep Dive <span class="gold-dot">·</span> Volltext: analysen/ALLIX-Scout-fulldeepdive-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/7</div>
+  </div>
+</div>
+
+</body>
+</html>
