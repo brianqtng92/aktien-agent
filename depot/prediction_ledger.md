@@ -81,6 +81,16 @@ nicht als tägliche Meldung.
 - **Nächster Prüfpunkt:** Ausführung Tranche 1 (technische Bestätigung) sowie Q3-2026-Earnings.
 - **Prüf-Zeithorizont:** 6 Monate (2027-03-16).
 
+### 2026-09-21 — Kokusai Electric Corporation (6525, Tokyo, JP3266400005)
+- **Kategorie:** Profi (Bucket A/C) · TMR-Pfad
+- **Anlass:** Brians direkte Anforderung eines Full Deep Dive.
+- **Empfehlungs-Typ:** Watchlist-Aufnahme (KEIN Kauf-Rating) — Rating bei Aufnahme: BEOBACHTEN/HOLD, Nachkauf-Zone ¥6.500-7.800. Konvergenz startete als "widerspruch" (JJ KAUFEN/5-7% vs. Conan HOLD/1-1,5%), nach Diskussionsrunde "moderat" (beide bei HOLD/BEOBACHTEN, Sizing max. 3-4%). Siehe `analysen/6525-fulldeepdive-cross-check-2026-09-21.md`.
+- **Zentrale These:** ~70-80% Weltmarktanteil bei Batch-ALD-Halbleiterausrüstung (physik-/ökonomiebasierter Moat), Netto-Cash-Bilanz, gerade durchlaufene primärquellenverifizierte Gewinn-Reacceleration nach China-getriebener Schwächephase (FY2026 -16,4% Gewinn → Q1 FY2027 +70,6% Gewinn, Guidance +21% angehoben). Zentraler Vorbehalt: FCF-Marge (13,5%) verfehlt die 20%-TMR-Elite-Schwelle.
+- **Konkrete Erwartung (DCF, reconciliiert):** Bear ¥4.000-5.200 · Base ¥6.800-8.500 · Bull ¥10.500-13.000. Aktueller Kurs (¥8.884) am oberen Rand der Base-Spanne — begrenzte Sicherheitsmarge.
+- **These-Bruch-Kriterien:** (a) Auftragseingang bricht nach Q1-Spitze deutlich ein; (b) FCF-Marge normalisiert sich NICHT Richtung 15-18%; (c) China-Exportkontrollen verschärfen sich mit direktem Kokusai-Bezug; (d) NAND-Schwäche erweist sich als struktureller statt zyklischer Rückgang.
+- **Nächster Prüfpunkt:** Q2 FY2027-Zahlen (~Anfang November 2026).
+- **Prüf-Zeithorizont:** 6 Monate (2027-03-21) — zyklisches Semicap-Geschäft, kürzerer Horizont als bei einem klassischen Compounder.
+
 ### 2026-09-21 — Oruka Therapeutics (ORKA, NASDAQ, US6876041087)
 - **Kategorie:** Talent (Biotech-Override) · Scout-Pfad
 - **Anlass:** Weltweite, regionsunabhängige Talent-Slot-Suche (2 freie Slots, siehe Agent-Playbook.md Punkt 1b) — Kandidat von JJ vorgeschlagen, siehe `analysen/ORKA-Scout-quickfilter-2026-09-21.md`.
