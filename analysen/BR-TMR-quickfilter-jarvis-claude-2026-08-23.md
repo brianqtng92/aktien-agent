@@ -130,6 +130,29 @@ Analysten-Konsens-Kursziel: **$213,25** (+17,1%) [VERIFIED] · Tertiärquelle Gu
 
 ---
 
+## 🔄 Nachtrag 2026-09-21 — EV/FCF-vs-5J-Ø nachgetragen (Brian: "trag das EV/FCF und PEG nach")
+
+Die am 23.08. offene TMR-Pflichtangabe (EV/FCF gegen den eigenen 5-Jahres-Durchschnitt, siehe `jack-moat-reaper-v11.7.md` QUICK-FILTER-Schnellcheck) nachgeholt, plus aktualisierter Kurs (Twelve Data, 17.09.: $164,31, vs. $182,18 am 23.08. — Position ist seither weiter gefallen und liegt jetzt unter dem eigenen Abstauber-Limit $170, siehe vorheriges Umschichtungs-Gespräch).
+
+**EV/FCF-5-Jahres-Historie** [VERIFIED, stockanalysis.com/stocks/br/financials/ratios, 21.09.2026]:
+
+| Periode | EV/FCF |
+|---|---|
+| FY2022 | 50,39x |
+| FY2023 | 29,99x |
+| FY2024 | 26,80x |
+| FY2025 | 28,27x |
+| FY2026 | 14,82x |
+| **Aktuell (21.09.)** | **16,99x** |
+
+**5J-Ø: (50,39+29,99+26,80+28,27+14,82)/5 = 30,05x.** Aktuelles EV/FCF (16,99x) liegt damit **-43,5% unter dem eigenen 5J-Durchschnitt** — deutlich günstiger als die eigene Historie, kein Zufallswert: der Rückgang begann bereits FY2023 (strukturelle Neubewertung, nicht nur der jüngste Kursrückgang) und hat sich seit FY2026 nochmal beschleunigt. Ersetzt den vorherigen [TRAINING]-Tag von 23.08.
+
+**PEG aktualisiert** [VERIFIED-Basis, TRAINING-Guidance]: Forward-KGV jetzt **15,46** (war 17,27, Kurs seither gefallen) / Adj.-EPS-Wachstum-Guidance FY27 (8-12%, Mitte ~10%) ≈ **1,3–1,9**, Mittelwert ~1,55 → weiterhin **fair bis ambitioniert** (Schwelle: <1,5 fair · 1,5-2,5 ambitioniert), praktisch unverändert ggü. 23.08. (1,4-1,7) — der gefallene Kurs wurde durch das gefallene Forward-KGV bereits eingepreist, kein zusätzlicher Bewertungsvorteil ggü. der ersten Analyse.
+
+**Einordnung:** Beide jetzt vollständig nachgetragenen Kennzahlen bestätigen das ursprüngliche Bild (BEOBACHTEN, kein SCHROTT) — BR ist historisch günstig (EV/FCF) und fair bewertet (PEG), aber das ändert nichts an der eigentlichen K-Lücke (ROIC 17,5% <20%-Schwelle) oder der 🔴-Konfidenz aus der Verifikationstiefe (unverändert, diese Kennzahl war nie Teil des K/E-Konfidenz-Nenners). Der Kurs liegt jetzt unter dem Abstauber-Limit ($164,31 vs. $170) — 1 von 3 Upgrade-Triggern ist damit erfüllt, die anderen zwei (Full-Deep-Dive-Konfidenz-Aufstufung, Q1-FY2027-Bestätigung ~Anfang November) stehen weiter aus.
+
+---
+
 ## 🎯 MEIN VERDICT
 
 **RATING: BEOBACHTEN**
