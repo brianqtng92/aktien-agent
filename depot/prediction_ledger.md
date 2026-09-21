@@ -121,6 +121,16 @@ nicht als tägliche Meldung.
 - **Nächster Prüfpunkt:** Q3'26-Earnings (02.11.2026) + Entwicklung Südkorea-Kartellverfahren.
 - **Prüf-Zeithorizont:** 6 Monate (2027-03-21).
 
+### 2026-09-21 — Arista Networks (ANET, Watchlist, Champions) — nachgetragen (Full-Deep-Dive-Refresh)
+- **Kategorie:** Champions (Bucket A, etablierter Compounder) · TMR-Pfad
+- **Anlass:** Bestehende Watchlist-Position von vor 2026-08-30 (Champions seit 04.09., zuvor bereits zwei Full-Deep-Dives 16./17.09.), jetzt beim regulären [B] THESE-CHECK nachgetragen (Brians direkte Anforderung eines Full-Deep-Dive-Refresh). Siehe `analysen/ANET-fulldeepdive-cross-check-2026-09-17.md` (Nachtrag 21.09.).
+- **Empfehlungs-Typ:** Bestätigung BEOBACHTEN, kein Kauf-Trigger — Dissens zwischen JJ (Tendenz KAUFEN, Base $240-250) und Conan (NEUTRAL/WATCHLIST, Base $142-148) ist strukturell derselbe wie am 17.09. (TV-Methoden-/Terminal-Moat-Streit, nicht Faktenstreit), keine Diskussionsrunde nötig.
+- **Zentrale These:** Zwei echte Katalysatoren seit 17.09. — S&P-100-Aufnahme (wirksam 21.09.) und dritte FY2026-Guidance-Anhebung auf ~$12,6 Mrd. (+40% YoY) — bestätigen operative Stärke, klären aber nicht die Terminal-Wettbewerbsfrage gegen NVIDIA-Spectrum-X-Bundles.
+- **Konkrete Erwartung (DCF, drei unabhängige Ansätze):** Aegis Bear $125/Base $250/Bull $460 · JJ Bear $175-180/Base $240-250/Bull $350-365 · Conan Bear $70/Base $142-148/Bull $235-245. Kurs $202,58 liegt zwischen Conans Base und JJs/Aegis' Base.
+- **These-Bruch-Kriterien:** (a) Bruttomarge (GAAP) fällt unter 58% bei anhaltendem Pricing-Druck; (b) NVIDIA gewinnt mehrere bestehende ANET-Design-Wins; (c) Top-2-Kundenkonzentration (~42%) steigt weiter ohne Gegengewicht durch die &gt;100 Etherlink-Kunden; (d) Op.-Margin fällt strukturell (nicht nur ein Quartal) unter 35%.
+- **Nächster Prüfpunkt:** Q3 2026 Earnings (~November 2026, Leitkatalysator) — Umsatz ≥$3,3 Mrd., GM-Stabilität, FY27-Kommentar.
+- **Prüf-Zeithorizont:** 6 Monate (2027-03-21).
+
 ## Erledigt (Post-Mortem abgeschlossen)
 
 _Noch keine fälligen Einträge._
