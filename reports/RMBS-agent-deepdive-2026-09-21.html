@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>J.A.C.K Deep Dive - Rambus</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FFFFFF; --bg-panel: #F7F6F2; --bg-panel-2: #EFEDE6;
+    --border: #D9D4C8; --border-soft: #E6E2D9;
+    --text: #262420; --text-dim: #5C564A; --text-faint: #837C6C;
+    --gold: #9C7A2E; --gold-bright: #8A6A22; --gold-dim: #C9AD6E;
+    --green: #3F7D44; --green-bg: rgba(63,125,68,0.10);
+    --yellow: #A6790A; --yellow-bg: rgba(166,121,10,0.10);
+    --red: #B03A2E; --red-bg: rgba(176,58,46,0.09);
+    --blue: #2E6690; --blue-bg: rgba(46,102,144,0.09);
+    --orange: #AB591C; --orange-bg: rgba(171,89,28,0.09);
+  }
+  html, body { width: 210mm; background: var(--bg); color: var(--text); font-family: "Carlito", "DejaVu Sans", Arial, sans-serif; font-size: 11pt; line-height: 1.36; }
+  .display { font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif; font-weight: 700; font-stretch: condensed; }
+  .page { width: 210mm; height: 297mm; padding: 8mm 12mm 5mm 12mm; display: flex; flex-direction: column; gap: 2mm; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 2.6mm; }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 23pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 9.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag { font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim); border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm; display: inline-block; width: fit-content; }
+  .meta-block { text-align: right; font-size: 9.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 10.6pt; }
+  .position-header { display: flex; justify-content: space-between; align-items: center; background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold); border-radius: 3px; padding: 2.6mm 4mm; }
+  .position-name .ticker { font-size: 17pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 10pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 5mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 8.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); white-space: nowrap; }
+  .stat .value { font-size: 12pt; color: var(--text); margin-top: 0.4mm; white-space: nowrap; }
+  .hook-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 3.4mm 4.2mm; }
+  .hook-title { font-size: 16pt; line-height: 1.28; color: var(--text); font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .hook-title .accent { color: var(--gold-bright); }
+  .hook-sub { font-size: 9.6pt; color: var(--text-dim); line-height: 1.4; margin-top: 1.8mm; }
+  .narrative-box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 3mm 4mm; flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .narrative-box p { font-size: 9.4pt; color: var(--text-dim); line-height: 1.46; }
+  .narrative-box p b { color: var(--text); }
+  .narrative-box p .lead { color: var(--gold-bright); font-weight: bold; }
+  .section-label { font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0; }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+  .bbb-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 52mm; flex: 0 0 auto; }
+  .bbb-frame img { max-width: 100%; max-height: 100%; }
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
+  .box h3 { font-size: 9.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .box p { font-size: 9.1pt; color: var(--text-dim); line-height: 1.32; overflow-wrap: break-word; }
+  .box p b { color: var(--text); }
+  .verify-table, .scenario-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .verify-table th, .verify-table td, .scenario-table th, .scenario-table td { font-size: 8.5pt; padding: 0.9mm 1.4mm; text-align: left; border-bottom: 1px solid var(--border-soft); }
+  .verify-table th, .scenario-table th { color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; font-weight: normal; font-size: 7.9pt; }
+  .verify-table td { color: var(--text); }
+  .scenario-table th, .scenario-table td { text-align: right; }
+  .scenario-table th:first-child, .scenario-table td:first-child { text-align: left; color: var(--text-dim); }
+  .pass { color: var(--green); } .fail { color: var(--red); } .warn { color: var(--yellow); }
+  .two-col { display: flex; gap: 3mm; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .divergence-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--orange); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .divergence-box h3 { color: var(--orange); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.4mm; }
+  .divergence-box p { font-size: 9.2pt; color: var(--text); line-height: 1.42; }
+  .integrity-box { background: var(--blue-bg); border: 1px solid var(--blue); border-radius: 3px; padding: 2.6mm 3.6mm; }
+  .integrity-box h3 { color: var(--blue); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
+  .integrity-box p { font-size: 9pt; color: var(--text); line-height: 1.4; }
+  .trigger-row { display: flex; gap: 3mm; }
+  .trigger-box { flex: 1; border-radius: 3px; padding: 2.4mm 3.4mm; }
+  .trigger-box.bull { background: var(--green-bg); border: 1px solid var(--green); }
+  .trigger-box.bear { background: var(--red-bg); border: 1px solid var(--red); }
+  .trigger-box h3 { font-size: 9.4pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2mm; }
+  .trigger-box.bull h3 { color: var(--green); }
+  .trigger-box.bear h3 { color: var(--red); }
+  .trigger-box ul { list-style: none; }
+  .trigger-box li { font-size: 8.8pt; color: var(--text); padding: 0.6mm 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .trigger-box li:last-child { border-bottom: none; }
+  .killsheet-box { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .killsheet-box h3 { color: var(--gold-bright); font-size: 10.4pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.6mm; }
+  .warn-strip { background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.7mm 3mm; font-size: 8.7pt; color: var(--yellow); margin-top: 1mm; }
+  .warn-strip b { color: var(--text); }
+  .fazit { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 2.8mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0; }
+  .fazit-verdict { flex: 0 0 auto; max-width: 42mm; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 13pt; color: var(--yellow); letter-spacing: 0.02em; }
+  .fazit-verdict .sub { font-size: 8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.6mm; }
+  .sources-list { font-size: 8.8pt; color: var(--text-dim); line-height: 1.5; }
+  .sources-list .n { color: var(--gold); margin-right: 1.5mm; }
+  .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 1.5mm; font-size: 8.1pt; color: var(--text-faint); flex-shrink: 0; }
+  .footer .gold-dot { color: var(--gold); }
+  .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm; }
+  .decision-card { border-radius: 3px; padding: 2.4mm 3.2mm; }
+  .decision-card.attractive { background: var(--green-bg); border: 1px solid var(--green); }
+  .decision-card.caution { background: var(--red-bg); border: 1px solid var(--red); }
+  .decision-card.watch { background: var(--blue-bg); border: 1px solid var(--blue); }
+  .decision-card.action { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); }
+  .decision-card h3 { font-size: 9.1pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .decision-card.attractive h3 { color: var(--green); }
+  .decision-card.caution h3 { color: var(--red); }
+  .decision-card.watch h3 { color: var(--blue); }
+  .decision-card.action h3 { color: var(--gold-bright); }
+  .decision-card p { font-size: 8.5pt; color: var(--text); line-height: 1.34; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hook -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">3-fach TMR-Cross-Check · Aegis · JJ · Conan · REFRESH</div>
+      <div class="edition-tag">Depot-Position · Profi · Full Deep Dive Refresh</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">21. September 2026</div>
+      <div>TMR-Pfad · Refresh der Analyse vom 09.09.2026</div>
+      <div>Auf Brians direkte Anforderung</div>
+    </div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-title">🛡 Rambus — Rekordquartale bestätigt, <span class="accent">aber der Markt ist schneller gelaufen als die Zahlen</span></div>
+    <div class="hook-sub">Rambus Inc. (NASDAQ: RMBS) · ISIN US7509171069 · Kurs $95,77 (21.09.2026, +9,33% am Tag, +30% in einer Woche) · 52W-Range $77,89-$174,10 · Sektor Halbleiter-IP (Memory-Interface/Security) · Depot-relevant: Profi-Position, kein Nachkauf</div>
+  </div>
+
+  <div class="section-label">Ein echter DCF-Fehler wurde in der Diskussionsrunde selbst aufgedeckt</div>
+  <div class="narrative-box">
+    <p><span class="lead">Das operative Geschäft.</span> Rambus lieferte im Q2 2026 Rekord-Umsatz ($207,4 Mio., +20,4% YoY), Produktumsatz $99,2 Mio. (+22%), Non-GAAP-EPS $0,77 (+24%). Q3-Guidance wurde auf $210-216 Mio. angehoben. Bilanz sehr stark (Netto-Cash $824,9 Mio.).</p>
+    <p><span class="lead">Der Kurs.</span> War Mitte letzter Woche noch nahe der eigenen Nachkauf-Zone ($68-75) — dann +30% Rally binnen einer Woche auf $95,77, getrieben vom AI-/HBM4E-Memory-Narrativ. Der Kurs hat die operative Verbesserung damit bereits vorweggenommen.</p>
+    <p><span class="lead">Der Cross-Check-Befund.</span> JJ startete mit KAUFEN (DCF-Base $110-125), Conan mit BEOBACHTEN (DCF-Base $69) — eine fast doppelte Differenz. Aegis' eigene Gegenrechnung von JJs genannten Annahmen ergab rechnerisch nur ~$50-60/Aktie. In der Diskussionsrunde bestätigte JJ diese Inkonsistenz selbst und revidierte vollständig auf BEOBACHTEN/HALTEN.</p>
+    <p><span class="lead">Neuer Risiko-Fund.</span> Südkorea-Kartellermittlung seit 15.07.2026 gegen Rambus, Montage Technology und Renesas (Vorwurf Preisabsprache bei Memory-Interface-Chips an Samsung/SK Hynix) — zusätzlich zur bereits bekannten Kundenkonzentration.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive Refresh <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/8</div>
+  </div>
+</div>
+
+<!-- PAGE 2: Executive Summary -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Executive Summary · 3-Stimmen-Leiste (nach Diskussionsrunde)</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 2</div><div>RMBS Rambus</div></div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">RMBS <span style="color:var(--text-dim); font-size:9.5pt;">· NASDAQ</span></div>
+      <div class="company">Rambus Inc. — Memory-Interface-Chips + Silicon-/Security-IP</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs</div><div class="value">$95,77</div></div>
+      <div class="stat"><div class="label">Tagesbewegung</div><div class="value" style="color:var(--green);">+9,33%</div></div>
+      <div class="stat"><div class="label">Analysten-Konsens</div><div class="value" style="color:var(--text);">$147,86 (6 Buy/0 Sell)</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">3-Stimmen-Leiste (Konvergenz: von WIDERSPRUCH zu STARK)</div>
+  <div style="display:flex; gap:2.4mm;">
+    <div class="box" style="flex:1;">
+      <h3>Aegis · Claude (Synthese)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">BEOBACHTEN/HALTEN</p>
+      <p style="font-size:8.4pt;">Kein Nachkauf bei $95,77, Zone $68-75 bestätigt</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>JJ · Gemini (nach Revision)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">BEOBACHTEN/HALTEN</p>
+      <p style="font-size:8.4pt;">War KAUFEN, bestätigte selbst die DCF-Inkonsistenz, revidiert</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>Conan · ChatGPT (bestätigt)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">BEOBACHTEN/HALTEN</p>
+      <p style="font-size:8.4pt;">Blieb konsistent bei DCF Base $69, kein Nachkauf</p>
+    </div>
+  </div>
+  <div class="warn-strip" style="margin-top:0;"><b>Wie es zur Konvergenz kam:</b> JJs Runde-1-DCF ($110-125 Base) war mit den von JJ selbst genannten Annahmen (Wachstum, FCF-Marge, WACC) rechnerisch NICHT reproduzierbar — Aegis' Gegenrechnung ergab ~$50-60. In der Diskussionsrunde bestätigte JJ das explizit und revidierte auf $50-70. Ein lehrreiches Beispiel, warum die 3-fach-Cross-Check-Disziplin funktioniert.</div>
+
+  <div class="section-label">Investment-These: warum halten, aber nicht nachkaufen?</div>
+  <div class="narrative-box" style="flex:0 0 auto;">
+    <p>Rambus liefert operativ deutlich besser als im September angenommen — Rekord-Q2, angehobene Q3-Guidance, starker Netto-Cash-Bestand, echtes AI-/HBM4E-Memory-Momentum. <b>Aber:</b> der Kurs hat diese Verbesserung in einer einzigen Woche (+30%) bereits vorweggenommen und ist nach dem heutigen Sprung technisch überdehnt (Seite 6). Ein neuer, materieller Risikofaktor (Südkorea-Kartellermittlung) verschärft das bereits bekannte Konzentrationsrisiko. Die bestehende Position wird gehalten, aber nicht bei aktuellem Kurs aufgestockt.</p>
+  </div>
+
+  <div class="section-label">Entscheidungs-Übersicht</div>
+  <div class="decision-grid">
+    <div class="decision-card attractive">
+      <h3>✓ Warum die These intakt bleibt</h3>
+      <p>Rekord-Q2 (+20,4% Umsatz), angehobene Q3-Guidance, Netto-Cash $824,9 Mio., starkes IP-/Patent-Moat (2.010 Patente), echtes AI-/HBM4E-Momentum.</p>
+    </div>
+    <div class="decision-card caution">
+      <h3>⚠ Warum kein Nachkauf jetzt</h3>
+      <p>+30% Wochenrally bereits eingepreist, DCF-Base reconciliiert bei nur $50-70 (weit unter Kurs $95,77), technisch überdehnt (über oberem Bollinger-Band).</p>
+    </div>
+    <div class="decision-card watch">
+      <h3>👁 Was wir beobachten</h3>
+      <p>Südkorea-Kartellermittlung (seit 15.07.2026), Q3'26-Earnings (02.11.2026), Top-2-Kundenkonzentration (38-40%).</p>
+    </div>
+    <div class="decision-card action">
+      <h3>▶ Aktion</h3>
+      <p>Bestehende Position halten, kein Nachkauf. Nachkauf-Zone $68-75 bestätigt und gestärkt (deckt sich mit reconciliiertem DCF-Base).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive Refresh <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/8</div>
+  </div>
+</div>
+
+<!-- PAGE 3: DNA + Moat + neuer Risiko-Fund -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">DNA-Check-Update · Moat · Management · Neuer Struktur-Risiko-Fund</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 3</div><div>RMBS Rambus</div></div>
+  </div>
+
+  <div class="section-label">DNA-Check (Update ggü. 09.09.2026)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Kriterium</th><th>Ist-Wert (aktualisiert)</th><th>Status</th></tr>
+      <tr><td>Kundenkonzentration</td><td>Top-2-Kunden 38-40% Umsatz (Q2: 22%+16%), Südkorea 45-47% — jetzt mit Kartellrechts-Bezug</td><td class="warn">⚠ Bestätigt, verschärfter Kontext</td></tr>
+      <tr><td>Piotroski F-Score</td><td>Divergenz aufgelöst: ~6,5/9 (CFO $144,5 Mio. &gt; Net Income $127,5 Mio. H1, Netto-Cash stark) — alte 4/9-Bewertung war zu mechanisch</td><td class="pass">✅ Aufgelöst</td></tr>
+      <tr><td>FCF (H1 2026)</td><td>$123,8 Mio. — niedriger als H1 2025 trotz höherem Gewinn (Working-Capital-/Inventaraufbau $30,7 Mio., plausibel als Wachstumsvorbereitung erklärt)</td><td class="warn">⚠ Beobachten, plausibel</td></tr>
+      <tr><td>Bilanz</td><td>$824,9 Mio. Cash+Wertpapiere, praktisch schuldenfrei</td><td class="pass">✅ Sehr stark</td></tr>
+      <tr><td>Patent-Portfolio</td><td>2.010 Patente + 476 ausstehende Anmeldungen (30.06.2026)</td><td class="pass">✅ Wachsend</td></tr>
+    </table>
+  </div>
+
+  <div class="section-label">Moat: STARK (konvergent) · Management: 7,5/10</div>
+  <div class="two-col">
+    <div class="col">
+      <div class="box">
+        <h3>Moat</h3>
+        <p>Physik-/IP-basiertes Nischen-Moat an der Schnittstelle Prozessor-Speicher-Sicherheit. Hohe Wechselkosten nach Design-Win, HBM4E-Controller-IP-Führung (16 Gbps/Pin). Oligopol (Rambus+Montage+Renesas = &gt;93% Marktanteil) — genau diese Konzentration ist jetzt auch Gegenstand der Kartellermittlung.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="box">
+        <h3>Management</h3>
+        <p>Gute operative Ausführung (Rekordquartale), CEO Luc Seraphin seit 2018. Aber zwei Finance-Rollen-Wechsel binnen eines Jahres (CFO April, CAO September 2026) — beide routinemäßig/ohne Dissens, verhindern aber einen höheren Score.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">⚠ Neuer, materieller Risiko-Fund: Südkorea-Kartellermittlung</div>
+  <div class="divergence-box">
+    <p style="font-size:9.2pt;">Am 15.07.2026 durchsuchte die Seoul Central District Prosecutors' Office die südkoreanischen Büros von Montage Technology, Renesas Electronics UND Rambus — Vorwurf: Preisabsprache beim Verkauf von Memory-Interface-Chips an Samsung Electronics und SK Hynix. Die drei Firmen kontrollieren zusammen &gt;93% des globalen Marktes. Mobiltelefone/Unterlagen wurden beschlagnahmt. Parallel läuft bereits seit Januar 2026 eine eigene DOJ-Untersuchung (USA). <b>Einordnung:</b> kein Going-Concern-Risiko, aber ein echtes neues Struktur-Risiko (potenzielle Bußgelder/Reputationsschaden), das in der 09.09.-Analyse noch nicht vollständig gewürdigt war.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive Refresh <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/8</div>
+  </div>
+</div>
+
+<!-- PAGE 4: Geschaeftsverlauf -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Geschäftsverlauf: Umsatz-Beschleunigung</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 4</div><div>RMBS Rambus</div></div>
+  </div>
+
+  <div class="section-label">Umsatz-Beschleunigung: Rekord-Q2, weitere Guidance-Anhebung</div>
+  <div class="bbb-frame" style="height:64mm; width:100%;"><img src="rmbs_revenue.png" alt="Rambus Umsatz-Trend"></div>
+
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Periode</th><th>Gesamtumsatz</th><th>Produktumsatz</th><th>Non-GAAP-EPS</th><th>Kommentar</th></tr>
+      <tr><td>Q1 2026</td><td>$180,2 Mio.</td><td>$88,0 Mio.</td><td>$0,63</td><td>Operating Cashflow $83,2 Mio.</td></tr>
+      <tr><td>Q2 2026 (Rekord)</td><td>$207,4 Mio. (+20,4% YoY, +15% QoQ)</td><td>$99,2 Mio. (+22% YoY)</td><td>$0,77 (+24% YoY)</td><td>Royalties $84,2 Mio., Operating Cashflow $61,2 Mio.</td></tr>
+      <tr><td>Q3 2026 (Guidance)</td><td>$210-216 Mio.</td><td>$110-116 Mio.</td><td>$0,75-0,82</td><td>Weitere Beschleunigung erwartet</td></tr>
+    </table>
+    <p style="margin-top:1.2mm; font-size:8.4pt;">2026er-Umsatzpfad grob $815-850 Mio. (sofern Q4 nicht enttäuscht) — deutliches Wachstum ggü. FY2025 ($707,6 Mio.).</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive Refresh <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 4/8</div>
+  </div>
+</div>
+
+<!-- PAGE 5: DCF Diskussionsrunde -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">DCF-Diskussionsrunde — ein echter Rechenfehler aufgedeckt</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 5</div><div>RMBS Rambus</div></div>
+  </div>
+
+  <div class="section-label">Runde 1 — großer Widerspruch</div>
+  <div class="box">
+    <table class="scenario-table">
+      <tr><th style="text-align:left;">Bein</th><th>Bear</th><th>Base</th><th>Bull</th><th>Rating</th></tr>
+      <tr><td style="text-align:left;">JJ (Runde 1)</td><td>$75-85</td><td class="warn"><b>$110-125</b></td><td>$150-170</td><td class="pass">KAUFEN</td></tr>
+      <tr><td style="text-align:left;">Conan (Runde 1)</td><td>$43</td><td class="warn"><b>$69</b></td><td>$111</td><td class="warn">BEOBACHTEN</td></tr>
+    </table>
+    <p style="margin-top:1.6mm; font-size:8.4pt;"><b>Aegis-Sanity-Check:</b> eigene Gegenrechnung von JJs genannten Annahmen (Umsatz $816 Mio., Wachstum 15-20% abflachend, FCF-Marge 22%, WACC 9%, Terminal Growth 2,5%) ergab rechnerisch nur ~$50-60/Aktie — NICHT $110-125. Dieser Befund wurde in die Diskussionsrunde eingebracht.</p>
+  </div>
+
+  <div class="section-label">Runde 2 — JJ bestätigt den eigenen Fehler, Konvergenz STARK</div>
+  <div class="divergence-box">
+    <h3>⚠ JJ: "Die ursprüngliche Angabe der $110-125 muss eine Fehleinschätzung gewesen sein"</h3>
+    <p>JJ prüfte die eigenen Annahmen nach und bestätigte explizit die Inkonsistenz — revidiert auf <b>DCF Bear $40-50 · Base $50-70 · Bull $80-95, Rating BEOBACHTEN/HALTEN</b> (nicht mehr KAUFEN). Conan bestätigte die eigene Skepsis und blieb im Kern bei <b>Bear $43 · Base $69 · Bull $105-115</b>, Rating unverändert BEOBACHTEN/HALTEN. Beide KIs lehnen JJs ursprüngliche $110-125 nach der Diskussion explizit ab.</p>
+  </div>
+
+  <div class="section-label">Visualisiert: von Widerspruch zu Konvergenz</div>
+  <div class="bbb-frame" style="height:62mm; width:100%;"><img src="rmbs_dcf_discussion.png" alt="Rambus DCF Diskussionsrunde"></div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive Refresh <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/8</div>
+  </div>
+</div>
+
+<!-- PAGE 6: Technische Analyse -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Technische Analyse (Twelve Data, real verifiziert)</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 6</div><div>RMBS Rambus</div></div>
+  </div>
+
+  <div class="section-label">TA-Score</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Indikator</th><th>Wert</th><th>Signal</th></tr>
+      <tr><td>RSI(14)</td><td>59,4</td><td>Neutral (nicht überkauft trotz Tagesrally)</td></tr>
+      <tr><td>MACD / Signal / Histogramm</td><td>-1,95 / -3,36 / +1,41</td><td class="pass">Bullischer Crossover, Momentum dreht nach oben (MACD-Linie noch unter Null)</td></tr>
+      <tr><td>SMA50</td><td>$93,09</td><td class="pass">Kurs ($95,77) knapp darüber</td></tr>
+      <tr><td>SMA200</td><td>$107,69</td><td class="fail">Kurs darunter — langfristiger Trend weiterhin bearish</td></tr>
+      <tr><td>Bollinger-Bänder (20): oben/Mitte/unten</td><td>$93,60 / $86,58 / $79,56</td><td class="fail">Kurs ÜBER dem oberen Band — statistisch überdehnt</td></tr>
+    </table>
+  </div>
+
+  <div class="section-label">Einordnung — kein These-vs-Kurs-Konflikt diesmal</div>
+  <div class="divergence-box">
+    <p style="font-size:9.2pt;">Kurzfristiges Momentum dreht positiv, aber der heutige Sprung hat den Kurs statistisch überdehnt (über dem oberen Bollinger-Band), und der langfristige Trend (unter SMA200) bleibt bearish. <b>Das bestätigt die fundamentale Vorsicht, statt ihr zu widersprechen</b> — anders als beim jüngsten Kokusai-Electric-Fall gibt es hier keinen echten These-vs-Kurs-Konflikt: Technik und Fundamentaldaten zeigen beide "nicht jetzt jagen".</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive Refresh <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/8</div>
+  </div>
+</div>
+
+<!-- PAGE 7: Kill-Sheet -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">🔪 Kill-Kriterien · Meilenstein</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 7</div><div>RMBS Rambus</div></div>
+  </div>
+
+  <div class="killsheet-box">
+    <h3>Meilenstein</h3>
+    <table class="verify-table">
+      <tr><th>Termin</th><th>Was beobachten</th></tr>
+      <tr><td>02.11.2026</td><td>Q3'26-Earnings — bestätigt sich das Wachstumstempo, wird Guidance erneut angehoben?</td></tr>
+      <tr><td>Laufend</td><td>Südkorea-Kartellverfahren — Anklage, Vergleich, oder folgenlose Einstellung?</td></tr>
+    </table>
+  </div>
+
+  <div class="trigger-row">
+    <div class="trigger-box bull">
+      <h3>📈 Nachkauf-Trigger</h3>
+      <ul>
+        <li>1. Rücksetzer in die Zone $68-75 (bestätigt und gestärkt, deckt sich mit reconciliiertem DCF-Base)</li>
+        <li>2. Keine negative Q3-Revision</li>
+        <li>3. Südkorea-Kartellverfahren ohne materielle Eskalation</li>
+      </ul>
+    </div>
+    <div class="trigger-box bear">
+      <h3>📉 Stop-These-/Kill-Trigger</h3>
+      <ul>
+        <li>1. Südkorea-Kartellverfahren führt zu Anklage/hohen Bußgeldern</li>
+        <li>2. Top-2-Kundenkonzentration steigt Richtung &gt;50%</li>
+        <li>3. Q3/Q4-Guidance wird verfehlt</li>
+        <li>4. HBM4E/AI-Memory-Narrativ bleibt ohne erkennbare 2027er-Umsatzwirkung</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive Refresh <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/8</div>
+  </div>
+</div>
+
+<!-- PAGE 8: Fazit -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Finale Synthese · Aegis-Verdict</div>
+    </div>
+    <div class="meta-block"><div class="date">21. September 2026 — Seite 8</div><div>RMBS Rambus</div></div>
+  </div>
+
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">BEOBACHTEN</div>
+      <div class="sub">Halten, kein Nachkauf</div>
+    </div>
+    <p style="font-size:9.6pt; color:var(--text); line-height:1.5;">Rambus liefert operativ deutlich besser als im September angenommen — Rekord-Q2, angehobene Q3-Guidance, starker Netto-Cash-Bestand. Aber der Kurs hat diese Verbesserung in einer einzigen Woche (+30%) bereits vorweggenommen und ist nach dem heutigen +9,3%-Sprung technisch überdehnt. Ein neuer, materieller Risikofaktor (Südkorea-Kartellermittlung seit Juli 2026) verschärft das bereits bekannte Konzentrationsrisiko. <b>Die Nachkauf-Zone $68-75 aus der 09.09.-Analyse wird bestätigt und durch den reconciliierten DCF-Base (~$50-70) gestärkt.</b></p>
+  </div>
+
+  <div class="section-label">Sizing-Plan (keine automatische Order)</div>
+  <div class="box">
+    <p><b>Bestehende Position:</b> halten, nicht bei $95,77 aufstocken.<br><b>Nachkauf-Zone $68-75:</b> bestätigt und gestärkt.<br><b>Über $110:</b> nahe Bull-DCF, Teilgewinn/Trim bei bestehender Position prüfen, falls Übergewicht.</p>
+  </div>
+
+  <div class="section-label">Konfidenz</div>
+  <div class="two-col">
+    <div class="col"><div class="box"><h3>Konfidenz</h3><p style="font-size:16pt; color:var(--yellow);">🟡 MITTEL</p><p>Piotroski-Divergenz aufgelöst, aber DCF zeigte eine erhebliche JJ-Rechenungenauigkeit, die erst durch die Diskussionsrunde aufgedeckt wurde.</p></div></div>
+    <div class="col"><div class="box"><h3>Nächster Prüfpunkt</h3><p style="font-size:12pt; color:var(--gold-bright);">02.11.2026</p><p>Q3'26-Earnings + laufende Entwicklung Südkorea-Kartellverfahren.</p></div></div>
+  </div>
+
+  <div class="section-label">Quellen (Auswahl)</div>
+  <div class="sources-list">
+    <div><span class="n">1</span>Rambus IR: Q1/Q2-2026-Ergebnisse, FY2025-Jahresergebnis, HBM4E-Controller-IP-Ankündigung</div>
+    <div><span class="n">2</span>SEC EDGAR 10-Q (30.06.2026): Kundenkonzentration, Bilanz, Cashflow</div>
+    <div><span class="n">3</span>Digitimes, MarketScreener, Seoul Economic Daily: Südkorea-Kartellermittlung (15.07.2026)</div>
+    <div><span class="n">4</span>Twelve Data: Live-Kurs + technische Indikatoren (RSI/MACD/SMA/Bollinger)</div>
+    <div><span class="n">5</span>JJ (Gemini) und Conan (ChatGPT) Full-Deep-Dive-Cross-Check inkl. Diskussionsrunde, 21.09.2026</div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive Refresh <span class="gold-dot">·</span> Volltext: analysen/RMBS-fulldeepdive-cross-check-2026-09-21.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 8/8</div>
+  </div>
+</div>
+
+</body>
+</html>

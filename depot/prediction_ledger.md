@@ -111,6 +111,16 @@ nicht als tägliche Meldung.
 - **Nächster Prüfpunkt:** Woche-28/52-Daten EVERLAST-A (H2 2026), Phase-2b-Daten (2027).
 - **Prüf-Zeithorizont:** 12 Monate (2027-09-21) — klinische Biotech-Kataloge brauchen mehr Zeit als ein normaler Quartalszyklus.
 
+### 2026-09-21 — Rambus Inc. (RMBS, Depot, Profi) — nachgetragen (Full-Deep-Dive-Refresh)
+- **Kategorie:** Profi (etablierte Semiconductor-IP-Firma seit 1990) · TMR-Pfad
+- **Anlass:** Bestehende Depot-Position von vor 2026-08-30, jetzt beim regulären [B] THESE-CHECK nachgetragen (Brians direkte Anforderung eines Full-Deep-Dive-Refresh der Analyse vom 09.09.2026). Siehe `analysen/RMBS-fulldeepdive-cross-check-2026-09-21.md`.
+- **Empfehlungs-Typ:** Bestätigung BEOBACHTEN/HALTEN, kein Nachkauf — Konvergenz startete als echter Rating-Widerspruch (JJ KAUFEN/DCF-Base $110-125 vs. Conan BEOBACHTEN/DCF-Base $69), nach Diskussionsrunde STARK konvergiert (beide BEOBACHTEN, DCF Base $50-70). **Bemerkenswerter Fund:** Aegis' eigene Gegenrechnung von JJs genannten DCF-Annahmen deckte eine Rechenungenauigkeit auf ($110-125 war mit JJs eigenen Annahmen nicht reproduzierbar) — JJ bestätigte das nach Konfrontation selbst.
+- **Zentrale These:** Rekord-Q2-2026-Zahlen (+20,4% Umsatz, Non-GAAP-EPS +24%) und angehobene Q3-Guidance bestätigen operative Stärke, aber der Kurs (+30% in einer Woche, $95,77) hat das bereits vorweggenommen. Neuer Struktur-Risiko-Fund: Südkorea-Kartellermittlung seit 15.07.2026 (Rambus+Montage+Renesas, Vorwurf Preisabsprache).
+- **Konkrete Erwartung (DCF, reconciliiert):** Bear $40-50 · Base $50-70 · Bull $95-115. Kurs $95,77 liegt am oberen Rand/über der Base-Spanne.
+- **These-Bruch-Kriterien:** (a) Südkorea-Kartellverfahren führt zu Anklage/hohen Bußgeldern; (b) Top-2-Kundenkonzentration steigt Richtung >50%; (c) Q3/Q4-Guidance wird verfehlt; (d) HBM4E/AI-Memory-Narrativ bleibt ohne erkennbare 2027er-Umsatzwirkung.
+- **Nächster Prüfpunkt:** Q3'26-Earnings (02.11.2026) + Entwicklung Südkorea-Kartellverfahren.
+- **Prüf-Zeithorizont:** 6 Monate (2027-03-21).
+
 ## Erledigt (Post-Mortem abgeschlossen)
 
 _Noch keine fälligen Einträge._
