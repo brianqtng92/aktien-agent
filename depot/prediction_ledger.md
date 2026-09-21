@@ -81,6 +81,16 @@ nicht als tägliche Meldung.
 - **Nächster Prüfpunkt:** Ausführung Tranche 1 (technische Bestätigung) sowie Q3-2026-Earnings.
 - **Prüf-Zeithorizont:** 6 Monate (2027-03-16).
 
+### 2026-09-21 — Oruka Therapeutics (ORKA, NASDAQ, US6876041087)
+- **Kategorie:** Talent (Biotech-Override) · Scout-Pfad
+- **Anlass:** Weltweite, regionsunabhängige Talent-Slot-Suche (2 freie Slots, siehe Agent-Playbook.md Punkt 1b) — Kandidat von JJ vorgeschlagen, siehe `analysen/ORKA-Scout-quickfilter-2026-09-21.md`.
+- **Empfehlungs-Typ:** Watchlist-Aufnahme (KEIN Kauf-Rating) — Rating bei Aufnahme: BEOBACHTEN-STARK. Konvergenz "moderat" (JJ nach Korrektur konstruktiv, Conan BEOBACHTEN — dessen Urteil auf einem von Aegis korrigierten Market-Cap-Fehler basierte).
+- **Zentrale These:** Klinisches Biotech (Phase 2a, Psoriasis-Antikörper ORKA-001/002), außergewöhnlich starke Bilanz (Cash-Runway 100+ Monate bei aktuellem Burn), Differenzierungspotenzial ggü. Skyrizi/Bimzelx (längere Dosierungsintervalle bei mind. gleicher Wirksamkeit).
+- **Konkrete Erwartung:** Kein DCF (Biotech-Override) — EV ~$5,2 Mrd. gegen Jefferies-Spitzenumsatzschätzung $5-10 Mrd. für ORKA-001 allein, als fair bis ambitioniert eingeordnet, nicht überzogen.
+- **These-Bruch-Kriterien:** (a) Woche-28/52-Daten EVERLAST-A zeigen Wirksamkeits- oder Sicherheitsrückschlag; (b) Insider-Nettoverkäufe beschleunigen sich deutlich über die bekannten steuerbedingten RSU-Verkäufe hinaus; (c) Cash-Runway verkürzt sich durch beschleunigten Burn ohne neue Finanzierungsquelle.
+- **Nächster Prüfpunkt:** Woche-28/52-Daten EVERLAST-A (H2 2026), Phase-2b-Daten (2027).
+- **Prüf-Zeithorizont:** 12 Monate (2027-09-21) — klinische Biotech-Kataloge brauchen mehr Zeit als ein normaler Quartalszyklus.
+
 ## Erledigt (Post-Mortem abgeschlossen)
 
 _Noch keine fälligen Einträge._
