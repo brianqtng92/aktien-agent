@@ -85,3 +85,23 @@ Kokusai Electric ist ein Qualitätsunternehmen mit einem echten, physikbasierten
 **NÄCHSTER PRÜFPUNKT:** Q2 FY2027-Zahlen (~Anfang November 2026) — insbesondere ob die FCF-Marge sich normalisiert und ob Aufträge/Guidance erneut bestätigt oder weiter angehoben werden.
 
 **KILL-KRITERIEN (Downgrade):** (a) Auftragseingang bricht nach Q1-Spitze deutlich ein; (b) FCF-Marge verschlechtert sich weiter statt sich Richtung 15-18% zu normalisieren; (c) China-Exportkontrollen verschärfen sich mit direktem Kokusai-Bezug; (d) NAND-Schwäche erweist sich als struktureller statt zyklischer Rückgang.
+
+---
+
+## 📊 TA-Nachtrag 2026-09-21 (Brian: "wo bleiben die technische Analyse") — Investor-Entry-Block
+
+**Quelle:** investing.com (Twelve Data deckt Tokyo nicht ab, siehe bekannte Tarif-Limitierung).
+
+| Indikator | Wert | Signal |
+|---|---|---|
+| RSI(14) | 67,2 | Buy (moderat bullisch, noch nicht extrem überkauft) |
+| MACD | 133,34 | Buy |
+| SMA5 | ¥8.816,00 | Buy (Kurs darüber) |
+| SMA20 | ¥8.495,85 | Buy |
+| SMA50 | ¥8.381,22 | Buy |
+| SMA200 | ¥8.562,41 | Buy |
+| Pivot-Support S1 / Resistance R1 | ¥8.786,66 / ¥8.856,66 | Kurs (¥8.884) bereits ÜBER R1 |
+
+**Gesamtbild: STRONG BUY (7 Buy-/0 Sell-Signale), Kurs über ALLEN gleitenden Durchschnitten.**
+
+**⚠ These-vs-Kurs-Einordnung (Agent-Playbook.md Preisalarm-System, Schritt 3b):** Echter Spannungspunkt zur fundamentalen Empfehlung (BEOBACHTEN, Nachkauf-Zone ¥6.500-7.800 statt Kaufen bei ¥8.884). Die Technik ist gerade STARK bullisch — kein Rücksetzer in Sicht, Kurs bereits über dem eigenen Pivot-Widerstand. Einordnung: die technische Stärke spiegelt vermutlich denselben Q1-FY2027-Rekord/Guidance-Anhebung wider, den auch die fundamentale These trägt — kein Widerspruch zur Story, aber ein klares Signal, dass die reine Bewertungs-Nachkauf-Zone (¥6.500-7.800) möglicherweise NICHT erreicht wird, wenn das Momentum anhält. **Konsequenz:** kein Grund, die fundamentale Vorsicht aufzugeben (Bewertung bleibt am oberen Rand der Base-Case-Spanne), aber auch kein Grund, aktiv auf einen Rücksetzer zu "hoffen" — ein Einstieg jetzt wäre ein bewusster Trade-off (Technik stark vs. Bewertung ambitioniert), keine Fehlentscheidung, aber auch kein von der Technik erzwungener Kauf.

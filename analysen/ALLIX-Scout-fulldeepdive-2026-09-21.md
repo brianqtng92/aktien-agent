@@ -80,3 +80,22 @@ Wallix zeigt einen echten, verifizierten Wendepunkt (erstmals FCF-positiv 2025, 
 **KILL-KRITERIEN:** (a) Rule-of-40 verschlechtert sich weiter statt sich zu verbessern; (b) FCF-Wende erweist sich als Einmaleffekt (Rückfall in negativen FCF); (c) neue Finanzierung wird für überteuerte/schlecht integrierte M&A verwendet statt organisches Wachstum zu stützen; (d) Kundenverlust an CyberArk/Delinea/BeyondtTrust wird dokumentiert.
 
 **Hinweis:** Dies wäre ein plausibler Kandidat für den 2. der noch offenen, weltweiten/regionsunabhängigen Talent-Slots (siehe `depot/master_status.md` Abschnitt 8) — der erste wurde bereits mit Oruka Therapeutics (ORKA) besetzt.
+
+---
+
+## 📊 TA-Nachtrag 2026-09-21 (Brian: "wo bleiben die technische Analyse")
+
+**Quelle:** investing.com (Twelve Data deckt Euronext Growth Paris nicht ab, siehe bekannte Tarif-Limitierung).
+
+| Indikator | Wert | Signal |
+|---|---|---|
+| RSI(14) | 52,4 | Neutral (weder überkauft noch überverkauft) |
+| MACD | 0,050 | Buy |
+| MA5 | €22,20 | Buy |
+| MA20 | €22,23 | Buy |
+| MA50 | €22,05 | Buy |
+| MA200 | €22,25 | **Sell** (Kurs praktisch exakt am langfristigen Durchschnitt — echter Wendepunkt, kein klares Signal) |
+
+**Gesamtbild: gemischt.** Kurz-/mittelfristig 12 Buy-/0 Sell-Signale (gleitende Durchschnitte) bzw. 8 Buy-/1 Sell (Gesamtindikatoren) — überwiegend bullisch, aber der 200-Tage-Durchschnitt mahnt beim längerfristigen Bild zur Vorsicht (Kurs liegt praktisch genau auf diesem Niveau, kein klarer Trend in beide Richtungen).
+
+**Einordnung:** Passt gut zur fundamentalen "Starter, keine große Position"-Empfehlung — die Technik bestätigt weder eindeutig einen Einstieg noch eine Warnung. Die Kauf-Zone €20-22 liegt praktisch am aktuellen Kurs (€22,25-22,40) und am 200-Tage-Durchschnitt (€22,25) gleichzeitig — ein echter charttechnischer Entscheidungspunkt, den das anstehende Zahlen-Update am 08.10.2026 wahrscheinlich auflösen wird (in die eine oder andere Richtung).
