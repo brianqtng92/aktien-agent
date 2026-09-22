@@ -141,6 +141,15 @@ nicht als tägliche Meldung.
 - **Nächster Prüfpunkt:** Q3 2026 Earnings (~November/Dezember 2026) — Backlog-Entwicklung (Ziel-Band Conan: &gt;$320-350 Mio.), weitere Insider-Transaktionen, erste Umsatzverträge aus Leonardo-/ERA-MoUs.
 - **Prüf-Zeithorizont:** 6 Monate (2027-03-22).
 
+### 2026-09-22 — McDonald's Corp. (MCD, Watchlist, Champions)
+- **Kategorie:** Champions (Bucket A, etablierter globaler Compounder) · TMR-Pfad
+- **Empfehlungs-Typ:** Watchlist-Aufnahme + Full Deep Dive am selben Tag — Rating BEOBACHTEN, einstimmig nach einer Diskussionsrunde, die einen echten KI-Fehler bei JJ aufdeckte (JJ hielt den erst am 23.09. stattfindenden Investor Day fälschlich für bereits abgeschlossen und leitete daraus KAUFEN ab; nach Korrektur mit der Primärquelle revidierte JJ auf BEOBACHTEN, Konvergenz mit Conan).
+- **Zentrale These:** Globaler Franchise-/Immobilien-Compounder mit elite Marge (45,7% operativ) und FCF-Marge (~28%), 50 Jahre Dividendenerhöhungen (Dividend King seit 17.09.2026). Aktuell aber echte "Value War"-Schwäche in den USA (Taco Bell +7% vs. MCDs +0,8% Comparable Sales), Kurs auf neuem 52W-Tief (-27,9% vom Allzeithoch).
+- **Konkrete Erwartung (DCF, drei unabhängige Ansätze nach Diskussionsrunde):** Aegis Bear $190/Base $255/Bull $312 · JJ (revidiert) Bear $190/Base $255/Bull $310 · Conan Bear $187/Base $250/Bull $309. Kurs $250,95 liegt praktisch exakt am Base-Fair-Value aller drei Ansätze — keine Sicherheitsmarge.
+- **These-Bruch-Kriterien:** (a) US-Comparable-Sales bleiben über 2+ Quartale negativ trotz neuer Strategie; (b) Net-Debt/EBITDA steigt über 4,0x ohne klaren Rückzahlungsplan; (c) Franchisenehmer-Widerstand gegen Value-Menü eskaliert zu offenem Konflikt/Klagen; (d) Remodel-Capex steigt stärker als angekündigt ohne belegten Traffic-Uplift.
+- **Nächster Prüfpunkt:** Investor Day, morgen 23.09.2026 (Leitkatalysator, Nachprüfung Pflicht) — danach Q3 2026 Earnings (~Oktober/November).
+- **Prüf-Zeithorizont:** 6 Monate (2027-03-22).
+
 ## Erledigt (Post-Mortem abgeschlossen)
 
 _Noch keine fälligen Einträge._
