@@ -131,6 +131,16 @@ nicht als tägliche Meldung.
 - **Nächster Prüfpunkt:** Q3 2026 Earnings (~November 2026, Leitkatalysator) — Umsatz ≥$3,3 Mrd., GM-Stabilität, FY27-Kommentar.
 - **Prüf-Zeithorizont:** 6 Monate (2027-03-21).
 
+### 2026-09-22 — HawkEye 360 (HAWK, Depot, Profi) — nachgetragen (Full-Deep-Dive-Refresh)
+- **Kategorie:** Profi (Bucket B, Quality in Formation, Deep-Tech-/Defense-Tech-Hybrid-Override) · Scout-Pfad, kein DCF
+- **Anlass:** Bestehende Depot-Position von vor 2026-08-30 (Smartbroker+, IPO Mai 2026), bereits zweimal analysiert (09.09. 3-fach, 16.09. 2-fach wegen Conan-Bridge-Ausfall), jetzt beim ersten echten 3-fach-Refresh seit 09.09. nachgetragen. Siehe `analysen/HAWK-fulldeepdive-cross-check-2026-09-16.md` (Nachtrag 22.09.).
+- **Empfehlungs-Typ:** Bestätigung HALTEN, unverändert ggü. 16.09. — JJ und Conan justieren beide vorsichtiger (JJ deutlich stärker), aber in dieselbe Richtung, kein Diskussionsrunden-Anlass (Grad-, kein Richtungsunterschied).
+- **Zentrale These:** Starkes operatives Wachstum (+87% YoY) und außergewöhnlich solide Bilanz ($503 Mio. Cash, keine Schulden) treffen auf eine unbewiesene Backlog-Dynamik und eine sich ausweitende Insider-Verkaufsserie (jetzt 3 Personen: Money, Searle, Turner seit Lockup-Ende 01.09.). Fresh-Eyes-Test (Standing Rule seit 16.09.) bestätigt erneut: als Neukandidat aktuell kein Kauf.
+- **Konkrete Erwartung (EV/Revenue-Band, kein DCF bei Scout):** EV/Forward-Revenue ~4,76x (Kompression von 20,4x bei IPO über 5,14x am 16.09.) — Sektor-Mittelfeld (Aerospace&Defense-Bandbreite 2,9x-11,45x), Kompression allein kein Kaufsignal ohne Backlog-/Insider-Klärung.
+- **These-Bruch-Kriterien (Kill-Sheet, UND-Bedingung):** (a) Backlog fällt in Q3/Q4 weiter UND (b) Insider verkaufen weiter aus — (b) ist jetzt real erfüllt, (a) bleibt offen, Trigger damit nicht vollständig ausgelöst. Zusätzlich: NRO-/Großkunde reduziert oder kündigt; verlorene Ausschreibung an BAE Azalea/Unseenlabs mit Marktanteils-Beleg.
+- **Nächster Prüfpunkt:** Q3 2026 Earnings (~November/Dezember 2026) — Backlog-Entwicklung (Ziel-Band Conan: &gt;$320-350 Mio.), weitere Insider-Transaktionen, erste Umsatzverträge aus Leonardo-/ERA-MoUs.
+- **Prüf-Zeithorizont:** 6 Monate (2027-03-22).
+
 ## Erledigt (Post-Mortem abgeschlossen)
 
 _Noch keine fälligen Einträge._

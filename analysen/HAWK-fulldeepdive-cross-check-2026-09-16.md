@@ -81,3 +81,31 @@ HawkEye 360 ist ein echtes, schnell wachsendes Unternehmen mit einer außergewö
 ## PDF
 
 Vollformat-Report: `reports/HAWK-agent-deepdive-2026-09-16.pdf` (J.A.C.K-Deep-Dive-Format, Scout-Pfad, Depot-Position).
+
+---
+
+## 🔄 Nachtrag 2026-09-22 — Full Deep Dive Refresh, erster echter 3-fach-Check seit 09.09.
+
+Brian bat um einen erneuten Full Deep Dive. Die letzte vollständige Fassung (09.09.) und der 2-fach-Zwischenstand (16.09., Conan-Bridge damals ausgefallen) sind die richtige Vergleichsbasis — **wichtiger eigener Prozess-Fund:** beim Dispatch an JJ/Conan wurde versehentlich der Stand vom 09.09. statt vom 16.09. als "letzter bekannter Stand" verwendet. Sachlich ändert das nichts (alle mitgeteilten Fakten waren korrekt datiert), aber zwei der als "neu seit dem letzten Full Deep Dive" präsentierten Punkte (Insider-Verkäufe Money/Searle, Europa-Strategie Leonardo/ERA) waren tatsächlich schon im 16.09.-Report verarbeitet — nur Michael Turners zusätzliche Insider-Verkäufe und die weitere Kursentwicklung sind wirklich neu seit dem 16.09. Transparent benannt statt stillschweigend übergangen.
+
+**Live-Daten (Aegis, Twelve Data):** Kurs **$15,69** (22.09.2026, -3,5% intraday), neues 52-Wochen-/Allzeittief bei **$15,45** (14.09.2026) — 52W-Hoch $35,73 (IPO-Höchststand), also **-56,1% vom Hoch**. Marktkap. ~$1,537 Mrd. (97,97 Mio. Aktien × $15,69, StockAnalysis.com), EV (ex Cash $503,4 Mio., unverändert seit Q2) ~$1,034 Mrd. **EV/Revenue TTM ~6,17x, EV/Forward-Revenue (FY26-Guidance-Mitte $217,5 Mio.) ~4,76x** — Multiple-Kompression setzt sich fort (war 5,14x am 16.09., 20,4x bei IPO).
+
+**Wirklich neu seit dem 16.09.-Report:**
+1. **Drittes Insider-Verkaufsereignis:** Michael Turner (Insider) verkaufte 8.250 Aktien am 15.09. zu $16,29 UND 18.256 Aktien am 16.09. zu $16,24 — laut Presseberichten über einen bestehenden 10b5-1-Plan. Der 16.09.-Report kannte nur Money (11.09.) und Searle (15.09.) — jetzt sind es drei verschiedene Insider innerhalb einer Woche, keine Netto-Käufe.
+2. **Russell-2000-Aufnahme jetzt wirksam** (21.09.2026, war im 16.09.-Report noch als "bevorstehend" gelistet) — reiner Index-/Flow-Katalysator, kein fundamentaler.
+3. **Kurs weiter gefallen:** $16,37 (16.09.) → $15,69 (22.09.), -4,2%, im Wesentlichen eine Fortsetzung des bestehenden Post-Lockup-Abwärtstrends, kein neuer eigenständiger Auslöser identifiziert.
+4. **Backlog-Frage weiterhin unverändert offen** — keine neue Zahl, nächste Daten erst zu Q3-2026 (~November/Dezember laut Earnings-Kalender).
+
+**Frischer TA-Check (Aegis, Twelve Data, [LIVE]):** RSI(14) **32,0** (nahe überverkauft, ähnlich 30,3 am 16.09.), MACD **-1,37/-1,34/-0,02** (Histogramm hat sich weiter verengt — von -0,18 am 16.09. auf -0,02 heute, ein früher, unbestätigter Hinweis auf nachlassenden Abwärtsdruck), SMA20 **$17,69**, SMA50 **$19,97** (Kurs klar unter beiden), Bollinger **$21,14/$17,69/$14,24** (Kurs zwischen Mittelband und unterem Band, näher am unteren Band, Band selbst noch nicht durchbrochen). **OBV-Trend:** war Mitte September (09.-17.) kurz positiv/stabilisierend, seit 18.09. wieder klar fallend (erneute Distribution, konsistent mit dem neuen Tief) — die kurze Stabilisierungsphase aus dem 16.09.-Report hat sich NICHT fortgesetzt.
+
+**JJ-Update (frisch dispatcht):** ordnet den diskretionären Money-Verkauf (Optionsausübung + sofortiger Verkauf, kein Vesting-/10b5-1-Zwang) als das qualitativ schlechteste der drei Signale ein und will den Management-Score von 7/10 auf 5-6/10 senken, Outcome-Verteilung von Base 55%/Bull 30%/Bear 15% auf ca. Base 50%/Bull 25%/Bear 25% verschieben — "vorsichtig konstruktiv" statt "implizit konstruktiv". TA-Verdikt: "stark negativ, aber potenziell überverkauft", kein Trendwende-Signal.
+
+**Conan-Update (frisch dispatcht, Bridge diesmal erreichbar):** stimmt zu, dass der Insider-Teil des eigenen 09.09.-Doppel-Triggers ("Backlog- UND Insider-Update") jetzt erfüllt ist, hält aber am Backlog-Teil als eigentlichem Entscheidungsfaktor fest — Rating verschiebt sich von "Halten/Beobachten" zu **"Beobachten/Hold mit negativem Bias"**, Management-Score 8,0→7,5/10, Outcome-Verteilung Bear-Gewicht 15%→18%. Explizit: EV/Revenue-Kompression allein ist noch kein Value-Signal, solange Backlog- und Insider-Optik nicht klarer werden ("niedriger Kurs = bessere Watchlist, aber noch kein Kaufsignal"). TA-Verdikt: überverkauft, aber kein Reversal — "fallendes Messer", Rückeroberungsschluss über $16,80-17,30 nötig für Entwarnung.
+
+**Aegis-Synthese (kein Diskussionsrunden-Anlass — Grad-, kein Richtungsunterschied):** JJ und Conan justieren in dieselbe Richtung (vorsichtiger, kein Upgrade, kein hartes Downgrade), nur JJ deutlich stärker als Conan. Beide bestätigen unabhängig: der Insider-Verkaufs-Trigger aus dem 09.09.-Report ist jetzt real erfüllt (und mit Turner sogar breiter als am 16.09. bekannt), der Backlog-Trigger bleibt unverändert offen. Das Kill-Sheet vom 16.09. verlangt für ein echtes Downgrade explizit BEIDE Bedingungen gleichzeitig ("Backlog fällt weiter UND Insider verkaufen weiter aus") — nur die Insider-Hälfte ist erfüllt, die Backlog-Hälfte bleibt unbeantwortet. **Kein Rating-Wechsel gerechtfertigt, aber auch kein Grund, die bereits am 16.09. korrigierte, nüchterne Tonalität wieder aufzuweichen.**
+
+**Fresh-Eyes-Test erneut durchgeführt (Konsistenz-Check zur 16.09.-Korrektur):** Würde Aegis HAWK heute bei $15,69 als neuen Kaufkandidaten empfehlen? Weiterhin **Nein** — dieselben Gründe wie am 16.09., jetzt ergänzt um ein drittes Insider-Verkaufsereignis und ein neues Allzeittief. Als Neukandidat weiterhin BEOBACHTEN/kein Kauf.
+
+**Finales Rating: HALTEN, unverändert ggü. 16.09.** Konfidenz 🟡 MITTEL, tendenziell leicht geschwächt (nicht verstärkt) durch die Turner-Verkäufe und das neue Tief, aber ohne vollständigen Trigger-Auslöser. Sizing-Deckel Tier 3, kein Nachkauf. Nächster verbindlicher Prüfpunkt unverändert: Q3-2026-Zahlen (~November/Dezember 2026), insbesondere Backlog-Entwicklung — jetzt mit der zusätzlichen Auflage, die Insider-Transaktionsfrequenz weiter zu beobachten.
+
+**Report:** `reports/HAWK-agent-deepdive-2026-09-22.pdf` (12 Seiten, gleiches Format wie 16.09., jetzt mit vollständiger 3-Stimmen-Leiste statt 2-fach-Check). Neuer Chart `reports/HAWK_chart_2026-09-22.png` (Kursverlauf seit IPO mit allen Ereignissen inkl. Turner-Verkäufe/Russell-2000-Aufnahme).

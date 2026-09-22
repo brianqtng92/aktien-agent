@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>J.A.C.K Deep Dive - HAWK Refresh</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FFFFFF; --bg-panel: #F7F6F2; --bg-panel-2: #EFEDE6;
+    --border: #D9D4C8; --border-soft: #E6E2D9;
+    --text: #262420; --text-dim: #5C564A; --text-faint: #837C6C;
+    --gold: #9C7A2E; --gold-bright: #8A6A22; --gold-dim: #C9AD6E;
+    --green: #3F7D44; --green-bg: rgba(63,125,68,0.10);
+    --yellow: #A6790A; --yellow-bg: rgba(166,121,10,0.10);
+    --red: #B03A2E; --red-bg: rgba(176,58,46,0.09);
+    --blue: #2E6690; --blue-bg: rgba(46,102,144,0.09);
+    --orange: #AB591C; --orange-bg: rgba(171,89,28,0.09);
+  }
+  html, body { width: 210mm; background: var(--bg); color: var(--text); font-family: "Carlito", "DejaVu Sans", Arial, sans-serif; font-size: 11pt; line-height: 1.36; }
+  .display { font-family: "DejaVu Sans Condensed", "DejaVu Sans", Arial, sans-serif; font-weight: 700; font-stretch: condensed; }
+  .page { width: 210mm; height: 297mm; padding: 8mm 12mm 5mm 12mm; display: flex; flex-direction: column; gap: 2mm; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .masthead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 2.6mm; }
+  .brand-block { display: flex; flex-direction: column; }
+  .brand { font-size: 23pt; letter-spacing: 0.06em; color: var(--text); }
+  .brand .accent { color: var(--gold-bright); }
+  .brand-sub { font-size: 9.4pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.5mm; }
+  .edition-tag { font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim); border: 1px solid var(--gold-dim); border-radius: 2px; padding: 0.8mm 2mm; margin-top: 1.6mm; display: inline-block; width: fit-content; }
+  .meta-block { text-align: right; font-size: 9.6pt; color: var(--text-dim); }
+  .meta-block .date { color: var(--text); font-size: 10.6pt; }
+  .position-header { display: flex; justify-content: space-between; align-items: center; background: var(--bg-panel); border: 1px solid var(--border-soft); border-left: 3px solid var(--gold); border-radius: 3px; padding: 2.6mm 4mm; }
+  .position-name .ticker { font-size: 17pt; letter-spacing: 0.04em; }
+  .position-name .company { font-size: 10pt; color: var(--text-dim); margin-top: 0.3mm; }
+  .position-stats { display: flex; gap: 5mm; }
+  .stat { text-align: right; }
+  .stat .label { font-size: 8.4pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); white-space: nowrap; }
+  .stat .value { font-size: 12pt; color: var(--text); margin-top: 0.4mm; white-space: nowrap; }
+  .hook-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 3.4mm 4.2mm; }
+  .hook-title { font-size: 16pt; line-height: 1.28; color: var(--text); font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .hook-title .accent { color: var(--gold-bright); }
+  .hook-title .accent-red { color: var(--red); }
+  .hook-sub { font-size: 9.6pt; color: var(--text-dim); line-height: 1.4; margin-top: 1.8mm; }
+  .narrative-box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 3mm 4mm; flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .narrative-box p { font-size: 9.4pt; color: var(--text-dim); line-height: 1.46; }
+  .narrative-box p b { color: var(--text); }
+  .narrative-box p .lead { color: var(--gold-bright); font-weight: bold; }
+  .section-label { font-size: 9.2pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 2.5mm; flex-shrink: 0; }
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--border-soft); }
+  .chart-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 74mm; flex: 0 0 auto; }
+  .chart-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; border-radius: 2px; }
+  .bbb-frame { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2mm; display: flex; align-items: center; justify-content: center; height: 60mm; flex: 0 0 auto; }
+  .bbb-frame img { max-width: 100%; max-height: 100%; }
+  .box { background: var(--bg-panel); border: 1px solid var(--border-soft); border-radius: 3px; padding: 2.2mm 3.2mm; overflow: hidden; flex-shrink: 0; }
+  .box h3 { font-size: 9.6pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-bottom: 1.1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .box p { font-size: 9.1pt; color: var(--text-dim); line-height: 1.32; overflow-wrap: break-word; }
+  .box p b { color: var(--text); }
+  .verify-table, .compare-table, .scenario-table, .score-table { width: 100%; border-collapse: collapse; margin-top: 1mm; }
+  .verify-table th, .verify-table td, .compare-table th, .compare-table td, .scenario-table th, .scenario-table td, .score-table th, .score-table td { font-size: 8.5pt; padding: 0.9mm 1.4mm; text-align: left; border-bottom: 1px solid var(--border-soft); }
+  .verify-table th, .compare-table th, .scenario-table th, .score-table th { color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; font-weight: normal; font-size: 7.9pt; }
+  .verify-table td, .compare-table td, .score-table td { color: var(--text); }
+  .scenario-table th, .scenario-table td { text-align: right; }
+  .scenario-table th:first-child, .scenario-table td:first-child { text-align: left; color: var(--text-dim); }
+  .pass { color: var(--green); } .fail { color: var(--red); } .warn { color: var(--yellow); }
+  .two-col { display: flex; gap: 3mm; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 2.2mm; }
+  .divergence-box { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--orange); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .divergence-box h3 { color: var(--orange); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.4mm; }
+  .divergence-box p { font-size: 9.2pt; color: var(--text); line-height: 1.42; }
+  .integrity-box { background: var(--blue-bg); border: 1px solid var(--blue); border-radius: 3px; padding: 2.6mm 3.6mm; }
+  .integrity-box h3 { color: var(--blue); font-size: 9.8pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.2mm; }
+  .integrity-box p { font-size: 9pt; color: var(--text); line-height: 1.4; }
+  .trigger-row { display: flex; gap: 3mm; }
+  .trigger-box { flex: 1; border-radius: 3px; padding: 2.4mm 3.4mm; }
+  .trigger-box.bull { background: var(--green-bg); border: 1px solid var(--green); }
+  .trigger-box.bear { background: var(--red-bg); border: 1px solid var(--red); }
+  .trigger-box h3 { font-size: 9.4pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2mm; }
+  .trigger-box.bull h3 { color: var(--green); }
+  .trigger-box.bear h3 { color: var(--red); }
+  .trigger-box ul { list-style: none; }
+  .trigger-box li { font-size: 8.8pt; color: var(--text); padding: 0.6mm 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .trigger-box li:last-child { border-bottom: none; }
+  .killsheet-box { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); border-radius: 3px; padding: 2.8mm 3.8mm; }
+  .killsheet-box h3 { color: var(--gold-bright); font-size: 10.4pt; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.6mm; }
+  .catalyst-item { display: flex; gap: 3mm; padding: 1.3mm 0; border-bottom: 1px solid var(--border-soft); align-items: flex-start; }
+  .catalyst-item:last-child { border-bottom: none; }
+  .catalyst-date { flex: 0 0 auto; width: 30mm; font-size: 8.8pt; color: var(--gold-bright); font-weight: bold; }
+  .catalyst-desc { flex: 1; font-size: 8.8pt; color: var(--text-dim); line-height: 1.32; }
+  .catalyst-desc b { color: var(--text); }
+  .warn-strip { background: var(--yellow-bg); border: 1px solid var(--yellow); border-radius: 3px; padding: 1.7mm 3mm; font-size: 8.7pt; color: var(--yellow); margin-top: 1mm; }
+  .warn-strip b { color: var(--text); }
+  .fazit { background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel)); border: 1px solid var(--gold-dim); border-radius: 3px; padding: 2.8mm 4mm; display: flex; align-items: center; gap: 5mm; flex-shrink: 0; }
+  .fazit-verdict { flex: 0 0 auto; max-width: 42mm; text-align: center; padding-right: 4mm; border-right: 1px solid var(--border-soft); }
+  .fazit-verdict .rating { font-size: 13pt; color: var(--yellow); letter-spacing: 0.02em; }
+  .fazit-verdict .sub { font-size: 8pt; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.6mm; }
+  .sources-list { font-size: 8.8pt; color: var(--text-dim); line-height: 1.5; }
+  .sources-list .n { color: var(--gold); margin-right: 1.5mm; }
+  .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 1.5mm; font-size: 8.1pt; color: var(--text-faint); flex-shrink: 0; }
+  .footer .gold-dot { color: var(--gold); }
+  .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm; }
+  .decision-card { border-radius: 3px; padding: 2.4mm 3.2mm; }
+  .decision-card.attractive { background: var(--green-bg); border: 1px solid var(--green); }
+  .decision-card.caution { background: var(--red-bg); border: 1px solid var(--red); }
+  .decision-card.watch { background: var(--blue-bg); border: 1px solid var(--blue); }
+  .decision-card.action { background: rgba(156,122,46,0.08); border: 1.5px solid var(--gold); }
+  .decision-card h3 { font-size: 9.1pt; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1mm; font-family: "DejaVu Sans Condensed", sans-serif; font-weight: 700; }
+  .decision-card.attractive h3 { color: var(--green); }
+  .decision-card.caution h3 { color: var(--red); }
+  .decision-card.watch h3 { color: var(--blue); }
+  .decision-card.action h3 { color: var(--gold-bright); }
+  .decision-card p { font-size: 8.5pt; color: var(--text); line-height: 1.34; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hook -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">3-fach Scout-Cross-Check · Aegis · JJ · Conan</div>
+      <div class="edition-tag">Depot-Position · Profi · Full Deep Dive · Refresh</div>
+    </div>
+    <div class="meta-block">
+      <div class="date">22. September 2026</div>
+      <div>Scout-Pfad (Bucket B) · Full Scout</div>
+      <div>Deep-Tech-/Defense-Tech-Hybrid-Override</div>
+    </div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-title">📡 HawkEye 360 — Neues Allzeittief, ein dritter Insider verkauft, <span class="accent-red">der Auftragsbestand bleibt die offene Frage</span></div>
+    <div class="hook-sub">HawkEye 360, Inc. (NYSE: HAWK) · Kurs $15,69 (22.09.2026) · 52W-/Allzeit-Range $15,45-$35,73 (-56% vom IPO-Hoch, neues Tief 14.09.) · Sektor Defense-Tech/Space-Data</div>
+  </div>
+
+  <div class="section-label">Refresh, erster echter 3-fach-Check seit dem 09.09. (Conan-Bridge am 16.09. ausgefallen)</div>
+  <div class="narrative-box">
+    <p><span class="lead">Das operative Geschäft bleibt unverändert stark.</span> Kein neues Quartal seit dem letzten Full Deep Dive (16.09.) — Q2 2026 bleibt der aktuelle Stand: Umsatz $49,8 Mio. (+87% YoY), $503 Mio. Cash ohne Schulden, Bruttomarge 70-82%. Der Auftragsbestand ($292,2 Mio., 30.06.) bleibt die zentrale, unverändert offene Frage bis zu den Q3-Zahlen (~November/Dezember).</p>
+    <p><span class="lead">Was sich seit dem 16.09. wirklich geändert hat.</span> Ein DRITTER Insider (Michael Turner) verkaufte am 15./16.09. zusätzlich 26.506 Aktien über einen 10b5-1-Plan — damit haben seit dem Lockup-Ende drei verschiedene Personen (Director Money, CFO Searle, Insider Turner) Aktien verkauft, keine Netto-Käufe. Die Russell-2000-Aufnahme ist jetzt wirksam (21.09., reiner Index-Katalysator). Der Kurs fiel weiter auf ein neues Allzeittief ($15,45 am 14.09., aktuell $15,69).</p>
+    <p><span class="lead">Eigener Prozess-Fund, transparent benannt.</span> Beim Dispatch an JJ/Conan wurde versehentlich der Stand vom 09.09. statt vom 16.09. als Vergleichsbasis verwendet — die mitgeteilten Fakten waren korrekt, aber zwei Punkte (Money/Searle-Verkäufe, Europa-Strategie) waren bereits im 16.09.-Report bekannt, nicht neu. Details Seite 11.</p>
+    <p><span class="lead">Der Cross-Check-Befund.</span> JJ und Conan justieren beide vorsichtiger (kein Upgrade, kein hartes Downgrade), JJ deutlich stärker als Conan — ein Grad-, kein Richtungsunterschied. Details Seite 2.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive (Refresh) <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-16.md (Nachtrag 22.09.)</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 1/12</div>
+  </div>
+</div>
+
+<!-- PAGE 2: 3-Stimmen-Leiste -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Executive Summary · 3-Stimmen-Leiste</div>
+    </div>
+    <div class="meta-block"><div class="date">22. September 2026 — Seite 2</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="position-header">
+    <div class="position-name">
+      <div class="ticker display">HAWK <span style="color:var(--text-dim); font-size:9.5pt;">· NYSE</span></div>
+      <div class="company">HawkEye 360, Inc. — kommerzielle RF-SIGINT-Satellitenkonstellation</div>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="label">Kurs</div><div class="value">$15,69</div></div>
+      <div class="stat"><div class="label">Seit IPO</div><div class="value" style="color:var(--red);">-53,9%</div></div>
+      <div class="stat"><div class="label">Vom 52W-Hoch</div><div class="value" style="color:var(--red);">-56,1%</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">3-Stimmen-Leiste (Conan diesmal erreichbar — erster echter 3-fach-Check seit 09.09.)</div>
+  <div style="display:flex; gap:2.4mm;">
+    <div class="box" style="flex:1;">
+      <h3>Aegis · Claude (Synthese)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">HALTEN</p>
+      <p style="font-size:8.4pt;">Konfidenz 🟡 MITTEL, tendenziell leicht geschwächt · Tier 3</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>JJ · Gemini (Full Scout, Refresh)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">Vorsichtig konstruktiv</p>
+      <p style="font-size:8.4pt;">Management-Score 7→5-6/10, Bear-Gewicht 15%→25%</p>
+    </div>
+    <div class="box" style="flex:1;">
+      <h3>Conan · ChatGPT (Scout, Refresh)</h3>
+      <p style="font-size:12pt; color:var(--yellow);">Beobachten, negativer Bias</p>
+      <p style="font-size:8.4pt;">Management-Score 8,0→7,5/10, Bear-Gewicht 15%→18%</p>
+    </div>
+  </div>
+  <div class="warn-strip" style="margin-top:0;"><b>Konvergenz (Grad-, kein Richtungsunterschied):</b> beide justieren in dieselbe Richtung (vorsichtiger, kein Kauf, kein hartes Verkaufssignal) — JJ deutlich stärker als Conan. Beide bestätigen unabhängig: der Insider-Teil des eigenen 09.09.-Doppel-Triggers ist jetzt real erfüllt, der Backlog-Teil bleibt offen. Kein Diskussionsrunden-Anlass, da keine echte Gegensätzlichkeit.</div>
+
+  <div class="integrity-box">
+    <h3>🔵 Neutralitäts-Check: Fresh-Eyes-Test erneut durchgeführt</h3>
+    <p>Am 16.09. wurde dieser Report bewusst auf einen "Fresh-Eyes-Test" umgestellt, nachdem Brian zu Recht eine Status-quo-Verzerrung angemerkt hatte. Erneuter Check heute: Würde Aegis HAWK bei $15,69 als komplett neuen Kandidaten zum Kauf empfehlen? <b>Weiterhin Nein.</b> Backlog wächst nicht mit dem Umsatz mit, jetzt drei statt zwei reale Insider-Verkäufe seit Lockup-Ende, die Technik bleibt bearish (wenn auch nahe überverkauft), GAAP bleibt verlustig. Als Neukandidat wäre das Urteil weiterhin <b>BEOBACHTEN, kein Kauf</b>. Für die bestehende, sehr kleine Position ändert das die Handlungskonsequenz nicht — kein Nachkauf, keine aktive Reduzierung allein wegen der Größe.</p>
+  </div>
+
+  <div class="section-label">Investment-These: nüchtern, unverändert ggü. 16.09.</div>
+  <div class="narrative-box" style="flex:0 0 auto;">
+    <p>HawkEye 360 hat weiterhin eine kapitalstarke, schuldenfreie Bilanz ($503 Mio. Cash) und echtes Umsatzwachstum (+87% YoY, letztes bekanntes Quartal). <b>Aber:</b> der Auftragsbestand wächst weiterhin nicht mit dem Umsatz mit, und die Insider-Verkaufsserie hat sich mit Michael Turner auf einen dritten Insider ausgeweitet. Die weitere Kursschwäche macht die Bewertung (EV/Forward-Revenue jetzt ~4,76x, von 5,14x am 16.09.) optisch günstiger — beide KIs sind sich einig, dass das allein noch kein Kaufsignal ist, solange Backlog und Insider-Bild nicht klarer werden. Die bestehende Kleinposition zu halten bleibt vertretbar, weil ihre Größe die Entscheidung wenig konsequenzreich macht, nicht weil die These stark wäre.</p>
+  </div>
+
+  <div class="section-label">Entscheidungs-Übersicht</div>
+  <div class="decision-grid">
+    <div class="decision-card attractive">
+      <h3>✓ Warum die Substanz stimmt</h3>
+      <p>$503 Mio. Cash ohne Schulden, +87% Umsatzwachstum (letztes Quartal), Bruttomarge 70-82%, echte Europa-Expansion (Leonardo/ERA), EV/Forward-Revenue jetzt nur noch ~4,76x.</p>
+    </div>
+    <div class="decision-card caution">
+      <h3>⚠ Warum kein Nachkauf jetzt</h3>
+      <p>Backlog unter Vorjahresendstand, jetzt drei (statt zwei) reale Insider-Verkäufe seit Lockup-Ende, neues Allzeittief, TA weiterhin bearish (wenn auch nahe überverkauft).</p>
+    </div>
+    <div class="decision-card watch">
+      <h3>👁 Was wir beobachten</h3>
+      <p>Q3-2026-Zahlen (~November/Dezember, Backlog entscheidend), weitere Insider-Transaktionen, erste Umsatzverträge aus den Europa-MoUs, Reversal-Bestätigung über $16,80-17,30.</p>
+    </div>
+    <div class="decision-card action">
+      <h3>▶ Aktion</h3>
+      <p>Fresh-Eyes-Urteil unverändert: aktuell KEIN Kaufkandidat. Bestehende Kleinposition unangetastet — kein Nachkauf vor Backlog-Erholung, keine aktive Reduzierung wegen der Größe.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive (Refresh) <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 2/12</div>
+  </div>
+</div>
+
+<!-- PAGE 3: Compounder-DNA-Check -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Vollständiger Compounder-DNA-Check (unverändert ggü. 16.09. — kein neues Quartal)</div>
+    </div>
+    <div class="meta-block"><div class="date">22. September 2026 — Seite 3</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="warn-strip"><b>Sektor-Override:</b> Deep-Tech/Defense-Tech-Hybrid — echter, schnell wachsender Umsatz UND software-ähnliche Bruttomarge UND Hardware-/Satelliten-Geschäft mit Regierungskunden-Konzentration, passt in keine Standard-Schublade. K-BASIS = 5.</div>
+
+  <div class="section-label">COMPOUNDER-DNA-CHECK: HAWK</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Kriterium</th><th>Schwelle/Erwartung</th><th>Ist-Wert</th><th>Status</th></tr>
+      <tr><td colspan="4" style="color:var(--gold); font-size:7.6pt; text-transform:uppercase; letter-spacing:0.05em; padding-top:1.8mm;">K-Kriterien (Gatekeeper)</td></tr>
+      <tr><td>Umsatzwachstum</td><td>Stark, beschleunigend</td><td>Q2 +87% YoY ($49,8 Mio.), international +134%, FY26-Guidance $215-220 Mio.</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Bruttomarge/Unit Economics</td><td>Hoch, software-ähnlich</td><td>~70-82% je Berechnungsbasis</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Operative Profitabilität in Formation</td><td>Adj.EBITDA/FCF Richtung positiv</td><td>Adj.EBITDA $7,0 Mio. (14%), FCF Q2 $5,4 Mio. positiv, H1 gesamt leicht negativ</td><td>🟡 Grenzfall</td></tr>
+      <tr><td>Bilanzqualität</td><td>Solide, kapitalisiert</td><td>Cash $503 Mio., keine langfristigen Schulden</td><td class="pass">✅ Erfüllt, sehr stark</td></tr>
+      <tr><td>Backlog/Revenue-Visibility</td><td>Wachsend, mind. stabil</td><td>$292,2 Mio. (30.06.) vs. $302,7 Mio. (FY25-Ende) — unverändert offen, keine neue Zahl</td><td>🟡 Gelbe Flagge, unverändert</td></tr>
+      <tr><td colspan="4" style="color:var(--gold); font-size:7.6pt; text-transform:uppercase; letter-spacing:0.05em; padding-top:1.8mm;">E-Kriterien</td></tr>
+      <tr><td>GAAP-Profitabilität</td><td>Trend Richtung positiv</td><td>Q2-Nettoverlust $15,3 Mio., primär D&A/SBC/Einmaleffekte</td><td class="fail">❌ Negativ, aber erklärbar</td></tr>
+      <tr><td>Kundenkonzentration</td><td>Diversifizierend/Beobachten</td><td>Mehrere Kunden &gt;10% Umsatzanteil</td><td>🟡 Beobachten</td></tr>
+      <tr><td>Kundenqualität/Missionskritikalität</td><td>Hoch</td><td>NRO-CRFCA operativ, Leonardo-MoU (Europa)</td><td class="pass">✅ Erfüllt</td></tr>
+      <tr><td>Dilution/SBC-Risiko</td><td>Kontrolliert</td><td>SBC ~15% des Umsatzes</td><td>🟡 Beobachten</td></tr>
+      <tr><td>Insider-Alignment</td><td>≥10%</td><td>~15,2% Directors/Officers-Gruppe — jetzt mit DREI (statt zwei) realen Verkaufsfällen seit Lockup-Ende zu relativieren</td><td>🟡 Substanziell, Beobachtungspunkt gewachsen</td></tr>
+      <tr><td>Marktgröße/TAM</td><td>Belegt, wachsend</td><td>$1,62→$3,45 Mrd. (8,7% CAGR), europäischer Fußabdruck</td><td>🟡 Solide, kein Hyper-TAM</td></tr>
+    </table>
+    <p style="margin-top:1.6mm; font-size:8.4pt;"><b>DNA-Urteil unverändert: 5/5 K-Kriterien im grünen bis gelben Bereich (kein Abbruch), 4 von 6 E-Kriterien mit Beobachtungs-Flag</b> (Insider-Alignment jetzt mit gewachsenem statt unverändertem Beobachtungspunkt). Kein sauberer Fall in beide Richtungen.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive (Refresh) <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 3/12</div>
+  </div>
+</div>
+
+<!-- PAGE 4: Historie -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Umsatz-/Backlog-Historie · Guidance-Track-Record (unverändert, kein neues Quartal)</div>
+    </div>
+    <div class="meta-block"><div class="date">22. September 2026 — Seite 4</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="section-label">Umsatz- vs. Backlog-Entwicklung (die zentrale Spannung dieser Analyse, unverändert)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Stichtag</th><th>Quartalsumsatz</th><th>YoY-Wachstum</th><th>Backlog</th><th>Backlog-Δ QoQ</th></tr>
+      <tr><td>31.12.2025 (FY25-Ende)</td><td>—</td><td>FY25 gesamt +74% ($117,7 Mio.)</td><td>$302,7 Mio.</td><td>—</td></tr>
+      <tr><td>31.03.2026 (Q1)</td><td>~$49,8 Mio. (H1-Anteil)</td><td>H1 +101%</td><td>$285,0 Mio.</td><td>-5,8%</td></tr>
+      <tr><td>30.06.2026 (Q2, aktuellster Stand)</td><td>$49,8 Mio.</td><td>+87%</td><td>$292,2 Mio.</td><td>+2,5%</td></tr>
+    </table>
+    <p style="margin-top:1.4mm;">Backlog liegt weiterhin unter dem Stand zum Jahresende 2025, trotz durchgehend starkem Umsatzwachstum. Für die FY26-Guidance-Mitte ($217,5 Mio.) fehlten nach dem H1-Umsatz ($99,6 Mio.) noch $115-120 Mio. in H2 — rund 30% des H2-Bedarfs muss aus neuen Aufträgen kommen. <b>Keine neue Zahl seit dem 16.09.-Report</b> — nächste Daten erst zu Q3-2026 (~November/Dezember 2026).</p>
+  </div>
+
+  <div class="section-label">Guidance-Track-Record</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Datum</th><th>Guidance</th><th>Status</th></tr>
+      <tr><td>Mai 2026 (424B4-IPO-Prospekt)</td><td>FY2026 Umsatz $215-220 Mio., Adj.-EBITDA $30-36 Mio.</td><td>Erste Guidance überhaupt</td></tr>
+      <tr><td>20.08.2026 (Q2-2026-Call)</td><td>unverändert bestätigt</td><td>🟡 Bestätigt, nicht angehoben</td></tr>
+    </table>
+    <p style="margin-top:1.2mm; font-size:8pt;">Kein Ist-vs-Guidance-Vergleich über mehrere Jahre möglich — HawkEye ist frisch gelistet (IPO Mai 2026).</p>
+  </div>
+
+  <div class="section-label">Management-/Gründer-Score</div>
+  <div class="box">
+    <table class="score-table">
+      <tr><th>Dimension</th><th>Befund</th><th>Einordnung</th></tr>
+      <tr><td>Founder-Market-Fit</td><td>CEO John Serafini seit 2016 im Unternehmen, Army/Harvard-Hintergrund, starkes Defense-Netzwerk</td><td>🟢 Stark</td></tr>
+      <tr><td>Europa-Kommunikation</td><td>Serafini betonte in Statements zur Leonardo-/ERA-Vereinbarung die europäische Datensouveränität explizit</td><td>🟢 Transparent</td></tr>
+      <tr><td>Public-Company-Track-Record</td><td>CFO erst seit September 2025 im Amt, IPO erst Mai 2026 — noch kein langer Track Record</td><td>🟡 Jung, unbewiesen</td></tr>
+      <tr><td>Insider-Alignment / -Verkäufe</td><td>~15,2% Directors/Officers-Gruppe, jetzt DREI reale Verkäufe (Money, Searle, Turner) seit Lockup-Ende — Money's Optionsausübung+Verkauf qualitativ das schwächste Signal</td><td>🟡 Beobachtungspunkt gewachsen</td></tr>
+      <tr><td>Kapitalallokation</td><td>IPO-Erlös zur Schuldenrückzahlung genutzt, $125-Mio.-Kreditlinie ungenutzt als Reserve</td><td>🟢 Solide, konservativ</td></tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive (Refresh) <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 4/12</div>
+  </div>
+</div>
+
+<!-- PAGE 5: Bewertung + Moat -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Bewertungscheck (aktualisiert) · Moat-in-Formation</div>
+    </div>
+    <div class="meta-block"><div class="date">22. September 2026 — Seite 5</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="section-label">Bewertungscheck (kein DCF-Zwang bei Scout) — Refresh</div>
+      <div class="box">
+        <table class="scenario-table">
+          <tr><th>Kennzahl</th><th>Wert (16.09. in Klammern)</th></tr>
+          <tr><td>Kurs</td><td>$15,69 ($16,37) [LIVE]</td></tr>
+          <tr><td>Shares Outstanding</td><td>~97,97 Mio.</td></tr>
+          <tr><td>Market Cap</td><td>~$1.537 Mio. (~$1.605 Mio.)</td></tr>
+          <tr><td>Cash (30.06., unverändert)</td><td>$503,4 Mio.</td></tr>
+          <tr><td>EV (ex Cash)</td><td>~$1.034 Mio. (~$1.118 Mio.)</td></tr>
+          <tr><td>EV/Revenue TTM</td><td>~6,17x</td></tr>
+          <tr><td><b>EV/Forward-Revenue (FY26-Guidance-Mitte)</b></td><td class="pass"><b>~4,76x (5,14x)</b></td></tr>
+        </table>
+        <p style="margin-top:1.2mm;"><b>Beide KIs unabhängig einig:</b> die weitere Multiple-Kompression macht HAWK optisch günstiger, ist aber allein noch kein Value-Signal — solange Backlog und Insider-Bild nicht klarer werden. Auf EV/Sales-Basis bleibt HAWK im Mittelfeld der Aerospace&amp;Defense-Bandbreite (2,9x-11,45x je Sub-Segment).</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="section-label">Bruttomargen-Verlauf (unverändert, kein neues Quartal)</div>
+      <div class="bbb-frame" style="height:52mm;"><img src="HAWK-margin-trend-2026-09-10.png" alt="HAWK Bruttomargen-Trend" style="max-width:100%; max-height:100%;"></div>
+      <div class="box">
+        <p style="font-size:8pt;">Marge fiel von 81,6% (FY2025) auf 67,7-70,2% (2026, ISA-Akquisitions-Effekt). Keine neue Quartalszahl seit 16.09.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Moat-in-Formation: unverändert Ø 7,5/10</div>
+  <div class="box">
+    <p><b>Positiv:</b> proprietäres RF-Datenarchiv (&gt;1 Mrd. Datenpunkte), vertikale Integration (Collection→Analytics), NRO-Operationalisierung als starkes Switching-Cost-Indiz, First-Mover als einzige börsennotierte kommerzielle RF-SIGINT-Konstellation. Europa-Strategie (Luxemburg-Tochter, Leonardo-MoU, ERA-Vereinbarung, 15.09.) weiterhin als echter struktureller Fortschritt gewertet — noch keine Folgeverträge, aber auch kein Rückzieher.</p>
+    <p style="margin-top:1mm;"><b>Schwächen:</b> kein Monopol (Unseenlabs/Frankreich, BAE Systems Azalea als kapitalstarker Prime Contractor real), Switching-Costs noch nicht auf SaaS-Niveau bewiesen, Nischenrisiko real (Kleos-Space-Insolvenz 2023 als Präzedenzfall).</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive (Refresh) <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 5/12</div>
+  </div>
+</div>
+
+<!-- PAGE 6: Kursverlauf + EV/Sales -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Kursverlauf seit IPO (aktualisiert) · EV/Revenue-Verlauf</div>
+    </div>
+    <div class="meta-block"><div class="date">22. September 2026 — Seite 6</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="section-label">Kursverlauf seit IPO, mit den zentralen Ereignissen — Refresh 22.09.</div>
+  <div class="chart-frame" style="height:88mm; width:100%;"><img src="HAWK_chart_2026-09-22.png" alt="HAWK Kursverlauf, Refresh 22.09.2026"></div>
+
+  <div class="section-label">EV/Revenue-Verlauf seit IPO</div>
+  <div class="bbb-frame" style="height:48mm; width:100%;"><img src="HAWK-evsales-trend-2026-09-10.png" alt="HAWK EV/Revenue-Verlauf"></div>
+
+  <p style="font-size:7.6pt; color:var(--text-faint); line-height:1.3;">Kursdaten: Twelve Data, Tagesbasis, seit IPO (07.05.2026). EV/Revenue-Kompression setzt sich fort: ~20,4x (IPO) → ~5,14x (16.09.) → ~4,76x (heute, Forward-Basis) — primär weiterer Kursverfall, nicht Umsatzrückgang. Peer Spire Global zuletzt ~9,1x.</p>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive (Refresh) <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 6/12</div>
+  </div>
+</div>
+
+<!-- PAGE 7: Technische Analyse -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Technische Analyse — frischer Check (Twelve Data, [LIVE])</div>
+    </div>
+    <div class="meta-block"><div class="date">22. September 2026 — Seite 7</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="section-label">TA-Werte (22.09.2026, Twelve Data — 16.09.-Wert in Klammern)</div>
+      <div class="box">
+        <table class="verify-table">
+          <tr><td>Kurs vs. SMA20/SMA50</td><td>$15,69 vs. $17,69 / $19,97</td><td class="fail">Klar unter beiden</td></tr>
+          <tr><td>Seit IPO / vom 52W-Hoch</td><td>-53,9% / -56,1% (neues Allzeittief $15,45, 14.09.)</td><td class="fail">Bearish, neues Tief</td></tr>
+          <tr><td>RSI(14)</td><td>32,0 (30,3)</td><td class="warn">Nahe überverkauft, unverändert</td></tr>
+          <tr><td>MACD</td><td>-1,37, Signal -1,34, Hist. -0,02 (Hist. -0,18 am 16.09. — deutliche Verengung)</td><td class="warn">Bearish, Momentum-Verlust verlangsamt sich weiter</td></tr>
+          <tr><td>Bollinger</td><td>$21,14 / $17,69 / $14,24 — Kurs zwischen Mittel- und unterem Band, näher am unteren</td><td class="warn">Untere Zone, Band nicht durchbrochen</td></tr>
+          <tr><td>OBV-Trend</td><td>Kurze Stabilisierung Mitte September, seit 18.09. wieder klar fallend</td><td class="fail">Erneute Distribution</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="col">
+      <div class="box">
+        <h3>Gesamtscore &amp; Rating</h3>
+        <p style="font-size:14pt; color:var(--red);">Weiterhin <b>BEARISH</b>, nahe überverkauft</p>
+        <p style="font-size:8.4pt;">Kurs auf neuem Allzeittief, RSI nahe überverkauft (unverändert), OBV zeigt nach kurzer Stabilisierung wieder Distribution. Die MACD-Histogramm-Verengung (-0,18→-0,02) ist der einzige Lichtblick — ein früher, unbestätigter Hinweis auf nachlassenden Abwärtsdruck, kein Reversal-Signal.</p>
+      </div>
+      <div class="box">
+        <h3>Einordnung für die Position</h3>
+        <p style="font-size:8.4pt;"><b>Bewertung:</b> Sektor-Mittelfeld, jetzt günstiger (EV/Fwd-Revenue ~4,76x)<br><b>Technik:</b> klar bearish, kein Bodenbildungssignal<br><b>Konsequenz:</b> stützt HALTEN unverändert — weder Kauf- noch Verkaufssignal.</p>
+      </div>
+    </div>
+  </div>
+  <div class="warn-strip"><b>Conans Reversal-Schwelle:</b> ein Rückeroberungsschluss über $16,80-17,30, idealerweise mit MACD-Cross und höherem Volumen, wäre die erste echte Entwarnung. Unter $15,45 bleibt der Chart im Preisfindungsmodus nach unten.</div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive (Refresh) <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 7/12</div>
+  </div>
+</div>
+
+<!-- PAGE 8: Kill-Sheet + Meilenstein-Timeline -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">🔪 Thesis-Kill-Sheet · Meilenstein-Timeline (aktualisiert)</div>
+    </div>
+    <div class="meta-block"><div class="date">22. September 2026 — Seite 8</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="killsheet-box">
+    <h3>Meilenstein-Timeline</h3>
+    <table class="verify-table">
+      <tr><th>Termin</th><th>Was beobachten</th><th>Positives Signal</th><th>Warnsignal</th></tr>
+      <tr><td>~November/Dezember 2026</td><td>Q3-2026-Zahlen</td><td>Backlog Richtung &gt;$320-350 Mio. ODER klares Book-to-Bill-Argument, sinkender SBC-Anteil</td><td>Backlog fällt weiter unter $292 Mio., keine neuen Großaufträge</td></tr>
+      <tr><td>Laufend</td><td>Insider-Transaktionen</td><td>Keine weiteren Verkäufe über die drei bekannten Fälle hinaus, idealerweise Open-Market-Käufe</td><td>Weitere, größere oder unbegründete Verkäufe</td></tr>
+      <tr><td>✅ 21.09.2026, erledigt</td><td>Russell-2000-Aufnahme</td><td class="pass">Bestätigt wie angekündigt, wirksam — moderater Indexfonds-Kaufdruck</td><td>—</td></tr>
+      <tr><td>Laufend</td><td>Europa-Strategie (Leonardo/ERA)</td><td>MoUs werden zu konkreten Umsatzverträgen</td><td>MoUs bleiben unverbindlich, keine Folgeverträge binnen 1-2 Quartalen</td></tr>
+    </table>
+  </div>
+
+  <div class="trigger-row">
+    <div class="trigger-box bull">
+      <h3>📈 Aufstufungs-Trigger (mind. 2/3)</h3>
+      <ul>
+        <li>1. Backlog stabilisiert sich Richtung &gt;$320 Mio. in Q3/Q4</li>
+        <li>2. Europa-MoUs führen zu ersten konkreten Verträgen</li>
+        <li>3. SBC-Anteil am Umsatz sinkt sichtbar, internationales Wachstum bleibt &gt;100%</li>
+      </ul>
+    </div>
+    <div class="trigger-box bear">
+      <h3>📉 Abstufungs-Trigger</h3>
+      <ul>
+        <li>1. Backlog fällt weiter UND Insider verkaufen weiter aus — <b>Insider-Hälfte jetzt real erfüllt (3. Fall Turner), Backlog-Hälfte weiterhin offen</b></li>
+        <li>2. NRO- oder anderer Großkunde reduziert/kündigt</li>
+        <li>3. Verlorene Ausschreibung an BAE/Unseenlabs mit Marktanteils-Beleg</li>
+      </ul>
+      <p style="font-size:8.2pt; color:var(--text-dim); margin-top:1.2mm;">Kein Trigger VOLLSTÄNDIG ausgelöst (Bedingung ist UND, nicht ODER) — Halten bleibt vertretbar, aber der erste Trigger ist näher an der Auslösung als am 16.09.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive (Refresh) <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 8/12</div>
+  </div>
+</div>
+
+<!-- PAGE 9: Bilanz + Insider -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Bilanzstruktur · Insider-Transaktionen (aktualisiert, dritter Fall)</div>
+    </div>
+    <div class="meta-block"><div class="date">22. September 2026 — Seite 9</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="section-label">Bilanzstruktur &amp; Verwässerungsrisiko (unverändert, kein neues Quartal)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Position</th><th>Wert</th><th>Einordnung</th></tr>
+      <tr><td>Cash &amp; Äquivalente (30.06.)</td><td>$503 Mio.</td><td>Sehr solide</td></tr>
+      <tr><td>Langfristige Schulden</td><td>$0</td><td>$49,5 Mio. Altschulden nach IPO zurückgezahlt</td></tr>
+      <tr><td>Kreditlinie (5J, revolvierend)</td><td>$125 Mio., ungenutzt</td><td>Reserve, nicht in Anspruch genommen</td></tr>
+      <tr><td>SBC (Q2 2026)</td><td>$7,5 Mio. (~15% des Umsatzes)</td><td>Dilutions-Warnsignal, typisch für frische Post-IPO-Unternehmen</td></tr>
+    </table>
+  </div>
+
+  <div class="section-label">Insider-Transaktionen — jetzt DREI reale Fälle seit Lockup-Ende (01.09.)</div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Datum</th><th>Person</th><th>Transaktion</th><th>Einordnung</th></tr>
+      <tr><td>11.09.2026</td><td>Arthur L. Money (Director)</td><td>Verkauf 50.000 Aktien @ Ø $16,41, nach Optionsausübung ($0,23 Ausübungspreis)</td><td class="warn">🟡 Diskretionär, qualitativ das schwächste Signal (kein Vesting-/10b5-1-Zwang)</td></tr>
+      <tr><td>15.09.2026</td><td>Craig Searle (CFO)</td><td>Sell-to-Cover 9.228 von bis zu 19.189 möglichen Aktien, Steuerdeckung RSU-Vesting @ $16,29</td><td class="warn">🟡 Routine, kein freies Abstoßen</td></tr>
+      <tr><td>15./16.09.2026</td><td>Michael Turner (Insider)</td><td>8.250 Aktien @ $16,29 + 18.256 Aktien @ $16,24 (26.506 gesamt) — laut Presse über 10b5-1-Plan</td><td class="warn">🟡 Vordefiniert, aber real — NEU seit 16.09.</td></tr>
+    </table>
+    <p style="margin-top:1.2mm;"><b>Einordnung:</b> per SEC-Form-4-Direktabruf verifiziert. Drei verschiedene Personen innerhalb einer Woche, keine Netto-Käufe. Zwei der drei Fälle (Searle, Turner) sind vordefiniert/vesting-getrieben, nicht frei diskretionär — der Money-Fall (echte Optionsausübung + sofortiger Verkauf) bleibt das qualitativ kritischste Einzelsignal. <b>Kein Alarmsignal, aber ein gewachsener Beobachtungspunkt</b> ggü. dem 16.09.-Stand.</p>
+  </div>
+
+  <div class="section-label">Struktur-Risiko (unverändert)</div>
+  <div class="box">
+    <p style="font-size:8.6pt;">Regierungskunden-Konzentration (NRO + verbündete Nachrichtendienste), Einzelkunden-Konzentration &gt;10% bei mehreren Kunden, Wettbewerbsverdichtung durch BAE Systems Azalea als kapitalstarker Prime Contractor, Space-/Execution-Risiko (Launch, Satellitenausfälle).</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive (Refresh) <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 9/12</div>
+  </div>
+</div>
+
+<!-- PAGE 10: Risiko-Quadrant -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Risiko-Quadrant — Wahrscheinlichkeit × Schaden (unverändert)</div>
+    </div>
+    <div class="meta-block"><div class="date">22. September 2026 — Seite 10</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="section-label">Risiko-Quadrant — abgeleitet aus eigenen Modulen, nicht frei erfunden</div>
+  <div class="bbb-frame" style="height:72mm; width:100%;"><img src="HAWK_risk_quadrant_2026-09-16.png" alt="HAWK Risiko-Quadrant"></div>
+  <div class="box">
+    <table class="verify-table">
+      <tr><th>Risiko</th><th>Herkunft im Report</th><th>Frühindikator</th></tr>
+      <tr><td>Backlog verfehlt Q3/Q4-Erholung</td><td>Backlog-Check (S.4)</td><td>Q3-Backlog bleibt unter $300 Mio. oder fällt weiter</td></tr>
+      <tr><td>Insider-Verkäufe weiten sich weiter aus</td><td>Insider-Check (S.9)</td><td>Weitere Form-4-Verkäufe über die drei bekannten Fälle hinaus — Trend bereits wachsend (2→3)</td></tr>
+      <tr><td>Wettbewerbsverlust an BAE Azalea/Unseenlabs</td><td>Moat-Check (S.5)</td><td>Bekanntwerdung einer verlorenen Ausschreibung</td></tr>
+      <tr><td>Europa-Strategie bleibt PR ohne Umsatz</td><td>Moat-Check (S.5), Insider-Check (S.9)</td><td>Keine Folgeverträge aus Leonardo/ERA-MoUs binnen 1-2 Quartalen</td></tr>
+      <tr><td>Regierungsbudget-/Beschaffungsrisiko (NRO)</td><td>Struktur-Risiko (S.9)</td><td>Budgetkürzungen oder Vertragsverzögerungen bei US-Regierungskunden</td></tr>
+    </table>
+    <p style="margin-top:1mm; font-size:7.8pt;"><b>Einordnung:</b> der obere rechte Quadrant (Hoch-Wahrscheinlichkeit/Hoch-Schaden) enthält weiterhin die Backlog-Frage als zentralen, wiederkehrenden Unsicherheitsfaktor — jetzt ergänzt um den wachsenden Insider-Verkaufstrend als zweiten, real (nicht nur hypothetisch) beobachtbaren Punkt.</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive (Refresh) <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 10/12</div>
+  </div>
+</div>
+
+<!-- PAGE 11: Prozess-/Datenintegritaets-Hinweis -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Prozess-/Datenintegritäts-Hinweis</div>
+    </div>
+    <div class="meta-block"><div class="date">22. September 2026 — Seite 11</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="integrity-box">
+    <h3>🔵 Eigener Prozess-Fund: falsche Vergleichsbasis beim JJ/Conan-Dispatch</h3>
+    <p>Beim Dispatch der Refresh-Anfrage an JJ und Conan wurde versehentlich der Stand vom 09.09.2026 (letzter vollständiger 3-fach-Check) statt vom 16.09.2026 (letzter, nur 2-fach durchgeführter Zwischenstand, damals mit Fresh-Eyes-Korrektur) als "letzter bekannter Stand" verwendet. Sachlich blieb das folgenlos — alle mitgeteilten Fakten waren korrekt datiert und real — aber zwei der als "neu seit dem letzten Full Deep Dive" präsentierten Punkte (Insider-Verkäufe von Money/Searle, Europa-Strategie Leonardo/ERA) waren bereits im 16.09.-Report bekannt und dort bereits in die HALTEN-Einschätzung eingepreist. Wirklich neu seit dem 16.09. sind nur: die zusätzlichen Insider-Verkäufe von Michael Turner, die jetzt wirksame Russell-2000-Aufnahme, und die weitere Kursentwicklung zum neuen Allzeittief.</p>
+  </div>
+
+  <div class="section-label">Warum das die Substanz dieser Analyse nicht verändert</div>
+  <div class="box">
+    <p style="font-size:8.6pt;">JJs und Conans fachliche Einschätzungen bleiben inhaltlich valide, weil sie sich korrekt auf reale, richtig datierte Ereignisse stützen — nur die Rahmung "was ist neu seit dem letzten Check" musste in dieser Aegis-Synthese nachträglich auf die korrekte Basis (16.09.) zurückgeführt werden. Dieser Fund wird hier transparent benannt statt stillschweigend übergangen, konsistent mit der bereits am 16.09. etablierten Praxis, Status-quo-Verzerrungen offen zu machen statt zu glätten.</p>
+  </div>
+
+  <div class="section-label">Bridge-Status dieser Sitzung</div>
+  <div class="box">
+    <p style="font-size:8.6pt;">Sowohl JJ (Gemini) als auch Conan (ChatGPT) waren in dieser Sitzung durchgehend erreichbar — erster echter 3-fach-Check für HAWK seit dem 09.09.2026 (am 16.09. war die OpenAI-Bridge ausgefallen, siehe damaliger Report).</p>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive (Refresh) <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 11/12</div>
+  </div>
+</div>
+
+<!-- PAGE 12: Fazit + Quellen -->
+<div class="page">
+  <div class="masthead">
+    <div class="brand-block">
+      <div class="brand display">J.A.C.K <span class="accent">DEEP DIVE</span></div>
+      <div class="brand-sub">Finales Fazit · Kategorisierungs-Konsequenz · Quellen</div>
+    </div>
+    <div class="meta-block"><div class="date">22. September 2026 — Seite 12</div><div>HAWK HawkEye 360</div></div>
+  </div>
+
+  <div class="fazit">
+    <div class="fazit-verdict">
+      <div class="rating display">HALTEN</div>
+      <div class="sub">Unverändert ggü. 16.09. · Fresh-Eyes: kein Kaufkandidat</div>
+    </div>
+    <p style="font-size:9.6pt; color:var(--text); line-height:1.5;">Fresh-Eyes-Test erneut bestätigt: Würde Aegis HAWK bei $15,69 heute als neuen Kandidaten kaufen? <b>Nein.</b> Backlog wächst weiterhin nicht mit dem Umsatz mit, jetzt drei statt zwei reale Insider-Verkäufe, die Technik bleibt bearish (nahe überverkauft), GAAP bleibt verlustig, neues Allzeittief. Die starke Bilanz und das Wachstum reichen weiterhin nicht aus, um diese Häufung offener Fragen aufzuwiegen — aber auch keiner der beiden Kill-Sheet-Abstufungs-Trigger ist VOLLSTÄNDIG erfüllt (Backlog-Bedingung offen). <b>Aegis' Synthese: HALTEN bleibt "keine überzeugende Kaufthese, Position zu klein für aktives Handeln"</b> — Konfidenz 🟡 MITTEL, tendenziell leicht geschwächt statt verstärkt.</p>
+  </div>
+
+  <div class="section-label">Konsequenz für Kategorisierung</div>
+  <div class="box">
+    <p>HawkEye 360 bleibt Kategorie Profi. Kein Nachkauf vor einer klaren Backlog-Erholung — auf Fresh-Eyes-Basis wäre das aktuell ohnehin kein Kaufkandidat. Keine aktive Reduzierung. Nächster Pflicht-Prüfpunkt unverändert: Q3-2026-Zahlen (~November/Dezember 2026), jetzt mit der zusätzlichen Auflage, die Insider-Transaktionsfrequenz weiter zu beobachten.</p>
+  </div>
+
+  <div class="section-label">Quellen (Auswahl)</div>
+  <div class="box">
+    <div class="sources-list">
+      <div><span class="n">1</span>SEC 10-Q (30.06.2026), 8-K-Earnings-Release, 424B4-Prospekt (CIK 0001750704)</div>
+      <div><span class="n">2</span>SEC EDGAR Form 4 — Insider-Transaktionen Money/Searle/Turner (direkt abgerufen)</div>
+      <div><span class="n">3</span>HawkEye-360-Pressemeldung 15.09.2026 (Europa-Strategie/Leonardo/ERA)</div>
+      <div><span class="n">4</span>NRO-Pressemeldung (19.08.2026) — CRFCA-Vertrag</div>
+      <div><span class="n">5</span>Twelve Data — Kurs-/TA-Daten HAWK (autoritative Quelle für alle [LIVE]-Werte)</div>
+      <div><span class="n">6</span>StockAnalysis.com — Marktkap./Shares-Outstanding-Basis</div>
+      <div><span class="n">7</span>JJ (Gemini) + Conan (ChatGPT) — eigenständige Full-Scout-Refresh-Analysen</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>J.A.C.K Full Deep Dive (Refresh) <span class="gold-dot">·</span> Volltext: analysen/HAWK-fulldeepdive-cross-check-2026-09-16.md</div>
+    <div>Keine Anlageberatung <span class="gold-dot">·</span> Seite 12/12</div>
+  </div>
+</div>
+
+</body>
+</html>

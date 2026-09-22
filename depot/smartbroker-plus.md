@@ -68,6 +68,23 @@ Musters, kein neuer unternehmensspezifischer Fund. Status weiterhin
 HALTEN, kein Nachkauf (Position bewusst "voll", nächster Pflicht-Prüfpunkt
 Q3-2026-Zahlen ~Dezember, siehe earnings_calendar.md).
 
+**Update 2026-09-22 (Full Deep Dive Refresh, erster echter 3-fach-Check seit
+09.09., Twelve Data):** Live-Kurs 15,69 $/Aktie — neues 52-Wochen-/Allzeittief
+bei 15,45 $ (14.09.), -56% vom IPO-Hoch. Aktueller Wert: 100 × 15,69 $ ≈
+**1.569 $ (~1.345 €)** — ca. -6,7% ggü. Investsumme in USD-Basis, deutlich
+schwächer als das EUR-Update vom 18.09. (dortiger Wert 1.416,73 € beruhte auf
+16,27 $, also vor dem weiteren Rückgang). Rating **HALTEN, unverändert ggü.
+16.09.** — Fresh-Eyes-Test erneut bestätigt kein Kaufkandidat. Wichtigster
+Fund: ein DRITTER Insider (Michael Turner, 26.506 Aktien über 10b5-1-Plan)
+verkaufte am 15./16.09. zusätzlich zu Director Money (11.09.) und CFO Searle
+(15.09.) — der Insider-Teil des eigenen Kill-Sheet-Abstufungs-Triggers ist
+damit real erfüllt, der Backlog-Teil bleibt unverändert offen (keine neue
+Zahl vor Q3). Siehe `analysen/HAWK-fulldeepdive-cross-check-2026-09-16.md`
+(Nachtrag 22.09.) und `reports/HAWK-agent-deepdive-2026-09-22.pdf`. Kein
+Nachkauf, keine Reduzierung (Position weiterhin "voll", zu klein für aktives
+Handeln). Nächster Pflicht-Prüfpunkt unverändert: Q3-2026-Zahlen
+(~November/Dezember 2026).
+
 Hinweis (2026-08-23, weiterhin gültig): Depot-Erfassung insgesamt abgeschlossen –
 von Brian bestätigt ("das sind meine ganzen Positionen"). Zusammen mit
 `scalable-capital.md`, `finanzen-net-zero.md` und `trade-republic.md` ist das
