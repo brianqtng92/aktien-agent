@@ -154,3 +154,29 @@ Einzige Auffälligkeit: CBOE Holdings hat die dokumentierte Tranche-1-
 Nachkaufzone ($268-270) heute erstmals erreicht (Schluss $269,05) - noch
 keine bestätigte Stabilisierung, kein Cross-Check-Anlass (bereits vollständig
 im CBOE-Full-Deep-Dive vom 16.09. abgedeckt). Bestätigungsmail verschickt.
+
+**2026-09-22 (taeglicher-trigger-check):** Jack/Conan n.a. - kein Bridge-
+Einsatz nötig (kein 3-fach-Cross-Check ausgelöst: keine neue diskretionäre
+Transaktion (list_portfolio_transactions liefert nur die bereits verarbeitete
+BCA-Reinvestment-BUY vom 16.09.), keine neuen Preisalarme (Kraken/Rambus
+weiterhin die einzigen ausgelösten, beide bereits in price_alerts_processed.md
+verarbeitet), kein Material Shift im Markt-/Makro-Kontext (VIX rückläufig auf
+14,87, F&G-Zone unverändert Fear, SPY/QQQ-Tagesbewegung +0,05%/+0,70%)).
+**Wichtigster Fund des Tages (kein Bridge-Anlass, aber handlungsrelevant):**
+FICO (Watchlist, Champions) - FHFA-Direktor Pulte hat Fannie Mae/Freddie Mac
+angewiesen, VantageScore 4.0 bei ALLEN zugelassenen Kreditgebern SOFORT
+freizugeben (Eskalation ggü. der ursprünglichen April-Pilotprogramm-
+Ankündigung) - Aktie laut Presse (Seeking Alpha/Benzinga/TIKR) an einem
+Handelstag um ca. 17-18% eingebrochen. Das ist exakt die im watchlist.md
+dokumentierte "belastbare Daten"-Schwelle für eine mögliche Rückstufung zu
+Profi. Watchlist-Status auf ⚠️ RISIKO gesetzt (watchlist.md), aber KEIN
+voller 3-fach-Cross-Check in diesem Lauf durchgeführt (Zeitpriorität -
+FICO ist Watchlist, keine Depot-Position, kein akuter Order-Handlungsbedarf,
+dafür aber klar als nächste Full-Deep-Dive-Priorität in master_status.md
+vermerkt). CBOE-Kurs gegen eine falsche WebSearch-Quelle ($226,40) per
+Twelve Data live verifiziert und richtiggestellt ($266,56) - erneuter Beleg
+für die bestehende Twelve-Data-vor-WebSearch-Regel. Hermès deutlich erholt
+(1.352€ am 18.09. auf 1.597€ am 21.09., WebSearch) - Nachkauf-Zone (≤1.350€)
+klar verlassen, kein Order-Signal mehr relevant. Portfolio-Lücken-
+Kandidatensuche weiterhin bewusst pausiert (Brian, 17.09.), kein Index-Scan
+in diesem Lauf. Bestätigungsmail verschickt (siehe Verifikation unten).

@@ -1,3 +1,41 @@
+**Nachtrag 2026-09-22 (taeglicher-trigger-check):** ruhiger Tag ohne Depot-
+Handlungsbedarf, aber ein wichtiger Watchlist-Fund. Scalable live geprüft
+(`ping` OK) - Vanguard/BCA/Gold aktualisiert (Scalable-Anteil ≈10.712,28€),
+Hermès per WebSearch auf 1.597,00€ nachgezogen (deutliche Erholung von
+1.352€ am 18.09., +18% in 3 Tagen - Nachkauf-Zone ≤1.350€ klar verlassen,
+kein Order-Signal mehr). Übrige 3 Broker unverändert vom 18.09.-Wochenfazit
+übernommen (kein voller Re-Pull an diesem Tag) - **Gesamtdepot auf dieser
+gemischten Basis ≈ 33.779,38€** (`reports/portfolio_pie_2026-09-22.png`,
++1,05% ggü. der vergleichbaren 18.09.-Trigger-Check-Momentaufnahme
+33.399,73€ - Anstieg primär durch ETF/Gold/BCA-Kursbewegung und die
+Hermès-Erholung, RMBS/CBOE-Bewegungen der letzten Tage in dieser
+Momentaufnahme noch NICHT eingepreist, da die betroffenen 3 Broker nicht neu
+abgefragt wurden). Keine neue Transaktion seit Checkpoint (nur die bereits
+verarbeitete BCA-Reinvestment-BUY). Keine neuen Preisalarme (Kraken/Rambus
+bereits verarbeitet). **Wichtigster Fund:** FICO (Watchlist, Champions) -
+FHFA-Direktor Pulte hat Fannie Mae/Freddie Mac angewiesen, VantageScore 4.0
+bei ALLEN zugelassenen Kreditgebern SOFORT freizugeben (echte Eskalation
+ggü. der ursprünglichen April-Pilotprogramm-Ankündigung) - Aktie laut Presse
+an einem Handelstag um ca. 17-18% eingebrochen. Das ist exakt die in
+watchlist.md dokumentierte "belastbare Daten"-Schwelle für eine mögliche
+Rückstufung zu Profi. Status in watchlist.md auf ⚠️ RISIKO gesetzt, noch
+KEIN Kategorie-Downgrade (echte Marktanteilsverschiebung in Umsatzzahlen
+weiterhin nicht vorliegend), aber ein voller Full-Deep-Dive-Refresh mit
+3-fach-Cross-Check ist die klar empfohlene nächste Priorität (in diesem Lauf
+aus Zeitpriorität nicht durchgeführt - FICO ist Watchlist, kein akuter
+Depot-Order-Bedarf). RMBS-Rally setzt sich fort ($104,99 live, Twelve Data,
++8,3% intraday) - weiter weit über der Nachkaufzone, kein neuer fundamentaler
+Treiber. CBOE bei $266,56 (Twelve Data live, knapp unter der Tranche-1-Zone
+$268-270) - eine WebSearch-Quelle hatte hier fälschlich $226,40 gemeldet,
+per Twelve Data widerlegt (erneuter Beleg der WebSearch-Kurse-unzuverlässig-
+Regel). Markt-/Makro: kein Material Shift (VIX 14,87 rückläufig, F&G 34
+weiter Fear-Zone, SPY +0,05%/QQQ +0,70%, US-10J 4,951% weiter unter 5%).
+Watchlist-Ampel sonst ohne neue 🔴/🟡-Funde (MPWR nur positive AI-Power-
+Demand-News, SYK/WSO-Entwicklungen bereits bekannt/eingepreist bzw. rein
+positiv [Watsco-Akquisition Granite Group, $500 Mio Umsatz]). Kein neuer
+Watchlist-Kandidat, kein Index-Scan (Japan/Asien-Pipeline weiterhin bewusst
+pausiert seit 17.09.). Bestätigungsmail verschickt (siehe Verifikation unten).
+
 **Nachtrag 2026-09-18 (wochenfazit, später am Tag als der Trigger-Check unten):**
 vollständiger Wochenfazit-Lauf (Freitag-Turnus, 1-Tages-Fenster seit dem
 Ad-hoc-Wochenfazit vom 17.09.). Alle 4 Broker frisch geprüft: Scalable live
@@ -346,6 +384,7 @@ belastbare Aussage). Volle Thesen/Begründungen bleiben in `watchlist.md`.
 | Bank Central Asia | Depot, Champions (Beobachtungspunkt) | NIM-Erholung | nächste 2-3 Quartale, sollte sich mit BI-Zinsstabilisierung erholen |
 | Watsco (WSO) | Depot, Profi (Beobachtungspunkt) | Margen-Normalisierung | nächste 1-2 Quartale beobachten |
 | BONESUPPORT (BONEX) | Watchlist, Talent (neu 07.09., ersetzt Rorze) | CERAMENT-V-FDA-Entscheidung | Datenpaket fällig spätestens 31.10.2026, danach FDA-Antwort – De-Risking-Trigger für mögliche Aufstufung |
+| Fair Isaac (FICO) | Watchlist, Champions (Status seit 22.09. ⚠️ RISIKO) | FHFA-Direktive: VantageScore 4.0 SOFORT-Freigabe bei allen GSE-Kreditgebern (Aktie -17-18% an einem Tag) | **Full-Deep-Dive-Refresh mit 3-fach-Cross-Check empfohlen, nächste Priorität** – bisher kein Downgrade, da Umsatzanteilsverschiebung noch nicht in Zahlen sichtbar |
 
 ## 6. Offene Kauf-/Verkauf-Empfehlungen
 
@@ -354,9 +393,9 @@ Quelle: `depot/offene_empfehlungen.md` (dort maßgeblich, hier nur Kurzstand).
 | Position | Empfehlung | Zone/Preis |
 |---|---|---|
 | Kraken Robotics | Nachkauf-Zone (Preisalarm) | ≤2,80 CAD |
-| Rambus | Nachkauf-Zone (Preisalarm) | $68-75 (Kurs 18.09.: $85,87, Preisalarm $75 UP verarbeitet, kein Kaufsignal) |
-| CBOE Holdings | Nachkauf-Zone erstmals erreicht, TA-Bestätigung fehlt (Tier 2) | Tranche 1: $268-270 UND RSI&gt;45 (Kurs $269,16, RSI 36,28 – kein Order-Signal) · Tranche 2: $255-262 |
-| Hermès | Nachkauf-Zone praktisch erreicht, TA-Bestätigung fehlt | ≤1.350€ (Kurs 18.09.: 1.352€ – kein Order-Signal) |
+| Rambus | Nachkauf-Zone (Preisalarm) | $68-75 (Kurs 22.09., Twelve Data live: $104,99, Rally setzt sich fort, +8,3% intraday, weiter weit über der Zone) |
+| CBOE Holdings | Nachkauf-Zone erstmals erreicht, TA-Bestätigung fehlt (Tier 2) | Tranche 1: $268-270 UND RSI&gt;45 (Kurs 22.09., Twelve Data live: $266,56, knapp unter der Zone – RSI in diesem Lauf nicht neu geprüft) · Tranche 2: $255-262 |
+| Hermès | Nachkauf-Zone verlassen, kein Order-Signal | ≤1.350€ (Kurs 21.09., WebSearch: 1.597€, +18% ggü. 18.09. – Zone deutlich verlassen, reine Kurserholung) |
 
 ## 7b. Portfolio-Regel-Check — AKTUALISIERT 2026-09-18 (Wochenfazit)
 
@@ -476,22 +515,25 @@ Quelle: `depot/bridge_status.md` (Log) + `list_scheduled_tasks` (Live-Stand).
 
 | Task | Letzter Lauf | Nächster Lauf |
 |---|---|---|
-| taeglicher-trigger-check | 2026-09-18 ~19:15 UTC (regulärer Lauf, ruhiger Tag, kein Cross-Check-Trigger, CBOE erstmals in Tranche-1-Zone beobachtet, BoJ-Hike eingepreist/kein Material Shift) | täglich ~21:03 lokale Zeit |
+| taeglicher-trigger-check | 2026-09-22 (regulärer Lauf, ruhiger Tag ohne Depot-Handlungsbedarf, aber wichtiger Watchlist-Fund: FICO-VantageScore-Eskalation, Status ⚠️ RISIKO, Full-Deep-Dive-Refresh empfohlen) | täglich ~21:03 lokale Zeit |
 | blitz-scan | 2026-09-18 ~09:22/~05:33 UTC (Rambus-Preisalarm $75 UP verarbeitet, kein Kaufsignal) | stündlich |
 | wochenfazit | 2026-09-18 (regulärer Freitags-Lauf, 1-Tages-Fenster seit dem Ad-hoc-Wochenfazit vom 17.09.; alle 4 Broker frisch geprüft, PDF gebaut+committet, E-Mail mit GitHub-Link verschickt) | Freitag, nächster reg. Lauf voraussichtlich 25.09.2026 |
 | monatsrecap | noch nicht gelaufen | 28.-31. des Monats |
 
 ## 10. Cash-Stand (nur Scalable Capital, live abrufbar)
 
-**Stand 2026-09-18 (Wochenfazit-Lauf, später als der Trigger-Check-Snapshot
-oben, alle 4 Broker frisch geprüft):** verfügbare Kaufkraft/Cash-Bestand
-weiterhin **0,00 €**. Scalable-Gesamtwert (live): 10.581,88 €. Finanzen.net
-zero (Twelve Data, alle Twelve-Data-fähigen Ticker frisch): 20.916,55 €.
-Trade Republic (Allianz, Xetra weiterhin gesperrt, Stand 09.09. übernommen):
-512,09 €. Smartbroker+ (HawkEye 360, Twelve Data): 1.416,73 €.
-**Gesamtportfoliowert (alle 4 Broker inkl. Cash+Gold): 33.426,76 €**
-(-0,63% ggü. 33.639,41 € am 17.09.; -0,58% ggü. dem separaten
-Trigger-Check-Snapshot von heute Nachmittag [33.620,73 €] – Differenz
-primär durch den erst danach eingepreisten Hermès-Rücksetzer auf 1.352 €,
-der im Trigger-Check-Snapshot noch nicht berücksichtigt war, da dort die 3
-manuellen Broker nicht neu abgefragt wurden).
+**Stand 2026-09-22 (taeglicher-trigger-check):** verfügbare Kaufkraft/Cash-
+Bestand weiterhin **0,00 €** (`get_portfolio_cash_breakdown`, live). Scalable-
+Gesamtwert (live, Gold+BCA+Vanguard-ETF): ≈10.712,28 €. Finanzen.net zero,
+Trade Republic, Smartbroker+ NICHT neu abgefragt in diesem Lauf – unverändert
+vom 18.09.-Wochenfazit übernommen (20.916,55 € / 512,09 € / 1.416,73 €).
+**Gesamtportfoliowert auf dieser gemischten Basis: ≈33.779,38 €**
+(`reports/portfolio_pie_2026-09-22.png`, +1,05% ggü. dem vergleichbaren
+18.09.-Trigger-Check-Snapshot 33.399,73 €). Transparenz-Hinweis: die
+zwischenzeitlichen RMBS-/CBOE-Kursbewegungen sind in den 3 nicht neu
+abgefragten Brokern NICHT eingepreist – Einzelkurse siehe stattdessen
+`depot/offene_empfehlungen.md` (dort live/WebSearch-aktualisiert).
+
+**Vorheriger Stand 2026-09-18 (Wochenfazit-Lauf):** Gesamtportfoliowert
+(alle 4 Broker inkl. Cash+Gold): 33.426,76 € (-0,63% ggü. 33.639,41 € am
+17.09.).
