@@ -1,3 +1,38 @@
+**Nachtrag 2026-09-23 (taeglicher-trigger-check, regulärer Lauf, nach dem
+Blitz-Scan desselben Tages):** ruhiger Tag ohne Depot-Handlungsbedarf.
+Scalable live geprüft (`ping` OK nach einem transienten ersten
+Verbindungsfehler) – Vanguard/BCA/Gold aktualisiert (Scalable-Anteil
+≈10.726,14€), Hermès auf den bereits im Blitz-Scan korrigierten Live-Kurs
+1.350,75€ gesetzt (widerlegt den 1.597€-WebSearch-Fehlfund vom 21.09.).
+Übrige 3 Broker unverändert vom 18.09.-Wochenfazit übernommen (kein voller
+Re-Pull an diesem Tag) – **Gesamtdepot auf dieser gemischten Basis ≈
+33.546,99€** (`reports/portfolio_pie_2026-09-23.png`, Rückgang ggü. der
+22.09.-Momentaufnahme 33.779,38€ primär durch die Hermès-Korrektur, kein
+realer Wertverlust). Keine neue Transaktion seit Checkpoint (nur die
+bereits verarbeitete BCA-Reinvestment-BUY). Keine neu ausgelösten
+Preisalarme (`list_price_alerts` live: Kraken/Rambus-Auslösungen weiterhin
+die einzigen, beide bereits in `depot/price_alerts_processed.md` erfasst;
+zwei neue aktive, aber nicht ausgelöste Alarme – Asahi Intecc DOWN 16,
+CBOE UP 260 – ohne Bewertungsbedarf). **Wichtigster Fund:** FICO erneut
+-3,6% (Fortsetzung des bereits am 22.09. dokumentierten Themas, kein neuer
+Schock-Tag), plus ein neuer Fakt: FHA hat den 01.01.2027 als
+Umsetzungstermin gesetzt, ab dem VantageScore 4.0 UND FICO Score 10T
+zusätzlich zum Classic FICO auch bei FHA-versicherten Hypotheken zugelassen
+werden – zweiter regulatorischer Kanal neben GSE/Fannie-Freddie öffnet
+sich. Status bleibt ⚠️ RISIKO/🟡 GELB, Full-Deep-Dive-Refresh weiterhin die
+klar empfohlene nächste Priorität (in diesem Lauf erneut aus Zeitpriorität
+nicht durchgeführt). Markt-/Makro: kein Material Shift (VIX 14,21-14,24
+weiter rückläufig, F&G 35 weiter Fear-Zone, Nasdaq erneut Rekordhoch) –
+einziger Beobachtungspunkt: US-10J-Rendite laut einer WebSearch-Quelle
+wieder nahe 5,10% (über dem bisherigen 15.09.-Hoch 5,041%), noch nicht
+durch eine zweite Quelle bestätigt, kein Material-Shift-Kriterium erfüllt.
+Watchlist-Ampel sonst ohne neue 🔴/🟡-Funde (MPWR/SoFi/Rocket Lab nur
+positive News). Kein neuer Watchlist-Kandidat, kein Index-Scan (beide
+Talent-Slots bereits mit Watchlist-Kandidaten [ORKA/ALLIX] gefüllt, Japan/
+Asien-Pipeline weiterhin bewusst pausiert). Keine offene Empfehlung fällig
+zur Erinnerung (Kraken/Rambus erst 4 Werktage seit der letzten Erinnerung
+17.09.). Bestätigungsmail verschickt (siehe Verifikation unten).
+
 **Nachtrag 2026-09-23 (blitz-scan):** kein akutes Markt-/Einzelwert-Ereignis
 der letzten Stunde (Markt ruhig: S&P nahezu unverändert, VIX 14,24 rückläufig
 -4,24%, Nasdaq +0,5% auf Rekordhoch; Brent >$101 als beobachtenswerter, aber
@@ -535,24 +570,27 @@ Quelle: `depot/bridge_status.md` (Log) + `list_scheduled_tasks` (Live-Stand).
 
 | Task | Letzter Lauf | Nächster Lauf |
 |---|---|---|
-| taeglicher-trigger-check | 2026-09-22 (regulärer Lauf, ruhiger Tag ohne Depot-Handlungsbedarf, aber wichtiger Watchlist-Fund: FICO-VantageScore-Eskalation, Status ⚠️ RISIKO, Full-Deep-Dive-Refresh empfohlen) | täglich ~21:03 lokale Zeit |
-| blitz-scan | 2026-09-18 ~09:22/~05:33 UTC (Rambus-Preisalarm $75 UP verarbeitet, kein Kaufsignal) | stündlich |
+| taeglicher-trigger-check | 2026-09-23 (regulärer Lauf, ruhiger Tag ohne Depot-Handlungsbedarf; FICO erneut -3,6% + neuer FHA-Umsetzungstermin 01.01.2027, Status weiterhin ⚠️ RISIKO/🟡 GELB, Full-Deep-Dive-Refresh weiterhin nächste Priorität) | täglich ~21:03 lokale Zeit |
+| blitz-scan | 2026-09-23 (Hermès-Preiskorrektur: WebSearch-Fehlwert 1.597€ widerlegt, Kurs live 1.350,75€ auf Abstauber-Limit) | stündlich |
 | wochenfazit | 2026-09-18 (regulärer Freitags-Lauf, 1-Tages-Fenster seit dem Ad-hoc-Wochenfazit vom 17.09.; alle 4 Broker frisch geprüft, PDF gebaut+committet, E-Mail mit GitHub-Link verschickt) | Freitag, nächster reg. Lauf voraussichtlich 25.09.2026 |
 | monatsrecap | noch nicht gelaufen | 28.-31. des Monats |
 
 ## 10. Cash-Stand (nur Scalable Capital, live abrufbar)
 
-**Stand 2026-09-22 (taeglicher-trigger-check):** verfügbare Kaufkraft/Cash-
+**Stand 2026-09-23 (taeglicher-trigger-check):** verfügbare Kaufkraft/Cash-
 Bestand weiterhin **0,00 €** (`get_portfolio_cash_breakdown`, live). Scalable-
-Gesamtwert (live, Gold+BCA+Vanguard-ETF): ≈10.712,28 €. Finanzen.net zero,
+Gesamtwert (live, Gold+BCA+Vanguard-ETF): ≈10.726,14 €. Finanzen.net zero,
 Trade Republic, Smartbroker+ NICHT neu abgefragt in diesem Lauf – unverändert
-vom 18.09.-Wochenfazit übernommen (20.916,55 € / 512,09 € / 1.416,73 €).
-**Gesamtportfoliowert auf dieser gemischten Basis: ≈33.779,38 €**
-(`reports/portfolio_pie_2026-09-22.png`, +1,05% ggü. dem vergleichbaren
-18.09.-Trigger-Check-Snapshot 33.399,73 €). Transparenz-Hinweis: die
-zwischenzeitlichen RMBS-/CBOE-Kursbewegungen sind in den 3 nicht neu
-abgefragten Brokern NICHT eingepreist – Einzelkurse siehe stattdessen
-`depot/offene_empfehlungen.md` (dort live/WebSearch-aktualisiert).
+vom 18.09.-Wochenfazit übernommen (20.916,55 € / 512,09 € / 1.416,73 €), nur
+Hermès innerhalb des finanzen.net-zero-Blocks auf den heute korrigierten
+Live-Kurs 1.350,75 € gesetzt (siehe Blitz-Scan 23.09.).
+**Gesamtportfoliowert auf dieser gemischten Basis: ≈33.546,99 €**
+(`reports/portfolio_pie_2026-09-23.png`, Rückgang ggü. dem 22.09.-Snapshot
+33.779,38 € primär durch die Hermès-Preiskorrektur [1.597€→1.350,75€], kein
+realer zusätzlicher Wertverlust). Transparenz-Hinweis: die zwischenzeitlichen
+RMBS-/CBOE-Kursbewegungen sind in den 3 nicht neu abgefragten Brokern NICHT
+eingepreist – Einzelkurse siehe stattdessen `depot/offene_empfehlungen.md`
+(dort live/WebSearch-aktualisiert).
 
 **Vorheriger Stand 2026-09-18 (Wochenfazit-Lauf):** Gesamtportfoliowert
 (alle 4 Broker inkl. Cash+Gold): 33.426,76 € (-0,63% ggü. 33.639,41 € am

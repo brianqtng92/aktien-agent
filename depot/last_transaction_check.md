@@ -9,6 +9,11 @@ Trigger-Check" → "Depot-Transaktions-Erkennung").
 
 Zuletzt gesehene Transaktion (lastEventAt, ISO-8601 UTC): 2026-09-16T14:18:59.156Z
 
+Lauf 2026-09-23 (taeglicher-trigger-check): list_portfolio_transactions
+fromTime=2026-09-16T14:18:59.156Z → 1 Treffer, identisch mit der bereits
+verarbeiteten BCA-Reinvestment-BUY vom 16.09. (lastEventAt unverändert),
+kein neues Event. Checkpoint unverändert gelassen.
+
 Lauf 2026-09-22 (taeglicher-trigger-check): list_portfolio_transactions
 fromTime=2026-09-16T14:18:59.156Z → 1 Treffer, identisch mit der bereits
 verarbeiteten BCA-Reinvestment-BUY vom 16.09. (lastEventAt unverändert),

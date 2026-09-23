@@ -141,6 +141,32 @@ entfernt). Portfolio-Lücken-Kandidaten-Backlog (Japan/Asien, 10 Namen aus
 umfangreiche Depot-Komplettupdate-Lauf lief bereits am selben Tag), bleibt
 offen für einen künftigen Lauf.
 
+**2026-09-23 (taeglicher-trigger-check):** Jack/Conan n.a. - kein Bridge-
+Einsatz nötig (kein 3-fach-Cross-Check ausgelöst: einzige Scalable-
+Transaktion seit Checkpoint identisch mit der bereits verarbeiteten BCA-
+Reinvestment-BUY vom 16.09., keine neu ausgelösten Preisalarme (Kraken/
+Rambus-Auslösungen weiterhin die einzigen, beide bereits verarbeitet; die
+zwei neuen aktiven, aber NICHT ausgelösten Alarme Asahi-Intecc-DOWN-16 und
+CBOE-UP-260 lösen keine Bewertung aus), kein Material Shift im Markt-/
+Makro-Kontext (VIX weiter rückläufig auf 14,21-14,24, F&G-Zone unverändert
+Fear bei 35, keine ±3%-Tagesbewegung)). Watchlist-News-Ampel (gebündelt:
+FICO, MPWR/WSO/SYK) ohne neuen 🔴-Fund - FICO bleibt 🟡 GELB/⚠️ RISIKO,
+Full-Deep-Dive-Refresh weiterhin nächste Priorität (heute erneut -3,6%,
+plus neuer FHA-Umsetzungstermin 01.01.2027 als zusätzlicher regulatorischer
+Kanal, aber weiterhin keine belastbare Umsatzzahl - Kategorie unverändert).
+MPWR/SoFi/Rocket Lab nur positive News (KI-Power-Demand-Rally, bullisher
+Order-Flow, neue Analysten-Coverage). Hermès-Preiskorrektur bereits im
+vorherigen Blitz-Scan-Lauf desselben Tages dokumentiert (Kurs live
+1.350,75€, praktisch auf dem Abstauber-Limit ≤1.350€, keine TA-Bestätigung
+geprüft, kein Order-Signal). Kuchendiagramm neu erzeugt
+(`reports/portfolio_pie_2026-09-23.png`, Gesamtwert auf dieser gemischten
+Basis 33.546,99€). Kein neuer Watchlist-Kandidat, kein Index-Scan (beide
+Talent-Slots bereits mit Watchlist-Kandidaten [ORKA/ALLIX] gefüllt, Japan/
+Asien-Pipeline weiterhin bewusst pausiert seit 17.09.). Keine offene
+Empfehlung fällig zur Erinnerung (Kraken/Rambus zuletzt 17.09. erinnert,
+erst 4 Werktage vergangen). Bestätigungsmail verschickt (siehe Verifikation
+unten).
+
 **2026-09-18 (taeglicher-trigger-check, ~19:15 UTC):** Jack/Conan n.a. - kein
 Bridge-Einsatz nötig (kein 3-fach-Cross-Check ausgelöst: keine neue
 diskretionäre Transaktion, keine 🔴/🟡-Watchlist-Ampel-Neufunde bei den

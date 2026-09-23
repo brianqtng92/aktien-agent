@@ -2,22 +2,24 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-# Stand 2026-09-22: taeglicher-trigger-check, nur Scalable Capital live neu
-# abgefragt (Vanguard/BCA/Gold, ping OK) + Hermès per WebSearch-Kurs
-# aktualisiert (1.597,00 EUR, 21.09.2026, ad-hoc-news.de). Die uebrigen
+# Stand 2026-09-23: taeglicher-trigger-check, nur Scalable Capital live neu
+# abgefragt (Vanguard/BCA/Gold, ping OK) + Hermès auf den per Scalable-Live-
+# Quote UND WebSearch-Gegenprobe korrigierten Kurs 1.350,75 EUR gesetzt
+# (der 1.597,00-EUR-Wert vom 21.09. war ein WebSearch-Fehlfund, siehe
+# Blitz-Scan 23.09. + depot/offene_empfehlungen.md). Die uebrigen
 # Positionen (finanzen.net zero/Trade Republic/Smartbroker+) vom
 # 18.09.-Wochenfazit-Komplettupdate unveraendert uebernommen (kein voller
 # Re-Pull an einem ruhigen Tag, RMBS/CBOE-Kursbewegungen daher hier noch
 # nicht eingepreist - siehe depot/offene_empfehlungen.md fuer die aktuellen
 # Einzelkurse dieser Positionen).
 data = [
-    ("Vanguard FTSE All-World (ETF)", 8324.71, "#2E5A8C"),
+    ("Vanguard FTSE All-World (ETF)", 8275.12, "#2E5A8C"),
     ("SoFi Technologies", 3663.60, "#E4572E"),
-    ("Bank Central Asia", 1887.86, "#4A7FB5"),
+    ("Bank Central Asia", 1956.06, "#4A7FB5"),
     ("ServiceNow Inc", 2433.99, "#F2A541"),
     ("Cellebrite DI Ltd", 1989.99, "#7A6FB0"),
     ("MercadoLibre Inc", 1600.66, "#5CA793"),
-    ("Hermès", 1597.00, "#B85C8A"),
+    ("Hermès", 1350.75, "#B85C8A"),
     ("Constellation Software Inc", 1791.29, "#9B59B6"),
     ("HawkEye 360", 1407.62, "#D98C3D"),
     ("Intuitive Surgical", 1330.35, "#D4A5A5"),
@@ -28,7 +30,7 @@ data = [
     ("Münchener Rück", 1052.20, "#B85C5C"),
     ("Tristel PLC", 1027.37, "#8C6BB1"),
     ("Rocket Lab USA", 554.35, "#3E9C8C"),
-    ("EUWAX Gold II", 499.71, "#D4B106"),
+    ("EUWAX Gold II", 494.96, "#D4B106"),
     ("Allianz SE", 512.09, "#2F6B5E"),
     ("A10 Networks", 484.98, "#C46A6A"),
     ("Rambus Inc.", 424.94, "#A0A0A0"),
@@ -58,20 +60,20 @@ for at in autotexts:
 
 total_str = f"{total:,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
 ax.set_title(
-    f"Portfolio-Zusammensetzung – alle 4 Broker, Stand 2026-09-22\n"
+    f"Portfolio-Zusammensetzung – alle 4 Broker, Stand 2026-09-23\n"
     f"Gesamtwert: {total_str}",
     fontsize=13, fontweight="bold", pad=20,
 )
 ax.text(
     0, -1.42,
-    "22.09. (taeglicher-trigger-check): Scalable Capital live neu abgefragt (Vanguard/BCA/Gold);\n"
-    "Hermès auf 1.597,00 EUR aktualisiert (WebSearch, 21.09.2026, deutliche Erholung von 1.352 EUR am 18.09.).\n"
+    "23.09. (taeglicher-trigger-check): Scalable Capital live neu abgefragt (Vanguard/BCA/Gold);\n"
+    "Hermès auf 1.350,75 EUR korrigiert (Scalable live + WebSearch-Gegenprobe, widerlegt den 1.597-EUR-Fehlfund vom 21.09.).\n"
     "Restliche Positionen vom 18.09.-Wochenfazit-Komplettupdate uebernommen (finanzen.net zero/Trade Republic/Smartbroker+).",
     ha="center", va="center", fontsize=8.5, style="italic", color="#555555",
 )
 ax.axis("equal")
 plt.tight_layout()
-plt.savefig("/Users/brianqtng/Downloads/aktien-agent/reports/portfolio_pie_2026-09-22.png", dpi=150, bbox_inches="tight")
+plt.savefig("/Users/brianqtng/Downloads/aktien-agent/reports/portfolio_pie_2026-09-23.png", dpi=150, bbox_inches="tight")
 print("Saved. Total value:", total)
 for name, value, _ in data:
     print(f"{name}: {value:.2f} EUR -> {value/total*100:.1f}%")
