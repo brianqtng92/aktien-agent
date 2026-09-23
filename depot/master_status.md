@@ -1,3 +1,23 @@
+**Nachtrag 2026-09-23 (blitz-scan):** kein akutes Markt-/Einzelwert-Ereignis
+der letzten Stunde (Markt ruhig: S&P nahezu unverändert, VIX 14,24 rückläufig
+-4,24%, Nasdaq +0,5% auf Rekordhoch; Brent >$101 als beobachtenswerter, aber
+kein Schock-Faktor). Kein neuer Preisalarm (Scalable `list_price_alerts`
+live geprüft, nur die bereits in `depot/price_alerts_processed.md` erfassten
+Kraken-/Rambus-Alarme sind ausgelöst). On-Demand-Trigger (Watchlist-/E-Mail-
+Kanal) ohne neuen Fund, Rücksync watchlist.md→Scalable ohne Lücke. **Einziger
+Fund, handlungsrelevant für die Order-Zone-Dokumentation (kein 3-fach-Cross-
+Check ausgelöst, da Kurs nur auf dem Limit liegt statt es zu reißen, und
+keine TA-Bestätigung geprüft wurde):** Hermès notiert live (Scalable,
+23.09.) bei 1.350,75€ – praktisch exakt auf dem dokumentierten Abstauber-
+Limit (≤1.350€). Die am 21.09. gemeldete "Erholung auf 1.597€" (WebSearch,
+ad-hoc-news.de) war schlicht falsch – erneuter Beleg der
+websearch_kurse_unzuverlaessig-Regel, per Scalable-Live-Kurs UND einer
+zweiten, unabhängigen WebSearch-Quelle (Schlusskurs 1.344€ am 21.09.)
+widerlegt. `depot/offene_empfehlungen.md` und Abschnitt 6 unten korrigiert
+(Zone-Status von "verlassen" auf "quasi erreicht" geändert). Kein neuer
+fundamentaler Negativtreiber (nur bereits bekannte RBC-/Bernstein-PT-
+Kürzungen). Keine weitere Datei-Änderung in diesem Lauf.
+
 **Nachtrag 2026-09-22 (taeglicher-trigger-check):** ruhiger Tag ohne Depot-
 Handlungsbedarf, aber ein wichtiger Watchlist-Fund. Scalable live geprüft
 (`ping` OK) - Vanguard/BCA/Gold aktualisiert (Scalable-Anteil ≈10.712,28€),
@@ -395,7 +415,7 @@ Quelle: `depot/offene_empfehlungen.md` (dort maßgeblich, hier nur Kurzstand).
 | Kraken Robotics | Nachkauf-Zone (Preisalarm) | ≤2,80 CAD |
 | Rambus | Nachkauf-Zone (Preisalarm) | $68-75 (Kurs 22.09., Twelve Data live: $104,99, Rally setzt sich fort, +8,3% intraday, weiter weit über der Zone) |
 | CBOE Holdings | Nachkauf-Zone erstmals erreicht, TA-Bestätigung fehlt (Tier 2) | Tranche 1: $268-270 UND RSI&gt;45 (Kurs 22.09., Twelve Data live: $266,56, knapp unter der Zone – RSI in diesem Lauf nicht neu geprüft) · Tranche 2: $255-262 |
-| Hermès | Nachkauf-Zone verlassen, kein Order-Signal | ≤1.350€ (Kurs 21.09., WebSearch: 1.597€, +18% ggü. 18.09. – Zone deutlich verlassen, reine Kurserholung) |
+| Hermès | Nachkauf-Zone quasi wieder erreicht, TA-Bestätigung offen | ≤1.350€ (Kurs 23.09., Scalable live: 1.350,75€ – korrigiert die falsche WebSearch-Meldung vom 21.09. [1.597€], siehe `depot/offene_empfehlungen.md`) |
 
 ## 7b. Portfolio-Regel-Check — AKTUALISIERT 2026-09-18 (Wochenfazit)
 
