@@ -223,6 +223,23 @@ nach.
 
 **Summe finanzen.net zero (18.09.2026): 20.916,55 € (Invest 19.900,09 €, +5,11%)** — Rückgang ggü. 17.09. (21.123,39 €, +6,15%), fast vollständig getrieben durch den Hermès-Rücksetzer (-221,00 € ggü. Vorwoche) plus kleinere Abgaben bei mehreren US-Positionen (leichte Gesamtmarktschwäche trotz erwartetem/eingepreistem BoJ-Hike). Kein strukturelles Einzelwert-Problem identifiziert — siehe Wochenfazit-PDF für die vollständige Einordnung.
 
+## Update 2026-09-24 (von Brian gemeldet: 5 Komplett-Verkäufe aus diesem Depot)
+
+Brian hat **Hermès, MercadoLibre, Constellation Software, Broadridge und A10 Networks komplett verkauft** (zusammen mit Bank Central Asia bei Scalable Capital, siehe `depot/scalable-capital.md` — insgesamt 6 Positionen in einem Schritt). Realisierte Ergebnisse (ggü. ursprünglicher Investsumme):
+
+| Position | Investsumme | Verkaufserlös | Realisiert | Rendite |
+|---|---|---|---|---|
+| Hermès | 1.905,09 € | **1.362,00 €** | -543,09 € | -28,5% |
+| MercadoLibre Inc | 1.442,80 € | **1.533,40 €** | +90,60 € | +6,3% |
+| Constellation Software Inc | 1.380,00 € | **1.751,00 €** | +371,00 € | +26,9% |
+| Broadridge Financial Solutions | 1.119,68 € | **1.141,60 €** | +21,92 € | +2,0% |
+| A10 Networks Inc | 506,52 € | **489,72 €** | -16,80 € | -3,3% |
+| **Summe (5 Positionen)** | **6.354,09 €** | **6.277,72 €** | **-76,37 €** | **-1,2%** |
+
+**Verbleibende Positionen dieses Depots (letzter bekannter Stand, kein frischer Live-Repull in diesem Update):** SoFi 3.688,76 € (18.09.), ServiceNow 2.384,15 € (18.09.), CBOE 1.171,87 € (18.09.), Rambus 448,63 € (18.09.), Intuitive Surgical 1.368,04 € (18.09.), Cellebrite 2.027,13 € (18.09.), Rocket Lab 558,85 € (18.09.), Kraken Robotics 856,86 € (17.09.), Tristel 1.027,37 € (09.09.), Münchener Rück 1.052,20 € (03.09.).
+
+**Neue Summe finanzen.net zero (24.09.2026, gemischte Standdaten, Verkaufserlöse noch nicht reinvestiert/als Cash-Zugang zu behandeln): ≈14.583,86 € in verbleibenden Wertpapieren** (+ 6.277,72 € Verkaufserlös als Cash-Zugang, Verbleib unklar — siehe Rückfrage an Brian). Nächster Trigger-Check/Wochenfazit-Lauf sollte alle verbleibenden Positionen frisch abrufen.
+
 **Update 2026-09-09 (Full Deep Dive Rambus auf Brians Anfrage):** vollständiger
 3-fach-Cross-Check abgeschlossen (Jack+Conan, TMR-Pfad). Rating bestätigt
 **BEOBACHTEN**, kein Nachkauf beim aktuellen Kurs (~$87). Beide KIs kommen
@@ -254,6 +271,11 @@ wird auf "VERKAUFT" gesetzt.
 | 27.08.2026 | S&P Global Inc | Komplett verkauft | 378,15 € | Vollständiger Exit der Position |
 | 27.08.2026 | Netskope | Komplett verkauft | 12,76 € | Vollständiger Exit der Position |
 | 27.08.2026 | Waste Management | Komplett verkauft | 187,35 € | Vollständiger Exit der Position (Depot Trade Republic, siehe trade-republic.md) |
+| 24.09.2026 | Hermès | Komplett verkauft | 1.362,00 € | Vollständiger Exit der Position (-543,09 € realisiert ggü. Invest 1.905,09 €) |
+| 24.09.2026 | MercadoLibre Inc | Komplett verkauft | 1.533,40 € | Vollständiger Exit der Position (+90,60 € realisiert ggü. Invest 1.442,80 €) |
+| 24.09.2026 | Constellation Software Inc | Komplett verkauft | 1.751,00 € | Vollständiger Exit der Position (+371,00 € realisiert ggü. Invest 1.380,00 €) |
+| 24.09.2026 | Broadridge Financial Solutions | Komplett verkauft | 1.141,60 € | Vollständiger Exit der Position (+21,92 € realisiert ggü. Invest 1.119,68 €) |
+| 24.09.2026 | A10 Networks Inc | Komplett verkauft | 489,72 € | Vollständiger Exit der Position (-16,80 € realisiert ggü. Invest 506,52 €) |
 
 ### Neukäufe (Talent/Moonshot-Fokus, High-Upside-Potenzial)
 

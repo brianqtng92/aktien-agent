@@ -109,6 +109,14 @@ Der BCA-Sparplan (zuvor 100 €/Monat) läuft nicht mehr – siehe
 
 **Gesamtwert Scalable Capital (live, Stand 18.09.2026): 10.581,88 €** (nur Wertpapiere, Cash weiterhin 0,00 €) — leicht unter dem 17.09.-Stand (10.596,26 €), BCA leicht schwächer, ETF-Sparplan-Anteilswert leicht höher. Keine neuen Transaktionen seit 17.09. (`list_portfolio_transactions` seit 2026-09-17T00:00:00Z → 0 Treffer).
 
+## Update 2026-09-24 (von Brian gemeldet: Bank Central Asia komplett verkauft)
+
+Brian hat **Bank Central Asia komplett verkauft** (Teil einer größeren, 6 Positionen umfassenden Verkaufswelle, siehe `depot/finanzen-net-zero.md` für die übrigen 5). **Verkaufspreis noch nicht bestätigt** — die Scalable-Capital-MCP-Anbindung war in dieser Session nicht verbunden (wiederkehrender Auth-Ausfall, siehe `project_scalable_capital_mcp_auth_fehlt.md`), ein Live-Check war deshalb nicht möglich. Brian hatte auf eine eigene Prüfung verwiesen ("liegt ja auf Scalable, da kannst du selbst abchecken") — das war in dieser Session nicht möglich, Rückfrage nach dem tatsächlichen Verkaufspreis steht noch aus.
+
+**Vorläufig (unbestätigt, nur zur Approximation) mit letztem bekannten Kurs verbucht:** Investsumme 1.999,94 €, letzter bekannter Wert 1.921,96 € (18.09.2026) → näherungsweise realisiert ≈ -77,98 € (-3,9%), **bis zur Bestätigung durch Brian oder einen erfolgreichen Live-Check als Näherung markiert.**
+
+**Verbleibend in diesem Depot:** Boerse Stuttgart EUWAX Gold II (Gold-ETC, weiterhin bewusst außerhalb der Champions/Profi/Talent-Struktur) und der Vanguard-FTSE-All-World-ETF-Sparplan — beide unverändert. Mit dem Verkauf von BCA hält Scalable Capital jetzt **keine aktive Einzelwert-Position mehr**, nur noch Gold-ETC + ETF-Sparplan, wie ursprünglich als eigentliche Rolle des Kontos vorgesehen (siehe Klarstellung ganz oben).
+
 Hinweis (2026-08-23): Depot-Erfassung insgesamt abgeschlossen – von Brian bestätigt
 ("das sind meine ganzen Positionen"). Zusammen mit `finanzen-net-zero.md`,
 `trade-republic.md` und `smartbroker-plus.md` ist das jetzt das vollständige Depot.

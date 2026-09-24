@@ -1,3 +1,30 @@
+**Nachtrag 2026-09-24 (ad-hoc-chat, Brian meldet 6 Komplett-Verkäufe):** Brian
+hat **Constellation Software, Hermès, MercadoLibre, Broadridge, A10 Networks
+und Bank Central Asia komplett verkauft** – 4 Champions + 2 Profi in einem
+Schritt, die bislang größte Einzeltransaktion seit der Depot-Restrukturierung
+vom 28.08.2026. Bestätigte Verkaufserlöse (von Brian direkt genannt):
+Constellation Software 1.751,00€ (+371,00€/+26,9% realisiert), MercadoLibre
+1.533,40€ (+90,60€/+6,3%), Broadridge 1.141,60€ (+21,92€/+2,0%), Hermès
+1.362,00€ (-543,09€/-28,5%), A10 Networks 489,72€ (-16,80€/-3,3%) – **Summe
+realisiert: -76,37€ (-1,2%) auf 6.354,09€ Investsumme.** Bank Central Asia
+(Scalable Capital) noch **unbestätigt** – die Scalable-MCP-Anbindung war in
+dieser Session nicht verbunden (wiederkehrender Auth-Ausfall), Brian hatte
+auf eine Eigenprüfung verwiesen, die nicht möglich war; vorläufig mit letztem
+bekannten Wert (1.921,96€, 18.09.) approximiert, Rückfrage nach dem echten
+Preis steht noch aus. **Kategorie-Struktur (Abschnitt 1 unten) fällt dadurch
+deutlich unter die 10-7-3-Zielvorgabe:** Champions 10→6, Profi 7→5, Talent
+unverändert 1. Alle 6 Positionen als Watchlist-Kandidaten mit [EX-DEPOT]-Tag
+weitergeführt (`watchlist.md`). Hermès-Zeile aus den offenen Empfehlungen
+entfernt (Abschnitt 6). Details/Volltext: `depot/finanzen-net-zero.md`,
+`depot/scalable-capital.md`, `depot/kategorisierung.md`. **Cash-Verbleib der
+~7.900-8.200€ Verkaufserlöse (5 bestätigt + 1 approximiert) noch ungeklärt**
+(Reinvestition geplant? Auf Verrechnungskonto verbleiben?) – bei Gelegenheit
+mit Brian klären, da das den ETF-Anteil/die Cash-Quote im nächsten
+Portfolio-Regel-Check materiell verändert. Gesamtportfolio-Neuberechnung und
+volle Region-/Sektor-Regel-Prüfung (Abschnitt 7b) noch NICHT durchgeführt in
+diesem Lauf (reine Transaktionsverbuchung) – nächster Trigger-Check/
+Wochenfazit sollte das nachholen.
+
 **Nachtrag 2026-09-23 (taeglicher-trigger-check, regulärer Lauf, nach dem
 Blitz-Scan desselben Tages):** ruhiger Tag ohne Depot-Handlungsbedarf.
 Scalable live geprüft (`ping` OK nach einem transienten ersten
@@ -328,12 +355,16 @@ Session verfügbar) oder einen Cloud-Link (z.B. Drive) statt Anhang.
 
 | Kategorie | Ziel | Ist | Freie Slots |
 |---|---|---|---|
-| Champions | 10 | 10 | exakt auf Ziel |
-| Profi | 7 | 7 | exakt auf Ziel |
+| Champions | 10 | 6 | **4 frei (deutlich unter Ziel)** |
+| Profi | 7 | 5 | **2 frei (unter Ziel)** |
 | Talent | 3 | 1 | **2 frei** |
 
 Quelle: `depot/kategorisierung.md`, Abschnitt "Ziel-Positionsanzahl".
-Talent liegt seit heute unter statt auf Ziel (Kraken Robotics + HawkEye 360
+**Update 2026-09-24:** Champions/Profi fielen durch 6 echte Komplett-Verkäufe
+(Constellation Software, Hermès, MercadoLibre, Bank Central Asia, Broadridge,
+A10 Networks) deutlich unter Ziel – anders als die Talent-Lücke ist das KEINE
+Fehlzuordnungs-Korrektur, sondern eine reale Transaktion (siehe Nachtrag oben).
+Talent liegt weiterhin unter statt auf Ziel (Kraken Robotics + HawkEye 360
 wurden zu Profi hochgestuft) – kein Verkaufssignal, reine Folge korrigierter
 Fehlzuordnungen.
 
@@ -433,10 +464,7 @@ belastbare Aussage). Volle Thesen/Begründungen bleiben in `watchlist.md`.
 | Rocket Lab USA | Depot, Talent | Nachkauf-Aufstufungs-Trigger | Q3-Zahlen (Guidance: Umsatz $250-265 Mio, Adj.-EBITDA-Verlust $17-23 Mio) – Neutron-Erstflug/Verwässerungstempo/Burn-Multiple prüfen |
 | Rollins (ROL) | Watchlist, Profi (abgestuft 04.09.) | mögliche Rückstufung zu Champions | H2-2026-Verbesserung laut Management-Guidance – noch unbestätigt |
 | Fair Isaac (FICO) | Watchlist, Champions (Beobachtungspunkt) | mögliche Abstufung zu Profi | belastbare Daten zur VantageScore-Adoptionsrate bei GSE-Hypotheken |
-| Constellation Software | Depot, Champions (Beobachtungspunkt) | organisches Wachstum | Q4 2026/Q1 2027 – sollte Richtung 5-6% zurückkehren |
-| MercadoLibre | Depot, Champions (Beobachtungspunkt) | operative Marge | Q4 2026/Q1 2027 – sollte sich Richtung zweistellig erholen |
 | Münchener Rück | Depot, Champions (Beobachtungspunkt) | Rückversicherungs-Preiszyklus | Januar-2027-Erneuerungen + FY2026-Combined-Ratio vs. ~80%-Guidance |
-| Bank Central Asia | Depot, Champions (Beobachtungspunkt) | NIM-Erholung | nächste 2-3 Quartale, sollte sich mit BI-Zinsstabilisierung erholen |
 | Watsco (WSO) | Depot, Profi (Beobachtungspunkt) | Margen-Normalisierung | nächste 1-2 Quartale beobachten |
 | BONESUPPORT (BONEX) | Watchlist, Talent (neu 07.09., ersetzt Rorze) | CERAMENT-V-FDA-Entscheidung | Datenpaket fällig spätestens 31.10.2026, danach FDA-Antwort – De-Risking-Trigger für mögliche Aufstufung |
 | Fair Isaac (FICO) | Watchlist, Champions (Status seit 22.09. ⚠️ RISIKO) | FHFA-Direktive: VantageScore 4.0 SOFORT-Freigabe bei allen GSE-Kreditgebern (Aktie -17-18% an einem Tag) | **Full-Deep-Dive-Refresh mit 3-fach-Cross-Check empfohlen, nächste Priorität** – bisher kein Downgrade, da Umsatzanteilsverschiebung noch nicht in Zahlen sichtbar |
@@ -450,7 +478,8 @@ Quelle: `depot/offene_empfehlungen.md` (dort maßgeblich, hier nur Kurzstand).
 | Kraken Robotics | Nachkauf-Zone (Preisalarm) | ≤2,80 CAD |
 | Rambus | Nachkauf-Zone (Preisalarm) | $68-75 (Kurs 22.09., Twelve Data live: $104,99, Rally setzt sich fort, +8,3% intraday, weiter weit über der Zone) |
 | CBOE Holdings | Nachkauf-Zone erstmals erreicht, TA-Bestätigung fehlt (Tier 2) | Tranche 1: $268-270 UND RSI&gt;45 (Kurs 22.09., Twelve Data live: $266,56, knapp unter der Zone – RSI in diesem Lauf nicht neu geprüft) · Tranche 2: $255-262 |
-| Hermès | Nachkauf-Zone quasi wieder erreicht, TA-Bestätigung offen | ≤1.350€ (Kurs 23.09., Scalable live: 1.350,75€ – korrigiert die falsche WebSearch-Meldung vom 21.09. [1.597€], siehe `depot/offene_empfehlungen.md`) |
+
+**Entfernt 2026-09-24:** Hermès-Zeile entfernt – Position komplett verkauft, siehe Nachtrag oben.
 
 ## 7b. Portfolio-Regel-Check — AKTUALISIERT 2026-09-18 (Wochenfazit)
 
