@@ -1,3 +1,13 @@
+**Nachtrag 2026-09-24 ~Folgemeldung (ad-hoc-chat, Brian meldet Rocket-Lab-Nachkauf):**
+Brian hat Rocket Lab um 20 Aktien @ 65,90€ (1.318,00€) aufgestockt – neue
+Position 30 Aktien, Investsumme 1.872,00€ (siehe `depot/finanzen-net-zero.md`).
+**Transparent zu benennen:** dieser Nachkauf weicht von der am 04.09. explizit
+hinterlegten 0%-Nachkauf-Regel ab (Rocket Lab bleibt 🔴 KEIN NACHKAUF in
+`depot/kategorisierung.md`, solange nicht mind. 2 von 3 fundamentale Trigger
+erfüllt sind – Neutron-Erstflug/Verwässerungstempo/Burn-Multiple, nächster
+Prüfpunkt Q3-Zahlen, noch nicht erfolgt). Kategorie-Struktur (Talent 1/3)
+unverändert, nur Positionsgröße gestiegen.
+
 **Nachtrag 2026-09-24 (ad-hoc-chat, Brian meldet 6 Komplett-Verkäufe):** Brian
 hat **Constellation Software, Hermès, MercadoLibre, Broadridge, A10 Networks
 und Bank Central Asia komplett verkauft** – 4 Champions + 2 Profi in einem

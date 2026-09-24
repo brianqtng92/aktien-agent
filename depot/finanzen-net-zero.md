@@ -240,6 +240,12 @@ Brian hat **Hermès, MercadoLibre, Constellation Software, Broadridge und A10 Ne
 
 **Neue Summe finanzen.net zero (24.09.2026, gemischte Standdaten, Verkaufserlöse noch nicht reinvestiert/als Cash-Zugang zu behandeln): ≈14.583,86 € in verbleibenden Wertpapieren** (+ 6.277,72 € Verkaufserlös als Cash-Zugang, Verbleib unklar — siehe Rückfrage an Brian). Nächster Trigger-Check/Wochenfazit-Lauf sollte alle verbleibenden Positionen frisch abrufen.
 
+## Update 2026-09-24 (von Brian gemeldet: Rocket Lab aufgestockt)
+
+Brian hat **Rocket Lab USA aufgestockt: 20 Anteile @ 65,90 € = 1.318,00 €**. Neue Position: 10 (Alt) + 20 (neu) = **30 Anteile, Investsumme 554,00 € + 1.318,00 € = 1.872,00 €** (Ø-Einstand jetzt ≈62,40 €, gemischt aus altem 55,40-€-Einstand und neuem 65,90-€-Kauf).
+
+**Transparenz-Hinweis (Aegis, wichtig genug um festzuhalten):** Die am 04.09.2026 explizit "auf Brians Bitte" in `depot/kategorisierung.md` hinterlegte Regel setzte Rocket Lab auf 🔴 KEIN NACHKAUF – ÜBERBEWERTET, mit 0%-Sizing-Empfehlung bis mindestens 2 von 3 fundamentalen Aufstufungs-Triggern erfüllt sind (Neutron-Erstflug, Verwässerungstempo verlangsamt, Burn-Multiple &lt;2,5x + Cash-Runway ≥18 Monate). Keiner dieser drei Trigger war beim letzten Check (03.09./04.09.) erfüllt, und der nächste vorgesehene Prüfpunkt (Q3-Zahlen) steht noch aus. Dieser Nachkauf weicht damit von der eigenen, zuvor festgelegten Regel ab — nicht falsch, aber bewusst dokumentiert statt stillschweigend übernommen. Falls sich seit 04.09. neue Fakten ergeben haben (z.B. Neutron-Fortschritt), gerne nachliefern, dann wird die Trigger-Tabelle entsprechend aktualisiert.
+
 **Update 2026-09-09 (Full Deep Dive Rambus auf Brians Anfrage):** vollständiger
 3-fach-Cross-Check abgeschlossen (Jack+Conan, TMR-Pfad). Rating bestätigt
 **BEOBACHTEN**, kein Nachkauf beim aktuellen Kurs (~$87). Beide KIs kommen
@@ -283,3 +289,4 @@ wird auf "VERKAUFT" gesetzt.
 |---|---|---|---|---|---|
 | 24.08.2026 | Kraken Robotics Inc. | 300 | 3,50 € | 1.050,00 € | Talent (Scout: BEOBACHTEN-SPEKULATIV, <0,5% Trace, siehe `analysen/KRKN-RKLB-nachholanalyse-final-2026-09-01.md`) |
 | 28.08.2026 | Rocket Lab USA, Inc. | 10 | 55,40 € | 554,00 € | Talent (Scout: ZU FRÜH, 0% für Nachkauf, siehe `analysen/KRKN-RKLB-nachholanalyse-final-2026-09-01.md`) |
+| 24.09.2026 | Rocket Lab USA, Inc. (Nachkauf) | 20 | 65,90 € | 1.318,00 € | Talent – **weicht von der 04.09.-Regel ab** (0%-Sizing-Empfehlung bis 2/3 fundamentale Trigger erfüllt, siehe `depot/kategorisierung.md`); neue Gesamtposition 30 Anteile, Investsumme 1.872,00 € |
