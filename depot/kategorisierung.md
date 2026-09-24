@@ -28,7 +28,31 @@ Kaufhistorien-Dokumentation (ein Dokumentationsproblem ist kein
 Geschäftsqualitäts-Urteil). Nur die drei oben genannten Kriterien
 (Marge, Marktstellung, Wachstumsverlässlichkeit) entscheiden.
 
-## Ziel-Positionsanzahl: "10-7-3" (festgesetzt 2026-09-03, korrigiert 2026-09-03)
+## Ziel-Positionsanzahl: Fokussierungs-Grundsatz (2026-09-24, löst "10-7-3" ab)
+
+**Von Brian am 24.09.2026 festgelegt, ausgelöst durch die 6-Positionen-
+Verkaufswelle desselben Tages:** "Durch die Portfoliogröße möchte ich das
+Portfolio erstmal fokussiert halten. Es macht kein Sinn, ein ca. 30k-
+Portfolio auf über 15 Positionen aufzuteilen." **Neue Obergrenze: max.
+ca. 15 Einzelwerte ohne ETF** (statt bisher 20). Die feste 10-7-3-
+Unterverteilung ist damit ausgesetzt — Brian hat noch keine neue
+Aufteilung festgelegt ("noch keine konkreten Gedanken gemacht"), das
+bleibt bewusst offen. Details siehe `Agent-Playbook.md`, Abschnitt 3,
+Update 2026-09-24. Die alte 10-7-3-Herleitung bleibt darunter als
+historische Referenz stehen.
+
+| Kategorie | Ist (24.09.2026) |
+|---|---|
+| Champions | 6 |
+| Profi | 5 |
+| Talent | 1 |
+| **Gesamt** | **12 von ~15** |
+
+Kein akuter Nachfüll-/Kaufdruck — die automatisierte Portfolio-Lücken-
+Kandidatensuche für Kategorie-Slots ist bis auf Weiteres ausgesetzt
+(Region-/Sektor-Lücken-Suche bleibt davon unabhängig aktiv).
+
+### Historische Referenz: "10-7-3" (festgesetzt 2026-09-03, korrigiert 2026-09-03, seit 24.09.2026 ausgesetzt)
 
 **10 Champions / 7 Profi / 3 Talent = 20 Einzelwerte gesamt** (siehe
 Agent-Playbook.md, Abschnitt 3, für die vollständige Begründung). Ursprünglich
@@ -47,7 +71,7 @@ kein für immer fixer Wert.
 | Profi | 7 | 5 | 2 frei (**unter Ziel**) |
 | Talent | 3 | 1 | 2 frei (**unter Ziel**) |
 
-**Update 2026-09-24 (Brian, echter Verkauf, keine Fehlzuordnungs-Korrektur):** Brian hat 6 Positionen komplett verkauft – Constellation Software, Hermès, MercadoLibre, Bank Central Asia (alle Champions) sowie Broadridge und A10 Networks (beide Profi). Anders als die 04.09.-Korrekturrunde ist das eine reale Transaktion, kein Kategorisierungsfehler. Details/Verkaufspreise: `depot/finanzen-net-zero.md` (5 Positionen), `depot/scalable-capital.md` (Bank Central Asia). Alle 6 Positionen als Watchlist-Kandidaten mit [EX-DEPOT]-Tag in `watchlist.md` weitergeführt. Struktur jetzt deutlich unter der 10-7-3-Zielvorgabe – kein automatisches Kauf-/Nachfüllsignal, aber ein struktureller Beobachtungspunkt für künftige Portfolio-Lücken-Suchen.
+**Update 2026-09-24 (Brian, echter Verkauf, keine Fehlzuordnungs-Korrektur):** Brian hat 6 Positionen komplett verkauft – Constellation Software, Hermès, MercadoLibre, Bank Central Asia (alle Champions) sowie Broadridge und A10 Networks (beide Profi). Anders als die 04.09.-Korrekturrunde ist das eine reale Transaktion, kein Kategorisierungsfehler. Details/Verkaufspreise: `depot/finanzen-net-zero.md` (5 Positionen), `depot/scalable-capital.md` (Bank Central Asia). Alle 6 Positionen als Watchlist-Kandidaten mit [EX-DEPOT]-Tag in `watchlist.md` weitergeführt. **Die "Ziel"-Spalte oben (10-7-3) ist seit demselben Tag ausgesetzt** (siehe Fokussierungs-Grundsatz oben) – die Lücken sind bewusst NICHT automatisch nachzufüllen, bis Brian eine neue Unterverteilung festlegt.
 
 **Update 2026-09-04 (im Tagesverlauf, drei Korrekturrunden):** Zuerst
 Cellebrite von Talent zu Profi umkategorisiert (Profi 5→6, Talent 5→4).

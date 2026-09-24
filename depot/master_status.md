@@ -363,22 +363,27 @@ Session verfügbar) oder einen Cloud-Link (z.B. Drive) statt Anhang.
 
 ---
 
-## 1. Kategorie-Struktur Depot ("10-7-3"-Ziel)
+## 1. Kategorie-Struktur Depot (Fokussierungs-Grundsatz seit 24.09., löst "10-7-3" ab)
 
-| Kategorie | Ziel | Ist | Freie Slots |
-|---|---|---|---|
-| Champions | 10 | 6 | **4 frei (deutlich unter Ziel)** |
-| Profi | 7 | 5 | **2 frei (unter Ziel)** |
-| Talent | 3 | 1 | **2 frei** |
+**Von Brian am 24.09.2026 festgelegt:** Portfolio bewusst fokussiert halten,
+max. ca. 15 Einzelwerte gesamt (statt bisher 20) – die feste 10-7-3-
+Unterverteilung ist bis auf Weiteres ausgesetzt, Brian hat noch keine neue
+Aufteilung festgelegt. Quelle: `Agent-Playbook.md` Abschnitt 3 (Update
+24.09.), `depot/kategorisierung.md` Abschnitt "Ziel-Positionsanzahl".
 
-Quelle: `depot/kategorisierung.md`, Abschnitt "Ziel-Positionsanzahl".
-**Update 2026-09-24:** Champions/Profi fielen durch 6 echte Komplett-Verkäufe
-(Constellation Software, Hermès, MercadoLibre, Bank Central Asia, Broadridge,
-A10 Networks) deutlich unter Ziel – anders als die Talent-Lücke ist das KEINE
-Fehlzuordnungs-Korrektur, sondern eine reale Transaktion (siehe Nachtrag oben).
-Talent liegt weiterhin unter statt auf Ziel (Kraken Robotics + HawkEye 360
-wurden zu Profi hochgestuft) – kein Verkaufssignal, reine Folge korrigierter
-Fehlzuordnungen.
+| Kategorie | Ist (24.09.2026) |
+|---|---|
+| Champions | 6 |
+| Profi | 5 |
+| Talent | 1 |
+| **Gesamt** | **12 von ~15** |
+
+Komfortabel unter der neuen Obergrenze – **kein automatischer Nachfüllbedarf,
+Kategorie-Slot-Kandidatensuche bis auf Weiteres ausgesetzt** (Region-/Sektor-
+Lücken-Suche bleibt davon unabhängig aktiv, siehe Abschnitt 8). Die 6 durch
+Verkauf frei gewordenen Positionen (Constellation Software, Hermès,
+MercadoLibre, Bank Central Asia, Broadridge, A10 Networks) sind als
+Watchlist-Kandidaten mit [EX-DEPOT]-Tag weitergeführt.
 
 ## 2. Kategorisierungs-Kriterien (Champions/Profi/Talent)
 

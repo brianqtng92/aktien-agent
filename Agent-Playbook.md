@@ -901,8 +901,8 @@ Herleitung an der jeweils verlinkten Stelle, nicht diese Tabelle.
 | Einzelposition max. | 10% (Ausnahme bis 12% bei Top-Conviction) | Gesamtportfolio | Core-Rule 4, unten "Positionsgrößen-Limits" |
 | Trailing-Weight-Hard-Cap | 18% (zwingendes Rebalancing) | Gesamtportfolio | Core-Rule 5, Advisory-Review-Schwelle bereits ab 15% |
 | Einzelposition min. | 1% (sonst Grenzfall-Markierung) | Gesamtportfolio | unten "Positionsgrößen-Limits" |
-| Max. Einzelpositionen gesamt | 20 (ohne ETF) | Stückzahl | Core-Rule 6 |
-| Positionsanzahl-Ziel | 10 Champions / 7 Profi / 3 Talent | Stückzahl | unten "10-7-3", Randfälle/Rundung dort |
+| Max. Einzelpositionen gesamt | ~15 (ohne ETF, **gesenkt 2026-09-24 von 20** – Brian: Fokussierung, 30k-Portfolio soll nicht auf 15+ Positionen verteilt werden) | Stückzahl | Core-Rule 6, unten "10-7-3"-Update 2026-09-24 |
+| Positionsanzahl-Unterverteilung | **offen** (10-7-3-Formel seit 2026-09-24 ausgesetzt, Brian hat noch keine neue Aufteilung festgelegt; Ist-Stand 6 Champions/5 Profi/1 Talent = 12) | Stückzahl | unten "10-7-3"-Update 2026-09-24 |
 | Champions-Kapitalgewicht | 35-45% | Aktienanteil (ohne ETF/Gold/Cash) | unten "Kapitalgewichts-Zielkorridor" |
 | Profi-Kapitalgewicht | 20-30% | Aktienanteil | unten "Kapitalgewichts-Zielkorridor" |
 | Talent-Kapitalgewicht | 25-40% | Aktienanteil | unten "Kapitalgewichts-Zielkorridor" |
@@ -1043,6 +1043,32 @@ Herleitung an der jeweils verlinkten Stelle, nicht diese Tabelle.
       strukturellen Prüfpunkten (jedes Wochenfazit bei Aktienanteil-
       Verschiebung) neu hergeleitet, nicht ad-hoc bei jeder
       Kursschwankung.
+- **Update (2026-09-24, von Brian gefordert nach der 6-Positionen-
+  Verkaufswelle desselben Tages): expliziter Fokussierungs-Grundsatz,
+  löst die feste "10-7-3=20"-Zielzahl ab.** Brians Begründung wörtlich:
+  "Durch die Portfoliogröße möchte ich das Portfolio erstmal fokussiert
+  halten. Es macht kein Sinn, ein ca. 30k-Portfolio auf über 15
+  Positionen aufzuteilen." **Neue Obergrenze: max. ca. 15 Einzelwerte
+  ohne ETF** (statt bisher 20) – löst die Zeile "Max. Einzelpositionen
+  gesamt" in der Kennzahlen-Tabelle oben ab. **Die feste 10-7-3-
+  Unterverteilung (Champions/Profi/Talent) ist damit NICHT mehr
+  automatisch gültig** – Brian hat noch keine konkrete neue
+  Unterverteilung festgelegt ("noch keine konkreten Gedanken gemacht"),
+  das bleibt bewusst offen, bis er das entscheidet. Bis dahin gilt nur
+  der Gesamtdeckel (≤15), keine kategorie-spezifischen Ziel-Slots. Ist-
+  Stand zum Zeitpunkt dieser Regel (nach den 6 Verkäufen vom 24.09.):
+  Champions 6, Profi 5, Talent 1 = **12 Positionen gesamt**, bereits
+  komfortabel unter der neuen Obergrenze – kein akuter
+  Nachfüll-/Kaufdruck. **Konsequenz für die automatisierte Portfolio-
+  Lücken-Kandidatensuche (siehe "Automatisierte Portfolio-Lücken-
+  Kandidatensuche-Pflicht" unten):** nicht mehr automatisch auf "zurück
+  zu 20" hinarbeiten – neue Kandidaten sollen erst dann aktiv gesucht
+  werden, wenn Brian eine bewusste Entscheidung zur Reinvestition der
+  Verkaufserlöse (~8.087€, aktuell als Cash auf Scalable Capital) trifft
+  UND/ODER eine neue Unterverteilung festlegt. Die 10-7-3-Herleitung
+  selbst (Rechenweg/Randfälle oben) bleibt als Referenz stehen, falls
+  Brian später wieder eine feste Formel statt eines reinen Gesamtdeckels
+  will.
 - **Update (2026-09-03, von Brian gefordert nach uneinheitlicher
   Kategorisierung im Strategiespiegel-Report): feste Nachschlage-Tabelle
   statt freier Einschätzung pro Analyse.** Auslöser: JJ, Conan und Aegis
@@ -7017,6 +7043,19 @@ automatisch einen Ersatz eines bestehenden Werts erzwingen.
      einer solchen Lücke geprüfter Kandidat (egal ob aus der Watchlist oder
      neu gefunden) fällt nach vollem 3-fach-Check durch (KEIN Kauf, KEINE
      Sizing-Freigabe).
+  1c. **AUSGESETZT seit 2026-09-24 (Brian: Fokussierungs-Grundsatz, siehe
+     "10-7-3"-Update 2026-09-24 oben) — Auslöser (a) greift bis auf
+     Weiteres NICHT.** Nach der 6-Positionen-Verkaufswelle vom 24.09. sind
+     Champions/Profi deutlich unter der alten 10-7-3-Zielzahl (6/10 bzw.
+     5/7), aber Brian will das Portfolio bewusst fokussiert halten (max.
+     ~15 Positionen gesamt statt 20) und hat noch KEINE neue
+     Unterverteilung festgelegt. Ein automatischer Gezielt-Scan, der jetzt
+     versucht, 4 neue Champions-/2 neue Profi-Kandidaten zu finden, wäre
+     genau das Gegenteil des gewünschten Fokus. Auslöser (b) (Region-/
+     Sektor-Bänder) und (c) (Kandidat fällt durch) bleiben unverändert
+     aktiv. Diese Aussetzung gilt, bis Brian entweder eine neue feste
+     Unterverteilung festlegt ODER explizit wieder aktive Kategorie-Slot-
+     Suche anfordert.
   1b. **Klarstellung: Kategorie-Slot-Suche und Region-/Sektor-Lücken-Suche
      sind UNABHÄNGIGE, getrennte Aufträge, nie eine ersetzt/verengt die
      andere (2026-09-20, von Brian klargestellt, ausgelöst durch eine
