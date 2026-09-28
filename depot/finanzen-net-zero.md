@@ -3,6 +3,13 @@
 Wird laufend per Screenshot befüllt (Stand jeweils zum Screenshot-Zeitpunkt).
 Zuletzt aktualisiert: 2026-08-22 (Screenshots vom selben Tag, "1. Teil").
 
+**Budget-Update 2026-09-28 (wirksam ab Oktober 2026):** monatlicher Zufluss
+in dieses Depot steigt von 320 €/Monat auf **470 €/Monat** — die
+freigewordenen 150 €/Monat kommen aus einer Reduzierung des Scalable-
+Cash-Puffers (200→50 €/Monat), reine Umverteilung, kein zusätzliches
+Gesamtsparvolumen. Siehe `Agent-Playbook.md`, Abschnitt "Budget &
+Cashflow", und `depot/scalable-capital.md`.
+
 | Position | Saldo (Gewinn/Verlust) | Status |
 |---|---|---|
 | Keyence Corp. | +336,15 € | **VERKAUFT 27.08.2026 @ 439,90€** |

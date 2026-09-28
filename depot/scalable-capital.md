@@ -91,13 +91,19 @@ Sektor/Region zuordenbar, ähnlich wie Cash separat ausgewiesen wird).
 **Keine Krypto-Bestände** trotz freigeschalteter Krypto-Funktion im Depot
 (alle Krypto-Positionen bei 0, laut Live-Abfrage 2026-08-30).
 
-**Laufende Sparpläne/Dauerauftrag (Stand 2026-08-28, noch nicht live
-gegengecheckt außer dem Vanguard-Sparplan selbst):** 800 €/Monat Dauerauftrag
-gesamt auf das Scalable-Capital-Konto, davon 600 €/Monat per Sparplan in den
-Vanguard FTSE All-World (Acc., live bestätigt: nächste Ausführung 07.09.2026)
-und 200 €/Monat als Puffer auf dem Verrechnungskonto (kein aktiver Sparplan).
-Der BCA-Sparplan (zuvor 100 €/Monat) läuft nicht mehr – siehe
-`Agent-Playbook.md`, Abschnitt "Budget & Cashflow (2026-08-28)".
+**Laufende Sparpläne/Dauerauftrag — angepasst 2026-09-28, wirksam ab Oktober
+2026 (siehe `Agent-Playbook.md`, Abschnitt "Budget & Cashflow"):** 650 €/Monat
+Dauerauftrag gesamt auf das Scalable-Capital-Konto (vorher 800 €/Monat),
+davon weiterhin 600 €/Monat per Sparplan in den Vanguard FTSE All-World
+(Acc.) und nur noch 50 €/Monat (vorher 200 €/Monat) als Puffer auf dem
+Verrechnungskonto (kein aktiver Sparplan). Die freigewordenen 150 €/Monat
+fließen ab Oktober stattdessen ins finanzen.net-zero-Konto (470 statt 320
+€/Monat, siehe `depot/finanzen-net-zero.md`) — reine Umverteilung, das
+Gesamtsparvolumen (1.120 €/Monat) bleibt unverändert. Die bereits
+angesammelte ~2.000-€-Cashreserve (aus dem BCA-Verkauf, siehe Update
+28.09. oben) bleibt als Korrektur-"Trockenpulver" stehen, wächst ab jetzt
+nur noch langsam über die reduzierte 50-€-Rate weiter. Der BCA-Sparplan
+(zuvor 100 €/Monat) läuft weiterhin nicht mehr.
 
 **Update 2026-09-18 (Wochenfazit-Lauf, live über Scalable-MCP, Verbindung wieder stabil):**
 
