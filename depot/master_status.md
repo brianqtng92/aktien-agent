@@ -17,8 +17,12 @@ einen realen Treasury-Yield-Anstieg in dieser Handelswoche erklärbaren
 Kursrücksetzer bei mehreren zinssensitiven/hochbewerteten Positionen (CBOE
 -3,6%, Cellebrite -5,1% allein am 25.09., trotz eines an diesem Tag
 steigenden Gesamtmarkts), (d) keiner Berücksichtigung der ~6.277€ aus den
-5 finanzen.net-zero-Verkäufen, deren Verbleib ebenfalls noch nicht geklärt
-ist. **Champions/Profi/Talent-Struktur unverändert** (6/5/1 = 12, siehe
+5 finanzen.net-zero-Verkäufen. **Verbleib geklärt (28.09., von Brian
+bestätigt):** 1.318,00€ davon flossen in den Rocket-Lab-Nachkauf, die
+restlichen ≈4.959,72€ bleiben vorerst als Cash bei finanzen.net zero –
+keine sofortige Reinvestition in neue Namen, ggf. Aufstockung bestehender
+Positionen zu einem späteren Zeitpunkt (siehe `depot/finanzen-net-zero.md`).
+Kein offener Punkt mehr. **Champions/Profi/Talent-Struktur unverändert** (6/5/1 = 12, siehe
 Abschnitt 1). Details je Broker: `depot/finanzen-net-zero.md`,
 `depot/trade-republic.md`, `depot/smartbroker-plus.md`,
 `depot/scalable-capital.md`.

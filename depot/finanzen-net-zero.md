@@ -266,6 +266,8 @@ Brian hat **Hermès, MercadoLibre, Constellation Software, Broadridge und A10 Ne
 
 **Summe finanzen.net zero (28.09.2026): ≈15.851,52 €** (10 Positionen nach den 5 Verkäufen vom 24.09.). Auffälligster Einzelfund: CBOE und Cellebrite verzeichneten am 25.09. deutliche Tagesverluste (-3,6%/-5,1%), während der breite Markt (S&P 500 +0,51%, Nasdaq +0,5%) an diesem Tag stieg — passt zum berichteten Kontext eines Treasury-Yield-Anstiegs in dieser Handelswoche, der zinssensitive/hochbewertete Wachstumswerte (SaaS, Börsenbetreiber) stärker belastet als der Gesamtmarkt. Rocket Lab hat sich seit dem Nachkauf vom 24.09. (@65,90€) bereits deutlich erholt (+4,1%). Kein neuer unternehmensspezifischer Einzelfund, der einen 3-fach-Cross-Check auslösen würde — reine Kursaktualisierung.
 
+**Verbleib der Verkaufserlöse geklärt (28.09.2026, von Brian bestätigt):** Von den 6.277,72 € Erlös aus den 5 Verkäufen vom 24.09. sind 1.318,00 € in den Rocket-Lab-Nachkauf geflossen. Die restlichen **≈4.959,72 € bleiben vorerst als Cash** liegen — keine sofortige Reinvestition in neue Namen geplant. Ggf. werden davon bestehende Positionen aufgestockt (Richtung 2-3k€/Position, siehe Fokussierungs-Grundsatz), aber noch keine konkrete Entscheidung, welche/wann. Kein offener Punkt mehr für künftige Sessions.
+
 ## Update 2026-09-24 (von Brian gemeldet: Rocket Lab aufgestockt)
 
 Brian hat **Rocket Lab USA aufgestockt: 20 Anteile @ 65,90 € = 1.318,00 €**. Neue Position: 10 (Alt) + 20 (neu) = **30 Anteile, Investsumme 554,00 € + 1.318,00 € = 1.872,00 €** (Ø-Einstand jetzt ≈62,40 €, gemischt aus altem 55,40-€-Einstand und neuem 65,90-€-Kauf).
