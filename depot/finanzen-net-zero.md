@@ -240,6 +240,25 @@ Brian hat **Hermès, MercadoLibre, Constellation Software, Broadridge und A10 Ne
 
 **Neue Summe finanzen.net zero (24.09.2026, gemischte Standdaten, Verkaufserlöse noch nicht reinvestiert/als Cash-Zugang zu behandeln): ≈14.583,86 € in verbleibenden Wertpapieren** (+ 6.277,72 € Verkaufserlös als Cash-Zugang, Verbleib unklar — siehe Rückfrage an Brian). Nächster Trigger-Check/Wochenfazit-Lauf sollte alle verbleibenden Positionen frisch abrufen.
 
+## Update 2026-09-28 (Depot-Update auf Brians Bitte, WebSearch/WebFetch — Twelve Data diese Session nicht verbunden)
+
+**Datenintegritäts-Hinweis:** Twelve Data war in dieser Session nicht erreichbar (Auth-Fehler) — Kurse stattdessen über stockanalysis.com (WebFetch, [VERIFIED]-Niveau, ein reproduzierbarer Snapshot statt gestreuter WebSearch-Treffer) bzw. WebSearch für Tristel/Münchener Rück (LSE/Xetra, wie gewohnt außerhalb Twelve-Data-Basic-Abdeckung) ermittelt. Alle Kurse Stand Handelsschluss 25.09.2026 (Freitag), außer MUV2/ALV (Xetra, live-Intraday 28.09.). EUR/USD 1,1387, GBP/EUR 1,1628.
+
+| Position | Anteile | Kurs | **Wert aktuell (EUR)** | Δ Investsumme |
+|---|---|---|---|---|
+| SoFi Technologies | 250 | $16,58 | **3.639,85 €** | +39,3% (Invest 2.612,93 €) |
+| ServiceNow Inc | 20 | $135,62 | **2.382,55 €** | +22,2% (Invest 1.948,96 €) |
+| CBOE Holdings Inc | 5 | $258,03 (-3,6% Tagesverlust) | **1.132,98 €** | -7,6% (Invest 1.226,15 €) |
+| Rambus Inc. | 6 | $105,16 | **554,29 €** | +3,9% (Invest 533,64 €) |
+| Intuitive Surgical Inc | 4 | $405,18 | **1.423,35 €** | +1,6% (Invest 1.400,50 €) |
+| Cellebrite DI Ltd | 200 | $10,79 (-5,1% Tagesverlust) | **1.895,85 €** | -12,5% (Invest 2.166,15 €) |
+| Rocket Lab USA, Inc. | 30 | $73,95 | **1.948,10 €** | +4,1% (Invest 1.872,00 €, inkl. Nachkauf 24.09.) |
+| Kraken Robotics Inc. | 300 | $3,23 (OTC:KRKNF-Proxy) | **850,80 €** | -19,0% (Invest 1.050,00 €) |
+| Tristel PLC | 210 | 409,00 GBp | **998,55 €** | -0,4% (Invest 1.002,67 €) |
+| Münchener Rückversicherungs-Gesellschaft | 2 | 512,60 € (Xetra) | **1.025,20 €** | -2,5% (Invest 1.051,00 €) |
+
+**Summe finanzen.net zero (28.09.2026): ≈15.851,52 €** (10 Positionen nach den 5 Verkäufen vom 24.09.). Auffälligster Einzelfund: CBOE und Cellebrite verzeichneten am 25.09. deutliche Tagesverluste (-3,6%/-5,1%), während der breite Markt (S&P 500 +0,51%, Nasdaq +0,5%) an diesem Tag stieg — passt zum berichteten Kontext eines Treasury-Yield-Anstiegs in dieser Handelswoche, der zinssensitive/hochbewertete Wachstumswerte (SaaS, Börsenbetreiber) stärker belastet als der Gesamtmarkt. Rocket Lab hat sich seit dem Nachkauf vom 24.09. (@65,90€) bereits deutlich erholt (+4,1%). Kein neuer unternehmensspezifischer Einzelfund, der einen 3-fach-Cross-Check auslösen würde — reine Kursaktualisierung.
+
 ## Update 2026-09-24 (von Brian gemeldet: Rocket Lab aufgestockt)
 
 Brian hat **Rocket Lab USA aufgestockt: 20 Anteile @ 65,90 € = 1.318,00 €**. Neue Position: 10 (Alt) + 20 (neu) = **30 Anteile, Investsumme 554,00 € + 1.318,00 € = 1.872,00 €** (Ø-Einstand jetzt ≈62,40 €, gemischt aus altem 55,40-€-Einstand und neuem 65,90-€-Kauf).

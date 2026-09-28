@@ -1,3 +1,29 @@
+**Nachtrag 2026-09-28 (ad-hoc-chat, Depot-Update auf Brians Bitte):** Erster
+vollständiger Depot-Repull seit den Verkäufen/dem Nachkauf vom 24.09.
+Twelve Data war diese Session nicht verbunden (Auth-Fehler) — Aktienkurse
+über stockanalysis.com (WebFetch) bzw. WebSearch (Tristel/Münchener
+Rück/Allianz, wie gewohnt außerhalb Twelve-Data-Abdeckung) ermittelt,
+Scalable Capital lief live über den MCP-Server. **Wichtiger, bisher nicht
+im Chat besprochener Fund:** auf Scalable Capital fanden am 28.09. drei
+neue Geldbewegungen statt — Deposit +800€, interne Überweisung -1.539,67€,
+Auszahlung -469,70€ — netto wurden damit ~2.009€ der BCA-Verkaufserlöse aus
+Scalable heraus verschoben, nicht wie zuletzt besprochen für eine
+Reinvestition vorgehalten. Rückfrage an Brian offen (siehe
+`depot/scalable-capital.md`). **Gesamtdepot (4 Broker, live/WebFetch-Basis,
+Stand 28.09.2026): ≈27.105,36 €** — deutlicher Rückgang ggü. dem 23.09.-
+Stand (33.546,99€, vor den Verkäufen), zusammengesetzt aus: (a) dem
+realisierten Verlust der 6-Positionen-Verkaufswelle (-266,94€), (b) den o.g.
+~2.009€ aus Scalable abgeflossenem Cash, (c) einem spürbaren, aber durch
+einen realen Treasury-Yield-Anstieg in dieser Handelswoche erklärbaren
+Kursrücksetzer bei mehreren zinssensitiven/hochbewerteten Positionen (CBOE
+-3,6%, Cellebrite -5,1% allein am 25.09., trotz eines an diesem Tag
+steigenden Gesamtmarkts), (d) keiner Berücksichtigung der ~6.277€ aus den
+5 finanzen.net-zero-Verkäufen, deren Verbleib ebenfalls noch nicht geklärt
+ist. **Champions/Profi/Talent-Struktur unverändert** (6/5/1 = 12, siehe
+Abschnitt 1). Details je Broker: `depot/finanzen-net-zero.md`,
+`depot/trade-republic.md`, `depot/smartbroker-plus.md`,
+`depot/scalable-capital.md`.
+
 **Nachtrag 2026-09-24 ~späterer Folgelauf (Scalable-MCP-Reconnect, Bank Central Asia jetzt live bestätigt):** Brian hat die Scalable-Anbindung wiederhergestellt. Live-Check (`list_portfolio_transactions`/`get_portfolio_cash_breakdown`) bestätigt die im Nachtrag weiter unten noch als "approximiert" markierte Bank-Central-Asia-SELL-Transaktion: **6.199,871861 Anteile @ Gesamterlös 1.809,37 €** (24.09.2026 ~18:30 UTC), Investsumme 1.999,94 € → **realisiert -190,57 € (-9,5%)**, spürbar schlechter als die zuvor angesetzte Näherung (-77,98 €/-3,9% auf Basis des letzten bekannten Kurses vom 18.09.). Erlös liegt weiterhin als Cash auf dem Scalable-Verrechnungskonto (Cash-Balance/Kaufkraft laut Live-Abfrage exakt 1.809,37 €) — **noch nicht reinvestiert**, damit ist zumindest für diesen einen Teilbetrag die weiter unten offene "Cash-Verbleib"-Frage beantwortet. **Korrigierte Gesamtsumme aller 6 Verkäufe:** Erlös 8.087,09 € (6.277,72 € aus den 5 finanzen.net-zero-Positionen + 1.809,37 € BCA), realisiert **-266,94 € (-3,2%)** auf 8.354,03 € Investsumme (Korrektur der vorläufigen -76,37-€-Teilsumme, die BCA noch nicht enthielt). Details korrigiert in `depot/scalable-capital.md` und `watchlist.md`.
 
 **Nachtrag 2026-09-24 ~Folgemeldung (ad-hoc-chat, Brian meldet Rocket-Lab-Nachkauf):**
@@ -493,8 +519,8 @@ Quelle: `depot/offene_empfehlungen.md` (dort maßgeblich, hier nur Kurzstand).
 | Position | Empfehlung | Zone/Preis |
 |---|---|---|
 | Kraken Robotics | Nachkauf-Zone (Preisalarm) | ≤2,80 CAD |
-| Rambus | Nachkauf-Zone (Preisalarm) | $68-75 (Kurs 22.09., Twelve Data live: $104,99, Rally setzt sich fort, +8,3% intraday, weiter weit über der Zone) |
-| CBOE Holdings | Nachkauf-Zone erstmals erreicht, TA-Bestätigung fehlt (Tier 2) | Tranche 1: $268-270 UND RSI&gt;45 (Kurs 22.09., Twelve Data live: $266,56, knapp unter der Zone – RSI in diesem Lauf nicht neu geprüft) · Tranche 2: $255-262 |
+| Rambus | Nachkauf-Zone (Preisalarm) | $68-75 (Kurs 25.09.: $105,16, weiter weit über der Zone) |
+| CBOE Holdings | **Jetzt INNERHALB Tranche-2-Zone, TA-Bestätigung fehlt** | Tranche 1: $268-270 · Tranche 2: $255-262 (Kurs 25.09.: $258,03, -3,6% Tagesverlust — RSI-/TA-Bestätigung noch nicht neu geprüft) |
 
 **Entfernt 2026-09-24:** Hermès-Zeile entfernt – Position komplett verkauft, siehe Nachtrag oben.
 

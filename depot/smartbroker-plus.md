@@ -85,6 +85,15 @@ Nachkauf, keine Reduzierung (Position weiterhin "voll", zu klein für aktives
 Handeln). Nächster Pflicht-Prüfpunkt unverändert: Q3-2026-Zahlen
 (~November/Dezember 2026).
 
+**Update 2026-09-28 (Depot-Update, stockanalysis.com — Twelve Data diese Session nicht verbunden):**
+Live-Kurs 16,10 $/Aktie (Schluss 25.09.2026, +0,63% Tagesgewinn — leichte
+Erholung nach dem Allzeittief 15,45$ vom 14.09.). Aktueller Wert:
+100 × 16,10 $ ÷ 1,1387 = **1.414,16 €** (-15,9% ggü. Investsumme 1.681,70 €),
+praktisch unverändert ggü. dem 22.09.-Stand (~1.345 €, dort allerdings ohne
+saubere EUR-Umrechnung angegeben). Kein neuer unternehmensspezifischer Fund,
+Status weiterhin HALTEN (siehe Full-Deep-Dive-Refresh 22.09.), nächster
+Pflicht-Prüfpunkt unverändert Q3-2026-Zahlen (~November/Dezember).
+
 Hinweis (2026-08-23, weiterhin gültig): Depot-Erfassung insgesamt abgeschlossen –
 von Brian bestätigt ("das sind meine ganzen Positionen"). Zusammen mit
 `scalable-capital.md`, `finanzen-net-zero.md` und `trade-republic.md` ist das

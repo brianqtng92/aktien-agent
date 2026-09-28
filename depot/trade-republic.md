@@ -55,6 +55,13 @@ abrufbar, Wert bleibt auf dem Stand vom 09.09. (444,76 €/Aktie, 512,09 €,
 gesperrt (Xetra), Wert bleibt auf dem Stand vom 09.09. (512,09 €, +1,5%)
 stehen.
 
+**Update 2026-09-28 (Depot-Update, WebSearch — Twelve Data diese Session nicht verbunden, Xetra ohnehin gesperrt):**
+Live-Kurs 423,50 €/Aktie (28.09., Xetra-Schluss 25.09.). Aktueller Wert:
+1,151396 × 423,50 € = **487,66 €** (-3,3% ggü. Investsumme 504,43 €) —
+erster negativer Stand seit Erfassung, moderater Rücksetzer ggü. 09.09.
+(+1,5%), passt zur allgemeinen Finanzsektor-Schwäche bei steigenden
+Anleiherenditen in dieser Handelswoche.
+
 ## Position 2 – WM (vermutlich Waste Management Inc.) — **VERKAUFT 27.08.2026 @ 187,35€, vollständiger Exit**
 
 **Letzte Aktualisierung laut App:** 12.08., 21:16 Uhr

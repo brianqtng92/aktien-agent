@@ -117,6 +117,28 @@ Brian hatte den Komplett-Verkauf von **Bank Central Asia** gemeldet (Teil einer 
 
 **Live-Holdings jetzt bestätigt:** nur noch Boerse Stuttgart EUWAX Gold II (4 Anteile, Gold-ETC, weiterhin bewusst außerhalb der Champions/Profi/Talent-Struktur) und der Vanguard-FTSE-All-World-ETF-Sparplan (48,786235 Anteile, 600€/Monat) — keine Krypto-Bestände. Mit dem Verkauf von BCA hält Scalable Capital jetzt **keine aktive Einzelwert-Position mehr**, nur noch Gold-ETC + ETF-Sparplan + Cash, wie ursprünglich als eigentliche Rolle des Kontos vorgesehen (siehe Klarstellung ganz oben).
 
+## Update 2026-09-28 (Depot-Update, live über Scalable-MCP)
+
+**Neue Transaktionen seit dem 24.09. gefunden, bisher nicht im Chat besprochen — transparent vermerkt statt stillschweigend verbucht:**
+
+| Datum | Transaktion | Betrag |
+|---|---|---|
+| 28.09.2026 | Deposit "Quang Tung Nguyen" | +800,00 € |
+| 28.09.2026 | Interne Überweisung (CASH_TRANSFER_OUT) | -1.539,67 € |
+| 28.09.2026 | Scalable Capital Broker Auszahlung (WITHDRAWAL) | -469,70 € |
+
+Netto-Cash-Bewegung seit dem 24.09.-Stand (1.809,37 €, die BCA-Verkaufserlöse): 1.809,37 + 800,00 - 1.539,67 - 469,70 = **600,00 €** — rechnerisch exakt, deckt sich mit dem Live-Cash-Stand. **Frage an Brian:** die BCA-Verkaufserlöse wurden damit größtenteils aus Scalable heraus verschoben (Auszahlung + interne Überweisung, zusammen ~2.009 €), nicht wie zuletzt besprochen "Reinvestition geplant" – ist das eine bewusste Entscheidung (z.B. Umschichtung auf ein anderes Konto) oder soll das noch geklärt werden?
+
+**Live-Holdings (28.09.2026):**
+
+| Position | Kurs/Stück | Anteile | **Wert aktuell** |
+|---|---|---|---|
+| Boerse Stuttgart EUWAX Gold II | 119,7115 € | 4 | **478,85 €** |
+| Vanguard FTSE All-World (Acc) | 169,58 € | 48,786235 | **8.273,17 €** |
+| Cash/Kaufkraft | — | — | **600,00 €** |
+
+**Gesamtwert Scalable Capital (live, Stand 28.09.2026): 9.352,02 €** (Gold+ETF+Cash) — Rückgang ggü. dem 24.09.-Stand primär durch die o.g. Geldbewegungen aus dem Konto heraus, nicht durch Kursverluste (Gold leicht schwächer, ETF-Anteilswert nahezu unverändert).
+
 Hinweis (2026-08-23): Depot-Erfassung insgesamt abgeschlossen – von Brian bestätigt
 ("das sind meine ganzen Positionen"). Zusammen mit `finanzen-net-zero.md`,
 `trade-republic.md` und `smartbroker-plus.md` ist das jetzt das vollständige Depot.
