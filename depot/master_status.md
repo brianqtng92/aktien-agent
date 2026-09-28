@@ -3,12 +3,11 @@ vollständiger Depot-Repull seit den Verkäufen/dem Nachkauf vom 24.09.
 Twelve Data war diese Session nicht verbunden (Auth-Fehler) — Aktienkurse
 über stockanalysis.com (WebFetch) bzw. WebSearch (Tristel/Münchener
 Rück/Allianz, wie gewohnt außerhalb Twelve-Data-Abdeckung) ermittelt,
-Scalable Capital lief live über den MCP-Server. **Wichtiger, bisher nicht
-im Chat besprochener Fund:** auf Scalable Capital fanden am 28.09. drei
-neue Geldbewegungen statt — Deposit +800€, interne Überweisung -1.539,67€,
-Auszahlung -469,70€ — netto wurden damit ~2.009€ der BCA-Verkaufserlöse aus
-Scalable heraus verschoben, nicht wie zuletzt besprochen für eine
-Reinvestition vorgehalten. Rückfrage an Brian offen (siehe
+Scalable Capital lief live über den MCP-Server. Auf Scalable Capital
+fanden am 28.09. drei neue Geldbewegungen statt — Deposit +800€, interne
+Überweisung -1.539,67€, Auszahlung -469,70€ — netto wurden damit ~2.009€
+der BCA-Verkaufserlöse aus Scalable heraus verschoben. **Von Brian
+bestätigt: bewusste Umschichtung**, kein unerklärter Abfluss (siehe
 `depot/scalable-capital.md`). **Gesamtdepot (4 Broker, live/WebFetch-Basis,
 Stand 28.09.2026): ≈27.105,36 €** — deutlicher Rückgang ggü. dem 23.09.-
 Stand (33.546,99€, vor den Verkäufen), zusammengesetzt aus: (a) dem

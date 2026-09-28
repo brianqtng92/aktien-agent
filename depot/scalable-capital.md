@@ -127,7 +127,7 @@ Brian hatte den Komplett-Verkauf von **Bank Central Asia** gemeldet (Teil einer 
 | 28.09.2026 | Interne Überweisung (CASH_TRANSFER_OUT) | -1.539,67 € |
 | 28.09.2026 | Scalable Capital Broker Auszahlung (WITHDRAWAL) | -469,70 € |
 
-Netto-Cash-Bewegung seit dem 24.09.-Stand (1.809,37 €, die BCA-Verkaufserlöse): 1.809,37 + 800,00 - 1.539,67 - 469,70 = **600,00 €** — rechnerisch exakt, deckt sich mit dem Live-Cash-Stand. **Frage an Brian:** die BCA-Verkaufserlöse wurden damit größtenteils aus Scalable heraus verschoben (Auszahlung + interne Überweisung, zusammen ~2.009 €), nicht wie zuletzt besprochen "Reinvestition geplant" – ist das eine bewusste Entscheidung (z.B. Umschichtung auf ein anderes Konto) oder soll das noch geklärt werden?
+Netto-Cash-Bewegung seit dem 24.09.-Stand (1.809,37 €, die BCA-Verkaufserlöse): 1.809,37 + 800,00 - 1.539,67 - 469,70 = **600,00 €** — rechnerisch exakt, deckt sich mit dem Live-Cash-Stand. **Geklärt (28.09., von Brian bestätigt): bewusste Umschichtung** — die ~2.009 € (Auszahlung + interne Überweisung) wurden absichtlich aus Scalable heraus verschoben, kein unerklärter Abfluss und keine noch offene Reinvestitionsentscheidung mehr für diesen Teilbetrag. Details/Zielort nicht weiter erfragt (außerhalb des hier getrackten Depots).
 
 **Live-Holdings (28.09.2026):**
 
