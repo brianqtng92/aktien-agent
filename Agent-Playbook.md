@@ -1615,30 +1615,45 @@ bereinigten Stand wider.
 Laufende monatliche Mittelzuflüsse, als feste Rahmengröße für Sizing-/Cash-
 Allokations-Überlegungen (siehe Offene Punkte, Cash-Allokations-Logik):
 
-**Update 2026-09-28 (von Brian angepasst, ab Oktober 2026 wirksam):** Brian
-hat die Aufteilung verschoben, die **Gesamtsumme bleibt mit €1.120/Monat
-unverändert** — reine Umverteilung, keine Kürzung/Erhöhung des Gesamtsparbetrags:
-- **Scalable Capital: €650/Monat** (vorher €800/Monat) — €600/Monat ETF-
-  Sparplan unverändert, aber der monatliche Cashreserve-Zufluss sinkt von
-  €200 auf **€50/Monat**.
-- **finanzen.net zero: €470/Monat** (vorher €320/Monat) — die freigewordenen
-  €150/Monat wandern hierhin, für konkrete Aktienkäufe.
-- **Kontext:** die bereits angesammelte ~€2.000-Cashreserve auf Scalable
-  (aus dem Bank-Central-Asia-Verkauf vom 24.09., siehe `depot/
-  scalable-capital.md`) bleibt als "Trockenpulver" für eine ETF-Korrektur
-  stehen (siehe Cross-KI-Check unten) — wächst ab jetzt nur noch langsam
-  über die reduzierte €50/Monat-Rate weiter, statt wie zuvor mit €200/Monat.
-  Das deckt sich mit Aegis' eigener Empfehlung vom selben Tag, die Reserve
-  eher als festen Deckel zu behandeln statt sie unbegrenzt weiterwachsen zu
-  lassen — Brian hat das über die reduzierte Zuflussrate umgesetzt, ohne die
-  Reserve selbst anzutasten.
+**Update 2026-09-28 (von Brian angepasst, ab Oktober 2026 wirksam, NOCH AM SELBEN
+TAG weiter verfeinert – siehe Update unten):** Brian hat die Aufteilung
+verschoben, die **Gesamtsumme bleibt mit €1.120/Monat unverändert** — reine
+Umverteilung, keine Kürzung/Erhöhung des Gesamtsparbetrags. Erste Fassung
+(nur für ein paar Stunden gültig, dann durch die finale Fassung unten
+ersetzt): Scalable €650/Monat (€600 ETF + €50 Cash), finanzen.net zero
+€470/Monat.
 
-- **Scalable Capital: bis 30.09.2026 €800/Monat per Dauerauftrag** (danach €650/Monat, siehe Update oben), davon:
-  - **€600/Monat** per Sparplan in den **Vanguard FTSE All-World (Acc.)** ETF
-  - **bis 30.09.2026 €200/Monat, ab Oktober €50/Monat** verbleibt als **Cashreserve auf dem Verrechnungskonto**
+**Update 2026-09-28, finale Fassung (später am selben Tag, nach Diskussion mit
+Aegis+JJ):** Brian hat die Aufteilung nochmal angepasst, ebenfalls
+kostenneutral (weiterhin €1.120/Monat gesamt):
+- **Scalable Capital: €750/Monat**, komplett als ETF-Sparplan (Vanguard FTSE
+  All-World). **Kein monatlicher Cash-Zufluss mehr** (vorher €50/Monat,
+  ursprünglich €200/Monat) — Begründung: die bereits angesammelte ~€2.000-
+  Cashreserve (aus dem Bank-Central-Asia-Verkauf vom 24.09., siehe unten)
+  liegt schon über dem 3-5%-Cash-Cap-Richtwert und deckt die
+  Korrektur-Nachkauf-Funktion allein ab; ein weiterer monatlicher Zufluss
+  dorthin bringt keinen Zusatznutzen. Stattdessen wird die volle Differenz
+  in den ETF-Sparplan gelenkt, der Brians erklärtes 50%-ETF-Anteils-Ziel
+  direkt unterstützt.
+- **finanzen.net zero: €370/Monat** (vorher kurzzeitig €470/Monat, davor
+  €320/Monat) — bekommt nur die Hälfte der ursprünglich verschobenen
+  €150/Monat, der Rest fließt in den ETF-Sparplan (siehe oben).
+- **Trade-off, von Brian bewusst akzeptiert:** ohne laufenden Cash-Zufluss
+  gibt es keine automatische Wiederauffüllung der Korrektur-Reserve, falls
+  die ~€2.000 jemals für einen echten Nachkauf eingesetzt werden – Brian
+  müsste dann aktiv einen neuen Puffer einrichten, statt dass das
+  automatisch weiterläuft.
+
+- **Scalable Capital: bis 30.09.2026 €800/Monat per Dauerauftrag** (danach €750/Monat, siehe finale Fassung oben), davon:
+  - **€750/Monat** ab Oktober komplett per Sparplan in den **Vanguard FTSE All-World (Acc.)** ETF
+    (vorher €600/Monat bis 27.09., kurzzeitig geplant €600/Monat + €50 Cash am 28.09. vormittags, dann auf €750/Monat komplett ETF finalisiert)
+  - **Bis 30.09.2026 €200/Monat, danach €0/Monat** verbleibt als **Cashreserve auf dem Verrechnungskonto**
     (2026-08-29, von Brian präzisiert: bewusst zurückgelegt für einen
     möglichen **Einmalkauf bei einer größeren Marktkorrektur** – kein
-    beliebiger Puffer ohne Zweck, sondern gezielte "Trockenpulver"-Reserve).
+    beliebiger Puffer ohne Zweck, sondern gezielte "Trockenpulver"-Reserve;
+    ab Oktober 2026 kein weiterer monatlicher Zufluss mehr, siehe finale
+    Fassung oben – die bestehende ~€2.000-Reserve bleibt aber unverändert
+    stehen).
     **Stehende Freigabe von Brian:** Falls ich (Aegis) einschätze, dass diese
     Reserve auf absehbare Zeit nicht für einen Korrektur-Einmalkauf gebraucht
     wird (z.B. weil aktuell keine sinnvolle Korrektur-Gelegenheit erkennbar
@@ -1667,39 +1682,45 @@ unverändert** — reine Umverteilung, keine Kürzung/Erhöhung des Gesamtsparbe
     3-5% des Gesamtportfolios**; wird dieser überschritten, ohne dass eine
     Korrektur/ein Regime-Wechsel eingetreten ist, fließt der Überschuss in
     den normalen Anlageplan (ETF-Sparplan) statt als Cash liegen zu bleiben.
-    Bis dahin gilt: 200€/Monat weiter ansammeln, Funktion bleibt
-    Optionalität, keine Umwidmung zu einem regulären Investment.
+    Bis dahin gilt: Funktion bleibt Optionalität, keine Umwidmung zu einem
+    regulären Investment (Update 2026-09-28: kein monatlicher Zufluss mehr,
+    siehe finale Fassung oben – die Reserve wächst also nicht mehr weiter,
+    bleibt aber als fixe ~€2.000-Position bis zu einem der beiden Auslöser
+    stehen).
   - Der bisherige Bank-Central-Asia-(BBCA)-Sparplan (100 €/Monat, siehe
     `depot/scalable-capital.md`) wurde **gestoppt** (kein Neukauf mehr, bestehende
     Position bleibt zunächst unverändert im Depot).
-- **finanzen.net zero: bis 30.09.2026 €320/Monat, ab Oktober €470/Monat**
-  (siehe Update 2026-09-28 oben)
+- **finanzen.net zero: bis 30.09.2026 €320/Monat, ab Oktober €370/Monat**
+  (finale Fassung, siehe Update 2026-09-28 oben; kurzzeitig war am 28.09.
+  vormittags €470/Monat geplant, noch am selben Tag auf €370/Monat
+  korrigiert)
 - **Ad-hoc-Nachschuss möglich:** gelegentlich zusätzlich €100-200, wenn ein
   Kandidat es rechtfertigt – kein fester Bestandteil des Regel-Budgets.
 - **Kostenstruktur finanzen.net zero (2026-08-29, von Brian klargestellt):**
   Ab einer Ordersumme von **≥500€ keine Ordergebühr**, bei einer Ordersumme
   **<500€ fällt 1€ Ordergebühr** an. **Praktische Konsequenz (aktualisiert
-  2026-09-28):** Das neue Monatsbudget von €470/Monat liegt IMMER NOCH
-  knapp UNTER dieser Schwelle – ein einzelner monatlicher Kauf würde also
-  weiterhin die 1€-Gebühr auslösen (≈0,21% der Ordersumme, günstiger als
-  zuvor bei €320). Bei künftigen Sizing-/Kauf-Empfehlungen für
-  finanzen.net-zero-Positionen deshalb mitdenken, ob es sinnvoller ist,
-  (a) die 1€ Gebühr einfach in Kauf zu nehmen (bei diesem Betrag ökonomisch
-  meist vernachlässigbar), oder (b) mehrere Monatsraten zu bündeln (z.B. 2
-  Monate à 470€ = 940€, klar über der 500€-Schwelle) und seltener, dafür
-  gebührenfrei zu kaufen. Keine pauschale Regel – abhängig davon, ob Brian
-  eher zeitnahen Einstieg oder Gebührenoptimierung priorisiert; im Zweifel
-  bei einer konkreten Kaufempfehlung kurz ansprechen.
-- **Cash-Cap-Reconciliation (2026-09-28):** die im Cross-KI-Check unten
-  festgelegte 3-5%-Cash-Cap-Regel (bezogen auf das Gesamtportfolio) wäre bei
-  ~27k Gesamtportfolio ca. €810-1.355 – die tatsächliche Reserve (~€2.000)
-  liegt bereits darüber. Brian hat das nicht durch Abbau der Reserve gelöst,
-  sondern durch drastische Reduzierung der monatlichen Zuflussrate
-  (€200→€50) – de facto ein selbst gewählter, etwas höherer Cap als die
-  ursprüngliche 3-5%-Formel. Keine Handlungsaufforderung, nur Konsistenz-
-  Hinweis: bei künftiger Reserve-Diskussion diesen leicht erhöhten
-  De-facto-Cap statt der alten 3-5%-Formel als aktuellen Stand zugrunde
-  legen.
+  2026-09-28, finale Fassung):** Das Monatsbudget von €370/Monat liegt
+  weiterhin UNTER dieser Schwelle – ein einzelner monatlicher Kauf würde
+  also weiterhin die 1€-Gebühr auslösen (≈0,27% der Ordersumme). Bei
+  künftigen Sizing-/Kauf-Empfehlungen für finanzen.net-zero-Positionen
+  deshalb mitdenken, ob es sinnvoller ist, (a) die 1€ Gebühr einfach in Kauf
+  zu nehmen (bei diesem Betrag ökonomisch meist vernachlässigbar), oder (b)
+  mehrere Monatsraten zu bündeln (z.B. 2 Monate à 370€ = 740€, klar über der
+  500€-Schwelle) und seltener, dafür gebührenfrei zu kaufen. Keine
+  pauschale Regel – abhängig davon, ob Brian eher zeitnahen Einstieg oder
+  Gebührenoptimierung priorisiert; im Zweifel bei einer konkreten
+  Kaufempfehlung kurz ansprechen.
+- **Cash-Cap-Reconciliation (2026-09-28, finale Fassung):** die im
+  Cross-KI-Check unten festgelegte 3-5%-Cash-Cap-Regel (bezogen auf das
+  Gesamtportfolio) wäre bei ~27k Gesamtportfolio ca. €810-1.355 – die
+  tatsächliche Reserve (~€2.000) liegt bereits darüber. Brian hat das nicht
+  durch Abbau der Reserve gelöst, sondern durch vollständiges Stoppen des
+  monatlichen Zuflusses (€200→€50→**€0**) – de facto ein selbst gewählter,
+  höherer Cap als die ursprüngliche 3-5%-Formel, jetzt zusätzlich fixiert
+  (die Reserve wächst gar nicht mehr weiter, sie bleibt aber unangetastet
+  stehen). Keine Handlungsaufforderung, nur Konsistenz-Hinweis: bei
+  künftiger Reserve-Diskussion diesen fixierten De-facto-Cap statt der
+  alten 3-5%-Formel als aktuellen Stand zugrunde legen.
 - Trade Republic und Smartbroker+ haben laut bisherigem Stand keine eigenen
   laufenden Sparpläne/Daueraufträge (nur Einzelkäufe wie bei Allianz SE/WM
   historisch, bzw. HawkEye 360 als Einzelposition) – bei Bedarf mit Brian

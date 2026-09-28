@@ -3,11 +3,14 @@
 Wird laufend per Screenshot befüllt (Stand jeweils zum Screenshot-Zeitpunkt).
 Zuletzt aktualisiert: 2026-08-22 (Screenshots vom selben Tag, "1. Teil").
 
-**Budget-Update 2026-09-28 (wirksam ab Oktober 2026):** monatlicher Zufluss
-in dieses Depot steigt von 320 €/Monat auf **470 €/Monat** — die
-freigewordenen 150 €/Monat kommen aus einer Reduzierung des Scalable-
-Cash-Puffers (200→50 €/Monat), reine Umverteilung, kein zusätzliches
-Gesamtsparvolumen. Siehe `Agent-Playbook.md`, Abschnitt "Budget &
+**Budget-Update 2026-09-28, finale Fassung (wirksam ab Oktober 2026):**
+monatlicher Zufluss in dieses Depot steigt von 320 €/Monat auf **370 €/Monat**
+(zwischenzeitlich am 28.09. kurz 470 €/Monat geplant, noch am selben Tag
+korrigiert) — die freigewordenen 50 €/Monat kommen aus dem vollständigen
+Stoppen des Scalable-Cash-Puffers (200→50→0 €/Monat); der Rest der
+freigewordenen Mittel fließt stattdessen in den Vanguard-ETF-Sparplan
+(600→750 €/Monat). Reine Umverteilung, kein zusätzliches Gesamtsparvolumen
+(weiterhin 1.120 €/Monat). Siehe `Agent-Playbook.md`, Abschnitt "Budget &
 Cashflow", und `depot/scalable-capital.md`.
 
 | Position | Saldo (Gewinn/Verlust) | Status |
