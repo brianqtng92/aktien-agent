@@ -97,17 +97,22 @@ Cashflow"):** 750 €/Monat Dauerauftrag gesamt auf das Scalable-Capital-Konto
 (vorher 800 €/Monat, zwischenzeitlich am 28.09. kurz 650 €/Monat geplant),
 davon **komplett 750 €/Monat per Sparplan in den Vanguard FTSE All-World
 (Acc.)** — **kein monatlicher Cash-Zufluss mehr** (vorher 200, zwischenzeitlich
-50 €/Monat als Puffer). Begründung: die bereits angesammelte ~2.000-€-
-Cashreserve (aus dem BCA-Verkauf, siehe Update 28.09. oben) liegt schon über
-dem 3-5%-Cash-Cap-Richtwert und deckt die Korrektur-Nachkauf-Funktion allein
-ab, ein weiterer Zufluss bringt keinen Zusatznutzen — die volle Differenz
-geht deshalb stattdessen in den ETF-Sparplan (unterstützt Brians 50%-ETF-
-Anteils-Ziel direkt). Die restlichen 370 €/Monat (statt kurzzeitig 470,
-davor 320 €/Monat) fließen ins finanzen.net-zero-Konto (siehe
+50 €/Monat als Puffer). Begründung zum Entscheidungszeitpunkt (Vormittag):
+die angesammelte Cashreserve (aus dem BCA-Verkauf) liege schon über dem
+3-5%-Cash-Cap-Richtwert. **KORREKTUR (28.09. Nachmittag, Live-Repull):**
+diese Prämisse war falsch – die Reserve beträgt tatsächlich nur **600,00 €**
+(siehe Reconciliation weiter unten), nicht ~2.000€ wie zwischenzeitlich im
+Chat angenommen. 600€ liegt UNTER, nicht über dem Cash-Cap (~810-1.355€ bei
+~32k Gesamtportfolio). Der Komplett-Stopp des Puffers steht damit auf
+schwächerer Grundlage als angenommen – Brian im Depot-Update-Chat vom
+28.09. Nachmittag transparent darauf hingewiesen, nicht eigenständig
+zurückgerollt. Die restlichen 370 €/Monat (statt kurzzeitig 470, davor
+320 €/Monat) fließen unverändert ins finanzen.net-zero-Konto (siehe
 `depot/finanzen-net-zero.md`) — weiterhin reine Umverteilung, das
-Gesamtsparvolumen (1.120 €/Monat) bleibt unverändert. Die ~2.000-€-
-Cashreserve wächst ab jetzt nicht mehr weiter, bleibt aber unangetastet
-stehen. Der BCA-Sparplan (zuvor 100 €/Monat) läuft weiterhin nicht mehr.
+Gesamtsparvolumen (1.120 €/Monat) bleibt unverändert. Die (korrigiert:
+600€) Cashreserve wächst seit dem Stopp nicht mehr weiter, bleibt aber
+unangetastet stehen. Der BCA-Sparplan (zuvor 100 €/Monat) läuft weiterhin
+nicht mehr.
 
 **Update 2026-09-18 (Wochenfazit-Lauf, live über Scalable-MCP, Verbindung wieder stabil):**
 
@@ -148,6 +153,8 @@ Netto-Cash-Bewegung seit dem 24.09.-Stand (1.809,37 €, die BCA-Verkaufserlöse
 | Cash/Kaufkraft | — | — | **600,00 €** |
 
 **Gesamtwert Scalable Capital (live, Stand 28.09.2026): 9.352,02 €** (Gold+ETF+Cash) — Rückgang ggü. dem 24.09.-Stand primär durch die o.g. Geldbewegungen aus dem Konto heraus, nicht durch Kursverluste (Gold leicht schwächer, ETF-Anteilswert nahezu unverändert).
+
+**Re-Check Nachmittag (28.09., Live-Repull für den Depot-Update-Chat):** praktisch unverändert – Gold 120,20 €/Anteil (480,79 €), Vanguard-ETF 169,60 €/Anteil (8.274,16 €), Cash weiterhin **600,00 €** (keine neuen Transaktionen seit dem Vormittag, `list_portfolio_transactions` seit 2026-09-28T00:00Z → weiterhin nur die 3 bekannten). **Gesamtwert: 9.354,95 €.** Bestätigt die 600€-Korrektur oben – die im Budget-Chat zwischenzeitlich verwendete "~2.000€"-Annahme war nicht mit diesem Live-Stand deckungsgleich.
 
 Hinweis (2026-08-23): Depot-Erfassung insgesamt abgeschlossen – von Brian bestätigt
 ("das sind meine ganzen Positionen"). Zusammen mit `finanzen-net-zero.md`,

@@ -94,6 +94,12 @@ saubere EUR-Umrechnung angegeben). Kein neuer unternehmensspezifischer Fund,
 Status weiterhin HALTEN (siehe Full-Deep-Dive-Refresh 22.09.), nächster
 Pflicht-Prüfpunkt unverändert Q3-2026-Zahlen (~November/Dezember).
 
+**Re-Check Nachmittag (28.09., Twelve Data jetzt live):** Kurs unverändert
+16,10 $/Aktie. Mit dem aktuellen EUR/USD-Kurs (1,13736, Twelve Data live)
+präziser: 100 × 16,10 $ ÷ 1,13736 = **1.415,56 €** (minimale Abweichung zum
+Vormittags-Wert durch die etwas andere EUR/USD-Quelle, kein realer
+Kursunterschied).
+
 Hinweis (2026-08-23, weiterhin gültig): Depot-Erfassung insgesamt abgeschlossen –
 von Brian bestätigt ("das sind meine ganzen Positionen"). Zusammen mit
 `scalable-capital.md`, `finanzen-net-zero.md` und `trade-republic.md` ist das

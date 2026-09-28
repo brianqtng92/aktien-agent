@@ -1628,21 +1628,27 @@ Aegis+JJ):** Brian hat die Aufteilung nochmal angepasst, ebenfalls
 kostenneutral (weiterhin €1.120/Monat gesamt):
 - **Scalable Capital: €750/Monat**, komplett als ETF-Sparplan (Vanguard FTSE
   All-World). **Kein monatlicher Cash-Zufluss mehr** (vorher €50/Monat,
-  ursprünglich €200/Monat) — Begründung: die bereits angesammelte ~€2.000-
-  Cashreserve (aus dem Bank-Central-Asia-Verkauf vom 24.09., siehe unten)
-  liegt schon über dem 3-5%-Cash-Cap-Richtwert und deckt die
-  Korrektur-Nachkauf-Funktion allein ab; ein weiterer monatlicher Zufluss
-  dorthin bringt keinen Zusatznutzen. Stattdessen wird die volle Differenz
-  in den ETF-Sparplan gelenkt, der Brians erklärtes 50%-ETF-Anteils-Ziel
-  direkt unterstützt.
+  ursprünglich €200/Monat) — Begründung zum Zeitpunkt der Entscheidung: die
+  angesammelte Cashreserve (aus dem Bank-Central-Asia-Verkauf vom 24.09.,
+  siehe unten) liege schon über dem 3-5%-Cash-Cap-Richtwert. **KORREKTUR
+  (28.09. Nachmittag, Live-Repull via Scalable-MCP):** Diese Prämisse war
+  falsch – die Reserve beträgt tatsächlich nur **600,00 €** (nicht ~€2.000,
+  wie im Chat zwischenzeitlich angenommen), nach drei am 28.09. vormittags
+  bestätigt-bewussten Geldbewegungen (Deposit +800€, interne Überweisung
+  -1.539,67€, Auszahlung -469,70€, siehe `depot/scalable-capital.md`).
+  **600€ liegt UNTER, nicht über dem 3-5%-Cash-Cap (~€810-1.355 bei ~32k
+  Gesamtportfolio) – die ursprüngliche Begründung für den Komplett-Stopp
+  trägt nicht mehr.** Nicht eigenständig zurückgerollt – Brian entscheidet,
+  ob er den Puffer angesichts der korrigierten Zahl doch teilweise
+  reaktivieren will (siehe Depot-Update-Chat 28.09. Nachmittag).
 - **finanzen.net zero: €370/Monat** (vorher kurzzeitig €470/Monat, davor
   €320/Monat) — bekommt nur die Hälfte der ursprünglich verschobenen
   €150/Monat, der Rest fließt in den ETF-Sparplan (siehe oben).
 - **Trade-off, von Brian bewusst akzeptiert:** ohne laufenden Cash-Zufluss
   gibt es keine automatische Wiederauffüllung der Korrektur-Reserve, falls
-  die ~€2.000 jemals für einen echten Nachkauf eingesetzt werden – Brian
-  müsste dann aktiv einen neuen Puffer einrichten, statt dass das
-  automatisch weiterläuft.
+  die (korrigiert: 600€, nicht ~€2.000) jemals für einen echten Nachkauf
+  eingesetzt werden – Brian müsste dann aktiv einen neuen Puffer einrichten,
+  statt dass das automatisch weiterläuft.
 
 - **Scalable Capital: bis 30.09.2026 €800/Monat per Dauerauftrag** (danach €750/Monat, siehe finale Fassung oben), davon:
   - **€750/Monat** ab Oktober komplett per Sparplan in den **Vanguard FTSE All-World (Acc.)** ETF
@@ -1685,8 +1691,9 @@ kostenneutral (weiterhin €1.120/Monat gesamt):
     Bis dahin gilt: Funktion bleibt Optionalität, keine Umwidmung zu einem
     regulären Investment (Update 2026-09-28: kein monatlicher Zufluss mehr,
     siehe finale Fassung oben – die Reserve wächst also nicht mehr weiter,
-    bleibt aber als fixe ~€2.000-Position bis zu einem der beiden Auslöser
-    stehen).
+    bleibt aber als fixe Position bis zu einem der beiden Auslöser stehen.
+    **Korrigiert 28.09. Nachmittag: die Position beträgt live bestätigt
+    600,00 €, nicht ~€2.000** – siehe Korrektur-Hinweis oben).
   - Der bisherige Bank-Central-Asia-(BBCA)-Sparplan (100 €/Monat, siehe
     `depot/scalable-capital.md`) wurde **gestoppt** (kein Neukauf mehr, bestehende
     Position bleibt zunächst unverändert im Depot).
@@ -1710,17 +1717,22 @@ kostenneutral (weiterhin €1.120/Monat gesamt):
   pauschale Regel – abhängig davon, ob Brian eher zeitnahen Einstieg oder
   Gebührenoptimierung priorisiert; im Zweifel bei einer konkreten
   Kaufempfehlung kurz ansprechen.
-- **Cash-Cap-Reconciliation (2026-09-28, finale Fassung):** die im
-  Cross-KI-Check unten festgelegte 3-5%-Cash-Cap-Regel (bezogen auf das
-  Gesamtportfolio) wäre bei ~27k Gesamtportfolio ca. €810-1.355 – die
-  tatsächliche Reserve (~€2.000) liegt bereits darüber. Brian hat das nicht
-  durch Abbau der Reserve gelöst, sondern durch vollständiges Stoppen des
-  monatlichen Zuflusses (€200→€50→**€0**) – de facto ein selbst gewählter,
-  höherer Cap als die ursprüngliche 3-5%-Formel, jetzt zusätzlich fixiert
-  (die Reserve wächst gar nicht mehr weiter, sie bleibt aber unangetastet
-  stehen). Keine Handlungsaufforderung, nur Konsistenz-Hinweis: bei
-  künftiger Reserve-Diskussion diesen fixierten De-facto-Cap statt der
-  alten 3-5%-Formel als aktuellen Stand zugrunde legen.
+- **Cash-Cap-Reconciliation (2026-09-28, KORRIGIERT Nachmittag desselben
+  Tages):** ursprünglich (vormittags) angenommen, die Reserve (~€2.000)
+  liege über dem 3-5%-Cash-Cap-Richtwert (~€810-1.355 bei ~27-32k
+  Gesamtportfolio) – **das war falsch.** Live-Repull via Scalable-MCP
+  (`get_portfolio_cash_breakdown`) bestätigt die tatsächliche Reserve mit
+  exakt **600,00 €** (nach den drei bestätigten Geldbewegungen vom 28.09.
+  vormittags – Deposit +800€, interne Überweisung -1.539,67€, Auszahlung
+  -469,70€, netto von 1.809,37€ BCA-Erlös auf 600,00€ reduziert). **600€
+  liegt UNTER dem Cash-Cap, nicht darüber.** Die auf der falschen Prämisse
+  basierende Entscheidung, den monatlichen Scalable-Cash-Zufluss komplett
+  auf €0 zu setzen (siehe "Budget & Cashflow, finale Fassung" oben), steht
+  damit auf schwächerer Grundlage als angenommen – nicht eigenständig
+  zurückgerollt, aber Brian im Depot-Update-Chat vom 28.09. Nachmittag
+  transparent auf die Korrektur hingewiesen. Bei künftiger
+  Reserve-Diskussion die korrigierten 600€ (nicht ~€2.000) als aktuellen
+  Stand zugrunde legen.
 - Trade Republic und Smartbroker+ haben laut bisherigem Stand keine eigenen
   laufenden Sparpläne/Daueraufträge (nur Einzelkäufe wie bei Allianz SE/WM
   historisch, bzw. HawkEye 360 als Einzelposition) – bei Bedarf mit Brian

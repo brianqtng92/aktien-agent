@@ -1,4 +1,36 @@
-**Nachtrag 2026-09-28 (ad-hoc-chat, Depot-Update auf Brians Bitte):** Erster
+**Nachtrag 2026-09-28 Nachmittag (ad-hoc-chat, zweiter Depot-Update-Lauf
+desselben Tages, Twelve Data jetzt live verbunden):** Vollständiger
+Live-Repull aller 4 Broker. **Gesamtdepot (inkl. aller Cash-Bestände):
+≈32.079,93 €** — deutlich höher als der Vormittags-Nachtrag (27.105,36€)
+gemeldet, aber **kein realer Wertzuwachs**: jener Vormittagswert hatte die
+4.959,72€ Cash bei finanzen.net zero (Verkaufserlös-Rest) bewusst
+ausgeklammert, weil ihr Verbleib da noch ungeklärt war. Jetzt, wo der
+Verbleib geklärt ist (bleibt als Cash/ggf. spätere Aufstockung, siehe
+`depot/finanzen-net-zero.md`), gehört der Betrag zum echten Gesamtportfolio.
+Broker-Aufteilung: Scalable Capital 9.354,95€ (Gold 480,79€ + Vanguard-ETF
+8.274,16€ + Cash 600,00€), finanzen.net zero 20.821,76€ (Wertpapiere
+15.862,04€ + Cash 4.959,72€), Trade Republic 487,66€ (Allianz, unverändert),
+Smartbroker+ 1.415,56€ (HawkEye 360, unverändert).
+
+**ZWEI WICHTIGE KORREKTUREN aus diesem Lauf:**
+1. **Scalable-Cashreserve ist 600,00€, nicht ~2.000€** wie im Budget-Chat
+   vom selben Tag zwischenzeitlich angenommen (Brian hatte "2000€ Cash"
+   genannt, die Reserve war aber bereits vor diesem Gespräch durch drei
+   bestätigte Geldbewegungen auf 600€ gesunken, siehe
+   `depot/scalable-capital.md`). Das ändert die Grundlage der gerade
+   getroffenen Entscheidung, den monatlichen Scalable-Cash-Puffer komplett
+   auf 0€ zu setzen (Begründung war: Reserve liege schon über dem
+   3-5%-Cash-Cap – bei 600€ (~1,9% von ~32k) stimmt das nicht mehr, 600€
+   liegt UNTER dem Cap). Nicht eigenständig zurückgerollt, Brian im Chat
+   transparent auf die Korrektur hingewiesen.
+2. **ETF-Anteil am Gesamtportfolio ist ≈25,8%, nicht ≈30,5%** wie zuvor am
+   selben Tag berechnet — jener Wert hatte den Gesamtportfolio-Nenner ohne
+   die 4.959,72€ Cash verwendet. Mit korrektem, cash-inklusivem Nenner: nur
+   ein kleiner Fortschritt ggü. dem 23.09.-Stand (~24,65%), nicht der
+   zuvor kommunizierte ~6-Prozentpunkte-Sprung. Aegis' eigene frühere
+   Analyse in diesem Punkt korrigiert.
+
+**Nachtrag 2026-09-28 Vormittag (ad-hoc-chat, Depot-Update auf Brians Bitte):** Erster
 vollständiger Depot-Repull seit den Verkäufen/dem Nachkauf vom 24.09.
 Twelve Data war diese Session nicht verbunden (Auth-Fehler) — Aktienkurse
 über stockanalysis.com (WebFetch) bzw. WebSearch (Tristel/Münchener

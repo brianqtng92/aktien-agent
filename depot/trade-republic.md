@@ -62,6 +62,8 @@ erster negativer Stand seit Erfassung, moderater Rücksetzer ggü. 09.09.
 (+1,5%), passt zur allgemeinen Finanzsektor-Schwäche bei steigenden
 Anleiherenditen in dieser Handelswoche.
 
+**Re-Check Nachmittag (28.09., Twelve Data diesmal live, aber Xetra weiterhin planbedingt gesperrt):** unveränderter Kurs 423,50 € (WebSearch, gleiche Quelle wie Vormittag) — kein Update seit dem Vormittagslauf, Wert bleibt bei **487,66 €**.
+
 ## Position 2 – WM (vermutlich Waste Management Inc.) — **VERKAUFT 27.08.2026 @ 187,35€, vollständiger Exit**
 
 **Letzte Aktualisierung laut App:** 12.08., 21:16 Uhr
