@@ -1,3 +1,23 @@
+**Nachtrag 2026-10-01 Abend (ad-hoc-chat, Brian fragt "was gibts neues" —
+⚠️ KOMPLETTAUSFALL der Hermes-Automatisierung aufgedeckt):** Aegis prüfte
+lokal `~/.hermes/cron/jobs.json` + Output-Verzeichnisse. **Alle 4
+Hermes-Cron-Jobs liefen pünktlich nach Zeitplan, scheiterten aber JEDES MAL
+am allerersten Schritt** mit `HTTP 429: credit_balance_exhausted` — dem
+OpenAI-Account (GPT-5.5, der Hermes als Ausführungs-Engine zugrunde liegt)
+sind die Credits ausgegangen. Betroffen seit **24.09.2026** durchgehend:
+Blitz-Scan (stündlich), Täglicher Trigger-Check (täglich), Wochenfazit
+(scheiterte bereits am 25.09.), **Monatsrecap komplett ausgefallen (alle 3
+Fenstertage 28.-30.09.)**. Derselbe Account/Fehler erklärt auch, warum
+`mcp__openai-bridge__ask_chatgpt` (Conan) in mehreren Chat-Sessions dieser
+Woche wiederholt fehlschlug. **Historischer Kontext:** exakt dieses
+429-Problem war schon einmal am 11.09. aufgetreten, zwischen 11.09. und
+18.09. offenbar behoben (18.09.-Lauf fehlerfrei), dann erneut aufgetreten —
+**ein wiederkehrendes Muster, kein Einzelfall.** Fix liegt ausschließlich
+bei Brian (Credits aufladen unter platform.openai.com/settings/
+organization/billing/) — kein Konfigurationsproblem auf Code-/Repo-Seite.
+Kein git-Commit-Verhalten zu korrigieren, sobald Credits aufgeladen sind,
+sollte der nächste Lauf automatisch normal funktionieren.
+
 **Nachtrag 2026-10-01 (ad-hoc-chat, Brian meldet Neukauf innoscripta SE —
 ⚠️ akuter Rechtsrisiko-Fund):** Brian kaufte **50 Anteile innoscripta SE
 (1INN, DE000A40QVM8) @ 38,05€ = 1.902,50€** bei finanzen.net zero, aus der
