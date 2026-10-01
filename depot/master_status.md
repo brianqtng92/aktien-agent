@@ -1,3 +1,20 @@
+**Nachtrag 2026-10-01 (ad-hoc-chat, Brian meldet Neukauf innoscripta SE —
+⚠️ akuter Rechtsrisiko-Fund):** Brian kaufte **50 Anteile innoscripta SE
+(1INN, DE000A40QVM8) @ 38,05€ = 1.902,50€** bei finanzen.net zero, aus der
+dort liegenden Cash-Reserve (jetzt 3.057,22€ Rest, vorher 4.959,72€).
+Komplett neue, vorher nirgends erfasste Position (13. Position insgesamt,
+innerhalb der ~15er-Obergrenze). **Kritischer Aegis-Fund unmittelbar nach
+Meldung:** am selben Tag wurden die Geschäftsräume von innoscripta und
+Gruppengesellschaften durchsucht — steuerstrafrechtliches
+Ermittlungsverfahren wegen Verdachts der Beihilfe zu ungerechtfertigten
+Forschungszulage-Steuervorteilen für Kunden, trifft direkt das
+Kerngeschäftsmodell. Kurs stürzte von 88,80€ (30.09.) auf bis zu 38,45€
+(-56,6%) – Brians Kaufkurs 38,05€ liegt praktisch auf dem Tagestief dieser
+Meldung. **Kategorisierung bewusst noch NICHT vorgenommen** (🔴 UNGEPRÜFT/
+RECHTSRISIKO AKTIV), bis mindestens eine erste Einschätzung vorliegt – kein
+Full-Deep-Dive in diesem Lauf (akuter Chat-Moment, Faktenlage ändert sich
+ggf. stündlich). Details: `depot/finanzen-net-zero.md`.
+
 **Nachtrag 2026-09-28 Nachmittag (ad-hoc-chat, zweiter Depot-Update-Lauf
 desselben Tages, Twelve Data jetzt live verbunden):** Vollständiger
 Live-Repull aller 4 Broker. **Gesamtdepot (inkl. aller Cash-Bestände):

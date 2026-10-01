@@ -289,6 +289,42 @@ Brian hat **Hermès, MercadoLibre, Constellation Software, Broadridge und A10 Ne
 
 **Summe finanzen.net zero inkl. Cash (28.09.2026 Nachmittag): ≈20.821,76 €** (15.862,04 € Wertpapiere + 4.959,72 € Cash aus den Verkaufserlösen, siehe Verbleib-Klärung oben). **Wichtig:** die zuvor kommunizierten Gesamtdepot-Zahlen (z.B. "≈27.105,36 €" im Nachtrag vom Vormittag) hatten diese 4.959,72 € Cash bewusst NICHT mitgezählt (Verbleib war da noch offen) — jetzt, wo der Verbleib geklärt ist, gehört dieser Betrag zum echten Gesamtportfolio dazu (siehe Depot-Update-Zusammenfassung im Chat).
 
+## Neukauf 2026-10-01: innoscripta SE (1INN, DE000A40QVM8) — ⚠️ akuter Rechtsrisiko-Fund, UNGEPRÜFTER Kauf
+
+Brian meldete den Kauf: **50 Anteile @ 38,05 € = 1.902,50 €** bei finanzen.net
+zero, finanziert aus der dort liegenden Cash-Reserve (bleibt damit bei
+4.959,72 € - 1.902,50 € = **3.057,22 €** Rest-Cash). Komplett neue Position,
+vorher nirgends in `watchlist.md`/`depot/kategorisierung.md` erfasst oder
+bewertet — kein Deep Dive, kein Strategie-Fit-Check vor dem Kauf.
+
+**⚠️ Kritischer Fund bei der Recherche (Aegis, WebSearch, unmittelbar nach
+Meldung des Kaufs):** Am selben Tag (01.10.2026) wurden die
+Geschäftsräume von innoscripta SE und Gruppengesellschaften **durchsucht**
+– Hintergrund ist ein **steuerstrafrechtliches Ermittlungsverfahren** wegen
+des Verdachts der Beihilfe zur Erlangung ungerechtfertigter Steuervorteile
+bei Forschungszulage-Anträgen für Kunden (zwei Durchsuchungsbeschlüsse des
+AG Schwäbisch Gmünd vom 03.08. und 15.09.2026). Das trifft **direkt das
+Kerngeschäftsmodell** (die Software soll Forschungszulage-Anträge
+rechtssicher begleiten) – kein Randthema. Unternehmen spricht von "möglichem
+Fehlverhalten einzelner Mitarbeiter bei bestimmten Mandaten", kooperiert mit
+den Behörden; finanzielle/operative Konsequenzen laut eigener Aussage noch
+unklar. **Kursverlauf:** Schlusskurs 30.09. 88,80 €, am 01.10. Absturz auf
+teils 65,30 € (-26%) laut einer Quelle, teils bis auf 38,45 € (-56,6%) laut
+einer anderen Quelle zum Handelsschluss – Brians Kaufkurs 38,05 € liegt
+praktisch exakt auf diesem Tagestief. **Das sieht nach einem Kauf mitten in
+den Tagestiefs einer Durchsuchungs-/Betrugsverdacht-Meldung aus**, nicht
+nach einem bewerteten Einstieg nach einer regulären Korrektur.
+
+**Noch offen/ungeklärt:** ob Brian die Durchsuchungsmeldung beim Kauf schon
+kannte oder unabhängig davon zugeschlagen hat (im Chat erfragt).
+**Kategorisierung bewusst noch NICHT vorgenommen** (weder Champions/Profi/
+Talent) – bei einem laufenden Ermittlungsverfahren gegen das Kerngeschäft
+wäre jede Kategorisierung verfrüht. Vorläufig als **🔴 UNGEPRÜFT /
+RECHTSRISIKO AKTIV** geflaggt, bis mindestens eine erste Einschätzung
+(ggf. Full Deep Dive mit JJ/Conan) vorliegt. Betrifft potenziell auch die
+Positionsanzahl (13. Position, siehe `depot/kategorisierung.md` – dort noch
+nicht eingetragen, da keine Kategorie zugewiesen).
+
 **Verbleib der Verkaufserlöse geklärt (28.09.2026, von Brian bestätigt):** Von den 6.277,72 € Erlös aus den 5 Verkäufen vom 24.09. sind 1.318,00 € in den Rocket-Lab-Nachkauf geflossen. Die restlichen **≈4.959,72 € bleiben vorerst als Cash** liegen — keine sofortige Reinvestition in neue Namen geplant. Ggf. werden davon bestehende Positionen aufgestockt (Richtung 2-3k€/Position, siehe Fokussierungs-Grundsatz), aber noch keine konkrete Entscheidung, welche/wann. Kein offener Punkt mehr für künftige Sessions.
 
 ## Update 2026-09-24 (von Brian gemeldet: Rocket Lab aufgestockt)
