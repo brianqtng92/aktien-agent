@@ -287,6 +287,31 @@ Brian hat **Hermès, MercadoLibre, Constellation Software, Broadridge und A10 Ne
 | Münchener Rückversicherungs-Gesellschaft | 2 | 510,40 € (WebSearch, Xetra, 28.09. Intraday) | **1.020,80 €** |
 | **Summe Wertpapiere** | | | **15.862,04 €** |
 
+## Update 2026-10-01 Abend (Depot-Update, Twelve Data live)
+
+| Position | Anteile | Kurs | **Wert aktuell (EUR)** |
+|---|---|---|---|
+| SoFi Technologies | 250 | $15,82 (Twelve Data live) | **3.518,37 €** |
+| ServiceNow Inc | 20 | $137,79 (Twelve Data live) | **2.451,56 €** |
+| CBOE Holdings Inc | 5 | $277,35 (Twelve Data live) | **1.233,65 €** |
+| Rambus Inc. | 6 | $107,25 (Twelve Data live) | **572,46 €** |
+| Intuitive Surgical Inc | 4 | $401,16 (Twelve Data live) | **1.427,49 €** |
+| Cellebrite DI Ltd | 200 | $11,125 (Twelve Data live) | **1.979,36 €** |
+| Rocket Lab USA, Inc. | 30 | $70,47 (Twelve Data live) | **1.880,70 €** |
+| Kraken Robotics Inc. | 300 | 4,28 CAD (WebSearch, TSXV) | **802,89 €** |
+| Tristel PLC | 210 | 371,00 GBp (WebSearch, LSE, leicht unsicher – Quellen streuen 370-409p) | **914,57 €** |
+| Münchener Rückversicherungs-Gesellschaft | 2 | 494,50 € (WebSearch, Xetra) | **989,00 €** |
+| innoscripta SE | 50 | 43,50 € (WebSearch) | **2.175,00 €** |
+| **Summe Wertpapiere** | | | **17.945,05 €** |
+
+EUR/USD 1,1241, GBP/EUR 1,17387, CAD/EUR 0,6253 (alle Twelve Data live).
+CBOE auffälligster Einzelfund: +7,5% seit 28.09., damit klar raus aus
+beiden dokumentierten Nachkauf-Zonen ($268-270/$255-262) – kurzes Fenster
+verpasst, kein Handlungsbedarf (siehe `depot/offene_empfehlungen.md`).
+
+**Summe finanzen.net zero inkl. Cash (01.10.2026 Abend): ≈21.002,27 €**
+(17.945,05 € Wertpapiere + 3.057,22 € Cash).
+
 **Summe finanzen.net zero inkl. Cash (28.09.2026 Nachmittag): ≈20.821,76 €** (15.862,04 € Wertpapiere + 4.959,72 € Cash aus den Verkaufserlösen, siehe Verbleib-Klärung oben). **Wichtig:** die zuvor kommunizierten Gesamtdepot-Zahlen (z.B. "≈27.105,36 €" im Nachtrag vom Vormittag) hatten diese 4.959,72 € Cash bewusst NICHT mitgezählt (Verbleib war da noch offen) — jetzt, wo der Verbleib geklärt ist, gehört dieser Betrag zum echten Gesamtportfolio dazu (siehe Depot-Update-Zusammenfassung im Chat).
 
 ## Neukauf 2026-10-01: innoscripta SE (1INN, DE000A40QVM8) — ⚠️ akuter Rechtsrisiko-Fund, UNGEPRÜFTER Kauf
@@ -316,14 +341,26 @@ den Tagestiefs einer Durchsuchungs-/Betrugsverdacht-Meldung aus**, nicht
 nach einem bewerteten Einstieg nach einer regulären Korrektur.
 
 **Noch offen/ungeklärt:** ob Brian die Durchsuchungsmeldung beim Kauf schon
-kannte oder unabhängig davon zugeschlagen hat (im Chat erfragt).
-**Kategorisierung bewusst noch NICHT vorgenommen** (weder Champions/Profi/
-Talent) – bei einem laufenden Ermittlungsverfahren gegen das Kerngeschäft
-wäre jede Kategorisierung verfrüht. Vorläufig als **🔴 UNGEPRÜFT /
-RECHTSRISIKO AKTIV** geflaggt, bis mindestens eine erste Einschätzung
-(ggf. Full Deep Dive mit JJ/Conan) vorliegt. Betrifft potenziell auch die
-Positionsanzahl (13. Position, siehe `depot/kategorisierung.md` – dort noch
-nicht eingetragen, da keine Kategorie zugewiesen).
+kannte oder unabhängig davon zugeschlagen hat (im Chat erfragt). **Geklärt:**
+Brian kannte die Durchsuchung beim Kauf NICHT, sieht die Position aber
+bewusst als Zock ("fundamental hat sich nichts geändert") und hat selbst
+einen Stop-Loss (36,50-36,90€) + Teilverkauf-Trigger (+15-20%, siehe
+`depot/offene_empfehlungen.md`) gesetzt. **Kategorisierung bewusst noch
+NICHT vorgenommen** (weder Champions/Profi/Talent) – bei einem laufenden
+Ermittlungsverfahren gegen das Kerngeschäft wäre jede Kategorisierung
+verfrüht. Vorläufig als **🔴 UNGEPRÜFT / RECHTSRISIKO AKTIV** geflaggt.
+13. Position insgesamt (noch nicht in `depot/kategorisierung.md`, da keine
+Kategorie zugewiesen).
+
+**Update 2026-10-01, Abend (Depot-Update, Twelve Data + WebSearch):** Kurs
+auf ~43,50€ erholt (WebSearch, Tagesspanne 40,10-87,50€ laut einer Quelle,
+hohe Datenstreuung zwischen Anbietern an diesem volatilen Tag – als
+Richtwert, nicht [VERIFIED]-Präzision zu behandeln). **Wert aktuell: 50 ×
+43,50€ = 2.175,00€ (+272,50€/+14,3% ggü. Kaufpreis 1.902,50€)** – nahe an
+Brians eigenem Teilverkauf-Trigger (+15-20%, ~43,76-45,66€), noch nicht
+erreicht. Keine neue Sachinformation zur Ermittlung seit heute Vormittag,
+reine Kurserholung (vermutlich Short-Covering/Sentiment, siehe Chat-
+Diskussion).
 
 **Verbleib der Verkaufserlöse geklärt (28.09.2026, von Brian bestätigt):** Von den 6.277,72 € Erlös aus den 5 Verkäufen vom 24.09. sind 1.318,00 € in den Rocket-Lab-Nachkauf geflossen. Die restlichen **≈4.959,72 € bleiben vorerst als Cash** liegen — keine sofortige Reinvestition in neue Namen geplant. Ggf. werden davon bestehende Positionen aufgestockt (Richtung 2-3k€/Position, siehe Fokussierungs-Grundsatz), aber noch keine konkrete Entscheidung, welche/wann. Kein offener Punkt mehr für künftige Sessions.
 

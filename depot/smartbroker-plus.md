@@ -100,6 +100,8 @@ präziser: 100 × 16,10 $ ÷ 1,13736 = **1.415,56 €** (minimale Abweichung zum
 Vormittags-Wert durch die etwas andere EUR/USD-Quelle, kein realer
 Kursunterschied).
 
+**Update 2026-10-01 Abend (Depot-Update, Twelve Data live):** Kurs 14,73 $/Aktie (-8,5% seit 28.09., kein News-Treiber gefunden). Aktueller Wert: 100 × 14,73 $ ÷ 1,1241 = **1.310,38 €** (-22,1% ggü. Investsumme 1.681,70€). Status weiterhin HALTEN (siehe Full-Deep-Dive-Refresh 22.09.), nächster Pflicht-Prüfpunkt unverändert Q3-2026-Zahlen.
+
 Hinweis (2026-08-23, weiterhin gültig): Depot-Erfassung insgesamt abgeschlossen –
 von Brian bestätigt ("das sind meine ganzen Positionen"). Zusammen mit
 `scalable-capital.md`, `finanzen-net-zero.md` und `trade-republic.md` ist das

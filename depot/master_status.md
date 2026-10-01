@@ -1,3 +1,19 @@
+**Nachtrag 2026-10-01 später Abend (ad-hoc-chat, vollständiges Depot-Update
+auf Brians Bitte, alle 4 Broker live/aktuell):** **Gesamtdepot ≈32.185,10€**
+(+0,3% ggü. 28.09. Nachmittag). Broker: Scalable 9.394,73€ (Gold 487,90€ +
+ETF 8.306,83€ + Cash 600,00€, Oktober-Sparplanrate 750€ noch nicht
+ausgeführt), finanzen.net zero 21.002,27€ (17.945,05€ Wertpapiere inkl.
+innoscripta + 3.057,22€ Cash), Trade Republic 477,72€ (Allianz, -2,0%),
+Smartbroker+ 1.310,38€ (HawkEye 360, -7,4%, kein News-Treiber gefunden).
+**Zwei Einzelfunde:** (1) innoscripta auf ~43,50€ erholt (+14,3% ggü.
+Kaufpreis 38,05€) — knapp unter Brians eigenem Teilverkauf-Trigger
+(+15-20%), noch nicht ausgelöst, reine Kurserholung ohne neue
+Sachinformation zur Ermittlung. (2) CBOE auf $277,35 gesprungen (+7,5% seit
+28.09.) — **beide dokumentierten Nachkauf-Zonen ($268-270/$255-262) klar
+verlassen**, kurzes Kaufgelegenheits-Fenster verpasst, `depot/
+offene_empfehlungen.md` entsprechend aktualisiert. ETF-Anteil weiterhin
+≈25,8% (unverändert). Details je Broker in den jeweiligen Dateien.
+
 **Nachtrag 2026-10-01 Abend (ad-hoc-chat, Brian fragt "was gibts neues" —
 ⚠️ KOMPLETTAUSFALL der Hermes-Automatisierung aufgedeckt):** Aegis prüfte
 lokal `~/.hermes/cron/jobs.json` + Output-Verzeichnisse. **Alle 4

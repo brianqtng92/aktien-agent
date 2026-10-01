@@ -64,6 +64,8 @@ Anleiherenditen in dieser Handelswoche.
 
 **Re-Check Nachmittag (28.09., Twelve Data diesmal live, aber Xetra weiterhin planbedingt gesperrt):** unveränderter Kurs 423,50 € (WebSearch, gleiche Quelle wie Vormittag) — kein Update seit dem Vormittagslauf, Wert bleibt bei **487,66 €**.
 
+**Update 2026-10-01 Abend (Depot-Update, WebSearch, Xetra weiterhin gesperrt):** Kurs 414,90 € (-2,0% ggü. 28.09.). Aktueller Wert: 1,151396 × 414,90 € = **477,72 €** (-5,3% ggü. Investsumme 504,43€). Keine News-Grundlage für den Rücksetzer gefunden, im Rahmen üblicher Finanzsektor-Schwankung.
+
 ## Position 2 – WM (vermutlich Waste Management Inc.) — **VERKAUFT 27.08.2026 @ 187,35€, vollständiger Exit**
 
 **Letzte Aktualisierung laut App:** 12.08., 21:16 Uhr

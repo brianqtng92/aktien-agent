@@ -156,6 +156,12 @@ Netto-Cash-Bewegung seit dem 24.09.-Stand (1.809,37 €, die BCA-Verkaufserlöse
 
 **Re-Check Nachmittag (28.09., Live-Repull für den Depot-Update-Chat):** praktisch unverändert – Gold 120,20 €/Anteil (480,79 €), Vanguard-ETF 169,60 €/Anteil (8.274,16 €), Cash weiterhin **600,00 €** (keine neuen Transaktionen seit dem Vormittag, `list_portfolio_transactions` seit 2026-09-28T00:00Z → weiterhin nur die 3 bekannten). **Gesamtwert: 9.354,95 €.** Bestätigt die 600€-Korrektur oben – die im Budget-Chat zwischenzeitlich verwendete "~2.000€"-Annahme war nicht mit diesem Live-Stand deckungsgleich.
 
+**Update 2026-10-01 Abend (Depot-Update, live):** Gold 121,975 €/Anteil
+(487,90 €, +1,5%), Vanguard-ETF 170,27 €/Anteil (8.306,83 €, +0,4%), Cash
+weiterhin unverändert **600,00 €** (keine neuen Transaktionen seit 28.09.,
+Oktober-Sparplanrate 750€/Monat noch nicht ausgeführt – nächste Ausführung
+vsl. ~07.10.). **Gesamtwert: 9.394,73 €.**
+
 Hinweis (2026-08-23): Depot-Erfassung insgesamt abgeschlossen – von Brian bestätigt
 ("das sind meine ganzen Positionen"). Zusammen mit `finanzen-net-zero.md`,
 `trade-republic.md` und `smartbroker-plus.md` ist das jetzt das vollständige Depot.
