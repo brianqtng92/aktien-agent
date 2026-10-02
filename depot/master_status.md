@@ -1,3 +1,19 @@
+**Nachtrag 2026-10-02 Vormittag (ad-hoc-chat, Depot-Update auf Brians
+Bitte, 10:05 Uhr):** **Gesamtdepot ≈31.851,60 €** (-1,0% ggü. 01.10. Abend
+32.185,10 €). Der Rückgang ist praktisch ausschließlich die Auflösung des
+innoscripta-Buchgewinns (Position am 01.10. mit 2.175 € bewertet, per
+Stop @36,55 € mit 1.827,50 € realisiert), die übrigen Positionen
+zusammen ±0. Broker: Scalable 9.394,73 € (**Stand 01.10. Abend übernommen
+– Scalable-MCP war in dieser Session nicht verbunden, kein Live-Pull**;
+Oktober-Sparplanrate 750 € vsl. ~07.10.), finanzen.net zero 20.668,77 €
+(16.780,65 € Wertpapiere inkl. 4× Münchener Rück + 3.888,12 € Cash), Trade
+Republic 477,72 € (Allianz 414,90 €, kein 02.10.-Kurs verfügbar), Smartbroker+
+1.310,38 €. ETF-Anteil ≈26,1 %. Struktur 6/5/1 = 12 Positionen. **Hermes:**
+Blitz-Scan läuft seit der Credit-Aufladung wieder fehlerfrei (letzter Lauf
+02.10. 09:49, failure_streak 0); Täglicher Report/Wochenfazit/Monatsrecap
+zeigen noch den alten 429-Fehlerstand, nächste Läufe heute 21:03/21:07 –
+Erfolg dort noch unbestätigt, September-Monatsrecap bleibt ausgefallen.
+
 **Nachtrag 2026-10-02 (ad-hoc-chat, zwei Brian-Meldungen):** (1) **Nachkauf
 Münchener Rück +2 Anteile @ 498,30 € (996,60 €)** → 4 Anteile, Invest
 2.047,60 €, Ø ≈511,90 € (Champions, Kategorie unverändert; Broker

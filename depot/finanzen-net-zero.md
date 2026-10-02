@@ -311,6 +311,32 @@ ausgelöst, die Erholung auf ~43,50 € am 01.10. wurde nicht mitgenommen.
 Position 13 → 12, innoscripta nie kategorisiert (kein Eintrag in
 `depot/kategorisierung.md` nötig).
 
+## Update 2026-10-02 Vormittag (Depot-Update, 10:05 Uhr)
+
+**Datenstand:** US-Kurse = Twelve-Data-Schlusskurse 01.10. (US-Börse zum
+Zeitpunkt noch nicht eröffnet, daher identisch zum Vorabend), Münchener Rück
+499,90 € (WebSearch, Xetra, 02.10. Intraday), Tristel (371 GBp) und Kraken
+(4,28 CAD) unverändert vom 01.10. übernommen, EUR/USD 1,1241 / GBP/EUR
+1,17387 / CAD/EUR 0,6253 vom 01.10. (Twelve-Data-Minutenlimit bei der
+FX-Abfrage erreicht).
+
+| Position | Anteile | **Wert aktuell (EUR)** |
+|---|---|---|
+| SoFi Technologies | 250 | 3.518,37 € |
+| ServiceNow Inc | 20 | 2.451,56 € |
+| CBOE Holdings Inc | 5 | 1.233,65 € |
+| Rambus Inc. | 6 | 572,46 € |
+| Intuitive Surgical Inc | 4 | 1.427,49 € |
+| Cellebrite DI Ltd | 200 | 1.979,36 € |
+| Rocket Lab USA, Inc. | 30 | 1.880,70 € |
+| Kraken Robotics Inc. | 300 | 802,89 € |
+| Tristel PLC | 210 | 914,57 € |
+| Münchener Rückversicherungs-Gesellschaft | 4 | 1.999,60 € (@499,90 €) |
+| **Summe Wertpapiere (10 Positionen)** | | **16.780,65 €** |
+
+**Summe finanzen.net zero inkl. Cash (02.10.2026): ≈20.668,77 €**
+(16.780,65 € Wertpapiere + 3.888,12 € Cash).
+
 ## Update 2026-10-01 Abend (Depot-Update, Twelve Data live)
 
 | Position | Anteile | Kurs | **Wert aktuell (EUR)** |
