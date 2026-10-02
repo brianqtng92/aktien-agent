@@ -206,3 +206,31 @@ für die bestehende Twelve-Data-vor-WebSearch-Regel. Hermès deutlich erholt
 klar verlassen, kein Order-Signal mehr relevant. Portfolio-Lücken-
 Kandidatensuche weiterhin bewusst pausiert (Brian, 17.09.), kein Index-Scan
 in diesem Lauf. Bestätigungsmail verschickt (siehe Verifikation unten).
+
+**2026-10-02 (taeglicher-trigger-check, erster regulärer Lauf seit dem
+23.09. – Lücke durch den dokumentierten OpenAI-Credit-Ausfall 24.09.-01.10.):**
+Jack/Conan n.a. - kein Bridge-Einsatz nötig (kein 3-fach-Cross-Check
+ausgelöst: keine neue unverarbeitete diskretionäre Transaktion seit
+Checkpoint, keine neuen Preisalarm-Trigger, kein Material Shift im Markt-/
+Makro-Kontext [VIX 15,97 rückläufig, F&G-Zone unverändert Fear bei 27,
+S&P/Nasdaq +0,65-0,8%/+1,2% nach schwachem Septemberjobsbericht]).
+Scalable Capital war in diesem Lauf (anders als in den drei Ad-hoc-Chats
+desselben Tages) live verbunden - frischer Pull (9.441,81 €), Transaktions-
+Checkpoint auf 28.09. vorgezogen, Kubota-ISIN-Altlast (JP3266400005) aus
+der Scalable-Watchlist entfernt (laut `watchlist.md`-Vermerk dem
+taeglicher-trigger-check vorbehalten). **Wichtigster Fund des Tages (kein
+Bridge-Anlass, aber handlungsrelevant):** FICO (Watchlist, Champions) -
+FHFA hat VantageScore 4.0 offiziell mit Classic FICO auf dasselbe
+Pricing-Grid gesetzt, beendet die Scoring-Exklusivität endgültig - Aktie
+-21,7% an einem Tag auf $658,63 (YTD -62,4%), BofA-Downgrade auf Neutral
+(Kursziel $1.400→$700 halbiert), weitere Downgrades (Wells Fargo/Goldman/
+BMO/Barclays). Status bleibt ⚠️ RISIKO/🟡 GELB, aber der seit 22.09.
+empfohlene Full-Deep-Dive-Refresh ist jetzt klar überfällig - kein voller
+3-fach-Cross-Check in diesem Lauf (Zeitpriorität, kein akuter
+Order-Handlungsbedarf, Watchlist nicht Depot). Übrige Watchlist-Namen
+(MPWR etc.) nur stichprobenhaft geprüft, keine vollständige 30-Werte-Ampel
+in diesem Lauf (die drei Ad-hoc-Chat-Sessions desselben Tages hatten den
+Tag bereits inhaltlich stark abgedeckt - Transparenz-Hinweis). Kein
+Earnings-Termin heute fällig. Kandidaten-Scan/Index-Scan nicht angestoßen
+(kein Lücken-Auslöser, Japan/Asien-Pipeline weiter pausiert). Pending-Queue
+leer. Bestätigungsmail verschickt (siehe Verifikation unten).

@@ -1,3 +1,9 @@
+**Nachtrag 2026-10-02 Abend (taeglicher-trigger-check, ersetzt den entfernten nativen Scheduled-Task-Eintrag 1:1 – erster regulärer Lauf dieses Tasks seit dem 23.09., Lücke durch den dokumentierten OpenAI-Credit-Ausfall 24.09.-01.10.):** Pflichtstruktur: **(1) Kauf-/Verkaufsempfehlung?** Nein – keine neue akute Depot-Trigger heute über die bereits in den Ad-hoc-Chats dokumentierten Punkte hinaus (MCD/Münchener-Rück-Nachkauf/innoscripta-Stop bereits oben erfasst). **(2) Neuer Watchlist-Kandidat?** Nein – kein Index-Scan in diesem Lauf (Japan/Asien-Pipeline weiter bewusst pausiert, beide Talent-Slots bereits gefüllt). **(3) Nachkauf-/Neukauf-Timing?** Nein für Depot-Positionen (CBOE-Zone verlassen, Kraken/Rambus weit entfernt, MCD noch nicht in der attraktiven Zone – alles bereits dokumentiert); FICO (Watchlist) könnte nach dem Kurssturz überverkauft sein, aber ohne Full-Deep-Dive keine belastbare Aussage. **(4) Index-Scan-Ergebnis?** Entfällt (kein Lücken-Auslöser heute).
+
+**Durchgeführt:** Scalable Capital live verbunden (`ping` OK, anders als in den heutigen Ad-hoc-Chats) – Gesamtwert 9.441,81 € (Gold 4 Anteile × 120,815 €, ETF 48,786235 Anteile Vanguard FTSE All-World × 171,33 €, Cash 600,00 €, +47,08 € intraday ggü. Vortag). `list_portfolio_transactions` seit Checkpoint 16.09. → 5 Treffer, alle bereits bekannt (BCA-Verkauf 24.09., interne Umbuchungen 28.09.), Checkpoint auf 28.09. vorgezogen. Keine neuen Preisalarm-Trigger (`list_price_alerts`: nur die bereits in `price_alerts_processed.md` erfassten Alarme + 2 neue, aber inaktive Alarme Asahi-Intecc-DOWN-16/CBOE-UP-260). **Scalable-Watchlist-Bereinigung:** die seit 22.09. bekannte falsche Kubota-ISIN (JP3266400005, sollte Kokusai Electric sein) wurde entfernt (`remove_watchlist_item`) – die korrekte ISIN JP3293330001 war bereits seit dem Blitz-Scan vom 02.10. Nachmittag vorhanden, dieser Lauf durfte die alte laut `watchlist.md`-Vermerk als einziger entfernen. **Wichtigster inhaltlicher Fund (Watchlist, kein Depot-Bezug):** FICO weiter eskaliert – FHFA hat VantageScore 4.0 offiziell mit Classic FICO auf dasselbe Pricing-Grid gesetzt (beendet die Scoring-Exklusivität endgültig), Aktie -21,7% an einem Tag auf $658,63 (YTD -62,4%), BofA-Downgrade auf Neutral (Kursziel $1.400→$700 halbiert), weitere Downgrades (Wells Fargo/Goldman/BMO/Barclays). Status bleibt ⚠️ RISIKO/🟡 GELB (keine automatische Abstufung ohne 3-fach-Analyse), aber der seit 22.09. empfohlene Full-Deep-Dive-Refresh ist jetzt klar überfällig – siehe `watchlist.md` FICO-Zeile. Markt-/Makro: kein Material Shift (F&G-Zone unverändert Fear bei 27, VIX rückläufig 15,97, S&P/Nasdaq +0,65-0,8%/+1,2% nach schwachem Septemberjobsbericht [29K vs. 84K erwartet] – Fed-Hike-Erwartung sinkt, Markt reagiert positiv statt mit Schock; 10J-Rendite-Lage uneinheitlich recherchiert [5,18-5,27% vs. "retreated"], Beobachtungspunkt), siehe `depot/macro_context.md`. Korrektur-Risiko-Score aus Zeitpriorität nicht neu berechnet. Kein Earnings-Termin heute fällig (nächster: ASML 14.10.). Pending-Queue (`watchlist_pending_3fach.md`) leer. Kein offener Empfehlungs-Reminder fällig (Kraken/Rambus zuletzt 17.09. erinnert, McDonald's-Eintrag erst seit 02.10.). Kein Kandidaten-Scan/Bridge-Einsatz nötig (kein Trigger ausgelöst) – Jack/Conan n.a. **Nicht in diesem Lauf gemacht (Transparenz):** keine vollständige Watchlist-Ampel über alle ~30 Werte einzeln (nur FICO + stichprobenhaft MPWR gezielt geprüft, da die drei heutigen Ad-hoc-Sessions den Tag bereits inhaltlich stark abgedeckt hatten), kein PDF/3-fach-Cross-Check (kein Anlass, der das ausgelöst hätte). Bestätigungsmail verschickt (siehe Verifikation unten).
+
+**Nachtrag 2026-10-02 (wochenfazit, konsolidiert das verlängerte ~2-Wochen-Fenster 18.09.-02.10. wegen des Hermes-Automatisierungsausfalls 24.09.-01.10.):** Vollständiger Wochenfazit-Lauf, `reports/Wochenfazit-2026-10-02.pdf` gebaut (8 Seiten, Erfolgs-Verifikation bestanden: Datei existiert, 1,1 MB). **Wichtigste Befunde:** (1) Depot-Struktur grundlegend verändert durch die 6-Positionen-Verkaufswelle vom 24.09. – Champions 10→6, Profi 7→5, Talent unverändert 1 (12 von ~15 Positionen). (2) **Neuer Portfolio-Regel-Verstoß: USA-Anteil 65,17%** (hart über der 60%-Obergrenze, war 53,70% am 18.09.) – Nebenwirkung der Verkaufswelle, kein Einzelwert-Problem (siehe Nachtrag Nachmittag unten, Basis-Zahlen dort übernommen und als Abschnitt 7c unten strukturiert fortgeschrieben). (3) **Japan/Asien-Region jetzt die mit Abstand größte Lücke (4,63% statt 10-15%)** – Folge des Bank-Central-Asia-Verkaufs, Brians 17.09.-Pausierung der Japan-Kandidatenpipeline sollte vor diesem Hintergrund ggf. neu bewertet werden (nicht eigenständig reaktiviert, nur als Diskussionspunkt markiert). (4) Watchlist von 37 auf 46 Werte gewachsen (24/16/6), primär durch die 6 [EX-DEPOT]-Kandidaten + MCD/Kokusai Electric/ALLIX/ORKA. (5) **Benchmark-Tracking: Depot -9,09% seit Baseline 30.08., S&P 500 +0,06%, Nasdaq 100 +5,18% (neues Rekordhoch), MSCI World +1,79%** – davon sind rund -5,7 Pp. (≈2.009€) eine bewusste Mittelabfuhr aus Scalable Capital (28.09., keine Marktbewegung), markt-/positionsbereinigt liegt der reale Rückgang eher bei ≈-3,3%. (6) **Datenlücke dieses Laufs, transparent benannt:** weder Scalable-Capital-MCP noch Twelve-Data-MCP waren in dieser automatisierten Session authentifiziert – Depotzahlen sind der letzte bestätigte Stand aus der 02.10.-Vormittags-Ad-hoc-Session, keine frischen Live-Pulls in diesem Lauf. CRV-Ampel-Pflege für Watchlist/Depot entsprechend eingeschränkt (keine Neubewertung gegen frische Kennzahlen). E-Mail mit GitHub-PDF-Link verschickt (siehe Verifikation unten), Git-Push bestätigt. **Parallel-Lauf-Hinweis (Transparenz):** während dieses Laufs lief zeitgleich ein regulärer `taeglicher-trigger-check` (erster nach der Credit-Erschöpfung-Pause), der `depot/last_transaction_check.md` unabhängig aktualisierte (5 bereits bekannte Transaktionen bestätigt, keine neue) – beide Läufe sind dateibasiert synchron, kein Konflikt.
+
 **Nachtrag 2026-10-02 Nachmittag (ad-hoc-chat, McDonald's-Nachprüfung + neuer Portfolio-Regel-Check):** (1) **MCD-Nachprüfung nach Investor Day** (verkürzter 3-fach-Dispatch, siehe `analysen/MCD-nachpruefung-investor-day-2026-10-02.md`): Rating BEOBACHTEN unverändert, Kurs $231,57 in der Zone der ersten Tranche ($225-232), nicht in der attraktiven Zone (<$215-225); Base/Bear nach Event leicht gesenkt (Conan DCF Base $235-250). (2) **Neuer Regel-Check (Überschlag, 02.10., ETF-Split Stand 31.07., Gold/Cash ausgenommen, Basis 26.875,58 €; löst 7b vom 18.09. ab):** USA **65,2 %** (Band ≤55-60 % → **Verstoß**, vorher 53,7 %; Ursache: Verkauf von Bank Central Asia/Hermès/MercadoLibre/Constellation), Europa/UK 16,4 % (im Band), Japan/Asien **4,6 %** (Band 10-15 % → deutlich unterbesetzt, nur noch ETF-Anteil), Sonstige 13,8 %. Sektoren: Finanzwesen **31,8 %** (Band 20-25 %, über), Technologie 28,9 % (Band 30-35 %, knapp unter), Industriewerte **18,8 %** (Band 10-15 %, über, Gov-/Defense-Cluster RKLB/HAWK/Kraken), Gesundheit 11,2 % (im Band), Rest 9,4 % (im Band). ETF-Anteil 26,1 % vom Gesamtportfolio (31.851,60 €). Größte Position SoFi 11,0 %, kleinste Allianz 1,5 %. **Hypothetisch mit MCD (~2.060 €):** USA 67,6 %, Rest 15,8 % (über Band), Tech 26,9 %, Finanzwesen 29,5 %, ETF 24,5 % → MCD würde den US-Überhang verschärfen. Kein automatisches Verkaufssignal, Zielbänder sind weiche Vorgaben.
 
 **Nachtrag 2026-10-02 Vormittag (ad-hoc-chat, Depot-Update auf Brians
@@ -758,27 +764,29 @@ Quelle: `depot/bridge_status.md` (Log) + `list_scheduled_tasks` (Live-Stand).
 
 | Task | Letzter Lauf | Nächster Lauf |
 |---|---|---|
-| taeglicher-trigger-check | 2026-09-23 (regulärer Lauf, ruhiger Tag ohne Depot-Handlungsbedarf; FICO erneut -3,6% + neuer FHA-Umsetzungstermin 01.01.2027, Status weiterhin ⚠️ RISIKO/🟡 GELB, Full-Deep-Dive-Refresh weiterhin nächste Priorität) | täglich ~21:03 lokale Zeit |
+| taeglicher-trigger-check | 2026-10-02 (regulärer Lauf, erster seit dem OpenAI-Credit-Ausfall 24.09.-01.10.; FICO weiter eskaliert auf -62,4% YTD/BofA-Downgrade, Full-Deep-Dive-Refresh jetzt überfällig; Kubota-ISIN-Altlast aus Scalable-Watchlist entfernt) | täglich ~21:03 lokale Zeit |
 | blitz-scan | 2026-09-23 (Hermès-Preiskorrektur: WebSearch-Fehlwert 1.597€ widerlegt, Kurs live 1.350,75€ auf Abstauber-Limit) | stündlich |
 | wochenfazit | 2026-09-18 (regulärer Freitags-Lauf, 1-Tages-Fenster seit dem Ad-hoc-Wochenfazit vom 17.09.; alle 4 Broker frisch geprüft, PDF gebaut+committet, E-Mail mit GitHub-Link verschickt) | Freitag, nächster reg. Lauf voraussichtlich 25.09.2026 |
 | monatsrecap | noch nicht gelaufen | 28.-31. des Monats |
 
 ## 10. Cash-Stand (nur Scalable Capital, live abrufbar)
 
-**Stand 2026-09-23 (taeglicher-trigger-check):** verfügbare Kaufkraft/Cash-
-Bestand weiterhin **0,00 €** (`get_portfolio_cash_breakdown`, live). Scalable-
-Gesamtwert (live, Gold+BCA+Vanguard-ETF): ≈10.726,14 €. Finanzen.net zero,
-Trade Republic, Smartbroker+ NICHT neu abgefragt in diesem Lauf – unverändert
-vom 18.09.-Wochenfazit übernommen (20.916,55 € / 512,09 € / 1.416,73 €), nur
-Hermès innerhalb des finanzen.net-zero-Blocks auf den heute korrigierten
-Live-Kurs 1.350,75 € gesetzt (siehe Blitz-Scan 23.09.).
-**Gesamtportfoliowert auf dieser gemischten Basis: ≈33.546,99 €**
-(`reports/portfolio_pie_2026-09-23.png`, Rückgang ggü. dem 22.09.-Snapshot
-33.779,38 € primär durch die Hermès-Preiskorrektur [1.597€→1.350,75€], kein
-realer zusätzlicher Wertverlust). Transparenz-Hinweis: die zwischenzeitlichen
-RMBS-/CBOE-Kursbewegungen sind in den 3 nicht neu abgefragten Brokern NICHT
-eingepreist – Einzelkurse siehe stattdessen `depot/offene_empfehlungen.md`
-(dort live/WebSearch-aktualisiert).
+**Stand 2026-10-02 Abend (taeglicher-trigger-check):** Scalable-Cash
+weiterhin **600,00 €** (`get_portfolio_cash_breakdown`, live, unverändert
+ggü. den Ad-hoc-Chats von heute Vormittag). Scalable-Gesamtwert (live, Gold
+4 Anteile + Vanguard-ETF 48,786235 Anteile + Cash): **9.441,81 €**
+(+47,08 € intraday ggü. dem letzten Scalable-Snapshot). Die 3 manuellen
+Broker nicht erneut abgefragt in diesem Lauf (bereits heute Vormittag/
+Nachmittag per Ad-hoc-Chat aktualisiert, siehe Nachtrag oben: finanzen.net
+zero 20.668,77 €, Trade Republic 477,72 €, Smartbroker+ 1.310,38 €).
+**Gesamtportfoliowert auf dieser gemischten Basis: ≈31.898,68 €**
+(Scalable-Live-Delta ggü. dem Vormittags-Snapshot, keine neue Kuchendiagramm-
+Erzeugung in diesem Lauf, da keine Kategorie-/Struktur-Änderung – der
+heutige Nachmittags-Regel-Check-Snapshot bleibt die maßgebliche Basis).
+
+**Vorheriger Stand 2026-09-23 (taeglicher-trigger-check):** Cash 0,00 €,
+Scalable-Gesamtwert ≈10.726,14 €, Gesamtportfolio auf gemischter Basis
+≈33.546,99 €.
 
 **Vorheriger Stand 2026-09-18 (Wochenfazit-Lauf):** Gesamtportfoliowert
 (alle 4 Broker inkl. Cash+Gold): 33.426,76 € (-0,63% ggü. 33.639,41 € am

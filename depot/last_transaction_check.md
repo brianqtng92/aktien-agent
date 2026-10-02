@@ -7,7 +7,15 @@ Scalable Capital. Bei jedem Lauf wird `list_portfolio_transactions` mit
 letzten Lauf zu erkennen (siehe Agent-Playbook.md, Abschnitt "Täglicher
 Trigger-Check" → "Depot-Transaktions-Erkennung").
 
-Zuletzt gesehene Transaktion (lastEventAt, ISO-8601 UTC): 2026-09-16T14:18:59.156Z
+Zuletzt gesehene Transaktion (lastEventAt, ISO-8601 UTC): 2026-09-28T09:27:44.558Z
+
+Lauf 2026-10-02 (taeglicher-trigger-check, nach OpenAI-Credit-Ausfall 24.09.-01.10. erster regulärer Lauf wieder): list_portfolio_transactions
+fromTime=2026-09-16T14:18:59.156Z → 5 Treffer, alle bereits aus vorherigen
+ad-hoc-Chat-Sessions bekannt und dokumentiert (BCA-SELL 24.09. -190,57€
+realisiert, interne Überweisung -1.539,67€ + Deposit +800€ + Auszahlung
+-469,70€ am 28.09., siehe master_status.md). Keine neue, bisher
+unverarbeitete diskretionäre Transaktion. Checkpoint auf den neuesten
+gesehenen lastEventAt-Wert (Auszahlung 28.09.) vorgezogen.
 
 Lauf 2026-09-23 (taeglicher-trigger-check): list_portfolio_transactions
 fromTime=2026-09-16T14:18:59.156Z → 1 Treffer, identisch mit der bereits
