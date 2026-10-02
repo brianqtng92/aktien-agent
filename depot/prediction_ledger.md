@@ -91,7 +91,7 @@ nicht als tägliche Meldung.
 - **Nächster Prüfpunkt:** H1-2026-Zahlen 08.10.2026 — Margenpfad, FCF-Fortsetzung, ARR/MRR-Wachstumstempo, ob NRR erstmals offengelegt wird.
 - **Prüf-Zeithorizont:** 6 Monate (2027-03-21).
 
-### 2026-09-21 — Kokusai Electric Corporation (6525, Tokyo, JP3266400005)
+### 2026-09-21 — Kokusai Electric Corporation (6525, Tokyo, JP3293330001)
 - **Kategorie:** Profi (Bucket A/C) · TMR-Pfad
 - **Anlass:** Brians direkte Anforderung eines Full Deep Dive.
 - **Empfehlungs-Typ:** Watchlist-Aufnahme (KEIN Kauf-Rating) — Rating bei Aufnahme: BEOBACHTEN/HOLD, Nachkauf-Zone ¥6.500-7.800. Konvergenz startete als "widerspruch" (JJ KAUFEN/5-7% vs. Conan HOLD/1-1,5%), nach Diskussionsrunde "moderat" (beide bei HOLD/BEOBACHTEN, Sizing max. 3-4%). Siehe `analysen/6525-fulldeepdive-cross-check-2026-09-21.md`.
