@@ -1,11 +1,12 @@
 **Nachtrag 2026-10-02 (ad-hoc-chat, zwei Brian-Meldungen):** (1) **Nachkauf
 Münchener Rück +2 Anteile @ 498,30 € (996,60 €)** → 4 Anteile, Invest
 2.047,60 €, Ø ≈511,90 € (Champions, Kategorie unverändert; Broker
-finanzen.net zero angenommen). (2) **innoscripta per Stop-Loss
-ausgelöst/raus** — exakter Fill und Stückzahl noch ausstehend (Brian
-gefragt), Verlust nach Plan begrenzt auf ~3-4% (~60-80 €). Nach Bestätigung:
-Position 13→12, `depot/offene_empfehlungen.md`-Eintrag entfernen, Cash
-nachziehen. Details: `depot/finanzen-net-zero.md`.
+finanzen.net zero angenommen). (2) **innoscripta per Stop-Loss komplett
+raus @ 36,55 €** (50 Stück angenommen): Erlös 1.827,50 €, **realisiert
+-75,00 € (-3,9%)**. Position 13→12, Cash bei finanzen.net zero jetzt
+**3.888,12 €** (3.057,22 € - 996,60 € Münchener Rück + 1.827,50 €
+innoscripta), `depot/offene_empfehlungen.md`-Eintrag entfernt. Details:
+`depot/finanzen-net-zero.md`.
 
 **Nachtrag 2026-10-01 später Abend (ad-hoc-chat, vollständiges Depot-Update
 auf Brians Bitte, alle 4 Broker live/aktuell):** **Gesamtdepot ≈32.185,10€**

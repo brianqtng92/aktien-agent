@@ -14,10 +14,11 @@ Empfehlungen").
 | Kraken Robotics | CA50077N1024 | Nachkauf-Zone (Preisalarm) | ≤2,80 CAD (Downside-Alert aktiv) | E-Mail "Zwei Zonen im Blick", 2026-09-01 | 2026-09-01 | 2026-09-17 |
 | Rambus | US7509171069 | Nachkauf-Zone (Preisalarm) | ≤$68-75 (bestätigt und gestärkt nach Full-Deep-Dive-Refresh 21.09.2026 – deckt sich fast exakt mit dem reconciliierten DCF-Base ~$60-70; **Kurs 25.09. (stockanalysis.com, Twelve Data diese Session nicht verbunden) $105,16**, weiterhin deutlich über der Zone, Rally seit 21.09. im Wesentlichen gehalten. Kein neuer fundamentaler Treiber.) | RMBS-Full-Deep-Dive-Refresh, 2026-09-21 | 2026-09-01 | 2026-09-17 |
 | CBOE Holdings | US12503M1080 | Nachkauf-Zone, gestaffelt (KAUFEN, Tier 2) — **ZONE VERLASSEN (01.10.)** | Tranche 1: $268-270 · Tranche 2: $255-262. **01.10. (Twelve Data live): Kurs $277,35 (+7,5% seit 28.09.)** – klar raus aus beiden Zonen, kurzes Fenster verpasst, kein Handlungsbedarf mehr. | CBOE-Full-Deep-Dive, 2026-09-16 | 2026-09-16 | 2026-10-01 (Zone-Austritt vermerkt) |
-| innoscripta SE | DE000A40QVM8 | Stop-Loss + Teilverkauf-Plan (von Brian selbst gesetzt, bewusster Zock) | **Stop-Loss 36,50-36,90€** (knapp unter Einstand 38,05€, Risiko: Whipsaw bei hoher Volatilität/Gap-Risiko bei Scale-Segment-Liquidität) · **Teilverkauf bei +15-20%** (~43,76-45,66€, Technik-Trigger, keine Fundamental-Entwarnung). **01.10. Abend: Kurs ~43,50€ (+14,3%) – knapp UNTER dem Teilverkauf-Trigger, noch nicht ausgelöst.** Hintergrund: Kauf am Tag einer Durchsuchung wegen Forschungszulage-Betrugsverdacht, siehe `depot/finanzen-net-zero.md`. | Chat 01.10.2026 | 2026-10-01 | – |
 
 ## Format bei neuem Eintrag
 `| Position | ISIN | Empfehlung (KAUFEN/NACHKAUFEN/VERKAUFEN/TEILVERKAUF) | Zone/Preis | Quelle (Analyse-Datei oder Report) | Datum | Zuletzt erinnert (– falls noch nie) |`
+
+**Entfernt 2026-10-02:** innoscripta-Zeile entfernt – Stop-Loss von Brian ausgelöst, Position komplett raus (@ 36,55 €, -75,00 €/-3,9%). Details `depot/finanzen-net-zero.md`.
 
 **Entfernt 2026-09-24:** Hermès-Zeile entfernt – Position von Brian komplett verkauft (@ 1.362,00 €), Empfehlung damit gegenstandslos. Details `depot/finanzen-net-zero.md`.
 

@@ -301,9 +301,15 @@ Champions (Beobachtungspunkt Januar-2027-Erneuerungen/Combined Ratio, siehe
 siehe unten).
 
 **innoscripta-Stop-Loss ausgelöst (von Brian am 02.10. gemeldet):** Position
-per Stop rausgeflogen (Kurs lag am 02.10. bei ~37,70 €). **Exakter
-Ausführungskurs und Stückzahl noch von Brian erfragt – Buchung (Cash,
-realisierter Verlust, Position raus) folgt, sobald bestätigt.**
+per Stop komplett raus, **Ausführungskurs 36,55 €** (knapp unter der
+Stop-Spanne 36,50-36,90 €, kein Slippage-Problem). Stückzahl 50 angenommen
+(Brian hat auf die Rückfrage nur den Kurs genannt, Teilverkauf nicht
+erwähnt). **Erlös 50 × 36,55 € = 1.827,50 €, realisiert -75,00 € (-3,9%)**
+ggü. Kaufpreis 1.902,50 € (38,05 €). Kein Teilverkauf-Trigger (+15%) wurde
+ausgelöst, die Erholung auf ~43,50 € am 01.10. wurde nicht mitgenommen.
+**Cash bei finanzen.net zero damit: 2.060,62 € + 1.827,50 € = 3.888,12 €.**
+Position 13 → 12, innoscripta nie kategorisiert (kein Eintrag in
+`depot/kategorisierung.md` nötig).
 
 ## Update 2026-10-01 Abend (Depot-Update, Twelve Data live)
 
@@ -424,6 +430,7 @@ wird auf "VERKAUFT" gesetzt.
 | 24.09.2026 | Constellation Software Inc | Komplett verkauft | 1.751,00 € | Vollständiger Exit der Position (+371,00 € realisiert ggü. Invest 1.380,00 €) |
 | 24.09.2026 | Broadridge Financial Solutions | Komplett verkauft | 1.141,60 € | Vollständiger Exit der Position (+21,92 € realisiert ggü. Invest 1.119,68 €) |
 | 24.09.2026 | A10 Networks Inc | Komplett verkauft | 489,72 € | Vollständiger Exit der Position (-16,80 € realisiert ggü. Invest 506,52 €) |
+| 02.10.2026 | innoscripta SE | Per Stop-Loss komplett verkauft | 36,55 € | 50 Stück (angenommen), Erlös 1.827,50 €, -75,00 € (-3,9%) ggü. Invest 1.902,50 € (Kauf 01.10. @38,05 €) |
 
 ### Neukäufe (Talent/Moonshot-Fokus, High-Upside-Potenzial)
 
