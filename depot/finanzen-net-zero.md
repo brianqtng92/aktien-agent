@@ -287,6 +287,24 @@ Brian hat **Hermès, MercadoLibre, Constellation Software, Broadridge und A10 Ne
 | Münchener Rückversicherungs-Gesellschaft | 2 | 510,40 € (WebSearch, Xetra, 28.09. Intraday) | **1.020,80 €** |
 | **Summe Wertpapiere** | | | **15.862,04 €** |
 
+## Update 2026-10-02 (von Brian gemeldet)
+
+**Nachkauf Münchener Rück: +2 Anteile @ 498,30 € = 996,60 €** (Ordersumme
+≥500€, keine Gebühr; Broker laut Position finanzen.net zero angenommen, im
+Chat zur Bestätigung vermerkt). Neue Position: 2 + 2 = **4 Anteile,
+Investsumme 1.051,00 € + 996,60 € = 2.047,60 €** (Ø-Einstand ≈511,90 €,
+nach unten gemittelt ggü. den früheren Käufen @524/527 €). Position liegt
+damit in Brians mittelfristigem 2-3k€-Ziel pro Aktie. Kategorie unverändert
+Champions (Beobachtungspunkt Januar-2027-Erneuerungen/Combined Ratio, siehe
+`depot/master_status.md` Abschnitt 5). Cash bei finanzen.net zero: 3.057,22 €
+- 996,60 € = **2.060,62 €** (vor Verbuchung des innoscripta-Stop-Loss-Erlöses,
+siehe unten).
+
+**innoscripta-Stop-Loss ausgelöst (von Brian am 02.10. gemeldet):** Position
+per Stop rausgeflogen (Kurs lag am 02.10. bei ~37,70 €). **Exakter
+Ausführungskurs und Stückzahl noch von Brian erfragt – Buchung (Cash,
+realisierter Verlust, Position raus) folgt, sobald bestätigt.**
+
 ## Update 2026-10-01 Abend (Depot-Update, Twelve Data live)
 
 | Position | Anteile | Kurs | **Wert aktuell (EUR)** |

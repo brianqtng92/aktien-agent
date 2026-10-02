@@ -1,3 +1,12 @@
+**Nachtrag 2026-10-02 (ad-hoc-chat, zwei Brian-Meldungen):** (1) **Nachkauf
+Münchener Rück +2 Anteile @ 498,30 € (996,60 €)** → 4 Anteile, Invest
+2.047,60 €, Ø ≈511,90 € (Champions, Kategorie unverändert; Broker
+finanzen.net zero angenommen). (2) **innoscripta per Stop-Loss
+ausgelöst/raus** — exakter Fill und Stückzahl noch ausstehend (Brian
+gefragt), Verlust nach Plan begrenzt auf ~3-4% (~60-80 €). Nach Bestätigung:
+Position 13→12, `depot/offene_empfehlungen.md`-Eintrag entfernen, Cash
+nachziehen. Details: `depot/finanzen-net-zero.md`.
+
 **Nachtrag 2026-10-01 später Abend (ad-hoc-chat, vollständiges Depot-Update
 auf Brians Bitte, alle 4 Broker live/aktuell):** **Gesamtdepot ≈32.185,10€**
 (+0,3% ggü. 28.09. Nachmittag). Broker: Scalable 9.394,73€ (Gold 487,90€ +
