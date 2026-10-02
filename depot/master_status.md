@@ -623,7 +623,7 @@ belastbare Aussage). Volle Thesen/Begründungen bleiben in `watchlist.md`.
 | Fair Isaac (FICO) | Watchlist, Champions (Beobachtungspunkt) | mögliche Abstufung zu Profi | belastbare Daten zur VantageScore-Adoptionsrate bei GSE-Hypotheken |
 | Münchener Rück | Depot, Champions (Beobachtungspunkt) | Rückversicherungs-Preiszyklus | Januar-2027-Erneuerungen + FY2026-Combined-Ratio vs. ~80%-Guidance |
 | Watsco (WSO) | Depot, Profi (Beobachtungspunkt) | Margen-Normalisierung | nächste 1-2 Quartale beobachten |
-| BONESUPPORT (BONEX) | Watchlist, Talent (neu 07.09., ersetzt Rorze) | CERAMENT-V-FDA-Entscheidung | Datenpaket fällig spätestens 31.10.2026, danach FDA-Antwort – De-Risking-Trigger für mögliche Aufstufung |
+| BONESUPPORT (BONEX) | Watchlist, Talent (neu 07.09., ersetzt Rorze) | CERAMENT-V-FDA-Entscheidung | Datenpaket laut Suche 02.10.2026 bereits eingereicht (Einreichungsdatum nicht geprüft); De-Novo-Prüfung 150 Tage → FDA-Entscheidung laut Analysten-Erwartung vor Jahresende oder Anfang 2027 (Kurs 01.10. ~226 SEK) – De-Risking-Trigger für mögliche Aufstufung |
 | Fair Isaac (FICO) | Watchlist, Champions (Status seit 22.09. ⚠️ RISIKO) | FHFA-Direktive: VantageScore 4.0 SOFORT-Freigabe bei allen GSE-Kreditgebern (Aktie -17-18% an einem Tag) | **Full-Deep-Dive-Refresh mit 3-fach-Cross-Check empfohlen, nächste Priorität** – bisher kein Downgrade, da Umsatzanteilsverschiebung noch nicht in Zahlen sichtbar |
 
 ## 6. Offene Kauf-/Verkauf-Empfehlungen
