@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><title>Agent Wochenreport</title>
+<style>@page { size:A4; margin:0; }
+:root {
+  --bg: #FFFFFF; --bg-panel: #F7F6F2; --bg-panel-2: #EFEDE6;
+  --border: #D9D4C8; --border-soft: #E6E2D9;
+  --text: #262420; --text-dim: #5C564A; --text-faint: #837C6C;
+  --gold: #9C7A2E; --gold-bright: #8A6A22; --gold-dim: #C9AD6E;
+  --green: #3F7D44; --green-bg: rgba(63,125,68,0.10);
+  --yellow: #A6790A; --yellow-bg: rgba(166,121,10,0.10);
+  --orange: #B0651E; --orange-bg: rgba(176,101,30,0.10);
+  --red: #B03A2E; --red-bg: rgba(176,58,46,0.09);
+}
+* { box-sizing: border-box; margin:0; padding:0; }
+html, body { background: var(--bg); color: var(--text); font-family:"Carlito","DejaVu Sans",Arial,sans-serif; font-size:9.6pt; line-height:1.4; }
+.display { font-family:"DejaVu Sans Condensed","DejaVu Sans",Arial,sans-serif; font-weight:700; }
+.page { width:210mm; height:297mm; padding:11mm 13mm 8mm 13mm; display:flex; flex-direction:column; gap:3.6mm; page-break-after: always; }
+.page:last-child { page-break-after: auto; }
+.masthead { display:flex; justify-content:space-between; align-items:flex-end; border-bottom:2px solid var(--gold); padding-bottom:3mm; }
+.brand { font-size:24pt; letter-spacing:0.05em; }
+.brand .accent { color: var(--gold-bright); }
+.brand-sub { font-size:7.8pt; letter-spacing:0.13em; text-transform:uppercase; color:var(--text-dim); margin-top:0.6mm; }
+.meta { text-align:right; font-size:8pt; color:var(--text-dim); }
+.meta .big { color:var(--text); font-size:10pt; }
+.section-label { font-size:7.4pt; letter-spacing:0.13em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:2.5mm; }
+.section-label::after { content:""; flex:1; height:1px; background:var(--border-soft); }
+.ampel-box { display:flex; gap:4mm; align-items:center; background:var(--bg-panel); border:1px solid var(--border-soft); border-left:4px solid var(--yellow); border-radius:3px; padding:4mm 5mm; }
+.ampel-dot { width:9mm; height:9mm; border-radius:50%; background:var(--yellow); flex-shrink:0; box-shadow:0 0 10px rgba(166,121,10,0.35); }
+.ampel-text .status { font-size:14pt; }
+.ampel-text .sub { font-size:8.4pt; color:var(--text-dim); margin-top:1mm; }
+.cat-grid { display:flex; gap:3mm; }
+.cat-card { flex:1; background:var(--bg-panel); border:1px solid var(--border-soft); border-radius:3px; padding:3mm 4mm; }
+.cat-card .name { font-size:10pt; color:var(--gold-bright); }
+.cat-card .fill { font-size:16pt; margin-top:1mm; }
+.cat-card .fill .target { font-size:8pt; color:var(--text-faint); }
+.cat-card .note { font-size:7.2pt; color:var(--text-dim); margin-top:1mm; }
+.bar-track { height:2.4mm; border-radius:2px; background:var(--border-soft); margin-top:1.6mm; overflow:hidden; }
+.bar-fill { height:100%; border-radius:2px; }
+.pill { display:inline-block; padding:0.5mm 2.2mm; border-radius:8px; font-size:6.8pt; letter-spacing:0.03em; text-transform:uppercase; }
+.pill.green { background:var(--green-bg); color:var(--green); border:1px solid var(--green); }
+.pill.yellow { background:var(--yellow-bg); color:var(--yellow); border:1px solid var(--yellow); }
+.pill.orange { background:var(--orange-bg); color:var(--orange); border:1px solid var(--orange); }
+.pill.red { background:var(--red-bg); color:var(--red); border:1px solid var(--red); }
+.tick { color:var(--text-faint); font-size:7.4pt; }
+.box { background:var(--bg-panel); border:1px solid var(--border-soft); border-radius:3px; padding:3mm 4mm; }
+.box h3 { font-size:8.6pt; text-transform:uppercase; letter-spacing:0.06em; color:var(--gold); margin-bottom:1.4mm; }
+.box p { font-size:8pt; color:var(--text-dim); line-height:1.42; }
+.box p b { color:var(--text); }
+.event-list { display:flex; flex-direction:column; gap:2.4mm; }
+.event { display:flex; gap:3mm; background:var(--bg-panel); border:1px solid var(--border-soft); border-radius:3px; padding:2.6mm 3.5mm; }
+.event .tag { flex:0 0 24mm; font-size:8.6pt; }
+.event .tag .t { display:block; font-size:6.4pt; color:var(--text-faint); text-transform:uppercase; }
+.event .body { flex:1; font-size:7.9pt; color:var(--text-dim); line-height:1.4; }
+.event .body b { color:var(--text); }
+.cash-line { border:1px solid var(--gold-dim); border-radius:3px; padding:3.4mm 4mm; background:linear-gradient(135deg,var(--bg-panel-2),var(--bg-panel)); }
+.cash-line .h { color:var(--gold-bright); font-size:9.4pt; margin-bottom:1mm; }
+.cash-line p { font-size:8.4pt; color:var(--text); }
+.footer { display:flex; justify-content:space-between; border-top:1px solid var(--border-soft); padding-top:1.6mm; font-size:6.2pt; color:var(--text-faint); margin-top:auto; }
+.imgbox { text-align:center; }
+.imgbox img { max-width:100%; max-height:78mm; border:1px solid var(--border-soft); border-radius:3px; background:#fff; }
+.imgbox .cap { font-size:7.4pt; color:var(--text-dim); margin-top:1mm; }
+.chart-grid { display:grid; grid-template-columns:1fr 1fr; gap:3mm; }
+.src-list { font-size:7.6pt; color:var(--text-dim); line-height:1.7; }
+table.simple { width:100%; border-collapse:collapse; font-size:7.8pt; }
+table.simple th { text-align:left; text-transform:uppercase; letter-spacing:0.04em; font-size:6.6pt; color:var(--text-faint); border-bottom:1px solid var(--border-soft); padding:1.6mm 2mm; }
+table.simple td { padding:1.4mm 2mm; border-bottom:1px solid var(--border-soft); color:var(--text-dim); }
+table.simple td b { color:var(--text); }
+.up { color:var(--green); } .down { color:var(--red); }
+</style></head>
+<body>
+
+<div class="page">
+  <div class="masthead">
+    <div>
+      <div class="brand display">AGENT <span class="accent">WOCHENREPORT</span></div>
+      <div class="brand-sub">3-KI Cross-Check &middot; Aegis &middot; Conan &middot; JJ</div>
+    </div>
+    <div class="meta">
+      <div class="big">Woche zum 02. Oktober 2026</div>
+      <div>Gesamtdepot &middot; 12 Einzelwerte + Vanguard-FTSE-All-World-Sparplan + Gold-ETC</div>
+    </div>
+  </div>
+
+  <div class="box" style="border-left:3px solid var(--gold);">
+    <h3>Hinweis zu diesem Lauf</h3>
+    <p>Dieser Lauf deckt bewusst ein <b>verlängertes ~2-Wochen-Fenster</b> (18.09.-02.10.2026) ab: zwischen dem 24.09. und 01.10. fielen alle 4 Hermes-Cron-Jobs lautlos aus (OpenAI-Credit-Erschöpfung, HTTP 429) &mdash; inkl. des 25.09.-Wochenfazits. Brian hat die Lücke über mehrere Ad-hoc-Chat-Sessions aktiv geschlossen (Depot-Updates, Transaktionen, MCD-Nachprüfung, ISIN-Korrekturen); dieser Report konsolidiert diese Zwischenstände zu einem vollständigen Wochenfazit. <b>Datenlücke dieses Laufs:</b> weder Scalable-Capital-MCP noch Twelve-Data-MCP waren in dieser automatisierten Session authentifiziert (beide benötigen einen interaktiven OAuth-Schritt) &mdash; Depotzahlen sind der letzte bestätigte Stand aus der 02.10.-Vormittags-Session, Benchmark-/Makro-Werte stammen aus WebSearch. Siehe Seite 8 für die vollständige Transparenz-Erklärung.</p>
+  </div>
+
+  <div class="section-label">Depotstatus</div>
+  <div class="ampel-box">
+    <div class="ampel-dot"></div>
+    <div class="ampel-text">
+      <div class="status display">BEOBACHTEN &mdash; kein akuter Handlungsbedarf, aber neuer Struktur-Verstoß</div>
+      <div class="sub">Depotwert 31.851,60&nbsp;€ (-4,71% ggü. 33.426,76€ am 18.09., -9,09% ggü. Baseline 30.08. &mdash; davon ca. -5,7 Pp. reine Mittelabfuhr aus Scalable Capital, kein Marktverlust, siehe Seite 5). Depot-Struktur hat sich in diesem Fenster grundlegend verändert: die 6-Positionen-Verkaufswelle vom 24.09. (Constellation Software, Hermès, MercadoLibre, Bank Central Asia, Broadridge, A10 Networks) hat das Depot von 18 auf 12 Einzelwerte verschlankt &mdash; bewusste Fokussierung, aber mit einer unbeabsichtigten Nebenwirkung: <b>USA-Anteil jetzt 65,2%, erstmals über der harten 60%-Obergrenze</b> (verkaufte Positionen waren überproportional Nicht-USA). Kein Fraud-/Going-Concern-Fund, kein Notfall &mdash; aber eine echte, neue Struktur-Lücke, die beim nächsten Kapitaleinsatz Priorität haben sollte (siehe Seite 4/7).</div>
+    </div>
+  </div>
+
+  <div class="section-label">Kategorie-Füllstand (Fokussierungs-Grundsatz, löst &bdquo;10-7-3&ldquo; ab)</div>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <div class="name display">CHAMPIONS</div>
+      <div class="fill display">6</div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--green);"></div></div>
+      <div class="note">War 10 am 18.09. &mdash; 4 Positionen durch die Verkaufswelle raus (alle als Watchlist-Kandidat [EX-DEPOT] weitergeführt).</div>
+    </div>
+    <div class="cat-card">
+      <div class="name display">PROFI</div>
+      <div class="fill display">5</div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--green);"></div></div>
+      <div class="note">War 7 am 18.09. &mdash; 2 Positionen raus (Broadridge, A10 Networks).</div>
+    </div>
+    <div class="cat-card">
+      <div class="name display">TALENT</div>
+      <div class="fill display">1 <span class="target">(nur Rocket Lab)</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:33%; background:var(--yellow);"></div></div>
+      <div class="note">Unverändert. innoscripta war zwischenzeitlich Position 13 (ungeprüfter Zock), per Stop-Loss am 02.10. bereits wieder komplett raus.</div>
+    </div>
+  </div>
+
+  <div class="section-label">Kernzahlen dieser Woche</div>
+  <div class="cat-grid">
+    <div class="cat-card"><div class="name">Depotwert</div><div class="fill display" style="color:var(--text);">31.851,60&nbsp;€</div><div class="note">12 Positionen (6/5/1) + Vanguard-ETF (8.306,83€) + Gold-ETC (487,90€) + Cash (4.488,12€).</div></div>
+    <div class="cat-card"><div class="name">Watchlist</div><div class="fill display" style="color:var(--gold-bright);">46 Werte</div><div class="note">24 Champions / 16 Profi / 6 Talent &mdash; +9 ggü. 18.09. (37), primär die 6 [EX-DEPOT]-Kandidaten + ORKA/ALLIX/Kokusai Electric.</div></div>
+    <div class="cat-card"><div class="name">Neuer Regel-Verstoß</div><div class="fill display" style="color:var(--red);">USA 65,2%</div><div class="note">Erstmals über der harten 60%-Obergrenze (war 53,70% am 18.09.) &mdash; Folge der Verkaufswelle, kein Einzelwert-Problem.</div></div>
+  </div>
+
+  <div class="footer">
+    <div>Agent Wochenreport &middot; Seite 1</div>
+    <div>Regelwerk TMR v11.24 / Scout v1.16</div>
+  </div>
+</div>
+
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:16pt;">AUFFÄLLIGKEITEN <span class="accent">DES FENSTERS 18.09.-02.10.</span></div>
+    <div class="brand-sub">Verdichtet aus den Ad-hoc-Chat-Sessions der Automatisierungs-Lücke + den letzten Blitz-Scans</div></div>
+  </div>
+
+  <div class="event-list">
+    <div class="event">
+      <div class="tag"><span class="t">Automatisierung</span><b class="display">Totalausfall</b><br><span class="pill red">Behoben</span></div>
+      <div class="body">Alle 4 Hermes-Cron-Jobs scheiterten vom <b>24.09. bis 01.10. lautlos an HTTP 429</b> (OpenAI-Credit-Erschöpfung) &mdash; betroffen: Blitz-Scan (stündlich), Täglicher Trigger-Check, dieses Wochenfazit (25.09. ausgefallen) und der komplette September-Monatsrecap. Zweites Auftreten desselben Musters (davor 11.-18.09.). Nach Credit-Aufladung läuft der Blitz-Scan seit 02.10. wieder fehlerfrei; dieser Wochenfazit-Lauf und der nächste Trigger-Check bestätigen die vollständige Wiederherstellung.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">Depot</span><b class="display">6-Positionen-Verkauf</b><br><span class="pill orange">Strukturwandel</span></div>
+      <div class="body">Brian verkaufte am 24.09. komplett: <b>Constellation Software (+371,00€/+26,9%), MercadoLibre (+90,60€/+6,3%), Broadridge (+21,92€/+2,0%), Hermès (-543,09€/-28,5%), A10 Networks (-16,80€/-3,3%)</b> und Bank Central Asia (-190,57€/-9,5%, live bestätigt) &mdash; Summe realisiert -76,37€ (-1,2%) auf 6.354,09€ Invest. Größte Einzeltransaktion seit der Depot-Restrukturierung vom 28.08. Alle 6 laufen als Watchlist-Kandidat [EX-DEPOT] weiter. Nebenwirkung: die verkauften Positionen deckten überproportional Nicht-USA/Nicht-Finanzwesen ab &mdash; daraus resultiert der neue USA-Cap-Verstoß (siehe Seite 4).</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">innoscripta</span><b class="display">Zock, Ein+Aus</b><br><span class="pill orange">Abgeschlossen</span></div>
+      <div class="body">Brian kaufte am 01.10. 50 Anteile innoscripta SE @38,05€ (1.902,50€) &mdash; am selben Tag wurden die Geschäftsräume wegen Verdachts auf Beihilfe zu Forschungszulage-Steuerbetrug durchsucht, Kaufkurs lag praktisch auf dem Tagestief dieser Meldung. Brian hatte die Meldung beim Kauf nicht gekannt, sah die Position aber bewusst als Zock mit eigenem Stop-Loss (36,50-36,90€). Kurzzeitige Erholung auf ~43,50€ (+14,3%, 01.10. Abend) blieb unter dem Teilverkauf-Trigger (+15-20%) &mdash; <b>Stop-Loss löste am 02.10. @36,55€ aus, Position komplett raus, realisiert -75,00€ (-3,9%)</b>. Nie kategorisiert (kein Champions/Profi/Talent-Eintrag nötig).</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">Münchener Rück</span><b class="display">Nachkauf</b><br><span class="pill green">Umgesetzt</span></div>
+      <div class="body">+2 Anteile @498,30€ (996,60€) &mdash; Position jetzt 4 Anteile, Invest 2.047,60€, Ø-Einstand ≈511,90€ (nach unten gemittelt ggü. den ursprünglichen Käufen @524/527€). Kategorie unverändert Champions, Beobachtungspunkt bleibt der Rückversicherungs-Preiszyklus (Januar-2027-Erneuerungen/Combined Ratio).</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">ISIN-Fixes</span><b class="display">A10 Networks + Kokusai</b><br><span class="pill green">Korrigiert</span></div>
+      <div class="body">Zwei fehlerhafte ISINs per Scalable-Watchlist-Sync aufgedeckt und korrigiert: A10 Networks (US00211W1053 war ungültig &mdash; richtig US0021211018) und Kokusai Electric 6525 (JP3266400005 gehörte tatsächlich zu Kubota &mdash; richtig JP3293330001). Beide in watchlist.md aktualisiert.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">McDonald's</span><b class="display">Full Deep Dive + Nachprüfung</b><br><span class="pill yellow">BEOBACHTEN</span></div>
+      <div class="body">Watchlist-Neuaufnahme (Champions, 22.09.) mit Full-Deep-Dive-Cross-Check, danach verkürzte Nachprüfung nach dem Investor Day (02.10., JJ+Conan). Rating BEOBACHTEN unverändert, Kurs 205,13€/$231,57 in der ersten Tranchen-Zone ($225-232), nicht in der attraktiven Zone (&lt;$215-225). <b>Wichtiger Vorbehalt:</b> ein Einstieg würde den bereits über dem Band liegenden USA-Anteil weiter erhöhen &mdash; Sizing entsprechend klein halten, falls überhaupt (siehe Seite 7).</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">Watchlist</span><b class="display">3 neue Full Deep Dives</b><br><span class="pill green">Abgeschlossen</span></div>
+      <div class="body">Im Fenster kamen drei vollständige Neuanalysen dazu: <b>Kokusai Electric (6525, Profi, BEOBACHTEN, Nachkauf-Zone ¥6.500-7.800)</b>, <b>WALLIX Group (ALLIX, Talent, KAUFEN-KANDIDAT/Starter)</b> und ein <b>Arista-Networks-Refresh (S&amp;P-100-Aufnahme + 3. Guidance-Anhebung, BEOBACHTEN bestätigt)</b>. Oruka Therapeutics (ORKA, Talent) kam als zweiter Kandidat für die beiden offenen, regionsunabhängigen Talent-Slots dazu.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">FICO</span><b class="display">Weitere Eskalation</b><br><span class="pill red">Full-Deep-Dive überfällig</span></div>
+      <div class="body">Noch während dieses Laufs (paralleler Trigger-Check, 02.10. Abend) eskalierte die bereits seit 22.09. laufende FICO-Geschichte weiter: FHFA hat VantageScore 4.0 offiziell mit Classic FICO auf dasselbe Pricing-Grid gesetzt (beendet die Scoring-Exklusivität endgültig) &mdash; Aktie <b>-21,7% an einem Tag auf $658,63 (YTD -62,4%)</b>, BofA-Downgrade auf Neutral (Kursziel $1.400→$700 halbiert), weitere Downgrades (Wells Fargo/Goldman/BMO/Barclays). Status bleibt ⚠️ RISIKO/🟡 GELB (watchlist.md, Champions), aber der seit zwei Wochen empfohlene Full-Deep-Dive-Refresh ist damit <b>klar überfällig</b> &mdash; nächste Priorität für den kommenden Trigger-Check/Blitz-Scan.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Agent Wochenreport &middot; Seite 2</div>
+    <div>Quelle: depot/bridge_status.md, watchlist.md, kategorisierung.md, offene_empfehlungen.md</div>
+  </div>
+</div>
+
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:16pt;">WATCHLIST-UPDATE</div>
+    <div class="brand-sub">46 Werte &middot; Champions/Profi/Talent-Logik wie im Depot &middot; volle Liste in watchlist.md</div></div>
+    <div class="meta"><div class="big">24 / 16 / 6</div></div>
+  </div>
+
+  <div class="box">
+    <h3>Watchlist deutlich gewachsen (37 → 46)</h3>
+    <p>Der Zuwachs seit 18.09. ist primär strukturell: die 6 am 24.09. verkauften Depot-Positionen (Constellation Software, Hermès, MercadoLibre, Bank Central Asia, Broadridge, A10 Networks) laufen jetzt als Watchlist-Kandidaten mit <b>[EX-DEPOT]</b>-Tag weiter &mdash; plus 3 echte Neuaufnahmen mit vollem Quick-Filter/Full-Deep-Dive (Oruka Therapeutics/ORKA, WALLIX Group/ALLIX, Kokusai Electric/6525) und McDonald's (Champions, Full Deep Dive 22.09. + Nachprüfung 02.10.). Die beiden zuvor offenen, regionsunabhängigen Talent-Slots sind damit beide mit Kandidaten besetzt (ORKA + ALLIX) &mdash; Watchlist-Aufnahme ist kein Depot-Kauf, die Entscheidung liegt weiter bei Brian.</p>
+  </div>
+
+  <div class="box">
+    <h3>CRV-Ampel-Pflege diesen Lauf eingeschränkt &mdash; Transparenz-Hinweis</h3>
+    <p>Twelve Data war in dieser automatisierten Session nicht authentifiziert (siehe Seite 8) &mdash; eine vollständige Neubewertung aller 46 Watchlist- plus 12 Depot-CRV-Ampeln gegen frische Kennzahlen war damit nicht möglich. Die Ampeln bleiben auf dem zuletzt dokumentierten Stand der jeweiligen Einzelanalysen (teils 18.09., teils aus den Full-Deep-Dives dieses Fensters) stehen &mdash; keine automatische Neuherleitung aus veralteten/unsicheren Daten, um keine Scheinpräzision zu erzeugen. Sobald Twelve Data/Scalable in einer kommenden Session wieder verbunden sind, sollte die nächste reguläre Pflege das nachholen.</p>
+  </div>
+
+  <div class="section-label">Offene Nachkauf-/Beobachtungs-Zonen (Watchlist)</div>
+  <table class="simple">
+    <tr><th>Ticker</th><th>Firma</th><th>Einordnung</th></tr>
+    <tr><td><b>7741</b></td><td>Hoya Corp.</td><td>Kurs weiterhin deutlich über der hergeleiteten Zielzone (€92-106) &mdash; kein Nachkaufpunkt.</td></tr>
+    <tr><td><b>6146</b></td><td>Disco Corp.</td><td>Kurs weiterhin deutlich über der hergeleiteten Zielzone (€159-187) &mdash; kein Nachkaufpunkt.</td></tr>
+    <tr><td><b>6525</b></td><td>Kokusai Electric</td><td>Nachkauf-Zone ¥6.500-7.800 (Full Deep Dive 21.09.), Kurs ¥8.884 (18.09.) &mdash; über der Zone, kein Signal.</td></tr>
+    <tr><td><b>MCD</b></td><td>McDonald's</td><td>Siehe depot/offene_empfehlungen.md &mdash; Einstiegszone ≤200€/~225$, Kurs 02.10. 205,13€, praktisch an der ersten Tranche.</td></tr>
+  </table>
+  <div class="box"><p><b>Watsco/Rollins/FICO-Beobachtungspunkte</b> (Margen-Normalisierung, H2-Guidance, VantageScore-Adoption) bleiben unverändert offen &mdash; FICO weiterhin ⚠️ RISIKO/🟡 GELB, Full-Deep-Dive-Refresh bleibt empfohlene nächste Priorität, in diesem Fenster aus Zeitpriorität nicht nachgeholt.</p></div>
+
+  <div class="footer">
+    <div>Agent Wochenreport &middot; Seite 3</div>
+    <div>Vollständige Liste inkl. Kurzthesen: watchlist.md</div>
+  </div>
+</div>
+
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:16pt;">PORTFOLIO-REGEL-CHECK</div>
+    <div class="brand-sub">Stand 02.10.2026 (Basis Stocks+ETF 26.875,58€, Gesamtportfolio 31.851,60€)</div></div>
+  </div>
+
+  <table class="simple">
+    <tr><th>Regel</th><th>Ziel</th><th>Ist (02.10.)</th><th>Status</th></tr>
+    <tr><td>Größte Einzelposition</td><td>≤10% (Ausnahme bis 12%)</td><td><b>SoFi Technologies 11,05%</b></td><td><span class="pill orange">INNERHALB AUSNAHME</span></td></tr>
+    <tr><td>Kleinste Position</td><td>≥1% (außer Trace)</td><td>Allianz SE 1,50%</td><td><span class="pill green">ERFÜLLT</span></td></tr>
+    <tr><td>ETF-Mindestanteil</td><td>≥50% (Ziel langfr. 60%)</td><td><b>26,08%</b></td><td><span class="pill red">VERSTOSS, langsamer Aufbau (war 24,41% am 18.09.)</span></td></tr>
+    <tr><td>Region USA</td><td>≤55% (hart ≤60%)</td><td><b>65,17%</b></td><td><span class="pill red">NEU: VERSTOSS der harten Obergrenze (war 53,70%)</span></td></tr>
+    <tr><td>Region Europa/UK</td><td>15-20%</td><td>16,37%</td><td><span class="pill green">IM ZIELBAND</span></td></tr>
+    <tr><td>Region Japan/Asien</td><td>10-15%</td><td><b>4,63%</b></td><td><span class="pill red">DEUTLICH UNTERBESETZT (war 9,55% &mdash; BCA-Verkauf)</span></td></tr>
+    <tr><td>Region Sonstige (CA/IL)</td><td>kein festes Band</td><td>13,84%</td><td><span class="pill yellow">HINWEIS</span></td></tr>
+    <tr><td>Region LatAm</td><td>kein festes Band</td><td>0,00%</td><td><span class="pill yellow">KEINE POSITION MEHR (MELI verkauft)</span></td></tr>
+    <tr><td>Sektor Finanzwesen</td><td>20-25%</td><td><b>31,76%</b></td><td><span class="pill red">WEITERHIN KLAR ÜBER ZIEL</span></td></tr>
+    <tr><td>Sektor Technologie/Halbleiter</td><td>30-35%</td><td>28,94%</td><td><span class="pill orange">KNAPP UNTERBESETZT</span></td></tr>
+    <tr><td>Sektor Industriewerte</td><td>10-15%</td><td><b>18,76%</b></td><td><span class="pill red">NEU: ÜBER ZIELBAND (RKLB/Kraken/HawkEye-Konzentration)</span></td></tr>
+    <tr><td>Sektor Gesundheitswesen</td><td>10-15%</td><td>11,16%</td><td><span class="pill green">IM ZIELBAND</span></td></tr>
+    <tr><td>Sektor Rest</td><td>5-10%</td><td>9,40%</td><td><span class="pill green">IM ZIELBAND (war 16,41% &mdash; Hermès/MELI raus)</span></td></tr>
+  </table>
+
+  <div class="box">
+    <h3>Einordnung: kein Einzelwert-Problem, eine echte Struktur-Nebenwirkung der Verkaufswelle</h3>
+    <p>Die 6-Positionen-Verkaufswelle vom 24.09. hat 4 der 6 Zielbänder material verschoben, ohne dass das eine bewusste Strukturentscheidung war: <b>USA (53,70%→65,17%)</b> und <b>Industriewerte (11,72%→18,76%)</b> sind neu über ihre Bänder gerutscht, <b>Japan/Asien (9,55%→4,63%)</b> ist jetzt die mit Abstand größte Lücke (Bank Central Asia war die einzige Japan/Asien-Position im Depot), während <b>&bdquo;Rest&ldquo; (16,41%→9,40%)</b> und <b>Gesundheitswesen</b> sich durch den Wegfall von Hermès/MercadoLibre normalisiert haben. Kein automatisches Verkaufssignal (Zielbänder sind weiche Vorgaben, siehe Agent-Playbook.md) &mdash; aber die klare Konsequenz für künftigen Kapitaleinsatz: <b>neue Positionen sollten bevorzugt Japan/Asien und Nicht-USA adressieren</b>, ein McDonald's-Kauf (USA, Seite 3) würde die Lücke dagegen verschärfen. Hypothetisch mit MCD (~2.060€): USA stiege auf ~67,6%, Rest auf ~15,8% (zusätzlich über Band).</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Wochenreport &middot; Seite 4</div>
+    <div>Basis: ETF+Aktien (26.875,58€) für Region/Sektor, Gesamtportfolio inkl. Gold+Cash (31.851,60€) für Positionsgrößen</div>
+  </div>
+</div>
+
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:16pt;">CHARTS <span class="accent">&amp; MARKT-VERGLEICH</span></div>
+    <div class="brand-sub">Frisch erzeugt mit den aktuellen Daten (Stand 02.10.2026)</div></div>
+  </div>
+  <div class="chart-grid">
+    <div class="imgbox"><img src="chart_zusammensetzung.png"><div class="cap">Gesamt-Zusammensetzung (26.875,58€ Einzelwerte+ETF, ohne Gold/Cash) &mdash; nur noch 12 Einzelpositionen</div></div>
+    <div class="imgbox"><img src="chart_regionen.png"><div class="cap">Regionen-Verteilung &mdash; USA jetzt über der harten Obergrenze, Japan/Asien stark unterbesetzt</div></div>
+    <div class="imgbox"><img src="chart_sektoren.png"><div class="cap">Sektor-Verteilung &mdash; Finanzwesen &amp; Industriewerte über Ziel</div></div>
+    <div class="imgbox"><img src="chart_rendite.png"><div class="cap">Rendite je Position seit Kauf</div></div>
+  </div>
+  <div class="imgbox" style="margin-top:2mm;"><img src="benchmark_vs_depot.png" style="max-height:70mm;"><div class="cap"><b>Depot vs. Markt seit Trackingbeginn (30.08.2026): Depot -9,09%, S&amp;P 500 +0,06%, Nasdaq 100 +5,18% (neues Rekordhoch), MSCI World Proxy +1,79%.</b> Wichtige Einordnung: von den -9,09% Depot-Rückgang sind rund 2.009€ (≈-5,7 Prozentpunkte) eine am 28.09. bewusst aus Scalable Capital abgezogene Mittelsumme (Auszahlung + interne Überweisung, von Brian bestätigt) &mdash; keine Marktbewegung. Das reine Vorwärts-Tracking dieser Methodik bildet Kapitalabflüsse NICHT heraus (siehe performance_tracking.md). Markt-/positionsbereinigt liegt der reale Rückgang eher bei ≈-3,3% &mdash; weiterhin hinter dem Markt (Nasdaq 100 markierte im selben Zeitraum ein neues Allzeithoch), aber deutlich moderater als die Kopfzahl suggeriert.</div></div>
+  <div class="footer">
+    <div>Agent Wochenreport &middot; Seite 5</div>
+    <div>reports/weekly_charts.py &amp; benchmark_chart.py, für diesen Lauf neu ausgeführt</div>
+  </div>
+</div>
+
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:15pt;">TOP-BEWEGER <span class="accent">&amp; EXIT-/NACHKAUF-AMPEL</span></div>
+    <div class="brand-sub">Depot-Einzelwerte, Kursbasis seit 18.09. &middot; Watchlist nicht einzeln abgefragt (Twelve Data nicht verbunden, siehe Seite 8)</div></div>
+  </div>
+
+  <div class="section-label">Top 3 Gewinner / Top 3 Verlierer (Depot, Kursbasis seit 18.09.)</div>
+  <table class="simple">
+    <tr><th>Position</th><th>Bewegung</th><th>Grund</th></tr>
+    <tr><td><b>Rambus (Depot)</b></td><td class="up">+24,9%</td><td>Fortsetzung der Rally seit dem Full-Deep-Dive-Refresh 21.09., kein neuer fundamentaler Treiber &mdash; weiterhin weit über der Nachkauf-Zone $68-75</td></tr>
+    <tr><td><b>Rocket Lab USA (Depot)</b></td><td class="up">+15,2%</td><td>Kein klarer Einzelgrund identifiziert &mdash; allgemeine Kursstärke (Kategorie/Rating unverändert 🔴 KEIN NACHKAUF)</td></tr>
+    <tr><td><b>CBOE Holdings (Depot)</b></td><td class="up">+3,0%</td><td>Beide dokumentierten Nachkauf-Zonen inzwischen klar verlassen ($277,35 vs. Zone $255-270)</td></tr>
+    <tr><td><b>HawkEye 360 (Depot)</b></td><td class="down">-9,5%</td><td>Kein News-Treiber gefunden &mdash; Fortsetzung der Post-IPO-Space-Tech-Neubewertung</td></tr>
+    <tr><td><b>Tristel PLC (Depot)</b></td><td class="down">-9,3%</td><td>Kursstreuung zwischen Quellen dokumentiert (370-409p), WebSearch statt Twelve Data &mdash; mit Vorsicht zu lesen</td></tr>
+    <tr><td><b>SoFi Technologies (Depot)</b></td><td class="down">-6,6%</td><td>Kein klarer Einzelgrund identifiziert &mdash; allgemeine Marktbewegung</td></tr>
+  </table>
+  <div class="box" style="margin-top:-1mm;"><p><b>Transparenz-Hinweis:</b> diesmal konnten nur die 10 noch per Twelve Data/WebSearch zuletzt dokumentierten Depot-Einzelwerte verglichen werden, nicht das gesamte 46-Werte-Watchlist-Universum &mdash; Twelve Data war in dieser Session nicht verbunden (siehe Seite 8). <b>innoscripta</b> (Kauf+Stop-Loss-Exit binnen 2 Tagen, -3,9% realisiert) ist als geschlossene Position bewusst nicht in dieser Liste, siehe Seite 2.</p></div>
+
+  <div class="section-label">Exit-/Gewinnmitnahme-/Nachkauf-Ampel (alle offenen Zonen)</div>
+  <div class="event-list">
+    <div class="event">
+      <div class="tag"><span class="t">CBOE</span><b class="display">Champions</b><br><span class="pill green">Zonen verlassen</span></div>
+      <div class="body">Kurs $277,35 (01.10.) &mdash; klar raus aus beiden dokumentierten Zonen (Tranche 1 $268-270, Tranche 2 $255-262). Kurzes Kaufgelegenheits-Fenster verpasst, kein Handlungsbedarf.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">RMBS</span><b class="display">Offene Zone</b><br><span class="pill green">Nachkauf-Zone, fern</span></div>
+      <div class="body">Kurs $107,25 (01.10.) &mdash; weiterhin deutlich über der Nachkauf-Zone $68-75, trotz der starken Rally kein Kaufsignal.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">KRKN</span><b class="display">Offene Zone</b><br><span class="pill green">Nachkauf-Zone, fern</span></div>
+      <div class="body">Zone ≤2,80 CAD unverändert offen seit 01.09.2026, kein frischer Kurs diese Woche (TSXV weiterhin nicht per Twelve Data abrufbar).</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">MCD</span><b class="display">Watchlist, Champions</b><br><span class="pill yellow">Einstiegszone, Vorbehalt</span></div>
+      <div class="body">Kurs 205,13€/$231,57 (02.10.) &mdash; in der ersten Tranchen-Zone ($225-232), nicht in der attraktiven Zone (&lt;$215-225). <b>Sizing bewusst klein halten (max. ½ Normalposition)</b> &mdash; ein Kauf würde den bereits über dem Band liegenden USA-Anteil (65,2%) weiter erhöhen (siehe Seite 4). Preisalarm zweimal an `upstream_unavailable` gescheitert, Trigger-Check prüft manuell.</div>
+    </div>
+    <div class="event">
+      <div class="tag"><span class="t">RKLB</span><b class="display">Talent</b><br><span class="pill red">Kein Nachkauf</span></div>
+      <div class="body">Terminal-State unverändert (🔴 KEIN NACHKAUF &mdash; ÜBERBEWERTET, 0% Sizing-Empfehlung), trotz des Nachkaufs vom 24.09. (bewusste Abweichung, siehe kategorisierung.md). Nächster Prüfpunkt Q3-Zahlen.</div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Umschichtungs-Prüfung</h3>
+    <p>Keine Position steht aktuell in Kategorie 4 (Teilverkauf) oder 5 (Verkauf erwägen) &mdash; kein Umschichtungs-Kandidat in diesem Fenster. Die 6-Positionen-Verkaufswelle vom 24.09. war eine von Brian selbst initiierte Restrukturierung, kein Abbruch-/Stop-These-Trigger-Fall.</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Wochenreport &middot; Seite 6</div>
+    <div>Vollständige offene Empfehlungen: depot/offene_empfehlungen.md</div>
+  </div>
+</div>
+
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:15pt;">MAKRO-AUSBLICK <span class="accent">&amp; KLARE LINIE</span></div>
+    <div class="brand-sub">Notenbank-Kalender, Investitionsklima, Fokus für die kommende Woche</div></div>
+  </div>
+
+  <div class="box">
+    <h3>Ruhige Notenbank-Lage, aber neue Renditen-Warnung</h3>
+    <p>Keine FOMC-/EZB-/BoJ-Termine mehr in den nächsten 4 Wochen (nächste: FOMC 27./28.10., EZB 28./29.10., BoJ 29./30.10.). Tagesniveau 02.10.: VIX 15,52 (-5,3%, ruhig), Fear&amp;Greed 27,2 (Fear-Zone, leicht schwächer als zuletzt), S&amp;P 500 ~7.716 (+0,89% Tagesbewegung nach einem schwachen US-Arbeitsmarktbericht &mdash; nur 29.000 neue Stellen vs. 84.000 erwartet, Arbeitslosenquote 4,2%), <b>Nasdaq 100 markierte mit ~30.957 ein neues Rekordhoch</b> (Markt reduzierte seine Fed-Hike-Erwartung nach dem schwachen Jobsbericht). <b>Neuer Beobachtungspunkt: US-10-Jahres-Rendite kletterte auf 5,27%</b> &mdash; ein neues Hoch, über den bisherigen Spitzenwerten (5,10% am 23.09., 5,041% am 15.09.) trotz der schwächeren Jobsdaten. Zusätzlich Brent weiterhin &gt;$102 (dritter Bericht über einen US-Flugzeugträger im Nahen Osten) &mdash; beides noch nicht in einem vollständigen Korrektur-Risiko-Score-Neu-Check verarbeitet (letzter vollständiger Check 15.09.: 51/126, 🟠 HOCH; letzter Teil-Update 22.09.: ~46/126, 🟡 ERHÖHT). Kein Material-Shift-Kriterium ausgelöst (keine CB-Notfallentscheidung, VIX rückläufig, keine ±3%-Tagesbewegung), aber die Renditen-Divergenz (Aktienmarkt-Rekordhoch bei gleichzeitig steigenden langfristigen Zinsen) verdient den nächsten Trigger-Check-Lauf als expliziten Prüfpunkt.</p>
+  </div>
+
+  <div class="box">
+    <h3>Nächste Kalendertermine</h3>
+    <p>Q3-Earnings-Season beginnt Mitte Oktober &mdash; relevante Depot-Termine laut <code>depot/earnings_calendar.md</code>: ServiceNow (~28.10.), Rambus (02.11.), Cellebrite (18.11.). Watchlist: BONESUPPORT CERAMENT-V-FDA-Entscheidung weiterhin für Herbst/Jahresende erwartet. US-Midterms (03.11.) rücken näher, ab ca. 20.10. als &bdquo;bald&ldquo;-Hinweis im Trigger-Check.</p>
+  </div>
+
+  <div class="cash-line">
+    <div class="h display">KLARE LINIE FÜR DIE KOMMENDE WOCHE</div>
+    <p>Das Depot hat sich in diesem Fenster strukturell verschlankt (18→12 Positionen) und dabei zwei neue, echte Struktur-Lücken geöffnet: <b>USA-Cap-Verstoß (65,2% statt ≤60%)</b> und eine <b>deutlich vertiefte Japan/Asien-Lücke (4,63% statt 10-15%, seit dem Bank-Central-Asia-Verkauf die mit Abstand größte Region-Lücke im Depot)</b>. Das sollte die Priorität für den nächsten Kapitaleinsatz bestimmen: <b>Nicht-USA, bevorzugt Japan/Asien</b> &mdash; ein McDonald's-Kauf (USA) wäre aktuell struktur-verschärfend, nicht struktur-heilend, auch wenn die Einstiegszone fast erreicht ist (Seite 6). Keine der offenen Nachkauf-Zonen (Kraken, Rambus) trägt aktuell ein Kaufsignal. <b>Nicht auf Teufel komm raus investieren &mdash; wenn nichts klar überzeugt, bleibt das Geld Cash.</b> Der innoscripta-Zock dieser Woche ist ein gutes Beispiel, warum Tempo beim Kaufentscheid Vorsicht nicht ersetzen sollte &mdash; die eigene Stop-Loss-Disziplin hat hier den Schaden klein gehalten (-3,9% statt eines möglichen Totalausfalls bei einem laufenden Ermittlungsverfahren).</p>
+  </div>
+
+  <div class="footer">
+    <div>Agent Wochenreport &middot; Seite 7</div>
+    <div>Keine Anlageberatung &middot; alle Einschätzungen sind Entscheidungsunterstützung, keine Order-Empfehlung</div>
+  </div>
+</div>
+
+
+<div class="page">
+  <div class="masthead">
+    <div><div class="brand display" style="font-size:15pt;">METHODIK <span class="accent">&amp; QUELLEN</span></div></div>
+  </div>
+  <div class="box">
+    <h3>Wichtige Datenlücke dieses Laufs &mdash; transparent benannt</h3>
+    <p>Dieser Lauf ist eine vollautomatisierte Ausführung ohne interaktive Session &mdash; <b>weder die Scalable-Capital-MCP-Verbindung noch die Twelve-Data-MCP-Verbindung waren authentifiziert</b> (beide benötigen einen interaktiven OAuth-Schritt, der in diesem Kontext nicht möglich ist; ein wiederkehrendes, bereits dokumentiertes Muster, siehe <code>depot/master_status.md</code>). Depot-Einzelwerte in diesem Report sind daher NICHT frisch live gepullt, sondern der letzte bestätigte Stand aus der Ad-hoc-Chat-Session vom 02.10. Vormittag (10:05 Uhr) &mdash; selbst dort war Scalable nicht verbunden, der Scalable-Teilwert (Gold+ETF+Cash, 9.394,73€) stammt vom 01.10. Abend. <b>Reconciliation:</b> ein zeitgleich laufender Trigger-Check-Lauf (siehe Seite 2, FICO-Eskalation) hatte Live-Zugriff auf Scalable und meldete 9.441,81€ (+47,08€ intraday) &mdash; eine immaterielle Abweichung (+0,15% vom Gesamtportfolio), die an keiner der Prozent-Angaben in diesem Report etwas ändert, hier aber transparent vermerkt statt verschwiegen. Benchmark-Indexstände, VIX/Fear&amp;Greed/10J-Rendite/Ölpreis wurden per WebSearch ermittelt (nicht Twelve-Data-verifiziert). CRV-Ampel-Pflege für Watchlist/Depot konnte mangels Live-Kennzahlen-Zugriff nicht vollständig neu hergeleitet werden (siehe Seite 3). Positionsgrößen-Prozente auf Basis Gesamtportfolio inkl. Gold-ETC und Cash (31.851,60€). Region-/Sektor-Prozente auf Basis ETF+Aktien (26.875,58€, ohne Gold/Cash). Benchmark-Vergleich ist Vorwärts-Tracking ohne Währungsbereinigung UND ohne Kapitalfluss-Bereinigung (siehe depot/performance_tracking.md) &mdash; die am 28.09. aus Scalable abgezogenen ~2.009€ drücken die Depot-%-Zahl zusätzlich nach unten, ohne ein Marktverlust zu sein.</p>
+  </div>
+  <div class="box">
+    <h3>Primärquellen dieses Laufs</h3>
+    <p class="src-list">
+      Ad-hoc-Chat-Sessions 24.09.-02.10.2026 (<code>depot/bridge_status.md</code>, <code>depot/finanzen-net-zero.md</code>, <code>depot/scalable-capital.md</code>, <code>depot/trade-republic.md</code>, <code>depot/smartbroker-plus.md</code>) &middot; <code>watchlist.md</code>, <code>depot/kategorisierung.md</code>, <code>depot/master_status.md</code>, <code>depot/offene_empfehlungen.md</code>, <code>depot/earnings_calendar.md</code>, <code>depot/macro_context.md</code> &middot; WebSearch (S&amp;P 500/Nasdaq 100/MSCI-World-Proxy-Stände, VIX, CNN Fear&amp;Greed, US-10J-Rendite, WTI/Brent, US-Arbeitsmarktbericht) &middot; <code>analysen/MCD-nachpruefung-investor-day-2026-10-02.md</code>, <code>analysen/6525-fulldeepdive-cross-check-2026-09-21.md</code>, <code>analysen/ALLIX-Scout-fulldeepdive-2026-09-21.md</code>, <code>analysen/ORKA-Scout-quickfilter-2026-09-21.md</code>.
+    </p>
+  </div>
+  <div class="box">
+    <h3>Rechtlicher Hinweis</h3>
+    <p>Dieser Report ist Recherche-/Entscheidungsunterstützung für Brians eigene manuelle Anlageentscheidung, keine regulierte Anlageberatung. Keine erfundenen exakten Wahrscheinlichkeiten (No-False-Precision-Prinzip). Alle Kauf-/Verkaufsorders werden ausschließlich manuell durch Brian ausgeführt.</p>
+  </div>
+  <div class="footer">
+    <div>Agent Wochenreport &middot; Seite 8</div>
+    <div>Ende des Reports</div>
+  </div>
+</div>
+
+</body></html>
