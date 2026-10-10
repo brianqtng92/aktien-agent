@@ -287,6 +287,26 @@ Brian hat **Hermès, MercadoLibre, Constellation Software, Broadridge und A10 Ne
 | Münchener Rückversicherungs-Gesellschaft | 2 | 510,40 € (WebSearch, Xetra, 28.09. Intraday) | **1.020,80 €** |
 | **Summe Wertpapiere** | | | **15.862,04 €** |
 
+## Update 2026-10-10 (Depot-Update, Twelve Data live + WebSearch)
+
+**Datenstand:** US-Kurse Twelve Data (Freitagsschluss 09.10.), Münchener Rück 524,40 € (WebSearch, Xetra-Schluss 09.10.), Tristel ~432,5 GBp (WebSearch, 08.10., Spanne 430-435; die 371 GBp vom 01.10. stammten aus einer unzuverlässigen Quelle, Position dadurch scheinbar +17 %), Kraken 4,51 CAD (WebSearch, 09.10.-Schluss). EUR/USD 1,12047, GBP/EUR 1,1807, CAD/EUR 0,62607 (Twelve Data live).
+
+| Position | Anteile | Kurs | **Wert (EUR)** | Δ ggü. 02.10. |
+|---|---|---|---|---|
+| SoFi Technologies | 250 | $15,80 | 3.525,31 € | +0,2 % |
+| ServiceNow Inc | 20 | $140,87 | 2.514,39 € | +2,6 % |
+| CBOE Holdings Inc | 5 | $304,64 | 1.359,43 € | **+10,2 %** |
+| Rambus Inc. | 6 | $107,47 | 575,49 € | +0,5 % |
+| Intuitive Surgical Inc | 4 | $424,12 | 1.514,08 € | +6,1 % |
+| Cellebrite DI Ltd | 200 | $11,255 | 2.008,98 € | +1,5 % |
+| Rocket Lab USA, Inc. | 30 | $68,21 | 1.826,29 € | -2,9 % |
+| Kraken Robotics Inc. | 300 | 4,51 CAD | 847,07 € | +5,5 % |
+| Tristel PLC | 210 | ~432,5 GBp | 1.072,37 € | +17,3 % (Quellenkorrektur) |
+| Münchener Rückversicherungs-Gesellschaft | 4 | 524,40 € | 2.097,60 € | +4,9 % |
+| **Summe Wertpapiere (10 Positionen)** | | | **17.341,01 €** | +3,3 % |
+
+**Summe finanzen.net zero inkl. Cash (10.10.2026): ≈21.229,13 €** (17.341,01 € + 3.888,12 € Cash, Cash laut Buchungsstand 02.10., nicht live prüfbar).
+
 ## Update 2026-10-02 (von Brian gemeldet)
 
 **Nachkauf Münchener Rück: +2 Anteile @ 498,30 € = 996,60 €** (Ordersumme

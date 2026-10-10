@@ -171,3 +171,5 @@ es 18 Einzelwerte ohne ETF + Vanguard-FTSE-All-World-ETF-Sparplan (Update
 NICHT zu den aktiven Einzelwerten, siehe Klarstellung ganz oben). BBCA
 zählt weiterhin als aktiver Profi-Einzelwert (siehe Klarstellung ganz
 oben, 2026-09-01) – der Broker-Standort ändert nichts an der Einordnung.
+
+**Update 2026-10-10 (Depot-Update – KEIN Live-Pull: Scalable-MCP in dieser Session nicht mehr verfügbar):** Näherung per WebSearch: Gold ~122 €/Anteil (4 Anteile ≈ 488 €), Vanguard-ETF ~172,50 € (Hamburg, 09.10.). Mit unveränderten 48,786235 Anteilen ≈ 8.415,63 €, zzgl. Cash 600 € (Stand 05.10.) → **≈ 9.503,63 €**. **Offen/unbestätigt:** Die Oktober-Sparplanrate (jetzt 750 €/Monat laut neuer Aufteilung, vorher 600 €) wurde vermutlich ~07.10. ausgeführt – dann wären es ≈ +4,3 Anteile und Gesamtwert ≈ +750 € (neues Geld, kein Kursgewinn). Anteilszahl und Betrag der ausgeführten Rate bitte in der Scalable-App gegenprüfen.

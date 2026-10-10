@@ -106,3 +106,5 @@ Hinweis (2026-08-23, weiterhin gültig): Depot-Erfassung insgesamt abgeschlossen
 von Brian bestätigt ("das sind meine ganzen Positionen"). Zusammen mit
 `scalable-capital.md`, `finanzen-net-zero.md` und `trade-republic.md` ist das
 das vollständige Depot.
+
+**Update 2026-10-10 (Depot-Update, Twelve Data live):** Kurs $13,72/Aktie (-6,9 % seit 02.10., kein News-Treiber gefunden; unter dem Allzeittief $15,45 vom 14.09.). Wert: 100 × $13,72 ÷ 1,12047 = **1.224,49 €** (-27,2 % ggü. Investsumme 1.681,70 €). Status weiterhin HALTEN laut Full-Deep-Dive 22.09. – bei neuem Allzeittief wäre ein Kill-Sheet-Blick fällig (Insider-Teil des UND-Triggers war bereits erfüllt, Backlog-Teil offen).

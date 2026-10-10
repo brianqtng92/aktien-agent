@@ -84,3 +84,5 @@ Hinweis (2026-08-23): Depot-Erfassung insgesamt abgeschlossen – von Brian best
 Depot (28 Einzelwerte ohne ETF + Vanguard-FTSE-All-World-ETF-Sparplan). Diese
 beiden Trade-Republic-Positionen (Allianz SE, Waste Management) sind vollständig
 erfasst.
+
+**Update 2026-10-10 (Depot-Update, WebSearch, Xetra weiterhin gesperrt):** Kurs ~417,90 € (Lang & Schwarz, Xetra-Schluss 09.10.). Wert: 1,151396 × 417,90 € = **481,17 €** (-4,6 % ggü. Investsumme 504,43 €, +0,7 % ggü. 02.10.).
